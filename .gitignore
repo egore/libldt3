@@ -1,0 +1,16 @@
+#IntelliJ
+*.iml
+.idea
+atlassian-ide-plugin.xml
+
+# Eclipse
+.project
+.classpath
+.settings
+.metadata
+
+# Maven
+target
+release.properties
+pom.xml.releaseBackup
+release
