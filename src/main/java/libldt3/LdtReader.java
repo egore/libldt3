@@ -42,6 +42,7 @@ import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import libldt3.LdtConstants.Mode;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Satzart;
@@ -61,20 +62,6 @@ import libldt3.model.saetze.Satz;
 public class LdtReader {
 
 	private static final Logger LOG = LoggerFactory.getLogger(LdtReader.class);
-
-	/** Determines how the reader deals with invalid LDT */
-	public static enum Mode {
-		/**
-		 * In case invalid LDT is detected, the reader will abort with an
-		 * exception
-		 */
-		STRICT,
-		/**
-		 * When the reader encounters invalid LDT, it will log as error and
-		 * continue
-		 */
-		RELAXED
-	}
 
 	private Mode mode;
 
