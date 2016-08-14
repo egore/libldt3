@@ -29,6 +29,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Geschlecht;
 import libldt3.model.enums.StatusPerson;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
@@ -36,7 +38,7 @@ import libldt3.model.enums.StatusPerson;
  * Befun-den notwendig sind.
  */
 @Objekt("0047")
-public class Person {
+public @Getter @Setter class Person {
 
 	@Feld(value = "7420", feldart = Feldart.bedingt_muss)
 	private StatusPerson status;

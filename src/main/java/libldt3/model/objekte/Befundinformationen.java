@@ -28,16 +28,18 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Befundtyp;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Dieses Objekt bündelt alle Daten zum Befund inklusive aller Kennungen, welche
  * eine eineindeutige Zuordnung von Auftrag und Befund sicherstellen.
  */
 @Objekt("0017")
-public class Befundinformationen {
+public @Getter @Setter class Befundinformationen {
 
 	@Objekt
-	public static class OrderNumber {
+	public static @Getter @Setter class OrderNumber {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8313", feldart = Feldart.bedingt_kann)
@@ -49,7 +51,7 @@ public class Befundinformationen {
 	}
 	
 	@Objekt
-	public static class Befundweg {
+	public static @Getter @Setter class Befundweg {
 		@SuppressWarnings("unused")
 		private ZusaetzlicherBefundweg value;
 		@Feld(value = "8147", feldart = Feldart.bedingt_muss)

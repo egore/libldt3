@@ -29,6 +29,8 @@ import libldt3.annotations.Objekt;
 import libldt3.model.enums.ResistenzInterpretation;
 import libldt3.model.enums.ResistenzNormenwerk;
 import libldt3.model.enums.Sensitivitaet;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt wird ein Antibiogramm (Matrix) aus dem Bereich Mikrobiologie
@@ -36,10 +38,10 @@ import libldt3.model.enums.Sensitivitaet;
  * Matrix.
  */
 @Objekt("0011")
-public class Antibiogramm {
+public @Getter @Setter class Antibiogramm {
 
 	@Objekt
-	public static class WirkstoffIdent {
+	public static @Getter @Setter class WirkstoffIdent {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "7288", feldart = Feldart.bedingt_muss)
@@ -53,7 +55,7 @@ public class Antibiogramm {
 	}
 
 	@Objekt
-	public static class KeimIdentifizierung {
+	public static @Getter @Setter class KeimIdentifizierung {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "7367", feldart = Feldart.bedingt_muss)
@@ -67,7 +69,7 @@ public class Antibiogramm {
 	}
 	
 	@Objekt
-	public static class ResistenzInterpretationErweitert {
+	public static @Getter @Setter class ResistenzInterpretationErweitert {
 		@SuppressWarnings("unused")
 		private ResistenzInterpretation value;
 		@Feld(value = "7424", feldart = Feldart.kann)

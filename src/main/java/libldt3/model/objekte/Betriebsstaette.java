@@ -27,13 +27,15 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Betriebsstaettenstatus;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
  * medizinischen Einrichtungen zusammen.
  */
 @Objekt("0019")
-public class Betriebsstaette {
+public @Getter @Setter class Betriebsstaette {
 
 	@Feld(value = "0204", feldart = Feldart.muss)
 	private List<Betriebsstaettenstatus> status;

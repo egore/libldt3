@@ -26,6 +26,8 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Dieses Objekt wird als Zusammenfassung aller im Auftrag vorhandenen
@@ -35,7 +37,7 @@ import libldt3.annotations.Objekt;
  * Objekt nur einmal vorhanden sein.
  */
 @Objekt("0001")
-public class Abrechnungsinformation {
+public @Getter @Setter class Abrechnungsinformation {
 
 	@Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss)
 	private List<AbrechnungGkv> abrechnungGkv;

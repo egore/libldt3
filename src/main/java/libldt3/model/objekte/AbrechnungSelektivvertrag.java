@@ -6,6 +6,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.EinschreibestatusSelektivvertraege;
 import libldt3.model.enums.Gebuehrenordnung;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -19,7 +21,7 @@ import libldt3.model.enums.Gebuehrenordnung;
  * Versorgung (§§ 140ff SGB V).
  */
 @Objekt("0006")
-public class AbrechnungSelektivvertrag {
+public @Getter @Setter class AbrechnungSelektivvertrag {
 
 	@Feld(value = "3130", feldart = Feldart.muss)
 	private EinschreibestatusSelektivvertraege einschreibestatusSelektivvertraege;

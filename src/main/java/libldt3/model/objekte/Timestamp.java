@@ -27,12 +27,14 @@ import java.time.LocalTime;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Ein Zeitstempel
  */
 @Objekt("0054")
-public class Timestamp {
+public @Getter @Setter class Timestamp {
 
 	@Feld(value = "7278", feldart = Feldart.muss)
 	private LocalDate datum;

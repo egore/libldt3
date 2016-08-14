@@ -40,12 +40,14 @@ import libldt3.model.objekte.Patient;
 import libldt3.model.objekte.Schwangerschaft;
 import libldt3.model.objekte.Tier;
 import libldt3.model.objekte.Veranlassungsgrund;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Befund "8205"
  */
 @Datenpaket(Satzart.Befund)
-public class Befund implements Satz {
+public @Getter @Setter class Befund implements Satz {
 
 	@Feld(value = "8136", feldart = Feldart.kann)
 	private List<Laborkennung> laborkennung;

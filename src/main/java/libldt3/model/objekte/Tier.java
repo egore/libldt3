@@ -28,6 +28,8 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Zeiteinheit;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden
@@ -35,7 +37,7 @@ import libldt3.model.enums.Zeiteinheit;
  * beschrieben.
  */
 @Objekt("0053")
-public class Tier {
+public @Getter @Setter class Tier {
 
 	@Feld(value = "7319", feldart = Feldart.bedingt_muss)
 	private String identifikationsnummerQuelle;

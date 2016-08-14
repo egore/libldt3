@@ -29,16 +29,18 @@ import libldt3.annotations.Objekt;
 import libldt3.model.enums.EndozervikaleZellen;
 import libldt3.model.enums.NachkontrollGrund;
 import libldt3.model.enums.TestStatus;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt werden die Ergebnisse aus dem Bereich Zytologie
  * Krebsvorsorge transportiert. Die Inhalte richten sich nach dem Muster 39b.
  */
 @Objekt("0062")
-public class UntersuchungsergebnisZytologieKrebsvorsorge {
+public @Getter @Setter class UntersuchungsergebnisZytologieKrebsvorsorge {
 
 	@Objekt
-	public static class GrenzwertindikatorLaborwert {
+	public static @Getter @Setter class GrenzwertindikatorLaborwert {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8126", feldart = Feldart.bedingt_muss)

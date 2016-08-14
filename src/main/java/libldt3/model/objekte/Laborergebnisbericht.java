@@ -26,12 +26,14 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Im Objekt werden die Untersuchungsergebnisse zusammengefasst.
  */
 @Objekt("0035")
-public class Laborergebnisbericht {
+public @Getter @Setter class Laborergebnisbericht {
 
 	@Feld(value = "8160", name = "UE_Klinische_Chemie", feldart = Feldart.bedingt_muss)
 	private List<UntersuchungsergebnisKlinischeChemie> klinischeChemie;

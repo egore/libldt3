@@ -30,15 +30,17 @@ import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.Ergebnis2;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie transportiert werden.
  */
 @Objekt("0063")
-public class UntersuchungsergebnisZytologie {
+public @Getter @Setter class UntersuchungsergebnisZytologie {
 
 	@Objekt
-	public static class RecallEmpfohlen {
+	public static @Getter @Setter class RecallEmpfohlen {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8154", feldart = Feldart.bedingt_kann)
@@ -46,7 +48,7 @@ public class UntersuchungsergebnisZytologie {
 	}
 
 	@Objekt
-	public static class KatalogReferenz {
+	public static @Getter @Setter class KatalogReferenz {
 		@SuppressWarnings("unused")
 		private KatalogIdAnforderbareLeistungen value;
 		@Feld(value = "7352", feldart = Feldart.bedingt_muss)
@@ -60,7 +62,7 @@ public class UntersuchungsergebnisZytologie {
 	}
 	
 	@Objekt
-	public static class GrenzwertindikatorLaborwert {
+	public static @Getter @Setter class GrenzwertindikatorLaborwert {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8126", feldart = Feldart.bedingt_muss)
@@ -68,7 +70,7 @@ public class UntersuchungsergebnisZytologie {
 	}
 
 	@Objekt
-	public static class Test {
+	public static @Getter @Setter class Test {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8411", feldart = Feldart.bedingt_muss)

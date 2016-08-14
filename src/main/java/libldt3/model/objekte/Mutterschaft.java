@@ -24,12 +24,14 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
  */
 @Objekt("0040")
-public class Mutterschaft {
+public @Getter @Setter class Mutterschaft {
 
 	@Feld(value = "3668", feldart = Feldart.muss)
 	private Integer anzahlSchwangerschaften;

@@ -27,6 +27,8 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Dokumentenquelle;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Im Objekt Anhang können Informationen wie Befunde, Fotos oder sonstige
@@ -34,7 +36,7 @@ import libldt3.model.enums.Dokumentenquelle;
  * transportiert werden.
  */
 @Objekt("0010")
-public class Anhang {
+public @Getter @Setter class Anhang {
 
 	@Feld(value = "6221", feldart = Feldart.kann)
 	private Boolean kennzeichnungFremdbefund;

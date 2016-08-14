@@ -24,12 +24,14 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Hier werden Informationen zu Wirkstoffen zusammengefasst.
  */
 @Objekt("0071")
-public class Wirkstoff {
+public @Getter @Setter class Wirkstoff {
 
 	@Feld(value = "6212", feldart = Feldart.muss)
 	private String arzneimittelwirkstoff;

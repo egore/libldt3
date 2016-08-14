@@ -27,12 +27,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Einsenderstatus;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
 @Objekt("0022")
-public class Einsenderidentifikation {
+public @Getter @Setter class Einsenderidentifikation {
 
 	@Feld(value = "7321", feldart = Feldart.muss)
 	private List<Einsenderstatus> status;

@@ -28,12 +28,14 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Diagnosesicherheit;
 import libldt3.model.enums.Lokalisation;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
  */
 @Objekt("0100")
-public class Diagnose {
+public @Getter @Setter class Diagnose {
 
 	@Feld(value = "4207", feldart = Feldart.kann)
 	private String diagnoseVerdachtsdiagnose;

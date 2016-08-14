@@ -27,13 +27,15 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt können Information zu einem Tumor sowohl für die
  * Beauftragung und für den Befund transportiert werden.
  */
 @Objekt("0056")
-public class Tumor {
+public @Getter @Setter class Tumor {
 
 	@Feld(value = "7364", feldart = Feldart.muss)
 	private String probengefaeßIdent;

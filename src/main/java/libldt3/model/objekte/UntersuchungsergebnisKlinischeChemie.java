@@ -30,16 +30,18 @@ import libldt3.model.enums.DarstellungSemiquantitativerErgebniswerte;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt werden die Ergebnisse aus dem Bereich Klinische Chemie
  * übermittelt.
  */
 @Objekt("0060")
-public class UntersuchungsergebnisKlinischeChemie {
+public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 
 	@Objekt
-	public static class KatalogReferenz {
+	public static @Getter @Setter class KatalogReferenz {
 		@SuppressWarnings("unused")
 		private KatalogIdAnforderbareLeistungen value;
 		@Feld(value = "7352", feldart = Feldart.bedingt_muss)
@@ -55,7 +57,7 @@ public class UntersuchungsergebnisKlinischeChemie {
 	}
 
 	@Objekt
-	public static class Test {
+	public static @Getter @Setter class Test {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8411", feldart = Feldart.bedingt_muss)
@@ -71,7 +73,7 @@ public class UntersuchungsergebnisKlinischeChemie {
 	}
 
 	@Objekt
-	public static class ErgebnisWert {
+	public static @Getter @Setter class ErgebnisWert {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8421", feldart = Feldart.bedingt_muss)

@@ -24,6 +24,8 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -34,7 +36,7 @@ import libldt3.annotations.Objekt;
  * Rechnungsempfänger ist frei wählbar.
  */
 @Objekt("0005")
-public class AbrechnungSonstigeKostenuebernahme {
+public @Getter @Setter class AbrechnungSonstigeKostenuebernahme {
 
 	@Feld(value = "7261", feldart = Feldart.kann)
 	private String sonstigeVersichertennummer;

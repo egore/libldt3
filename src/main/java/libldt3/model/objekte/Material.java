@@ -29,16 +29,18 @@ import libldt3.annotations.Objekt;
 import libldt3.model.enums.AnorganischesMaterial;
 import libldt3.model.enums.Materialart;
 import libldt3.model.enums.OrganischesMaterial;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Im Objekt werden die Informationen zur Identifikation des zu untersuchenden
  * Materials übermittelt sowie Angaben zum Material selbst.
  */
 @Objekt("0037")
-public class Material {
+public @Getter @Setter class Material {
 
 	@Objekt
-	public static class AnorganischesMaterialErweitert {
+	public static @Getter @Setter class AnorganischesMaterialErweitert {
 		@SuppressWarnings("unused")
 		private AnorganischesMaterial value;
 		@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann)
@@ -46,7 +48,7 @@ public class Material {
 	}
 
 	@Objekt
-	public static class Medikamenteneinnahme {
+	public static @Getter @Setter class Medikamenteneinnahme {
 		@SuppressWarnings("unused")
 		private Boolean value;
 		@Feld(value = "8170", feldart = Feldart.bedingt_kann)

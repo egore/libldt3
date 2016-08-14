@@ -28,6 +28,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.AbrechnungsartPkv;
 import libldt3.model.enums.Gebuehrenordnung;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -37,7 +39,7 @@ import libldt3.model.enums.Gebuehrenordnung;
  * ein anderer sein, als der Versicherte.
  */
 @Objekt("0003")
-public class AbrechnungPkv {
+public @Getter @Setter class AbrechnungPkv {
 
 	@Feld(value = "7362", feldart = Feldart.muss)
 	private AbrechnungsartPkv abrechnungsartPkv;

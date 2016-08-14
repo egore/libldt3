@@ -32,6 +32,8 @@ import libldt3.model.enums.Nachweisverfahren;
 import libldt3.model.enums.ResistenzMethode;
 import libldt3.model.enums.TestStatus;
 import libldt3.model.enums.Wachstum;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt werden die Ergebnisse aus dem Bereich Mikrobiologie
@@ -45,10 +47,10 @@ import libldt3.model.enums.Wachstum;
  * Untersuchungsmaterials dargestellt.
  */
 @Objekt("0061")
-public class UntersuchungsergebnisMikrobiologie {
+public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 
 	@Objekt
-	public static class Keim {
+	public static @Getter @Setter class Keim {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "7355", feldart = Feldart.bedingt_muss)
@@ -72,7 +74,7 @@ public class UntersuchungsergebnisMikrobiologie {
 	}
 
 	@Objekt
-	public static class KatalogReferenz {
+	public static @Getter @Setter class KatalogReferenz {
 		@SuppressWarnings("unused")
 		private KatalogIdAnforderbareLeistungen value;
 		@Feld(value = "7352", feldart = Feldart.bedingt_muss)
@@ -86,7 +88,7 @@ public class UntersuchungsergebnisMikrobiologie {
 	}
 
 	@Objekt
-	public static class NachweisverfahrenErweitert {
+	public static @Getter @Setter class NachweisverfahrenErweitert {
 		@SuppressWarnings("unused")
 		private Nachweisverfahren value;
 		@Feld(value = "7302", feldart = Feldart.bedingt_muss)
@@ -94,7 +96,7 @@ public class UntersuchungsergebnisMikrobiologie {
 	}
 
 	@Objekt
-	public static class ResistenzMethodeErweitert {
+	public static @Getter @Setter class ResistenzMethodeErweitert {
 		@SuppressWarnings("unused")
 		private ResistenzMethode value;
 		@Feld(value = "8111", feldart = Feldart.bedingt_muss)

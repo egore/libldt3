@@ -30,15 +30,17 @@ import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.StatusDringlichkeit;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung zusammengefasst.
  */
 @Objekt("0059")
-public class Untersuchungsanforderung {
+public @Getter @Setter class Untersuchungsanforderung {
 
 	@Objekt
-	public static class KatalogReferenz {
+	public static @Getter @Setter class KatalogReferenz {
 		@SuppressWarnings("unused")
 		private KatalogIdAnforderbareLeistungen value;
 		@Feld(value = "7352", feldart = Feldart.bedingt_muss)
@@ -52,7 +54,7 @@ public class Untersuchungsanforderung {
 	}
 
 	@Objekt
-	public static class Test {
+	public static @Getter @Setter class Test {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8411", feldart = Feldart.bedingt_kann)
@@ -60,7 +62,7 @@ public class Untersuchungsanforderung {
 	}
 
 	@Objekt
-	public static class ProbengefäßIdent {
+	public static @Getter @Setter class ProbengefaessIdent {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8428", feldart = Feldart.kann)
@@ -70,7 +72,7 @@ public class Untersuchungsanforderung {
 	}
 
 	@Objekt
-	public static class Einwilligungserklärung {
+	public static @Getter @Setter class Einwilligungserklaerung {
 		@SuppressWarnings("unused")
 		private Boolean value;
 		@Feld(value = "8110", feldart = Feldart.bedingt_kann)

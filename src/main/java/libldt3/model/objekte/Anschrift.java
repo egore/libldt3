@@ -27,13 +27,15 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Adresstyp;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Das Objekt Anschrift definiert die Adresse. Dabei kann es sich entweder um
  * ein Postfach oder um eine physische Adresse handeln.
  */
 @Objekt("0007")
-public class Anschrift {
+public @Getter @Setter class Anschrift {
 
 	@Feld(value = "3107", feldart = Feldart.bedingt_muss)
 	private String straße;

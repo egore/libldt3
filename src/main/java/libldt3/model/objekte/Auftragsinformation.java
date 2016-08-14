@@ -29,6 +29,8 @@ import libldt3.annotations.Objekt;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.StatusDringlichkeit;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
@@ -36,10 +38,10 @@ import libldt3.model.enums.ZusaetzlicherBefundweg;
  * Dringlichkeit des Auftrags definiert.
  */
 @Objekt("0013")
-public class Auftragsinformation {
+public @Getter @Setter class Auftragsinformation {
 
 	@Objekt
-	public static class Befundweg {
+	public static @Getter @Setter class Befundweg {
 		@SuppressWarnings("unused")
 		private ZusaetzlicherBefundweg value;
 		@Feld(value = "8147", feldart = Feldart.bedingt_muss)

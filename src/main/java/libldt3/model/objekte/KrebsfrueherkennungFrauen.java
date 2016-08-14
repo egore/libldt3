@@ -7,13 +7,15 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt wird das Muster 39, Grundlage für die
  * Krebsfrüherkennungsuntersuchung für Frauen, abgebildet.
  */
 @Objekt("0034")
-public class KrebsfrueherkennungFrauen {
+public @Getter @Setter class KrebsfrueherkennungFrauen {
 
 	@Feld(value = "7295", feldart = Feldart.muss)
 	private LocalDate untersuchungsTag;

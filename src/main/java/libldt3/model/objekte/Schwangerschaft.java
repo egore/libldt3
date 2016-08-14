@@ -26,12 +26,14 @@ import java.time.LocalDate;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Dieses Objekt enthält schwangerschaftsspezifische Informationen.
  */
 @Objekt("0050")
-public class Schwangerschaft {
+public @Getter @Setter class Schwangerschaft {
 
 	@Feld(value = "8511", feldart = Feldart.kann)
 	private String schwangerschaftsdauer;

@@ -25,6 +25,8 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Gebuehrenordnung;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -32,7 +34,7 @@ import libldt3.model.enums.Gebuehrenordnung;
  * gegenüber gesetzlich versicherten Patienten erbracht werden können.
  */
 @Objekt("0004")
-public class AbrechnungIgel {
+public @Getter @Setter class AbrechnungIgel {
 
 	@Feld(value = "4121", feldart = Feldart.muss)
 	private Gebuehrenordnung gebuehrenordnung;

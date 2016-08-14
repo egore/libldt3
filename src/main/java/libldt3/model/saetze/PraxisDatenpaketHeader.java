@@ -30,12 +30,14 @@ import libldt3.model.enums.DatensatzAbsender;
 import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Einsenderidentifikation;
 import libldt3.model.objekte.Kopfdaten;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Satzart: P (Praxis)-Datenpaket-Header "8230"
  */
 @Datenpaket(Satzart.PraxisDatenpaketHeader)
-public class PraxisDatenpaketHeader implements Satz {
+public @Getter @Setter class PraxisDatenpaketHeader implements Satz {
 
 	@Feld(value = "8132", feldart = Feldart.muss)
 	private Kopfdaten kopfdaten;

@@ -25,12 +25,14 @@ import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.model.enums.Satzart;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Satzart: L (Labor)-Datenpaket-Abschluss "8221"
  */
 @Datenpaket(Satzart.LaborDatenpaketAbschluss)
-public class LaborDatenpaketAbschluss implements Satz {
+public @Getter @Setter class LaborDatenpaketAbschluss implements Satz {
 
 	@Feld(value = "9300", feldart = Feldart.muss)
 	private String pruefsumme;

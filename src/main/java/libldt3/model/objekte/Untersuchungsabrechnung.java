@@ -28,6 +28,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Gebuehrenordnung;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Jeder Untersuchung wird direkt eine Abrechnung zugeordnet. Hier werden alle
@@ -35,10 +37,10 @@ import libldt3.model.enums.Gebuehrenordnung;
  * notwendig sind.
  */
 @Objekt("0058")
-public class Untersuchungsabrechnung {
+public @Getter @Setter class Untersuchungsabrechnung {
 
 	@Objekt
-	public static class Gebührennummer {
+	public static @Getter @Setter class Gebuehrennummer {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8406", feldart = Feldart.bedingt_muss)

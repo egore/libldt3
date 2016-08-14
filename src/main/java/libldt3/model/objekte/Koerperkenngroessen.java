@@ -24,15 +24,17 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt können Körperkenngrößen zum Patienten (Größe, Gewicht) übertragen werden.
  */
 @Objekt("0069")
-public class Koerperkenngroessen {
+public @Getter @Setter class Koerperkenngroessen {
 
 	@Objekt
-	public static class Messwert {
+	public static @Getter @Setter class Messwert {
 		@SuppressWarnings("unused")
 		private Float value;
 		@Feld(value = "8421", feldart = Feldart.bedingt_muss)

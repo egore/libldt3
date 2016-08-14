@@ -25,13 +25,15 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.StatusPerson;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Das Objekt dient der Darstellung und elektronischen Übermittlung von
  * Namenskennzeichnungen.
  */
 @Objekt("0041")
-public class Namenskennung {
+public @Getter @Setter class Namenskennung {
 
 	@Feld(value = "7420", feldart = Feldart.muss)
 	private StatusPerson status;

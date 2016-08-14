@@ -27,12 +27,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Laborart;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
  */
 @Objekt("0036")
-public class Laborkennung {
+public @Getter @Setter class Laborkennung {
 
 	@Feld(value = "8239", name = "Laborbezeichnung", feldart = Feldart.bedingt_muss)
 	private Organisation laborbezeichnung;

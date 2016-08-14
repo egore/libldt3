@@ -27,15 +27,17 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.ArztTypId;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
 @Objekt("0014")
-public class Arztidentifikation {
+public @Getter @Setter class Arztidentifikation {
 
 	@Objekt
-	public static class ArztId {
+	public static @Getter @Setter class ArztId {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "0308", feldart = Feldart.bedingt_muss)

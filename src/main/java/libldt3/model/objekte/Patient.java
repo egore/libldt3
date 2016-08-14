@@ -28,12 +28,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.GeschlechtNormbereich;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
  */
 @Objekt("0045")
-public class Patient {
+public @Getter @Setter class Patient {
 
 	@Feld(value = "8147", feldart = Feldart.muss)
 	private Person person;

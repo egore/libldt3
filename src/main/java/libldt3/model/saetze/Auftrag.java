@@ -21,12 +21,14 @@ import libldt3.model.objekte.Schwangerschaft;
 import libldt3.model.objekte.Tier;
 import libldt3.model.objekte.Untersuchungsanforderung;
 import libldt3.model.objekte.Veranlassungsgrund;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Satzart: Auftrag "8215"
  */
 @Datenpaket(Satzart.Auftrag)
-public class Auftrag implements Satz {
+public @Getter @Setter class Auftrag implements Satz {
 
 	@Objekt
 	public static class PatientErweitert {

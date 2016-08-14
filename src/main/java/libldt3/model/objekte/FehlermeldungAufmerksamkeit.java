@@ -27,6 +27,8 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Benachrichtigungsgrund;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
@@ -34,7 +36,7 @@ import libldt3.model.enums.Benachrichtigungsgrund;
  * des Einsenders erfordern.
  */
 @Objekt("0026")
-public class FehlermeldungAufmerksamkeit {
+public @Getter @Setter class FehlermeldungAufmerksamkeit {
 
 	@Feld(value = "7280", feldart = Feldart.muss)
 	private Benachrichtigungsgrund benachrichtigungsgrund;

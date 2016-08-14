@@ -26,12 +26,14 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
  */
 @Objekt("0068")
-public class Fliesstext {
+public @Getter @Setter class Fliesstext {
 
 	@Feld(value = "3564", feldart = Feldart.bedingt_muss)
 	private List<String> text;

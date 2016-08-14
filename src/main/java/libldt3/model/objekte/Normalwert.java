@@ -28,15 +28,17 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.Normwertspezifikation;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
  */
 @Objekt("0042")
-public class Normalwert {
+public @Getter @Setter class Normalwert {
 
 	@Objekt
-	public static class NormalwertGrenze {
+	public static @Getter @Setter class NormalwertGrenze {
 		@SuppressWarnings("unused")
 		private Float value;
 		@Feld(value = "8421", feldart = Feldart.bedingt_muss)

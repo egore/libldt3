@@ -24,13 +24,15 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
  * den LDT Datensatz erstellt hat.
  */
 @Objekt(value = "0051")
-public class SendendesSystem {
+public @Getter @Setter class SendendesSystem {
 
 	@Feld(value = "0001", feldart = Feldart.muss)
 	private String version;

@@ -24,12 +24,14 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Hier werden alle Informationen zusammengefasst, die im Kontext mit der Erstellung des Datensatzes stehen.
  */
 @Objekt("0032")
-public class Kopfdaten {
+public @Getter @Setter class Kopfdaten {
 
 	@Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
 	private SendendesSystem sendendesSystem;

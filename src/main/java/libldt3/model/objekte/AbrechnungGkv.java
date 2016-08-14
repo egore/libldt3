@@ -33,6 +33,8 @@ import libldt3.model.enums.KostentraegerAbrechnungsbereich;
 import libldt3.model.enums.Scheinuntergruppe;
 import libldt3.model.enums.Versichertenart;
 import libldt3.model.enums.WOP;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>
@@ -50,7 +52,7 @@ import libldt3.model.enums.WOP;
  * </p>
  */
 @Objekt("0002")
-public class AbrechnungGkv {
+public @Getter @Setter class AbrechnungGkv {
 
 	@Feld(value = "4239", feldart = Feldart.muss)
 	private Scheinuntergruppe scheinuntergruppe;

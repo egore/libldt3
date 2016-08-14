@@ -26,15 +26,17 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden Organisationsstrukturen abgebildet.
  */
 @Objekt("0043")
-public class Organisation {
+public @Getter @Setter class Organisation {
 
 	@Objekt
-	public static class Funktionsbezeichnung {
+	public static @Getter @Setter class Funktionsbezeichnung {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8147", feldart = Feldart.kann)

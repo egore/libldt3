@@ -29,16 +29,18 @@ import libldt3.annotations.Objekt;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.SpezifizierungVeranlassungsgrund;
 import libldt3.model.enums.Untersuchungsanlass;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Mit diesem Objekt können Angaben zum Grund der Veranlassung der
  * laboratoriumsmedizinischen Untersuchung übertragen werden.
  */
 @Objekt("0027")
-public class Veranlassungsgrund {
+public @Getter @Setter class Veranlassungsgrund {
 
 	@Objekt
-	public static class AbrechnungsinfoErweitert {
+	public static @Getter @Setter class AbrechnungsinfoErweitert {
 		@SuppressWarnings("unused")
 		private Abrechnungsinfo value;
 		@Feld(value = "8417", feldart = Feldart.kann)
@@ -54,7 +56,7 @@ public class Veranlassungsgrund {
 	}
 	
 	@Objekt
-	public static class Medikation {
+	public static @Getter @Setter class Medikation {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "6212", feldart = Feldart.bedingt_kann)
@@ -62,7 +64,7 @@ public class Veranlassungsgrund {
 	}
 	
 	@Objekt
-	public static class Arzneimittelwirkstoff {
+	public static @Getter @Setter class Arzneimittelwirkstoff {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "6214", feldart = Feldart.bedingt_muss)

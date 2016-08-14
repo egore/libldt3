@@ -30,9 +30,11 @@ import libldt3.model.enums.AnforderungNothilfepass;
 import libldt3.model.enums.Antikoerpersuchtest;
 import libldt3.model.enums.DirekterCoombstest;
 import libldt3.model.enums.TestStatus;
+import lombok.Getter;
+import lombok.Setter;
 
 @Objekt("0055")
-public class TransfusionsmedizinMutterschaftsvorsorge {
+public @Getter @Setter class TransfusionsmedizinMutterschaftsvorsorge {
 
 	@Feld(value = "7304", feldart = Feldart.muss)
 	private String ergebnisId;

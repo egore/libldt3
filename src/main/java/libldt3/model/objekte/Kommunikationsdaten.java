@@ -26,16 +26,18 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
  * mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
  */
 @Objekt("0031")
-public class Kommunikationsdaten {
+public @Getter @Setter class Kommunikationsdaten {
 
 	@Objekt
-	public static class ElektronischePostadresse {
+	public static @Getter @Setter class ElektronischePostadresse {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "7340", feldart = Feldart.bedingt_muss)

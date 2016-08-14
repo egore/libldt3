@@ -24,9 +24,11 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import lombok.Getter;
+import lombok.Setter;
 
 @Objekt("0008")
-public class Adressat {
+public @Getter @Setter class Adressat {
 
 	@Feld(value = "8147", feldart = Feldart.bedingt_muss)
 	private Person person;

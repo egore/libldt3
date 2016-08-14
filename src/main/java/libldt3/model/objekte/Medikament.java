@@ -27,12 +27,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.MedikationsStatus;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Hier werden Informationen zu Medikamenten zusammengefasst.
  */
 @Objekt("0070")
-public class Medikament {
+public @Getter @Setter class Medikament {
 
 	@Feld(value = "8243", name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", feldart = Feldart.kann)
 	private Timestamp timestampZeitpunktMedikamenteneinnahme;
