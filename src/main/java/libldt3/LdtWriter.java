@@ -222,7 +222,11 @@ public class LdtWriter {
 		}
 		String name = feld.name();
 		if (name.isEmpty()) {
-			name = object.getClass().getSimpleName();
+			if (annotation != null && !annotation.name().isEmpty()) {
+				name = annotation.name();
+			} else {
+				name = object.getClass().getSimpleName();
+			}
 		}
 		writeLdtLine(writer, feld, name);
 	}

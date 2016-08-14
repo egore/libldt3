@@ -38,4 +38,6 @@ public @interface Objekt {
 	 */
 	String value() default "";
 
+	String name() default "";
+
 }
