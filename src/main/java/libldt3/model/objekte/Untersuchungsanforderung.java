@@ -105,7 +105,7 @@ public class Untersuchungsanforderung {
 	private Fliesstext auftragsbezogeneHinweise;
 	@Feld(value = "8491", feldart = Feldart.kann)
 	private Einwilligungserklärung einwilligungserklärungLiegtVor;
-	@Feld(value = "8213", feldart = Feldart.muss)
+	@Feld(value = "8213", name = "Timestamp_Erstellung_Untersuchungsanforderung", feldart = Feldart.muss)
 	private Timestamp timestampErstellungUntersuchungsanforderung;
 	@Feld(value = "8141", feldart = Feldart.kann)
 	private Namenskennung namenskennung;

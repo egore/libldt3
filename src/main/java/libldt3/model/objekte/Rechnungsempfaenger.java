@@ -30,7 +30,7 @@ import libldt3.model.enums.StatusRechnungsempfaenger;
 /**
  * Hier sind alle Angaben zum Rechnungsempfänger enthalten.
  */
-@Objekt("0048")
+@Objekt(value = "0048", name = "RgEmpfaenger")
 public class Rechnungsempfaenger {
 
 	@Feld(value = "8310", feldart = Feldart.muss)

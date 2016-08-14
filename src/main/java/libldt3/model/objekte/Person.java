@@ -62,7 +62,7 @@ public class Person {
 	private Anschrift wohnanschrift;
 	@Feld(value = "8229", feldart = Feldart.kann)
 	private Anschrift anschriftArbeitsstelle;
-	@Feld(value = "8230", feldart = Feldart.kann)
+	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
 	private Anschrift rechnungsanschrift;
 	@Feld(value = "8232", name = "Private_Kommunikationsdaten", feldart = Feldart.kann)
 	private Kommunikationsdaten privateKommunikationsdaten;

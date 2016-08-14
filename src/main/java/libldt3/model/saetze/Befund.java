@@ -59,7 +59,7 @@ public class Befund implements Satz {
 	private Schwangerschaft schwangerschaft;
 	@Feld(value = "8140", feldart = Feldart.bedingt_kann)
 	private Mutterschaft mutterschaft;
-	@Feld(value = "8153", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
 	private Tier tier;
 	@Feld(value = "8117", feldart = Feldart.muss)
 	private Befundinformationen befundinformationen;

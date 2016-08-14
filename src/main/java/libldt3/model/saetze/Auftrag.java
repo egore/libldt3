@@ -44,7 +44,7 @@ public class Auftrag implements Satz {
 	private Einsenderidentifikation einsenderidentifikation;
 	@Feld(value = "8145", feldart = Feldart.bedingt_muss)
 	private PatientErweitert patient;
-	@Feld(value = "8153", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
 	private Tier tier;
 	@Feld(value = "8113", feldart = Feldart.bedingt_muss)
 	private Auftragsinformation auftragsinformation;

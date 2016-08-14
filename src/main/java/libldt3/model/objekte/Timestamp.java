@@ -40,7 +40,7 @@ public class Timestamp {
 	private LocalTime uhrzeit;
 	@Feld(value = "7272", feldart = Feldart.kann)
 	private String freitext;
-	@Feld(value = "8235", feldart = Feldart.kann)
+	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann)
 	private Person person;
 
 }
