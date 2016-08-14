@@ -87,7 +87,7 @@ public class Befundinformationen {
 	@Feld(value = "8216", name = "Timestamp_Befunderstellung", feldart = Feldart.muss)
 	private Timestamp timestampBefunderstellung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss)

@@ -73,7 +73,7 @@ public class TransfusionsmedizinMutterschaftsvorsorge {
 	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
 	private Timestamp timestampMessung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8158", feldart = Feldart.bedingt_muss)
 	private Untersuchungsabrechnung untersuchungsabrechnung;
 

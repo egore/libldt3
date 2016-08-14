@@ -56,7 +56,7 @@ public class UntersuchungsergebnisZytologieKrebsvorsorge {
 	@Feld(value = "8422", feldart = Feldart.bedingt_muss)
 	private List<GrenzwertindikatorLaborwert> grenzwertindikatorLaborwert;
 	@Feld(value = "8237", feldart = Feldart.bedingt_muss)
-	private Fließtext ErgebnistextVerweis;
+	private Fliesstext ErgebnistextVerweis;
 	@Feld(value = "8418", feldart = Feldart.bedingt_muss)
 	private TestStatus teststatus;
 	@Feld(value = "7368", feldart = Feldart.kann)
@@ -88,7 +88,7 @@ public class UntersuchungsergebnisZytologieKrebsvorsorge {
 	@Feld(value = "7417", feldart = Feldart.bedingt_muss)
 	private List<String> histologischeKlaerung;
 	@Feld(value = "8237", feldart = Feldart.kann)
-	private Fließtext ergebnistext;
+	private Fliesstext ergebnistext;
 	@Feld(value = "8134", feldart = Feldart.kann)
 	private KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
 	@Feld(value = "8126", feldart = Feldart.kann)
@@ -104,7 +104,7 @@ public class UntersuchungsergebnisZytologieKrebsvorsorge {
 	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
 	private Timestamp timestampMessung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 	@Feld(value = "8141", feldart = Feldart.bedingt_muss)

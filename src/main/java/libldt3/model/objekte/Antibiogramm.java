@@ -77,6 +77,6 @@ public class Antibiogramm {
 	@Feld(value = "7287", feldart = Feldart.muss)
 	private List<WirkstoffIdent> wirkstoffIdent;
 	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_kann)
-	private Fließtext ergebnistext;
+	private Fliesstext ergebnistext;
 
 }

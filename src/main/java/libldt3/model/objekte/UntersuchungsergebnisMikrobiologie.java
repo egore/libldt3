@@ -68,7 +68,7 @@ public class UntersuchungsergebnisMikrobiologie {
 		@Feld(value = "7251", feldart = Feldart.bedingt_muss)
 		private String katalogBezeichnung;
 		@Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann)
-		private Fließtext testbezogeneHinweise;
+		private Fliesstext testbezogeneHinweise;
 	}
 
 	@Objekt
@@ -124,7 +124,7 @@ public class UntersuchungsergebnisMikrobiologie {
 	@Feld(value = "8142", feldart = Feldart.kann)
 	private List<Normalwert> normalValue;
 	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann)
-	private Fließtext ergebnistext;
+	private Fliesstext ergebnistext;
 	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann)
 	private Timestamp materialDeliveryTimestamp;
 	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann)
@@ -136,7 +136,7 @@ public class UntersuchungsergebnisMikrobiologie {
 	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
 	private Timestamp timestamp;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusätzlicheInformationen;
+	private List<Fliesstext> zusätzlicheInformationen;
 	@Feld(value = "8141", feldart = Feldart.muss)
 	private Namenskennung namenskennung;
 	@Feld(value = "8158", feldart = Feldart.bedingt_muss)

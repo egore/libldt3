@@ -69,7 +69,7 @@ public class Auftragsinformation {
 	@Feld(value = "8213", name = "Timestamp_Erstellung_Untersuchungsanforderung", feldart = Feldart.muss)
 	private Timestamp timestampErstellungUntersuchungsanforderung;
 	@Feld(value = "8238", name = "Auftragsbezogene_Hinweise", feldart = Feldart.kann)
-	private Fließtext auftragsbezogeneHinweise;
+	private Fliesstext auftragsbezogeneHinweise;
 	@Feld(value = "8141", feldart = Feldart.kann)
 	private Namenskennung namenskennung;
 

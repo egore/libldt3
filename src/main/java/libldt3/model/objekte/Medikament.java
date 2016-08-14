@@ -53,6 +53,6 @@ public class Medikament {
 	@Feld(value = "8227", name = "Timestamp_Gueltig_bis", feldart = Feldart.kann)
 	private Timestamp timestampGueltigBis;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_muss)
-	private Fließtext zusaetzlicheInformationen;
+	private Fliesstext zusaetzlicheInformationen;
 
 }

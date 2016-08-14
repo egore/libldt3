@@ -41,8 +41,8 @@ public class Material {
 	public static class AnorganischesMaterialErweitert {
 		@SuppressWarnings("unused")
 		private AnorganischesMaterial value;
-		@Feld(value = "8167", feldart = Feldart.bedingt_kann)
-		private Fließtext zusaetzlicheInformatioen;
+		@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann)
+		private Fliesstext zusaetzlicheInformatioen;
 	}
 
 	@Objekt
@@ -88,7 +88,7 @@ public class Material {
 	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.kann)
 	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 

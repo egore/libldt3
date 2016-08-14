@@ -68,7 +68,7 @@ public class Tumor {
 	@Feld(value = "8225", feldart = Feldart.kann)
 	private Timestamp timestampMessung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 

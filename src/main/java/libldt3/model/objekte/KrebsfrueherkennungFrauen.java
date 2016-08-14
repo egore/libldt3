@@ -80,6 +80,6 @@ public class KrebsfrueherkennungFrauen {
 	@Feld(value = "7399", feldart = Feldart.kann)
 	private Boolean rrZweiteMessung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 
 }

@@ -46,8 +46,8 @@ public class Veranlassungsgrund {
 		@Feld(value = "8427", feldart = Feldart.bedingt_kann)
 		private SpezifizierungVeranlassungsgrund spezifizierung;
 		@Feld(value = "8217", feldart = Feldart.bedingt_kann)
-		private Fließtext praezisierung;
-		@Feld(value = "8200", feldart = Feldart.bedingt_kann)
+		private Fliesstext praezisierung;
+		@Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann)
 		private List<Diagnose> akutDiagnose;
 		@Feld(value = "4208", feldart = Feldart.kann)
 		private List<Medikation> vorbefundMedikation;

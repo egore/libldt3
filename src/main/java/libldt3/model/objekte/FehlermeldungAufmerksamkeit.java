@@ -45,7 +45,7 @@ public class FehlermeldungAufmerksamkeit {
 	@Feld(value = "8147", feldart = Feldart.muss)
 	private Person person;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> text;
+	private List<Fliesstext> text;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 

@@ -47,8 +47,8 @@ public class Laborergebnisbericht {
 	private List<Tumor> tumor;
 	@Feld(value = "8221", name = "Timestamp_Erstellung_Laborergebnisbericht", feldart = Feldart.muss)
 	private Timestamp timestampErstellungLaborergebnisbericht;
-	@Feld(value = "8167", feldart = Feldart.kann)
-	private List<Fließtext> text;
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	private List<Fliesstext> text;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 	@Feld(value = "8141", feldart = Feldart.kann)

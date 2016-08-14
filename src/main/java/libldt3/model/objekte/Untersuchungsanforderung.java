@@ -99,10 +99,10 @@ public class Untersuchungsanforderung {
 	private Tumor tumor;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
-	@Feld(value = "8167", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8238", feldart = Feldart.kann)
-	private Fließtext auftragsbezogeneHinweise;
+	private Fliesstext auftragsbezogeneHinweise;
 	@Feld(value = "8491", feldart = Feldart.kann)
 	private Einwilligungserklärung einwilligungserklärungLiegtVor;
 	@Feld(value = "8213", feldart = Feldart.muss)

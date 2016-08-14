@@ -90,7 +90,7 @@ public class UntersuchungsergebnisZytologie {
 	@Feld(value = "8410", feldart = Feldart.muss)
 	private List<Test> testIdent;
 	@Feld(value = "8237", feldart = Feldart.bedingt_muss)
-	private Fließtext Ergebnistext;
+	private Fliesstext Ergebnistext;
 	@Feld(value = "7368", feldart = Feldart.kann)
 	private Boolean zellmaterialNichtVerwertbar;
 	@Feld(value = "7400", feldart = Feldart.kann)
@@ -126,7 +126,7 @@ public class UntersuchungsergebnisZytologie {
 	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
 	private Timestamp timestampMessung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 	@Feld(value = "8141", feldart = Feldart.muss)

@@ -47,8 +47,8 @@ public class Normalwert {
 
 	@Feld(value = "8424", feldart = Feldart.muss)
 	private Normwertspezifikation normwertspezifikation;
-	@Feld(value = "8167", feldart = Feldart.bedingt_kann)
-	private Fließtext zusaetzlicheInformationen;
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann)
+	private Fliesstext zusaetzlicheInformationen;
 	@Feld(value = "8460", feldart = Feldart.bedingt_muss)
 	private List<String> normalwertText;
 	@Feld(value = "8461", feldart = Feldart.bedingt_muss)

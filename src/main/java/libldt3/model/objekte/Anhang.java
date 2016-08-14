@@ -41,7 +41,7 @@ public class Anhang {
 	@Feld(value = "6305", feldart = Feldart.bedingt_muss)
 	private String dateiVerweis;
 	@Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss)
-	private Fließtext base64Anlage;
+	private Fliesstext base64Anlage;
 	@Feld(value = "6303", feldart = Feldart.muss)
 	private String dateiformat;
 	@Feld(value = "6328", feldart = Feldart.kann)

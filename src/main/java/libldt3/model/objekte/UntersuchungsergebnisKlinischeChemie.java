@@ -97,11 +97,11 @@ public class UntersuchungsergebnisKlinischeChemie {
 	@Feld(value = "8423", feldart = Feldart.kann)
 	private String pathologischBekannt;
 	@Feld(value = "8236", feldart = Feldart.bedingt_kann)
-	private Fließtext testbezogeneHinweise;
+	private Fliesstext testbezogeneHinweise;
 	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann)
-	private Fließtext ergebnistext;
-	@Feld(value = "8167", feldart = Feldart.kann)
-	private List<Fließtext> zusaetzlicheInformationen;
+	private Fliesstext ergebnistext;
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann)
 	private Timestamp materialDeliveryTimestamp;
 	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann)

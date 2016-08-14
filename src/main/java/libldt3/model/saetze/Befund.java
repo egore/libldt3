@@ -30,7 +30,7 @@ import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Anhang;
 import libldt3.model.objekte.Befundinformationen;
 import libldt3.model.objekte.Einsenderidentifikation;
-import libldt3.model.objekte.Fließtext;
+import libldt3.model.objekte.Fliesstext;
 import libldt3.model.objekte.Koerperkenngroessen;
 import libldt3.model.objekte.Laborergebnisbericht;
 import libldt3.model.objekte.Laborkennung;
@@ -69,8 +69,8 @@ public class Befund implements Satz {
 	private List<Material> material;
 	@Feld(value = "8135", feldart = Feldart.muss)
 	private Laborergebnisbericht laborergebnisbericht;
-	@Feld(value = "8167", feldart = Feldart.kann)
-	private List<Fließtext> text;
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	private List<Fliesstext> text;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	private List<Anhang> anhang;
 
