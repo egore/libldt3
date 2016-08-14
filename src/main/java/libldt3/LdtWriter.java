@@ -106,13 +106,21 @@ public class LdtWriter {
 		}
 	}
 
-	@SuppressWarnings("rawtypes")
 	private void handleOutput(Object o, PrintWriter writer) throws IllegalArgumentException,
 			IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
 		Datenpaket datenpaket = o.getClass().getAnnotation(Datenpaket.class);
 		if (datenpaket != null) {
 			writer.printf("0138000%s\r\n", datenpaket.value().getCode());
 		}
+		writeObjekt(o, writer);
+		if (datenpaket != null) {
+			writer.printf("0138001%s\r\n", datenpaket.value().getCode());
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
+	private void writeObjekt(Object o, PrintWriter writer)
+			throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 		Objekt objekt = o.getClass().getAnnotation(Objekt.class);
 		if (objekt != null && !objekt.value().isEmpty()) {
 			writer.printf("0178002Obj_%s\r\n", objekt.value());
@@ -138,9 +146,6 @@ public class LdtWriter {
 		}
 		if (objekt != null && !objekt.value().isEmpty()) {
 			writer.printf("0178003Obj_%s\r\n", objekt.value());
-		}
-		if (datenpaket != null) {
-			writer.printf("0138001%s\r\n", datenpaket.value().getCode());
 		}
 	}
 	
@@ -202,6 +207,10 @@ public class LdtWriter {
 				declaredField.setAccessible(true);
 				Object innerObject = declaredField.get(object);
 				writeTextualRepresentation(writer, feld, innerObject);
+				Objekt innerAnnotation = innerObject.getClass().getAnnotation(Objekt.class);
+				if (innerAnnotation != null && !innerAnnotation.value().isEmpty()) {
+					writeObjekt(innerObject, writer);
+				}
 				return;
 			} catch (NoSuchFieldException e) {
 				if (mode == Mode.STRICT) {
