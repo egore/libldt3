@@ -39,10 +39,8 @@ Die Lizenz von libldt3 erlaubt es Ihnen, diese Bibliothek kostenfrei auch in kom
 # Nächste Schritte für libldt3
 
 - Das Datenmodell wurde noch keiner Prüfung auf Inkonsistenzen unterzogen (z.B. ob @Feld innerhalb eines Objekts eindeutig ist)
-- Im Datenmodell gibt es bisher keine Getter/Setter (es soll später https://projectlombok.org/features/GetterSetter.html zum Einsatz kommen)
 - Es gibt potentiell Redundanzen von wiederholenden @Feld-Kombinationen
 - String wurde als default Datentyp verwendet. Daher gibt es Felder, die eigentlich andere Typen wären (z.B. Integer)
-- Verschiedene Klassen oder Felder können noch Umlaute enthalten
 
 # Offene Fragen im LDT Datenmodell
 
