@@ -127,13 +127,11 @@ public class LdtWriter {
 				}
 				if (object instanceof List) {
 					for (Object o1 : (List) object) {
-						String text = getTextualRepresentation(feld, o1);
-						writer.printf("%03d%s%s\r\n", (text.length() + 9), feld.value(), text);
+						writeTextualRepresentation(writer, feld, o1);
 						handleOutput(o1, writer);
 					}
 				} else {
-					String text = getTextualRepresentation(feld, object);
-					writer.printf("%03d%s%s\r\n", (text.length() + 9), feld.value(), text);
+					writeTextualRepresentation(writer, feld, object);
 					handleOutput(object, writer);
 				}
 			}
@@ -145,11 +143,15 @@ public class LdtWriter {
 			writer.printf("0138001%s\r\n", datenpaket.value().getCode());
 		}
 	}
+	
+	private void writeLdtLine(PrintWriter writer, Feld feld, String text) {
+		writer.printf("%03d%s%s\r\n", (text.length() + 9), feld.value(), text);
+	}
 
 	/**
 	 * Transform an object into its LDT 3.0 represenation
 	 */
-	private String getTextualRepresentation(Feld feld, Object object) throws NoSuchMethodException, SecurityException,
+	private void writeTextualRepresentation(PrintWriter writer, Feld feld, Object object) throws NoSuchMethodException, SecurityException,
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		if (object == null) {
 			if (mode == Mode.STRICT) {
@@ -158,31 +160,39 @@ public class LdtWriter {
 			} else {
 				LOG.warn("Cannot get textual representation of null when writing feld " + feld
 						+ ", assuming empty string");
-				return "";
+				writeLdtLine(writer, feld, "");
+				return;
 			}
 		}
 		if (object instanceof String) {
-			return ((String) object);
+			writeLdtLine(writer, feld, ((String) object));
+			return;
 		}
 		if (object instanceof Float) {
-			return object.toString();
+			writeLdtLine(writer, feld, object.toString());
+			return;
 		}
 		if (object instanceof Integer) {
-			return object.toString();
+			writeLdtLine(writer, feld, object.toString());
+			return;
 		}
 		if (object instanceof Boolean) {
-			return object.equals(Boolean.TRUE) ? "1" : "0";
+			writeLdtLine(writer, feld, object.equals(Boolean.TRUE) ? "1" : "0");
+			return;
 		}
 		if (object instanceof LocalDate) {
-			return ((LocalDate) object).format(LdtConstants.FORMAT_DATE);
+			writeLdtLine(writer, feld, ((LocalDate) object).format(LdtConstants.FORMAT_DATE));
+			return;
 		}
 		if (object instanceof LocalTime) {
-			return ((LocalTime) object).format(LdtConstants.FORMAT_TIME);
+			writeLdtLine(writer, feld, ((LocalTime) object).format(LdtConstants.FORMAT_TIME));
+			return;
 		}
 		if (Enum.class.isAssignableFrom(object.getClass())) {
 			Method method = object.getClass().getDeclaredMethod("getCode");
 			if (method != null) {
-				return (String) method.invoke(object);
+				writeLdtLine(writer, feld, (String) method.invoke(object));
+				return;
 			}
 		}
 		Objekt annotation = object.getClass().getAnnotation(Objekt.class);
@@ -190,7 +200,9 @@ public class LdtWriter {
 			try {
 				Field declaredField = object.getClass().getDeclaredField("value");
 				declaredField.setAccessible(true);
-				return getTextualRepresentation(feld, declaredField.get(object));
+				Object innerObject = declaredField.get(object);
+				writeTextualRepresentation(writer, feld, innerObject);
+				return;
 			} catch (NoSuchFieldException e) {
 				if (mode == Mode.STRICT) {
 					throw new IllegalStateException(e);
@@ -203,6 +215,6 @@ public class LdtWriter {
 		if (name.isEmpty()) {
 			name = object.getClass().getSimpleName();
 		}
-		return name;
+		writeLdtLine(writer, feld, name);
 	}
 }
