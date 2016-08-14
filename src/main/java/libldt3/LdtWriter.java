@@ -43,7 +43,7 @@ import libldt3.model.saetze.Satz;
 /**
  * Simple, reflection and annotation based writer for LDT 3.0.
  * 
- * @author Christoph Brill <egore911@gmail.com>
+ * @author Christoph Brill &lt;egore911@gmail.com&gt;
  */
 public class LdtWriter {
 

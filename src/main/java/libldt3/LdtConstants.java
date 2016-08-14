@@ -24,7 +24,7 @@ package libldt3;
 import java.time.format.DateTimeFormatter;
 
 /**
- * @author Christoph Brill <egore911@gmail.com>
+ * @author Christoph Brill &lt;egore911@gmail.com&gt;
  */
 public class LdtConstants {
 

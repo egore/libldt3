@@ -57,7 +57,7 @@ import libldt3.model.saetze.Satz;
 /**
  * Simple, reflection and annotation based reader for LDT 3.0.
  * 
- * @author Christoph Brill <egore911@gmail.com>
+ * @author Christoph Brill &lt;egore911@gmail.com&gt;
  */
 public class LdtReader {
 
@@ -106,8 +106,6 @@ public class LdtReader {
 	 * @param stream
 	 *            the LDT lines as string stream
 	 * @return the list of Satz elements found in the LDT file
-	 * @throws IOException
-	 *             thrown if reading the file failed
 	 */
 	public List<Satz> read(Stream<String> stream) {
 		Stack<Object> stack = new Stack<>();
