@@ -32,6 +32,10 @@ Folende "erlaubte Inhalte" sind nicht umgesetzt
 - Nicht unterstützt: E003, E005, E010, E011, E012, E014, E028, E036, E048, E066, E071-E145, E149-E155, E157
 - Nicht in LDT 3.0 verwendet: E031
 
+# Verwendung in kommerziellen Projekten
+
+Die Lizenz von libldt3 erlaubt es Ihnen, diese Bibliothek kostenfrei auch in kommerziellen Projekten zu nutzen. Sie können den Quellcode beliebig verändern und Änderungen müssen nicht veröffentlich werden. Wichtig: Die Verwendung geschieht auf eigene Gefahr und Verantwortung. Für die Entwicklung dieser Bibliothek kommen **keine** Qualitätsmanagementsysteme entsprechend der ISO 9001 oder ISO 13485 zum Einsatz. Wird Ihre Software unter Berücksichtigung dieser Normen entwickelt, obliegt Ihnen die Pflicht der Qualitätssicherung.
+
 # Nächste Schritte für libldt3
 
 - Das Datenmodell wurde noch keiner Prüfung auf Inkonsistenzen unterzogen (z.B. ob @Feld innerhalb eines Objekts eindeutig ist)
