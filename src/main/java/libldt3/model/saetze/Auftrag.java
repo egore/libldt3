@@ -8,7 +8,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Satzart;
-import libldt3.model.objekte.Abrechnungsinformationen;
+import libldt3.model.objekte.Abrechnungsinformation;
 import libldt3.model.objekte.Anhang;
 import libldt3.model.objekte.Auftragsinformation;
 import libldt3.model.objekte.Einsenderidentifikation;
@@ -51,7 +51,7 @@ public class Auftrag implements Satz {
 	@Feld(value = "8127", feldart = Feldart.bedingt_muss)
 	private List<Veranlassungsgrund> veranlassungsgrund;
 	@Feld(value = "8101", feldart = Feldart.muss)
-	private Abrechnungsinformationen abrechnungsinformationen;
+	private Abrechnungsinformation abrechnungsinformationen;
 	@Feld(value = "8137", feldart = Feldart.bedingt_kann)
 	private List<Material> material;
 	@Feld(value = "8159", feldart = Feldart.muss)
