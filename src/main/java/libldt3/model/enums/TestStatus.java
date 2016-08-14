@@ -27,7 +27,7 @@ package libldt3.model.enums;
 public enum TestStatus {
 	Analytik_abgeschlossen("A"), bereits_berichtet("B"), Wert_fehlt("F"), korrigierter_Wert(
 			"K"), Material_fehlt_oder_nicht_verwendbar(
-					"M"), weiterer_Wert_für_Funktionsprofil_folgt("P"), Wert_vorläufig("V");
+					"M"), weiterer_Wert_fuer_Funktionsprofil_folgt("P"), Wert_vorlaeufig("V");
 
 	private final String code;
 

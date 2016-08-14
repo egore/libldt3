@@ -41,7 +41,7 @@ public enum Nachweisverfahren {
 	/** Biochemische Identifikation (z.B. Vitek) */
 	Biochemische_Identifikation("6"),
 	/** Maldi-Tof */
-	Maldi_Tof("");
+	Maldi_Tof("7");
 
 	private final String code;
 

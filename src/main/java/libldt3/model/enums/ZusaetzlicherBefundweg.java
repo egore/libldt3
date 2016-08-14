@@ -26,7 +26,7 @@ package libldt3.model.enums;
  */
 public enum ZusaetzlicherBefundweg {
 
-	Papier("0"), Telefon("1"), Fax("2"), EMail("3"), DFÜ("4"), Tourpost("5"), abweichendeKontaktdaten("6");
+	Papier("0"), Telefon("1"), Fax("2"), EMail("3"), DFUE("4"), Tourpost("5"), abweichendeKontaktdaten("6");
 
 	private final String code;
 

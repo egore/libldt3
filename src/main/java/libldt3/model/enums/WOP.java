@@ -62,13 +62,13 @@ public enum WOP {
 	Nordbaden("55"),
 	/** Südbaden */
 	@Deprecated
-	Südbaden("60"),
+	Suedbaden("60"),
 	@Deprecated
 	/** Nordwürttemberg */
-	Nordwürttemberg("61"),
+	Nordwuerttemberg("61"),
 	@Deprecated
 	/** Südwürttemberg */
-	Südwürttemberg("62"),
+	Suedwuerttemberg("62"),
 	/** Bayern */
 	Bayern("71"),
 	/** Berlin */
@@ -84,7 +84,7 @@ public enum WOP {
 	/** Sachsen-Anhalt */
 	SachsenAnhalt("88"),
 	/** Thüringen */
-	Thüringen("93"),
+	Thueringen("93"),
 	/** Sachsen */
 	Sachsen("98");
 

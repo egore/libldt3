@@ -38,7 +38,7 @@ import lombok.Setter;
 public @Getter @Setter class Tumor {
 
 	@Feld(value = "7364", feldart = Feldart.muss)
-	private String probengefaeßIdent;
+	private String probengefaessIdent;
 	@Feld(value = "7372", feldart = Feldart.kann)
 	private String tumorklassifikation;
 	@Feld(value = "7373", feldart = Feldart.kann)
@@ -50,7 +50,7 @@ public @Getter @Setter class Tumor {
 	@Feld(value = "7376", feldart = Feldart.muss)
 	private String lokalisationTumor;
 	@Feld(value = "7377", feldart = Feldart.kann)
-	private List<String> maße;
+	private List<String> masse;
 	@Feld(value = "7378", feldart = Feldart.kann)
 	private String farbe;
 	@Feld(value = "7379", feldart = Feldart.kann)

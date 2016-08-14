@@ -38,7 +38,7 @@ import lombok.Setter;
 public @Getter @Setter class Anschrift {
 
 	@Feld(value = "3107", feldart = Feldart.bedingt_muss)
-	private String straße;
+	private String strasse;
 	@Feld(value = "3109", feldart = Feldart.bedingt_muss)
 	private String hausnummer;
 	@Feld(value = "3115", feldart = Feldart.bedingt_kann)

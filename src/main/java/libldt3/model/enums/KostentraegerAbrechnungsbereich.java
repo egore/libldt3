@@ -27,7 +27,7 @@ package libldt3.model.enums;
 public enum KostentraegerAbrechnungsbereich {
 
 	/** Primärabrechnung */
-	Primärabrechnung("00"),
+	Primaerabrechnung("00"),
 	/** Sozialversicherungsabkommen (SVA) */
 	Sozialversicherungsabkommen("01"),
 	/** Bundesversorgungsgesetz (BVG) */

@@ -56,7 +56,7 @@ public @Getter @Setter class Material {
 	}
 
 	@Feld(value = "7364", feldart = Feldart.muss)
-	private String probengefäßIdent;
+	private String probengefaessIdent;
 	@Feld(value = "8429", feldart = Feldart.kann)
 	private String probenmaterialIndex;
 	@Feld(value = "8428", feldart = Feldart.kann)

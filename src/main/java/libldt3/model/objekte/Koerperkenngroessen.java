@@ -44,7 +44,7 @@ public @Getter @Setter class Koerperkenngroessen {
 	}
 	
 	@Feld(value = "3622", feldart = Feldart.kann)
-	private Messwert größe;
+	private Messwert groesse;
 	@Feld(value = "3623", feldart = Feldart.kann)
 	private Messwert gewicht;
 

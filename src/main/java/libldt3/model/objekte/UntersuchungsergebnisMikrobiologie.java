@@ -106,7 +106,7 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 	@Feld(value = "7304", feldart = Feldart.muss)
 	private String ergebnisId;
 	@Feld(value = "7364", feldart = Feldart.muss)
-	private List<String> probengefäßIdent;
+	private List<String> probengefaessIdent;
 	@Feld(value = "7260", feldart = Feldart.bedingt_muss)
 	private KatalogReferenz anforderbareLeistungenKatalogId;
 	@Feld(value = "8410", feldart = Feldart.bedingt_muss)
@@ -138,7 +138,7 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
 	private Timestamp timestamp;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	private List<Fliesstext> zusätzlicheInformationen;
+	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8141", feldart = Feldart.muss)
 	private Namenskennung namenskennung;
 	@Feld(value = "8158", feldart = Feldart.bedingt_muss)

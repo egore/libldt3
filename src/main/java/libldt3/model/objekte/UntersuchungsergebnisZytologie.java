@@ -112,7 +112,7 @@ public @Getter @Setter class UntersuchungsergebnisZytologie {
 	@Feld(value = "7422", feldart = Feldart.kann)
 	private Ergebnis chlamydien;
 	@Feld(value = "7425", feldart = Feldart.kann)
-	private Ergebnis2 extragynäkologischeZytologie;
+	private Ergebnis2 extragynaekologischeZytologie;
 	@Feld(value = "7426", feldart = Feldart.kann)
 	private Ergebnis neisseriaGonorrhoeae;
 	@Feld(value = "8126", feldart = Feldart.kann)

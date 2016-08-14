@@ -25,7 +25,7 @@ package libldt3.model.enums;
  * E006
  */
 public enum Befundtyp {
-	Endbefund("E"), Teilbefund("T"), Vorläufiger_Befund("V"), Archivbefund("A"), Nachforderung("N");
+	Endbefund("E"), Teilbefund("T"), VorlaeufigerBefund("V"), Archivbefund("A"), Nachforderung("N");
 
 	private final String code;
 

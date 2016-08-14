@@ -48,7 +48,7 @@ public @Getter @Setter class Untersuchungsabrechnung {
 		@Feld(value = "5005", feldart = Feldart.bedingt_kann)
 		private Integer multiplikator;
 		@Feld(value = "5009", feldart = Feldart.bedingt_kann)
-		private List<String> begründungstext;
+		private List<String> begruendungstext;
 		@Feld(value = "8614", feldart = Feldart.muss)
 		private Boolean abgerechnet;
 	}
@@ -56,9 +56,9 @@ public @Getter @Setter class Untersuchungsabrechnung {
 	@Feld(value = "7303", feldart = Feldart.muss)
 	private Abrechnungsinfo abrechnungsinfo;
 	@Feld(value = "4121", feldart = Feldart.bedingt_muss)
-	private Gebuehrenordnung gebührenordnung;
+	private Gebuehrenordnung gebuehrenordnung;
 	@Feld(value = "5001", feldart = Feldart.bedingt_muss)
-	private List<Gebührennummer> gebührennummer;
+	private List<Gebuehrennummer> gebuehrennummer;
 	@Feld(value = "7259", feldart = Feldart.kann)
 	private String abrechenbareLeistungenKatalogId;
 	@Feld(value = "7251", feldart = Feldart.kann)

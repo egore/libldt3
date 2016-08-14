@@ -41,7 +41,7 @@ public @Getter @Setter class AbrechnungSonstigeKostenuebernahme {
 	@Feld(value = "7261", feldart = Feldart.kann)
 	private String sonstigeVersichertennummer;
 	@Feld(value = "7253", feldart = Feldart.muss)
-	private Boolean kostenuebernahmeerklärungAuftraggeber;
+	private Boolean kostenuebernahmeerklaerungAuftraggeber;
 	@Feld(value = "8148", feldart = Feldart.muss)
 	private Rechnungsempfaenger rechnungsempfaenger;
 

@@ -37,11 +37,11 @@ public @Getter @Setter class SendendesSystem {
 	@Feld(value = "0001", feldart = Feldart.muss)
 	private String version;
 	@Feld(value = "8315", feldart = Feldart.kann)
-	private String empfängerId;
+	private String empfaengerId;
 	@Feld(value = "8316", feldart = Feldart.kann)
 	private String senderId;
 	@Feld(value = "0105", feldart = Feldart.bedingt_muss)
-	private String kvbPrüfnummer;
+	private String kvbPruefnummer;
 	@Feld(value = "8212", feldart = Feldart.kann)
 	private Organisation softwareverantwortlicher;
 	@Feld(value = "0103", feldart = Feldart.muss)

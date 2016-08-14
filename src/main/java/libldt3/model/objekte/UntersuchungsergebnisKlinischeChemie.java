@@ -85,7 +85,7 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	@Feld(value = "7304", feldart = Feldart.muss)
 	private String ergebnisId;
 	@Feld(value = "7364", feldart = Feldart.muss)
-	private List<String> probengefäßIdent;
+	private List<String> probengefaessIdent;
 	@Feld(value = "7260", feldart = Feldart.bedingt_muss)
 	private KatalogReferenz anforderbareLeistungenKatalogId;
 	@Feld(value = "8410", feldart = Feldart.bedingt_muss)

@@ -64,7 +64,7 @@ public @Getter @Setter class KrebsfrueherkennungFrauen {
 	@Feld(value = "7391", feldart = Feldart.kann)
 	private Boolean mammaAuffaellig;
 	@Feld(value = "7392", feldart = Feldart.kann)
-	private Boolean axilläreLymphknotenAuffällig;
+	private Boolean axillaereLymphknotenAuffaellig;
 	@Feld(value = "7393", feldart = Feldart.kann)
 	private Boolean rektumKolonBlutOderSchleim;
 	@Feld(value = "7394", feldart = Feldart.kann)

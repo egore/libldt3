@@ -61,7 +61,7 @@ public @Getter @Setter class AbrechnungGkv {
 	@Feld(value = "4104", feldart = Feldart.muss)
 	private String abrechnungsVknr;
 	@Feld(value = "4106", feldart = Feldart.muss)
-	private KostentraegerAbrechnungsbereich kostenträgerAbrechnungsbereich;
+	private KostentraegerAbrechnungsbereich kostentraegerAbrechnungsbereich;
 	@Feld(value = "4108", feldart = Feldart.kann)
 	private String zulassungsnummer;
 	@Feld(value = "3116", feldart = Feldart.bedingt_muss)

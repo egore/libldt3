@@ -31,9 +31,9 @@ public enum Behandlungsanlass {
 	/** präventiv */
 	Praeventiv("2"),
 	/** Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch */
-	EmpfängnisregelungSterilisationSchwangerschaftsabbruch("3"),
+	EmpfaengnisregelungSterilisationSchwangerschaftsabbruch("3"),
 	/** belegärztliche Behandlung */
-	BelegärztlicheBehandlung("4");
+	BelegaerztlicheBehandlung("4");
 
 	private final String code;
 

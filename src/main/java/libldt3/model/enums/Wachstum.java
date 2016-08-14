@@ -31,7 +31,7 @@ public enum Wachstum {
 	/** spärlich */
 	spaerlich("1"),
 	/** mäßig/vereinzelt */
-	mäßig_vereinzelt("2"),
+	maessig_vereinzelt("2"),
 	/** reichlich */
 	reichlich("3"),
 	/** massenhaft */

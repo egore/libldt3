@@ -39,7 +39,7 @@ public @Getter @Setter class AbrechnungIgel {
 	@Feld(value = "4121", feldart = Feldart.muss)
 	private Gebuehrenordnung gebuehrenordnung;
 	@Feld(value = "7253", feldart = Feldart.muss)
-	private Boolean kostenuebernahmeerklärungAuftraggeberLiegtVor;
+	private Boolean kostenuebernahmeerklaerungAuftraggeberLiegtVor;
 	@Feld(value = "8148", feldart = Feldart.muss)
 	private Rechnungsempfaenger rechnungsempfaenger;
 

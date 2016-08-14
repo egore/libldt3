@@ -46,7 +46,7 @@ public enum Einsenderstatus {
 	/** Patient */
 	Patient("12"),
 	/** Überweiser */
-	Überweiser("14"),
+	Ueberweiser("14"),
 	/** staatliche Einrichtung */
 	staatliche_Einrichtung("15"),
 	/** sonstige juristische Person */

@@ -56,7 +56,7 @@ public @Getter @Setter class Organisation {
 	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
 	private List<Anschrift> rechnungsanschrift;
 	@Feld(value = "8231", name = "Temporaere_Anschrift", feldart = Feldart.kann)
-	private List<Anschrift> temporäreanschrift;
+	private List<Anschrift> temporaereanschrift;
 	@Feld(value = "8131", feldart = Feldart.kann)
 	private Kommunikationsdaten kommunikationsdaten;
 

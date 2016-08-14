@@ -35,6 +35,6 @@ import lombok.Setter;
 public @Getter @Setter class PraxisDatenpaketAbschluss implements Satz {
 
 	@Feld(value = "9300", feldart = Feldart.muss)
-	private String prüfsumme;
+	private String pruefsumme;
 
 }

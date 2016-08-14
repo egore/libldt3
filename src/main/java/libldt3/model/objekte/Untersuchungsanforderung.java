@@ -92,7 +92,7 @@ public @Getter @Setter class Untersuchungsanforderung {
 	@Feld(value = "7262", feldart = Feldart.bedingt_kann)
 	private List<StatusDringlichkeit> statusDringlichkeit;
 	@Feld(value = "7364", feldart = Feldart.muss)
-	private List<ProbengefäßIdent> probengefäßIdent;
+	private List<ProbengefaessIdent> probengefaessIdent;
 	@Feld(value = "8434", feldart = Feldart.bedingt_muss)
 	private String anforderungen;
 	@Feld(value = "8134", feldart = Feldart.kann)
@@ -106,7 +106,7 @@ public @Getter @Setter class Untersuchungsanforderung {
 	@Feld(value = "8238", feldart = Feldart.kann)
 	private Fliesstext auftragsbezogeneHinweise;
 	@Feld(value = "8491", feldart = Feldart.kann)
-	private Einwilligungserklärung einwilligungserklärungLiegtVor;
+	private Einwilligungserklaerung einwilligungserklaerungLiegtVor;
 	@Feld(value = "8213", name = "Timestamp_Erstellung_Untersuchungsanforderung", feldart = Feldart.muss)
 	private Timestamp timestampErstellungUntersuchungsanforderung;
 	@Feld(value = "8141", feldart = Feldart.kann)
