@@ -24,6 +24,7 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.model.regel.F007;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,7 +35,7 @@ import lombok.Setter;
 @Objekt(value = "0051")
 public @Getter @Setter class SendendesSystem {
 
-	@Feld(value = "0001", feldart = Feldart.muss)
+	@Feld(value = "0001", feldart = Feldart.muss, regeln = F007.class)
 	private String version;
 	@Feld(value = "8315", feldart = Feldart.kann)
 	private String empfaengerId;
