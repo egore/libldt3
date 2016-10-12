@@ -49,7 +49,7 @@ public class LdtWriter {
 
 	private static final Logger LOG = LoggerFactory.getLogger(LdtWriter.class);
 
-	private Mode mode;
+	private final Mode mode;
 
 	public LdtWriter(Mode mode) {
 		this.mode = mode;

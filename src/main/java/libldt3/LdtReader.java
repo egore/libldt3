@@ -68,7 +68,7 @@ public class LdtReader {
 
 	private final Map<Class<? extends Regel>, Regel> regelCache = new HashMap<>();
 
-	private Mode mode;
+	private final Mode mode;
 
 	public LdtReader(Mode mode) {
 		this.mode = mode;
