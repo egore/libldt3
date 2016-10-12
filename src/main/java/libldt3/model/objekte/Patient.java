@@ -27,7 +27,9 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.GeschlechtNormbereich;
+import libldt3.model.regel.F013;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,7 +41,7 @@ public @Getter @Setter class Patient {
 
 	@Feld(value = "8147", feldart = Feldart.muss)
 	private Person person;
-	@Feld(value = "3119", feldart = Feldart.bedingt_muss)
+	@Feld(value = "3119", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F013.class))
 	private String versichertenId;
 	@Feld(value = "3105", feldart = Feldart.bedingt_muss)
 	private String versichertennummer;

@@ -27,6 +27,8 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
+import libldt3.model.regel.F002;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -55,9 +57,9 @@ public @Getter @Setter class Tumor {
 	private String farbe;
 	@Feld(value = "7379", feldart = Feldart.kann)
 	private String infiltrationstiefe;
-	@Feld(value = "3424", feldart = Feldart.kann)
+	@Feld(value = "3424", feldart = Feldart.kann, regelsaetze = @Regelsatz(F002.class))
 	private LocalDate therapiebeginn;
-	@Feld(value = "3425", feldart = Feldart.kann)
+	@Feld(value = "3425", feldart = Feldart.kann, regelsaetze = @Regelsatz(F002.class))
 	private LocalDate therapieende;
 	@Feld(value = "8220", feldart = Feldart.kann)
 	private Timestamp timestampEingangserfassungMaterial;

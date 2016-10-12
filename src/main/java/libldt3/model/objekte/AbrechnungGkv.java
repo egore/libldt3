@@ -21,11 +21,13 @@
  */
 package libldt3.model.objekte;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Behandlungsanlass;
 import libldt3.model.enums.BesonderePersonengruppe;
 import libldt3.model.enums.DmpKennzeichnung;
@@ -33,6 +35,11 @@ import libldt3.model.enums.KostentraegerAbrechnungsbereich;
 import libldt3.model.enums.Scheinuntergruppe;
 import libldt3.model.enums.Versichertenart;
 import libldt3.model.enums.WOP;
+import libldt3.model.regel.F001;
+import libldt3.model.regel.F002;
+import libldt3.model.regel.F010;
+import libldt3.model.regel.F011;
+import libldt3.model.regel.F022;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -58,7 +65,7 @@ public @Getter @Setter class AbrechnungGkv {
 	private Scheinuntergruppe scheinuntergruppe;
 	@Feld(value = "4134", feldart = Feldart.muss)
 	private String kostentraegername;
-	@Feld(value = "4104", feldart = Feldart.muss)
+	@Feld(value = "4104", feldart = Feldart.muss, regelsaetze = @Regelsatz(F001.class))
 	private String abrechnungsVknr;
 	@Feld(value = "4106", feldart = Feldart.muss)
 	private KostentraegerAbrechnungsbereich kostentraegerAbrechnungsbereich;
@@ -68,12 +75,12 @@ public @Getter @Setter class AbrechnungGkv {
 	private WOP wop;
 	@Feld(value = "3108", feldart = Feldart.bedingt_muss)
 	private Versichertenart versichertenart;
-	@Feld(value = "4109", feldart = Feldart.bedingt_muss)
-	private String letzterEinlesetagVersichertenkarteImQuartal;
-	@Feld(value = "4133", feldart = Feldart.bedingt_muss)
-	private String versicherungsschutzBeginn;
-	@Feld(value = "4110", feldart = Feldart.bedingt_muss)
-	private String versicherungsschutzEnde;
+	@Feld(value = "4109", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F002.class))
+	private LocalDate letzterEinlesetagVersichertenkarteImQuartal;
+	@Feld(value = "4133", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F002.class))
+	private LocalDate versicherungsschutzBeginn;
+	@Feld(value = "4110", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F002.class))
+	private LocalDate versicherungsschutzEnde;
 	@Feld(value = "4111", feldart = Feldart.muss)
 	private String kstentraegerkennung;
 	@Feld(value = "4229", feldart = Feldart.bedingt_kann)
@@ -96,9 +103,9 @@ public @Getter @Setter class AbrechnungGkv {
 	private Behandlungsanlass kurativPraeventivEss;
 	@Feld(value = "4231", feldart = Feldart.kann)
 	private String kontrolluntersuchungBekannterInfektion;
-	@Feld(value = "4241", feldart = Feldart.bedingt_muss)
+	@Feld(value = "4241", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz({F011.class, F022.class}))
 	private String lebenslangeArztnummer;
-	@Feld(value = "4217", feldart = Feldart.bedingt_muss)
+	@Feld(value = "4217", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F010.class))
 	private String bsnrErstveranlasser;
 
 }

@@ -4,10 +4,14 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EinschreibestatusSelektivvertraege;
 import libldt3.model.enums.Gebuehrenordnung;
+import libldt3.model.regel.F002;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -29,12 +33,12 @@ public @Getter @Setter class AbrechnungSelektivvertrag {
 	private String bezeichnungSelektivvertrag;
 	@Feld(value = "4134", feldart = Feldart.bedingt_muss)
 	private String kostentraegername;
-	@Feld(value = "3131", feldart = Feldart.bedingt_muss)
-	private String teilnahmeVon;
-	@Feld(value = "3132", feldart = Feldart.bedingt_muss)
-	private String teilnahmeBis;
-	@Feld(value = "3133", feldart = Feldart.bedingt_kann)
-	private String datumAntragstellung;
+	@Feld(value = "3131", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F002.class))
+	private LocalDate teilnahmeVon;
+	@Feld(value = "3132", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F002.class))
+	private LocalDate teilnahmeBis;
+	@Feld(value = "3133", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(F002.class))
+	private LocalDate datumAntragstellung;
 	@Feld(value = "4121", feldart = Feldart.kann)
 	private Gebuehrenordnung gebuehrenordnung;
 	@Feld(value = "8148", feldart = Feldart.muss)
