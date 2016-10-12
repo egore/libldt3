@@ -37,19 +37,19 @@ import lombok.Setter;
 @Objekt(value = "0051")
 public @Getter @Setter class SendendesSystem {
 
-	@Feld(value = "0001", feldart = Feldart.muss, regelsaetze = @Regelsatz(F007.class))
+	@Feld(value = "0001", feldart = Feldart.muss, regelsaetze = @Regelsatz(value = F007.class, maxLaenge = 12))
 	private String version;
 	@Feld(value = "8315", feldart = Feldart.kann)
 	private String empfaengerId;
 	@Feld(value = "8316", feldart = Feldart.kann)
 	private String senderId;
-	@Feld(value = "0105", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F012.class))
+	@Feld(value = "0105", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F012.class, laenge = 16))
 	private String kvbPruefnummer;
 	@Feld(value = "8212", feldart = Feldart.kann)
 	private Organisation softwareverantwortlicher;
-	@Feld(value = "0103", feldart = Feldart.muss)
+	@Feld(value = "0103", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String softwareName;
-	@Feld(value = "0132", feldart = Feldart.bedingt_muss)
+	@Feld(value = "0132", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String softwareVersion;
 
 }

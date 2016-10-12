@@ -285,20 +285,40 @@ public class LdtReader {
 					}
 
 					outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
+
+						if (regelsatz.laenge() >= 0) {
+							if (payload.length() != regelsatz.laenge()) {
+								validationFailed("Value " + payload + " did not match expected length "
+										+ regelsatz.laenge() + ", was " + payload.length());
+							}
+						}
+
+						if (regelsatz.minLaenge() >= 0) {
+							if (payload.length() < regelsatz.minLaenge()) {
+								validationFailed("Value " + payload + " did not match expected minimum length "
+										+ regelsatz.minLaenge() + ", was " + payload.length());
+							}
+						}
+
+						if (regelsatz.maxLaenge() >= 0) {
+							if (payload.length() > regelsatz.maxLaenge()) {
+								validationFailed("Value " + payload + " did not match expected maximum length "
+										+ regelsatz.maxLaenge() + ", was " + payload.length());
+							}
+						}
+
+						// No specific rules given, likely only length checks
+						if (regelsatz.value().length == 0) {
+							continue;
+						}
+
 						for (Class<? extends Regel> regel : regelsatz.value()) {
 							if (getRegel(regel).isValid(payload)) {
 								continue outer;
 							}
 						}
-						if (mode == Mode.STRICT) {
-							throw new IllegalStateException("Value " + payload
-									+ " did not confirm to any rule of " + toString(regelsatz.value()));
-						} else {
-							if (LOG.isWarnEnabled()) {
-								LOG.warn("Value {} did not confirm to any rule of {}", payload,
-										toString(regelsatz.value()));
-							}
-						}
+						validationFailed("Value " + payload + " did not confirm to any rule of "
+								+ toString(regelsatz.value()));
 					}
 
 					// Convert the value to its target type ...
@@ -336,6 +356,14 @@ public class LdtReader {
 			}
 			break;
 		}
+	}
+
+	private void validationFailed(String message) {
+		if (mode == Mode.STRICT) {
+			throw new IllegalStateException(message);
+        } else {
+			LOG.warn(message);
+        }
 	}
 
 	private String toString(Class<? extends Regel>[] regeln) {

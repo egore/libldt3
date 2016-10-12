@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.StatusDringlichkeit;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
@@ -56,9 +57,9 @@ public @Getter @Setter class Auftragsinformation {
 	private String auftragsnummerLabor;
 	@Feld(value = "7268", feldart = Feldart.kann)
 	private String fachrichtungStationskennung;
-	@Feld(value = "0080", feldart = Feldart.kann)
+	@Feld(value = "0080", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String fallakteId;
-	@Feld(value = "0081", feldart = Feldart.bedingt_kann)
+	@Feld(value = "0081", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> fallakteBezeichnung;
 	@Feld(value = "8501", feldart = Feldart.bedingt_kann)
 	private Dringlichkeit dringlichkeit;

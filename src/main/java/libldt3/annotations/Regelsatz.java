@@ -16,4 +16,10 @@ public @interface Regelsatz {
 
     Class<? extends Regel>[] value() default {};
 
+    int laenge() default -1;
+
+    int minLaenge() default -1;
+
+    int maxLaenge() default -1;
+
 }

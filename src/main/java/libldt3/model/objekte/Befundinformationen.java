@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Befundtyp;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
 import lombok.Getter;
@@ -66,9 +67,9 @@ public @Getter @Setter class Befundinformationen {
 	private String findingId;
 	@Feld(value = "8401", feldart = Feldart.bedingt_muss)
 	private Befundtyp type;
-	@Feld(value = "0080", feldart = Feldart.kann)
+	@Feld(value = "0080", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String fallakteId;
-	@Feld(value = "0081", feldart = Feldart.bedingt_kann)
+	@Feld(value = "0081", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> fallakteBezeichnung;
 	@Feld(value = "7258", feldart = Feldart.kann)
 	private String katalogId;
