@@ -24,6 +24,7 @@ package libldt3.model.regel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,11 +46,33 @@ abstract class RegularExpressionRegel implements Regel {
 		if (value == null) {
 			return true;
 		}
-		if (!(value instanceof String)) {
-			LOG.debug("Given object was not a string, but {}", value.getClass());
-			return false;
+
+		// CharSequence is allowed, try to interpret the value as this first
+		if (value instanceof CharSequence) {
+			return pattern.matcher((CharSequence) value).matches();
 		}
-		return pattern.matcher((String) value).matches();
+
+		// Iterable<CharSequence> is also OK, next try ...
+		if (value instanceof Iterable) {
+			for (Object o : (Iterable<?>) value) {
+				// the Iterable shall only contain CharSequence
+				if (!(o instanceof CharSequence)) {
+					LOG.debug("Object in given liste was not a CharSequence, but {}", o.getClass());
+					return false;
+				}
+				// If any element did not match, abort
+				if (!pattern.matcher((CharSequence) o).matches()) {
+					return false;
+				}
+			}
+
+			// If all matched or list was empty, we're good
+			return true;
+		}
+
+		// If the rule was applied to anything else, abort
+		LOG.debug("Given object was not a CharSequence, but {}", value.getClass());
+		return false;
 	}
 
 }
