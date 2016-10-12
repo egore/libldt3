@@ -21,17 +21,35 @@
  */
 package libldt3.model.regel;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Format Versionsnummer der Datensatzbeschreibung
+ * Base class to implement regular expression based rules
  */
-public class F007 extends RegularExpressionRegel {
+abstract class RegularExpressionRegel implements Regel {
 
-	private static final Pattern PATTERN = Pattern.compile("LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}");
+	private static final Logger LOG = LoggerFactory.getLogger(RegularExpressionRegel.class);
 
-	public F007() {
-		super(PATTERN);
+	private final Pattern pattern;
+
+	RegularExpressionRegel(Pattern pattern) {
+		this.pattern = pattern;
+	}
+
+	@Override
+	public boolean isValid(Object value) {
+		if (value == null) {
+			return true;
+		}
+		if (!(value instanceof String)) {
+			LOG.debug("Given object was not a string, but {}", value.getClass());
+			return false;
+		}
+		return pattern.matcher((String) value).matches();
 	}
 
 }
