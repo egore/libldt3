@@ -28,6 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.ArztTypId;
+import libldt3.model.regel.F011;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,7 +48,7 @@ public @Getter @Setter class Arztidentifikation {
 
 	@Feld(value = "8147", feldart = Feldart.muss)
 	private Person person;
-	@Feld(value = "0212", feldart = Feldart.bedingt_muss)
+	@Feld(value = "0212", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F011.class))
 	private List<String> lanr;
 	@Feld(value = "0306", feldart = Feldart.kann)
 	private String vertragsId;
