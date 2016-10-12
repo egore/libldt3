@@ -26,8 +26,11 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Gebuehrenordnung;
+import libldt3.model.regel.F008;
+import libldt3.model.regel.F009;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,7 +60,7 @@ public @Getter @Setter class Untersuchungsabrechnung {
 	private Abrechnungsinfo abrechnungsinfo;
 	@Feld(value = "4121", feldart = Feldart.bedingt_muss)
 	private Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "5001", feldart = Feldart.bedingt_muss)
+	@Feld(value = "5001", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz({F008.class, F009.class}))
 	private List<Gebuehrennummer> gebuehrennummer;
 	@Feld(value = "7259", feldart = Feldart.kann)
 	private String abrechenbareLeistungenKatalogId;
