@@ -35,10 +35,13 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Stream;
 
+import libldt3.model.regel.Regel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,6 +65,8 @@ import libldt3.model.saetze.Satz;
 public class LdtReader {
 
 	private static final Logger LOG = LoggerFactory.getLogger(LdtReader.class);
+
+	private final Map<Class<? extends Regel>, Regel> regelCache = new HashMap<>();
 
 	private Mode mode;
 
@@ -278,8 +283,22 @@ public class LdtReader {
 						}
 					}
 
+					// Convert the value to its target type
+					Object value = convertType(field, field.getType(), payload, stack);
+					for (Class<? extends Regel> regel : annotation.regeln()) {
+						if (!getRegel(regel).isValid(value)) {
+							if (mode == Mode.STRICT) {
+								throw new IllegalStateException("Value " + value
+										+ " did not confirm to rule " + regel.getSimpleName());
+							} else {
+								LOG.warn("Value {} did not confirm to rule {}", value,
+										regel.getSimpleName());
+							}
+						}
+					}
+
 					// Finally set the value
-					field.set(currentObject, convertType(field, field.getType(), payload, stack));
+					field.set(currentObject, value);
 				} catch (IllegalArgumentException | IllegalAccessException | NoSuchMethodException | SecurityException
 						| InvocationTargetException | InstantiationException e) {
 					if (mode == Mode.STRICT) {
@@ -310,6 +329,15 @@ public class LdtReader {
 			}
 			break;
 		}
+	}
+
+	private Regel getRegel(Class<? extends Regel> regel) throws IllegalAccessException, InstantiationException {
+		Regel instance = regelCache.get(regel);
+		if (instance == null) {
+			instance = regel.newInstance();
+			regelCache.put(regel, instance);
+		}
+		return instance;
 	}
 
 	/**
