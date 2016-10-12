@@ -279,7 +279,7 @@ public class LdtReader {
 							throw new IllegalStateException(
 									"Line '" + line + "' would overwrite existing value " + object);
 						} else {
-							LOG.warn("Line '" + line + "' would overwrite existing value " + object);
+							LOG.warn("Line '{}' would overwrite existing value {}", line, object);
 						}
 					}
 
