@@ -27,8 +27,10 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Geschlecht;
 import libldt3.model.enums.StatusPerson;
+import libldt3.model.regel.F003;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -50,7 +52,7 @@ public @Getter @Setter class Person {
 	private String nachname;
 	@Feld(value = "3102", feldart = Feldart.muss)
 	private List<String> vorname;
-	@Feld(value = "3103", feldart = Feldart.bedingt_muss)
+	@Feld(value = "3103", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F003.class))
 	private LocalDate geburtsdatum;
 	@Feld(value = "3104", feldart = Feldart.kann)
 	private String titel;

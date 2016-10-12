@@ -29,6 +29,8 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.ArztTypId;
 import libldt3.model.regel.F011;
+import libldt3.model.regel.F014;
+import libldt3.model.regel.F022;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,13 +50,13 @@ public @Getter @Setter class Arztidentifikation {
 
 	@Feld(value = "8147", feldart = Feldart.muss)
 	private Person person;
-	@Feld(value = "0212", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F011.class))
+	@Feld(value = "0212", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz({F011.class, F022.class}))
 	private List<String> lanr;
 	@Feld(value = "0306", feldart = Feldart.kann)
 	private String vertragsId;
 	@Feld(value = "0307", feldart = Feldart.kann)
 	private List<ArztId> arztIds;
-	@Feld(value = "0222", feldart = Feldart.bedingt_muss)
+	@Feld(value = "0222", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F014.class))
 	private String asvTeamnummer;
 
 }
