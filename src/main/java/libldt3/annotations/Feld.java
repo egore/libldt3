@@ -44,6 +44,9 @@ public @interface Feld {
 	 */
 	String value();
 
+	/**
+	 * @return gibt an, ob es sich um ein Pflichtfeld handelt
+	 */
 	Feldart feldart();
 
 	/**
