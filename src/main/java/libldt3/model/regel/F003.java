@@ -22,16 +22,17 @@
 package libldt3.model.regel;
 
 import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 /**
  * Format Geburtsdatum eines Patienten
  */
-public class F003 implements Regel {
+public class F003 extends RegularExpressionRegel {
 
-	@Override
-	public boolean isValid(Object value) {
-		// No pattern check is performed here, as the conversion from string to LocalDate assures the format
-        return value == null || value instanceof LocalDate;
+	private static final Pattern PATTERN = Pattern.compile("[0-9]{4}(0[0-9]|1[012])([0-2][0-9]|3[01])");
+
+	public F003() {
+		super(PATTERN);
 	}
 
 }

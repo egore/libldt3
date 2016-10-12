@@ -21,17 +21,17 @@
  */
 package libldt3.model.regel;
 
-import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 /**
  * Format Datum
  */
-public class F002 implements Regel {
+public class F002 extends RegularExpressionRegel {
 
-	@Override
-	public boolean isValid(Object value) {
-		// No pattern check is performed here, as the conversion from string to LocalDate assures the format
-        return value == null || value instanceof LocalDate;
+	private static final Pattern PATTERN = Pattern.compile("[0-9]{4}(0[1-9]|1[012])(0[1-9]|[1-2][0-9]|3[01])");
+
+	public F002() {
+		super(PATTERN);
 	}
 
 }

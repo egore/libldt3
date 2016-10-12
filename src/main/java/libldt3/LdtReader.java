@@ -284,26 +284,27 @@ public class LdtReader {
 						}
 					}
 
-					// Convert the value to its target type
-					Object value = convertType(field, field.getType(), payload, stack);
 					outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
 						for (Class<? extends Regel> regel : regelsatz.value()) {
-							if (getRegel(regel).isValid(value)) {
+							if (getRegel(regel).isValid(payload)) {
 								continue outer;
 							}
 						}
 						if (mode == Mode.STRICT) {
-							throw new IllegalStateException("Value " + value
+							throw new IllegalStateException("Value " + payload
 									+ " did not confirm to any rule of " + toString(regelsatz.value()));
 						} else {
 							if (LOG.isWarnEnabled()) {
-								LOG.warn("Value {} did not confirm to any rule of {}", value,
+								LOG.warn("Value {} did not confirm to any rule of {}", payload,
 										toString(regelsatz.value()));
 							}
 						}
 					}
 
-					// Finally set the value
+					// Convert the value to its target type ...
+					Object value = convertType(field, field.getType(), payload, stack);
+
+					// .. and set the value on the target object
 					field.set(currentObject, value);
 				} catch (IllegalArgumentException | IllegalAccessException | NoSuchMethodException | SecurityException
 						| InvocationTargetException | InstantiationException e) {

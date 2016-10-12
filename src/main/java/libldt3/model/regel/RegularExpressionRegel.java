@@ -21,11 +21,6 @@
  */
 package libldt3.model.regel;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.Collection;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -33,46 +28,20 @@ import java.util.regex.Pattern;
  */
 abstract class RegularExpressionRegel implements Regel {
 
-	private static final Logger LOG = LoggerFactory.getLogger(RegularExpressionRegel.class);
-
 	private final Pattern pattern;
 
 	RegularExpressionRegel(Pattern pattern) {
 		this.pattern = pattern;
 	}
 
-	@Override
-	public boolean isValid(Object value) {
+	public boolean isValid(String value) {
 		if (value == null) {
 			return true;
 		}
 
 		// CharSequence is allowed, try to interpret the value as this first
-		if (value instanceof CharSequence) {
-			return pattern.matcher((CharSequence) value).matches();
-		}
+		return pattern.matcher(value).matches();
 
-		// Iterable<CharSequence> is also OK, next try ...
-		if (value instanceof Iterable) {
-			for (Object o : (Iterable<?>) value) {
-				// the Iterable shall only contain CharSequence
-				if (!(o instanceof CharSequence)) {
-					LOG.debug("Object in given liste was not a CharSequence, but {}", o.getClass());
-					return false;
-				}
-				// If any element did not match, abort
-				if (!pattern.matcher((CharSequence) o).matches()) {
-					return false;
-				}
-			}
-
-			// If all matched or list was empty, we're good
-			return true;
-		}
-
-		// If the rule was applied to anything else, abort
-		LOG.debug("Given object was not a CharSequence, but {}", value.getClass());
-		return false;
 	}
 
 }
