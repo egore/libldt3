@@ -25,6 +25,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.model.regel.F007;
+import libldt3.model.regel.F012;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,7 +42,7 @@ public @Getter @Setter class SendendesSystem {
 	private String empfaengerId;
 	@Feld(value = "8316", feldart = Feldart.kann)
 	private String senderId;
-	@Feld(value = "0105", feldart = Feldart.bedingt_muss)
+	@Feld(value = "0105", feldart = Feldart.bedingt_muss, regeln = F012.class)
 	private String kvbPruefnummer;
 	@Feld(value = "8212", feldart = Feldart.kann)
 	private Organisation softwareverantwortlicher;
