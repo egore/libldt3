@@ -6,13 +6,13 @@ Dieser Parser wurde auf Basis der LDT 3.0.3 Spezifikation entwickelt. Die Spezif
 
 # Verwendung
 
-Um einen LDT-Datensatz aus einer Datei einzulesen, wird der LdtReader verwendet. Dieser bietet mit der Methode read() die Möglichkeit, LDT 3.0 einzulesen.
+Um einen LDT-Datensatz aus einer Datei einzulesen, wird die Klasse LdtReader verwendet. Diese bietet mit der Methode read() die Möglichkeit, LDT 3.0 einzulesen.
 
 	Path src = ...
 	LdtReader reader = new LdtReader(Mode.STRICT);
 	List<Satz> data = reader.read(src);
 
-Um einen LDT-Datensatz zu erzeugen kann der LdtWriter verwendet werden. Dessen Methode write() schreibt LDT 3.0 in eine Datei.
+Um einen LDT-Datensatz zu erzeugen kann die Klasse LdtWriter verwendet werden. Deren Methode write() schreibt LDT 3.0 in eine Datei.
 
 	LdtWriter writer = new LdtWriter(Mode.STRICT);
 	writer.write(data, target);
@@ -23,9 +23,9 @@ Sowohl LdtReader als auch LdtWriter bieten die Möglichkeit, einen STRICT- oder 
 
 Der Parser wurde erfolgreich an verschiedenen Beispielen aus dem von der KVB bereitgestellten Testpaket getestet. Er kann die Daten vollständig einlesen und wieder ausgeben. Es gibt dabei lediglich Unterschiede im Umgang mit Fließkomma-Zahlen, so dass der ausgegebene Datensatz nicht 1:1 dem eingelesenen entspricht.
 
-Folgende Punkte sind anzumerken:
+Folgende Punkte sind als Einschränkungen anzumerken:
 - Feldarten (Muss, Kann, Bedingt muss, Bedingt kann) sind an den vermerkt, werden aber nicht ausgewertet
-- Ein Großteil der Feld-Regeln werden nicht ausgewertet
+- Ein Teil der Feld-Regeln sind nicht implementiert und werden nicht ausgewertet (im Package libldt3.regel gibt es verschiedene Regeln)
 - Die Hierarchie im Java-Datenmodell nutzt nicht die volle Tiefe von 5 Ebenen in einem Objekt, wie von LDT 3.0 spezifiziert. Hintergrund ist, dass diese nicht als zwingend notwendig angenommen wird
 
 Folende "erlaubte Inhalte" sind nicht umgesetzt
@@ -40,7 +40,7 @@ Die Lizenz von libldt3 erlaubt es Ihnen, diese Bibliothek kostenfrei auch in kom
 
 - Das Datenmodell wurde noch keiner Prüfung auf Inkonsistenzen unterzogen (z.B. ob @Feld innerhalb eines Objekts eindeutig ist)
 - Es gibt potentiell Redundanzen von wiederholenden @Feld-Kombinationen
-- String wurde als default Datentyp verwendet. Daher gibt es Felder, die eigentlich andere Typen wären (z.B. Integer)
+- Im Datenmodell wurde unabhängig vom Format der Einträge der Feldtabelle "String" als default Datentyp verwendet. Daher gibt es in den Klassen Felder, die eigentlich andere Typen wären (z.B. Integer)
 
 # Offene Fragen im LDT Datenmodell
 
