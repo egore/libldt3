@@ -21,17 +21,8 @@
  */
 package libldt3.model.regel;
 
-import java.util.regex.Pattern;
+class RegelConstants {
 
-/**
- * Format BSNR
- */
-public class F010 extends RegularExpressionRegel {
-
-	private static final Pattern PATTERN = Pattern.compile(RegelConstants.E014 + "[0-9]{5}.{2}");
-
-	public F010() {
-		super(PATTERN);
-	}
+	static final String E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
 
 }
