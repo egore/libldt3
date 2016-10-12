@@ -41,6 +41,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Stream;
 
+import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.Regel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -285,14 +286,19 @@ public class LdtReader {
 
 					// Convert the value to its target type
 					Object value = convertType(field, field.getType(), payload, stack);
-					for (Class<? extends Regel> regel : annotation.regeln()) {
-						if (!getRegel(regel).isValid(value)) {
-							if (mode == Mode.STRICT) {
-								throw new IllegalStateException("Value " + value
-										+ " did not confirm to rule " + regel.getSimpleName());
-							} else {
-								LOG.warn("Value {} did not confirm to rule {}", value,
-										regel.getSimpleName());
+					outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
+						for (Class<? extends Regel> regel : regelsatz.value()) {
+							if (getRegel(regel).isValid(value)) {
+								continue outer;
+							}
+						}
+						if (mode == Mode.STRICT) {
+							throw new IllegalStateException("Value " + value
+									+ " did not confirm to any rule of " + toString(regelsatz.value()));
+						} else {
+							if (LOG.isWarnEnabled()) {
+								LOG.warn("Value {} did not confirm to any rule of {}", value,
+										toString(regelsatz.value()));
 							}
 						}
 					}
@@ -329,6 +335,17 @@ public class LdtReader {
 			}
 			break;
 		}
+	}
+
+	private String toString(Class<? extends Regel>[] regeln) {
+		StringBuilder buffer = new StringBuilder();
+		for (Class<? extends Regel> regel : regeln) {
+			if (buffer.length() > 0) {
+				buffer.append(" or ");
+			}
+			buffer.append(regel.getSimpleName());
+		}
+		return buffer.toString();
 	}
 
 	private Regel getRegel(Class<? extends Regel> regel) throws IllegalAccessException, InstantiationException {

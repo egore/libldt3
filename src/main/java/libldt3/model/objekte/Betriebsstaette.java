@@ -26,8 +26,10 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Betriebsstaettenstatus;
 import libldt3.model.regel.F010;
+import libldt3.model.regel.F021;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,7 +46,7 @@ public @Getter @Setter class Betriebsstaette {
 	private String bsnrBezeichnung;
 	@Feld(value = "0200", feldart = Feldart.bedingt_muss)
 	private String betriebsstaettenId;
-	@Feld(value = "0201", feldart = Feldart.bedingt_muss, regeln = F010.class)
+	@Feld(value = "0201", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz({F010.class, F021.class}))
 	private String bsnr;
 	@Feld(value = "0213", feldart = Feldart.kann)
 	private String institutskennzeichen;
