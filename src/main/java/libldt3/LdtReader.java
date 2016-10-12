@@ -284,42 +284,7 @@ public class LdtReader {
 						}
 					}
 
-					outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
-
-						if (regelsatz.laenge() >= 0) {
-							if (payload.length() != regelsatz.laenge()) {
-								validationFailed("Value " + payload + " did not match expected length "
-										+ regelsatz.laenge() + ", was " + payload.length());
-							}
-						}
-
-						if (regelsatz.minLaenge() >= 0) {
-							if (payload.length() < regelsatz.minLaenge()) {
-								validationFailed("Value " + payload + " did not match expected minimum length "
-										+ regelsatz.minLaenge() + ", was " + payload.length());
-							}
-						}
-
-						if (regelsatz.maxLaenge() >= 0) {
-							if (payload.length() > regelsatz.maxLaenge()) {
-								validationFailed("Value " + payload + " did not match expected maximum length "
-										+ regelsatz.maxLaenge() + ", was " + payload.length());
-							}
-						}
-
-						// No specific rules given, likely only length checks
-						if (regelsatz.value().length == 0) {
-							continue;
-						}
-
-						for (Class<? extends Regel> regel : regelsatz.value()) {
-							if (getRegel(regel).isValid(payload)) {
-								continue outer;
-							}
-						}
-						validationFailed("Value " + payload + " did not confirm to any rule of "
-								+ toString(regelsatz.value()));
-					}
+					validateFieldPayload(payload, annotation);
 
 					// Convert the value to its target type ...
 					Object value = convertType(field, field.getType(), payload, stack);
@@ -356,6 +321,45 @@ public class LdtReader {
 			}
 			break;
 		}
+	}
+
+	private void validateFieldPayload(String payload, Feld annotation) throws IllegalAccessException, InstantiationException {
+		outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
+
+            if (regelsatz.laenge() >= 0) {
+                if (payload.length() != regelsatz.laenge()) {
+                    validationFailed("Value " + payload + " did not match expected length "
+                            + regelsatz.laenge() + ", was " + payload.length());
+                }
+            }
+
+            if (regelsatz.minLaenge() >= 0) {
+                if (payload.length() < regelsatz.minLaenge()) {
+                    validationFailed("Value " + payload + " did not match expected minimum length "
+                            + regelsatz.minLaenge() + ", was " + payload.length());
+                }
+            }
+
+            if (regelsatz.maxLaenge() >= 0) {
+                if (payload.length() > regelsatz.maxLaenge()) {
+                    validationFailed("Value " + payload + " did not match expected maximum length "
+                            + regelsatz.maxLaenge() + ", was " + payload.length());
+                }
+            }
+
+            // No specific rules given, likely only length checks
+            if (regelsatz.value().length == 0) {
+                continue;
+            }
+
+            for (Class<? extends Regel> regel : regelsatz.value()) {
+                if (getRegel(regel).isValid(payload)) {
+                    continue outer;
+                }
+            }
+            validationFailed("Value " + payload + " did not confirm to any rule of "
+                    + toString(regelsatz.value()));
+        }
 	}
 
 	private void validationFailed(String message) {
