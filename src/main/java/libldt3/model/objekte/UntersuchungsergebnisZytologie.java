@@ -44,7 +44,7 @@ public @Getter @Setter class UntersuchungsergebnisZytologie {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8154", feldart = Feldart.bedingt_kann)
-	    private Timestamp timestamp;
+		private Timestamp timestamp;
 	}
 
 	@Objekt

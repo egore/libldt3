@@ -79,11 +79,11 @@ public class LdtReader {
 	 * Read the LDT found on a given path.
 	 * 
 	 * @param path
-	 *            the path of the LDT file (any format handled by NIO
-	 *            {@link Path})
+	 *			the path of the LDT file (any format handled by NIO
+	 *			{@link Path})
 	 * @return the list of Satz elements found in the LDT file
 	 * @throws IOException
-	 *             thrown if reading the file failed
+	 *			 thrown if reading the file failed
 	 */
 	public List<Satz> read(String path) throws IOException {
 		try (Stream<String> stream = Files.lines(Paths.get(path), StandardCharsets.ISO_8859_1)) {
@@ -95,10 +95,10 @@ public class LdtReader {
 	 * Read the LDT found on a given path.
 	 * 
 	 * @param path
-	 *            the path of the LDT file
+	 *			the path of the LDT file
 	 * @return the list of Satz elements found in the LDT file
 	 * @throws IOException
-	 *             thrown if reading the file failed
+	 *			 thrown if reading the file failed
 	 */
 	public List<Satz> read(Path path) throws IOException {
 		try (Stream<String> stream = Files.lines(path, StandardCharsets.ISO_8859_1)) {
@@ -110,7 +110,7 @@ public class LdtReader {
 	 * Read the LDT from a given string stream.
 	 * 
 	 * @param stream
-	 *            the LDT lines as string stream
+	 *			the LDT lines as string stream
 	 * @return the list of Satz elements found in the LDT file
 	 */
 	public List<Satz> read(Stream<String> stream) {
@@ -326,48 +326,48 @@ public class LdtReader {
 	private void validateFieldPayload(String payload, Feld annotation) throws IllegalAccessException, InstantiationException {
 		outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
 
-            if (regelsatz.laenge() >= 0) {
-                if (payload.length() != regelsatz.laenge()) {
-                    validationFailed("Value " + payload + " did not match expected length "
-                            + regelsatz.laenge() + ", was " + payload.length());
-                }
-            }
+			if (regelsatz.laenge() >= 0) {
+				if (payload.length() != regelsatz.laenge()) {
+					validationFailed("Value " + payload + " did not match expected length "
+							+ regelsatz.laenge() + ", was " + payload.length());
+				}
+			}
 
-            if (regelsatz.minLaenge() >= 0) {
-                if (payload.length() < regelsatz.minLaenge()) {
-                    validationFailed("Value " + payload + " did not match expected minimum length "
-                            + regelsatz.minLaenge() + ", was " + payload.length());
-                }
-            }
+			if (regelsatz.minLaenge() >= 0) {
+				if (payload.length() < regelsatz.minLaenge()) {
+					validationFailed("Value " + payload + " did not match expected minimum length "
+							+ regelsatz.minLaenge() + ", was " + payload.length());
+				}
+			}
 
-            if (regelsatz.maxLaenge() >= 0) {
-                if (payload.length() > regelsatz.maxLaenge()) {
-                    validationFailed("Value " + payload + " did not match expected maximum length "
-                            + regelsatz.maxLaenge() + ", was " + payload.length());
-                }
-            }
+			if (regelsatz.maxLaenge() >= 0) {
+				if (payload.length() > regelsatz.maxLaenge()) {
+					validationFailed("Value " + payload + " did not match expected maximum length "
+							+ regelsatz.maxLaenge() + ", was " + payload.length());
+				}
+			}
 
-            // No specific rules given, likely only length checks
-            if (regelsatz.value().length == 0) {
-                continue;
-            }
+			// No specific rules given, likely only length checks
+			if (regelsatz.value().length == 0) {
+				continue;
+			}
 
-            for (Class<? extends Regel> regel : regelsatz.value()) {
-                if (getRegel(regel).isValid(payload)) {
-                    continue outer;
-                }
-            }
-            validationFailed("Value " + payload + " did not confirm to any rule of "
-                    + toString(regelsatz.value()));
-        }
+			for (Class<? extends Regel> regel : regelsatz.value()) {
+				if (getRegel(regel).isValid(payload)) {
+					continue outer;
+				}
+			}
+			validationFailed("Value " + payload + " did not confirm to any rule of "
+					+ toString(regelsatz.value()));
+		}
 	}
 
 	private void validationFailed(String message) {
 		if (mode == Mode.STRICT) {
 			throw new IllegalStateException(message);
-        } else {
+		} else {
 			LOG.warn(message);
-        }
+		}
 	}
 
 	private String toString(Class<? extends Regel>[] regeln) {
@@ -394,7 +394,7 @@ public class LdtReader {
 	 * Extract the Satzart form a given payload
 	 * 
 	 * @param payload
-	 *            the payload of the line
+	 *			the payload of the line
 	 * @return the Satzart or {@code null}
 	 */
 	private Satzart getSatzart(String payload) {
@@ -412,7 +412,7 @@ public class LdtReader {
 	 * Peek the current objekt from the stack, if any.
 	 * 
 	 * @param stack
-	 *            the stack to peek the object from
+	 *			the stack to peek the object from
 	 * @return the current top level element of the stack or {@code null}
 	 */
 	private static Object peekCurrentObject(Stack<Object> stack) {
@@ -426,11 +426,11 @@ public class LdtReader {
 	 * Check if the line matches the expected length.
 	 * 
 	 * @param line
-	 *            the line to check
+	 *			the line to check
 	 * @param length
-	 *            the actual length
+	 *			the actual length
 	 * @param target
-	 *            the length specified by the line
+	 *			the length specified by the line
 	 */
 	private void assureLength(String line, int length, int target) {
 		if (length != target) {

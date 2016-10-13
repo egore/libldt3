@@ -14,12 +14,12 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Regelsatz {
 
-    Class<? extends Regel>[] value() default {};
+	Class<? extends Regel>[] value() default {};
 
-    int laenge() default -1;
+	int laenge() default -1;
 
-    int minLaenge() default -1;
+	int minLaenge() default -1;
 
-    int maxLaenge() default -1;
+	int maxLaenge() default -1;
 
 }
