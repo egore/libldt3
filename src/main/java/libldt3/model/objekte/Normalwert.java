@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.Normwertspezifikation;
 import lombok.Getter;
@@ -41,31 +42,31 @@ public @Getter @Setter class Normalwert {
 	public static @Getter @Setter class NormalwertGrenze {
 		@SuppressWarnings("unused")
 		private Float value;
-		@Feld(value = "8421", feldart = Feldart.bedingt_muss)
+		@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
 		private String sizeUnit;
-		@Feld(value = "8419", feldart = Feldart.kann)
+		@Feld(value = "8419", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 		private EinheitMesswert einheitDesWertes;
 	}
 
-	@Feld(value = "8424", feldart = Feldart.muss)
+	@Feld(value = "8424", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
 	private Normwertspezifikation normwertspezifikation;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann)
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 26))
 	private Fliesstext zusaetzlicheInformationen;
-	@Feld(value = "8460", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8460", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> normalwertText;
-	@Feld(value = "8461", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8461", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private NormalwertGrenze normalwertUntereGrenze;
-	@Feld(value = "8462", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8462", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private NormalwertGrenze normalwertObereGrenze;
-	@Feld(value = "7316", feldart = Feldart.bedingt_muss)
+	@Feld(value = "7316", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String normalwertListenbezeichnung;
-	@Feld(value = "7317", feldart = Feldart.bedingt_muss)
+	@Feld(value = "7317", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> normalwertListenzeile;
-	@Feld(value = "7363", feldart = Feldart.kann)
+	@Feld(value = "7363", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private NormalwertGrenze alarmwertUntereGrenze;
-	@Feld(value = "7371", feldart = Feldart.kann)
+	@Feld(value = "7371", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private NormalwertGrenze alarmwertObereGrenze;
-	@Feld(value = "8422", feldart = Feldart.muss)
+	@Feld(value = "8422", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 2))
 	private String grenzwertindikatorDesLaborwerts;
 	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_kann)
 	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;

@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,25 +36,25 @@ import lombok.Setter;
 @Objekt("0035")
 public @Getter @Setter class Laborergebnisbericht {
 
-	@Feld(value = "8160", name = "UE_Klinische_Chemie", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8160", name = "UE_Klinische_Chemie", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 19))
 	private List<UntersuchungsergebnisKlinischeChemie> klinischeChemie;
-	@Feld(value = "8161", name = "UE_Mikrobiologie", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8161", name = "UE_Mikrobiologie", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 16))
 	private List<UntersuchungsergebnisMikrobiologie> mikrobiologie;
-	@Feld(value = "8162", name = "UE_Zytologie_Krebsvorsorge", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8162", name = "UE_Zytologie_Krebsvorsorge", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 26))
 	private List<UntersuchungsergebnisZytologieKrebsvorsorge> zytologieKrebsvorsorge;
-	@Feld(value = "8163", name = "UE_Zytologie", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8163", name = "UE_Zytologie", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
 	private List<UntersuchungsergebnisZytologie> zytologie;
-	@Feld(value = "8155", name = "UE_Transfusionsmedizin/Mutterschaftsvorsorge", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8155", name = "UE_Transfusionsmedizin/Mutterschaftsvorsorge", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 41))
 	private List<TransfusionsmedizinMutterschaftsvorsorge> transfusionsmedizinMutterschaftsvorsorge;
-	@Feld(value = "8156", feldart = Feldart.kann)
+	@Feld(value = "8156", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 5))
 	private List<Tumor> tumor;
-	@Feld(value = "8221", name = "Timestamp_Erstellung_Laborergebnisbericht", feldart = Feldart.muss)
+	@Feld(value = "8221", name = "Timestamp_Erstellung_Laborergebnisbericht", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 41))
 	private Timestamp timestampErstellungLaborergebnisbericht;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> text;
-	@Feld(value = "8110", feldart = Feldart.kann)
+	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
 	private List<Anhang> anhang;
-	@Feld(value = "8141", feldart = Feldart.kann)
+	@Feld(value = "8141", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 13))
 	private Namenskennung namenskennung;
 
 }

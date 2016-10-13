@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Einsenderstatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,25 +37,25 @@ import lombok.Setter;
 @Objekt("0022")
 public @Getter @Setter class Einsenderidentifikation {
 
-	@Feld(value = "7321", feldart = Feldart.muss)
+	@Feld(value = "7321", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
 	private List<Einsenderstatus> status;
-	@Feld(value = "8312", feldart = Feldart.kann)
+	@Feld(value = "8312", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 20))
 	private String kundenNummer;
-	@Feld(value = "7267", feldart = Feldart.kann)
+	@Feld(value = "7267", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String auftraggeberId;
-	@Feld(value = "8114", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8114", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 18))
 	private Arztidentifikation arztidentifikation;
-	@Feld(value = "8240", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8240", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 32))
 	private Arztidentifikation ueberweisungVon;
-	@Feld(value = "8241", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8241", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 15))
 	private Arztidentifikation ueberweisungAn;
-	@Feld(value = "8147", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8147", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 6))
 	private Person person;
-	@Feld(value = "7268", feldart = Feldart.kann)
+	@Feld(value = "7268", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String fachrichtung;
-	@Feld(value = "8119", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8119", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 15))
 	private Betriebsstaette permanentEstablishment;
-	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8143", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
 	private Organisation organisation;
 
 }

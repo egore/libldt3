@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,15 +40,15 @@ import lombok.Setter;
 @Objekt("0001")
 public @Getter @Setter class Abrechnungsinformation {
 
-	@Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 14))
 	private List<AbrechnungGkv> abrechnungGkv;
-	@Feld(value = "8103", name = "Abrechnung_PKV", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8103", name = "Abrechnung_PKV", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 14))
 	private List<AbrechnungPkv> abrechnungPkv;
-	@Feld(value = "8104", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8104", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 15))
 	private AbrechnungIgel abrechnungIgel;
-	@Feld(value = "8105", name = "Abrechnung_Sonstige_Kostenuebernahme", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8105", name = "Abrechnung_Sonstige_Kostenuebernahme", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 36))
 	private AbrechnungSonstigeKostenuebernahme abrechnungSonstigeKostenuebernahme;
-	@Feld(value = "8106", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8106", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 26))
 	private AbrechnungSelektivvertrag abrechnungSelektivvertrag;
 
 }

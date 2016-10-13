@@ -29,6 +29,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.F002;
+import libldt3.model.regel.F017;
+import libldt3.model.regel.F018;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,41 +41,41 @@ import lombok.Setter;
 @Objekt("0056")
 public @Getter @Setter class Tumor {
 
-	@Feld(value = "7364", feldart = Feldart.muss)
+	@Feld(value = "7364", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String probengefaessIdent;
-	@Feld(value = "7372", feldart = Feldart.kann)
+	@Feld(value = "7372", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String tumorklassifikation;
-	@Feld(value = "7373", feldart = Feldart.kann)
+	@Feld(value = "7373", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 5))
 	private String grading;
-	@Feld(value = "7374", feldart = Feldart.kann)
+	@Feld(value = "7374", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 4))
 	private String stadium;
-	@Feld(value = "7375", feldart = Feldart.kann)
+	@Feld(value = "7375", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F017.class, laenge = 4))
 	private String jahrTumordiagnose;
-	@Feld(value = "7376", feldart = Feldart.muss)
+	@Feld(value = "7376", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String lokalisationTumor;
-	@Feld(value = "7377", feldart = Feldart.kann)
+	@Feld(value = "7377", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> masse;
-	@Feld(value = "7378", feldart = Feldart.kann)
+	@Feld(value = "7378", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String farbe;
-	@Feld(value = "7379", feldart = Feldart.kann)
+	@Feld(value = "7379", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String infiltrationstiefe;
-	@Feld(value = "3424", feldart = Feldart.kann, regelsaetze = @Regelsatz(F002.class))
+	@Feld(value = "3424", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
 	private LocalDate therapiebeginn;
-	@Feld(value = "3425", feldart = Feldart.kann, regelsaetze = @Regelsatz(F002.class))
+	@Feld(value = "3425", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
 	private LocalDate therapieende;
-	@Feld(value = "8220", feldart = Feldart.kann)
+	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 36))
 	private Timestamp timestampEingangserfassungMaterial;
-	@Feld(value = "8222", feldart = Feldart.kann)
+	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 25))
 	private Timestamp timestampBeginnAnalytik;
-	@Feld(value = "8223", feldart = Feldart.kann)
+	@Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 28))
 	private Timestamp timestampErgebniserstellung;
-	@Feld(value = "8224", feldart = Feldart.kann)
+	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 22))
 	private Timestamp timestampQmErfassung;
-	@Feld(value = "8225", feldart = Feldart.kann)
+	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 17))
 	private Timestamp timestampMessung;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> zusaetzlicheInformationen;
-	@Feld(value = "8110", feldart = Feldart.kann)
+	@Feld(value = "8110", name = "Anhang", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
 	private List<Anhang> anhang;
 
 }

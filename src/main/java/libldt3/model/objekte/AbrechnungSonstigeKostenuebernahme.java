@@ -24,6 +24,7 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,11 +39,11 @@ import lombok.Setter;
 @Objekt("0005")
 public @Getter @Setter class AbrechnungSonstigeKostenuebernahme {
 
-	@Feld(value = "7261", feldart = Feldart.kann)
+	@Feld(value = "7261", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String sonstigeVersichertennummer;
-	@Feld(value = "7253", feldart = Feldart.muss)
+	@Feld(value = "7253", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean kostenuebernahmeerklaerungAuftraggeber;
-	@Feld(value = "8148", feldart = Feldart.muss)
+	@Feld(value = "8148", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 12))
 	private Rechnungsempfaenger rechnungsempfaenger;
 
 }

@@ -27,7 +27,9 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Zeiteinheit;
+import libldt3.model.regel.F002;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,21 +41,21 @@ import lombok.Setter;
 @Objekt("0053")
 public @Getter @Setter class Tier {
 
-	@Feld(value = "7319", feldart = Feldart.bedingt_muss)
+	@Feld(value = "7319", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String identifikationsnummerQuelle;
-	@Feld(value = "7313", feldart = Feldart.bedingt_muss)
+	@Feld(value = "7313", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String artRasseMaterial;
-	@Feld(value = "7314", feldart = Feldart.bedingt_muss)
+	@Feld(value = "7314", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String nameKennung;
-	@Feld(value = "7315", feldart = Feldart.kann)
+	@Feld(value = "7315", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 10))
 	private String alter;
-	@Feld(value = "7326", feldart = Feldart.bedingt_muss)
+	@Feld(value = "7326", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
 	private Zeiteinheit alterIn;
-	@Feld(value = "7351", feldart = Feldart.kann)
+	@Feld(value = "7351", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
 	private LocalDate geburtsdatum;
-	@Feld(value = "8107", feldart = Feldart.kann)
+	@Feld(value = "8107", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 9))
 	private Anschrift anschrift;
-	@Feld(value = "8107", feldart = Feldart.kann)
+	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
 	private List<Anhang> anhang;
 
 }

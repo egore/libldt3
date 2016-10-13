@@ -24,6 +24,7 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.StatusPerson;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,13 +36,13 @@ import lombok.Setter;
 @Objekt("0041")
 public @Getter @Setter class Namenskennung {
 
-	@Feld(value = "7420", feldart = Feldart.muss)
+	@Feld(value = "7420", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
 	private StatusPerson status;
-	@Feld(value = "7358", feldart = Feldart.bedingt_muss)
+	@Feld(value = "7358", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String name;
-	@Feld(value = "8990", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8990", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String shorthand;
-	@Feld(value = "8110", feldart = Feldart.bedingt_kann)
+	@Feld(value = "8110", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 6))
 	private Anhang anhang;
 
 }

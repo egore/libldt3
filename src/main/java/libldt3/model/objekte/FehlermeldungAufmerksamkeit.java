@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Benachrichtigungsgrund;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,17 +39,17 @@ import lombok.Setter;
 @Objekt("0026")
 public @Getter @Setter class FehlermeldungAufmerksamkeit {
 
-	@Feld(value = "7280", feldart = Feldart.muss)
+	@Feld(value = "7280", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private Benachrichtigungsgrund benachrichtigungsgrund;
-	@Feld(value = "7320", feldart = Feldart.bedingt_kann)
+	@Feld(value = "7320", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean recallEmpfohlen;
-	@Feld(value = "8154", feldart = Feldart.bedingt_kann)
+	@Feld(value = "8154", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 9))
 	private Timestamp timestamp;
-	@Feld(value = "8147", feldart = Feldart.muss)
+	@Feld(value = "8147", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 6))
 	private Person person;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> text;
-	@Feld(value = "8110", feldart = Feldart.kann)
+	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
 	private List<Anhang> anhang;
 
 }

@@ -46,25 +46,25 @@ public @Getter @Setter class Untersuchungsabrechnung {
 	public static @Getter @Setter class Gebuehrennummer {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "8406", feldart = Feldart.bedingt_muss)
+		@Feld(value = "8406", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String kosten;
-		@Feld(value = "5005", feldart = Feldart.bedingt_kann)
+		@Feld(value = "5005", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 3))
 		private Integer multiplikator;
-		@Feld(value = "5009", feldart = Feldart.bedingt_kann)
+		@Feld(value = "5009", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<String> begruendungstext;
-		@Feld(value = "8614", feldart = Feldart.muss)
+		@Feld(value = "8614", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 		private Boolean abgerechnet;
 	}
 
-	@Feld(value = "7303", feldart = Feldart.muss)
+	@Feld(value = "7303", feldart = Feldart.muss, regelsaetze = @Regelsatz(minLaenge = 1, maxLaenge = 2))
 	private Abrechnungsinfo abrechnungsinfo;
-	@Feld(value = "4121", feldart = Feldart.bedingt_muss)
+	@Feld(value = "4121", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
 	private Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "5001", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz({F008.class, F009.class}))
+	@Feld(value = "5001", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F008.class, F009.class}, maxLaenge = 9))
 	private List<Gebuehrennummer> gebuehrennummer;
-	@Feld(value = "7259", feldart = Feldart.kann)
+	@Feld(value = "7259", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String abrechenbareLeistungenKatalogId;
-	@Feld(value = "7251", feldart = Feldart.kann)
+	@Feld(value = "7251", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String katalog;
 
 }

@@ -24,6 +24,7 @@ package libldt3.model.saetze;
 import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Betriebsstaette;
 import libldt3.model.objekte.Kopfdaten;
@@ -37,11 +38,11 @@ import lombok.Setter;
 @Datenpaket(Satzart.LaborDatenpaketHeader)
 public @Getter @Setter class LaborDatenpaketHeader implements Satz {
 
-	@Feld(value = "8132", feldart = Feldart.muss)
+	@Feld(value = "8132", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 9))
 	private Kopfdaten kopfdaten;
-	@Feld(value = "8136", feldart = Feldart.muss)
+	@Feld(value = "8136", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 12))
 	private Laborkennung laborkennung;
-	@Feld(value = "8119", feldart = Feldart.muss)
+	@Feld(value = "8119", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 15))
 	private Betriebsstaette betriebsstaette;
 
 }

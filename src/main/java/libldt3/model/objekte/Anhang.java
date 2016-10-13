@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Dokumentenquelle;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,25 +39,25 @@ import lombok.Setter;
 @Objekt("0010")
 public @Getter @Setter class Anhang {
 
-	@Feld(value = "6221", feldart = Feldart.kann)
+	@Feld(value = "6221", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean kennzeichnungFremdbefund;
-	@Feld(value = "6305", feldart = Feldart.bedingt_muss)
+	@Feld(value = "6305", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String dateiVerweis;
-	@Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 22))
 	private Fliesstext base64Anlage;
-	@Feld(value = "6303", feldart = Feldart.muss)
+	@Feld(value = "6303", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String dateiformat;
-	@Feld(value = "6328", feldart = Feldart.kann)
+	@Feld(value = "6328", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String dateicodierung;
-	@Feld(value = "6327", feldart = Feldart.kann)
+	@Feld(value = "6327", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String beschreibung;
-	@Feld(value = "9908", feldart = Feldart.bedingt_kann)
+	@Feld(value = "9908", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String originaldokumentPfad;
-	@Feld(value = "9909", feldart = Feldart.bedingt_kann)
+	@Feld(value = "9909", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String langzeitArchivierungPfad;
 	@Feld(value = "9980", feldart = Feldart.bedingt_kann)
 	private List<String> externeDokumentIds;
-	@Feld(value = "9981", feldart = Feldart.bedingt_kann)
+	@Feld(value = "9981", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Dokumentenquelle dokumentenquelle;
 
 }

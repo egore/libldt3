@@ -24,6 +24,7 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,11 +34,11 @@ import lombok.Setter;
 @Objekt("0032")
 public @Getter @Setter class Kopfdaten {
 
-	@Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
+	@Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 16))
 	private SendendesSystem sendendesSystem;
-	@Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann)
+	@Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 30))
 	private Timestamp timestampErstellungDatensatz;
-	@Feld(value = "8212", feldart = Feldart.kann)
+	@Feld(value = "8212", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 24))
 	private Organisation softwareverantwortlicher;
 
 }

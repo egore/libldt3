@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.AnforderungNothilfepass;
 import libldt3.model.enums.Antikoerpersuchtest;
 import libldt3.model.enums.DirekterCoombstest;
@@ -36,47 +37,47 @@ import lombok.Setter;
 @Objekt("0055")
 public @Getter @Setter class TransfusionsmedizinMutterschaftsvorsorge {
 
-	@Feld(value = "7304", feldart = Feldart.muss)
+	@Feld(value = "7304", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String ergebnisId;
-	@Feld(value = "7364", feldart = Feldart.muss)
+	@Feld(value = "7364", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> probengefaessIdent;
-	@Feld(value = "8418", feldart = Feldart.muss)
+	@Feld(value = "8418", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private TestStatus teststatus;
-	@Feld(value = "3412", feldart = Feldart.bedingt_muss)
+	@Feld(value = "3412", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 6))
 	private String blutgruppeEurocode;
-	@Feld(value = "3413", feldart = Feldart.kann)
+	@Feld(value = "3413", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Antikoerpersuchtest antikoerpersuchtest;
-	@Feld(value = "3414", feldart = Feldart.kann)
+	@Feld(value = "3414", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String spezifitaetWeitereErythrozytenantigene;
-	@Feld(value = "3415", feldart = Feldart.kann)
+	@Feld(value = "3415", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String spezifitaetErythrozytenantikoerper;
-	@Feld(value = "3416", feldart = Feldart.kann)
+	@Feld(value = "3416", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String spezifitaetHlaHpaHnaAntigene;
-	@Feld(value = "3417", feldart = Feldart.kann)
+	@Feld(value = "3417", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String spezifitaetHlaHpaHnaAntikoerper;
-	@Feld(value = "7263", feldart = Feldart.kann)
+	@Feld(value = "7263", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String testId;
-	@Feld(value = "3418", feldart = Feldart.kann)
+	@Feld(value = "3418", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private DirekterCoombstest direkterCoombstest;
-	@Feld(value = "3419", feldart = Feldart.kann)
+	@Feld(value = "3419", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> ergebnisKreuzprobe;
-	@Feld(value = "7275", feldart = Feldart.kann)
+	@Feld(value = "7275", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> terminologieId;
-	@Feld(value = "3420", feldart = Feldart.kann)
+	@Feld(value = "3420", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private AnforderungNothilfepass anforderungNothilfepass;
-	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann)
+	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 36))
 	private Timestamp timestampEingangserfassungMaterial;
-	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann)
+	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 25))
 	private Timestamp timestampBeginnAnalytik;
-	@Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann)
+	@Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 28))
 	private Timestamp timestampErgebniserstellung;
-	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann)
+	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 22))
 	private Timestamp timestampQmErfassung;
-	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 17))
 	private Timestamp timestampMessung;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> zusaetzlicheInformationen;
-	@Feld(value = "8158", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8158", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 23))
 	private Untersuchungsabrechnung untersuchungsabrechnung;
 
 }

@@ -23,9 +23,11 @@ package libldt3.model.objekte;
 
 import java.util.List;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.AbrechnungsartPkv;
 import libldt3.model.enums.Gebuehrenordnung;
 import lombok.Getter;
@@ -41,15 +43,15 @@ import lombok.Setter;
 @Objekt("0003")
 public @Getter @Setter class AbrechnungPkv {
 
-	@Feld(value = "7362", feldart = Feldart.muss)
+	@Feld(value = "7362", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private AbrechnungsartPkv abrechnungsartPkv;
-	@Feld(value = "4134", feldart = Feldart.kann)
+	@Feld(value = "4134", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 28))
 	private List<String> kostentraegerName;
-	@Feld(value = "4121", feldart = Feldart.muss)
+	@Feld(value = "4121", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "4202", feldart = Feldart.bedingt_kann)
-	private String unfallFolgen;
-	@Feld(value = "8148", feldart = Feldart.bedingt_muss)
+	@Feld(value = "4202", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
+	private Boolean unfallFolgen;
+	@Feld(value = "8148", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
 	private Rechnungsempfaenger rechnungsempfaenger;
 
 }

@@ -26,8 +26,10 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Diagnosesicherheit;
 import libldt3.model.enums.Lokalisation;
+import libldt3.model.regel.F004;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,17 +39,17 @@ import lombok.Setter;
 @Objekt("0100")
 public @Getter @Setter class Diagnose {
 
-	@Feld(value = "4207", feldart = Feldart.kann)
+	@Feld(value = "4207", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 256))
 	private String diagnoseVerdachtsdiagnose;
-	@Feld(value = "6001", feldart = Feldart.bedingt_muss)
+	@Feld(value = "6001", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F004.class))
 	private String icdCode;
-	@Feld(value = "6003", feldart = Feldart.bedingt_kann)
+	@Feld(value = "6003", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Diagnosesicherheit diagnosesicherheit;
-	@Feld(value = "6004", feldart = Feldart.bedingt_kann)
+	@Feld(value = "6004", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Lokalisation lokalisation;
-	@Feld(value = "6006", feldart = Feldart.bedingt_kann)
+	@Feld(value = "6006", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> erlaeuterung;
-	@Feld(value = "6008", feldart = Feldart.bedingt_kann)
+	@Feld(value = "6008", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> ausnahmetatbestand;
 
 }

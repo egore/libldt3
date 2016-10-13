@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.DatensatzAbsender;
 import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Einsenderidentifikation;
@@ -39,11 +40,11 @@ import lombok.Setter;
 @Datenpaket(Satzart.PraxisDatenpaketHeader)
 public @Getter @Setter class PraxisDatenpaketHeader implements Satz {
 
-	@Feld(value = "8132", feldart = Feldart.muss)
+	@Feld(value = "8132", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 9))
 	private Kopfdaten kopfdaten;
-	@Feld(value = "7265", feldart = Feldart.muss)
+	@Feld(value = "7265", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private DatensatzAbsender absender;
-	@Feld(value = "8122", feldart = Feldart.muss)
+	@Feld(value = "8122", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 23))
 	private List<Einsenderidentifikation> einsenderidentifikation;
 
 }

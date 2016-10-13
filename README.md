@@ -30,7 +30,7 @@ Folgende Punkte sind als Einschränkungen anzumerken:
 
 Folende "erlaubte Inhalte" sind nicht umgesetzt
 - Nicht unterstützt: E003, E005, E010, E011, E012, E014, E028, E036, E048, E066, E071-E145, E149-E155, E157
-- Nicht in LDT 3.0 verwendet: E031
+- Nicht in LDT 3.0 verwendet: E031, 9300, F019
 
 # Verwendung in kommerziellen Projekten
 
@@ -40,7 +40,7 @@ Die Lizenz von libldt3 erlaubt es Ihnen, diese Bibliothek kostenfrei auch in kom
 
 - Das Datenmodell wurde noch keiner Prüfung auf Inkonsistenzen unterzogen (z.B. ob @Feld innerhalb eines Objekts eindeutig ist)
 - Es gibt potentiell Redundanzen von wiederholenden @Feld-Kombinationen
-- Im Datenmodell wurde unabhängig vom Format der Einträge der Feldtabelle "String" als default Datentyp verwendet. Daher gibt es in den Klassen Felder, die eigentlich andere Typen wären (z.B. Integer)
+- Im Datenmodell wurde unabhängig vom Format der Einträge der Feldtabelle "String" als default Datentyp verwendet. Daher gibt es Felder, die eigentlich andere Typen wären (z.B. Integer)
 
 # Offene Fragen im LDT Datenmodell
 

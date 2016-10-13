@@ -24,6 +24,7 @@ package libldt3.model.objekte;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Gebuehrenordnung;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,11 +37,11 @@ import lombok.Setter;
 @Objekt("0004")
 public @Getter @Setter class AbrechnungIgel {
 
-	@Feld(value = "4121", feldart = Feldart.muss)
+	@Feld(value = "4121", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "7253", feldart = Feldart.muss)
+	@Feld(value = "7253", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean kostenuebernahmeerklaerungAuftraggeberLiegtVor;
-	@Feld(value = "8148", feldart = Feldart.muss)
+	@Feld(value = "8148", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 12))
 	private Rechnungsempfaenger rechnungsempfaenger;
 
 }

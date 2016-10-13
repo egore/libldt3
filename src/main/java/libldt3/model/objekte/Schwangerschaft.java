@@ -28,6 +28,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.F002;
+import libldt3.model.regel.F005;
+import libldt3.model.regel.F018;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,11 +39,11 @@ import lombok.Setter;
 @Objekt("0050")
 public @Getter @Setter class Schwangerschaft {
 
-	@Feld(value = "8511", feldart = Feldart.kann)
+	@Feld(value = "8511", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F005.class, laenge = 3))
 	private String schwangerschaftsdauer;
-	@Feld(value = "8512", feldart = Feldart.muss)
+	@Feld(value = "8512", feldart = Feldart.muss, regelsaetze = @Regelsatz(value = F018.class, laenge = 8))
 	private LocalDate ersterTagLetzterZyklus;
-	@Feld(value = "3471", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(F002.class))
+	@Feld(value = "3471", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
 	private LocalDate entbindungstermin;
 
 }

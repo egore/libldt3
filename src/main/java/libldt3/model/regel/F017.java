@@ -19,26 +19,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
+package libldt3.model.regel;
 
-import java.util.List;
-
-import libldt3.annotations.Feld;
-import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
-import libldt3.annotations.Regelsatz;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.regex.Pattern;
 
 /**
- * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
+ * Format Jahreszahl
  */
-@Objekt("0068")
-public @Getter @Setter class Fliesstext {
+public class F017 extends RegularExpressionRegel {
 
-	@Feld(value = "3564", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
-	private List<String> text;
-	@Feld(value = "6329", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
-	private List<String> base64text;
+	private static final Pattern PATTERN = Pattern.compile("[0-9]{4}");
+
+	public F017() {
+		super(PATTERN);
+	}
 
 }

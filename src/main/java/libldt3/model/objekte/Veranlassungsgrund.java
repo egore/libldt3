@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.SpezifizierungVeranlassungsgrund;
 import libldt3.model.enums.Untersuchungsanlass;
@@ -43,15 +44,15 @@ public @Getter @Setter class Veranlassungsgrund {
 	public static @Getter @Setter class AbrechnungsinfoErweitert {
 		@SuppressWarnings("unused")
 		private Abrechnungsinfo value;
-		@Feld(value = "8417", feldart = Feldart.kann)
+		@Feld(value = "8417", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 2))
 		private Untersuchungsanlass anlass;
-		@Feld(value = "8427", feldart = Feldart.bedingt_kann)
+		@Feld(value = "8427", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 2))
 		private SpezifizierungVeranlassungsgrund spezifizierung;
-		@Feld(value = "8217", feldart = Feldart.bedingt_kann)
+		@Feld(value = "8217", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 32))
 		private Fliesstext praezisierung;
-		@Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann)
+		@Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 12))
 		private List<Diagnose> akutDiagnose;
-		@Feld(value = "4208", feldart = Feldart.kann)
+		@Feld(value = "4208", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<Medikation> vorbefundMedikation;
 	}
 	
@@ -59,7 +60,7 @@ public @Getter @Setter class Veranlassungsgrund {
 	public static @Getter @Setter class Medikation {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "6212", feldart = Feldart.bedingt_kann)
+		@Feld(value = "6212", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<Arzneimittelwirkstoff> arzneimittelwirkstoff;
 	}
 	
@@ -67,13 +68,13 @@ public @Getter @Setter class Veranlassungsgrund {
 	public static @Getter @Setter class Arzneimittelwirkstoff {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "6214", feldart = Feldart.bedingt_muss)
+		@Feld(value = "6214", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String wirkstoffKlassifikation;
 	}
 
-	@Feld(value = "7303", feldart = Feldart.bedingt_kann)
+	@Feld(value = "7303", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(minLaenge = 1, maxLaenge = 2))
 	private List<AbrechnungsinfoErweitert> abrechnungsinfo;
-	@Feld(value = "8110", feldart = Feldart.kann)
+	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
 	private List<Anhang> anhang;
 
 }

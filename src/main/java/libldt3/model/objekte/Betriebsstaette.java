@@ -48,9 +48,9 @@ public @Getter @Setter class Betriebsstaette {
 	private String betriebsstaettenId;
 	@Feld(value = "0201", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F010.class, F021.class}, laenge = 9))
 	private String bsnr;
-	@Feld(value = "0213", feldart = Feldart.kann)
+	@Feld(value = "0213", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 9))
 	private String institutskennzeichen;
-	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8143", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
 	private Organisation organisation;
 
 }

@@ -27,6 +27,9 @@ import java.time.LocalTime;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
+import libldt3.model.regel.F002;
+import libldt3.model.regel.F016;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,13 +39,13 @@ import lombok.Setter;
 @Objekt("0054")
 public @Getter @Setter class Timestamp {
 
-	@Feld(value = "7278", feldart = Feldart.muss)
+	@Feld(value = "7278", feldart = Feldart.muss, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
 	private LocalDate datum;
-	@Feld(value = "7279", feldart = Feldart.kann)
+	@Feld(value = "7279", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F016.class, minLaenge = 6, maxLaenge = 9))
 	private LocalTime uhrzeit;
-	@Feld(value = "7272", feldart = Feldart.kann)
+	@Feld(value = "7272", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String freitext;
-	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann)
+	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 20))
 	private Person person;
 
 }

@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Anhang;
 import libldt3.model.objekte.Befundinformationen;
@@ -49,31 +50,31 @@ import lombok.Setter;
 @Datenpaket(Satzart.Befund)
 public @Getter @Setter class Befund implements Satz {
 
-	@Feld(value = "8136", feldart = Feldart.kann)
+	@Feld(value = "8136", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))
 	private List<Laborkennung> laborkennung;
-	@Feld(value = "8122", feldart = Feldart.muss)
+	@Feld(value = "8122", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 23))
 	private Einsenderidentifikation senderIdentification;
-	@Feld(value = "8145", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8145", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 7))
 	private Patient patient;
-	@Feld(value = "8169", feldart = Feldart.bedingt_kann)
+	@Feld(value = "8169", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 19))
 	private Koerperkenngroessen koerperkenngroessen;
-	@Feld(value = "8150", feldart = Feldart.bedingt_kann)
+	@Feld(value = "8150", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 15))
 	private Schwangerschaft schwangerschaft;
-	@Feld(value = "8140", feldart = Feldart.bedingt_kann)
+	@Feld(value = "8140", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 12))
 	private Mutterschaft mutterschaft;
-	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 14))
 	private Tier tier;
-	@Feld(value = "8117", feldart = Feldart.muss)
+	@Feld(value = "8117", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 19))
 	private Befundinformationen befundinformationen;
-	@Feld(value = "8127", feldart = Feldart.kann)
+	@Feld(value = "8127", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 18))
 	private List<Veranlassungsgrund> veranlassungsgrund;
-	@Feld(value = "8137", feldart = Feldart.muss)
+	@Feld(value = "8137", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 8))
 	private List<Material> material;
-	@Feld(value = "8135", feldart = Feldart.muss)
+	@Feld(value = "8135", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 20))
 	private Laborergebnisbericht laborergebnisbericht;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> text;
-	@Feld(value = "8110", feldart = Feldart.kann)
+	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
 	private List<Anhang> anhang;
 
 }

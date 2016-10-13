@@ -26,6 +26,7 @@ import java.util.List;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.ResistenzInterpretation;
 import libldt3.model.enums.ResistenzNormenwerk;
 import libldt3.model.enums.Sensitivitaet;
@@ -44,13 +45,13 @@ public @Getter @Setter class Antibiogramm {
 	public static @Getter @Setter class WirkstoffIdent {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "7288", feldart = Feldart.bedingt_muss)
+		@Feld(value = "7288", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<String> wirkstoffGenericNummer;
-		@Feld(value = "7359", feldart = Feldart.bedingt_muss)
+		@Feld(value = "7359", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<String> wirkstoffOid;
-		@Feld(value = "7370", feldart = Feldart.bedingt_kann)
+		@Feld(value = "7370", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<String> wirkstoffname;
-		@Feld(value = "7354", feldart = Feldart.kann)
+		@Feld(value = "7354", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<KeimIdentifizierung> keimIdentifizierung;
 	}
 
@@ -58,13 +59,13 @@ public @Getter @Setter class Antibiogramm {
 	public static @Getter @Setter class KeimIdentifizierung {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "7367", feldart = Feldart.bedingt_muss)
+		@Feld(value = "7367", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
 		private Sensitivitaet sensitivitaet;
-		@Feld(value = "7289", feldart = Feldart.bedingt_kann)
+		@Feld(value = "7289", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String mhk;
-		@Feld(value = "7369", feldart = Feldart.bedingt_kann)
+		@Feld(value = "7369", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String mhkEinheit;
-		@Feld(value = "7290", feldart = Feldart.kann)
+		@Feld(value = "7290", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 		private List<ResistenzInterpretationErweitert> resistenzInterpretation;
 	}
 	
@@ -72,13 +73,13 @@ public @Getter @Setter class Antibiogramm {
 	public static @Getter @Setter class ResistenzInterpretationErweitert {
 		@SuppressWarnings("unused")
 		private ResistenzInterpretation value;
-		@Feld(value = "7424", feldart = Feldart.kann)
+		@Feld(value = "7424", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 		private ResistenzNormenwerk resistenzNachNormenwerk;
 	}
 
-	@Feld(value = "7287", feldart = Feldart.muss)
+	@Feld(value = "7287", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<WirkstoffIdent> wirkstoffIdent;
-	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_kann)
+	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 12))
 	private Fliesstext ergebnistext;
 
 }
