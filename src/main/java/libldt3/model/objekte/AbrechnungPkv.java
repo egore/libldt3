@@ -23,7 +23,6 @@ package libldt3.model.objekte;
 
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
