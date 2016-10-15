@@ -32,6 +32,7 @@ import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -231,19 +232,19 @@ public final class Fuzzer {
     }
 
     private static Date randomDate() {
-        return new Date();
+        return Date.from(randomDateTime().atZone(ZoneId.systemDefault()).toInstant());
     }
 
     private static LocalDate randomLocalDate() {
-        return LocalDate.now();
+        return LocalDate.now().plusDays(RANDOM.nextInt(300)).minusDays(150);
     }
 
     private static LocalTime randomLocalTime() {
-        return LocalTime.now();
+        return LocalTime.now().plusHours(RANDOM.nextInt(24)).minusHours(12);
     }
 
     private static LocalDateTime randomDateTime() {
-        return LocalDateTime.now();
+        return LocalDateTime.now().plusDays(RANDOM.nextInt(300)).minusDays(150);
     }
 
 }
