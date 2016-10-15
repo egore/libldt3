@@ -137,11 +137,11 @@ public class LdtWriter {
 				}
 				if (object instanceof List) {
 					for (Object o1 : (List) object) {
-						writeTextualRepresentation(writer, feld, o1);
+						writeTextualRepresentation(field, writer, feld, o1);
 						handleOutput(o1, writer);
 					}
 				} else {
-					writeTextualRepresentation(writer, feld, object);
+					writeTextualRepresentation(field, writer, feld, object);
 					handleOutput(object, writer);
 				}
 			}
@@ -150,7 +150,7 @@ public class LdtWriter {
 			writer.printf("0178003Obj_%s\r\n", objekt.value());
 		}
 	}
-	
+
 	private void writeLdtLine(PrintWriter writer, Feld feld, String text) {
 		writer.printf("%03d%s%s\r\n", (text.length() + 9), feld.value(), text);
 	}
@@ -158,7 +158,7 @@ public class LdtWriter {
 	/**
 	 * Transform an object into its LDT 3.0 represenation
 	 */
-	private void writeTextualRepresentation(PrintWriter writer, Feld feld, Object object) throws NoSuchMethodException, SecurityException,
+	private void writeTextualRepresentation(Field field, PrintWriter writer, Feld feld, Object object) throws NoSuchMethodException, SecurityException,
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		if (feld.feldart() == Feldart.muss && object == null) {
 			if (mode == Mode.STRICT) {
@@ -183,16 +183,16 @@ public class LdtWriter {
 				} else if (regelsatz.laenge() >= 0) {
 					if (value.length() > regelsatz.laenge()) {
 						if (mode == Mode.STRICT) {
-							throw new IllegalArgumentException("Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
+							throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
 						} else {
-							LOG.warn("Value {} must have exact length of {}, but was {}, trimming", value, regelsatz.laenge(), value.length());
+							LOG.warn(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value {} must have exact length of {}, but was {}, trimming", value, regelsatz.laenge(), value.length());
 							value = value.substring(0, regelsatz.laenge());
 						}
 					} else if (value.length() < regelsatz.laenge()) {
 						if (mode == Mode.STRICT) {
-							throw new IllegalArgumentException("Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
+							throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
 						} else {
-							LOG.warn("Value {} must have exact length of {}, but was {}, ignoring", value, regelsatz.laenge(), value.length());
+							LOG.warn(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value {} must have exact length of {}, but was {}, ignoring", value, regelsatz.laenge(), value.length());
 						}
 					}
 				}
@@ -233,7 +233,7 @@ public class LdtWriter {
 				Field declaredField = object.getClass().getDeclaredField("value");
 				declaredField.setAccessible(true);
 				Object innerObject = declaredField.get(object);
-				writeTextualRepresentation(writer, feld, innerObject);
+				writeTextualRepresentation(declaredField, writer, feld, innerObject);
 				Objekt innerAnnotation = innerObject.getClass().getAnnotation(Objekt.class);
 				if (innerAnnotation != null && !innerAnnotation.value().isEmpty()) {
 					writeObjekt(innerObject, writer);

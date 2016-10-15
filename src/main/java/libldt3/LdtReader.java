@@ -284,7 +284,7 @@ public class LdtReader {
 						}
 					}
 
-					validateFieldPayload(payload, annotation);
+					validateFieldPayload(field, payload, annotation);
 
 					// Convert the value to its target type ...
 					Object value = convertType(field, field.getType(), payload, stack);
@@ -323,26 +323,26 @@ public class LdtReader {
 		}
 	}
 
-	private void validateFieldPayload(String payload, Feld annotation) throws IllegalAccessException, InstantiationException {
+	private void validateFieldPayload(Field field, String payload, Feld annotation) throws IllegalAccessException, InstantiationException {
 		outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
 
 			if (regelsatz.laenge() >= 0) {
 				if (payload.length() != regelsatz.laenge()) {
-					validationFailed("Value " + payload + " did not match expected length "
+					validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not match expected length "
 							+ regelsatz.laenge() + ", was " + payload.length());
 				}
 			}
 
 			if (regelsatz.minLaenge() >= 0) {
 				if (payload.length() < regelsatz.minLaenge()) {
-					validationFailed("Value " + payload + " did not match expected minimum length "
+					validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not match expected minimum length "
 							+ regelsatz.minLaenge() + ", was " + payload.length());
 				}
 			}
 
 			if (regelsatz.maxLaenge() >= 0) {
 				if (payload.length() > regelsatz.maxLaenge()) {
-					validationFailed("Value " + payload + " did not match expected maximum length "
+					validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not match expected maximum length "
 							+ regelsatz.maxLaenge() + ", was " + payload.length());
 				}
 			}
@@ -357,7 +357,7 @@ public class LdtReader {
 					continue outer;
 				}
 			}
-			validationFailed("Value " + payload + " did not confirm to any rule of "
+			validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not confirm to any rule of "
 					+ toString(regelsatz.value()));
 		}
 	}
