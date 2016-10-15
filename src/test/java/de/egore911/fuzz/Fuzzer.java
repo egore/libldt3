@@ -49,10 +49,15 @@ import java.util.UUID;
  */
 public final class Fuzzer {
 
-    private static final Random RANDOM = new Random();
+    public interface CustomHandler {
+        Object randomValue(Field field);
+    }
+
+    public static final Random RANDOM = new Random();
 
     public static final int MAX_DEPTH = 3;
     public static final int MAX_COLLECTION_ELEMENTS = 2;
+    public static CustomHandler customHandler;
 
     private static final Map<String, Reflections> REFLECTIONS_CACHE = new HashMap<>();
 
@@ -116,7 +121,14 @@ public final class Fuzzer {
                     }
                     Type type = field.getGenericType();
                     field.setAccessible(true);
-                    field.set(t, randomForType(type, packageName, depth));
+                    Object value = null;
+                    if (customHandler != null) {
+                        value = customHandler.randomValue(field);
+                    }
+                    if (value == null) {
+                        value = randomForType(type, packageName, depth);
+                    }
+                    field.set(t, value);
                 }
 
                 currentclass = currentclass.getSuperclass();
