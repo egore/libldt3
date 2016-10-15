@@ -21,6 +21,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
@@ -67,6 +68,8 @@ public class AuftragFuzzerTest {
 							return (int) Math.pow(10, regelsatz.laenge()-1);
 						} else if (field.getType().isAssignableFrom(String.class)) {
 							return RandomStringUtils.randomAlphanumeric(regelsatz.laenge());
+						} else if (field.getType().isAssignableFrom(List.class) && (((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0]).getClass().isAssignableFrom(String.class)) {
+							return Collections.singletonList(RandomStringUtils.randomAlphanumeric(regelsatz.laenge()));
 						}
 					} else if (regelsatz.maxLaenge() >= 0) {
 						int min = 0;
