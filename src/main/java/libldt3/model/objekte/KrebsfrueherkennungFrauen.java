@@ -82,9 +82,9 @@ public @Getter @Setter class KrebsfrueherkennungFrauen {
 	@Feld(value = "7423", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private Boolean gynaekologischeDiagnose;
 	@Feld(value = "7398", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F015.class, laenge = 7))
-	private Boolean rrBlutdruck;
+	private String rrBlutdruck;
 	@Feld(value = "7399", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F015.class, laenge = 7))
-	private Boolean rrZweiteMessung;
+	private String rrZweiteMessung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> zusaetzlicheInformationen;
 

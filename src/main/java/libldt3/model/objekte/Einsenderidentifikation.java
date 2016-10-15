@@ -45,9 +45,9 @@ public @Getter @Setter class Einsenderidentifikation {
 	private String auftraggeberId;
 	@Feld(value = "8114", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 18))
 	private Arztidentifikation arztidentifikation;
-	@Feld(value = "8240", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 32))
+	@Feld(value = "8240", name = "Ueberweisung_von_anderen_Aerzten", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 32))
 	private Arztidentifikation ueberweisungVon;
-	@Feld(value = "8241", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 15))
+	@Feld(value = "8241", name = "Ueberweisung_an", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 15))
 	private Arztidentifikation ueberweisungAn;
 	@Feld(value = "8147", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 6))
 	private Person person;

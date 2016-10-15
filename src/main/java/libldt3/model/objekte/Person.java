@@ -64,7 +64,7 @@ public @Getter @Setter class Person {
 	private String namenskuerzelNamenszeichen;
 	@Feld(value = "8228", name = "Wohnanschrift", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 13))
 	private Anschrift wohnanschrift;
-	@Feld(value = "8229", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 23))
+	@Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 23))
 	private Anschrift anschriftArbeitsstelle;
 	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 18))
 	private Anschrift rechnungsanschrift;

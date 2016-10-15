@@ -96,7 +96,7 @@ public @Getter @Setter class Untersuchungsanforderung {
 	private List<ProbengefaessIdent> probengefaessIdent;
 	@Feld(value = "8434", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String anforderungen;
-	@Feld(value = "8134", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8134", name = "Krebsfrueherkennung_Frauen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
 	@Feld(value = "8156", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 5))
 	private Tumor tumor;
@@ -104,7 +104,7 @@ public @Getter @Setter class Untersuchungsanforderung {
 	private List<Anhang> anhang;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> zusaetzlicheInformationen;
-	@Feld(value = "8238", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 25))
+	@Feld(value = "8238", name = "Auftragsbezogene_Hinweise", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 25))
 	private Fliesstext auftragsbezogeneHinweise;
 	@Feld(value = "8491", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Einwilligungserklaerung einwilligungserklaerungLiegtVor;

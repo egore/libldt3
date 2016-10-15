@@ -44,11 +44,11 @@ public @Getter @Setter class Abrechnungsinformation {
 	private List<AbrechnungGkv> abrechnungGkv;
 	@Feld(value = "8103", name = "Abrechnung_PKV", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 14))
 	private List<AbrechnungPkv> abrechnungPkv;
-	@Feld(value = "8104", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 15))
+	@Feld(value = "8104", name = "Abrechnung_IGe-Leistungen", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 25 /* XXX 15 according to spec 3.0.3 */))
 	private AbrechnungIgel abrechnungIgel;
 	@Feld(value = "8105", name = "Abrechnung_Sonstige_Kostenuebernahme", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 36))
 	private AbrechnungSonstigeKostenuebernahme abrechnungSonstigeKostenuebernahme;
-	@Feld(value = "8106", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8106", name = "Abrechnung_Selektivvertrag", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 26))
 	private AbrechnungSelektivvertrag abrechnungSelektivvertrag;
 
 }

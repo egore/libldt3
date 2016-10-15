@@ -48,7 +48,7 @@ public @Getter @Setter class Veranlassungsgrund {
 		private Untersuchungsanlass anlass;
 		@Feld(value = "8427", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 2))
 		private SpezifizierungVeranlassungsgrund spezifizierung;
-		@Feld(value = "8217", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 32))
+		@Feld(value = "8217", name = "Praezisierung_Veranlassungsgrund", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 32))
 		private Fliesstext praezisierung;
 		@Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 12))
 		private List<Diagnose> akutDiagnose;
