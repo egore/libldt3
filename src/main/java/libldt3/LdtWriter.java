@@ -174,11 +174,13 @@ public class LdtWriter {
 			String value = (String) object;
 			for (Regelsatz regelsatz : feld.regelsaetze()) {
 				if (regelsatz.maxLaenge() >= 0) {
-					if (mode == Mode.STRICT) {
-						throw new IllegalArgumentException("Value " + value + " must have maximum length of " + regelsatz.maxLaenge() + ", but was " + value.length());
-					} else {
-						LOG.warn("Value {} must have maximum length of {}, but was {}, trimming", value, regelsatz.maxLaenge(), value.length());
-						value = value.substring(0, Math.min(value.length(), regelsatz.maxLaenge()));
+					if (value.length() > regelsatz.maxLaenge()) {
+						if (mode == Mode.STRICT) {
+							throw new IllegalArgumentException("Value " + value + " must have maximum length of " + regelsatz.maxLaenge() + ", but was " + value.length());
+						} else {
+							LOG.warn("Value {} must have maximum length of {}, but was {}, trimming", value, regelsatz.maxLaenge(), value.length());
+							value = value.substring(0, Math.min(value.length(), regelsatz.maxLaenge()));
+						}
 					}
 				} else if (regelsatz.laenge() >= 0) {
 					if (value.length() > regelsatz.laenge()) {
