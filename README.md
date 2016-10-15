@@ -40,3 +40,7 @@ Die Lizenz von libldt3 erlaubt es Ihnen, diese Bibliothek kostenfrei auch in kom
 # Offene Fragen im LDT Datenmodell
 
 Warum ist der Status der Dringlichkeit (7262) in der Untersuchungsanforderung (Obj\_0059) n mal vorgesehen? Dies widerspricht sowohl der Logik als auch der Auftragsinformation (Obj\_0013).
+
+# Build status
+[![travis-ci.org](https://travis-ci.org/egore/libldt3.svg "Build status")](https://travis-ci.org/egore/libldt3)
+[![codecov](https://codecov.io/gh/egore/libldt3/branch/master/graph/badge.svg)](https://codecov.io/gh/egore/libldt3)
