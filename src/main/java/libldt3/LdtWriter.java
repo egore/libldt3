@@ -31,6 +31,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import libldt3.annotations.Feldart;
+import libldt3.annotations.Regelsatz;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -158,19 +160,44 @@ public class LdtWriter {
 	 */
 	private void writeTextualRepresentation(PrintWriter writer, Feld feld, Object object) throws NoSuchMethodException, SecurityException,
 			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		if (object == null) {
+		if (feld.feldart() == Feldart.muss && object == null) {
 			if (mode == Mode.STRICT) {
 				throw new IllegalArgumentException(
 						"Cannot get textual representation of null when writing feld " + feld);
 			} else {
-				LOG.warn("Cannot get textual representation of null when writing feld " + feld
-						+ ", assuming empty string");
+				LOG.warn("Cannot get textual representation of null when writing feld {}, assuming empty string", feld);
 				writeLdtLine(writer, feld, "");
 				return;
 			}
 		}
 		if (object instanceof String) {
-			writeLdtLine(writer, feld, ((String) object));
+			String value = (String) object;
+			for (Regelsatz regelsatz : feld.regelsaetze()) {
+				if (regelsatz.maxLaenge() >= 0) {
+					if (mode == Mode.STRICT) {
+						throw new IllegalArgumentException("Value " + value + " must have maximum length of " + regelsatz.maxLaenge() + ", but was " + value.length());
+					} else {
+						LOG.warn("Value {} must have maximum length of {}, but was {}, trimming", value, regelsatz.maxLaenge(), value.length());
+						value = value.substring(0, Math.min(value.length(), regelsatz.maxLaenge()));
+					}
+				} else if (regelsatz.laenge() >= 0) {
+					if (value.length() > regelsatz.laenge()) {
+						if (mode == Mode.STRICT) {
+							throw new IllegalArgumentException("Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
+						} else {
+							LOG.warn("Value {} must have exact length of {}, but was {}, trimming", value, regelsatz.laenge(), value.length());
+							value = value.substring(0, regelsatz.laenge());
+						}
+					} else if (value.length() < regelsatz.laenge()) {
+						if (mode == Mode.STRICT) {
+							throw new IllegalArgumentException("Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
+						} else {
+							LOG.warn("Value {} must have exact length of {}, but was {}, ignoring", value, regelsatz.laenge(), value.length());
+						}
+					}
+				}
+			}
+			writeLdtLine(writer, feld, value);
 			return;
 		}
 		if (object instanceof Float) {
