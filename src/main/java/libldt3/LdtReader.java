@@ -245,7 +245,7 @@ public class LdtReader {
 						for (Regelsatz regelsatz : feld.regelsaetze()) {
 							for (Class<? extends Kontextregel> kontextregel : regelsatz.kontextregeln()) {
 								try {
-									if (!kontextregel.newInstance().isValid(field, o)) {
+									if (!kontextregel.newInstance().isValid(feld, field, o)) {
 										if (mode == Mode.STRICT) {
 											throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o);
 										} else {

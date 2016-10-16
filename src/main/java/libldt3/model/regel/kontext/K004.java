@@ -22,11 +22,47 @@
 package libldt3.model.regel.kontext;
 
 import libldt3.annotations.Feld;
+import libldt3.model.enums.Abrechnungsinfo;
 
 import java.lang.reflect.Field;
 
-public interface Kontextregel {
+import static libldt3.model.regel.kontext.KontextregelHelper.containsString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findField;
 
-	boolean isValid(Feld feld, Field field, Object owner) throws IllegalAccessException;
+public class K004 implements Kontextregel {
+
+	@Override
+	public boolean isValid(Feld feld, Field field, Object owner) throws IllegalAccessException {
+		field.setAccessible(true);
+
+		Field source;
+		if (feld.value().equals("7303")) {
+			source = field;
+		} else {
+			source = findField(owner, "7303");
+		}
+		if (source == null) {
+			return true;
+		}
+
+		Object o = source.get(owner);
+		if (o == null) {
+			return true;
+		}
+		if (o instanceof Abrechnungsinfo) {
+			switch ((Abrechnungsinfo) o) {
+				case GkvLaborfacharzt:
+				case GkvLg:
+				case Asv:
+				case GkvLaborfacharztPraeventiv:
+				case GkgLgPraeventiv:
+					Field f = findField(owner, "4241");
+					return containsString(f, owner);
+				default:
+					return true;
+			}
+		}
+		return false;
+	}
 
 }

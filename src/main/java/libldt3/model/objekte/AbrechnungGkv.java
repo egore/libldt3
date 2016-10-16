@@ -40,6 +40,7 @@ import libldt3.model.regel.F002;
 import libldt3.model.regel.F010;
 import libldt3.model.regel.F011;
 import libldt3.model.regel.F022;
+import libldt3.model.regel.kontext.K004;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -103,7 +104,7 @@ public @Getter @Setter class AbrechnungGkv {
 	private Behandlungsanlass kurativPraeventivEss;
 	@Feld(value = "4231", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private String kontrolluntersuchungBekannterInfektion;
-	@Feld(value = "4241", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9))
+	@Feld(value = "4241", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9, kontextregeln = K004.class))
 	private String lebenslangeArztnummer;
 	@Feld(value = "4217", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F010.class, laenge = 9))
 	private String bsnrErstveranlasser;
