@@ -38,7 +38,7 @@ public @Getter @Setter class Kopfdaten {
 	private SendendesSystem sendendesSystem;
 	@Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 30))
 	private Timestamp timestampErstellungDatensatz;
-	@Feld(value = "8212", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 24))
+	@Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 24))
 	private Organisation softwareverantwortlicher;
 
 }
