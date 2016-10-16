@@ -48,31 +48,35 @@ import java.util.UUID;
  * @author Christoph Brill &lt;egore911@gmail.com&gt;
  * @since 14.05.16 15:47
  */
-public final class Fuzzer {
+public class Fuzzer {
 
     public interface CustomHandler {
         Object randomValue(Field field);
     }
 
-    public static final Random RANDOM = new Random();
+    public final Random RANDOM = new Random();
 
-    public static final int MAX_DEPTH = 3;
-    public static final int MAX_COLLECTION_ELEMENTS = 2;
-    public static CustomHandler customHandler;
+    private final int MAX_DEPTH = 3;
+    private final int MAX_COLLECTION_ELEMENTS = 2;
+    private CustomHandler customHandler;
 
-    private static final Map<String, Reflections> REFLECTIONS_CACHE = new HashMap<>();
+    private final Map<String, Reflections> REFLECTIONS_CACHE = new HashMap<>();
 
-    private Fuzzer() {
+    public Fuzzer() {
     }
 
-    public static <T> T fuzz(Class<T> klass, String packageName) {
+    public Fuzzer(CustomHandler customHandler) {
+        this.customHandler = customHandler;
+    }
+
+    public <T> T fuzz(Class<T> klass, String packageName) {
         if (packageName == null) {
             packageName = klass.getPackage().getName();
         }
         return fuzz(klass, packageName, 0);
     }
 
-    public static <T> T instantiate(Class<T> klass, String packageName) {
+    private <T> T instantiate(Class<T> klass, String packageName) {
         T t = null;
         try {
             if (Modifier.isAbstract(klass.getModifiers())) {
@@ -105,7 +109,7 @@ public final class Fuzzer {
         }
     }
 
-    public static <T> T fuzz(Class<T> klass, String packageName, int depth) {
+    private <T> T fuzz(Class<T> klass, String packageName, int depth) {
         if (depth > MAX_DEPTH) {
             return null;
         }
@@ -141,7 +145,7 @@ public final class Fuzzer {
         }
     }
 
-    private static Object randomForType(Type type, String packageName, int depth) throws IllegalAccessException, InstantiationException {
+    private Object randomForType(Type type, String packageName, int depth) throws IllegalAccessException, InstantiationException {
         if (type.equals(int.class) || type.equals(Integer.class)) {
             return randomInt();
         } else if (type.equals(long.class) ||type.equals(Long.class)) {
@@ -203,47 +207,47 @@ public final class Fuzzer {
         }
     }
 
-    private static UUID randomUUID() {
+    private UUID randomUUID() {
         return UUID.randomUUID();
     }
 
-    private static double randomDouble() {
+    private double randomDouble() {
         return RANDOM.nextDouble();
     }
 
-    private static float randomFloat() {
+    private float randomFloat() {
         return RANDOM.nextFloat();
     }
 
-    private static boolean randomBoolean() {
+    private boolean randomBoolean() {
         return RANDOM.nextBoolean();
     }
 
-    private static long randomLong() {
+    private long randomLong() {
         return RANDOM.nextLong();
     }
 
-    private static int randomInt() {
+    private int randomInt() {
         return RANDOM.nextInt();
     }
 
-    private static String randomString() {
+    private String randomString() {
         return UUID.randomUUID().toString();
     }
 
-    private static Date randomDate() {
+    private Date randomDate() {
         return Date.from(randomDateTime().atZone(ZoneId.systemDefault()).toInstant());
     }
 
-    private static LocalDate randomLocalDate() {
+    private LocalDate randomLocalDate() {
         return LocalDate.now().plusDays(RANDOM.nextInt(300)).minusDays(150);
     }
 
-    private static LocalTime randomLocalTime() {
+    private LocalTime randomLocalTime() {
         return LocalTime.now().plusHours(RANDOM.nextInt(24)).minusHours(12);
     }
 
-    private static LocalDateTime randomDateTime() {
+    private LocalDateTime randomDateTime() {
         return LocalDateTime.now().plusDays(RANDOM.nextInt(300)).minusDays(150);
     }
 
