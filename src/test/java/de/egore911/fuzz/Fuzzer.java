@@ -56,7 +56,7 @@ public class Fuzzer {
 
     public final Random RANDOM = new Random();
 
-    private final int MAX_DEPTH = 5;
+    private final int MAX_DEPTH = 20;
     private final int MAX_COLLECTION_ELEMENTS = 2;
     private CustomHandler customHandler;
 
