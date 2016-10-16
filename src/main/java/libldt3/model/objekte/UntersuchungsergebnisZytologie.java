@@ -66,7 +66,7 @@ public @Getter @Setter class UntersuchungsergebnisZytologie {
 	public static @Getter @Setter class GrenzwertindikatorLaborwert {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "8126", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 28))
+		@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 28))
 		private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
 	}
 

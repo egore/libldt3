@@ -3,11 +3,13 @@ package libldt3.model.saetze;
 import de.egore911.fuzz.Fuzzer;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.objekte.Untersuchungsabrechnung;
 import libldt3.model.regel.F001;
 import libldt3.model.regel.F004;
 import libldt3.model.regel.F005;
 import libldt3.model.regel.F006;
 import libldt3.model.regel.F007;
+import libldt3.model.regel.F009;
 import libldt3.model.regel.F010;
 import libldt3.model.regel.F011;
 import libldt3.model.regel.F012;
@@ -15,6 +17,7 @@ import libldt3.model.regel.F013;
 import libldt3.model.regel.F014;
 import libldt3.model.regel.F015;
 import libldt3.model.regel.F017;
+import libldt3.model.regel.F020;
 import libldt3.model.regel.Regel;
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -62,6 +65,12 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                         return "LDT3.0.3";
                     } else if (klass == F012.class) {
                         return "X/31/0101/01/[]}";
+                    } else if (klass == F020.class) {
+                        return "01234567";
+                    } else if (klass == F009.class) {
+                        Untersuchungsabrechnung.Gebuehrennummer gebuehrennummer = new Untersuchungsabrechnung.Gebuehrennummer();
+                        gebuehrennummer.setValue("01234");
+                        return Collections.singletonList(gebuehrennummer);
                     }
                 }
                 if (regelsatz.laenge() >= 0) {
