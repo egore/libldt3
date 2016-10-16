@@ -185,7 +185,7 @@ public class Fuzzer {
             }
             Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
             for (Type t : actualTypeArguments) {
-                for (int i = 0; i < RANDOM.nextInt(MAX_COLLECTION_ELEMENTS); i++) {
+                for (int i = 0; i < 1 + RANDOM.nextInt(MAX_COLLECTION_ELEMENTS); i++) {
                     Object e = randomForType(t, packageName, depth);
                     if (e != null) {
                         ((Collection) o).add(e);
