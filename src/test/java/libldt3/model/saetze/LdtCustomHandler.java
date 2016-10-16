@@ -74,7 +74,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                     }
                 }
                 if (regelsatz.laenge() >= 0) {
-                    Object x = getRandeomAtLength(field, regelsatz, regelsatz.laenge());
+                    Object x = getRandomAtLength(field, regelsatz, regelsatz.laenge());
                     if (x != null) return x;
                 } else if (regelsatz.maxLaenge() >= 0) {
                     int min = 0;
@@ -83,7 +83,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                         min = regelsatz.minLaenge();
                         max -= min;
                     }
-                    Object x = getRandeomAtLength(field, regelsatz, min + random.nextInt(max));
+                    Object x = getRandomAtLength(field, regelsatz, min + random.nextInt(max));
                     if (x != null) return x;
                 }
             }
@@ -91,7 +91,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
         return null;
     }
 
-    protected Object getRandeomAtLength(Field field, Regelsatz regelsatz, int laenge) {
+    protected Object getRandomAtLength(Field field, Regelsatz regelsatz, int laenge) {
         if (field.getType().isAssignableFrom(Integer.class)) {
             if (laenge == 1) {
                 // chosen by fair dice roll
