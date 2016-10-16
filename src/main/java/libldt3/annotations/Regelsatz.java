@@ -1,6 +1,7 @@
 package libldt3.annotations;
 
 import libldt3.model.regel.Regel;
+import libldt3.model.regel.kontext.Kontextregel;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -21,5 +22,7 @@ public @interface Regelsatz {
 	int minLaenge() default -1;
 
 	int maxLaenge() default -1;
+
+	Class<? extends Kontextregel>[] kontextregeln() default {};
 
 }

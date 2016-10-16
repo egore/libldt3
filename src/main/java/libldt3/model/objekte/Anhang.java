@@ -28,6 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Dokumentenquelle;
+import libldt3.model.regel.kontext.K001;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,9 +42,9 @@ public @Getter @Setter class Anhang {
 
 	@Feld(value = "6221", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean kennzeichnungFremdbefund;
-	@Feld(value = "6305", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6305", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60, kontextregeln = K001.class))
 	private String dateiVerweis;
-	@Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 22))
+	@Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 22, kontextregeln = K001.class))
 	private Fliesstext base64Anlage;
 	@Feld(value = "6303", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String dateiformat;

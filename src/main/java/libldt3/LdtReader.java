@@ -43,6 +43,7 @@ import java.util.stream.Stream;
 
 import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.Regel;
+import libldt3.model.regel.kontext.Kontextregel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -238,6 +239,30 @@ public class LdtReader {
 			Objekt annotation;
 			do {
 				o = stack.pop();
+				for (Field field : o.getClass().getDeclaredFields()) {
+					Feld feld = field.getAnnotation(Feld.class);
+					if (feld != null) {
+						for (Regelsatz regelsatz : feld.regelsaetze()) {
+							for (Class<? extends Kontextregel> kontextregel : regelsatz.kontextregeln()) {
+								try {
+									if (!kontextregel.newInstance().isValid(field, o)) {
+										if (mode == Mode.STRICT) {
+											throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o);
+										} else {
+											LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o);
+										}
+                                    }
+								} catch (IllegalAccessException | InstantiationException e) {
+									if (mode == Mode.STRICT) {
+										throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o, e);
+									} else {
+										LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o, e);
+									}
+								}
+							}
+						}
+					}
+				}
 				annotation = o.getClass().getAnnotation(Objekt.class);
 				if (annotation != null && !annotation.value().isEmpty()
 						&& !annotation.value().equals(annotation.value())) {
