@@ -17,16 +17,42 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 public class FuzzerTest {
 
+	private final Fuzzer fuzzer = new Fuzzer(new LdtCustomHandler());
+
 	@Test
 	public void auftragFuzzerTest() throws IOException {
-		Auftrag auftrag = new Fuzzer(new LdtCustomHandler()).fuzz(Auftrag.class, "libldt3.model");
+		Auftrag auftrag = fuzzer.fuzz(Auftrag.class, "libldt3.model");
 		testSatz(auftrag);
 	}
 
 	@Test
 	public void befundFuzzerTest() throws IOException {
-		Befund befund = new Fuzzer(new LdtCustomHandler()).fuzz(Befund.class, "libldt3.model");
+		Befund befund = fuzzer.fuzz(Befund.class, "libldt3.model");
 		testSatz(befund);
+	}
+
+	@Test
+	public void laborDatenpaketAbschlussFuzzerTest() throws IOException {
+		LaborDatenpaketAbschluss laborDatenpaketAbschluss = fuzzer.fuzz(LaborDatenpaketAbschluss.class, "libldt3.model");
+		testSatz(laborDatenpaketAbschluss);
+	}
+
+	@Test
+	public void laborDatenpaketHeaderFuzzerTest() throws IOException {
+		LaborDatenpaketHeader laborDatenpaketHeader = fuzzer.fuzz(LaborDatenpaketHeader.class, "libldt3.model");
+		testSatz(laborDatenpaketHeader);
+	}
+
+	@Test
+	public void praxisDatenpaketAbschlussFuzzerTest() throws IOException {
+		PraxisDatenpaketAbschluss praxisDatenpaketAbschluss = fuzzer.fuzz(PraxisDatenpaketAbschluss.class, "libldt3.model");
+		testSatz(praxisDatenpaketAbschluss);
+	}
+
+	@Test
+	public void PraxisDatenpaketHeaderFuzzerTest() throws IOException {
+		PraxisDatenpaketHeader praxisDatenpaketHeader = fuzzer.fuzz(PraxisDatenpaketHeader.class, "libldt3.model");
+		testSatz(praxisDatenpaketHeader);
 	}
 
 	private void testSatz(Satz satz) throws IOException {

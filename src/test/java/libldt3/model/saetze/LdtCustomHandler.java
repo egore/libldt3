@@ -7,8 +7,10 @@ import libldt3.model.regel.F001;
 import libldt3.model.regel.F004;
 import libldt3.model.regel.F005;
 import libldt3.model.regel.F006;
+import libldt3.model.regel.F007;
 import libldt3.model.regel.F010;
 import libldt3.model.regel.F011;
+import libldt3.model.regel.F012;
 import libldt3.model.regel.F013;
 import libldt3.model.regel.F014;
 import libldt3.model.regel.F015;
@@ -56,6 +58,10 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                         return "0123";
                     } else if (klass == F004.class) {
                         return "C12";
+                    } else if (klass == F007.class) {
+                        return "LDT3.0.3";
+                    } else if (klass == F012.class) {
+                        return "X/31/0101/01/[]}";
                     }
                 }
                 if (regelsatz.laenge() >= 0) {
