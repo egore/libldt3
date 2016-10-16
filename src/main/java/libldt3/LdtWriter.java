@@ -178,7 +178,7 @@ public class LdtWriter {
 						if (mode == Mode.STRICT) {
 							throw new IllegalArgumentException("Value " + value + " must have maximum length of " + regelsatz.maxLaenge() + ", but was " + value.length());
 						} else {
-							LOG.warn("Value {} must have maximum length of {}, but was {}, trimming", value, regelsatz.maxLaenge(), value.length());
+							LOG.warn("{}.{}: Value {} must have maximum length of {}, but was {}, trimming", field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.maxLaenge(), value.length());
 							value = value.substring(0, Math.min(value.length(), regelsatz.maxLaenge()));
 						}
 					}
@@ -187,14 +187,14 @@ public class LdtWriter {
 						if (mode == Mode.STRICT) {
 							throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
 						} else {
-							LOG.warn(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value {} must have exact length of {}, but was {}, trimming", value, regelsatz.laenge(), value.length());
+							LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, trimming", field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.laenge(), value.length());
 							value = value.substring(0, regelsatz.laenge());
 						}
 					} else if (value.length() < regelsatz.laenge()) {
 						if (mode == Mode.STRICT) {
 							throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
 						} else {
-							LOG.warn(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value {} must have exact length of {}, but was {}, ignoring", value, regelsatz.laenge(), value.length());
+							LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, ignoring", field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.laenge(), value.length());
 						}
 					}
 				}
