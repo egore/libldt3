@@ -44,7 +44,7 @@ public @Getter @Setter class Laborergebnisbericht {
 	private List<UntersuchungsergebnisZytologieKrebsvorsorge> zytologieKrebsvorsorge;
 	@Feld(value = "8163", name = "UE_Zytologie", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
 	private List<UntersuchungsergebnisZytologie> zytologie;
-	@Feld(value = "8155", name = "UE_Transfusionsmedizin/Mutterschaftsvorsorge", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 41))
+	@Feld(value = "8155", name = "Transfusionsmedizin_Mutterschaftsvorsorge", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 41))
 	private List<TransfusionsmedizinMutterschaftsvorsorge> transfusionsmedizinMutterschaftsvorsorge;
 	@Feld(value = "8156", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 5))
 	private List<Tumor> tumor;

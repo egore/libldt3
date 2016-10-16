@@ -99,7 +99,7 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	private List<ErgebnisWert> ergebnisWert;
 	@Feld(value = "8423", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private String pathologischBekannt;
-	@Feld(value = "8236", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 21))
+	@Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 21))
 	private Fliesstext testbezogeneHinweise;
 	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))
 	private Fliesstext ergebnistext;

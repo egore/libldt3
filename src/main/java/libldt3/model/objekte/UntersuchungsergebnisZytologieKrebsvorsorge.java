@@ -48,18 +48,24 @@ public @Getter @Setter class UntersuchungsergebnisZytologieKrebsvorsorge {
 		private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
 	}
 
+	@Objekt
+	public static @Getter @Setter class TestIdent {
+		@SuppressWarnings("unused")
+		private String value;
+		@Feld(value = "8411", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+		private String testbezeichnung;
+		@Feld(value = "8422", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 2))
+		private List<GrenzwertindikatorLaborwert> grenzwertindikatorLaborwert;
+		@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
+		private Fliesstext ergebnistextVerweis;
+	}
+
 	@Feld(value = "7304", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String ergebnisId;
 	@Feld(value = "7364", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> probengefaessIdent;
 	@Feld(value = "8410", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
-	private String testIdent;
-	@Feld(value = "8411", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
-	private String testbezeichnung;
-	@Feld(value = "8422", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 2))
-	private List<GrenzwertindikatorLaborwert> grenzwertindikatorLaborwert;
-	@Feld(value = "8237", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
-	private Fliesstext ErgebnistextVerweis;
+	private TestIdent testIdent;
 	@Feld(value = "8418", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
 	private TestStatus teststatus;
 	@Feld(value = "7368", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
@@ -90,11 +96,11 @@ public @Getter @Setter class UntersuchungsergebnisZytologieKrebsvorsorge {
 	private NachkontrollGrund nachkontrollGrund;
 	@Feld(value = "7417", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
 	private List<Boolean> histologischeKlaerung;
-	@Feld(value = "8237", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))
+	@Feld(value = "8237", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 10 /* XXX 12 according to spec */))
 	private Fliesstext ergebnistext;
-	@Feld(value = "8134", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8134", name = "Krebsfrueherkennung_Frauen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
-	@Feld(value = "8126", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 28))
+	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 28))
 	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
 	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 36))
 	private Timestamp timestampEingangserfassungMaterial;
