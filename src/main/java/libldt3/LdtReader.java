@@ -251,7 +251,7 @@ public class LdtReader {
 										} else {
 											LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o);
 										}
-                                    }
+									}
 								} catch (IllegalAccessException | InstantiationException e) {
 									if (mode == Mode.STRICT) {
 										throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o, e);

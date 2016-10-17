@@ -28,41 +28,41 @@ import java.lang.reflect.Field;
 
 class KontextregelHelper {
 
-    static boolean containsString(Field field, Object owner) throws IllegalAccessException {
-        field.setAccessible(true);
-        Object value = field.get(owner);
-        if (value instanceof String) {
-            String o = (String) value;
-            return !o.isEmpty();
-        }
-        if (value instanceof Fliesstext) {
-            Fliesstext fliesstext = ((Fliesstext) value);
-            if (fliesstext.getText() != null) {
-                for (String s : fliesstext.getText()) {
-                    if (s != null && !s.isEmpty()) {
-                        return true;
-                    }
-                }
-            }
-            if (fliesstext.getBase64text() != null) {
-                for (String s : fliesstext.getBase64text()) {
-                    if (s != null && !s.isEmpty()) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
+	static boolean containsString(Field field, Object owner) throws IllegalAccessException {
+		field.setAccessible(true);
+		Object value = field.get(owner);
+		if (value instanceof String) {
+			String o = (String) value;
+			return !o.isEmpty();
+		}
+		if (value instanceof Fliesstext) {
+			Fliesstext fliesstext = ((Fliesstext) value);
+			if (fliesstext.getText() != null) {
+				for (String s : fliesstext.getText()) {
+					if (s != null && !s.isEmpty()) {
+						return true;
+					}
+				}
+			}
+			if (fliesstext.getBase64text() != null) {
+				for (String s : fliesstext.getBase64text()) {
+					if (s != null && !s.isEmpty()) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 
-    static Field findField(Object owner, String fieldtype) {
-        for (Field f : owner.getClass().getDeclaredFields()) {
-            Feld annotation = f.getAnnotation(Feld.class);
-            if (annotation != null && annotation.value().equals(fieldtype)) {
-                return f;
-            }
-        }
-        return null;
-    }
+	static Field findField(Object owner, String fieldtype) {
+		for (Field f : owner.getClass().getDeclaredFields()) {
+			Feld annotation = f.getAnnotation(Feld.class);
+			if (annotation != null && annotation.value().equals(fieldtype)) {
+				return f;
+			}
+		}
+		return null;
+	}
 
 }
