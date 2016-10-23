@@ -21,26 +21,37 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.annotations.Feld;
-import libldt3.model.objekte.Fliesstext;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsString;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class K001 implements Kontextregel {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(K001.class);
+
+	private static final Set<String> fieldtypes = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("6305", "8242")));
 
 	@Override
-	public boolean isValid(Feld feld, Field field, Object owner) throws IllegalAccessException {
-		if (containsString(field, owner)) {
-			return true;
+	public boolean isValid(Object owner) throws IllegalAccessException {
+
+		List<Field> fields = findFields(owner, fieldtypes);
+		if (fields.size() != 2) {
+			LOG.error("Class of " + owner + " must have fields " + fieldtypes);
+			return false;
 		}
-		for (Field f : field.getDeclaringClass().getDeclaredFields()) {
-			Feld annotation = f.getAnnotation(Feld.class);
-			if (annotation != null && (annotation.value().equals("6305") || annotation.value().equals("8242"))) {
-				if (containsString(f, owner)) {
-					return true;
-				}
+
+		for (Field f : fields) {
+			if (containsAnyString(f, owner)) {
+				return true;
 			}
 		}
 		return false;

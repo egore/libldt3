@@ -21,16 +21,26 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.annotations.Feld;
-import libldt3.model.objekte.Fliesstext;
-
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import libldt3.annotations.Feld;
+import libldt3.annotations.Objekt;
+import libldt3.model.objekte.Fliesstext;
 
 class KontextregelHelper {
 
-	static boolean containsString(Field field, Object owner) throws IllegalAccessException {
+	static boolean containsAnyString(Field field, Object owner) throws IllegalAccessException {
 		field.setAccessible(true);
 		Object value = field.get(owner);
+		return containsAnyString(value, owner);
+	}
+	
+	static boolean containsAnyString(Object value, Object owner) throws IllegalAccessException {
 		if (value instanceof String) {
 			String o = (String) value;
 			return !o.isEmpty();
@@ -59,10 +69,48 @@ class KontextregelHelper {
 		for (Field f : owner.getClass().getDeclaredFields()) {
 			Feld annotation = f.getAnnotation(Feld.class);
 			if (annotation != null && annotation.value().equals(fieldtype)) {
+				f.setAccessible(true);
 				return f;
 			}
 		}
 		return null;
+	}
+	
+	static List<Field> findFields(Object owner, Set<String> fieldtypes) {
+		List<Field> result = new ArrayList<>(fieldtypes.size());
+		for (Field f : owner.getClass().getDeclaredFields()) {
+			Feld annotation = f.getAnnotation(Feld.class);
+			if (annotation != null && fieldtypes.contains(annotation.value())) {
+				f.setAccessible(true);
+				result.add(f);
+			}
+		}
+		return result;
+	}
+
+	static Map<Object, List<Field>> findFieldsRecursive(Object owner, Set<String> fieldtypes) throws IllegalArgumentException, IllegalAccessException {
+		Map<Object, List<Field>> result = new HashMap<>();
+		List<Field> fields = new ArrayList<>();
+		for (Field f : owner.getClass().getDeclaredFields()) {
+			Feld annotation = f.getAnnotation(Feld.class);
+			if (annotation != null && fieldtypes.contains(annotation.value())) {
+				f.setAccessible(true);
+				fields.add(f);
+				result.put(owner, fields);
+			}
+			f.setAccessible(true);
+			Object object = f.get(owner);
+			if (object != null) {
+				if (object.getClass().getAnnotation(Objekt.class) != null) {
+					result.putAll(findFieldsRecursive(object, fieldtypes));
+				} else if (object instanceof Iterable) {
+					for (Object o : (Iterable) object) {
+						result.putAll(findFieldsRecursive(o, fieldtypes));
+					}
+				}
+			}
+		}
+		return result;
 	}
 
 }

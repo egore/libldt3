@@ -28,7 +28,6 @@ import java.lang.annotation.Target;
 
 import libldt3.LdtReader;
 import libldt3.LdtWriter;
-import libldt3.model.regel.Regel;
 
 /**
  * Annotation zur Definition eines Feldes. Der {@link LdtReader} liest die Daten

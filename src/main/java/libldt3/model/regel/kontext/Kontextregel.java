@@ -21,12 +21,8 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.annotations.Feld;
-
-import java.lang.reflect.Field;
-
 public interface Kontextregel {
 
-	boolean isValid(Feld feld, Field field, Object owner) throws IllegalAccessException;
+	boolean isValid(Object owner) throws IllegalAccessException;
 
 }

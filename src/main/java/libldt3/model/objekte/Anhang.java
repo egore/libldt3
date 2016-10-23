@@ -37,14 +37,14 @@ import lombok.Setter;
  * Dokumentationen, die in einem digitalen Standardformat vorliegen,
  * transportiert werden.
  */
-@Objekt("0010")
+@Objekt(value = "0010", kontextregeln = K001.class)
 public @Getter @Setter class Anhang {
 
 	@Feld(value = "6221", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean kennzeichnungFremdbefund;
-	@Feld(value = "6305", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60, kontextregeln = K001.class))
+	@Feld(value = "6305", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String dateiVerweis;
-	@Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 22, kontextregeln = K001.class))
+	@Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 22))
 	private Fliesstext base64Anlage;
 	@Feld(value = "6303", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String dateiformat;

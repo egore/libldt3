@@ -26,6 +26,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import libldt3.model.regel.kontext.Kontextregel;
+
 /**
  * Annotation zur Definition von Objekten aus dem Objektkatalog
  */
@@ -39,5 +41,7 @@ public @interface Objekt {
 	String value() default "";
 
 	String name() default "";
+
+	Class<? extends Kontextregel>[] kontextregeln() default {};
 
 }

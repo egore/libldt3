@@ -59,7 +59,7 @@ import lombok.Setter;
  * zugeordnet werden können.
  * </p>
  */
-@Objekt("0002")
+@Objekt(value = "0002", kontextregeln = K004.class)
 public @Getter @Setter class AbrechnungGkv {
 
 	@Feld(value = "4239", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
@@ -104,7 +104,7 @@ public @Getter @Setter class AbrechnungGkv {
 	private Behandlungsanlass kurativPraeventivEss;
 	@Feld(value = "4231", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private String kontrolluntersuchungBekannterInfektion;
-	@Feld(value = "4241", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9, kontextregeln = K004.class))
+	@Feld(value = "4241", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9))
 	private String lebenslangeArztnummer;
 	@Feld(value = "4217", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F010.class, laenge = 9))
 	private String bsnrErstveranlasser;

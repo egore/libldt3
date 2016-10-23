@@ -239,35 +239,9 @@ public class LdtReader {
 			Objekt annotation;
 			do {
 				o = stack.pop();
-				for (Field field : o.getClass().getDeclaredFields()) {
-					Feld feld = field.getAnnotation(Feld.class);
-					if (feld != null) {
-						for (Regelsatz regelsatz : feld.regelsaetze()) {
-							for (Class<? extends Kontextregel> kontextregel : regelsatz.kontextregeln()) {
-								try {
-									if (!kontextregel.newInstance().isValid(feld, field, o)) {
-										if (mode == Mode.STRICT) {
-											throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o);
-										} else {
-											LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o);
-										}
-									}
-								} catch (IllegalAccessException | InstantiationException e) {
-									if (mode == Mode.STRICT) {
-										throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o, e);
-									} else {
-										LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o, e);
-									}
-								}
-							}
-						}
-					}
-				}
 				annotation = o.getClass().getAnnotation(Objekt.class);
-				if (annotation != null && !annotation.value().isEmpty()
-						&& !annotation.value().equals(annotation.value())) {
-					throw new IllegalStateException(
-							"Expected stack element to be " + annotation.value() + ", but was " + annotation.value());
+				if (annotation != null) {
+					evaluateContextRules(o, annotation.kontextregeln());
 				}
 			} while (annotation != null && annotation.value().isEmpty());
 			if (stack.isEmpty()) {
@@ -345,6 +319,26 @@ public class LdtReader {
 				LOG.warn("Failed reading line " + line + ", current stack: " + stack + ", skipping line");
 			}
 			break;
+		}
+	}
+
+	private void evaluateContextRules(Object o, Class<? extends Kontextregel>[] kontextRegeln) {
+		for (Class<? extends Kontextregel> kontextregel : kontextRegeln) {
+			try {
+				if (!kontextregel.newInstance().isValid(o)) {
+					if (mode == Mode.STRICT) {
+						throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o);
+					} else {
+						LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o);
+					}
+				}
+			} catch (IllegalAccessException | InstantiationException e) {
+				if (mode == Mode.STRICT) {
+					throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o, e);
+				} else {
+					LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o, e);
+				}
+			}
 		}
 	}
 
