@@ -30,7 +30,6 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F017;
-import libldt3.model.regel.F018;
 import lombok.Getter;
 import lombok.Setter;
 

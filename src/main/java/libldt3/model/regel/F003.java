@@ -21,7 +21,6 @@
  */
 package libldt3.model.regel;
 
-import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 /**
