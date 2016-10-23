@@ -34,27 +34,31 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class K001 implements Kontextregel {
+public class K006 implements Kontextregel {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(K001.class);
+	private static final Logger LOG = LoggerFactory.getLogger(K006.class);
 
-	private static final Set<String> fieldtypes = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("6305", "8242")));
+	private static final Set<String> fieldtypes = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8428", "8430", "8429", "8431")));
 
 	@Override
 	public boolean isValid(Object owner) throws IllegalAccessException {
 
 		Map<String, Field> fields = findFields(owner, fieldtypes);
-		if (fields.size() != 2) {
+		if (fields.size() != 4) {
 			LOG.error("Class of " + owner + " must have fields " + fieldtypes);
 			return false;
 		}
 
-		for (Field f : fields.values()) {
-			if (containsAnyString(f, owner)) {
-				return true;
+		boolean has8431 = false;
+		boolean has8428 = true;
+		for (Map.Entry<String, Field> entry : fields.entrySet()) {
+			if (entry.getKey().equals("8431")) {
+				has8431 = containsAnyString(entry.getValue(), owner);
+			} else {
+				has8428 |= containsAnyString(entry.getValue(), owner);
 			}
 		}
-		return false;
+		return !has8428 || (has8428 && !has8431);
 	}
 
 }

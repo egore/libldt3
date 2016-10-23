@@ -31,6 +31,7 @@ import libldt3.model.enums.AnorganischesMaterial;
 import libldt3.model.enums.Materialart;
 import libldt3.model.enums.OrganischesMaterial;
 import libldt3.model.regel.F006;
+import libldt3.model.regel.kontext.K006;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,7 +39,7 @@ import lombok.Setter;
  * Im Objekt werden die Informationen zur Identifikation des zu untersuchenden
  * Materials übermittelt sowie Angaben zum Material selbst.
  */
-@Objekt("0037")
+@Objekt(value = "0037",kontextregeln = K006.class)
 public @Getter @Setter class Material {
 
 	@Objekt

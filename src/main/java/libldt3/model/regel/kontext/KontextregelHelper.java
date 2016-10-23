@@ -76,13 +76,13 @@ class KontextregelHelper {
 		return null;
 	}
 	
-	static List<Field> findFields(Object owner, Set<String> fieldtypes) {
-		List<Field> result = new ArrayList<>(fieldtypes.size());
+	static Map<String, Field> findFields(Object owner, Set<String> fieldtypes) {
+		Map<String, Field> result = new HashMap<>(fieldtypes.size());
 		for (Field f : owner.getClass().getDeclaredFields()) {
 			Feld annotation = f.getAnnotation(Feld.class);
 			if (annotation != null && fieldtypes.contains(annotation.value())) {
 				f.setAccessible(true);
-				result.add(f);
+				result.put(annotation.value(), f);
 			}
 		}
 		return result;
