@@ -41,13 +41,14 @@ import libldt3.model.objekte.Patient;
 import libldt3.model.objekte.Schwangerschaft;
 import libldt3.model.objekte.Tier;
 import libldt3.model.objekte.Veranlassungsgrund;
+import libldt3.model.regel.kontext.K005;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * Befund "8205"
  */
-@Datenpaket(Satzart.Befund)
+@Datenpaket(value = Satzart.Befund, kontextregeln = K005.class)
 public @Getter @Setter class Befund implements Satz {
 
 	@Feld(value = "8136", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))

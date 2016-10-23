@@ -27,6 +27,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import libldt3.model.enums.Satzart;
+import libldt3.model.regel.kontext.Kontextregel;
 
 /**
  * Annotation zur Definition von Sätzen (siehe auch {@link libldt3.model.saetze.Satz})
@@ -39,5 +40,7 @@ public @interface Datenpaket {
 	 * @return Satzart (z.B. "8220" für Labor-Datenpaket-Header)
 	 */
 	Satzart value();
+
+	Class<? extends Kontextregel>[] kontextregeln() default {};
 
 }

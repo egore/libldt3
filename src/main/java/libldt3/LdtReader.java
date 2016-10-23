@@ -48,6 +48,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import libldt3.LdtConstants.Mode;
+import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Objekt;
 import libldt3.model.enums.Satzart;
@@ -196,6 +197,10 @@ public class LdtReader {
 			// End: Satz
 			assureLength(line, length, 13);
 			Object o = stack.pop();
+			Datenpaket annotation = o.getClass().getAnnotation(Datenpaket.class);
+			if (annotation != null) {
+				evaluateContextRules(o, annotation.kontextregeln());
+			}
 			if (stack.isEmpty()) {
 				data.add((Satz) o);
 			}
