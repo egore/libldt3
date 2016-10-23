@@ -58,7 +58,7 @@ public class FuzzerTest {
 	private void testSatz(Satz satz) throws IOException {
 		Path file = File.createTempFile("auftrag_fuzzer_test", ".ldt").toPath();
 		new LdtWriter(LdtConstants.Mode.RELAXED).write(Collections.singletonList(satz), file);
-		List<Satz> saetze = new LdtReader(LdtConstants.Mode.STRICT).read(file);
+		List<Satz> saetze = new LdtReader(LdtConstants.Mode.RELAXED).read(file);
 		assertThat(saetze, hasSize(1));
 	}
 }
