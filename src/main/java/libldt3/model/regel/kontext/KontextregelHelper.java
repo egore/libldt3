@@ -34,12 +34,18 @@ import libldt3.model.objekte.Fliesstext;
 
 class KontextregelHelper {
 
+	/**
+	 * Check if a given field has any string content (either simply text or multiline Fliesstext)
+	 */
 	static boolean containsAnyString(Field field, Object owner) throws IllegalAccessException {
 		field.setAccessible(true);
 		Object value = field.get(owner);
 		return containsAnyString(value, owner);
 	}
-	
+
+	/**
+	 * Check if a given field has any string content (either simply text or multiline Fliesstext)
+	 */
 	static boolean containsAnyString(Object value, Object owner) throws IllegalAccessException {
 		if (value instanceof String) {
 			String o = (String) value;
@@ -65,6 +71,9 @@ class KontextregelHelper {
 		return false;
 	}
 
+	/**
+	 * Find a field matching their {@link Feld#value()} with the given fieldtype. Not recursive, only a single field.
+	 */
 	static Field findField(Object owner, String fieldtype) {
 		for (Field f : owner.getClass().getDeclaredFields()) {
 			Feld annotation = f.getAnnotation(Feld.class);
@@ -75,7 +84,10 @@ class KontextregelHelper {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Find fields matching their {@link Feld#value()} with the given fieldtypes. Not recursive, but for multiple field.
+	 */
 	static Map<String, Field> findFields(Object owner, Set<String> fieldtypes) {
 		Map<String, Field> result = new HashMap<>(fieldtypes.size());
 		for (Field f : owner.getClass().getDeclaredFields()) {
@@ -88,6 +100,9 @@ class KontextregelHelper {
 		return result;
 	}
 
+	/**
+	 * Find fields matching their {@link Feld#value()} with the given fieldtypes. Recursive and for multiple field.
+	 */
 	static Map<Object, List<Field>> findFieldsRecursive(Object owner, Set<String> fieldtypes) throws IllegalArgumentException, IllegalAccessException {
 		Map<Object, List<Field>> result = new HashMap<>();
 		List<Field> fields = new ArrayList<>();
