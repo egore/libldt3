@@ -23,6 +23,7 @@ package de.egore911.fuzz;
 
 import org.reflections.Reflections;
 
+import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -54,18 +55,19 @@ public class Fuzzer {
         Object randomValue(Field field);
     }
 
-    public final Random RANDOM = new Random();
+    private final Random RANDOM = new Random();
 
     private final int MAX_DEPTH = 20;
     private final int MAX_COLLECTION_ELEMENTS = 2;
-    private CustomHandler customHandler;
+    private final CustomHandler customHandler;
 
     private final Map<String, Reflections> REFLECTIONS_CACHE = new HashMap<>();
 
     public Fuzzer() {
+        this(null);
     }
 
-    public Fuzzer(CustomHandler customHandler) {
+    public Fuzzer(@Nullable CustomHandler customHandler) {
         this.customHandler = customHandler;
     }
 
@@ -80,11 +82,7 @@ public class Fuzzer {
         T t = null;
         try {
             if (Modifier.isAbstract(klass.getModifiers())) {
-                Reflections reflections = REFLECTIONS_CACHE.get(packageName);
-                if (reflections == null) {
-                    reflections = new Reflections(packageName);
-                    REFLECTIONS_CACHE.put(packageName, reflections);
-                }
+                Reflections reflections = REFLECTIONS_CACHE.computeIfAbsent(packageName, k -> new Reflections(packageName));
                 Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(klass);
                 Exception ie = null;
                 for (Class<? extends T> subType : subTypes) {
@@ -116,9 +114,9 @@ public class Fuzzer {
         try {
             T t = instantiate(klass, packageName);
 
-            Class<?> currentclass = t.getClass();
-            while (currentclass != null) {
-                Field[] fields = currentclass.getDeclaredFields();
+            Class<?> currentClass = t.getClass();
+            while (currentClass != null) {
+                Field[] fields = currentClass.getDeclaredFields();
                 for (Field field : fields) {
                     // Don't fuzz static fields
                     if (Modifier.isStatic(field.getModifiers())) {
@@ -136,7 +134,7 @@ public class Fuzzer {
                     field.set(t, value);
                 }
 
-                currentclass = currentclass.getSuperclass();
+                currentClass = currentClass.getSuperclass();
             }
 
             return t;
