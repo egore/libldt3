@@ -88,9 +88,7 @@ public class LdtReader {
 	 *			 thrown if reading the file failed
 	 */
 	public List<Satz> read(String path) throws IOException {
-		try (Stream<String> stream = Files.lines(Paths.get(path), StandardCharsets.ISO_8859_1)) {
-			return read(stream);
-		}
+		return read(Paths.get(path));
 	}
 
 	/**
