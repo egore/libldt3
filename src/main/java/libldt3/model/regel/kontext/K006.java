@@ -52,7 +52,7 @@ public class K006 implements Kontextregel {
 		boolean has8431 = false;
 		boolean has8428 = true;
 		for (Map.Entry<String, Field> entry : fields.entrySet()) {
-			if (entry.getKey().equals("8431")) {
+			if ("8431".equals(entry.getKey())) {
 				has8431 = containsAnyString(entry.getValue(), owner);
 			} else {
 				has8428 |= containsAnyString(entry.getValue(), owner);
