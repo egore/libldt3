@@ -45,7 +45,7 @@ public class K006 implements Kontextregel {
 
 		Map<String, Field> fields = findFields(owner, fieldtypes);
 		if (fields.size() != 4) {
-			LOG.error("Class of " + owner + " must have fields " + fieldtypes);
+			LOG.error("Class of {} must have fields {}", owner, fieldtypes);
 			return false;
 		}
 
