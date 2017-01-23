@@ -28,7 +28,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import libldt3.model.enums.GeschlechtNormbereich;
+import libldt3.model.enums.GeschlechtNormalbereich;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F013;
 import lombok.Getter;
@@ -47,7 +47,7 @@ public @Getter @Setter class Patient {
 	@Feld(value = "3105", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(minLaenge = 6, maxLaenge = 12))
 	private String versichertennummer;
 	@Feld(value = "7329", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
-	private GeschlechtNormbereich geschlecht;
+	private GeschlechtNormalbereich geschlecht;
 	@Feld(value = "7922", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
 	private LocalDate sterbedatum;
 	@Feld(value = "3000", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
