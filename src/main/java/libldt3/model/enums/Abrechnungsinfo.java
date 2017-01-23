@@ -25,37 +25,39 @@ package libldt3.model.enums;
  * E050
  */
 public enum Abrechnungsinfo {
-	/** GKV Laborfacharzt */
-	GkvLaborfacharzt("1"),
-	/** GKV LG */
-	GkvLg("2"),
-	/** PKV Laborfacharzt */
-	PkvLaborfacharzt("3"),
-	/** PKG LG */
-	PkvLg("4"),
-	/** Selektivvertrag */
-	Selektivvertrag("5"),
-	/** IGeL */
-	IGeL("6"),
-	/** Sonstige Kostenübernahme */
-	Sonstige_Kostenuebernahme("7"),
-	/** ASV */
-	Asv("8"),
-	/** GKV Laborfacharzt präventiv */
-	GkvLaborfacharztPraeventiv("9"),
-	/** GKV LG präventiv */
-	GkgLgPraeventiv("10"),
-	/** keine Zuordnung */
-	keine_Zuordnung("11");
+    /** GKV Laborfacharzt */
+    GkvLaborfacharzt("1"),
+    /** GKV LG */
+    GkvLg("2"),
+    /** PKV Laborfacharzt */
+    PkvLaborfacharzt("3"),
+    /** PKG LG */
+    PkvLg("4"),
+    /** Selektivvertrag */
+    Selektivvertrag("5"),
+    /** IGeL */
+    IGeL("6"),
+    /** Sonstige Kostenübernahme */
+    Sonstige_Kostenuebernahme("7"),
+    /** ASV */
+    Asv("8"),
+    /** GKV Laborfacharzt präventiv */
+    GkvLaborfacharztPraeventiv("9"),
+    /** GKV LG präventiv */
+    GkgLgPraeventiv("10"),
+    /** keine Zuordnung */
+    keine_Zuordnung("11"),
+    /** storniert */
+    storniert("99");
 
-	private final String code;
+    private final String code;
 
-	private Abrechnungsinfo(String code) {
-		this.code = code;
-	}
+    Abrechnungsinfo(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
 }
