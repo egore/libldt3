@@ -40,7 +40,7 @@ public @Getter @Setter class Organisation {
 	public static @Getter @Setter class Funktionsbezeichnung {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "8147", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
+		@Feld(value = "8147", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 6))
 		private List<Person> person;
 	}
 
@@ -50,14 +50,10 @@ public @Getter @Setter class Organisation {
 	private String rechtsformOrganisation;
 	@Feld(value = "1252", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<Funktionsbezeichnung> funktionsbezeichnung;
-	@Feld(value = "8228", name = "Wohnanschrift", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 13))
-	private List<Anschrift> wohnanschrift;
 	@Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 23))
 	private List<Anschrift> anschriftArbeitsstelle;
 	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 18))
-	private List<Anschrift> rechnungsanschrift;
-	@Feld(value = "8231", name = "Temporaere_Anschrift", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 20))
-	private List<Anschrift> temporaereanschrift;
+	private Anschrift rechnungsanschrift;
 	@Feld(value = "8131", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 19))
 	private Kommunikationsdaten kommunikationsdaten;
 
