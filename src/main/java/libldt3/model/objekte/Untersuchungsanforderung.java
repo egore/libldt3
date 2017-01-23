@@ -92,7 +92,9 @@ public @Getter @Setter class Untersuchungsanforderung {
 	@Feld(value = "8501", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Dringlichkeit dringlichkeit;
 	@Feld(value = "7262", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
-	private List<StatusDringlichkeit> statusDringlichkeit;
+	private StatusDringlichkeit statusDringlichkeit;
+	@Feld(value = "8423", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
+	private Boolean pathologischBekannt;
 	@Feld(value = "7364", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<ProbengefaessIdent> probengefaessIdent;
 	@Feld(value = "8434", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
