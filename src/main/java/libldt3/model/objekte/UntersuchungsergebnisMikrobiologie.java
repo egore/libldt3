@@ -60,7 +60,7 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 		private ErgebnisStatus ergebnisStatus;
 		@Feld(value = "7357", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
 		private Wachstum wachstum;
-		@Feld(value = "7293", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 10))
+		@Feld(value = "7293", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private List<String> einheit;
 		@Feld(value = "7356", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String keimOid;
