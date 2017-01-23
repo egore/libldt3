@@ -26,16 +26,29 @@ package libldt3.model.enums;
  */
 public enum ZusaetzlicherBefundweg {
 
-	Papier("0"), Telefon("1"), Fax("2"), EMail("3"), DFUE("4"), Tourpost("5"), abweichendeKontaktdaten("6");
+    /** Papier */
+    Papier("0"),
+    /** Telefon */
+    Telefon("1"),
+    /** Fax */
+    Fax("2"),
+    /** E-Mail */
+    EMail("3"),
+    /** DFÜ */
+    DFUE("4"),
+    /** Tourpost */
+    Tourpost("5"),
+    /** KV-Connect */
+    kvConnect("6");
 
-	private final String code;
+    private final String code;
 
-	private ZusaetzlicherBefundweg(String code) {
-		this.code = code;
-	}
+    ZusaetzlicherBefundweg(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
 }
