@@ -73,6 +73,10 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 		private String katalogBezeichnung;
 		@Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 21))
 		private Fliesstext testbezogeneHinweise;
+		@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 17))
+		private Timestamp timestamp;
+		@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))
+		private Fliesstext ergebnistext;
 	}
 
 	@Objekt
@@ -127,8 +131,6 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 	private List<ResistenzMethodeErweitert> resistenzMethode;
 	@Feld(value = "8142", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 10))
 	private List<Normalwert> normalValue;
-	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))
-	private Fliesstext ergebnistext;
 	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 36))
 	private Timestamp materialDeliveryTimestamp;
 	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 25))
@@ -137,8 +139,6 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 	private Timestamp resultTimestamp;
 	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 22))
 	private Timestamp qmTimestamp;
-	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 17))
-	private Timestamp timestamp;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8141", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 13))
