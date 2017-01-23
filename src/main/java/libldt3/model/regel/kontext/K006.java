@@ -38,14 +38,14 @@ public class K006 implements Kontextregel {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(K006.class);
 
-	private static final Set<String> fieldtypes = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8428", "8430", "8429", "8431")));
+	private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8428", "8430", "8429", "8431")));
 
 	@Override
 	public boolean isValid(Object owner) throws IllegalAccessException {
 
-		Map<String, Field> fields = findFields(owner, fieldtypes);
-		if (fields.size() != 4) {
-			LOG.error("Class of {} must have fields {}", owner, fieldtypes);
+		Map<String, Field> fields = findFields(owner, FIELDTYPES);
+		if (fields.size() != FIELDTYPES.size()) {
+			LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
 			return false;
 		}
 
