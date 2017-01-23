@@ -63,11 +63,11 @@ public enum WOP {
 	/** Südbaden */
 	@Deprecated
 	Suedbaden("60"),
-	@Deprecated
 	/** Nordwürttemberg */
-	Nordwuerttemberg("61"),
 	@Deprecated
+	Nordwuerttemberg("61"),
 	/** Südwürttemberg */
+	@Deprecated
 	Suedwuerttemberg("62"),
 	/** Bayern */
 	Bayern("71"),
