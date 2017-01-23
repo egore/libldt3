@@ -58,7 +58,7 @@ public @Getter @Setter class UntersuchungsergebnisZytologie {
 		@Feld(value = "7251", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String katalogBezeichnung;
 		@Feld(value = "7365", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
-		private String leistungskuerzel;
+		private String analysenId;
 		@Feld(value = "7366", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String leistungsbezeichnung;
 	}
