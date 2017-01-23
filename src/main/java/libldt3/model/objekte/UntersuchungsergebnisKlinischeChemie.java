@@ -50,7 +50,7 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 		@Feld(value = "7251", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String katalogBezeichnung;
 		@Feld(value = "7365", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
-		private String leistungskuerzel;
+		private String analysenId;
 		@Feld(value = "7366", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String leistungsbezeichnung;
 		@Feld(value = "8418", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
@@ -74,6 +74,14 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	}
 
 	@Objekt
+	public static @Getter @Setter class DarstellungErgebniswerteErweitert {
+		@SuppressWarnings("unused")
+		private DarstellungErgebniswerte value;
+		@Feld(value = "8420", feldart = Feldart.bedingt_kann)
+		private List<ErgebnisWert> ergebnisWert;
+	}
+
+	@Objekt
 	public static @Getter @Setter class ErgebnisWert {
 		@SuppressWarnings("unused")
 		private String value;
@@ -81,6 +89,12 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 		private EinheitMesswert einheitNorm;
 		@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
 		private String einheit;
+		@Feld(value = "8142", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 10))
+		private List<Normalwert> normalValue;
+		@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 17))
+		private Timestamp timestamp;
+		@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))
+		private Fliesstext ergebnistext;
 	}
 
 	@Feld(value = "7304", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
@@ -92,15 +106,9 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	@Feld(value = "8410", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private Test testIdent;
 	@Feld(value = "7306", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
-	private DarstellungErgebniswerte darstellungErgebniswerte;
-	@Feld(value = "8420", feldart = Feldart.bedingt_kann)
-	private List<ErgebnisWert> ergebnisWert;
-	@Feld(value = "8423", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
-	private String pathologischBekannt;
+	private List<DarstellungErgebniswerteErweitert> darstellungErgebniswerte;
 	@Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 21))
 	private Fliesstext testbezogeneHinweise;
-	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 12))
-	private Fliesstext ergebnistext;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
 	private List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 36))
@@ -111,10 +119,6 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	private Timestamp resultTimestamp;
 	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 22))
 	private Timestamp qmTimestamp;
-	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 17))
-	private Timestamp timestamp;
-	@Feld(value = "8142", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 10))
-	private List<Normalwert> normalValue;
 	@Feld(value = "8141", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 13))
 	private Namenskennung namenskennung;
 	@Feld(value = "8158", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 23))
