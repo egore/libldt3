@@ -29,15 +29,17 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.Grenzwertindikator;
+import libldt3.model.enums.GrenzwertindikatorErweitert;
 import libldt3.model.enums.Normwertspezifikation;
 import libldt3.model.regel.kontext.K002;
+import libldt3.model.regel.kontext.K099;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
  */
-@Objekt("0042")
+@Objekt(value = "0042", kontextregeln = K099.class)
 public @Getter @Setter class Normalwert {
 
 	@Objekt(kontextregeln = K002.class)
@@ -69,8 +71,6 @@ public @Getter @Setter class Normalwert {
 	@Feld(value = "7371", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private NormalwertGrenze alarmwertObereGrenze;
 	@Feld(value = "8422", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 2))
-	private Grenzwertindikator grenzwertindikatorDesLaborwerts;
-	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_kann)
-	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
+	private GrenzwertindikatorErweitert grenzwertindikator;
 
 }

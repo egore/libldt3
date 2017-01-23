@@ -44,7 +44,7 @@ public enum Grenzwertindikator {
     /** stark erniedrigt */
     MINUS_MINUS("--"),
     /** Wert extrem erhöht */
-    EXTERM_H("!H"),
+    EXTREM_H("!H"),
     /** Wert extrem erhöht */
     EXTREM_PLUS("!+"),
     /** Wert extrem erniedrigt */

@@ -29,8 +29,10 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EndozervikaleZellen;
 import libldt3.model.enums.Grenzwertindikator;
+import libldt3.model.enums.GrenzwertindikatorErweitert;
 import libldt3.model.enums.NachkontrollGrund;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.regel.kontext.K099;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,22 +43,14 @@ import lombok.Setter;
 @Objekt("0062")
 public @Getter @Setter class UntersuchungsergebnisZytologieKrebsvorsorge {
 
-	@Objekt
-	public static @Getter @Setter class GrenzwertindikatorLaborwert {
-		@SuppressWarnings("unused")
-		private Grenzwertindikator value;
-		@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 28))
-		private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
-	}
-
-	@Objekt
+	@Objekt(kontextregeln = K099.class)
 	public static @Getter @Setter class TestIdent {
 		@SuppressWarnings("unused")
 		private String value;
 		@Feld(value = "8411", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 		private String testbezeichnung;
 		@Feld(value = "8422", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 2))
-		private List<GrenzwertindikatorLaborwert> grenzwertindikatorLaborwert;
+		private List<GrenzwertindikatorErweitert> grenzwertindikator;
 		@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
 		private Fliesstext ergebnistextVerweis;
 	}
