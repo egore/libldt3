@@ -32,6 +32,8 @@ public class K004 implements Kontextregel {
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
+        // TODO should also check for FK 8000 = 8205
+
         Field source1 = findField(owner, "8401");
         if (source1 == null) {
             return true;
