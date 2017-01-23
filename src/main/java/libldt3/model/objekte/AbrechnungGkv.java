@@ -108,5 +108,7 @@ public @Getter @Setter class AbrechnungGkv {
 	private String lebenslangeArztnummer;
 	@Feld(value = "4217", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F010.class, laenge = 9))
 	private String bsnrErstveranlasser;
+	@Feld(value = "4225", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 9))
+	private String asvTeamnummer;
 
 }
