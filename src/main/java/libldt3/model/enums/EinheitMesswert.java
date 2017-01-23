@@ -26,19 +26,21 @@ package libldt3.model.enums;
  */
 public enum EinheitMesswert {
 
-	/** SI-Norm */
-	SI_Norm("1"),
-	/** konventionell */
-	konventionell("2");
+    /** SI-Einheit */
+    SI_Einheit("1"),
+    /** konventionelle Einheit */
+    konventionelle_Einheit("2"),
+    /** dimensionslose Größe */
+    dimensionslose_Groesse("9");
 
-	private final String code;
+    private final String code;
 
-	private EinheitMesswert(String code) {
-		this.code = code;
-	}
+    private EinheitMesswert(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
 }

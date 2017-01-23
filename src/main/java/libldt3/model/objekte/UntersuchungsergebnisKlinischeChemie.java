@@ -77,10 +77,10 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	public static @Getter @Setter class ErgebnisWert {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
-		private String einheit;
 		@Feld(value = "8419", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
 		private EinheitMesswert einheitNorm;
+		@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
+		private String einheit;
 	}
 
 	@Feld(value = "7304", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))

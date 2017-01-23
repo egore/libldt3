@@ -43,10 +43,10 @@ public @Getter @Setter class Normalwert {
 	public static @Getter @Setter class NormalwertGrenze {
 		@SuppressWarnings("unused")
 		private Float value;
-		@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
-		private String sizeUnit;
 		@Feld(value = "8419", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 		private EinheitMesswert einheitDesWertes;
+		@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
+		private String sizeUnit;
 	}
 
 	@Feld(value = "8424", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
