@@ -52,6 +52,8 @@ public @Getter @Setter class Arztidentifikation {
 	private Person person;
 	@Feld(value = "0212", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9))
 	private List<String> lanr;
+	@Feld(value = "0223", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9))
+	private List<String> pseudoLanr;
 	@Feld(value = "0306", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String vertragsId;
 	@Feld(value = "0307", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
