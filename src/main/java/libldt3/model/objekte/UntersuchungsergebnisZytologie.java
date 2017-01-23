@@ -29,6 +29,7 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.Ergebnis2;
+import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
 import lombok.Getter;
@@ -65,7 +66,7 @@ public @Getter @Setter class UntersuchungsergebnisZytologie {
 	@Objekt
 	public static @Getter @Setter class GrenzwertindikatorLaborwert {
 		@SuppressWarnings("unused")
-		private String value;
+		private Grenzwertindikator value;
 		@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 28))
 		private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
 	}

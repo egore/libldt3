@@ -28,6 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EinheitMesswert;
+import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.Normwertspezifikation;
 import lombok.Getter;
 import lombok.Setter;
@@ -67,7 +68,7 @@ public @Getter @Setter class Normalwert {
 	@Feld(value = "7371", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private NormalwertGrenze alarmwertObereGrenze;
 	@Feld(value = "8422", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 2))
-	private String grenzwertindikatorDesLaborwerts;
+	private Grenzwertindikator grenzwertindikatorDesLaborwerts;
 	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_kann)
 	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
 
