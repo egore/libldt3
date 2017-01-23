@@ -29,6 +29,7 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Dokumentenquelle;
 import libldt3.model.regel.kontext.K001;
+import libldt3.model.regel.kontext.K075;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,9 +38,11 @@ import lombok.Setter;
  * Dokumentationen, die in einem digitalen Standardformat vorliegen,
  * transportiert werden.
  */
-@Objekt(value = "0010", kontextregeln = K001.class)
+@Objekt(value = "0010", kontextregeln = {K001.class, K075.class})
 public @Getter @Setter class Anhang {
 
+	@Feld(value = "9970", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 3))
+	private String dokumentTyp;
 	@Feld(value = "6221", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean kennzeichnungFremdbefund;
 	@Feld(value = "6305", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
