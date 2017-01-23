@@ -24,7 +24,7 @@ package libldt3.model.enums;
 /**
  * E065
  */
-public enum ResistenzNormenwerk {
+public enum ResistenzNach {
 
 	CLSI("1"),
 	EUCAST("2"),
@@ -33,7 +33,7 @@ public enum ResistenzNormenwerk {
 
 	private final String code;
 
-	private ResistenzNormenwerk(String code) {
+	private ResistenzNach(String code) {
 		this.code = code;
 	}
 

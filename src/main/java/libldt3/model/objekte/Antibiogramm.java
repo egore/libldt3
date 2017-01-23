@@ -28,7 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.ResistenzInterpretation;
-import libldt3.model.enums.ResistenzNormenwerk;
+import libldt3.model.enums.ResistenzNach;
 import libldt3.model.enums.Sensitivitaet;
 import lombok.Getter;
 import lombok.Setter;
@@ -74,7 +74,7 @@ public @Getter @Setter class Antibiogramm {
 		@SuppressWarnings("unused")
 		private ResistenzInterpretation value;
 		@Feld(value = "7424", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
-		private ResistenzNormenwerk resistenzNachNormenwerk;
+		private ResistenzNach resistenzNach;
 	}
 
 	@Feld(value = "7287", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
