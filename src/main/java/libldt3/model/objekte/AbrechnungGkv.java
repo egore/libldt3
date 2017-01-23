@@ -92,9 +92,9 @@ public @Getter @Setter class AbrechnungGkv {
 	private String sktZusatzangaben;
 	@Feld(value = "4126", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private List<String> sktZusatzbemerkungen;
-	@Feld(value = "4131", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 2))
+	@Feld(value = "4131", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 2))
 	private BesonderePersonengruppe besonderePersonengruppe;
-	@Feld(value = "4132", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 2))
+	@Feld(value = "4132", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 2))
 	private DmpKennzeichnung dmpKennzeichnung;
 	@Feld(value = "4202", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private Boolean unfallfolgen;
