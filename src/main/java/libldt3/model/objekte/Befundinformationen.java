@@ -29,6 +29,7 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Befundtyp;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
+import libldt3.model.regel.kontext.K112;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,7 +37,7 @@ import lombok.Setter;
  * Dieses Objekt bündelt alle Daten zum Befund inklusive aller Kennungen, welche
  * eine eineindeutige Zuordnung von Auftrag und Befund sicherstellen.
  */
-@Objekt("0017")
+@Objekt(value = "0017", kontextregeln = K112.class)
 public @Getter @Setter class Befundinformationen {
 
 	@Objekt
@@ -59,7 +60,7 @@ public @Getter @Setter class Befundinformationen {
 		private Person person;
 	}
 
-	@Feld(value = "8310", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8310", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private OrderNumber orderNumber;
 	@Feld(value = "8311", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String orderId;
