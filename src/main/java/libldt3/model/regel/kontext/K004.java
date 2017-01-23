@@ -30,31 +30,47 @@ import libldt3.model.enums.Abrechnungsinfo;
 
 public class K004 implements Kontextregel {
 
-	@Override
-	public boolean isValid(Object owner) throws IllegalAccessException {
-		Field source = findField(owner, "7303");
-		if (source == null) {
-			return true;
-		}
+    @Override
+    public boolean isValid(Object owner) throws IllegalAccessException {
+        Field source1 = findField(owner, "8401");
+        if (source1 == null) {
+            return true;
+        }
+        Object o1 = source1.get(owner);
+        if (o1 == null) {
+            return true;
+        }
+        if (!(o1 instanceof String)) {
+            return false;
+        }
+        if (!"E".equals(o1) && !"N".equals(o1)) {
+            return true;
+        }
 
-		Object o = source.get(owner);
-		if (o == null) {
-			return true;
-		}
-		if (o instanceof Abrechnungsinfo) {
-			switch ((Abrechnungsinfo) o) {
-				case GkvLaborfacharzt:
-				case GkvLg:
-				case Asv:
-				case GkvLaborfacharztPraeventiv:
-				case GkgLgPraeventiv:
-					Field f = findField(owner, "4241");
-					return containsAnyString(f, owner);
-				default:
-					return true;
-			}
-		}
-		return false;
-	}
+        Field source2 = findField(owner, "7303");
+        if (source2 == null) {
+            return true;
+        }
+
+        Object o2 = source2.get(owner);
+        if (o2 == null) {
+            return true;
+        }
+        if (!(o2 instanceof Abrechnungsinfo)) {
+            return false;
+        }
+
+        switch ((Abrechnungsinfo) o2) {
+            case GkvLaborfacharzt:
+            case GkvLg:
+            case Asv:
+            case GkvLaborfacharztPraeventiv:
+            case GkgLgPraeventiv:
+                Field f = findField(owner, "4241");
+                return containsAnyString(f, owner);
+            default:
+                return true;
+        }
+    }
 
 }
