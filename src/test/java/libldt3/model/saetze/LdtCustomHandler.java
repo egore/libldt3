@@ -3,6 +3,7 @@ package libldt3.model.saetze;
 import de.egore911.fuzz.Fuzzer;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.enums.LdtVersion;
 import libldt3.model.objekte.Untersuchungsabrechnung;
 import libldt3.model.regel.F001;
 import libldt3.model.regel.F004;
@@ -62,7 +63,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                     } else if (klass == F004.class) {
                         return "C12";
                     } else if (klass == F007.class) {
-                        return "LDT3.0.3";
+                        return LdtVersion.LDT3_0_4;
                     } else if (klass == F012.class) {
                         return "X/31/0101/01/[]}";
                     } else if (klass == F020.class) {
