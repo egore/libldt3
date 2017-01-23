@@ -31,6 +31,7 @@ import libldt3.model.enums.DarstellungErgebniswerte;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.regel.kontext.K072;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -41,7 +42,7 @@ import lombok.Setter;
 @Objekt("0060")
 public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 
-	@Objekt
+	@Objekt(/* TODO kontextregeln = K072.class */)
 	public static @Getter @Setter class KatalogReferenz {
 		@SuppressWarnings("unused")
 		private KatalogIdAnforderbareLeistungen value;
@@ -57,7 +58,7 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 		private TestStatus teststatus;
 	}
 
-	@Objekt
+	@Objekt(/* TODO kontextregeln = K072.class */)
 	public static @Getter @Setter class Test {
 		@SuppressWarnings("unused")
 		private String value;

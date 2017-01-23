@@ -25,18 +25,23 @@ package libldt3.model.enums;
  * E007
  */
 public enum TestStatus {
-	Analytik_abgeschlossen("A"), bereits_berichtet("B"), Wert_fehlt("F"), korrigierter_Wert(
-			"K"), Material_fehlt_oder_nicht_verwendbar(
-					"M"), weiterer_Wert_fuer_Funktionsprofil_folgt("P"), Wert_vorlaeufig("V");
+    Analytik_abgeschlossen("A"),
+    bereits_berichtet("B"),
+    Wert_fehlt("F"),
+    korrigierter_Wert("K"),
+    Material_fehlt_oder_nicht_verwendbar("M"),
+    weiterer_Wert_fuer_Funktionsprofil_folgt("P"),
+    Untersuchungsanforderung_storniert("S"),
+    Wert_vorlaeufig("V");
 
-	private final String code;
+    private final String code;
 
-	private TestStatus(String code) {
-		this.code = code;
-	}
+    TestStatus(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
 }
