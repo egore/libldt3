@@ -27,7 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import libldt3.model.enums.DarstellungSemiquantitativerErgebniswerte;
+import libldt3.model.enums.DarstellungErgebniswerte;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
@@ -92,7 +92,7 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	@Feld(value = "8410", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private Test testIdent;
 	@Feld(value = "7306", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
-	private DarstellungSemiquantitativerErgebniswerte darstellungSemiquantitativerErgebniswerte;
+	private DarstellungErgebniswerte darstellungErgebniswerte;
 	@Feld(value = "8420", feldart = Feldart.bedingt_kann)
 	private List<ErgebnisWert> ergebnisWert;
 	@Feld(value = "8423", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))

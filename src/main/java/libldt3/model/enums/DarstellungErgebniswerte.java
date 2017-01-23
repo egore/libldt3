@@ -24,14 +24,14 @@ package libldt3.model.enums;
 /**
  * E058
  */
-public enum DarstellungSemiquantitativerErgebniswerte {
+public enum DarstellungErgebniswerte {
 
 	Numerisch("1"),
 	Text("2");
 
 	private final String code;
 
-	private DarstellungSemiquantitativerErgebniswerte(String code) {
+	private DarstellungErgebniswerte(String code) {
 		this.code = code;
 	}
 
