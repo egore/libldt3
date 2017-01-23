@@ -91,8 +91,6 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	private KatalogReferenz anforderbareLeistungenKatalogId;
 	@Feld(value = "8410", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private Test testIdent;
-	@Feld(value = "7282", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
-	private List<String> ermittelterParameter;
 	@Feld(value = "7306", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
 	private DarstellungSemiquantitativerErgebniswerte darstellungSemiquantitativerErgebniswerte;
 	@Feld(value = "8420", feldart = Feldart.bedingt_kann)
