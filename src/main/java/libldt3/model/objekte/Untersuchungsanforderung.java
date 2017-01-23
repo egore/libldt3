@@ -31,13 +31,14 @@ import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.StatusDringlichkeit;
+import libldt3.model.regel.kontext.K113;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung zusammengefasst.
  */
-@Objekt("0059")
+@Objekt(value = "0059", kontextregeln = K113.class)
 public @Getter @Setter class Untersuchungsanforderung {
 
 	@Objekt
