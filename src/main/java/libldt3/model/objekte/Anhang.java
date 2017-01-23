@@ -53,7 +53,7 @@ public @Getter @Setter class Anhang {
 	private String dateiformat;
 	@Feld(value = "6328", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String dateicodierung;
-	@Feld(value = "6327", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6327", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String beschreibung;
 	@Feld(value = "9908", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
 	private String originaldokumentPfad;
