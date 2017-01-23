@@ -30,6 +30,7 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.StatusDringlichkeit;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
+import libldt3.model.regel.kontext.K114;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,7 +39,7 @@ import lombok.Setter;
  * zum Auftrag zusammengefasst sowie zusätzliche Befundwege und die
  * Dringlichkeit des Auftrags definiert.
  */
-@Objekt("0013")
+@Objekt(value = "0013", kontextregeln = K114.class)
 public @Getter @Setter class Auftragsinformation {
 
 	@Objekt
