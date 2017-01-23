@@ -21,15 +21,21 @@
  */
 package libldt3.model.regel.kontext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Die Auftragsnummer des Einsenders muss vom Labor im Befund nur dann zurückübermittelt werden, wenn der Einsender
  * diese bei der Beauftragung übermittelt hat.
  */
 public class K112 implements Kontextregel {
 
+    private static final Logger LOG = LoggerFactory.getLogger(K112.class);
+
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
         // Currently impossible to implement as the objects don't know anything about the requests and diagnosis
+        LOG.error("Kontext rule K112 not yet supported");
         return true;
     }
 
