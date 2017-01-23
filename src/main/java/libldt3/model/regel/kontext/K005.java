@@ -59,7 +59,7 @@ public class K005 implements Kontextregel {
 
 		Befundtyp befundtyp = (Befundtyp) field.get(befund.getBefundinformationen());
 
-		if (befundtyp != Befundtyp.Endbefund || befundtyp != Befundtyp.Nachforderung) {
+		if (befundtyp != Befundtyp.Endbefund || befundtyp != Befundtyp.Nachforderungsendbefund) {
 			Map<Object, List<Field>> findFieldsRecursive2 = findFieldsRecursive(owner, fieldtypes);
 
 			for (Map.Entry<Object, List<Field>> entry : findFieldsRecursive2.entrySet()) {
