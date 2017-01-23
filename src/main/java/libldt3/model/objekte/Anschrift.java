@@ -28,6 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Adresstyp;
+import libldt3.model.regel.kontext.K017;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,27 +36,28 @@ import lombok.Setter;
  * Das Objekt Anschrift definiert die Adresse. Dabei kann es sich entweder um
  * ein Postfach oder um eine physische Adresse handeln.
  */
-@Objekt("0007")
+@Objekt(value = "0007", kontextregeln = K017.class)
 public @Getter @Setter class Anschrift {
 
-	@Feld(value = "3107", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 46))
+	@Feld(value = "3112", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 10))
+	private String plz;
+	@Feld(value = "3113", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 40))
+	private String ort;
+	@Feld(value = "3107", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 46))
 	private String strasse;
-	@Feld(value = "3109", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 9))
+	@Feld(value = "3109", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 9))
 	private String hausnummer;
 	@Feld(value = "3115", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 40))
 	private String anschriftenzusatz;
-	@Feld(value = "3112", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 10))
-	private String plz;
-	@Feld(value = "3113", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 40))
-	private String ort;
 	@Feld(value = "3114", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 3))
 	private String wohnsitzlaendercode;
-	@Feld(value = "3123", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 8))
-	private String postfach;
-	@Feld(value = "3121", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 10))
+
+	@Feld(value = "3121", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 10))
 	private String postfachPlz;
 	@Feld(value = "3122", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 40))
 	private String postfachOrt;
+	@Feld(value = "3123", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 8))
+	private String postfach;
 	@Feld(value = "3124", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 3))
 	private String postfachWohnsitzlaendercode;
 	@Feld(value = "1202", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
