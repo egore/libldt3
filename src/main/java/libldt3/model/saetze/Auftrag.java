@@ -31,22 +31,16 @@ import lombok.Setter;
 @Datenpaket(Satzart.Auftrag)
 public @Getter @Setter class Auftrag implements Satz {
 
-	@Objekt
-	public static class PatientErweitert {
-		@SuppressWarnings("unused")
-		private Patient value;
-		@Feld(value = "8169", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 19))
-		private Koerperkenngroessen koerperkenngroessen;
-		@Feld(value = "8150", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 15))
-		private Schwangerschaft schwangerschaft;
-		@Feld(value = "8140", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 12))
-		private Mutterschaft mutterschaft;
-	}
-
 	@Feld(value = "8122", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 23))
 	private Einsenderidentifikation einsenderidentifikation;
 	@Feld(value = "8145", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 7))
-	private PatientErweitert patient;
+	private Patient patient;
+	@Feld(value = "8169", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 19))
+	private Koerperkenngroessen koerperkenngroessen;
+	@Feld(value = "8150", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 15))
+	private Schwangerschaft schwangerschaft;
+	@Feld(value = "8140", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 12))
+	private Mutterschaft mutterschaft;
 	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 14))
 	private Tier tier;
 	@Feld(value = "8113", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 19))
