@@ -30,6 +30,7 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.Normwertspezifikation;
+import libldt3.model.regel.kontext.K002;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,7 +40,7 @@ import lombok.Setter;
 @Objekt("0042")
 public @Getter @Setter class Normalwert {
 
-	@Objekt
+	@Objekt(kontextregeln = K002.class)
 	public static @Getter @Setter class NormalwertGrenze {
 		@SuppressWarnings("unused")
 		private Float value;
