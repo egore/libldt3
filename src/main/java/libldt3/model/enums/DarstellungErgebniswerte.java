@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  Christoph Brill <egore911@gmail.com>
+ * Copyright 2016-2017  Christoph Brill <egore911@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,17 +26,31 @@ package libldt3.model.enums;
  */
 public enum DarstellungErgebniswerte {
 
-	Numerisch("1"),
-	Text("2");
+    /** numerisch (exponentielle Darstellung möglich) */
+    Numerisch("01"),
+    /** numerisch mit Messwertuntergrenze */
+    Numerisch_Untergrenze("02"),
+    /** numerisch mit Messwertobergrenze */
+    Numerisch_Obergrenze("03"),
+    /** alpha-numerisch */
+    Alphanumerisch("04"),
+    /** Titer */
+    Titer("05"),
+    /** Titer mit Untergrenze */
+    Titer_Untergrenze("06"),
+    /** Titer mit Obergrenze */
+    Titer_Obergrenze("07"),
+    /** Sonstige */
+    Sonstige("99");
 
-	private final String code;
+    private final String code;
 
-	private DarstellungErgebniswerte(String code) {
-		this.code = code;
-	}
+    DarstellungErgebniswerte(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
 }
