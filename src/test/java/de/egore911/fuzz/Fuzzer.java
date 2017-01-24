@@ -143,7 +143,8 @@ public class Fuzzer {
         }
     }
 
-    private Object randomForType(Type type, String packageName, int depth) throws IllegalAccessException, InstantiationException {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	private Object randomForType(Type type, String packageName, int depth) throws IllegalAccessException, InstantiationException {
         if (type.equals(int.class) || type.equals(Integer.class)) {
             return randomInt();
         } else if (type.equals(long.class) ||type.equals(Long.class)) {
