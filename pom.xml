@@ -15,6 +15,13 @@
 	<description>Java reader and writer for LDT 3.0</description>
 	<url>https://github.com/egore/libldt3</url>
 
+	<distributionManagement>
+		<repository>
+			<id>repo.christophbrill.de</id>
+			<url>ftp://www.christophbrill.de/repository</url>
+		</repository>
+	</distributionManagement>
+
 	<licenses>
 		<license>
 			<name>MIT License</name>
