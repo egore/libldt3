@@ -1,8 +1,17 @@
-language:
-  java
-
+language: java
+sudo: false
+install: true
+addons:
+  sonarcloud:
+    organization: "egore-github"
+    token: $SONAR_TOKEN
 jdk:
   - oraclejdk8
-
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
 after_success:
   - bash <(curl -s https://codecov.io/bash)
