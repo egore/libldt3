@@ -286,7 +286,7 @@ public class LdtReader {
 						}
 					}
 
-					validateFieldPayload(field, payload, annotation);
+					validateFieldPayload(field, payload);
 
 					// Convert the value to its target type ...
 					Object value = convertType(field, field.getType(), payload, stack);
@@ -345,7 +345,7 @@ public class LdtReader {
 		}
 	}
 
-	private void validateFieldPayload(Field field, String payload, Feld annotation) throws IllegalAccessException, InstantiationException {
+	private void validateFieldPayload(Field field, String payload) throws IllegalAccessException, InstantiationException {
 		outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
 
 			if (regelsatz.laenge() >= 0) {
