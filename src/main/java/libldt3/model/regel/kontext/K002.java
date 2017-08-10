@@ -45,7 +45,7 @@ public class K002 implements Kontextregel {
     public boolean isValid(Object owner) throws IllegalAccessException {
 
         Map<String, Field> fields = findFields(owner, FIELDTYPES);
-        if (fields.size() != 2) {
+        if (fields.size() != FIELDTYPES.size()) {
             LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
             return false;
         }
@@ -55,11 +55,17 @@ public class K002 implements Kontextregel {
             return true;
         }
 
+        // Wenn Feldinhalt von FK 8419 = 1 oder 2, muss FK 8421 vorkommen.
         if (einheitMesswert == EinheitMesswert.SI_Einheit || einheitMesswert == EinheitMesswert.konventionelle_Einheit) {
             return containsAnyString(fields.get("8421"), owner);
-        } else {
+        }
+
+        // Wenn Feldinhalt von FK 8419 = 9, darf FK 8421 nicht vorkommen.
+        if (einheitMesswert == EinheitMesswert.dimensionslose_Groesse) {
             return !containsAnyString(fields.get("8421"), owner);
         }
+
+        return true;
     }
 
 }
