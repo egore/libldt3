@@ -32,6 +32,7 @@ import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.GrenzwertindikatorErweitert;
 import libldt3.model.enums.NachkontrollGrund;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.regel.kontext.K076;
 import libldt3.model.regel.kontext.K099;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,7 +41,7 @@ import lombok.Setter;
  * In diesem Objekt werden die Ergebnisse aus dem Bereich Zytologie
  * Krebsvorsorge transportiert. Die Inhalte richten sich nach dem Muster 39b.
  */
-@Objekt("0062")
+@Objekt(value = "0062", kontextregeln = K076.class)
 public @Getter @Setter class UntersuchungsergebnisZytologieKrebsvorsorge {
 
 	@Objekt(kontextregeln = K099.class)

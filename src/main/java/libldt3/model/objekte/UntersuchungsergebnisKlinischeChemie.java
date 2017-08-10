@@ -42,7 +42,7 @@ import lombok.Setter;
 @Objekt("0060")
 public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 
-	@Objekt(/* TODO kontextregeln = K072.class */)
+	@Objekt(/* TODO kontextregeln = K072.class, K076.class */)
 	public static @Getter @Setter class KatalogReferenz {
 		@SuppressWarnings("unused")
 		private KatalogIdAnforderbareLeistungen value;
@@ -63,7 +63,7 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 		private TestStatus teststatus;
 	}
 
-	@Objekt(/* TODO kontextregeln = K072.class */)
+	@Objekt(/* TODO kontextregeln = K072.class, K076.class */)
 	public static @Getter @Setter class Test {
 		@SuppressWarnings("unused")
 		private String value;

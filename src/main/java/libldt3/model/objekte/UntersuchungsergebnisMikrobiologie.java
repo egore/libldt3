@@ -34,6 +34,7 @@ import libldt3.model.enums.ResistenzMethode;
 import libldt3.model.enums.TestStatus;
 import libldt3.model.enums.Wachstum;
 import libldt3.model.regel.kontext.K073;
+import libldt3.model.regel.kontext.K076;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,7 +49,7 @@ import lombok.Setter;
  * Erregermenge wird als semiquantitatives Ergebnis abhängig des
  * Untersuchungsmaterials dargestellt.
  */
-@Objekt(value = "0061", kontextregeln = K073.class)
+@Objekt(value = "0061", kontextregeln = { K073.class, K076.class})
 public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 
 	@Objekt

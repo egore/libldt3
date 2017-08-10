@@ -32,13 +32,14 @@ import libldt3.model.enums.Ergebnis2;
 import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.regel.kontext.K076;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie transportiert werden.
  */
-@Objekt("0063")
+@Objekt(value = "0063", kontextregeln = K076.class)
 public @Getter @Setter class UntersuchungsergebnisZytologie {
 
 	@Objekt

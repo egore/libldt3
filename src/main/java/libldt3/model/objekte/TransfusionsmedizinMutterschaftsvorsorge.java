@@ -31,10 +31,11 @@ import libldt3.model.enums.AnforderungNothilfepass;
 import libldt3.model.enums.Antikoerpersuchtest;
 import libldt3.model.enums.DirekterCoombstest;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.regel.kontext.K076;
 import lombok.Getter;
 import lombok.Setter;
 
-@Objekt("0055")
+@Objekt(value = "0055", kontextregeln = K076.class)
 public @Getter @Setter class TransfusionsmedizinMutterschaftsvorsorge {
 
 	@Feld(value = "7304", feldart = Feldart.muss)
