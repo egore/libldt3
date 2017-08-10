@@ -34,6 +34,9 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Wenn FK 8428 oder FK 8430 oder FK 8429 vorhanden ist, darf FK 8431 vorhanden sein.
+ */
 public class K006 implements Kontextregel {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(K006.class);
