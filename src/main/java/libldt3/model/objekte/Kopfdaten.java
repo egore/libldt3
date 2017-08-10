@@ -34,11 +34,14 @@ import lombok.Setter;
 @Objekt("0032")
 public @Getter @Setter class Kopfdaten {
 
-	@Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 16))
+	@Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
+	@Regelsatz(laenge = 16)
 	private SendendesSystem sendendesSystem;
-	@Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 30))
+	@Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann)
+	@Regelsatz(laenge = 30)
 	private Timestamp timestampErstellungDatensatz;
-	@Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 24))
+	@Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann)
+	@Regelsatz(laenge = 24)
 	private Organisation softwareverantwortlicher;
 
 }

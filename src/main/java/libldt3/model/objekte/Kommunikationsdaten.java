@@ -41,21 +41,28 @@ public @Getter @Setter class Kommunikationsdaten {
 	public static @Getter @Setter class ElektronischePostadresse {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "7340", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+		@Feld(value = "7340", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 		private String spezifizierung;
 	}
 
-	@Feld(value = "7330", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7330", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> phone;
-	@Feld(value = "7331", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7331", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> mobile;
-	@Feld(value = "7332", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7332", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<ElektronischePostadresse> elektronischePostadresse;
-	@Feld(value = "7333", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7333", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> fax;
-	@Feld(value = "7335", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7335", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> email;
-	@Feld(value = "7334", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7334", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> website;
 
 }

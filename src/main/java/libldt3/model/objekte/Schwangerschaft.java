@@ -39,11 +39,14 @@ import lombok.Setter;
 @Objekt("0050")
 public @Getter @Setter class Schwangerschaft {
 
-	@Feld(value = "8511", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F005.class, laenge = 3))
+	@Feld(value = "8511", feldart = Feldart.kann)
+	@Regelsatz(value = F005.class, laenge = 3)
 	private String schwangerschaftsdauer;
-	@Feld(value = "8512", feldart = Feldart.muss, regelsaetze = @Regelsatz(value = F018.class, laenge = 8))
+	@Feld(value = "8512", feldart = Feldart.muss)
+	@Regelsatz(value = F018.class, laenge = 8)
 	private LocalDate ersterTagLetzterZyklus;
-	@Feld(value = "3471", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
+	@Feld(value = "3471", feldart = Feldart.bedingt_kann)
+	@Regelsatz(value = F002.class, laenge = 8)
 	private LocalDate entbindungstermin;
 
 }

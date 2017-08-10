@@ -36,9 +36,11 @@ import lombok.Setter;
 @Objekt("0068")
 public @Getter @Setter class Fliesstext {
 
-	@Feld(value = "3564", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "3564", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> text;
-	@Feld(value = "6329", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6329", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> base64text;
 
 }

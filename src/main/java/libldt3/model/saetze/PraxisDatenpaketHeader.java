@@ -40,11 +40,14 @@ import lombok.Setter;
 @Datenpaket(Satzart.PraxisDatenpaketHeader)
 public @Getter @Setter class PraxisDatenpaketHeader implements Satz {
 
-	@Feld(value = "8132", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 9))
+	@Feld(value = "8132", feldart = Feldart.muss)
+	@Regelsatz(laenge = 9)
 	private Kopfdaten kopfdaten;
-	@Feld(value = "7265", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7265", feldart = Feldart.muss)
+	@Regelsatz(laenge = 1)
 	private DatensatzAbsender absender;
-	@Feld(value = "8122", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 23))
+	@Feld(value = "8122", feldart = Feldart.muss)
+	@Regelsatz(laenge = 23)
 	private List<Einsenderidentifikation> einsenderidentifikation;
 
 }

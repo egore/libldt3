@@ -40,17 +40,23 @@ import lombok.Setter;
 @Objekt("0019")
 public @Getter @Setter class Betriebsstaette {
 
-	@Feld(value = "0204", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "0204", feldart = Feldart.muss)
+	@Regelsatz(laenge = 1)
 	private List<Betriebsstaettenstatus> status;
-	@Feld(value = "0203", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "0203", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private String bsnrBezeichnung;
-	@Feld(value = "0200", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "0200", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private String betriebsstaettenId;
-	@Feld(value = "0201", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F010.class, F021.class}, laenge = 9))
+	@Feld(value = "0201", feldart = Feldart.bedingt_muss)
+	@Regelsatz(value = {F010.class, F021.class}, laenge = 9)
 	private String bsnr;
-	@Feld(value = "0213", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 9))
+	@Feld(value = "0213", feldart = Feldart.kann)
+	@Regelsatz(laenge = 9)
 	private String institutskennzeichen;
-	@Feld(value = "8143", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
+	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 12)
 	private Organisation organisation;
 
 }

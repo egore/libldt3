@@ -39,13 +39,17 @@ import lombok.Setter;
 @Objekt("0054")
 public @Getter @Setter class Timestamp {
 
-	@Feld(value = "7278", feldart = Feldart.muss, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
+	@Feld(value = "7278", feldart = Feldart.muss)
+	@Regelsatz(value = F002.class, laenge = 8)
 	private LocalDate datum;
-	@Feld(value = "7279", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F016.class, minLaenge = 6, maxLaenge = 9))
+	@Feld(value = "7279", feldart = Feldart.kann)
+	@Regelsatz(value = F016.class, minLaenge = 6, maxLaenge = 9)
 	private LocalTime uhrzeit;
-	@Feld(value = "7272", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7272", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String freitext;
-	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 20))
+	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann)
+	@Regelsatz(laenge = 20)
 	private Person person;
 
 }

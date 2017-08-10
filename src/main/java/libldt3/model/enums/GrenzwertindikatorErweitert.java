@@ -12,6 +12,7 @@ import lombok.Setter;
 public @Getter  @Setter  class GrenzwertindikatorErweitert {
     @SuppressWarnings("unused")
     private Grenzwertindikator value;
-    @Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 28))
+    @Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 28)
     private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
 }

@@ -44,11 +44,14 @@ public @Getter @Setter class Befundinformationen {
 	public static @Getter @Setter class OrderNumber {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "8313", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+		@Feld(value = "8313", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 60)
 		private List<String> nachforderungId;
-		@Feld(value = "8214", name = "Timestamp_Auftragserteilung", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 27))
+		@Feld(value = "8214", name = "Timestamp_Auftragserteilung", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 27)
 		private Timestamp orderRequestTimestamp;
-		@Feld(value = "8215", name = "Timestamp_Auftragseingang", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 25))
+		@Feld(value = "8215", name = "Timestamp_Auftragseingang", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 25)
 		private Timestamp timestampAuftragseingang;
 	}
 	
@@ -56,47 +59,67 @@ public @Getter @Setter class Befundinformationen {
 	public static @Getter @Setter class Befundweg {
 		@SuppressWarnings("unused")
 		private ZusaetzlicherBefundweg value;
-		@Feld(value = "8147", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 6))
+		@Feld(value = "8147", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 6)
 		private Person person;
 	}
 
-	@Feld(value = "8310", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8310", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private OrderNumber orderNumber;
-	@Feld(value = "8311", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8311", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private String orderId;
-	@Feld(value = "7305", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7305", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private String findingId;
-	@Feld(value = "8401", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "8401", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Befundtyp type;
-	@Feld(value = "0080", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "0080", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String fallakteId;
-	@Feld(value = "0081", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "0081", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> fallakteBezeichnung;
-	@Feld(value = "7258", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7258", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String katalogId;
-	@Feld(value = "7251", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7251", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 60)
 	private String katalogBezeichnung;
-	@Feld(value = "4229", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 5))
+	@Feld(value = "4229", feldart = Feldart.kann)
+	@Regelsatz(laenge = 5)
 	private List<String> ausnahmeindikation;
-	@Feld(value = "7308", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(minLaenge = 1, maxLaenge = 2))
+	@Feld(value = "7308", feldart = Feldart.bedingt_muss)
+	@Regelsatz(minLaenge = 1, maxLaenge = 2)
 	private Integer anzahlLaborergebnisberichte;
-	@Feld(value = "8118", name = "Abweichender_Befundweg", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 22))
+	@Feld(value = "8118", name = "Abweichender_Befundweg", feldart = Feldart.kann)
+	@Regelsatz(laenge = 22)
 	private Kommunikationsdaten abweichenderBefundweg;
-	@Feld(value = "8611", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "8611", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 1)
 	private List<Befundweg> zusaetzlicherBefundweg;
-	@Feld(value = "7320", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7320", feldart = Feldart.kann)
+	@Regelsatz(laenge = 1)
 	private Boolean recallEmpfohlen;
-	@Feld(value = "8154", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 9))
+	@Feld(value = "8154", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 9)
 	private Timestamp recallEmpfohlenTimestamp;
-	@Feld(value = "8216", name = "Timestamp_Befunderstellung", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8216", name = "Timestamp_Befunderstellung", feldart = Feldart.muss)
+	@Regelsatz(laenge = 26)
 	private Timestamp timestampBefunderstellung;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Regelsatz(laenge = 26)
 	private List<Fliesstext> zusaetzlicheInformationen;
-	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
+	@Feld(value = "8110", feldart = Feldart.kann)
+	@Regelsatz(laenge = 6)
 	private List<Anhang> anhang;
-	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 28))
+	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 28)
 	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
-	@Feld(value = "8141", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 13))
+	@Feld(value = "8141", feldart = Feldart.kann)
+	@Regelsatz(laenge = 13)
 	private Namenskennung namenskennung;
 
 }

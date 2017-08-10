@@ -45,21 +45,28 @@ public @Getter @Setter class Arztidentifikation {
 	public static @Getter @Setter class ArztId {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "0308", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+		@Feld(value = "0308", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 		private ArztTypId arztTypId;
 	}
 
-	@Feld(value = "8147", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 6))
+	@Feld(value = "8147", feldart = Feldart.muss)
+	@Regelsatz(laenge = 6)
 	private Person person;
-	@Feld(value = "0212", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9))
+	@Feld(value = "0212", feldart = Feldart.bedingt_muss)
+	@Regelsatz(value = {F011.class, F022.class}, laenge = 9)
 	private List<String> lanr;
-	@Feld(value = "0223", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = {F011.class, F022.class}, laenge = 9))
+	@Feld(value = "0223", feldart = Feldart.bedingt_muss)
+	@Regelsatz(value = {F011.class, F022.class}, laenge = 9)
 	private List<String> pseudoLanr;
-	@Feld(value = "0306", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "0306", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String vertragsId;
-	@Feld(value = "0307", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "0307", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private List<ArztId> arztIds;
-	@Feld(value = "0222", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F014.class, laenge = 9))
+	@Feld(value = "0222", feldart = Feldart.bedingt_muss)
+	@Regelsatz(value = F014.class, laenge = 9)
 	private String asvTeamnummer;
 
 }

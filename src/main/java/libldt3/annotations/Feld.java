@@ -54,8 +54,4 @@ public @interface Feld {
 	 */
 	String name() default "";
 
-	/**
-	 * @return List of rulesets to be applied using a boolean 'AND'
-	 */
-	Regelsatz[] regelsaetze() default {};
 }

@@ -37,25 +37,35 @@ import lombok.Setter;
 @Objekt("0070")
 public @Getter @Setter class Medikament {
 
-	@Feld(value = "8243", name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 40))
+	@Feld(value = "8243", name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", feldart = Feldart.kann)
+	@Regelsatz(laenge = 40)
 	private Timestamp timestampZeitpunktMedikamenteneinnahme;
-	@Feld(value = "6208", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6208", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private String handelsname;
-	@Feld(value = "6207", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6207", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String rezeptur;
-	@Feld(value = "8171", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 9))
+	@Feld(value = "8171", feldart = Feldart.kann)
+	@Regelsatz(laenge = 9)
 	private List<Wirkstoff> wirkstoff;
-	@Feld(value = "8523", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8523", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String wirkstoffmenge;
-	@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
+	@Feld(value = "8421", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 20)
 	private String einheit;
-	@Feld(value = "3689", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "3689", feldart = Feldart.kann)
+	@Regelsatz(laenge = 1)
 	private List<MedikationsStatus> status;
-	@Feld(value = "8226", name = "Timestamp_Gueltig_ab", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 20))
+	@Feld(value = "8226", name = "Timestamp_Gueltig_ab", feldart = Feldart.kann)
+	@Regelsatz(laenge = 20)
 	private Timestamp timestampGueltigAb;
-	@Feld(value = "8227", name = "Timestamp_Gueltig_bis", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 21))
+	@Feld(value = "8227", name = "Timestamp_Gueltig_bis", feldart = Feldart.kann)
+	@Regelsatz(laenge = 21)
 	private Timestamp timestampGueltigBis;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 26)
 	private Fliesstext zusaetzlicheInformationen;
 
 }

@@ -33,6 +33,7 @@ import java.util.List;
 
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.regel.Regel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -172,7 +173,7 @@ public class LdtWriter {
 		}
 		if (object instanceof String) {
 			String value = (String) object;
-			for (Regelsatz regelsatz : feld.regelsaetze()) {
+			for (Regelsatz regelsatz : field.getAnnotationsByType(Regelsatz.class)) {
 				if (regelsatz.maxLaenge() >= 0) {
 					if (value.length() > regelsatz.maxLaenge()) {
 						if (mode == Mode.STRICT) {

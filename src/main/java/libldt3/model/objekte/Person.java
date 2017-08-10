@@ -42,35 +42,50 @@ import lombok.Setter;
 @Objekt("0047")
 public @Getter @Setter class Person {
 
-	@Feld(value = "7420", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 2))
+	@Feld(value = "7420", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 2)
 	private StatusPerson status;
-	@Feld(value = "3100", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 20))
+	@Feld(value = "3100", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 20)
 	private String namenszusatz;
-	@Feld(value = "3120", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 20))
+	@Feld(value = "3120", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 20)
 	private String vorsatzwort;
-	@Feld(value = "3101", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 45))
+	@Feld(value = "3101", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 45)
 	private String nachname;
-	@Feld(value = "3102", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 45))
+	@Feld(value = "3102", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 45)
 	private List<String> vorname;
-	@Feld(value = "3103", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F003.class, laenge = 8))
+	@Feld(value = "3103", feldart = Feldart.bedingt_muss)
+	@Regelsatz(value = F003.class, laenge = 8)
 	private LocalDate geburtsdatum;
-	@Feld(value = "3104", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 20))
+	@Feld(value = "3104", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 20)
 	private String titel;
-	@Feld(value = "3110", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "3110", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Geschlecht geschlecht;
-	@Feld(value = "3628", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "3628", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String muttersprache;
-	@Feld(value = "8990", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8990", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String namenskuerzelNamenszeichen;
-	@Feld(value = "8228", name = "Wohnanschrift", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 13))
+	@Feld(value = "8228", name = "Wohnanschrift", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 13)
 	private Anschrift wohnanschrift;
-	@Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 23))
+	@Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann)
+	@Regelsatz(laenge = 23)
 	private Anschrift anschriftArbeitsstelle;
-	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 18))
+	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
+	@Regelsatz(laenge = 18)
 	private Anschrift rechnungsanschrift;
-	@Feld(value = "8232", name = "Private_Kommunikationsdaten", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 27))
+	@Feld(value = "8232", name = "Private_Kommunikationsdaten", feldart = Feldart.kann)
+	@Regelsatz(laenge = 27)
 	private Kommunikationsdaten privateKommunikationsdaten;
-	@Feld(value = "8233", name = "Geschaeftliche_Kommunikationsdaten", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 34))
+	@Feld(value = "8233", name = "Geschaeftliche_Kommunikationsdaten", feldart = Feldart.kann)
+	@Regelsatz(laenge = 34)
 	private Kommunikationsdaten geschaeftlicheKommunikationsdaten;
 
 }

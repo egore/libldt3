@@ -42,15 +42,20 @@ import lombok.Setter;
 @Objekt("0003")
 public @Getter @Setter class AbrechnungPkv {
 
-	@Feld(value = "7362", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7362", feldart = Feldart.muss)
+	@Regelsatz(laenge = 1)
 	private AbrechnungsartPkv abrechnungsartPkv;
-	@Feld(value = "4134", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 28))
+	@Feld(value = "4134", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 28)
 	private List<String> kostentraegerName;
-	@Feld(value = "4121", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "4121", feldart = Feldart.muss)
+	@Regelsatz(laenge = 1)
 	private Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "4202", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "4202", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 1)
 	private Boolean unfallFolgen;
-	@Feld(value = "8148", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
+	@Feld(value = "8148", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 12)
 	private Rechnungsempfaenger rechnungsempfaenger;
 
 }

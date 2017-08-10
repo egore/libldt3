@@ -37,13 +37,17 @@ import lombok.Setter;
 @Objekt("0036")
 public @Getter @Setter class Laborkennung {
 
-	@Feld(value = "8239", name = "Laborbezeichnung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 16))
+	@Feld(value = "8239", name = "Laborbezeichnung", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 16)
 	private Organisation laborbezeichnung;
-	@Feld(value = "7352", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7352", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> katalogUrl;
-	@Feld(value = "8324", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8324", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String laborStandortId;
-	@Feld(value = "7266", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7266", feldart = Feldart.muss)
+	@Regelsatz(laenge = 1)
 	private Laborart laborart;
 
 }

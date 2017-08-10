@@ -47,73 +47,106 @@ public @Getter @Setter class UntersuchungsergebnisZytologieKrebsvorsorge {
 	public static @Getter @Setter class TestIdent {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "8411", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+		@Feld(value = "8411", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 		private String testbezeichnung;
-		@Feld(value = "8422", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 2))
+		@Feld(value = "8422", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 2)
 		private List<GrenzwertindikatorErweitert> grenzwertindikator;
-		@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 12))
+		@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 12)
 		private Fliesstext ergebnistextVerweis;
 	}
 
-	@Feld(value = "7304", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7304", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private String ergebnisId;
-	@Feld(value = "7364", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7364", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> probengefaessIdent;
-	@Feld(value = "8410", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8410", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private TestIdent testIdent;
-	@Feld(value = "8418", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "8418", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private TestStatus teststatus;
-	@Feld(value = "7368", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7368", feldart = Feldart.kann)
+	@Regelsatz(laenge = 1)
 	private Boolean zellmaterialNichtVerwertbar;
-	@Feld(value = "7405", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7405", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private EndozervikaleZellen endozervikaleZellen;
-	@Feld(value = "7406", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 10))
+	@Feld(value = "7406", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 10)
 	private String proliferationsgrad;
-	@Feld(value = "7407", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7407", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Boolean doederleinflora;
-	@Feld(value = "7408", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7408", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Boolean mischflora;
-	@Feld(value = "7409", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7409", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Boolean kokkenflora;
-	@Feld(value = "7410", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7410", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Boolean trichomonaden;
-	@Feld(value = "7411", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7411", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Boolean candida;
-	@Feld(value = "7412", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7412", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Boolean gardnerella;
-	@Feld(value = "7414", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 5))
+	@Feld(value = "7414", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 5)
 	private String gruppe;
-	@Feld(value = "7413", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 4))
+	@Feld(value = "7413", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 4)
 	private String codierungGruppe;
-	@Feld(value = "7415", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7415", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private Boolean zytologischeKontrolle;
-	@Feld(value = "7416", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7416", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private NachkontrollGrund nachkontrollGrund;
-	@Feld(value = "7417", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7417", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 1)
 	private List<Boolean> histologischeKlaerung;
-	@Feld(value = "8237", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 10 /* XXX 12 according to spec */))
+	@Feld(value = "8237", feldart = Feldart.kann)
+	@Regelsatz(laenge = 10 /* XXX 12 according to spec */)
 	private Fliesstext ergebnistext;
-	@Feld(value = "8134", name = "Krebsfrueherkennung_Frauen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8134", name = "Krebsfrueherkennung_Frauen", feldart = Feldart.kann)
+	@Regelsatz(laenge = 26)
 	private KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
-	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 28))
+	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.kann)
+	@Regelsatz(laenge = 28)
 	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
-	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 36))
+	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann)
+	@Regelsatz(laenge = 36)
 	private Timestamp timestampEingangserfassungMaterial;
-	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 25))
+	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann)
+	@Regelsatz(laenge = 25)
 	private Timestamp timestampBeginnAnalytik;
-	@Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 28))
+	@Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann)
+	@Regelsatz(laenge = 28)
 	private Timestamp timestampErgebniserstellung;
-	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 22))
+	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann)
+	@Regelsatz(laenge = 22)
 	private Timestamp timestampQmErfassung;
-	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 17))
+	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 17)
 	private Timestamp timestampMessung;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Regelsatz(laenge = 26)
 	private List<Fliesstext> zusaetzlicheInformationen;
-	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
+	@Feld(value = "8110", feldart = Feldart.kann)
+	@Regelsatz(laenge = 6)
 	private List<Anhang> anhang;
-	@Feld(value = "8141", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 13))
+	@Feld(value = "8141", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 13)
 	private Namenskennung namenskennung;
-	@Feld(value = "8158", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 23))
+	@Feld(value = "8158", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 23)
 	private Untersuchungsabrechnung untersuchungsabrechnung;
 
 }

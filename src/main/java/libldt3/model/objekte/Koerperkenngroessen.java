@@ -38,9 +38,11 @@ public @Getter @Setter class Koerperkenngroessen {
 	public static @Getter @Setter class Messwert {
 		@SuppressWarnings("unused")
 		private Float value;
-		@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
+		@Feld(value = "8421", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 20)
 		private String einheit;
-		@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(laenge = 17))
+		@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
+	@Regelsatz(laenge = 17)
 		private Timestamp timestamp;
 	}
 	

@@ -35,17 +35,23 @@ import lombok.Setter;
 @Objekt("0071")
 public @Getter @Setter class Wirkstoff {
 
-	@Feld(value = "6212", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6212", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private String arzneimittelwirkstoff;
-	@Feld(value = "6206", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F020.class, laenge = 8))
+	@Feld(value = "6206", feldart = Feldart.bedingt_muss)
+	@Regelsatz(value = F020.class, laenge = 8)
 	private String pzn;
-	@Feld(value = "6224", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6224", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 60)
 	private String wirkstoffCode;
-	@Feld(value = "6214", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6214", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private String wirkstoffKlassifikation;
-	@Feld(value = "8523", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8523", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 60)
 	private String wirkstoffmenge;
-	@Feld(value = "8421", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 20))
+	@Feld(value = "8421", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 20)
 	private String mengeneinheit;
 
 }

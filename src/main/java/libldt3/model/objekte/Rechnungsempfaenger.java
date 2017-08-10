@@ -36,19 +36,26 @@ import lombok.Setter;
 @Objekt(value = "0048", name = "RgEmpfaenger")
 public @Getter @Setter class Rechnungsempfaenger {
 
-	@Feld(value = "8310", feldart = Feldart.muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8310", feldart = Feldart.muss)
+	@Regelsatz(maxLaenge = 60)
 	private String auftragsnummerEinsender;
-	@Feld(value = "7421", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
+	@Feld(value = "7421", feldart = Feldart.muss)
+	@Regelsatz(laenge = 2)
 	private StatusRechnungsempfaenger statusRechnungsempfaenger;
-	@Feld(value = "0600", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "0600", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private String nameEinrichtungAuftraggeber;
-	@Feld(value = "7328", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 10))
+	@Feld(value = "7328", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 10)
 	private String zusaetzlicheNamenszeile;
-	@Feld(value = "8108", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 8))
+	@Feld(value = "8108", feldart = Feldart.muss)
+	@Regelsatz(laenge = 8)
 	private Adressat adressat;
-	@Feld(value = "8610", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "8610", feldart = Feldart.kann)
+	@Regelsatz(laenge = 1)
 	private Privattarif privattarif;
-	@Feld(value = "8608", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8608", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String kommentarAktenzeichen;
 
 }

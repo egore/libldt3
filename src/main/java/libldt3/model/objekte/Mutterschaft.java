@@ -34,11 +34,14 @@ import lombok.Setter;
 @Objekt("0040")
 public @Getter @Setter class Mutterschaft {
 
-	@Feld(value = "3668", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
+	@Feld(value = "3668", feldart = Feldart.muss)
+	@Regelsatz(laenge = 2)
 	private Integer anzahlSchwangerschaften;
-	@Feld(value = "3664", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 2))
+	@Feld(value = "3664", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 2)
 	private Integer anzahlGeburten;
-	@Feld(value = "3666", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 2))
+	@Feld(value = "3666", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 2)
 	private Integer anzahlKinder;
 
 }

@@ -346,7 +346,7 @@ public class LdtReader {
 	}
 
 	private void validateFieldPayload(Field field, String payload) throws IllegalAccessException, InstantiationException {
-		outer: for (Regelsatz regelsatz : annotation.regelsaetze()) {
+		outer: for (Regelsatz regelsatz : field.getAnnotationsByType(Regelsatz.class)) {
 
 			if (regelsatz.laenge() >= 0) {
 				if (payload.length() != regelsatz.laenge()) {

@@ -39,17 +39,23 @@ import lombok.Setter;
 @Objekt("0026")
 public @Getter @Setter class FehlermeldungAufmerksamkeit {
 
-	@Feld(value = "7280", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7280", feldart = Feldart.muss)
+	@Regelsatz(laenge = 1)
 	private Benachrichtigungsgrund benachrichtigungsgrund;
-	@Feld(value = "7320", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7320", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 1)
 	private Boolean recallEmpfohlen;
-	@Feld(value = "8154", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 9))
+	@Feld(value = "8154", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 9)
 	private Timestamp timestamp;
-	@Feld(value = "8147", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 6))
+	@Feld(value = "8147", feldart = Feldart.muss)
+	@Regelsatz(laenge = 6)
 	private Person person;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 26))
+	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+	@Regelsatz(laenge = 26)
 	private List<Fliesstext> text;
-	@Feld(value = "8110", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 6))
+	@Feld(value = "8110", feldart = Feldart.kann)
+	@Regelsatz(laenge = 6)
 	private List<Anhang> anhang;
 
 }

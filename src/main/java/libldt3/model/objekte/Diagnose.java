@@ -39,17 +39,23 @@ import lombok.Setter;
 @Objekt("0100")
 public @Getter @Setter class Diagnose {
 
-	@Feld(value = "4207", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 256))
+	@Feld(value = "4207", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 256)
 	private String diagnoseVerdachtsdiagnose;
-	@Feld(value = "6001", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(F004.class))
+	@Feld(value = "6001", feldart = Feldart.bedingt_muss)
+	@Regelsatz(F004.class)
 	private String icdCode;
-	@Feld(value = "6003", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "6003", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 1)
 	private Diagnosesicherheit diagnosesicherheit;
-	@Feld(value = "6004", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "6004", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 1)
 	private Lokalisation lokalisation;
-	@Feld(value = "6006", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6006", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> erlaeuterung;
-	@Feld(value = "6008", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "6008", feldart = Feldart.bedingt_kann)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> ausnahmetatbestand;
 
 }

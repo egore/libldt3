@@ -40,21 +40,29 @@ import lombok.Setter;
 @Objekt("0045")
 public @Getter @Setter class Patient {
 
-	@Feld(value = "8147", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 6))
+	@Feld(value = "8147", feldart = Feldart.muss)
+	@Regelsatz(laenge = 6)
 	private Person person;
-	@Feld(value = "3119", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(value = F013.class, laenge = 10))
+	@Feld(value = "3119", feldart = Feldart.bedingt_muss)
+	@Regelsatz(value = F013.class, laenge = 10)
 	private String versichertenId;
-	@Feld(value = "3105", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(minLaenge = 6, maxLaenge = 12))
+	@Feld(value = "3105", feldart = Feldart.bedingt_muss)
+	@Regelsatz(minLaenge = 6, maxLaenge = 12)
 	private String versichertennummer;
-	@Feld(value = "7329", feldart = Feldart.kann, regelsaetze = @Regelsatz(laenge = 1))
+	@Feld(value = "7329", feldart = Feldart.kann)
+	@Regelsatz(laenge = 1)
 	private GeschlechtNormalbereich geschlecht;
-	@Feld(value = "7922", feldart = Feldart.kann, regelsaetze = @Regelsatz(value = F002.class, laenge = 8))
+	@Feld(value = "7922", feldart = Feldart.kann)
+	@Regelsatz(value = F002.class, laenge = 8)
 	private LocalDate sterbedatum;
-	@Feld(value = "3000", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "3000", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String patientNumber;
-	@Feld(value = "3620", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "3620", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private List<String> profession;
-	@Feld(value = "3621", feldart = Feldart.kann, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "3621", feldart = Feldart.kann)
+	@Regelsatz(maxLaenge = 60)
 	private String currentProfession;
 
 }

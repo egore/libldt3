@@ -38,11 +38,14 @@ import lombok.Setter;
 @Datenpaket(Satzart.LaborDatenpaketHeader)
 public @Getter @Setter class LaborDatenpaketHeader implements Satz {
 
-	@Feld(value = "8132", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 9))
+	@Feld(value = "8132", feldart = Feldart.muss)
+	@Regelsatz(laenge = 9)
 	private Kopfdaten kopfdaten;
-	@Feld(value = "8136", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 12))
+	@Feld(value = "8136", feldart = Feldart.muss)
+	@Regelsatz(laenge = 12)
 	private Laborkennung laborkennung;
-	@Feld(value = "8119", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 15))
+	@Feld(value = "8119", feldart = Feldart.muss)
+	@Regelsatz(laenge = 15)
 	private Betriebsstaette betriebsstaette;
 
 }

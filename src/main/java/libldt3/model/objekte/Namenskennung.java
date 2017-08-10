@@ -36,13 +36,17 @@ import lombok.Setter;
 @Objekt("0041")
 public @Getter @Setter class Namenskennung {
 
-	@Feld(value = "7420", feldart = Feldart.muss, regelsaetze = @Regelsatz(laenge = 2))
+	@Feld(value = "7420", feldart = Feldart.muss)
+	@Regelsatz(laenge = 2)
 	private StatusPerson status;
-	@Feld(value = "7358", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "7358", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private String name;
-	@Feld(value = "8990", feldart = Feldart.bedingt_muss, regelsaetze = @Regelsatz(maxLaenge = 60))
+	@Feld(value = "8990", feldart = Feldart.bedingt_muss)
+	@Regelsatz(maxLaenge = 60)
 	private String shorthand;
-	@Feld(value = "8110", feldart = Feldart.bedingt_kann, regelsaetze = @Regelsatz(laenge = 6))
+	@Feld(value = "8110", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 6)
 	private Anhang anhang;
 
 }

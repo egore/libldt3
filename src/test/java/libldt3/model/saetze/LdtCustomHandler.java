@@ -36,7 +36,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
     public Object randomValue(Field field) {
         Feld annotation = field.getAnnotation(Feld.class);
         if (annotation != null) {
-            for (Regelsatz regelsatz : annotation.regelsaetze()) {
+            for (Regelsatz regelsatz : field.getAnnotationsByType(Regelsatz.class)) {
                 for (Class<? extends Regel> klass : regelsatz.value()) {
                     if (klass == F014.class) {
                         return "001234561";
