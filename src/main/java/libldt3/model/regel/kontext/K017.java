@@ -31,6 +31,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.findField;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 
@@ -54,13 +55,15 @@ public class K017 implements Kontextregel {
 
         return !checkExclusion(owner, fields, "3114", "3112") &&
                 !checkExclusion(owner, fields, "3124", "3121") &&
-                (containsAnyString(owner, fields.get("3112")) || containsAnyString(owner, fields.get("3121")));
+                (containsAnyString(fields.get("3112"), owner) || containsAnyString(fields.get("3121"), owner));
 
     }
 
     private boolean checkExclusion(Object owner, Map<String, Field> fields, String first, String second) throws IllegalAccessException {
         String value = (String) fields.get(first).get(owner);
-        if (value != null && !"D".equals(value) && containsAnyString(fields.get("4109"), owner) &&
+        // XXX 4109 does not exist on the current object, likely we need to traverse the object tree to find it in one
+        // of the holding classes
+        if (value != null && !"D".equals(value) && containsAnyString(findField(owner, "4109")) &&
                 containsAnyString(fields.get(second), owner)) {
             LOG.error("FK {} is present and not 'D'. Also FK 4109 is present. Then {} must not be present", first, second);
             return true;

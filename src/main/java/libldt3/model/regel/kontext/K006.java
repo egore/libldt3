@@ -49,16 +49,14 @@ public class K006 implements Kontextregel {
 			return false;
 		}
 
-		boolean has8431 = false;
-		boolean has8428 = true;
-		for (Map.Entry<String, Field> entry : fields.entrySet()) {
-			if ("8431".equals(entry.getKey())) {
-				has8431 = containsAnyString(entry.getValue(), owner);
-			} else {
-				has8428 |= containsAnyString(entry.getValue(), owner);
-			}
+		if (containsAnyString(fields.get("8428"), owner) ||
+			containsAnyString(fields.get("8430"), owner) ||
+			containsAnyString(fields.get("8429"), owner))
+		{
+			return true;
 		}
-		return !has8428 || (has8428 && !has8431);
+
+		return !containsAnyString(fields.get("8431"), owner);
 	}
 
 }

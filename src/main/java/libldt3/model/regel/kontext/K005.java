@@ -84,7 +84,7 @@ public class K005 implements Kontextregel {
 						abrechnungsinfo == Abrechnungsinfo.Asv || abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharztPraeventiv ||
 						abrechnungsinfo == Abrechnungsinfo.GkgLgPraeventiv) {
 
-					if (containsAnyString(other, owner)) {
+					if (containsAnyString(other)) {
 						return false;
 					}
 				}

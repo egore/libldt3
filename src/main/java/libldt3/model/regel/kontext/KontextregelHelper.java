@@ -31,22 +31,30 @@ import java.util.Set;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Objekt;
 import libldt3.model.objekte.Fliesstext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class KontextregelHelper {
+
+	private static final Logger LOG = LoggerFactory.getLogger(KontextregelHelper.class);
 
 	/**
 	 * Check if a given field has any string content (either simply text or multiline Fliesstext)
 	 */
 	static boolean containsAnyString(Field field, Object owner) throws IllegalAccessException {
+		if (field == null) {
+			LOG.warn("No field given, cannot check for content");
+			return false;
+		}
 		field.setAccessible(true);
 		Object value = field.get(owner);
-		return containsAnyString(value, owner);
+		return containsAnyString(value);
 	}
 
 	/**
 	 * Check if a given field has any string content (either simply text or multiline Fliesstext)
 	 */
-	static boolean containsAnyString(Object value, Object owner) throws IllegalAccessException {
+	static boolean containsAnyString(Object value) throws IllegalAccessException {
 		if (value instanceof String) {
 			String o = (String) value;
 			return !o.isEmpty();
