@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F020 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("[0-9]{7}[0-9]");
+	private static final Pattern PATTERN = Pattern.compile("^[0-9]{7}[0-9]$");
 
 	public F020() {
 		super(PATTERN);

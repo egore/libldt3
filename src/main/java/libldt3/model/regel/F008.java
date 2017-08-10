@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F008 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("([A-Z][0-9]{0,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?|[A-Z]?[0-9]{1,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?)");
+	private static final Pattern PATTERN = Pattern.compile("^([A-Z][0-9]{0,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?|[A-Z]?[0-9]{1,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?)$");
 
 	public F008() {
 		super(PATTERN);

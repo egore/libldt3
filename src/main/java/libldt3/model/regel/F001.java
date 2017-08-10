@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F001 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("[0-9]{5}");
+	private static final Pattern PATTERN = Pattern.compile("^[0-9]{5}$");
 
 	public F001() {
 		super(PATTERN);

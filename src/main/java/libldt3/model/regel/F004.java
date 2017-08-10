@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F004 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?");
+	private static final Pattern PATTERN = Pattern.compile("^[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?$");
 
 	public F004() {
 		super(PATTERN);
