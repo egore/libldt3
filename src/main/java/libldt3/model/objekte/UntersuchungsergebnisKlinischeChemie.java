@@ -31,7 +31,6 @@ import libldt3.model.enums.DarstellungErgebniswerte;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
-import libldt3.model.regel.kontext.K072;
 import lombok.Getter;
 import lombok.Setter;
 

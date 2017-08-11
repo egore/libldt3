@@ -6,7 +6,6 @@ import java.util.List;
 import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Abrechnungsinformation;

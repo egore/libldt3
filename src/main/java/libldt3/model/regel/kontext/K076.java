@@ -36,7 +36,7 @@ import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
  */
 public class K076 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K099.class);
+    private static final Logger LOG = LoggerFactory.getLogger(K076.class);
 
     private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8418", "8225")));
 

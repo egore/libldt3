@@ -33,7 +33,6 @@ import java.util.List;
 
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Regelsatz;
-import libldt3.model.regel.Regel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

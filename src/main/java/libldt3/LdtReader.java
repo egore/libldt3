@@ -226,7 +226,7 @@ public class LdtReader {
 						throw new IllegalArgumentException(
 								"In line '" + line + "' (" + lineNo + ") expected Obj_" + annotation.value() + ", got " + payload);
 					} else {
-						LOG.error("In line '" + line + "' (" + lineNo + ") expected Obj_" + annotation.value() + ", got " + payload);
+						LOG.error("In line '{}' ({}) expected Obj_{}, got {}", line, lineNo, annotation.value(), payload);
 						break;
 					}
 				}

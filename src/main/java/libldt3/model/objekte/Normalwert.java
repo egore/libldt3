@@ -28,7 +28,6 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EinheitMesswert;
-import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.GrenzwertindikatorErweitert;
 import libldt3.model.enums.Normwertspezifikation;
 import libldt3.model.regel.kontext.K002;

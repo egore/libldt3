@@ -53,7 +53,7 @@ public class K005 implements Kontextregel {
 
 		Field field = findField(befund.getBefundinformationen(), "8401");
 		if (field == null) {
-			LOG.error("Class of " + befund.getBefundinformationen() + " must have field 8401");
+			LOG.error("Class of {} must have field 8401", befund.getBefundinformationen());
 			return false;
 		}
 

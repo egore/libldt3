@@ -28,7 +28,6 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EndozervikaleZellen;
-import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.GrenzwertindikatorErweitert;
 import libldt3.model.enums.NachkontrollGrund;
 import libldt3.model.enums.TestStatus;
