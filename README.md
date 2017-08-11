@@ -1,8 +1,15 @@
 # About
 
-LDT is short for "Labor Daten Transfer", a data format to exchange data with laboratories in Germany. As this is a format only used in Germany, the rest of this file will be in German.
+LDT is short for "Labor Daten Transfer", a data format to exchange data with laboratories in Germany. As this is a
+format only used in Germany, the rest of this file will be in German.
 
-Diese Bibliothek wurde auf Basis der LDT 3.0.4 Spezifikation entwickelt. Die Spezifikation wurde von <http://www.qms-standards.de/fileadmin/Download/DOWNLOAD-PDFS/LDT/LDT_3_0_4_20161125_Freigabe.zip> bezogen. Die aktuelle Spezifikation ist jeweils unter <ftp://ftp.kbv.de/ita-update/Labor/LDT3.0/> verfügbar.
+Diese Bibliothek wurde auf Basis der LDT 3.0.6 Spezifikation entwickelt. Die Spezifikation wurde von
+[LDT_3_0_6_Gesamtdokument_vom_20170515.pdf](http://www.qms-standards.de/fileadmin/Download/DOWNLOAD-PDFS/LDT/LDT_3_0_6_Gesamtdokument_vom_20170515.pdf)
+bezogen. Die Implementierung wurde keiner offiziellen Zertifizierung unterzogen, aber anhand der Beispieldatensätze
+[LDT_3_0_6_Musterdateien_Version_1_0_7_vom_20170529.zip](http://www.qms-standards.de/fileadmin/Download/DOWNLOAD-PDFS/LDT/LDT_3_0_6_Musterdateien_Version_1_0_7_vom_20170529.zip)
+geprüft. Sie ist in der Lage die gegebenen Datensätze vollständig einzulesen und genauso wiederzugeben. Es kann allerdings
+bei Nachkommastellen zu Änderungen in der Darstellung kommen, es wird z.B. "XX.00" im Original verwendet und nach
+Einlesen und erneutem Schreiben findet sich "XX.0" im Dokument. 
 
 # Verwendung
 
@@ -21,15 +28,15 @@ Sowohl LdtReader als auch LdtWriter bieten die Möglichkeit, einen STRICT- oder 
 
 # Status
 
-Der LdtReader wurde erfolgreich an verschiedenen Beispielen aus dem von der KVB bereitgestellten Testpaket getestet. Er kann die Daten vollständig einlesen und mit mittels des LdtWriter wieder ausgeben. Die gelesenen Dokumente sind dabei identisch zu den geschriebenen. Es gibt dabei lediglich Unterschiede im Umgang mit Fließkomma-Zahlen, so dass der ausgegebene Datensatz an diesen Stellen nicht 1:1 dem eingelesenen entspricht. Ein Beispiel ist hierbei die Körpergröße in cm.
+Der LdtReader wurde erfolgreich an verschiedenen Beispielen aus dem von der KBV bereitgestellten Testpaket getestet. Er kann die Daten vollständig einlesen und mit mittels des LdtWriter wieder ausgeben. Die gelesenen Dokumente sind dabei identisch zu den geschriebenen. Es gibt dabei lediglich Unterschiede im Umgang mit Fließkomma-Zahlen, so dass der ausgegebene Datensatz an diesen Stellen nicht 1:1 dem eingelesenen entspricht. Ein Beispiel ist hierbei die Körpergröße in cm.
 
 Folgende Punkte sind als Einschränkungen anzumerken:
 - Feldarten (Muss, Kann, Bedingt muss, Bedingt kann) sind an den vermerkt, werden aber nicht ausgewertet.
-- Formatregeln sind an den Objekten vermerkt und werden ausgewertet. Die Kontextregeln sind nicht umgesetzt.
+- Formatregeln sind an den Objekten vermerkt und werden ausgewertet. Die Kontextregeln sind teilweise umgesetzt.
 - Die Hierarchie im Java-Datenmodell nutzt nicht die volle Tiefe von 5 Ebenen in einem Objekt, wie von LDT 3.0 spezifiziert. Hintergrund ist, dass diese nicht als zwingend notwendig angenommen wird.
 - Im Datenmodell wurde "String" als default Datentyp verwendet, sofern dieser nicht anderweitig erkennbar ist. Daher gibt es potentiell Felder, die sich besser andere Typen darstellen lassen.
 
-Folende Details sind nicht umgesetzt
+Folgende Details sind nicht umgesetzt
 - Nicht unterstützt: E003, E010, E011, E012, E014, E028, E036, E048, E066, E071-E145, E149-E155, E157
 - Nicht in LDT 3.0 verwendet: E031, 9300, F019
 
