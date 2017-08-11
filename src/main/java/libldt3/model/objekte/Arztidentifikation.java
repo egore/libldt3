@@ -31,14 +31,13 @@ import libldt3.model.enums.ArztTypId;
 import libldt3.model.regel.F011;
 import libldt3.model.regel.F014;
 import libldt3.model.regel.F022;
-import libldt3.model.regel.kontext.K116;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
-@Objekt(value = "0014", kontextregeln = K116.class)
+@Objekt(value = "0014")
 public @Getter @Setter class Arztidentifikation {
 
 	@Objekt
