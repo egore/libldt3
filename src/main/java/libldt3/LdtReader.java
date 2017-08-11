@@ -240,12 +240,16 @@ public class LdtReader {
 		}
 		case "8003": {
 			// End: Objekt
+			assureLength(line, length, 17);
 			Object o;
 			Objekt annotation;
 			do {
 				o = stack.pop();
 				annotation = o.getClass().getAnnotation(Objekt.class);
 				if (annotation != null) {
+					if (!annotation.value().isEmpty() && !("Obj_" + annotation.value()).equals(payload)) {
+						LOG.warn("Line: {} ({}), annotation {}, payload {}", line, lineNo, annotation.value(), payload);
+					}
 					evaluateContextRules(o, annotation.kontextregeln());
 				}
 			} while (annotation != null && annotation.value().isEmpty());
@@ -257,6 +261,9 @@ public class LdtReader {
 		default:
 			// Any line not starting or completing a Satz or Objekt
 			Object currentObject = peekCurrentObject(stack);
+			if (currentObject == null) {
+				throw new IllegalStateException("No object when applying line " + line);
+			}
 			// XXX iterating the fields could be replaced by a map to be a bit
 			// faster when dealing with the same class
 			for (Field field : currentObject.getClass().getDeclaredFields()) {
