@@ -30,7 +30,7 @@ public enum Ergebnis {
 
 	private final String code;
 
-	private Ergebnis(String code) {
+	Ergebnis(String code) {
 		this.code = code;
 	}
 

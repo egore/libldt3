@@ -35,7 +35,7 @@ public enum EinschreibestatusSelektivvertraege {
 
 	private final String code;
 
-	private EinschreibestatusSelektivvertraege(String code) {
+	EinschreibestatusSelektivvertraege(String code) {
 		this.code = code;
 	}
 

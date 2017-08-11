@@ -36,7 +36,7 @@ public enum DirekterCoombstest {
 
 	private final String code;
 
-	private DirekterCoombstest(String code) {
+	DirekterCoombstest(String code) {
 		this.code = code;
 	}
 

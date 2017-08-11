@@ -30,7 +30,7 @@ public enum GeschlechtNormalbereich {
 
 	private final String code;
 
-	private GeschlechtNormalbereich(String code) {
+	GeschlechtNormalbereich(String code) {
 		this.code = code;
 	}
 

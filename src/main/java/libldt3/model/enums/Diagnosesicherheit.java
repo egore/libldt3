@@ -37,7 +37,7 @@ public enum Diagnosesicherheit {
 
 	private final String code;
 
-	private Diagnosesicherheit(String code) {
+	Diagnosesicherheit(String code) {
 		this.code = code;
 	}
 

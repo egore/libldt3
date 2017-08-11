@@ -49,7 +49,7 @@ public enum StatusRechnungsempfaenger {
 
 	private final String code;
 
-	private StatusRechnungsempfaenger(String code) {
+	StatusRechnungsempfaenger(String code) {
 		this.code = code;
 	}
 

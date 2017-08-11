@@ -44,7 +44,7 @@ public enum BesonderePersonengruppe {
 
 	private final String code;
 
-	private BesonderePersonengruppe(String code) {
+	BesonderePersonengruppe(String code) {
 		this.code = code;
 	}
 

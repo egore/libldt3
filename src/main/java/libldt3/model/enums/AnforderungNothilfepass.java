@@ -33,7 +33,7 @@ public enum AnforderungNothilfepass {
 
 	private final String code;
 
-	private AnforderungNothilfepass(String code) {
+	AnforderungNothilfepass(String code) {
 		this.code = code;
 	}
 

@@ -49,7 +49,7 @@ public enum KostentraegerAbrechnungsbereich {
 
 	private final String code;
 
-	private KostentraegerAbrechnungsbereich(String code) {
+	KostentraegerAbrechnungsbereich(String code) {
 		this.code = code;
 	}
 

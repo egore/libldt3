@@ -30,7 +30,7 @@ public enum Satzart {
 
 	private final String code;
 
-	private Satzart(String code) {
+	Satzart(String code) {
 		this.code = code;
 	}
 

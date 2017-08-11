@@ -45,7 +45,7 @@ public enum Nachweisverfahren {
 
 	private final String code;
 
-	private Nachweisverfahren(String code) {
+	Nachweisverfahren(String code) {
 		this.code = code;
 	}
 

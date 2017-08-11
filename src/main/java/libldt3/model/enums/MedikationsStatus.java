@@ -37,7 +37,7 @@ public enum MedikationsStatus {
 
 	private final String code;
 
-	private MedikationsStatus(String code) {
+	MedikationsStatus(String code) {
 		this.code = code;
 	}
 

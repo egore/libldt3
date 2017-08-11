@@ -57,7 +57,7 @@ public enum Normwertspezifikation {
 
 	private final String code;
 
-	private Normwertspezifikation(String code) {
+	Normwertspezifikation(String code) {
 		this.code = code;
 	}
 

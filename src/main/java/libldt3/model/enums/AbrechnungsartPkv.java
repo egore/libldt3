@@ -33,7 +33,7 @@ public enum AbrechnungsartPkv {
 
 	private final String code;
 
-	private AbrechnungsartPkv(String code) {
+	AbrechnungsartPkv(String code) {
 		this.code = code;
 	}
 

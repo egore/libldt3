@@ -35,7 +35,7 @@ public enum DatensatzAbsender {
 
 	private final String code;
 
-	private DatensatzAbsender(String code) {
+	DatensatzAbsender(String code) {
 		this.code = code;
 	}
 

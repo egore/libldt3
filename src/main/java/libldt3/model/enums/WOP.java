@@ -90,7 +90,7 @@ public enum WOP {
 
 	private final String code;
 
-	private WOP(String code) {
+	WOP(String code) {
 		this.code = code;
 	}
 

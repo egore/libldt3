@@ -39,7 +39,7 @@ public enum Benachrichtigungsgrund {
 
 	private final String code;
 
-	private Benachrichtigungsgrund(String code) {
+	Benachrichtigungsgrund(String code) {
 		this.code = code;
 	}
 

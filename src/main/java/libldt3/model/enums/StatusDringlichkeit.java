@@ -31,7 +31,7 @@ public enum StatusDringlichkeit {
 
 	private final String code;
 
-	private StatusDringlichkeit(String code) {
+	StatusDringlichkeit(String code) {
 		this.code = code;
 	}
 

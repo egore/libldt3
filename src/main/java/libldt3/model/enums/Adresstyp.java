@@ -33,7 +33,7 @@ public enum Adresstyp {
 
 	private final String code;
 
-	private Adresstyp(String code) {
+	Adresstyp(String code) {
 		this.code = code;
 	}
 

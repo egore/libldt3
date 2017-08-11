@@ -35,7 +35,7 @@ public enum EinheitMesswert {
 
     private final String code;
 
-    private EinheitMesswert(String code) {
+    EinheitMesswert(String code) {
         this.code = code;
     }
 

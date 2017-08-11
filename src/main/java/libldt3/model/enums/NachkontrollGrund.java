@@ -35,7 +35,7 @@ public enum NachkontrollGrund {
 
 	private final String code;
 
-	private NachkontrollGrund(String code) {
+	NachkontrollGrund(String code) {
 		this.code = code;
 	}
 

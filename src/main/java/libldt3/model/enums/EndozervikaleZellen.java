@@ -31,7 +31,7 @@ public enum EndozervikaleZellen {
 
 	private final String code;
 
-	private EndozervikaleZellen(String code) {
+	EndozervikaleZellen(String code) {
 		this.code = code;
 	}
 

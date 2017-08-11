@@ -39,7 +39,7 @@ public enum ResistenzMethode {
 
 	private final String code;
 
-	private ResistenzMethode(String code) {
+	ResistenzMethode(String code) {
 		this.code = code;
 	}
 

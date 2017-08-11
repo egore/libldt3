@@ -30,7 +30,7 @@ public enum Geschlecht {
 
 	private final String code;
 
-	private Geschlecht(String code) {
+	Geschlecht(String code) {
 		this.code = code;
 	}
 

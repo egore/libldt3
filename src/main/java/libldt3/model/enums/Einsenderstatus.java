@@ -56,7 +56,7 @@ public enum Einsenderstatus {
 
 	private final String code;
 
-	private Einsenderstatus(String code) {
+	Einsenderstatus(String code) {
 		this.code = code;
 	}
 

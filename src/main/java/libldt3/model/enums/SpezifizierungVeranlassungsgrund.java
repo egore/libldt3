@@ -53,7 +53,7 @@ public enum SpezifizierungVeranlassungsgrund {
 
 	private final String code;
 
-	private SpezifizierungVeranlassungsgrund(String code) {
+	SpezifizierungVeranlassungsgrund(String code) {
 		this.code = code;
 	}
 

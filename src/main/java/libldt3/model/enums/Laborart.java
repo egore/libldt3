@@ -37,7 +37,7 @@ public enum Laborart {
 
 	private final String code;
 
-	private Laborart(String code) {
+	Laborart(String code) {
 		this.code = code;
 	}
 

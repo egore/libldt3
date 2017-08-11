@@ -30,7 +30,7 @@ public enum Versichertenart {
 
 	private final String code;
 
-	private Versichertenart(String code) {
+	Versichertenart(String code) {
 		this.code = code;
 	}
 

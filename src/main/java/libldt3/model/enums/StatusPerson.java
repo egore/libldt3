@@ -60,7 +60,7 @@ public enum StatusPerson {
 
 	private final String code;
 
-	private StatusPerson(String code) {
+	StatusPerson(String code) {
 		this.code = code;
 	}
 

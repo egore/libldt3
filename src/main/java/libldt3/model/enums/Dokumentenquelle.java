@@ -30,7 +30,7 @@ public enum Dokumentenquelle {
 
 	private final String code;
 
-	private Dokumentenquelle(String code) {
+	Dokumentenquelle(String code) {
 		this.code = code;
 	}
 

@@ -37,7 +37,7 @@ public enum KatalogIdAnforderbareLeistungen {
 
 	private final String code;
 
-	private KatalogIdAnforderbareLeistungen(String code) {
+	KatalogIdAnforderbareLeistungen(String code) {
 		this.code = code;
 	}
 

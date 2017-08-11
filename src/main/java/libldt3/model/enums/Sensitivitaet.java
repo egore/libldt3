@@ -35,7 +35,7 @@ public enum Sensitivitaet {
 
 	private final String code;
 
-	private Sensitivitaet(String code) {
+	Sensitivitaet(String code) {
 		this.code = code;
 	}
 

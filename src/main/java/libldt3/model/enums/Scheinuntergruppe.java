@@ -39,7 +39,7 @@ public enum Scheinuntergruppe {
 
 	private final String code;
 
-	private Scheinuntergruppe(String code) {
+	Scheinuntergruppe(String code) {
 		this.code = code;
 	}
 

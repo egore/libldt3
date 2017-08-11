@@ -41,7 +41,7 @@ public enum Betriebsstaettenstatus {
 
 	private final String code;
 
-	private Betriebsstaettenstatus(String code) {
+	Betriebsstaettenstatus(String code) {
 		this.code = code;
 	}
 

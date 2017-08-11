@@ -37,7 +37,7 @@ public enum Behandlungsanlass {
 
 	private final String code;
 
-	private Behandlungsanlass(String code) {
+	Behandlungsanlass(String code) {
 		this.code = code;
 	}
 

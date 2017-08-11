@@ -35,7 +35,7 @@ public enum Gebuehrenordnung {
 
 	private final String code;
 
-	private Gebuehrenordnung(String code) {
+	Gebuehrenordnung(String code) {
 		this.code = code;
 	}
 

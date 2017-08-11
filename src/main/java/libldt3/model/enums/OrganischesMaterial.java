@@ -35,7 +35,7 @@ public enum OrganischesMaterial {
 
 	private final String code;
 
-	private OrganischesMaterial(String code) {
+	OrganischesMaterial(String code) {
 		this.code = code;
 	}
 

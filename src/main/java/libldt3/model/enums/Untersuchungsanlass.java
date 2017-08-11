@@ -51,7 +51,7 @@ public enum Untersuchungsanlass {
 
 	private final String code;
 
-	private Untersuchungsanlass(String code) {
+	Untersuchungsanlass(String code) {
 		this.code = code;
 	}
 

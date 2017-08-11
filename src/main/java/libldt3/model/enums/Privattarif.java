@@ -30,7 +30,7 @@ public enum Privattarif {
 
 	private final String code;
 
-	private Privattarif(String code) {
+	Privattarif(String code) {
 		this.code = code;
 	}
 

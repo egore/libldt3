@@ -39,7 +39,7 @@ public enum ResistenzInterpretation {
 
 	private final String code;
 
-	private ResistenzInterpretation(String code) {
+	ResistenzInterpretation(String code) {
 		this.code = code;
 	}
 

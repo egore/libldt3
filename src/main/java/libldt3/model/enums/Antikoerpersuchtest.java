@@ -18,7 +18,7 @@ public enum Antikoerpersuchtest {
 
 	private final String code;
 
-	private Antikoerpersuchtest(String code) {
+	Antikoerpersuchtest(String code) {
 		this.code = code;
 	}
 

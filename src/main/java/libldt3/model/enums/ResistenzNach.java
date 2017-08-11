@@ -33,7 +33,7 @@ public enum ResistenzNach {
 
 	private final String code;
 
-	private ResistenzNach(String code) {
+	ResistenzNach(String code) {
 		this.code = code;
 	}
 

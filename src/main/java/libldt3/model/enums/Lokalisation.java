@@ -32,7 +32,7 @@ public enum Lokalisation {
 
 	private final String code;
 
-	private Lokalisation(String code) {
+	Lokalisation(String code) {
 		this.code = code;
 	}
 

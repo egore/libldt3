@@ -29,7 +29,7 @@ public enum Befundtyp {
 
 	private final String code;
 
-	private Befundtyp(String code) {
+	Befundtyp(String code) {
 		this.code = code;
 	}
 

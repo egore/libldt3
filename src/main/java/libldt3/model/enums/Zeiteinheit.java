@@ -33,7 +33,7 @@ public enum Zeiteinheit {
 
 	private final String code;
 
-	private Zeiteinheit(String code) {
+	Zeiteinheit(String code) {
 		this.code = code;
 	}
 

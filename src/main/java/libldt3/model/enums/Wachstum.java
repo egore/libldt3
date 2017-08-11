@@ -39,7 +39,7 @@ public enum Wachstum {
 
 	private final String code;
 
-	private Wachstum(String code) {
+	Wachstum(String code) {
 		this.code = code;
 	}
 

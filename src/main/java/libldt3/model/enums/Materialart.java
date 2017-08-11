@@ -31,7 +31,7 @@ public enum Materialart {
 
 	private final String code;
 
-	private Materialart(String code) {
+	Materialart(String code) {
 		this.code = code;
 	}
 

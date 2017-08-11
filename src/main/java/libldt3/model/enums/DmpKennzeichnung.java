@@ -49,7 +49,7 @@ public enum DmpKennzeichnung {
 
 	private final String code;
 
-	private DmpKennzeichnung(String code) {
+	DmpKennzeichnung(String code) {
 		this.code = code;
 	}
 

@@ -37,7 +37,7 @@ public enum AnorganischesMaterial {
 
 	private final String code;
 
-	private AnorganischesMaterial(String code) {
+	AnorganischesMaterial(String code) {
 		this.code = code;
 	}
 

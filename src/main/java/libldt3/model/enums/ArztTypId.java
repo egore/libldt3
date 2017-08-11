@@ -43,7 +43,7 @@ public enum ArztTypId {
 
 	private final String code;
 
-	private ArztTypId(String code) {
+	ArztTypId(String code) {
 		this.code = code;
 	}
 
