@@ -54,7 +54,7 @@ public @Getter @Setter class Untersuchungsanforderung {
 		@Feld(value = "7365", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 20)
 		private String analysenId;
-		@Feld(value = "7366", feldart = Feldart.bedingt_kann)
+		@Feld(value = "7366", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
 		private String leistungsbezeichnung;
 	}
