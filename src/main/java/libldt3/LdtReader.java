@@ -39,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 import libldt3.annotations.Regelsatz;
@@ -116,11 +117,12 @@ public class LdtReader {
 	public List<Satz> read(Stream<String> stream) {
 		Stack<Object> stack = new Stack<>();
 		List<Satz> data = new ArrayList<>();
-		stream.forEach(line -> handleInput(line, stack, data));
+		AtomicInteger integer = new AtomicInteger();
+		stream.forEach(line -> handleInput(line, stack, data, integer.incrementAndGet()));
 		return data;
 	}
 
-	private void handleInput(String line, Stack<Object> stack, List<Satz> data) {
+	private void handleInput(String line, Stack<Object> stack, List<Satz> data, int lineNo) {
 		LOG.trace("Reading line {}", line);
 
 		// Check if the line meets the minimum requirements (3 digits for
@@ -222,9 +224,9 @@ public class LdtReader {
 					// No match found, abort or inform the developer
 					if (mode == Mode.STRICT) {
 						throw new IllegalArgumentException(
-								"In line '" + line + "' expected Obj_" + annotation.value() + ", got " + payload);
+								"In line '" + line + "' (" + lineNo + ") expected Obj_" + annotation.value() + ", got " + payload);
 					} else {
-						LOG.error("In line '" + line + "' expected Obj_" + annotation.value() + ", got " + payload);
+						LOG.error("In line '" + line + "' (" + lineNo + ") expected Obj_" + annotation.value() + ", got " + payload);
 						break;
 					}
 				}
@@ -311,15 +313,15 @@ public class LdtReader {
 			Objekt annotation = currentObject.getClass().getAnnotation(Objekt.class);
 			if (annotation != null && annotation.value().isEmpty()) {
 				stack.pop();
-				handleInput(line, stack, data);
+				handleInput(line, stack, data, lineNo);
 				return;
 			}
 
 			// Neither we nor our parent could deal with this line
 			if (mode == Mode.STRICT) {
-				throw new IllegalArgumentException("Failed reading line " + line + ", current stack: " + stack);
+				throw new IllegalArgumentException("Failed reading line " + line + " (" + lineNo + "), current stack: " + stack);
 			} else {
-				LOG.warn("Failed reading line " + line + ", current stack: " + stack + ", skipping line");
+				LOG.warn("Failed reading line {} ({}), current stack: {}, skipping line", line, lineNo, stack);
 			}
 			break;
 		}
