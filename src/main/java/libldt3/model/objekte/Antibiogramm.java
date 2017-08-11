@@ -45,10 +45,10 @@ public @Getter @Setter class Antibiogramm {
 	public static @Getter @Setter class WirkstoffIdent {
 		@SuppressWarnings("unused")
 		private String value;
-		@Feld(value = "7288", feldart = Feldart.bedingt_muss)
+		@Feld(value = "7288", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
 		private List<String> wirkstoffGenericNummer;
-		@Feld(value = "7359", feldart = Feldart.bedingt_muss)
+		@Feld(value = "7359", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
 		private List<String> wirkstoffOid;
 		@Feld(value = "7370", feldart = Feldart.bedingt_kann)
