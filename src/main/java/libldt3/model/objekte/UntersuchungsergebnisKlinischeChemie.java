@@ -90,6 +90,9 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 		private DarstellungErgebniswerte value;
 		@Feld(value = "8420", feldart = Feldart.bedingt_kann)
 		private List<ErgebnisWert> ergebnisWert;
+		@Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann)
+		@Regelsatz(laenge = 21)
+		private Fliesstext testbezogeneHinweise;
 	}
 
 	@Objekt
@@ -126,11 +129,8 @@ public @Getter @Setter class UntersuchungsergebnisKlinischeChemie {
 	@Regelsatz(maxLaenge = 60)
 	private Test testIdent;
 	@Feld(value = "7306", feldart = Feldart.kann)
-	@Regelsatz(laenge = 1)
+	@Regelsatz(laenge = 2)
 	private List<DarstellungErgebniswerteErweitert> darstellungErgebniswerte;
-	@Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 21)
-	private Fliesstext testbezogeneHinweise;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
 	@Regelsatz(laenge = 26)
 	private List<Fliesstext> zusaetzlicheInformationen;
