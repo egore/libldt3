@@ -91,9 +91,6 @@ public @Getter @Setter class Befundinformationen {
 	@Feld(value = "4229", feldart = Feldart.kann)
 	@Regelsatz(laenge = 5)
 	private List<String> ausnahmeindikation;
-	@Feld(value = "7308", feldart = Feldart.bedingt_muss)
-	@Regelsatz(minLaenge = 1, maxLaenge = 2)
-	private Integer anzahlLaborergebnisberichte;
 	@Feld(value = "8118", name = "Abweichender_Befundweg", feldart = Feldart.kann)
 	@Regelsatz(laenge = 22)
 	private Kommunikationsdaten abweichenderBefundweg;
