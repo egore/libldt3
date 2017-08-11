@@ -40,8 +40,8 @@ import lombok.Setter;
 public @Getter @Setter class Diagnose {
 
 	@Feld(value = "4207", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 256)
-	private String diagnoseVerdachtsdiagnose;
+	@Regelsatz(maxLaenge = 60)
+	private List<String> diagnoseVerdachtsdiagnose;
 	@Feld(value = "6001", feldart = Feldart.bedingt_muss)
 	@Regelsatz(F004.class)
 	private String icdCode;

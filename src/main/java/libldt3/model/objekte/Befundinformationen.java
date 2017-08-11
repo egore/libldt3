@@ -112,9 +112,9 @@ public @Getter @Setter class Befundinformationen {
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
 	private List<Anhang> anhang;
-	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.kann)
 	@Regelsatz(laenge = 28)
-	private FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
+	private List<FehlermeldungAufmerksamkeit> fehlermeldungAufmerksamkeit;
 	@Feld(value = "8141", feldart = Feldart.kann)
 	@Regelsatz(laenge = 13)
 	private Namenskennung namenskennung;
