@@ -62,6 +62,9 @@ public @Getter @Setter class Tier {
 	@Feld(value = "8107", feldart = Feldart.kann)
 	@Regelsatz(laenge = 9)
 	private Anschrift anschrift;
+	@Feld(value = "8147", feldart = Feldart.kann)
+	@Regelsatz(laenge = 6)
+	private Person person;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
 	private List<Anhang> anhang;
