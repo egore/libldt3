@@ -99,7 +99,7 @@ public @Getter @Setter class Untersuchungsanforderung {
 	@Regelsatz(maxLaenge = 60)
 	private Test testIdent;
 	@Feld(value = "7303", feldart = Feldart.muss)
-	@Regelsatz(minLaenge = 1, maxLaenge = 2)
+	@Regelsatz(maxLaenge = 2)
 	private Abrechnungsinfo abrechnungsinfo;
 	@Feld(value = "8501", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)

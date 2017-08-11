@@ -80,7 +80,7 @@ public @Getter @Setter class Veranlassungsgrund {
 	}
 
 	@Feld(value = "7303", feldart = Feldart.bedingt_kann)
-	@Regelsatz(minLaenge = 1, maxLaenge = 2)
+	@Regelsatz(maxLaenge = 2)
 	private List<AbrechnungsinfoErweitert> abrechnungsinfo;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)

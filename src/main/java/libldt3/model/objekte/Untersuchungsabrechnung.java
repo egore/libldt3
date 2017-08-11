@@ -62,7 +62,7 @@ public @Getter @Setter class Untersuchungsabrechnung {
 	}
 
 	@Feld(value = "7303", feldart = Feldart.muss)
-	@Regelsatz(minLaenge = 1, maxLaenge = 2)
+	@Regelsatz(maxLaenge = 2)
 	private Abrechnungsinfo abrechnungsinfo;
 	@Feld(value = "4121", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
