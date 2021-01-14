@@ -1,9 +1,7 @@
 package libldt3.model.regel;
 
-import org.junit.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsEqual.equalTo;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class F001Test {
 
@@ -11,57 +9,57 @@ public class F001Test {
 
 	@Test
 	public void testEmpty() {
-		assertThat(f001.isValid(""), equalTo(false));
+		Assertions.assertFalse(f001.isValid(""));
 	}
 
 	@Test
 	public void testNull() {
-		assertThat(f001.isValid(null), equalTo(true));
+		Assertions.assertTrue(f001.isValid(null));
 	}
 
 	@Test
 	public void testFiveZeros() {
-		assertThat(f001.isValid("00000"), equalTo(true));
+		Assertions.assertTrue(f001.isValid("00000"));
 	}
 
 	@Test
 	public void testFiveNines() {
-		assertThat(f001.isValid("99999"), equalTo(true));
+		Assertions.assertTrue(f001.isValid("99999"));
 	}
 
 	@Test
 	public void testOneTwoThreeFourFive() {
-		assertThat(f001.isValid("12345"), equalTo(true));
+		Assertions.assertTrue(f001.isValid("12345"));
 	}
 
 	@Test
 	public void testOneTwoThreeFour() {
-		assertThat(f001.isValid("1234"), equalTo(false));
+		Assertions.assertFalse(f001.isValid("1234"));
 	}
 
 	@Test
 	public void testOneTwoThreeFourFiveSix() {
-		assertThat(f001.isValid("123456"), equalTo(false));
+		Assertions.assertFalse(f001.isValid("123456"));
 	}
 
 	@Test
 	public void testABCDE() {
-		assertThat(f001.isValid("ABCDE"), equalTo(false));
+		Assertions.assertFalse(f001.isValid("ABCDE"));
 	}
 
 	@Test
 	public void testFiveSymbols() {
-		assertThat(f001.isValid("/=()["), equalTo(false));
+		Assertions.assertFalse(f001.isValid("/=()["));
 	}
 
 	@Test
 	public void testOneTwoThreeFourA() {
-		assertThat(f001.isValid("1234A"), equalTo(false));
+		Assertions.assertFalse(f001.isValid("1234A"));
 	}
 
 	@Test
 	public void testOneTwoThreeFourLowerA() {
-		assertThat(f001.isValid("1234a"), equalTo(false));
+		Assertions.assertFalse(f001.isValid("1234a"));
 	}
 
 }

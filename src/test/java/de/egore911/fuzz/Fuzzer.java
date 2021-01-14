@@ -23,7 +23,6 @@ package de.egore911.fuzz;
 
 import org.reflections.Reflections;
 
-import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -67,7 +66,7 @@ public class Fuzzer {
         this(null);
     }
 
-    public Fuzzer(@Nullable CustomHandler customHandler) {
+    public Fuzzer(CustomHandler customHandler) {
         this.customHandler = customHandler;
     }
 

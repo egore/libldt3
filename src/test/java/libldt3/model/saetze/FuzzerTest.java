@@ -4,16 +4,15 @@ import de.egore911.fuzz.Fuzzer;
 import libldt3.LdtConstants;
 import libldt3.LdtReader;
 import libldt3.LdtWriter;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 public class FuzzerTest {
 
@@ -59,6 +58,6 @@ public class FuzzerTest {
 		Path file = File.createTempFile("auftrag_fuzzer_test", ".ldt").toPath();
 		new LdtWriter(LdtConstants.Mode.RELAXED).write(Collections.singletonList(satz), file);
 		List<Satz> saetze = new LdtReader(LdtConstants.Mode.RELAXED).read(file);
-		assertThat(saetze, hasSize(1));
+		Assertions.assertEquals(saetze.size(), 1);
 	}
 }
