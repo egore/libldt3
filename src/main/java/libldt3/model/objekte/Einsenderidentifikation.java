@@ -49,7 +49,7 @@ public @Getter @Setter class Einsenderidentifikation {
 	@Feld(value = "8114", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 18)
 	private Arztidentifikation arztidentifikation;
-	@Feld(value = "8240", name = "Ueberweisung_von_anderen_Aerzten", feldart = Feldart.bedingt_muss)
+	@Feld(value = "8240", name = "Ueberweisung_von_anderen_Aerzten", feldart = Feldart.kann)
 	@Regelsatz(laenge = 32)
 	private Arztidentifikation ueberweisungVon;
 	@Feld(value = "8241", name = "Ueberweisung_an", feldart = Feldart.bedingt_muss)
