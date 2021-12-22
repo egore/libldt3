@@ -19,37 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-import libldt3.annotations.Feld;
-import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
-import libldt3.annotations.Regelsatz;
-import libldt3.model.regel.F002;
-import libldt3.model.regel.F016;
-import lombok.Getter;
-import lombok.Setter;
+package libldt3.model.enums;
 
 /**
- * Ein Zeitstempel
+ * E006
  */
-@Objekt("0054")
-public @Getter @Setter class Timestamp {
+public enum Auftragsstatus {
+	Auftrag_nicht_abgeschlossen("1"),
+	Auftrag_abgeschlossen("2");
 
-	@Feld(value = "7278", feldart = Feldart.muss)
-	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate datum;
-	@Feld(value = "7279", feldart = Feldart.kann)
-	@Regelsatz(value = F016.class, minLaenge = 6, maxLaenge = 9)
-	private LocalTime uhrzeit;
-	@Feld(value = "7272", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 990)
-	private String freitext;
-	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann)
-	@Regelsatz(laenge = 20)
-	private Person person;
+	private final String code;
+
+	Auftragsstatus(String code) {
+		this.code = code;
+	}
+
+	public String getCode() {
+		return code;
+	}
 
 }

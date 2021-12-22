@@ -109,7 +109,7 @@ public @Getter @Setter class KrebsfrueherkennungFrauen {
 	@Regelsatz(laenge = 1)
 	private Boolean stuhltestPositiv;
 	@Feld(value = "7423", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
+	@Regelsatz(maxLaenge = 990)
 	private Boolean gynaekologischeDiagnose;
 	@Feld(value = "7398", feldart = Feldart.kann)
 	@Regelsatz(value = F015.class, laenge = 7)

@@ -27,7 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import libldt3.model.enums.ErgebnisStatus;
+import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.Nachweisverfahren;
 import libldt3.model.enums.ResistenzMethode;
@@ -61,7 +61,7 @@ public @Getter @Setter class UntersuchungsergebnisMikrobiologie {
 		private String keimName;
 		@Feld(value = "7301", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-		private ErgebnisStatus ergebnisStatus;
+		private Ergebnis ergebnis;
 		@Feld(value = "7357", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
 		private Wachstum wachstum;

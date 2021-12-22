@@ -3,7 +3,7 @@
 LDT is short for "Labor Daten Transfer", a data format to exchange data with laboratories in Germany. As this is a
 format only used in Germany, the rest of this file will be in German.
 
-Diese Bibliothek wurde auf Basis der LDT 3.0.7 Spezifikation entwickelt. Die Spezifikation wurde von
+Diese Bibliothek wurde auf Basis der LDT 3.1.0 Spezifikation entwickelt. Die Spezifikation wurde von
 [qms-standards.de](https://www.qms-standards.de/standards-zum-download/) bezogen. Die Implementierung wurde keiner
 offiziellen Zertifizierung unterzogen, aber anhand der Beispieldatensätze geprüft. Sie ist in der Lage die gegebenen
 Datensätze vollständig einzulesen und genauso wiederzugeben. Es kann allerdings bei Nachkommastellen zu Änderungen

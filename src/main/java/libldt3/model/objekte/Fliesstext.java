@@ -37,7 +37,7 @@ import lombok.Setter;
 public @Getter @Setter class Fliesstext {
 
 	@Feld(value = "3564", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
+	@Regelsatz(maxLaenge = 990)
 	private List<String> text;
 	@Feld(value = "6329", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)

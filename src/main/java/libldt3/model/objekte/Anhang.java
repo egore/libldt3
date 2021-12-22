@@ -28,6 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Dokumentenquelle;
+import libldt3.model.enums.Dokumententyp;
 import libldt3.model.regel.kontext.K001;
 import libldt3.model.regel.kontext.K075;
 import lombok.Getter;
@@ -43,7 +44,7 @@ public @Getter @Setter class Anhang {
 
 	@Feld(value = "9970", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 3)
-	private String dokumentTyp;
+	private Dokumententyp dokumentTyp;
 	@Feld(value = "6221", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
 	private Boolean kennzeichnungFremdbefund;

@@ -44,7 +44,7 @@ public @Getter @Setter class Medikament {
 	@Regelsatz(maxLaenge = 60)
 	private String handelsname;
 	@Feld(value = "6207", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
+	@Regelsatz(maxLaenge = 990)
 	private String rezeptur;
 	@Feld(value = "8171", feldart = Feldart.kann)
 	@Regelsatz(laenge = 9)

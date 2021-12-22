@@ -60,7 +60,7 @@ public @Getter @Setter class Normalwert {
 	@Regelsatz(laenge = 26)
 	private Fliesstext zusaetzlicheInformationen;
 	@Feld(value = "8460", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
+	@Regelsatz(maxLaenge = 990)
 	private List<String> normalwertText;
 	@Feld(value = "8461", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)

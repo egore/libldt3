@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  Christoph Brill <egore911@gmail.com>
+ * Copyright 2021  Christoph Brill <egore911@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,20 +21,48 @@
  */
 package libldt3.model.enums;
 
-/**
- * E006
- */
-public enum Befundtyp {
-	Endbefund("E"), Teilbefund("T"), VorlaeufigerBefund("V"), Archivbefund("A"), Nachforderungsendbefund("N");
+public enum Dokumententyp {
+	Muster6("006"),
+	Muster10("010"),
+	Muster10A("10A"),
+	Muster39("039"),
+	AuftragsdokumentPKV_FA("090"),
+	AuftragsdokumentPKV_LG("091"),
+	Auftragsdokument_IGeL("092"),
+	Auftragsdokument_Sonstige_Kostenuebernahme("093"),
+	Auftragsdokument_Selektivvertrag("094"),
+	Laborbefund("100"),
+	Mutterpass("101"),
+	Impfpass("102"),
+	Notfallausweis("103"),
+	Patientenbefund("110"),
+	Medikationsplan("120"),
+	Verlaufsbericht("150"),
+	Behandlungsbericht("160"),
+	Einverstaendniserklärung_lt_GenDG_Gen_Diagnostik_Gesetz("200"),
+	weitere_laborspezifische_Dokumente("250"),
+	Allergie_RAST("251"),
+	Molekulardiagnostik("252"),
+	Endokrinologie("253"),
+	Virologie("254"),
+	Mikrobiologie("255"),
+	Funktionsdiagnostik("256"),
+	Infektionsserologie("257"),
+	Kinderwunsch("258"),
+	Meldung_gemaess_IfSG_Infektionsschutz_Gesetz("300"),
+	Meldung_Krebsregister("301"),
+	Normbereichsgrafik("400"),
+	Rechnung("500"),
+    LDT_Daten("900"),
+    sonstige("999");
 
 	private final String code;
 
-	Befundtyp(String code) {
+	Dokumententyp(String code) {
 		this.code = code;
 	}
 
 	public String getCode() {
 		return code;
 	}
-
 }

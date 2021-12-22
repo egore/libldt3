@@ -45,6 +45,9 @@ public @Getter @Setter class AbrechnungSelektivvertrag {
 	@Feld(value = "3133", feldart = Feldart.bedingt_kann)
 	@Regelsatz(value = F002.class, laenge = 8)
 	private LocalDate datumAntragstellung;
+	@Feld(value = "7430", feldart = Feldart.bedingt_kann)
+	@Regelsatz(laenge = 60)
+	private String patientenIdSelektivvertrag;
 	@Feld(value = "4121", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
 	private Gebuehrenordnung gebuehrenordnung;

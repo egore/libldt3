@@ -27,7 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import libldt3.model.enums.Befundtyp;
+import libldt3.model.enums.Auftragsstatus;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
 import lombok.Getter;
 import lombok.Setter;
@@ -74,7 +74,7 @@ public @Getter @Setter class Befundinformationen {
 	private String findingId;
 	@Feld(value = "8401", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-	private Befundtyp type;
+	private Auftragsstatus status;
 	@Feld(value = "0080", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
 	private String fallakteId;
