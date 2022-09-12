@@ -47,14 +47,10 @@ public enum DmpKennzeichnung {
 	/** COPD (chronic obstructive pulmo-nary disease) */
 	ChronicObstructivePulmonaryDisease("06");
 
-	private final String code;
+	public final String code;
 
 	DmpKennzeichnung(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

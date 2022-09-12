@@ -35,14 +35,10 @@ public enum Laborart {
 	/** Eigenlabor */
 	Eigenlabor("4");
 
-	private final String code;
+	public final String code;
 
 	Laborart(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

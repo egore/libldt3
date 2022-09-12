@@ -28,44 +28,42 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.MedikationsStatus;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Hier werden Informationen zu Medikamenten zusammengefasst.
  */
 @Objekt("0070")
-public @Getter @Setter class Medikament {
+public class Medikament {
 
 	@Feld(value = "8243", name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", feldart = Feldart.kann)
 	@Regelsatz(laenge = 40)
-	private Timestamp timestampZeitpunktMedikamenteneinnahme;
+	public Timestamp timestampZeitpunktMedikamenteneinnahme;
 	@Feld(value = "6208", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String handelsname;
+	public String handelsname;
 	@Feld(value = "6207", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 990)
-	private String rezeptur;
+	public String rezeptur;
 	@Feld(value = "8171", feldart = Feldart.kann)
 	@Regelsatz(laenge = 9)
-	private List<Wirkstoff> wirkstoff;
+	public List<Wirkstoff> wirkstoff;
 	@Feld(value = "8523", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String wirkstoffmenge;
+	public String wirkstoffmenge;
 	@Feld(value = "8421", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 20)
-	private String einheit;
+	public String einheit;
 	@Feld(value = "3689", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private List<MedikationsStatus> status;
+	public List<MedikationsStatus> status;
 	@Feld(value = "8226", name = "Timestamp_Gueltig_ab", feldart = Feldart.kann)
 	@Regelsatz(laenge = 20)
-	private Timestamp timestampGueltigAb;
+	public Timestamp timestampGueltigAb;
 	@Feld(value = "8227", name = "Timestamp_Gueltig_bis", feldart = Feldart.kann)
 	@Regelsatz(laenge = 21)
-	private Timestamp timestampGueltigBis;
+	public Timestamp timestampGueltigBis;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
 	@Regelsatz(laenge = 26)
-	private Fliesstext zusaetzlicheInformationen;
+	public Fliesstext zusaetzlicheInformationen;
 
 }

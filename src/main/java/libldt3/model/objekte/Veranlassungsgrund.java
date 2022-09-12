@@ -30,60 +30,58 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.SpezifizierungVeranlassungsgrund;
 import libldt3.model.enums.Untersuchungsanlass;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Mit diesem Objekt können Angaben zum Grund der Veranlassung der
  * laboratoriumsmedizinischen Untersuchung übertragen werden.
  */
 @Objekt("0027")
-public @Getter @Setter class Veranlassungsgrund {
+public class Veranlassungsgrund {
 
 	@Objekt
-	public static @Getter @Setter class AbrechnungsinfoErweitert {
+	public static class AbrechnungsinfoErweitert {
 		@SuppressWarnings("unused")
-		private Abrechnungsinfo value;
+		public Abrechnungsinfo value;
 		@Feld(value = "8417", feldart = Feldart.kann)
 	@Regelsatz(laenge = 2)
-		private Untersuchungsanlass anlass;
+		public Untersuchungsanlass anlass;
 		@Feld(value = "8427", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 2)
-		private SpezifizierungVeranlassungsgrund spezifizierung;
+		public SpezifizierungVeranlassungsgrund spezifizierung;
 		@Feld(value = "8217", name = "Praezisierung_Veranlassungsgrund", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 32)
-		private Fliesstext praezisierung;
+		public Fliesstext praezisierung;
 		@Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 12)
-		private List<Diagnose> akutDiagnose;
+		public List<Diagnose> akutDiagnose;
 		@Feld(value = "4208", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-		private List<Medikation> vorbefundMedikation;
+		public List<Medikation> vorbefundMedikation;
 	}
 	
 	@Objekt
-	public static @Getter @Setter class Medikation {
+	public static class Medikation {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "6212", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private List<Arzneimittelwirkstoff> arzneimittelwirkstoff;
+		public List<Arzneimittelwirkstoff> arzneimittelwirkstoff;
 	}
 	
 	@Objekt
-	public static @Getter @Setter class Arzneimittelwirkstoff {
+	public static class Arzneimittelwirkstoff {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "6214", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-		private String wirkstoffKlassifikation;
+		public String wirkstoffKlassifikation;
 	}
 
 	@Feld(value = "7303", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 2)
-	private List<AbrechnungsinfoErweitert> abrechnungsinfo;
+	public List<AbrechnungsinfoErweitert> abrechnungsinfo;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
-	private List<Anhang> anhang;
+	public List<Anhang> anhang;
 
 }

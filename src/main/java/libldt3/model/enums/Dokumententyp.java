@@ -56,7 +56,7 @@ public enum Dokumententyp {
     LDT_Daten("900"),
     sonstige("999");
 
-	private final String code;
+	public final String code;
 
 	Dokumententyp(String code) {
 		this.code = code;

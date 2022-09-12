@@ -112,11 +112,11 @@ public class LdtWriter {
 			IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
 		Datenpaket datenpaket = o.getClass().getAnnotation(Datenpaket.class);
 		if (datenpaket != null) {
-			writer.printf("0138000%s\r\n", datenpaket.value().getCode());
+			writer.printf("0138000%s\r\n", datenpaket.value().code);
 		}
 		writeObjekt(o, writer);
 		if (datenpaket != null) {
-			writer.printf("0138001%s\r\n", datenpaket.value().getCode());
+			writer.printf("0138001%s\r\n", datenpaket.value().code);
 		}
 	}
 

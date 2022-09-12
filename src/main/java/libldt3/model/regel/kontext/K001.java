@@ -39,9 +39,9 @@ import org.slf4j.LoggerFactory;
  */
 public class K001 implements Kontextregel {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(K001.class);
+	public static final Logger LOG = LoggerFactory.getLogger(K001.class);
 
-	private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("6305", "8242")));
+	public static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("6305", "8242")));
 
 	@Override
 	public boolean isValid(Object owner) throws IllegalAccessException {

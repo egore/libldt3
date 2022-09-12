@@ -29,14 +29,10 @@ public enum Dringlichkeit {
 	Notfall("1"),
 	eilig("2");
 
-	private final String code;
+	public final String code;
 
 	Dringlichkeit(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

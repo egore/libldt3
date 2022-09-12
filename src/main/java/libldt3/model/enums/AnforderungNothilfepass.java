@@ -31,14 +31,10 @@ public enum AnforderungNothilfepass {
 	/** Nothilfepass ausstellen */
 	Ausstellen("1");
 
-	private final String code;
+	public final String code;
 
 	AnforderungNothilfepass(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

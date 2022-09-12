@@ -38,9 +38,9 @@ import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 public class K075 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K075.class);
+    public static final Logger LOG = LoggerFactory.getLogger(K075.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("9970", "6327")));
+    public static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("9970", "6327")));
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {

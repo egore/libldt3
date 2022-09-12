@@ -17,31 +17,31 @@ public class K057 implements Kontextregel {
         Auftrag auftrag = (Auftrag) owner;
 
         // Valid, as no Obj_0059 present
-        if (auftrag.getUntersuchungsanforderung() == null || auftrag.getUntersuchungsanforderung().isEmpty()) {
+        if (auftrag.untersuchungsanforderung == null || auftrag.untersuchungsanforderung.isEmpty()) {
             return true;
         }
 
-        for (Untersuchungsanforderung untersuchungsanforderung : auftrag.getUntersuchungsanforderung()) {
-            if (untersuchungsanforderung.getAbrechnungsinfo() == Abrechnungsinfo.Asv) {
+        for (Untersuchungsanforderung untersuchungsanforderung : auftrag.untersuchungsanforderung) {
+            if (untersuchungsanforderung.abrechnungsinfo == Abrechnungsinfo.Asv) {
 
                 // No identification at all, not valid
-                if (auftrag.getEinsenderidentifikation() == null) {
+                if (auftrag.einsenderidentifikation == null) {
                     return false;
                 }
 
                 // If any FK 0222 is present, it's valid
-                return isNotEmpty(auftrag.getEinsenderidentifikation().getArztidentifikation()) ||
-                        isNotEmpty(auftrag.getEinsenderidentifikation().getUeberweisungAn()) ||
-                        isNotEmpty(auftrag.getEinsenderidentifikation().getUeberweisungVon());
+                return isNotEmpty(auftrag.einsenderidentifikation.arztidentifikation) ||
+                        isNotEmpty(auftrag.einsenderidentifikation.ueberweisungAn) ||
+                        isNotEmpty(auftrag.einsenderidentifikation.ueberweisungVon);
             }
         }
 
         return true;
     }
 
-    private boolean isNotEmpty(Arztidentifikation arztidentifikation) {
-        return arztidentifikation.getAsvTeamnummer() != null &&
-                !arztidentifikation.getAsvTeamnummer().isEmpty();
+    public boolean isNotEmpty(Arztidentifikation arztidentifikation) {
+        return arztidentifikation.asvTeamnummer != null &&
+                !arztidentifikation.asvTeamnummer.isEmpty();
     }
 
 }

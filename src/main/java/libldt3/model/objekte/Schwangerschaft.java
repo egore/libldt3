@@ -30,23 +30,21 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F005;
 import libldt3.model.regel.F018;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Dieses Objekt enthält schwangerschaftsspezifische Informationen.
  */
 @Objekt("0050")
-public @Getter @Setter class Schwangerschaft {
+public class Schwangerschaft {
 
 	@Feld(value = "8511", feldart = Feldart.kann)
 	@Regelsatz(value = F005.class, laenge = 3)
-	private String schwangerschaftsdauer;
+	public String schwangerschaftsdauer;
 	@Feld(value = "8512", feldart = Feldart.muss)
 	@Regelsatz(value = F018.class, laenge = 8)
-	private LocalDate ersterTagLetzterZyklus;
+	public LocalDate ersterTagLetzterZyklus;
 	@Feld(value = "3471", feldart = Feldart.bedingt_kann)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate entbindungstermin;
+	public LocalDate entbindungstermin;
 
 }

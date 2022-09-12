@@ -28,36 +28,34 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.LdtVersion;
 import libldt3.model.regel.F007;
 import libldt3.model.regel.F012;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
  * den LDT Datensatz erstellt hat.
  */
 @Objekt(value = "0051")
-public @Getter @Setter class SendendesSystem {
+public class SendendesSystem {
 
 	@Feld(value = "0001", feldart = Feldart.muss)
 	@Regelsatz(value = F007.class, maxLaenge = 12)
-	private LdtVersion version;
+	public LdtVersion version;
 	@Feld(value = "8315", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String empfaengerId;
+	public String empfaengerId;
 	@Feld(value = "8316", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String senderId;
+	public String senderId;
 	@Feld(value = "0105", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F012.class, laenge = 16)
-	private String kvbPruefnummer;
+	public String kvbPruefnummer;
 	@Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann)
 	@Regelsatz(laenge = 24)
-	private Organisation softwareverantwortlicher;
+	public Organisation softwareverantwortlicher;
 	@Feld(value = "0103", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String softwareName;
+	public String softwareName;
 	@Feld(value = "0132", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String softwareVersion;
+	public String softwareVersion;
 
 }

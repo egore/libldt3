@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 
 class KontextregelHelper {
 
-	private static final Logger LOG = LoggerFactory.getLogger(KontextregelHelper.class);
+	public static final Logger LOG = LoggerFactory.getLogger(KontextregelHelper.class);
 
 	/**
 	 * Check if a given field has any string content (either simply text or multiline Fliesstext)
@@ -61,15 +61,15 @@ class KontextregelHelper {
 		}
 		if (value instanceof Fliesstext) {
 			Fliesstext fliesstext = ((Fliesstext) value);
-			if (fliesstext.getText() != null) {
-				for (String s : fliesstext.getText()) {
+			if (fliesstext.text != null) {
+				for (String s : fliesstext.text) {
 					if (s != null && !s.isEmpty()) {
 						return true;
 					}
 				}
 			}
-			if (fliesstext.getBase64text() != null) {
-				for (String s : fliesstext.getBase64text()) {
+			if (fliesstext.base64text != null) {
+				for (String s : fliesstext.base64text) {
 					if (s != null && !s.isEmpty()) {
 						return true;
 					}

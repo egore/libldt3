@@ -33,7 +33,7 @@ public enum EinheitMesswert {
     /** dimensionslose Größe */
     dimensionslose_Groesse("9");
 
-    private final String code;
+    public final String code;
 
     EinheitMesswert(String code) {
         this.code = code;

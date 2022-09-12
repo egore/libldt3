@@ -40,9 +40,9 @@ import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
  */
 public class K017 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K017.class);
+    public static final Logger LOG = LoggerFactory.getLogger(K017.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("3112", "3121", "3114", "3124")));
+    public static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("3112", "3121", "3114", "3124")));
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
@@ -59,7 +59,7 @@ public class K017 implements Kontextregel {
 
     }
 
-    private boolean checkExclusion(Object owner, Map<String, Field> fields, String first, String second) throws IllegalAccessException {
+    public boolean checkExclusion(Object owner, Map<String, Field> fields, String first, String second) throws IllegalAccessException {
         String value = (String) fields.get(first).get(owner);
         // XXX 4109 does not exist on the current object, likely we need to traverse the object tree to find it in one
         // of the holding classes

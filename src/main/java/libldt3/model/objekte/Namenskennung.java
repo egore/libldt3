@@ -26,27 +26,25 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.StatusPerson;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Das Objekt dient der Darstellung und elektronischen Übermittlung von
  * Namenskennzeichnungen.
  */
 @Objekt("0041")
-public @Getter @Setter class Namenskennung {
+public class Namenskennung {
 
 	@Feld(value = "7420", feldart = Feldart.muss)
 	@Regelsatz(laenge = 2)
-	private StatusPerson status;
+	public StatusPerson status;
 	@Feld(value = "7358", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String name;
+	public String name;
 	@Feld(value = "8990", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String shorthand;
+	public String shorthand;
 	@Feld(value = "8110", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 6)
-	private Anhang anhang;
+	public Anhang anhang;
 
 }

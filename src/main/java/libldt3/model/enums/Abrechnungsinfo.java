@@ -50,7 +50,7 @@ public enum Abrechnungsinfo {
     /** storniert */
     storniert("99");
 
-    private final String code;
+    public final String code;
 
     Abrechnungsinfo(String code) {
         this.code = code;

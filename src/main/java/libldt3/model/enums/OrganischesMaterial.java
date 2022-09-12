@@ -33,14 +33,10 @@ public enum OrganischesMaterial {
 	/** nicht bestimmbar */
 	nicht_bestimmbar("3");
 
-	private final String code;
+	public final String code;
 
 	OrganischesMaterial(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

@@ -43,7 +43,7 @@ public enum DarstellungErgebniswerte {
     /** Sonstige */
     Sonstige("99");
 
-    private final String code;
+    public final String code;
 
     DarstellungErgebniswerte(String code) {
         this.code = code;

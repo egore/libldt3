@@ -30,8 +30,6 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Zeiteinheit;
 import libldt3.model.regel.F002;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden
@@ -39,34 +37,34 @@ import lombok.Setter;
  * beschrieben.
  */
 @Objekt("0053")
-public @Getter @Setter class Tier {
+public class Tier {
 
 	@Feld(value = "7319", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String identifikationsnummerQuelle;
+	public String identifikationsnummerQuelle;
 	@Feld(value = "7313", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String artRasseMaterial;
+	public String artRasseMaterial;
 	@Feld(value = "7314", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String nameKennung;
+	public String nameKennung;
 	@Feld(value = "7315", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 10)
-	private String alter;
+	public String alter;
 	@Feld(value = "7326", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-	private Zeiteinheit alterIn;
+	public Zeiteinheit alterIn;
 	@Feld(value = "7351", feldart = Feldart.kann)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate geburtsdatum;
+	public LocalDate geburtsdatum;
 	@Feld(value = "8107", feldart = Feldart.kann)
 	@Regelsatz(laenge = 9)
-	private Anschrift anschrift;
+	public Anschrift anschrift;
 	@Feld(value = "8147", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
-	private Person person;
+	public Person person;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
-	private List<Anhang> anhang;
+	public List<Anhang> anhang;
 
 }

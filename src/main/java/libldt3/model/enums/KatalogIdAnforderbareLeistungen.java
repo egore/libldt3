@@ -35,14 +35,10 @@ public enum KatalogIdAnforderbareLeistungen {
 	/** sonstige mit URL */
 	sonstigeMitURL("4");
 
-	private final String code;
+	public final String code;
 
 	KatalogIdAnforderbareLeistungen(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

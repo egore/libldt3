@@ -30,8 +30,6 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.ResistenzInterpretation;
 import libldt3.model.enums.ResistenzNach;
 import libldt3.model.enums.Sensitivitaet;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * In diesem Objekt wird ein Antibiogramm (Matrix) aus dem Bereich Mikrobiologie
@@ -39,58 +37,58 @@ import lombok.Setter;
  * Matrix.
  */
 @Objekt("0011")
-public @Getter @Setter class Antibiogramm {
+public class Antibiogramm {
 
 	@Objekt
-	public static @Getter @Setter class WirkstoffIdent {
+	public static class WirkstoffIdent {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "7288", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private List<String> wirkstoffGenericNummer;
+		public List<String> wirkstoffGenericNummer;
 		@Feld(value = "7359", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private List<String> wirkstoffOid;
+		public List<String> wirkstoffOid;
 		@Feld(value = "7370", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private List<String> wirkstoffname;
+		public List<String> wirkstoffname;
 		@Feld(value = "7354", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-		private List<KeimIdentifizierung> keimIdentifizierung;
+		public List<KeimIdentifizierung> keimIdentifizierung;
 	}
 
 	@Objekt
-	public static @Getter @Setter class KeimIdentifizierung {
+	public static class KeimIdentifizierung {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "7367", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-		private Sensitivitaet sensitivitaet;
+		public Sensitivitaet sensitivitaet;
 		@Feld(value = "7289", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private String mhk;
+		public String mhk;
 		@Feld(value = "7369", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private String mhkEinheit;
+		public String mhkEinheit;
 		@Feld(value = "7290", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-		private List<ResistenzInterpretationErweitert> resistenzInterpretation;
+		public List<ResistenzInterpretationErweitert> resistenzInterpretation;
 	}
 	
 	@Objekt
-	public static @Getter @Setter class ResistenzInterpretationErweitert {
+	public static class ResistenzInterpretationErweitert {
 		@SuppressWarnings("unused")
-		private ResistenzInterpretation value;
+		public ResistenzInterpretation value;
 		@Feld(value = "7424", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-		private ResistenzNach resistenzNach;
+		public ResistenzNach resistenzNach;
 	}
 
 	@Feld(value = "7287", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<WirkstoffIdent> wirkstoffIdent;
+	public List<WirkstoffIdent> wirkstoffIdent;
 	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 12)
-	private Fliesstext ergebnistext;
+	public Fliesstext ergebnistext;
 
 }

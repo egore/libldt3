@@ -88,14 +88,10 @@ public enum WOP {
 	/** Sachsen */
 	Sachsen("98");
 
-	private final String code;
+	public final String code;
 
 	WOP(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

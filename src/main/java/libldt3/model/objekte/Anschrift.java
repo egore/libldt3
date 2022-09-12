@@ -29,49 +29,47 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Adresstyp;
 import libldt3.model.regel.kontext.K017;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Das Objekt Anschrift definiert die Adresse. Dabei kann es sich entweder um
  * ein Postfach oder um eine physische Adresse handeln.
  */
 @Objekt(value = "0007", kontextregeln = K017.class)
-public @Getter @Setter class Anschrift {
+public class Anschrift {
 
 	@Feld(value = "3112", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 10)
-	private String plz;
+	public String plz;
 	@Feld(value = "3113", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 40)
-	private String ort;
+	public String ort;
 	@Feld(value = "3107", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 46)
-	private String strasse;
+	public String strasse;
 	@Feld(value = "3109", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 9)
-	private String hausnummer;
+	public String hausnummer;
 	@Feld(value = "3115", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 40)
-	private String anschriftenzusatz;
+	public String anschriftenzusatz;
 	@Feld(value = "3114", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 3)
-	private String wohnsitzlaendercode;
+	public String wohnsitzlaendercode;
 
 	@Feld(value = "3121", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 10)
-	private String postfachPlz;
+	public String postfachPlz;
 	@Feld(value = "3122", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 40)
-	private String postfachOrt;
+	public String postfachOrt;
 	@Feld(value = "3123", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 8)
-	private String postfach;
+	public String postfach;
 	@Feld(value = "3124", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 3)
-	private String postfachWohnsitzlaendercode;
+	public String postfachWohnsitzlaendercode;
 	@Feld(value = "1202", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private List<Adresstyp> adresstyp;
+	public List<Adresstyp> adresstyp;
 
 }

@@ -28,8 +28,6 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Benachrichtigungsgrund;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
@@ -37,25 +35,25 @@ import lombok.Setter;
  * des Einsenders erfordern.
  */
 @Objekt("0026")
-public @Getter @Setter class FehlermeldungAufmerksamkeit {
+public class FehlermeldungAufmerksamkeit {
 
 	@Feld(value = "7280", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private Benachrichtigungsgrund benachrichtigungsgrund;
+	public Benachrichtigungsgrund benachrichtigungsgrund;
 	@Feld(value = "7320", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private Boolean recallEmpfohlen;
+	public Boolean recallEmpfohlen;
 	@Feld(value = "8154", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 9)
-	private Timestamp timestamp;
+	public Timestamp timestamp;
 	@Feld(value = "8147", feldart = Feldart.muss)
 	@Regelsatz(laenge = 6)
-	private Person person;
+	public Person person;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
 	@Regelsatz(laenge = 26)
-	private List<Fliesstext> text;
+	public List<Fliesstext> text;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
-	private List<Anhang> anhang;
+	public List<Anhang> anhang;
 
 }

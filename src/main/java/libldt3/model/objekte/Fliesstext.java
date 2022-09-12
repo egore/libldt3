@@ -27,20 +27,18 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
  */
 @Objekt("0068")
-public @Getter @Setter class Fliesstext {
+public class Fliesstext {
 
 	@Feld(value = "3564", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 990)
-	private List<String> text;
+	public List<String> text;
 	@Feld(value = "6329", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> base64text;
+	public List<String> base64text;
 
 }

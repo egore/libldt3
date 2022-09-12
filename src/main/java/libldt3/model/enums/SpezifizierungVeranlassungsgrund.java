@@ -51,14 +51,10 @@ public enum SpezifizierungVeranlassungsgrund {
 	/** Sonstiges */
 	Sonstiges("12");
 
-	private final String code;
+	public final String code;
 
 	SpezifizierungVeranlassungsgrund(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

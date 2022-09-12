@@ -30,14 +30,10 @@ public enum Lokalisation {
 	/** beiderseits */
 	beiderseits("B");
 
-	private final String code;
+	public final String code;
 
 	Lokalisation(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

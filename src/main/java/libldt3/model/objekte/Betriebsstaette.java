@@ -30,33 +30,31 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Betriebsstaettenstatus;
 import libldt3.model.regel.F010;
 import libldt3.model.regel.F021;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
  * medizinischen Einrichtungen zusammen.
  */
 @Objekt("0019")
-public @Getter @Setter class Betriebsstaette {
+public class Betriebsstaette {
 
 	@Feld(value = "0204", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private List<Betriebsstaettenstatus> status;
+	public List<Betriebsstaettenstatus> status;
 	@Feld(value = "0203", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String bsnrBezeichnung;
+	public String bsnrBezeichnung;
 	@Feld(value = "0200", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String betriebsstaettenId;
+	public String betriebsstaettenId;
 	@Feld(value = "0201", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = {F010.class, F021.class}, laenge = 9)
-	private String bsnr;
+	public String bsnr;
 	@Feld(value = "0213", feldart = Feldart.kann)
 	@Regelsatz(laenge = 9)
-	private String institutskennzeichen;
+	public String institutskennzeichen;
 	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 12)
-	private Organisation organisation;
+	public Organisation organisation;
 
 }

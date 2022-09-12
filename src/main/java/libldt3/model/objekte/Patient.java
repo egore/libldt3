@@ -31,38 +31,36 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.GeschlechtNormalbereich;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F013;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
  */
 @Objekt("0045")
-public @Getter @Setter class Patient {
+public class Patient {
 
 	@Feld(value = "8147", feldart = Feldart.muss)
 	@Regelsatz(laenge = 6)
-	private Person person;
+	public Person person;
 	@Feld(value = "3119", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F013.class, laenge = 10)
-	private String versichertenId;
+	public String versichertenId;
 	@Feld(value = "3105", feldart = Feldart.bedingt_muss)
 	@Regelsatz(minLaenge = 6, maxLaenge = 12)
-	private String versichertennummer;
+	public String versichertennummer;
 	@Feld(value = "7329", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private GeschlechtNormalbereich geschlecht;
+	public GeschlechtNormalbereich geschlecht;
 	@Feld(value = "7922", feldart = Feldart.kann)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate sterbedatum;
+	public LocalDate sterbedatum;
 	@Feld(value = "3000", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String patientNumber;
+	public String patientNumber;
 	@Feld(value = "3620", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> profession;
+	public List<String> profession;
 	@Feld(value = "3621", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String currentProfession;
+	public String currentProfession;
 
 }

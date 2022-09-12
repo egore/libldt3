@@ -56,7 +56,7 @@ public enum Grenzwertindikator {
     /** sehr auffällig */
     AA("AA");
 
-    private final String code;
+    public final String code;
 
     Grenzwertindikator(String code) {
         this.code = code;

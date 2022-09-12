@@ -33,7 +33,7 @@ public enum Sensitivitaet {
 	/** resistent */
 	resistent("R");
 
-	private final String code;
+	public final String code;
 
 	Sensitivitaet(String code) {
 		this.code = code;

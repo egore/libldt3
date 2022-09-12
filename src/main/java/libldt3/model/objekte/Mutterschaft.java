@@ -25,23 +25,21 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
  */
 @Objekt("0040")
-public @Getter @Setter class Mutterschaft {
+public class Mutterschaft {
 
 	@Feld(value = "3668", feldart = Feldart.muss)
 	@Regelsatz(laenge = 2)
-	private Integer anzahlSchwangerschaften;
+	public Integer anzahlSchwangerschaften;
 	@Feld(value = "3664", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 2)
-	private Integer anzahlGeburten;
+	public Integer anzahlGeburten;
 	@Feld(value = "3666", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 2)
-	private Integer anzahlKinder;
+	public Integer anzahlKinder;
 
 }

@@ -39,9 +39,9 @@ import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 public class K099 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K099.class);
+    public static final Logger LOG = LoggerFactory.getLogger(K099.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8422")));
+    public static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8422")));
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
@@ -55,7 +55,7 @@ public class K099 implements Kontextregel {
         Object o = fields.get("8422").get(owner);
         if (o instanceof Collection) {
             for (GrenzwertindikatorErweitert grenzwertindikatorErweitert : (Collection<GrenzwertindikatorErweitert>) o) {
-                Grenzwertindikator grenzwertindikator = grenzwertindikatorErweitert.getValue();
+                Grenzwertindikator grenzwertindikator = grenzwertindikatorErweitert.value;
                 if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
                         grenzwertindikator == Grenzwertindikator.EXTREM_MINUS ||
                         grenzwertindikator == Grenzwertindikator.EXTREM_H ||
@@ -66,7 +66,7 @@ public class K099 implements Kontextregel {
             }
             return true;
         } else {
-            Grenzwertindikator grenzwertindikator = ((GrenzwertindikatorErweitert) o).getValue();
+            Grenzwertindikator grenzwertindikator = ((GrenzwertindikatorErweitert) o).value;
             if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
                     grenzwertindikator == Grenzwertindikator.EXTREM_MINUS ||
                     grenzwertindikator == Grenzwertindikator.EXTREM_H ||

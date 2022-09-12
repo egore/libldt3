@@ -54,7 +54,7 @@ public enum Einsenderstatus {
 	/** sonstige medizinische Einrichtung */
 	sonstige_medizinische_Einrichtung("17");
 
-	private final String code;
+	public final String code;
 
 	Einsenderstatus(String code) {
 		this.code = code;

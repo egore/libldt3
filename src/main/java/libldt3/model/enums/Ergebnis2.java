@@ -28,14 +28,10 @@ public enum Ergebnis2 {
 
 	positiv("1"), negativ("2"), nicht_auswertbar("3"), suspekt("4");
 
-	private final String code;
+	public final String code;
 
 	Ergebnis2(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

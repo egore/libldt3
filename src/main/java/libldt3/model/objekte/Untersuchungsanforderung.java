@@ -31,113 +31,111 @@ import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.StatusDringlichkeit;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung zusammengefasst.
  */
 @Objekt(value = "0059")
-public @Getter @Setter class Untersuchungsanforderung {
+public class Untersuchungsanforderung {
 
 	@Objekt
-	public static @Getter @Setter class KatalogReferenz {
+	public static class KatalogReferenz {
 		@SuppressWarnings("unused")
-		private KatalogIdAnforderbareLeistungen value;
+		public KatalogIdAnforderbareLeistungen value;
 		@Feld(value = "7352", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-		private String katalogUrl;
+		public String katalogUrl;
 		@Feld(value = "7251", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private String katalogBezeichnung;
+		public String katalogBezeichnung;
 		@Feld(value = "7365", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 20)
-		private String analysenId;
+		public String analysenId;
 		@Feld(value = "7366", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-		private String leistungsbezeichnung;
+		public String leistungsbezeichnung;
 	}
 
 	@Objekt
-	public static @Getter @Setter class Test {
+	public static class Test {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "8411", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-		private String testbezeichnung;
+		public String testbezeichnung;
 	}
 
 	@Objekt
-	public static @Getter @Setter class ProbengefaessIdent {
+	public static class ProbengefaessIdent {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "8428", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-		private String probenmaterialIdent;
+		public String probenmaterialIdent;
 		@Feld(value = "8429", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 4)
-		private String probenmaterialIndex;
+		public String probenmaterialIndex;
 	}
 
 	@Objekt
-	public static @Getter @Setter class Einwilligungserklaerung {
+	public static class Einwilligungserklaerung {
 		@SuppressWarnings("unused")
-		private Boolean value;
+		public Boolean value;
 		@Feld(value = "8110", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 6)
-		private Anhang anhang;
+		public Anhang anhang;
 	}
 
 	@Feld(value = "7260", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-	private KatalogReferenz anforderbareLeistungenKatalogId;
+	public KatalogReferenz anforderbareLeistungenKatalogId;
 	@Feld(value = "7276", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String nummernpoolId;
+	public String nummernpoolId;
 	@Feld(value = "8410", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private Test testIdent;
+	public Test testIdent;
 	@Feld(value = "7303", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 2)
-	private Abrechnungsinfo abrechnungsinfo;
+	public Abrechnungsinfo abrechnungsinfo;
 	@Feld(value = "8501", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private Dringlichkeit dringlichkeit;
+	public Dringlichkeit dringlichkeit;
 	@Feld(value = "7262", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private StatusDringlichkeit statusDringlichkeit;
+	public StatusDringlichkeit statusDringlichkeit;
 	@Feld(value = "8423", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private Boolean pathologischBekannt;
+	public Boolean pathologischBekannt;
 	@Feld(value = "7364", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<ProbengefaessIdent> probengefaessIdent;
+	public List<ProbengefaessIdent> probengefaessIdent;
 	@Feld(value = "8434", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String anforderungen;
+	public String anforderungen;
 	@Feld(value = "8134", name = "Krebsfrueherkennung_Frauen", feldart = Feldart.kann)
 	@Regelsatz(laenge = 26)
-	private KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
+	public KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
 	@Feld(value = "8156", feldart = Feldart.kann)
 	@Regelsatz(laenge = 5)
-	private Tumor tumor;
+	public Tumor tumor;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
-	private List<Anhang> anhang;
+	public List<Anhang> anhang;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
 	@Regelsatz(laenge = 26)
-	private List<Fliesstext> zusaetzlicheInformationen;
+	public List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8238", name = "Auftragsbezogene_Hinweise", feldart = Feldart.kann)
 	@Regelsatz(laenge = 25)
-	private Fliesstext auftragsbezogeneHinweise;
+	public Fliesstext auftragsbezogeneHinweise;
 	@Feld(value = "8491", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private Einwilligungserklaerung einwilligungserklaerungLiegtVor;
+	public Einwilligungserklaerung einwilligungserklaerungLiegtVor;
 	@Feld(value = "8213", name = "Timestamp_Erstellung_Untersuchungsanforderung", feldart = Feldart.muss)
 	@Regelsatz(laenge = 45)
-	private Timestamp timestampErstellungUntersuchungsanforderung;
+	public Timestamp timestampErstellungUntersuchungsanforderung;
 	@Feld(value = "8141", feldart = Feldart.kann)
 	@Regelsatz(laenge = 13)
-	private Namenskennung namenskennung;
+	public Namenskennung namenskennung;
 
 }

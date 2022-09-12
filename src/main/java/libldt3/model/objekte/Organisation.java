@@ -27,41 +27,39 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden Organisationsstrukturen abgebildet.
  */
 @Objekt("0043")
-public @Getter @Setter class Organisation {
+public class Organisation {
 
 	@Objekt
-	public static @Getter @Setter class Funktionsbezeichnung {
+	public static class Funktionsbezeichnung {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "8147", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 6)
-		private List<Person> person;
+		public List<Person> person;
 	}
 
 	@Feld(value = "1250", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String organisationFirma;
+	public String organisationFirma;
 	@Feld(value = "1251", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String rechtsformOrganisation;
+	public String rechtsformOrganisation;
 	@Feld(value = "1252", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<Funktionsbezeichnung> funktionsbezeichnung;
+	public List<Funktionsbezeichnung> funktionsbezeichnung;
 	@Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann)
 	@Regelsatz(laenge = 23)
-	private List<Anschrift> anschriftArbeitsstelle;
+	public List<Anschrift> anschriftArbeitsstelle;
 	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
 	@Regelsatz(laenge = 18)
-	private Anschrift rechnungsanschrift;
+	public Anschrift rechnungsanschrift;
 	@Feld(value = "8131", feldart = Feldart.kann)
 	@Regelsatz(laenge = 19)
-	private Kommunikationsdaten kommunikationsdaten;
+	public Kommunikationsdaten kommunikationsdaten;
 
 }

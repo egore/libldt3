@@ -31,14 +31,10 @@ public enum Adresstyp {
 	/** Postanschrift */
 	Postanschrift("2");
 
-	private final String code;
+	public final String code;
 
 	Adresstyp(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

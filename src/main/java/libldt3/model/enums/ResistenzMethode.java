@@ -37,14 +37,10 @@ public enum ResistenzMethode {
 	/** sonstige */
 	sonstige("4");
 
-	private final String code;
+	public final String code;
 
 	ResistenzMethode(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

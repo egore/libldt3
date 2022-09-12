@@ -58,14 +58,10 @@ public enum StatusPerson {
 	/** Medizinische/r Fachangestellte/r (MFA) */
 	MFA("18");
 
-	private final String code;
+	public final String code;
 
 	StatusPerson(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

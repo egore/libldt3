@@ -32,74 +32,72 @@ import libldt3.model.enums.Antikoerpersuchtest;
 import libldt3.model.enums.DirekterCoombstest;
 import libldt3.model.enums.TestStatus;
 import libldt3.model.regel.kontext.K076;
-import lombok.Getter;
-import lombok.Setter;
 
 @Objekt(value = "0055", kontextregeln = K076.class)
-public @Getter @Setter class TransfusionsmedizinMutterschaftsvorsorge {
+public class TransfusionsmedizinMutterschaftsvorsorge {
 
 	@Feld(value = "7304", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String ergebnisId;
+	public String ergebnisId;
 	@Feld(value = "7364", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> probengefaessIdent;
+	public List<String> probengefaessIdent;
 	@Feld(value = "8418", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private TestStatus teststatus;
+	public TestStatus teststatus;
 	@Feld(value = "3412", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 6)
-	private String blutgruppeEurocode;
+	public String blutgruppeEurocode;
 	@Feld(value = "3413", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private Antikoerpersuchtest antikoerpersuchtest;
+	public Antikoerpersuchtest antikoerpersuchtest;
 	@Feld(value = "3414", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String spezifitaetWeitereErythrozytenantigene;
+	public String spezifitaetWeitereErythrozytenantigene;
 	@Feld(value = "3415", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String spezifitaetErythrozytenantikoerper;
+	public String spezifitaetErythrozytenantikoerper;
 	@Feld(value = "3416", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String spezifitaetHlaHpaHnaAntigene;
+	public String spezifitaetHlaHpaHnaAntigene;
 	@Feld(value = "3417", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String spezifitaetHlaHpaHnaAntikoerper;
+	public String spezifitaetHlaHpaHnaAntikoerper;
 	@Feld(value = "7263", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String testId;
+	public String testId;
 	@Feld(value = "3418", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private DirekterCoombstest direkterCoombstest;
+	public DirekterCoombstest direkterCoombstest;
 	@Feld(value = "3419", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> ergebnisKreuzprobe;
+	public List<String> ergebnisKreuzprobe;
 	@Feld(value = "7275", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> terminologieId;
+	public List<String> terminologieId;
 	@Feld(value = "3420", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private AnforderungNothilfepass anforderungNothilfepass;
+	public AnforderungNothilfepass anforderungNothilfepass;
 	@Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann)
 	@Regelsatz(laenge = 36)
-	private Timestamp timestampEingangserfassungMaterial;
+	public Timestamp timestampEingangserfassungMaterial;
 	@Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann)
 	@Regelsatz(laenge = 25)
-	private Timestamp timestampBeginnAnalytik;
+	public Timestamp timestampBeginnAnalytik;
 	@Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann)
 	@Regelsatz(laenge = 28)
-	private Timestamp timestampErgebniserstellung;
+	public Timestamp timestampErgebniserstellung;
 	@Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann)
 	@Regelsatz(laenge = 22)
-	private Timestamp timestampQmErfassung;
+	public Timestamp timestampQmErfassung;
 	@Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 17)
-	private Timestamp timestampMessung;
+	public Timestamp timestampMessung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
 	@Regelsatz(laenge = 26)
-	private List<Fliesstext> zusaetzlicheInformationen;
+	public List<Fliesstext> zusaetzlicheInformationen;
 	@Feld(value = "8158", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 23)
-	private Untersuchungsabrechnung untersuchungsabrechnung;
+	public Untersuchungsabrechnung untersuchungsabrechnung;
 
 }

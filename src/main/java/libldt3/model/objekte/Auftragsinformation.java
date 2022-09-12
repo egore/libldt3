@@ -30,8 +30,6 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.StatusDringlichkeit;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
@@ -39,55 +37,55 @@ import lombok.Setter;
  * Dringlichkeit des Auftrags definiert.
  */
 @Objekt(value = "0013")
-public @Getter @Setter class Auftragsinformation {
+public class Auftragsinformation {
 
 	@Objekt
-	public static @Getter @Setter class Befundweg {
+	public static class Befundweg {
 		@SuppressWarnings("unused")
-		private ZusaetzlicherBefundweg value;
+		public ZusaetzlicherBefundweg value;
 		@Feld(value = "8147", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 6)
-		private Person person;
+		public Person person;
 	}
 
 	@Feld(value = "8310", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String auftragsnummerEinsender;
+	public String auftragsnummerEinsender;
 	@Feld(value = "8313", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> nachforderungId;
+	public List<String> nachforderungId;
 	@Feld(value = "8311", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String auftragsnummerLabor;
+	public String auftragsnummerLabor;
 	@Feld(value = "7268", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String fachrichtungStationskennung;
+	public String fachrichtungStationskennung;
 	@Feld(value = "0080", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String fallakteId;
+	public String fallakteId;
 	@Feld(value = "0081", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> fallakteBezeichnung;
+	public List<String> fallakteBezeichnung;
 	@Feld(value = "8501", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private Dringlichkeit dringlichkeit;
+	public Dringlichkeit dringlichkeit;
 	@Feld(value = "7262", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private StatusDringlichkeit statusDringlichkeit;
+	public StatusDringlichkeit statusDringlichkeit;
 	@Feld(value = "8118", name = "Abweichender_Befundweg", feldart = Feldart.kann)
 	@Regelsatz(laenge = 22)
-	private Kommunikationsdaten abweichenderBefundweg;
+	public Kommunikationsdaten abweichenderBefundweg;
 	@Feld(value = "8611", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private List<Befundweg> zusaetzlicherBefundweg;
+	public List<Befundweg> zusaetzlicherBefundweg;
 	@Feld(value = "8213", name = "Timestamp_Erstellung_Untersuchungsanforderung", feldart = Feldart.muss)
 	@Regelsatz(laenge = 45)
-	private Timestamp timestampErstellungUntersuchungsanforderung;
+	public Timestamp timestampErstellungUntersuchungsanforderung;
 	@Feld(value = "8238", name = "Auftragsbezogene_Hinweise", feldart = Feldart.kann)
 	@Regelsatz(laenge = 25)
-	private Fliesstext auftragsbezogeneHinweise;
+	public Fliesstext auftragsbezogeneHinweise;
 	@Feld(value = "8141", feldart = Feldart.kann)
 	@Regelsatz(laenge = 13)
-	private Namenskennung namenskennung;
+	public Namenskennung namenskennung;
 
 }

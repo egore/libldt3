@@ -25,23 +25,21 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Hier werden alle Informationen zusammengefasst, die im Kontext mit der Erstellung des Datensatzes stehen.
  */
 @Objekt("0032")
-public @Getter @Setter class Kopfdaten {
+public class Kopfdaten {
 
 	@Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
 	@Regelsatz(laenge = 16)
-	private SendendesSystem sendendesSystem;
+	public SendendesSystem sendendesSystem;
 	@Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann)
 	@Regelsatz(laenge = 30)
-	private Timestamp timestampErstellungDatensatz;
+	public Timestamp timestampErstellungDatensatz;
 	@Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann)
 	@Regelsatz(laenge = 24)
-	private Organisation softwareverantwortlicher;
+	public Organisation softwareverantwortlicher;
 
 }

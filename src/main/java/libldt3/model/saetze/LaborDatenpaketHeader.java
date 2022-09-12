@@ -29,23 +29,21 @@ import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Betriebsstaette;
 import libldt3.model.objekte.Kopfdaten;
 import libldt3.model.objekte.Laborkennung;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Satzart: L (Labor)-Datenpaket-Header "8220"
  */
 @Datenpaket(Satzart.LaborDatenpaketHeader)
-public @Getter @Setter class LaborDatenpaketHeader implements Satz {
+public class LaborDatenpaketHeader implements Satz {
 
 	@Feld(value = "8132", feldart = Feldart.muss)
 	@Regelsatz(laenge = 9)
-	private Kopfdaten kopfdaten;
+	public Kopfdaten kopfdaten;
 	@Feld(value = "8136", feldart = Feldart.muss)
 	@Regelsatz(laenge = 12)
-	private Laborkennung laborkennung;
+	public Laborkennung laborkennung;
 	@Feld(value = "8119", feldart = Feldart.muss)
 	@Regelsatz(laenge = 15)
-	private Betriebsstaette betriebsstaette;
+	public Betriebsstaette betriebsstaette;
 
 }

@@ -41,14 +41,10 @@ public enum ArztTypId {
 	/** Sonstige */
 	Sonstige("9");
 
-	private final String code;
+	public final String code;
 
 	ArztTypId(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

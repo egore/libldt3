@@ -96,7 +96,7 @@ public enum TestStatus {
      */
     Storniert("12");
 
-    private final String code;
+    public final String code;
 
     TestStatus(String code) {
         this.code = code;

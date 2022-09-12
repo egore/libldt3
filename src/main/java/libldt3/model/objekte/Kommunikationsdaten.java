@@ -27,42 +27,40 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
  * mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
  */
 @Objekt("0031")
-public @Getter @Setter class Kommunikationsdaten {
+public class Kommunikationsdaten {
 
 	@Objekt
-	public static @Getter @Setter class ElektronischePostadresse {
+	public static class ElektronischePostadresse {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "7340", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-		private String spezifizierung;
+		public String spezifizierung;
 	}
 
 	@Feld(value = "7330", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> phone;
+	public List<String> phone;
 	@Feld(value = "7331", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> mobile;
+	public List<String> mobile;
 	@Feld(value = "7332", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<ElektronischePostadresse> elektronischePostadresse;
+	public List<ElektronischePostadresse> elektronischePostadresse;
 	@Feld(value = "7333", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> fax;
+	public List<String> fax;
 	@Feld(value = "7335", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> email;
+	public List<String> email;
 	@Feld(value = "7334", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> website;
+	public List<String> website;
 
 }

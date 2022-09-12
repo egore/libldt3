@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 abstract class RegularExpressionRegel implements Regel {
 
-	private final Pattern pattern;
+	public final Pattern pattern;
 
 	RegularExpressionRegel(Pattern pattern) {
 		this.pattern = pattern;

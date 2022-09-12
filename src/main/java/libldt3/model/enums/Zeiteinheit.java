@@ -31,14 +31,10 @@ public enum Zeiteinheit {
 	Tage("3"),
 	Jahre("4");
 
-	private final String code;
+	public final String code;
 
 	Zeiteinheit(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

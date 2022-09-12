@@ -30,26 +30,24 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F016;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Ein Zeitstempel
  */
 @Objekt("0054")
-public @Getter @Setter class Timestamp {
+public class Timestamp {
 
 	@Feld(value = "7278", feldart = Feldart.muss)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate datum;
+	public LocalDate datum;
 	@Feld(value = "7279", feldart = Feldart.kann)
 	@Regelsatz(value = F016.class, minLaenge = 6, maxLaenge = 9)
-	private LocalTime uhrzeit;
+	public LocalTime uhrzeit;
 	@Feld(value = "7272", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 990)
-	private String freitext;
+	public String freitext;
 	@Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann)
 	@Regelsatz(laenge = 20)
-	private Person person;
+	public Person person;
 
 }

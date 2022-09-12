@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F014 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("^00[0-9]{6}[0-9]$");
+	public static final Pattern PATTERN = Pattern.compile("^00[0-9]{6}[0-9]$");
 
 	public F014() {
 		super(PATTERN);

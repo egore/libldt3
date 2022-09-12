@@ -29,14 +29,10 @@ public enum EndozervikaleZellen {
 	vorhanden("1"),
 	nicht_vorhanden("2");
 
-	private final String code;
+	public final String code;
 
 	EndozervikaleZellen(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

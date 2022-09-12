@@ -28,14 +28,10 @@ public enum Ergebnis {
 
 	positiv("1"), negativ("2"), invalid("3");
 
-	private final String code;
+	public final String code;
 
 	Ergebnis(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

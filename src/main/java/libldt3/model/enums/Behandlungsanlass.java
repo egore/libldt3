@@ -35,14 +35,10 @@ public enum Behandlungsanlass {
 	/** belegärztliche Behandlung */
 	BelegaerztlicheBehandlung("4");
 
-	private final String code;
+	public final String code;
 
 	Behandlungsanlass(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

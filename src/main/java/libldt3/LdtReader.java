@@ -431,7 +431,7 @@ public class LdtReader {
 	private Satzart getSatzart(String payload) {
 		Satzart satzart = null;
 		for (Satzart sa : Satzart.values()) {
-			if (sa.getCode().equals(payload)) {
+			if (sa.code.equals(payload)) {
 				satzart = sa;
 				break;
 			}

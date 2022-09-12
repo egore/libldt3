@@ -29,7 +29,7 @@ public enum LdtVersion {
     /** LDT3.1.0 */
     LDT3_1_0("LDT3.1.0");
 
-    private final String code;
+    public final String code;
 
     LdtVersion(String code) {
         this.code = code;

@@ -29,8 +29,6 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.AbrechnungsartPkv;
 import libldt3.model.enums.Gebuehrenordnung;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -40,22 +38,22 @@ import lombok.Setter;
  * ein anderer sein, als der Versicherte.
  */
 @Objekt("0003")
-public @Getter @Setter class AbrechnungPkv {
+public class AbrechnungPkv {
 
 	@Feld(value = "7362", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private AbrechnungsartPkv abrechnungsartPkv;
+	public AbrechnungsartPkv abrechnungsartPkv;
 	@Feld(value = "4134", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 28)
-	private List<String> kostentraegerName;
+	public List<String> kostentraegerName;
 	@Feld(value = "4121", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private Gebuehrenordnung gebuehrenordnung;
+	public Gebuehrenordnung gebuehrenordnung;
 	@Feld(value = "4202", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private Boolean unfallFolgen;
+	public Boolean unfallFolgen;
 	@Feld(value = "8148", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 12)
-	private Rechnungsempfaenger rechnungsempfaenger;
+	public Rechnungsempfaenger rechnungsempfaenger;
 
 }

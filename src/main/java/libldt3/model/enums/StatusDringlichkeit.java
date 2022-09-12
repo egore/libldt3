@@ -29,14 +29,10 @@ public enum StatusDringlichkeit {
 	Stroke("1"),
 	bekannt("2");
 
-	private final String code;
+	public final String code;
 
 	StatusDringlichkeit(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

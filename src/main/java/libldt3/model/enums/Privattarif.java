@@ -28,14 +28,10 @@ public enum Privattarif {
 
 	Privat("1"), PostB("2"), KVB("3");
 
-	private final String code;
+	public final String code;
 
 	Privattarif(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

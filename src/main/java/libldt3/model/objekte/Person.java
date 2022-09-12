@@ -31,8 +31,6 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Geschlecht;
 import libldt3.model.enums.StatusPerson;
 import libldt3.model.regel.F003;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
@@ -40,52 +38,52 @@ import lombok.Setter;
  * Befun-den notwendig sind.
  */
 @Objekt("0047")
-public @Getter @Setter class Person {
+public class Person {
 
 	@Feld(value = "7420", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 2)
-	private StatusPerson status;
+	public StatusPerson status;
 	@Feld(value = "3100", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 20)
-	private String namenszusatz;
+	public String namenszusatz;
 	@Feld(value = "3120", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 20)
-	private String vorsatzwort;
+	public String vorsatzwort;
 	@Feld(value = "3101", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 45)
-	private String nachname;
+	public String nachname;
 	@Feld(value = "3102", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 45)
-	private List<String> vorname;
+	public List<String> vorname;
 	@Feld(value = "3103", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F003.class, laenge = 8)
-	private LocalDate geburtsdatum;
+	public LocalDate geburtsdatum;
 	@Feld(value = "3104", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 20)
-	private String titel;
+	public String titel;
 	@Feld(value = "3110", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-	private Geschlecht geschlecht;
+	public Geschlecht geschlecht;
 	@Feld(value = "3628", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String muttersprache;
+	public String muttersprache;
 	@Feld(value = "8990", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String namenskuerzelNamenszeichen;
+	public String namenskuerzelNamenszeichen;
 	@Feld(value = "8228", name = "Wohnanschrift", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 13)
-	private Anschrift wohnanschrift;
+	public Anschrift wohnanschrift;
 	@Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann)
 	@Regelsatz(laenge = 23)
-	private Anschrift anschriftArbeitsstelle;
+	public Anschrift anschriftArbeitsstelle;
 	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
 	@Regelsatz(laenge = 18)
-	private Anschrift rechnungsanschrift;
+	public Anschrift rechnungsanschrift;
 	@Feld(value = "8232", name = "Private_Kommunikationsdaten", feldart = Feldart.kann)
 	@Regelsatz(laenge = 27)
-	private Kommunikationsdaten privateKommunikationsdaten;
+	public Kommunikationsdaten privateKommunikationsdaten;
 	@Feld(value = "8233", name = "Geschaeftliche_Kommunikationsdaten", feldart = Feldart.kann)
 	@Regelsatz(laenge = 34)
-	private Kommunikationsdaten geschaeftlicheKommunikationsdaten;
+	public Kommunikationsdaten geschaeftlicheKommunikationsdaten;
 
 }

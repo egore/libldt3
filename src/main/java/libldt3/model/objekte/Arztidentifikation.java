@@ -31,41 +31,39 @@ import libldt3.model.enums.ArztTypId;
 import libldt3.model.regel.F011;
 import libldt3.model.regel.F014;
 import libldt3.model.regel.F022;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
 @Objekt(value = "0014")
-public @Getter @Setter class Arztidentifikation {
+public class Arztidentifikation {
 
 	@Objekt
-	public static @Getter @Setter class ArztId {
+	public static class ArztId {
 		@SuppressWarnings("unused")
-		private String value;
+		public String value;
 		@Feld(value = "0308", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-		private ArztTypId arztTypId;
+		public ArztTypId arztTypId;
 	}
 
 	@Feld(value = "8147", feldart = Feldart.muss)
 	@Regelsatz(laenge = 6)
-	private Person person;
+	public Person person;
 	@Feld(value = "0212", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = {F011.class, F022.class}, laenge = 9)
-	private List<String> lanr;
+	public List<String> lanr;
 	@Feld(value = "0223", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = {F011.class, F022.class}, laenge = 9)
-	private List<String> pseudoLanr;
+	public List<String> pseudoLanr;
 	@Feld(value = "0306", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String vertragsId;
+	public String vertragsId;
 	@Feld(value = "0307", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<ArztId> arztIds;
+	public List<ArztId> arztIds;
 	@Feld(value = "0222", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F014.class, laenge = 9)
-	private String asvTeamnummer;
+	public String asvTeamnummer;
 
 }

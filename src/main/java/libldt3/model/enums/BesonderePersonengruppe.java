@@ -42,14 +42,10 @@ public enum BesonderePersonengruppe {
 	/** Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG */
 	AsylbLG("09");
 
-	private final String code;
+	public final String code;
 
 	BesonderePersonengruppe(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

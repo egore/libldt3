@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F013 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("^[A-Z][0-9]{8}[0-9]$");
+	public static final Pattern PATTERN = Pattern.compile("^[A-Z][0-9]{8}[0-9]$");
 
 	public F013() {
 		super(PATTERN);

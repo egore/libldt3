@@ -28,26 +28,24 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Laborart;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
  */
 @Objekt("0036")
-public @Getter @Setter class Laborkennung {
+public class Laborkennung {
 
 	@Feld(value = "8239", name = "Laborbezeichnung", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 16)
-	private Organisation laborbezeichnung;
+	public Organisation laborbezeichnung;
 	@Feld(value = "7352", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> katalogUrl;
+	public List<String> katalogUrl;
 	@Feld(value = "8324", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String laborStandortId;
+	public String laborStandortId;
 	@Feld(value = "7266", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private Laborart laborart;
+	public Laborart laborart;
 
 }

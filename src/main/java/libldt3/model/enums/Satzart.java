@@ -28,14 +28,10 @@ public enum Satzart {
 	LaborDatenpaketHeader("8220"), LaborDatenpaketAbschluss("8221"), PraxisDatenpaketHeader(
 			"8230"), PraxisDatenpaketAbschluss("8231"), Befund("8205"), Auftrag("8215");
 
-	private final String code;
+	public final String code;
 
 	Satzart(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

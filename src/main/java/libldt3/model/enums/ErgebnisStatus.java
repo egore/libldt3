@@ -28,14 +28,10 @@ public enum ErgebnisStatus {
 
 	nicht_nachweisbar("0"), zweifelhaft_unspezifisch("1"), nachweisbar("2");
 
-	private final String code;
+	public final String code;
 
 	ErgebnisStatus(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

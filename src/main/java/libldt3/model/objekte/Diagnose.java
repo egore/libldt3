@@ -30,32 +30,30 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Diagnosesicherheit;
 import libldt3.model.enums.Lokalisation;
 import libldt3.model.regel.F004;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
  */
 @Objekt("0100")
-public @Getter @Setter class Diagnose {
+public class Diagnose {
 
 	@Feld(value = "4207", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> diagnoseVerdachtsdiagnose;
+	public List<String> diagnoseVerdachtsdiagnose;
 	@Feld(value = "6001", feldart = Feldart.bedingt_muss)
 	@Regelsatz(F004.class)
-	private String icdCode;
+	public String icdCode;
 	@Feld(value = "6003", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private Diagnosesicherheit diagnosesicherheit;
+	public Diagnosesicherheit diagnosesicherheit;
 	@Feld(value = "6004", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 1)
-	private Lokalisation lokalisation;
+	public Lokalisation lokalisation;
 	@Feld(value = "6006", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> erlaeuterung;
+	public List<String> erlaeuterung;
 	@Feld(value = "6008", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> ausnahmetatbestand;
+	public List<String> ausnahmetatbestand;
 
 }

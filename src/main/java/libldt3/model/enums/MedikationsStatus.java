@@ -35,14 +35,10 @@ public enum MedikationsStatus {
 	/** Selbstmedikation */
 	Selbstmedikation("4");
 
-	private final String code;
+	public final String code;
 
 	MedikationsStatus(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

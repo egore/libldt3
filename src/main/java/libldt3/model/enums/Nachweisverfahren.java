@@ -43,14 +43,10 @@ public enum Nachweisverfahren {
 	/** Maldi-Tof */
 	Maldi_Tof("7");
 
-	private final String code;
+	public final String code;
 
 	Nachweisverfahren(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

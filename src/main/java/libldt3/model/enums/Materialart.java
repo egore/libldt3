@@ -29,14 +29,10 @@ public enum Materialart {
 	organisch("1"),
 	anorganisch("2");
 
-	private final String code;
+	public final String code;
 
 	Materialart(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

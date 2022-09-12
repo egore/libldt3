@@ -31,14 +31,10 @@ public enum AbrechnungsartPkv {
 	/** Abrechnung Privat-LG */
 	AbrechnungPrivatLG("2");
 
-	private final String code;
+	public final String code;
 
 	AbrechnungsartPkv(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

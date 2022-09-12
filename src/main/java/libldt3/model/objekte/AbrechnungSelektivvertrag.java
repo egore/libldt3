@@ -8,8 +8,6 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.EinschreibestatusSelektivvertraege;
 import libldt3.model.enums.Gebuehrenordnung;
 import libldt3.model.regel.F002;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -25,34 +23,34 @@ import java.time.LocalDate;
  * Versorgung (§§ 140ff SGB V).
  */
 @Objekt("0006")
-public @Getter @Setter class AbrechnungSelektivvertrag {
+public class AbrechnungSelektivvertrag {
 
 	@Feld(value = "3130", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private EinschreibestatusSelektivvertraege einschreibestatusSelektivvertraege;
+	public EinschreibestatusSelektivvertraege einschreibestatusSelektivvertraege;
 	@Feld(value = "3134", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String bezeichnungSelektivvertrag;
+	public String bezeichnungSelektivvertrag;
 	@Feld(value = "4134", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 28)
-	private String kostentraegername;
+	public String kostentraegername;
 	@Feld(value = "3131", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate teilnahmeVon;
+	public LocalDate teilnahmeVon;
 	@Feld(value = "3132", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate teilnahmeBis;
+	public LocalDate teilnahmeBis;
 	@Feld(value = "3133", feldart = Feldart.bedingt_kann)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate datumAntragstellung;
+	public LocalDate datumAntragstellung;
 	@Feld(value = "7430", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 60)
-	private String patientenIdSelektivvertrag;
+	public String patientenIdSelektivvertrag;
 	@Feld(value = "4121", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private Gebuehrenordnung gebuehrenordnung;
+	public Gebuehrenordnung gebuehrenordnung;
 	@Feld(value = "8148", feldart = Feldart.muss)
 	@Regelsatz(laenge = 12)
-	private Rechnungsempfaenger rechnungsempfaenger;
+	public Rechnungsempfaenger rechnungsempfaenger;
 
 }

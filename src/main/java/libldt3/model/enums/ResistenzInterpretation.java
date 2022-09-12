@@ -37,14 +37,10 @@ public enum ResistenzInterpretation {
 	/** wirksam in hohen Konzentrationen */
 	wirksamInHohenKonzentrationen("4");
 
-	private final String code;
+	public final String code;
 
 	ResistenzInterpretation(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

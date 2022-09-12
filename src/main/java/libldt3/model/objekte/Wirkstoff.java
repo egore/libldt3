@@ -26,32 +26,30 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.regel.F020;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Hier werden Informationen zu Wirkstoffen zusammengefasst.
  */
 @Objekt("0071")
-public @Getter @Setter class Wirkstoff {
+public class Wirkstoff {
 
 	@Feld(value = "6212", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 60)
-	private String arzneimittelwirkstoff;
+	public String arzneimittelwirkstoff;
 	@Feld(value = "6206", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F020.class, laenge = 8)
-	private String pzn;
+	public String pzn;
 	@Feld(value = "6224", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-	private String wirkstoffCode;
+	public String wirkstoffCode;
 	@Feld(value = "6214", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 60)
-	private String wirkstoffKlassifikation;
+	public String wirkstoffKlassifikation;
 	@Feld(value = "8523", feldart = Feldart.bedingt_kann)
 	@Regelsatz(maxLaenge = 60)
-	private String wirkstoffmenge;
+	public String wirkstoffmenge;
 	@Feld(value = "8421", feldart = Feldart.bedingt_muss)
 	@Regelsatz(maxLaenge = 20)
-	private String mengeneinheit;
+	public String mengeneinheit;
 
 }

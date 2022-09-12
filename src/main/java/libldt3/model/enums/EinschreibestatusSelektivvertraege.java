@@ -33,14 +33,10 @@ public enum EinschreibestatusSelektivvertraege {
 	/** Einschreibung beantragt */
 	EinschreibungBeantragt("2");
 
-	private final String code;
+	public final String code;
 
 	EinschreibestatusSelektivvertraege(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

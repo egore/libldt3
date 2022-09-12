@@ -26,8 +26,6 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Gebuehrenordnung;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -35,16 +33,16 @@ import lombok.Setter;
  * gegenüber gesetzlich versicherten Patienten erbracht werden können.
  */
 @Objekt("0004")
-public @Getter @Setter class AbrechnungIgel {
+public class AbrechnungIgel {
 
 	@Feld(value = "4121", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private Gebuehrenordnung gebuehrenordnung;
+	public Gebuehrenordnung gebuehrenordnung;
 	@Feld(value = "7253", feldart = Feldart.muss)
 	@Regelsatz(laenge = 1)
-	private Boolean kostenuebernahmeerklaerungAuftraggeberLiegtVor;
+	public Boolean kostenuebernahmeerklaerungAuftraggeberLiegtVor;
 	@Feld(value = "8148", feldart = Feldart.muss)
 	@Regelsatz(laenge = 12)
-	private Rechnungsempfaenger rechnungsempfaenger;
+	public Rechnungsempfaenger rechnungsempfaenger;
 
 }

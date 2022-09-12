@@ -47,14 +47,10 @@ public enum KostentraegerAbrechnungsbereich {
 	/** Schwangerschaftsabbrüche */
 	Schwangerschaftsabbrueche("09");
 
-	private final String code;
+	public final String code;
 
 	KostentraegerAbrechnungsbereich(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

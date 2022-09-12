@@ -21,52 +21,50 @@ import libldt3.model.objekte.Schwangerschaft;
 import libldt3.model.objekte.Tier;
 import libldt3.model.objekte.Untersuchungsanforderung;
 import libldt3.model.objekte.Veranlassungsgrund;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Satzart: Auftrag "8215"
  */
 @Datenpaket(Satzart.Auftrag)
-public @Getter @Setter class Auftrag implements Satz {
+public class Auftrag implements Satz {
 
 	@Feld(value = "8122", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 23)
-	private Einsenderidentifikation einsenderidentifikation;
+	public Einsenderidentifikation einsenderidentifikation;
 	@Feld(value = "8145", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 7)
-	private Patient patient;
+	public Patient patient;
 	@Feld(value = "8169", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 19)
-	private Koerperkenngroessen koerperkenngroessen;
+	public Koerperkenngroessen koerperkenngroessen;
 	@Feld(value = "8150", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 15)
-	private Schwangerschaft schwangerschaft;
+	public Schwangerschaft schwangerschaft;
 	@Feld(value = "8140", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 12)
-	private Mutterschaft mutterschaft;
+	public Mutterschaft mutterschaft;
 	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 14)
-	private Tier tier;
+	public Tier tier;
 	@Feld(value = "8113", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 19)
-	private Auftragsinformation auftragsinformation;
+	public Auftragsinformation auftragsinformation;
 	@Feld(value = "8127", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 18)
-	private List<Veranlassungsgrund> veranlassungsgrund;
+	public List<Veranlassungsgrund> veranlassungsgrund;
 	@Feld(value = "8101", feldart = Feldart.muss)
 	@Regelsatz(laenge = 22)
-	private Abrechnungsinformation abrechnungsinformationen;
+	public Abrechnungsinformation abrechnungsinformationen;
 	@Feld(value = "8137", feldart = Feldart.bedingt_kann)
-	private List<Material> material;
+	public List<Material> material;
 	@Feld(value = "8159", feldart = Feldart.muss)
 	@Regelsatz(laenge = 24)
-	private List<Untersuchungsanforderung> untersuchungsanforderung;
+	public List<Untersuchungsanforderung> untersuchungsanforderung;
 	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
 	@Regelsatz(laenge = 26)
-	private List<Fliesstext> zusaeztlicheInformationen;
+	public List<Fliesstext> zusaeztlicheInformationen;
 	@Feld(value = "8110", feldart = Feldart.kann)
 	@Regelsatz(laenge = 6)
-	private List<Anhang> anhang;
+	public List<Anhang> anhang;
 
 }

@@ -35,14 +35,10 @@ public enum AnorganischesMaterial {
 	/** sonstiges */
 	sonstiges("4");
 
-	private final String code;
+	public final String code;
 
 	AnorganischesMaterial(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

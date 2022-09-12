@@ -31,14 +31,10 @@ public enum ResistenzNach {
 	/** CA-FMS */
 	CA_FMS("3");
 
-	private final String code;
+	public final String code;
 
 	ResistenzNach(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

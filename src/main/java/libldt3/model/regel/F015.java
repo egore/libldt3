@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F015 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("^[0-9]{3}/[0-9]{3}$");
+	public static final Pattern PATTERN = Pattern.compile("^[0-9]{3}/[0-9]{3}$");
 
 	public F015() {
 		super(PATTERN);

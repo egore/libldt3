@@ -35,14 +35,10 @@ public enum Diagnosesicherheit {
 	 /** Zustand nach */
 	ZustandNach("Z");
 
-	private final String code;
+	public final String code;
 
 	Diagnosesicherheit(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

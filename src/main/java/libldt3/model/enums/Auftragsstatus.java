@@ -28,14 +28,10 @@ public enum Auftragsstatus {
 	Auftrag_nicht_abgeschlossen("1"),
 	Auftrag_abgeschlossen("2");
 
-	private final String code;
+	public final String code;
 
 	Auftragsstatus(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

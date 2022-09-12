@@ -33,14 +33,10 @@ public enum Gebuehrenordnung {
 	GOAE("3"),
 	BG_Tarif("4");
 
-	private final String code;
+	public final String code;
 
 	Gebuehrenordnung(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

@@ -28,14 +28,10 @@ public enum Geschlecht {
 
 	maennlich("M"), weiblich("W"), unbestimmt("X"), unbekannt("U");
 
-	private final String code;
+	public final String code;
 
 	Geschlecht(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

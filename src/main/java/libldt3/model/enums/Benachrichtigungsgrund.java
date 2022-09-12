@@ -37,14 +37,10 @@ public enum Benachrichtigungsgrund {
 	/** Probenmaterial unvollständig */
 	ProbenmaterialUnvollstaendig("5");
 
-	private final String code;
+	public final String code;
 
 	Benachrichtigungsgrund(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

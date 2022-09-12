@@ -39,14 +39,10 @@ public enum Betriebsstaettenstatus {
 	/** Nebenbetriebsstätte */
 	Nebenbetriebsstaette("6");
 
-	private final String code;
+	public final String code;
 
 	Betriebsstaettenstatus(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

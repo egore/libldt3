@@ -55,14 +55,10 @@ public enum Normwertspezifikation {
 	/** Funktionsprofile */
 	Funktionsprofile("30");
 
-	private final String code;
+	public final String code;
 
 	Normwertspezifikation(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

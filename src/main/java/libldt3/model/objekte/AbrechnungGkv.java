@@ -42,8 +42,6 @@ import libldt3.model.regel.F011;
 import libldt3.model.regel.F022;
 import libldt3.model.regel.kontext.K004;
 import libldt3.model.regel.kontext.K041;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * <p>
@@ -61,82 +59,82 @@ import lombok.Setter;
  * </p>
  */
 @Objekt(value = "0002", kontextregeln = {K004.class, K041.class})
-public @Getter @Setter class AbrechnungGkv {
+public class AbrechnungGkv {
 
 	@Feld(value = "4239", feldart = Feldart.muss)
 	@Regelsatz(laenge = 2)
-	private Scheinuntergruppe scheinuntergruppe;
+	public Scheinuntergruppe scheinuntergruppe;
 	@Feld(value = "4134", feldart = Feldart.muss)
 	@Regelsatz(maxLaenge = 28)
-	private String kostentraegername;
+	public String kostentraegername;
 	@Feld(value = "4104", feldart = Feldart.muss)
 	@Regelsatz(value = F001.class, laenge = 5)
-	private String abrechnungsVknr;
+	public String abrechnungsVknr;
 	@Feld(value = "4106", feldart = Feldart.muss)
 	@Regelsatz(laenge = 2)
-	private KostentraegerAbrechnungsbereich kostentraegerAbrechnungsbereich;
+	public KostentraegerAbrechnungsbereich kostentraegerAbrechnungsbereich;
 	@Feld(value = "4108", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private String zulassungsnummer;
+	public String zulassungsnummer;
 	@Feld(value = "3116", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 2)
-	private WOP wop;
+	public WOP wop;
 	@Feld(value = "3108", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-	private Versichertenart versichertenart;
+	public Versichertenart versichertenart;
 	@Feld(value = "4109", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate letzterEinlesetagVersichertenkarteImQuartal;
+	public LocalDate letzterEinlesetagVersichertenkarteImQuartal;
 	@Feld(value = "4133", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate versicherungsschutzBeginn;
+	public LocalDate versicherungsschutzBeginn;
 	@Feld(value = "4110", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F002.class, laenge = 8)
-	private LocalDate versicherungsschutzEnde;
+	public LocalDate versicherungsschutzEnde;
 	@Feld(value = "4111", feldart = Feldart.muss)
 	@Regelsatz(laenge = 9)
-	private String kstentraegerkennung;
+	public String kstentraegerkennung;
 	@Feld(value = "4229", feldart = Feldart.bedingt_kann)
 	@Regelsatz(laenge = 5)
-	private List<String> ausnahmeindikation;
+	public List<String> ausnahmeindikation;
 	@Feld(value = "4122", feldart = Feldart.muss)
 	@Regelsatz(laenge = 2)
-	private String abrechnungsgebiet;
+	public String abrechnungsgebiet;
 	@Feld(value = "4124", feldart = Feldart.kann)
 	@Regelsatz(minLaenge = 5, maxLaenge = 60)
-	private String sktZusatzangaben;
+	public String sktZusatzangaben;
 	@Feld(value = "4126", feldart = Feldart.kann)
 	@Regelsatz(maxLaenge = 60)
-	private List<String> sktZusatzbemerkungen;
+	public List<String> sktZusatzbemerkungen;
 	@Feld(value = "4131", feldart = Feldart.kann)
 	@Regelsatz(laenge = 2)
-	private BesonderePersonengruppe besonderePersonengruppe;
+	public BesonderePersonengruppe besonderePersonengruppe;
 	@Feld(value = "4132", feldart = Feldart.kann)
 	@Regelsatz(laenge = 2)
-	private DmpKennzeichnung dmpKennzeichnung;
+	public DmpKennzeichnung dmpKennzeichnung;
 	@Feld(value = "4202", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private Boolean unfallfolgen;
+	public Boolean unfallfolgen;
 	@Feld(value = "4204", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private Boolean eingeschraenkterLeistungsanspruch;
+	public Boolean eingeschraenkterLeistungsanspruch;
 	@Feld(value = "4221", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 1)
-	private Behandlungsanlass kurativPraeventivEss;
+	public Behandlungsanlass kurativPraeventivEss;
 	@Feld(value = "4231", feldart = Feldart.kann)
 	@Regelsatz(laenge = 1)
-	private String kontrolluntersuchungBekannterInfektion;
+	public String kontrolluntersuchungBekannterInfektion;
 	@Feld(value = "4241", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = {F011.class, F022.class}, laenge = 9)
-	private String lebenslangeArztnummer;
+	public String lebenslangeArztnummer;
 	@Feld(value = "4248", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 9)
-	private String pseudoLanr;
+	public String pseudoLanr;
 	@Feld(value = "4217", feldart = Feldart.bedingt_muss)
 	@Regelsatz(value = F010.class, laenge = 9)
-	private String bsnrErstveranlasser;
+	public String bsnrErstveranlasser;
 	@Feld(value = "4225", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 9)
-	private String asvTeamnummer;
+	public String asvTeamnummer;
 
 }

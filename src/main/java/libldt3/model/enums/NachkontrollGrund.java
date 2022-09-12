@@ -33,14 +33,10 @@ public enum NachkontrollGrund {
 	/** Sonstiges */
 	Sonstiges("3");
 
-	private final String code;
+	public final String code;
 
 	NachkontrollGrund(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

@@ -25,17 +25,15 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
-import lombok.Getter;
-import lombok.Setter;
 
 @Objekt("0008")
-public @Getter @Setter class Adressat {
+public class Adressat {
 
 	@Feld(value = "8147", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 6)
-	private Person person;
+	public Person person;
 	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
 	@Regelsatz(laenge = 12)
-	private Organisation organisation;
+	public Organisation organisation;
 
 }

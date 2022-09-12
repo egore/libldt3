@@ -49,7 +49,7 @@ public enum Untersuchungsanlass {
 	/** Immunität/Impferfolg */
 	ImmunitaetImpferfolg("11");
 
-	private final String code;
+	public final String code;
 
 	Untersuchungsanlass(String code) {
 		this.code = code;

@@ -28,14 +28,10 @@ public enum Dokumentenquelle {
 
 	eigen("1"), fremd("2");
 
-	private final String code;
+	public final String code;
 
 	Dokumentenquelle(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

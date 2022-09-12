@@ -41,7 +41,7 @@ public enum ZusaetzlicherBefundweg {
     /** KV-Connect */
     kvConnect("6");
 
-    private final String code;
+    public final String code;
 
     ZusaetzlicherBefundweg(String code) {
         this.code = code;

@@ -28,14 +28,10 @@ public enum GeschlechtNormalbereich {
 
 	maennlich("M"), weiblich("W"), unbestimmt("X");
 
-	private final String code;
+	public final String code;
 
 	GeschlechtNormalbereich(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

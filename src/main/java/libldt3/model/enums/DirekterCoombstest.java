@@ -34,14 +34,10 @@ public enum DirekterCoombstest {
 	dreifachPositiv("3"),
 	viewfachPositiv("4");
 
-	private final String code;
+	public final String code;
 
 	DirekterCoombstest(String code) {
 		this.code = code;
-	}
-
-	public String getCode() {
-		return code;
 	}
 
 }

@@ -84,7 +84,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                     }
                     if (klass == F009.class) {
                         Untersuchungsabrechnung.Gebuehrennummer gebuehrennummer = new Untersuchungsabrechnung.Gebuehrennummer();
-                        gebuehrennummer.setValue("01234");
+                        gebuehrennummer.value = "01234";
                         return Collections.singletonList(gebuehrennummer);
                     }
                 }

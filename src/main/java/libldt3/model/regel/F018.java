@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class F018 extends RegularExpressionRegel {
 
-	private static final Pattern PATTERN = Pattern.compile("^[0-9]{4}(0[0-9]|1[012])([0-2][0-9]|3[01])$");
+	public static final Pattern PATTERN = Pattern.compile("^[0-9]{4}(0[0-9]|1[012])([0-2][0-9]|3[01])$");
 
 	public F018() {
 		super(PATTERN);
