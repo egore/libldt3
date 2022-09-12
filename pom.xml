@@ -32,5 +32,6 @@
 
 	<modules>
 		<module>java</module>
+		<module>transpiler</module>
 	</modules>
 </project>
