@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libldt3", "libldt3\libldt3.csproj", "{58FD7DCA-E12F-4CD8-ADAF-ED0A566751BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libldt3.tests", "libldt3.tests\libldt3.tests.csproj", "{ED274BE1-E6F5-413F-AA08-5BF5A488AE12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58FD7DCA-E12F-4CD8-ADAF-ED0A566751BF}.Debug|x86.ActiveCfg = Debug|x86
+		{58FD7DCA-E12F-4CD8-ADAF-ED0A566751BF}.Debug|x86.Build.0 = Debug|x86
+		{58FD7DCA-E12F-4CD8-ADAF-ED0A566751BF}.Release|x86.ActiveCfg = Release|x86
+		{58FD7DCA-E12F-4CD8-ADAF-ED0A566751BF}.Release|x86.Build.0 = Release|x86
+		{ED274BE1-E6F5-413F-AA08-5BF5A488AE12}.Debug|x86.ActiveCfg = Debug|x86
+		{ED274BE1-E6F5-413F-AA08-5BF5A488AE12}.Debug|x86.Build.0 = Debug|x86
+		{ED274BE1-E6F5-413F-AA08-5BF5A488AE12}.Release|x86.ActiveCfg = Release|x86
+		{ED274BE1-E6F5-413F-AA08-5BF5A488AE12}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal
