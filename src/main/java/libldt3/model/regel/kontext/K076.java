@@ -21,43 +21,14 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.enums.TestStatus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.lang.reflect.Field;
-import java.util.*;
-
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
-
 /**
  * Wenn Inhalt von FK 8418 ≠ M, F oder S ist, dann muss FK 8225 mindestens einmal vorkommen.
  */
 public class K076 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K076.class);
-
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8418", "8225")));
-
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
-
-        Map<String, Field> fields = findFields(owner, FIELDTYPES);
-        if (fields.size() != FIELDTYPES.size()) {
-            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
-            return false;
-        }
-
-        TestStatus status = (TestStatus) fields.get("8418").get(owner);
-        switch (status) {
-            case Material_fehlt_oder_nicht_verwendbar:
-            case Wert_fehlt:
-            case Untersuchungsanforderung_storniert:
-                return true;
-            default:
-                return containsAnyString(fields.get("8225"), owner);
-        }
+    	throw new UnsupportedOperationException();
     }
 
 }

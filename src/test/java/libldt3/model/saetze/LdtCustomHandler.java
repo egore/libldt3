@@ -74,7 +74,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                         return "C12";
                     }
                     if (klass == F007.class) {
-                        return LdtVersion.LDT3_0_7;
+                        return LdtVersion.LDT3_1_0;
                     }
                     if (klass == F012.class) {
                         return "X/31/0101/01/[]}";
