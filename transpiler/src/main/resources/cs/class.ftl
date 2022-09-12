@@ -1,13 +1,13 @@
 <#-- @ftlvariable name="class" type="spoon.reflect.declaration.CtClass" -->
 
 <#import "members.ftl" as members/>
+<#import "attributes.ftl" as attributes/>
 
 <@namespace package=class.package>
 
-<#list class.annotations as annotation>
-[${annotation.name} <#list annotation.allValues as key, value>${key}=${value}</#list>]
-</#list>
-public class ${class.simpleName} {
+<@attributes.classattributes class/>
+public class ${class.simpleName}<#if class.superInterfaces?size gt 0> : <#list class.superInterfaces as interface>${interface.simpleName}<#sep>, </#list></#if>
+{
 	<@members.classmembers class/>
 }
 

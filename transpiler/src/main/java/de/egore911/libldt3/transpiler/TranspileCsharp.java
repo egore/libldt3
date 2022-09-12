@@ -1,7 +1,11 @@
 package de.egore911.libldt3.transpiler;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 
 import org.slf4j.bridge.SLF4JBridgeHandler;
@@ -31,10 +35,26 @@ public class TranspileCsharp {
 		
 		config.setSharedVariable("namespace", new NamespaceDirective());
 		
+		Path base = Paths.get("../cs");
+		
 		for (CtType<?> type : launcher.getModel().getAllTypes()) {
 			if (type.isClass() && type.getSimpleName().equals("LaborDatenpaketAbschluss")) {
+				
+				Path dir = base;
+				for (String p : type.getPackage().getQualifiedName().split("\\.")) {
+					dir = dir.resolve(p);
+				}
+				Files.createDirectories(dir);
+				
+				Path file = dir.resolve(type.getSimpleName() + ".cs");
+				
 				Template template = config.getTemplate("class.ftl");
-				template.process(Collections.singletonMap("class", type), new OutputStreamWriter(System.out));
+				
+				try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))){
+					template.process(Collections.singletonMap("class", type), writer);
+				}
+
+				System.err.println(file.toAbsolutePath());
 			}
 		}
 		
