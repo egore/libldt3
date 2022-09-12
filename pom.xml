@@ -13,7 +13,7 @@
 
 	<name>${project.artifactId}</name>
 	<description>Java reader and writer for LDT 3.0</description>
-	<url>https://github.com/egore/libldt3</url>
+	<url>https://gitlab.com/egore/libldt3</url>
 
 	<distributionManagement>
 		<repository>
@@ -31,9 +31,9 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/egore/libldt3</url>
-		<connection>scm:git:git://github.com/egore/libldt3.git</connection>
-		<developerConnection>scm:git:git@github.com:egore/libldt3.git</developerConnection>
+		<url>https://gitlab.com/egore/libldt3</url>
+		<connection>scm:git:git://gitlab.com/egore/libldt3.git</connection>
+		<developerConnection>scm:git:git@gitlab.com:egore/libldt3.git</developerConnection>
 	  <tag>HEAD</tag>
   </scm>
 
