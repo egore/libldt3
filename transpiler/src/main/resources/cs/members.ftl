@@ -4,6 +4,6 @@
 <#macro classmembers class>
     <#list class.fields as field>
     <@attributes.fieldattributes field/>
-    ${field.visibility} ${field.type.simpleName} ${field.simpleName};
+    ${field.visibility} <@converttype type=field.type/> ${field.simpleName};
     </#list>
 </#macro>

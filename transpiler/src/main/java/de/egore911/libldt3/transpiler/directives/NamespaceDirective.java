@@ -1,4 +1,4 @@
-package de.egore911.libldt3.transpiler;
+package de.egore911.libldt3.transpiler.directives;
 
 import java.io.IOException;
 import java.io.Writer;
