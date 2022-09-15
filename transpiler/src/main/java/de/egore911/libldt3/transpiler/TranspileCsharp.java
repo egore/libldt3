@@ -29,40 +29,50 @@ public class TranspileCsharp {
 
 	public static void main(String[] args) throws TemplateNotFoundException, MalformedTemplateNameException,
 			ParseException, IOException, TemplateException {
-		SLF4JBridgeHandler.removeHandlersForRootLogger(); // (since SLF4J 1.6.5)
+		
+		// Install java.util.Logging bridge to slf4j
+		SLF4JBridgeHandler.removeHandlersForRootLogger();
 		SLF4JBridgeHandler.install();
 
+		// Read the maven model from the java folder
 		MavenLauncher launcher = new MavenLauncher("../java", MavenLauncher.SOURCE_TYPE.APP_SOURCE);
-
 		launcher.run();
 
+		// Build up the freemarker configuration for C#
 		Configuration config = new Configuration(Configuration.VERSION_2_3_31);
 		config.setTemplateLoader(new ClassTemplateLoader(TranspileCsharp.class, "/cs/"));
 
+		// Add several directives which were simpler to implement in Java than in .ftl files
 		config.setSharedVariable("namespace", new NamespaceDirective());
 		config.setSharedVariable("genusing", new GenUsingDirective());
 		config.setSharedVariable("converttype", new ConvertTypeDirective());
 		config.setSharedVariable("expression", new ExpressionDirective());
 
+		// Make the current year available as variable
 		config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
 
 		Path base = Paths.get("../cs");
 
 		for (CtType<?> type : launcher.getModel().getAllTypes()) {
 			if (type.getPackage().getQualifiedName().equals("libldt3.model.saetze")
-					|| type.getPackage().getQualifiedName().equals("libldt3.model.objekte")) {
+					|| type.getPackage().getQualifiedName().equals("libldt3.model.objekte")
+					|| type.getPackage().getQualifiedName().equals("libldt3.model.enums")) {
+				Path file = getOutputFile(base, type);
+				Template template;
 				if (type.isClass()) {
-
-					Path file = getOutputFile(base, type);
-
-					Template template = config.getTemplate("class.ftl");
-
-					try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))) {
-						template.process(Collections.singletonMap("class", type), writer);
-					}
-
-					System.err.println(file.toAbsolutePath());
+					template = config.getTemplate("class.ftl");
+				} else if (type.isEnum()) {
+					template = config.getTemplate("enum.ftl");
+				} else if (type.isInterface()) {
+					template = config.getTemplate("interface.ftl");
+				} else {
+					throw new UnsupportedOperationException(type.getClass().getSimpleName());
 				}
+				try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))) {
+					template.process(Collections.singletonMap(template.getName().replace(".ftl", ""), type), writer);
+				}
+
+				System.err.println(file.toAbsolutePath());
 			}
 		}
 

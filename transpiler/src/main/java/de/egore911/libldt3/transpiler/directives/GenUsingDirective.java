@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import freemarker.core.Environment;
-import freemarker.ext.beans.BeanModel;
+import freemarker.ext.beans.StringModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
@@ -27,7 +27,7 @@ import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtPackage;
 import spoon.reflect.declaration.CtParameter;
 import spoon.reflect.declaration.CtType;
-import spoon.reflect.declaration.CtTypeMember;
+import spoon.reflect.declaration.CtTypeInformation;
 import spoon.reflect.reference.CtPackageReference;
 import spoon.reflect.reference.CtTypeReference;
 
@@ -35,8 +35,8 @@ public class GenUsingDirective implements TemplateDirectiveModel {
 
 	public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
 			throws TemplateException, IOException {
-		CtClass<?> class_ = (CtClass<?>) (((BeanModel) (TemplateModel) params.get("class")).getWrappedObject());
-		
+		CtType<?> class_ = (CtType<?>) (((StringModel) params.get("class")).getWrappedObject());
+
 		// Collect all things for "using ..." statements
 		Set<String> usings = new TreeSet<String>();
 		
@@ -50,7 +50,7 @@ public class GenUsingDirective implements TemplateDirectiveModel {
 		
 	}
 
-	private void addForClass(CtClass<?> class_, Set<String> usings) {
+	private void addForClass(CtType<?> class_, Set<String> usings) {
 		// 1.) Parents
 		if (class_.getSuperclass() != null) {
 			addIfDifferent(usings, class_.getPackage(), class_.getSuperclass().getPackage());
@@ -111,15 +111,15 @@ public class GenUsingDirective implements TemplateDirectiveModel {
 		
 		// 5.) Child classes
 		for (CtType<?> member : class_.getNestedTypes()) {
-			if (member instanceof CtClass<?>) {
-				addForClass((CtClass<?>) member, usings);
+			if (member instanceof CtType<?>) {
+				addForClass((CtType<?>) member, usings);
 			} else {
 				throw new UnsupportedOperationException(member.getClass().getSimpleName());
 			}
 		}
 	}
 
-	private void addFromType(CtClass<?> class_, Set<String> usings, CtTypeReference<?> type) {
+	private void addFromType(CtType<?> class_, Set<String> usings, CtTypeReference<?> type) {
 		// Add type itself
 		addIfDifferent(usings, class_.getPackage(), type.getPackage());
 		// Add generics, if available
@@ -130,14 +130,14 @@ public class GenUsingDirective implements TemplateDirectiveModel {
 		}
 	}
 
-	private void addFromAnnotation(CtClass<?> class_, Set<String> usings, CtAnnotation<?> annotation) {
+	private void addFromAnnotation(CtType<?> class_, Set<String> usings, CtAnnotation<?> annotation) {
 		addIfDifferent(usings, class_.getPackage(), annotation.getType().getPackage());
 		for (CtExpression<?> expression : annotation.getValues().values()) {
 			addFromExpression(class_, usings, expression);
 		}
 	}
 
-	private void addFromExpression(CtClass<?> class_, Set<String> usings, CtExpression<?> expression) {
+	private void addFromExpression(CtType<?> class_, Set<String> usings, CtExpression<?> expression) {
 		if (expression instanceof CtNewArray<?>) {
 			for (CtExpression<?> x : ((CtNewArray<?>) expression).getElements()) {
 				addFromExpression(class_, usings, x);

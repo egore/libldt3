@@ -5,27 +5,30 @@ import java.io.Writer;
 import java.util.Map;
 
 import freemarker.core.Environment;
-import freemarker.ext.beans.BeanModel;
+import freemarker.ext.beans.StringModel;
 import freemarker.template.TemplateBooleanModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import spoon.reflect.code.CtConstructorCall;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldRead;
 import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtNewArray;
 import spoon.reflect.code.CtTypeAccess;
-import spoon.reflect.reference.CtTypeReference;
-import spoon.support.reflect.code.CtNewArrayImpl;
 
 public class ExpressionDirective implements TemplateDirectiveModel {
 
 	public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
 			throws TemplateException, IOException {
 		
-		CtExpression<?> expression = (CtExpression<?>) (((BeanModel) (TemplateModel) params.get("expression")).getWrappedObject());
-		boolean forceArray = ((TemplateBooleanModel) params.get("force_array")).getAsBoolean();
+		CtExpression<?> expression = (CtExpression<?>) (((StringModel) params.get("expression")).getWrappedObject());
+		boolean forceArray = false;
+		TemplateBooleanModel forceArrayModel = (TemplateBooleanModel) params.get("force_array");
+		if (forceArrayModel != null) {
+			forceArray = forceArrayModel.getAsBoolean();
+		}
 		
 		Writer out = env.getOut();
 		
@@ -69,6 +72,8 @@ public class ExpressionDirective implements TemplateDirectiveModel {
 			if (forceArray) {
 				out.append(" }");
 			}
+		} else if (expression instanceof CtConstructorCall<?>) {
+			System.err.print(expression);
 		} else {
 			throw new UnsupportedOperationException(expression.getClass().getSimpleName());
 		}
