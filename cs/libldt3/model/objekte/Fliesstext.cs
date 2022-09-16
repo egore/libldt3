@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  Christoph Brill <egore911@gmail.com>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,12 +30,16 @@ namespace libldt3
 		{
 			/**
 			 * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
-			 */			[Objekt(Value = "0068")]			public class Fliesstext
+			 */
+			[Objekt(Value = "0068")]
+			public class Fliesstext
 			{
 				[Feld(Value = "3564", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]				public IList<string> Text;
+				[Regelsatz(MaxLaenge = 60)]
+				public IList<string> Text;
 				[Feld(Value = "6329", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]				public IList<string> Base64text;
+				[Regelsatz(MaxLaenge = 60)]
+				public IList<string> Base64text;
 			}
 		}
 	}

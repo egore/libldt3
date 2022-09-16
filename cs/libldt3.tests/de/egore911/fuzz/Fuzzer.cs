@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  Christoph Brill <egore911@gmail.com>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,7 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -32,7 +33,7 @@ namespace de
 		namespace fuzz
 		{
 
-			/**
+			/**opensource@christophbrill.de
 			 * @author Christoph Brill &lt;egore911@gmail.com&gt;
 			 * @since 14.05.16 15:47
 			 */

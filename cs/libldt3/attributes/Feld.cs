@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  Christoph Brill <egore911@gmail.com>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,8 @@ namespace libldt3
 
 			/**
 			 * @return FK der Spezifikation (z.B. "7331" für Mobiltelefonnummer)
-			 */			public string Value;
+			 */
+			public string Value;
 
 			/**
 			 * @return gibt an, ob es sich um ein Pflichtfeld handelt

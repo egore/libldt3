@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  Christoph Brill <egore911@gmail.com>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -124,7 +124,8 @@ namespace libldt3
 
 					/**
 					 * Find fields matching their {@link Feld#value()} with the given fieldtypes. Recursive and for multiple field.
-					 */					public static IDictionary<object, IList<FieldInfo>> FindFieldInfosRecursive(Object owner, ISet<string> fieldtypes) {
+					 */
+					public static IDictionary<object, IList<FieldInfo>> FindFieldInfosRecursive(Object owner, ISet<string> fieldtypes) {
 						IDictionary<object, IList<FieldInfo>> result = new Dictionary<object, IList<FieldInfo>>();
 						IList<FieldInfo> fields = new List<FieldInfo>();
 						foreach (FieldInfo p in owner.GetType().GetFields()) {

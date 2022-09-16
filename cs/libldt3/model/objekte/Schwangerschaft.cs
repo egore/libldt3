@@ -1,5 +1,5 @@
 /*
- * Copyright 2016  Christoph Brill <egore911@gmail.com>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,7 +18,8 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- */using NodaTime;
+ */
+using NodaTime;
 using libldt3.attributes;
 using libldt3.model.regel;
 
