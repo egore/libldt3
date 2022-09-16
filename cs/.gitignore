@@ -6,3 +6,4 @@ bin
 obj
 /testrunner
 /TestResult.xml
+.vscode
