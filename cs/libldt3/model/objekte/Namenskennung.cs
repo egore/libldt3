@@ -24,32 +24,32 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Das Objekt dient der Darstellung und elektronischen Übermittlung von
-			 * Namenskennzeichnungen.
-			 */
-			[Objekt(Value = "0041")]
-			public class Namenskennung
-			{
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Das Objekt dient der Darstellung und elektronischen Übermittlung von
+             * Namenskennzeichnungen.
+             */
+            [Objekt(Value = "0041")]
+            public class Namenskennung
+            {
 
-				[Feld(Value = "7420", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 2)]
-				public StatusPerson? status;
-				[Feld(Value = "7358", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string name;
-				[Feld(Value = "8990", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string shorthand;
-				[Feld(Value = "8110", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 6)]
-				public Anhang anhang;
+                [Feld(Value = "7420", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 2)]
+                public StatusPerson? status;
+                [Feld(Value = "7358", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string name;
+                [Feld(Value = "8990", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string shorthand;
+                [Feld(Value = "8110", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 6)]
+                public Anhang anhang;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

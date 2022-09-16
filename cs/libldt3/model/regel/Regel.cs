@@ -21,14 +21,14 @@
  */
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			public interface Regel
-			{
-				bool IsValid(string value);
-			}
-		}
-	}
+    namespace model
+    {
+        namespace regel
+        {
+            public interface Regel
+            {
+                bool IsValid(string value);
+            }
+        }
+    }
 }

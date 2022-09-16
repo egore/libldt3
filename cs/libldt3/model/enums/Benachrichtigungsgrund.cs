@@ -23,44 +23,44 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E049
-			 */
-			public enum Benachrichtigungsgrund
-			{
+            /**
+             * E049
+             */
+            public enum Benachrichtigungsgrund
+            {
 
-				/** Pathologisch auffälliger Befund */
-				PathologischAuffaelligerBefund,
-				/** Lebensbedrohlicher Zustand */
-				LebensbedrohlicherZustand,
-				/** Wiedervorstellung empfohlen */
-				WiedervorstellungEmpfohlen,
-				/** Probenmaterial nicht verwendbar */
-				ProbenmaterialNichtVerwendbar,
-				/** Probenmaterial unvollständig */
-				ProbenmaterialUnvollstaendig
-			}
+                /** Pathologisch auffälliger Befund */
+                PathologischAuffaelligerBefund,
+                /** Lebensbedrohlicher Zustand */
+                LebensbedrohlicherZustand,
+                /** Wiedervorstellung empfohlen */
+                WiedervorstellungEmpfohlen,
+                /** Probenmaterial nicht verwendbar */
+                ProbenmaterialNichtVerwendbar,
+                /** Probenmaterial unvollständig */
+                ProbenmaterialUnvollstaendig
+            }
 
-			public static class BenachrichtigungsgrundExtensions
-			{
-				public static string GetCode(this Benachrichtigungsgrund self)
-				{
-					switch (self)
-					{
-						case Benachrichtigungsgrund.PathologischAuffaelligerBefund: return "1";
-						case Benachrichtigungsgrund.LebensbedrohlicherZustand: return "2";
-						case Benachrichtigungsgrund.WiedervorstellungEmpfohlen: return "3";
-						case Benachrichtigungsgrund.ProbenmaterialNichtVerwendbar: return "4";
-						case Benachrichtigungsgrund.ProbenmaterialUnvollstaendig: return "5";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class BenachrichtigungsgrundExtensions
+            {
+                public static string GetCode(this Benachrichtigungsgrund self)
+                {
+                    switch (self)
+                    {
+                        case Benachrichtigungsgrund.PathologischAuffaelligerBefund: return "1";
+                        case Benachrichtigungsgrund.LebensbedrohlicherZustand: return "2";
+                        case Benachrichtigungsgrund.WiedervorstellungEmpfohlen: return "3";
+                        case Benachrichtigungsgrund.ProbenmaterialNichtVerwendbar: return "4";
+                        case Benachrichtigungsgrund.ProbenmaterialUnvollstaendig: return "5";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

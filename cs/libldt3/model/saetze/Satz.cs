@@ -21,18 +21,18 @@
  */
 namespace libldt3
 {
-	namespace model
-	{
-		namespace saetze
-		{
+    namespace model
+    {
+        namespace saetze
+        {
 
-			/**
-			 * Tagging-Interface, um Sätze zu identifiziern
-			 */
-			public interface Satz
-			{
-			}
+            /**
+             * Tagging-Interface, um Sätze zu identifiziern
+             */
+            public interface Satz
+            {
+            }
 
-		}
-	}
+        }
+    }
 }

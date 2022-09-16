@@ -21,42 +21,42 @@
  */
 using System; namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E059
-			 */
-			public enum ResistenzMethode
-			{
-				/** kein Antibiogramm erstellt */
-				KeinAntibiogrammErstellt,
-				/** Agardiffusion */
-				Agardiffusion,
-				/** Agardilution */
-				Agardilution,
-				/** PCR + Hybridisierung */
-				PcrUndHybridisierung,
-				/** sonstige */
-				sonstige
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E059
+             */
+            public enum ResistenzMethode
+            {
+                /** kein Antibiogramm erstellt */
+                KeinAntibiogrammErstellt,
+                /** Agardiffusion */
+                Agardiffusion,
+                /** Agardilution */
+                Agardilution,
+                /** PCR + Hybridisierung */
+                PcrUndHybridisierung,
+                /** sonstige */
+                sonstige
+            }
 
-			public static class ResistenzMethodeExtensions
-			{
-				public static string GetCode(this ResistenzMethode self)
-				{
-					switch (self)
-					{
-						case ResistenzMethode.KeinAntibiogrammErstellt: return "0";
-						case ResistenzMethode.Agardiffusion: return "1";
-						case ResistenzMethode.Agardilution: return "2";
-						case ResistenzMethode.PcrUndHybridisierung: return "3";
-						case ResistenzMethode.sonstige: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ResistenzMethodeExtensions
+            {
+                public static string GetCode(this ResistenzMethode self)
+                {
+                    switch (self)
+                    {
+                        case ResistenzMethode.KeinAntibiogrammErstellt: return "0";
+                        case ResistenzMethode.Agardiffusion: return "1";
+                        case ResistenzMethode.Agardilution: return "2";
+                        case ResistenzMethode.PcrUndHybridisierung: return "3";
+                        case ResistenzMethode.sonstige: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

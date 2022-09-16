@@ -22,26 +22,26 @@
 using System.Text.RegularExpressions;
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			/**
-			 * Format Gebührennummer
-			 */
-			public class F009 : RegularExpressionRegel
-			{
+            /**
+             * Format Gebührennummer
+             */
+            public class F009 : RegularExpressionRegel
+            {
 
-				static readonly Regex PATTERN = new Regex("^[0-9]{5}[A-Z]?$");
+                static readonly Regex PATTERN = new Regex("^[0-9]{5}[A-Z]?$");
 
-				public F009() : base(PATTERN)
-				{
-				}
+                public F009() : base(PATTERN)
+                {
+                }
 
-			}
+            }
 
 
-		}
-	}
+        }
+    }
 }

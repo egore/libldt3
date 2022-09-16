@@ -23,36 +23,36 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E064
-			 */
-			public enum ErgebnisStatus
-			{
+            /**
+             * E064
+             */
+            public enum ErgebnisStatus
+            {
 
-				nicht_nachweisbar,
-				zweifelhaft_unspezifisch,
-				nachweisbar
-			}
+                nicht_nachweisbar,
+                zweifelhaft_unspezifisch,
+                nachweisbar
+            }
 
-			public static class ErgebnisStatusExtensions
-			{
-				public static string GetCode(this ErgebnisStatus self)
-				{
-					switch (self)
-					{
-						case ErgebnisStatus.nicht_nachweisbar: return "0";
-						case ErgebnisStatus.zweifelhaft_unspezifisch: return "1";
-						case ErgebnisStatus.nachweisbar: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ErgebnisStatusExtensions
+            {
+                public static string GetCode(this ErgebnisStatus self)
+                {
+                    switch (self)
+                    {
+                        case ErgebnisStatus.nicht_nachweisbar: return "0";
+                        case ErgebnisStatus.zweifelhaft_unspezifisch: return "1";
+                        case ErgebnisStatus.nachweisbar: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }
-		
+        

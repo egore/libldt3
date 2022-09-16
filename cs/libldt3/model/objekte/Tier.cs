@@ -27,48 +27,48 @@ using libldt3.model.regel;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden
-			 * die entsprechenden Informationen zur Materialquelle in diesem Objekt
-			 * beschrieben.
-			 */
-			[Objekt(Value = "0053")]
-			public class Tier
-			{
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden
+             * die entsprechenden Informationen zur Materialquelle in diesem Objekt
+             * beschrieben.
+             */
+            [Objekt(Value = "0053")]
+            public class Tier
+            {
 
-				[Feld(Value = "7319", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string identifikationsnummerQuelle;
-				[Feld(Value = "7313", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string artRasseMaterial;
-				[Feld(Value = "7314", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string nameKennung;
-				[Feld(Value = "7315", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 10)]
-				public string alter;
-				[Feld(Value = "7326", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 1)]
-				public Zeiteinheit? alterIn;
-				[Feld(Value = "7351", Feldart = Feldart.kann)]
-				[Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-				public LocalDate? geburtsdatum;
-				[Feld(Value = "8107", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 9)]
-				public Anschrift anschrift;
-				[Feld(Value = "8147", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 6)]
-				public Person person;
-				[Feld(Value = "8110", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 6)]
-				public IList<Anhang> anhang;
+                [Feld(Value = "7319", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string identifikationsnummerQuelle;
+                [Feld(Value = "7313", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string artRasseMaterial;
+                [Feld(Value = "7314", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string nameKennung;
+                [Feld(Value = "7315", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 10)]
+                public string alter;
+                [Feld(Value = "7326", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 1)]
+                public Zeiteinheit? alterIn;
+                [Feld(Value = "7351", Feldart = Feldart.kann)]
+                [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
+                public LocalDate? geburtsdatum;
+                [Feld(Value = "8107", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 9)]
+                public Anschrift anschrift;
+                [Feld(Value = "8147", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 6)]
+                public Person person;
+                [Feld(Value = "8110", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 6)]
+                public IList<Anhang> anhang;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

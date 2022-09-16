@@ -23,48 +23,48 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E013
-			 */
-			public enum ZusaetzlicherBefundweg
-			{
-				/** Papier */
-				Papier,
-				/** Telefon */
-				Telefon,
-				/** Fax */
-				Fax,
-				/** E-Mail */
-				EMail,
-				/** DFÜ */
-				DFUE,
-				/** Tourpost */
-				Tourpost,
-				/** KV-Connect */
-				kvConnect
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E013
+             */
+            public enum ZusaetzlicherBefundweg
+            {
+                /** Papier */
+                Papier,
+                /** Telefon */
+                Telefon,
+                /** Fax */
+                Fax,
+                /** E-Mail */
+                EMail,
+                /** DFÜ */
+                DFUE,
+                /** Tourpost */
+                Tourpost,
+                /** KV-Connect */
+                kvConnect
+            }
 
-			public static class ZusaetzlicherBefundwegExtensions
-			{
-				public static string GetCode(this ZusaetzlicherBefundweg self)
-				{
-					switch (self)
-					{
-						case ZusaetzlicherBefundweg.Papier: return "0";
-						case ZusaetzlicherBefundweg.Telefon: return "1";
-						case ZusaetzlicherBefundweg.Fax: return "2";
-						case ZusaetzlicherBefundweg.EMail: return "3";
-						case ZusaetzlicherBefundweg.DFUE: return "4";
-						case ZusaetzlicherBefundweg.Tourpost: return "5";
-						case ZusaetzlicherBefundweg.kvConnect: return "6";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ZusaetzlicherBefundwegExtensions
+            {
+                public static string GetCode(this ZusaetzlicherBefundweg self)
+                {
+                    switch (self)
+                    {
+                        case ZusaetzlicherBefundweg.Papier: return "0";
+                        case ZusaetzlicherBefundweg.Telefon: return "1";
+                        case ZusaetzlicherBefundweg.Fax: return "2";
+                        case ZusaetzlicherBefundweg.EMail: return "3";
+                        case ZusaetzlicherBefundweg.DFUE: return "4";
+                        case ZusaetzlicherBefundweg.Tourpost: return "5";
+                        case ZusaetzlicherBefundweg.kvConnect: return "6";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

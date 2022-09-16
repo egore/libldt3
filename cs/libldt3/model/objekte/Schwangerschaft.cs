@@ -25,29 +25,29 @@ using libldt3.model.regel;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
+    namespace model
+    {
+        namespace objekte
+        {
 
-			/**
-			 * Dieses Objekt enthält schwangerschaftsspezifische Informationen.
-			 */
-			[Objekt(Value = "0050")]
-			public class Schwangerschaft
-			{
+            /**
+             * Dieses Objekt enthält schwangerschaftsspezifische Informationen.
+             */
+            [Objekt(Value = "0050")]
+            public class Schwangerschaft
+            {
 
-				[Feld(Value = "8511", Feldart = Feldart.kann)]
-				[Regelsatz(Value = new[] { typeof(F005) }, Laenge = 3)]
-				public string schwangerschaftsdauer;
-				[Feld(Value = "8512", Feldart = Feldart.muss)]
-				[Regelsatz(Value = new[] { typeof(F018) }, Laenge = 8)]
-				public LocalDate? ersterTagLetzterZyklus;
-				[Feld(Value = "3471", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-				public LocalDate? entbindungstermin;
+                [Feld(Value = "8511", Feldart = Feldart.kann)]
+                [Regelsatz(Value = new[] { typeof(F005) }, Laenge = 3)]
+                public string schwangerschaftsdauer;
+                [Feld(Value = "8512", Feldart = Feldart.muss)]
+                [Regelsatz(Value = new[] { typeof(F018) }, Laenge = 8)]
+                public LocalDate? ersterTagLetzterZyklus;
+                [Feld(Value = "3471", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
+                public LocalDate? entbindungstermin;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

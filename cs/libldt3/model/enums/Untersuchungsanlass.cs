@@ -23,60 +23,60 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E146
-			 */
-			public enum Untersuchungsanlass
-			{
-				/** Vorsorge */
-				Vorsorge,
-				/** Verlaufskontrolle */
-				Verlaufskontrolle,
-				/** Zustand vor */
-				ZustandVor,
-				/** Zustand nach */
-				ZustandNach,
-				/** Ausschluss */
-				Ausschluss,
-				/** Bestätigung */
-				Bestaetigung,
-				/** gezielte Suche */
-				GezielteSuche,
-				/** ungezielte Suche */
-				UngezielteSuche,
-				/** Erfolgskontrolle */
-				Erfolgskontrolle,
-				/** Abschlusskontrolle */
-				Abschlusskontrolle,
-				/** Immunität/Impferfolg */
-				ImmunitaetImpferfolg
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E146
+             */
+            public enum Untersuchungsanlass
+            {
+                /** Vorsorge */
+                Vorsorge,
+                /** Verlaufskontrolle */
+                Verlaufskontrolle,
+                /** Zustand vor */
+                ZustandVor,
+                /** Zustand nach */
+                ZustandNach,
+                /** Ausschluss */
+                Ausschluss,
+                /** Bestätigung */
+                Bestaetigung,
+                /** gezielte Suche */
+                GezielteSuche,
+                /** ungezielte Suche */
+                UngezielteSuche,
+                /** Erfolgskontrolle */
+                Erfolgskontrolle,
+                /** Abschlusskontrolle */
+                Abschlusskontrolle,
+                /** Immunität/Impferfolg */
+                ImmunitaetImpferfolg
+            }
 
-			public static class UntersuchungsanlassExtensions
-			{
-				public static string GetCode(this Untersuchungsanlass self)
-				{
-					switch (self)
-					{
-						case Untersuchungsanlass.Vorsorge: return "01";
-						case Untersuchungsanlass.Verlaufskontrolle: return "02";
-						case Untersuchungsanlass.ZustandVor: return "03";
-						case Untersuchungsanlass.ZustandNach: return "04";
-						case Untersuchungsanlass.Ausschluss: return "05";
-						case Untersuchungsanlass.Bestaetigung: return "06";
-						case Untersuchungsanlass.GezielteSuche: return "07";
-						case Untersuchungsanlass.UngezielteSuche: return "08";
-						case Untersuchungsanlass.Erfolgskontrolle: return "09";
-						case Untersuchungsanlass.Abschlusskontrolle: return "10";
-						case Untersuchungsanlass.ImmunitaetImpferfolg: return "11";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class UntersuchungsanlassExtensions
+            {
+                public static string GetCode(this Untersuchungsanlass self)
+                {
+                    switch (self)
+                    {
+                        case Untersuchungsanlass.Vorsorge: return "01";
+                        case Untersuchungsanlass.Verlaufskontrolle: return "02";
+                        case Untersuchungsanlass.ZustandVor: return "03";
+                        case Untersuchungsanlass.ZustandNach: return "04";
+                        case Untersuchungsanlass.Ausschluss: return "05";
+                        case Untersuchungsanlass.Bestaetigung: return "06";
+                        case Untersuchungsanlass.GezielteSuche: return "07";
+                        case Untersuchungsanlass.UngezielteSuche: return "08";
+                        case Untersuchungsanlass.Erfolgskontrolle: return "09";
+                        case Untersuchungsanlass.Abschlusskontrolle: return "10";
+                        case Untersuchungsanlass.ImmunitaetImpferfolg: return "11";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

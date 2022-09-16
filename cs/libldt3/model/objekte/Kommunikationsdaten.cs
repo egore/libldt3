@@ -25,47 +25,47 @@ using libldt3.attributes;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
+    namespace model
+    {
+        namespace objekte
+        {
 
-			/**
-			 * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
-			 * mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
-			 */
-			[Objekt(Value = "0031")]
-			public class Kommunikationsdaten
-			{
+            /**
+             * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
+             * mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
+             */
+            [Objekt(Value = "0031")]
+            public class Kommunikationsdaten
+            {
 
-				[Objekt]
-				public class ElektronischePostadresse_
-				{
-					public string Value;
-					[Feld(Value = "7340", Feldart = Feldart.bedingt_muss)]
-					[Regelsatz(MaxLaenge = 60)]
-					public string Spezifizierung;
-				}
+                [Objekt]
+                public class ElektronischePostadresse_
+                {
+                    public string Value;
+                    [Feld(Value = "7340", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string Spezifizierung;
+                }
 
-				[Feld(Value = "7330", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> Phone;
-				[Feld(Value = "7331", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> Mobile;
-				[Feld(Value = "7332", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<ElektronischePostadresse_> ElektronischePostadresse;
-				[Feld(Value = "7333", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> Fax;
-				[Feld(Value = "7335", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> Email;
-				[Feld(Value = "7334", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> Website;
-			}
-		}
-	}
+                [Feld(Value = "7330", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> Phone;
+                [Feld(Value = "7331", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> Mobile;
+                [Feld(Value = "7332", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<ElektronischePostadresse_> ElektronischePostadresse;
+                [Feld(Value = "7333", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> Fax;
+                [Feld(Value = "7335", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> Email;
+                [Feld(Value = "7334", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> Website;
+            }
+        }
+    }
 }

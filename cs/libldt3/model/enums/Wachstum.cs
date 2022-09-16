@@ -23,44 +23,44 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E026
-			 */
-			public enum Wachstum
-			{
-				/** nicht nachweisbar / kein Wachstum */
-				nicht_nachweisbar_kein_Wachstum,
-				/** spärlich */
-				spaerlich,
-				/** mäßig/vereinzelt */
-				maessig_vereinzelt,
-				/** reichlich */
-				reichlich,
-				/** massenhaft */
-				massenhaft
-			}
+            /**
+             * E026
+             */
+            public enum Wachstum
+            {
+                /** nicht nachweisbar / kein Wachstum */
+                nicht_nachweisbar_kein_Wachstum,
+                /** spärlich */
+                spaerlich,
+                /** mäßig/vereinzelt */
+                maessig_vereinzelt,
+                /** reichlich */
+                reichlich,
+                /** massenhaft */
+                massenhaft
+            }
 
-			public static class WachstumExtensions
-			{
-				public static string GetCode(this Wachstum self)
-				{
-					switch (self)
-					{
-						case Wachstum.nicht_nachweisbar_kein_Wachstum: return "0";
-						case Wachstum.spaerlich: return "1";
-						case Wachstum.maessig_vereinzelt: return "2";
-						case Wachstum.reichlich: return "3";
-						case Wachstum.massenhaft: return "4";
+            public static class WachstumExtensions
+            {
+                public static string GetCode(this Wachstum self)
+                {
+                    switch (self)
+                    {
+                        case Wachstum.nicht_nachweisbar_kein_Wachstum: return "0";
+                        case Wachstum.spaerlich: return "1";
+                        case Wachstum.maessig_vereinzelt: return "2";
+                        case Wachstum.reichlich: return "3";
+                        case Wachstum.massenhaft: return "4";
 
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

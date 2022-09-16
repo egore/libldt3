@@ -23,69 +23,69 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E023
-			 */
-			public enum Einsenderstatus
-			{
-				/** Erstveranlasser */
-				Erstveranlasser,
-				/** Einsender Arzt */
-				EinsenderArzt,
-				/** Einsender sonstige */
-				EinsenderSonstige,
-				/** Versicherter */
-				Versicherter,
-				/** Rechnungsempfänger */
-				Rechnungsempfaenger,
-				/** Bevollmächtigter */
-				Bevollmaechtigter,
-				/** Laborarzt/Befundersteller */
-				Laborarzt_Befundersteller,
-				/** Leistungserbringer */
-				Leistungserbringer,
-				/** Halter (eines Tieres) */
-				Tierhalter,
-				/** Patient */
-				Patient,
-				/** Überweiser */
-				Ueberweiser,
-				/** staatliche Einrichtung */
-				staatliche_Einrichtung,
-				/** sonstige juristische Person */
-				sonstige_juristische_Person,
-				/** sonstige medizinische Einrichtung */
-				sonstige_medizinische_Einrichtung
-			}
-			public static class EinsenderstatusExtensions
-			{
-				public static string GetCode(this Einsenderstatus self)
-				{
-					switch (self)
-					{
-						case Einsenderstatus.Erstveranlasser: return "01";
-						case Einsenderstatus.EinsenderArzt: return "02";
-						case Einsenderstatus.EinsenderSonstige: return "03";
-						case Einsenderstatus.Versicherter: return "04";
-						case Einsenderstatus.Rechnungsempfaenger: return "05";
-						case Einsenderstatus.Bevollmaechtigter: return "06";
-						case Einsenderstatus.Laborarzt_Befundersteller: return "07";
-						case Einsenderstatus.Leistungserbringer: return "08";
-						case Einsenderstatus.Tierhalter: return "11";
-						case Einsenderstatus.Patient: return "12";
-						case Einsenderstatus.Ueberweiser: return "14";
-						case Einsenderstatus.staatliche_Einrichtung: return "15";
-						case Einsenderstatus.sonstige_juristische_Person: return "16";
-						case Einsenderstatus.sonstige_medizinische_Einrichtung: return "17";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            /**
+             * E023
+             */
+            public enum Einsenderstatus
+            {
+                /** Erstveranlasser */
+                Erstveranlasser,
+                /** Einsender Arzt */
+                EinsenderArzt,
+                /** Einsender sonstige */
+                EinsenderSonstige,
+                /** Versicherter */
+                Versicherter,
+                /** Rechnungsempfänger */
+                Rechnungsempfaenger,
+                /** Bevollmächtigter */
+                Bevollmaechtigter,
+                /** Laborarzt/Befundersteller */
+                Laborarzt_Befundersteller,
+                /** Leistungserbringer */
+                Leistungserbringer,
+                /** Halter (eines Tieres) */
+                Tierhalter,
+                /** Patient */
+                Patient,
+                /** Überweiser */
+                Ueberweiser,
+                /** staatliche Einrichtung */
+                staatliche_Einrichtung,
+                /** sonstige juristische Person */
+                sonstige_juristische_Person,
+                /** sonstige medizinische Einrichtung */
+                sonstige_medizinische_Einrichtung
+            }
+            public static class EinsenderstatusExtensions
+            {
+                public static string GetCode(this Einsenderstatus self)
+                {
+                    switch (self)
+                    {
+                        case Einsenderstatus.Erstveranlasser: return "01";
+                        case Einsenderstatus.EinsenderArzt: return "02";
+                        case Einsenderstatus.EinsenderSonstige: return "03";
+                        case Einsenderstatus.Versicherter: return "04";
+                        case Einsenderstatus.Rechnungsempfaenger: return "05";
+                        case Einsenderstatus.Bevollmaechtigter: return "06";
+                        case Einsenderstatus.Laborarzt_Befundersteller: return "07";
+                        case Einsenderstatus.Leistungserbringer: return "08";
+                        case Einsenderstatus.Tierhalter: return "11";
+                        case Einsenderstatus.Patient: return "12";
+                        case Einsenderstatus.Ueberweiser: return "14";
+                        case Einsenderstatus.staatliche_Einrichtung: return "15";
+                        case Einsenderstatus.sonstige_juristische_Person: return "16";
+                        case Einsenderstatus.sonstige_medizinische_Einrichtung: return "17";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

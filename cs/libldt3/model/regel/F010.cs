@@ -21,26 +21,26 @@
  */
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			using System.Text.RegularExpressions;
+            using System.Text.RegularExpressions;
 
-			/**
-			 * Format BSNR
-			 */
-			public class F010 : RegularExpressionRegel
-			{
+            /**
+             * Format BSNR
+             */
+            public class F010 : RegularExpressionRegel
+            {
 
-				static readonly Regex PATTERN = new Regex("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
+                static readonly Regex PATTERN = new Regex("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
 
-				public F010() : base(PATTERN)
-				{
-				}
+                public F010() : base(PATTERN)
+                {
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

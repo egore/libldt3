@@ -23,40 +23,40 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E004
-			 */
-			public enum Satzart
-			{
-				LaborDatenpaketHeader,
-				LaborDatenpaketAbschluss,
-				PraxisDatenpaketHeader,
-				PraxisDatenpaketAbschluss,
-				Befund,
-				Auftrag
-			}
+            /**
+             * E004
+             */
+            public enum Satzart
+            {
+                LaborDatenpaketHeader,
+                LaborDatenpaketAbschluss,
+                PraxisDatenpaketHeader,
+                PraxisDatenpaketAbschluss,
+                Befund,
+                Auftrag
+            }
 
-			public static class SatzartExtensions
-			{
-				public static string GetCode(this Satzart self)
-				{
-					switch (self)
-					{
-						case Satzart.LaborDatenpaketHeader: return "8220";
-						case Satzart.LaborDatenpaketAbschluss: return "8221";
-						case Satzart.PraxisDatenpaketHeader: return "8230";
-						case Satzart.PraxisDatenpaketAbschluss: return "8231";
-						case Satzart.Befund: return "8205";
-						case Satzart.Auftrag: return "8215";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class SatzartExtensions
+            {
+                public static string GetCode(this Satzart self)
+                {
+                    switch (self)
+                    {
+                        case Satzart.LaborDatenpaketHeader: return "8220";
+                        case Satzart.LaborDatenpaketAbschluss: return "8221";
+                        case Satzart.PraxisDatenpaketHeader: return "8230";
+                        case Satzart.PraxisDatenpaketAbschluss: return "8231";
+                        case Satzart.Befund: return "8205";
+                        case Satzart.Auftrag: return "8215";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

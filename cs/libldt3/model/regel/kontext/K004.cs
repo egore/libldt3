@@ -25,72 +25,72 @@ using System.Reflection;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
-				public class K004 : Kontextregel
-				{
+                public class K004 : Kontextregel
+                {
 
-					public bool IsValid(object owner)
-					{
-						// TODO should also check for FK 8000 = 8205
+                    public bool IsValid(object owner)
+                    {
+                        // TODO should also check for FK 8000 = 8205
 
-						FieldInfo source1 = FindFieldInfo(owner, "8401");
-						if (source1 == null)
-						{
-							return true;
-						}
-						object o1 = source1.GetValue(owner);
-						if (o1 == null)
-						{
-							return true;
-						}
-						if (!(o1 is string))
-						{
-							return false;
-						}
-						if (!"E".Equals(o1) && !"N".Equals(o1))
-						{
-							return true;
-						}
+                        FieldInfo source1 = FindFieldInfo(owner, "8401");
+                        if (source1 == null)
+                        {
+                            return true;
+                        }
+                        object o1 = source1.GetValue(owner);
+                        if (o1 == null)
+                        {
+                            return true;
+                        }
+                        if (!(o1 is string))
+                        {
+                            return false;
+                        }
+                        if (!"E".Equals(o1) && !"N".Equals(o1))
+                        {
+                            return true;
+                        }
 
-						FieldInfo source2 = FindFieldInfo(owner, "7303");
-						if (source2 == null)
-						{
-							return true;
-						}
+                        FieldInfo source2 = FindFieldInfo(owner, "7303");
+                        if (source2 == null)
+                        {
+                            return true;
+                        }
 
-						object o2 = source2.GetValue(owner);
-						if (o2 == null)
-						{
-							return true;
-						}
-						if (!(o2 is Abrechnungsinfo))
-						{
-							return false;
-						}
+                        object o2 = source2.GetValue(owner);
+                        if (o2 == null)
+                        {
+                            return true;
+                        }
+                        if (!(o2 is Abrechnungsinfo))
+                        {
+                            return false;
+                        }
 
-						switch ((Abrechnungsinfo)o2)
-						{
-							case Abrechnungsinfo.GkvLaborfacharzt:
-							case Abrechnungsinfo.GkvLg:
-							case Abrechnungsinfo.Asv:
-							case Abrechnungsinfo.GkvLaborfacharztPraeventiv:
-							case Abrechnungsinfo.GkgLgPraeventiv:
-								FieldInfo f = FindFieldInfo(owner, "4241");
-								return ContainsAnyString(f, owner);
-							default:
-								return true;
-						}
-					}
+                        switch ((Abrechnungsinfo)o2)
+                        {
+                            case Abrechnungsinfo.GkvLaborfacharzt:
+                            case Abrechnungsinfo.GkvLg:
+                            case Abrechnungsinfo.Asv:
+                            case Abrechnungsinfo.GkvLaborfacharztPraeventiv:
+                            case Abrechnungsinfo.GkgLgPraeventiv:
+                                FieldInfo f = FindFieldInfo(owner, "4241");
+                                return ContainsAnyString(f, owner);
+                            default:
+                                return true;
+                        }
+                    }
 
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 }
 

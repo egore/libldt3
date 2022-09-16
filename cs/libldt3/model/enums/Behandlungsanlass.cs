@@ -24,40 +24,40 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E039
-			 */
-			public enum Behandlungsanlass
-			{
-				/** kurativ */
-				Kurativ,
-				/** präventiv */
-				Praeventiv,
-				/** Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch */
-				EmpfaengnisregelungSterilisationSchwangerschaftsabbruch,
-				/** belegärztliche Behandlung */
-				BelegaerztlicheBehandlung
-			}
+            /**
+             * E039
+             */
+            public enum Behandlungsanlass
+            {
+                /** kurativ */
+                Kurativ,
+                /** präventiv */
+                Praeventiv,
+                /** Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch */
+                EmpfaengnisregelungSterilisationSchwangerschaftsabbruch,
+                /** belegärztliche Behandlung */
+                BelegaerztlicheBehandlung
+            }
 
-			public static class BehandlungsanlassExtensions
-			{
-				public static string GetCode(this Behandlungsanlass self)
-				{
-					switch (self)
-					{
-						case Behandlungsanlass.Kurativ: return "1";
-						case Behandlungsanlass.Praeventiv: return "2";
-						case Behandlungsanlass.EmpfaengnisregelungSterilisationSchwangerschaftsabbruch: return "3";
-						case Behandlungsanlass.BelegaerztlicheBehandlung: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class BehandlungsanlassExtensions
+            {
+                public static string GetCode(this Behandlungsanlass self)
+                {
+                    switch (self)
+                    {
+                        case Behandlungsanlass.Kurativ: return "1";
+                        case Behandlungsanlass.Praeventiv: return "2";
+                        case Behandlungsanlass.EmpfaengnisregelungSterilisationSchwangerschaftsabbruch: return "3";
+                        case Behandlungsanlass.BelegaerztlicheBehandlung: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

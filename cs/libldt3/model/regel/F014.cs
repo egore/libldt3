@@ -23,21 +23,21 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format ASV-Teamnummer
-			 */
-			public class F014 : RegularExpressionRegel
-			{
-				private static readonly Regex PATTERN = new Regex("^00[0-9]{6}[0-9]$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format ASV-Teamnummer
+             */
+            public class F014 : RegularExpressionRegel
+            {
+                private static readonly Regex PATTERN = new Regex("^00[0-9]{6}[0-9]$");
 
-				public F014() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F014() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

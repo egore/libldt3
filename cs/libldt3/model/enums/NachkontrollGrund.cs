@@ -23,36 +23,36 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E061
-			 */
-			public enum NachkontrollGrund
-			{
-				/** nach Entzündungsbehandlung */
-				NachEntzuendungsbehandlung,
-				/** nach Oestrogenbehandlung */
-				NachOestrogenbehandlung,
-				/** Sonstiges */
-				Sonstiges
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E061
+             */
+            public enum NachkontrollGrund
+            {
+                /** nach Entzündungsbehandlung */
+                NachEntzuendungsbehandlung,
+                /** nach Oestrogenbehandlung */
+                NachOestrogenbehandlung,
+                /** Sonstiges */
+                Sonstiges
+            }
 
-			public static class NachkontrollGrundExtensions
-			{
-				public static string GetCode(this NachkontrollGrund self)
-				{
-					switch (self)
-					{
-						case NachkontrollGrund.NachEntzuendungsbehandlung: return "1";
-						case NachkontrollGrund.NachOestrogenbehandlung: return "2";
-						case NachkontrollGrund.Sonstiges: return "3";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class NachkontrollGrundExtensions
+            {
+                public static string GetCode(this NachkontrollGrund self)
+                {
+                    switch (self)
+                    {
+                        case NachkontrollGrund.NachEntzuendungsbehandlung: return "1";
+                        case NachkontrollGrund.NachOestrogenbehandlung: return "2";
+                        case NachkontrollGrund.Sonstiges: return "3";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

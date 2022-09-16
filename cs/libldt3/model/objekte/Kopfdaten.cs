@@ -23,29 +23,29 @@ using libldt3.attributes;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
+    namespace model
+    {
+        namespace objekte
+        {
 
-			/**
-			 * Hier werden alle Informationen zusammengefasst, die im Kontext mit der Erstellung des Datensatzes stehen.
-			 */
-			[Objekt(Value = "0032")]
-			public class Kopfdaten
-			{
+            /**
+             * Hier werden alle Informationen zusammengefasst, die im Kontext mit der Erstellung des Datensatzes stehen.
+             */
+            [Objekt(Value = "0032")]
+            public class Kopfdaten
+            {
 
-				[Feld(Value = "8151", Name = "Sendendes_System", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 16)]
-				public SendendesSystem sendendesSystem;
-				[Feld(Value = "8218", Name = "Timestamp_Erstellung_Datensatz", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 30)]
-				public Timestamp timestampErstellungDatensatz;
-				[Feld(Value = "8212", Name = "Softwareverantwortlicher", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 24)]
-				public Organisation softwareverantwortlicher;
+                [Feld(Value = "8151", Name = "Sendendes_System", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 16)]
+                public SendendesSystem sendendesSystem;
+                [Feld(Value = "8218", Name = "Timestamp_Erstellung_Datensatz", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 30)]
+                public Timestamp timestampErstellungDatensatz;
+                [Feld(Value = "8212", Name = "Softwareverantwortlicher", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 24)]
+                public Organisation softwareverantwortlicher;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

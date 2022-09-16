@@ -25,49 +25,49 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
-			 */
-			[Objekt(Value = "0022")]
-			public class Einsenderidentifikation
-			{
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
+             */
+            [Objekt(Value = "0022")]
+            public class Einsenderidentifikation
+            {
 
-				[Feld(Value = "7321", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 2)]
-				public IList<Einsenderstatus> status;
-				[Feld(Value = "8312", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 20)]
-				public string kundenNummer;
-				[Feld(Value = "7267", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string auftraggeberId;
-				[Feld(Value = "8114", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 18)]
-				public Arztidentifikation arztidentifikation;
-				[Feld(Value = "8240", Name = "Ueberweisung_von_anderen_Aerzten", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 32)]
-				public Arztidentifikation ueberweisungVon;
-				[Feld(Value = "8241", Name = "Ueberweisung_an", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 15)]
-				public Arztidentifikation ueberweisungAn;
-				[Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 6)]
-				public Person person;
-				[Feld(Value = "7268", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string fachrichtung;
-				[Feld(Value = "8119", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 15)]
-				public Betriebsstaette permanentEstablishment;
-				[Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 12)]
-				public Organisation organisation;
+                [Feld(Value = "7321", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 2)]
+                public IList<Einsenderstatus> status;
+                [Feld(Value = "8312", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 20)]
+                public string kundenNummer;
+                [Feld(Value = "7267", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string auftraggeberId;
+                [Feld(Value = "8114", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 18)]
+                public Arztidentifikation arztidentifikation;
+                [Feld(Value = "8240", Name = "Ueberweisung_von_anderen_Aerzten", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 32)]
+                public Arztidentifikation ueberweisungVon;
+                [Feld(Value = "8241", Name = "Ueberweisung_an", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 15)]
+                public Arztidentifikation ueberweisungAn;
+                [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 6)]
+                public Person person;
+                [Feld(Value = "7268", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string fachrichtung;
+                [Feld(Value = "8119", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 15)]
+                public Betriebsstaette permanentEstablishment;
+                [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 12)]
+                public Organisation organisation;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

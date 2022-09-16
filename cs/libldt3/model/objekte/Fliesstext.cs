@@ -24,23 +24,23 @@ using libldt3.attributes;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
-			 */
-			[Objekt(Value = "0068")]
-			public class Fliesstext
-			{
-				[Feld(Value = "3564", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> Text;
-				[Feld(Value = "6329", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> Base64text;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
+             */
+            [Objekt(Value = "0068")]
+            public class Fliesstext
+            {
+                [Feld(Value = "3564", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> Text;
+                [Feld(Value = "6329", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> Base64text;
+            }
+        }
+    }
 }

@@ -24,38 +24,38 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Hier sind alle Angaben zum Rechnungsempfänger enthalten.
-			 */
-			[Objekt(Value = "0048", Name = "RgEmpfaenger")]
-			public class Rechnungsempfaenger
-			{
-				[Feld(Value = "8310", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string auftragsnummerEinsender;
-				[Feld(Value = "7421", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 2)]
-				public StatusRechnungsempfaenger? statusRechnungsempfaenger;
-				[Feld(Value = "0600", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string nameEinrichtungAuftraggeber;
-				[Feld(Value = "7328", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 10)]
-				public string zusaetzlicheNamenszeile;
-				[Feld(Value = "8108", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 8)]
-				public Adressat adressat;
-				[Feld(Value = "8610", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 1)]
-				public Privattarif? privattarif;
-				[Feld(Value = "8608", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string kommentarAktenzeichen;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Hier sind alle Angaben zum Rechnungsempfänger enthalten.
+             */
+            [Objekt(Value = "0048", Name = "RgEmpfaenger")]
+            public class Rechnungsempfaenger
+            {
+                [Feld(Value = "8310", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string auftragsnummerEinsender;
+                [Feld(Value = "7421", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 2)]
+                public StatusRechnungsempfaenger? statusRechnungsempfaenger;
+                [Feld(Value = "0600", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string nameEinrichtungAuftraggeber;
+                [Feld(Value = "7328", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 10)]
+                public string zusaetzlicheNamenszeile;
+                [Feld(Value = "8108", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 8)]
+                public Adressat adressat;
+                [Feld(Value = "8610", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 1)]
+                public Privattarif? privattarif;
+                [Feld(Value = "8608", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string kommentarAktenzeichen;
+            }
+        }
+    }
 }

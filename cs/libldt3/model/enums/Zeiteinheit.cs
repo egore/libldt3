@@ -23,38 +23,38 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E068
-			 */
-			public enum Zeiteinheit
-			{
+            /**
+             * E068
+             */
+            public enum Zeiteinheit
+            {
 
-				Sekunden,
-				Minuten,
-				Tage,
-				Jahre
+                Sekunden,
+                Minuten,
+                Tage,
+                Jahre
 
-			}
+            }
 
-			public static class ZeiteinheitExtensions
-			{
-				public static string GetCode(this Zeiteinheit self)
-				{
-					switch (self)
-					{
-						case Zeiteinheit.Sekunden: return "1";
-						case Zeiteinheit.Minuten: return "2";
-						case Zeiteinheit.Tage: return "3";
-						case Zeiteinheit.Jahre: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ZeiteinheitExtensions
+            {
+                public static string GetCode(this Zeiteinheit self)
+                {
+                    switch (self)
+                    {
+                        case Zeiteinheit.Sekunden: return "1";
+                        case Zeiteinheit.Minuten: return "2";
+                        case Zeiteinheit.Tage: return "3";
+                        case Zeiteinheit.Jahre: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

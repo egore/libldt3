@@ -25,29 +25,29 @@ using NodaTime.Text;
 namespace libldt3
 {
 
-	/**
-	 * @author Christoph Brill &lt;opensource@christophbrill.de&gt;
-	 */
-	public static class LdtConstants
-	{
+    /**
+     * @author Christoph Brill &lt;opensource@christophbrill.de&gt;
+     */
+    public static class LdtConstants
+    {
 
-		public static readonly LocalDatePattern FORMAT_DATE = LocalDatePattern.Create("yyyyMMdd", CultureInfo.InvariantCulture);
-		public static readonly LocalTimePattern FORMAT_TIME = LocalTimePattern.Create("HHmmss", CultureInfo.InvariantCulture);
+        public static readonly LocalDatePattern FORMAT_DATE = LocalDatePattern.Create("yyyyMMdd", CultureInfo.InvariantCulture);
+        public static readonly LocalTimePattern FORMAT_TIME = LocalTimePattern.Create("HHmmss", CultureInfo.InvariantCulture);
 
-		/** Determines how the reader deals with invalid LDT */
-		public enum Mode
-		{
-			/**
-			 * In case invalid LDT is detected, the reader will abort with an
-			 * exception
-			 */
-			STRICT,
-			/**
-			 * When the reader encounters invalid LDT, it will log as error and
-			 * continue
-			 */
-			RELAXED
-		}
+        /** Determines how the reader deals with invalid LDT */
+        public enum Mode
+        {
+            /**
+             * In case invalid LDT is detected, the reader will abort with an
+             * exception
+             */
+            STRICT,
+            /**
+             * When the reader encounters invalid LDT, it will log as error and
+             * continue
+             */
+            RELAXED
+        }
 
-	}
+    }
 }

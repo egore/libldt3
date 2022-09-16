@@ -23,47 +23,47 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E046
-			 */
-			public enum Betriebsstaettenstatus
-			{
+            /**
+             * E046
+             */
+            public enum Betriebsstaettenstatus
+            {
 
-				/** Arztpraxis */
-				Arztpraxis,
-				/** Laborarztpraxis */
-				Laborarztpraxis,
-				/** Laborgemeinschaft */
-				Laborgemeinschaft,
-				/** sonstige medizinische Einrichtung */
-				sonstigeMedizinischeEinrichtung,
-				/** Hauptbetriebsstätte */
-				Hauptbetriebsstaette,
-				/** Nebenbetriebsstätte */
-				Nebenbetriebsstaette
-			}
+                /** Arztpraxis */
+                Arztpraxis,
+                /** Laborarztpraxis */
+                Laborarztpraxis,
+                /** Laborgemeinschaft */
+                Laborgemeinschaft,
+                /** sonstige medizinische Einrichtung */
+                sonstigeMedizinischeEinrichtung,
+                /** Hauptbetriebsstätte */
+                Hauptbetriebsstaette,
+                /** Nebenbetriebsstätte */
+                Nebenbetriebsstaette
+            }
 
-			public static class BetriebsstaettenstatusExtensions
-			{
-				public static string GetCode(this Betriebsstaettenstatus self)
-				{
-					switch (self)
-					{
-						case Betriebsstaettenstatus.Arztpraxis: return "1";
-						case Betriebsstaettenstatus.Laborarztpraxis: return "2";
-						case Betriebsstaettenstatus.Laborgemeinschaft: return "3";
-						case Betriebsstaettenstatus.sonstigeMedizinischeEinrichtung: return "4";
-						case Betriebsstaettenstatus.Hauptbetriebsstaette: return "5";
-						case Betriebsstaettenstatus.Nebenbetriebsstaette: return "6";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class BetriebsstaettenstatusExtensions
+            {
+                public static string GetCode(this Betriebsstaettenstatus self)
+                {
+                    switch (self)
+                    {
+                        case Betriebsstaettenstatus.Arztpraxis: return "1";
+                        case Betriebsstaettenstatus.Laborarztpraxis: return "2";
+                        case Betriebsstaettenstatus.Laborgemeinschaft: return "3";
+                        case Betriebsstaettenstatus.sonstigeMedizinischeEinrichtung: return "4";
+                        case Betriebsstaettenstatus.Hauptbetriebsstaette: return "5";
+                        case Betriebsstaettenstatus.Nebenbetriebsstaette: return "6";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

@@ -23,64 +23,64 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/// <summary>
-			/// E050
-			/// </summary>
-			public enum Abrechnungsinfo
-			{
-				/// GKV Laborfacharzt
-				GkvLaborfacharzt,
-				/// GKV LG
-				GkvLg,
-				/// PKV Laborfacharzt
-				PkvLaborfacharzt,
-				/// PKG LG
-				PkvLg,
-				/// Selektivvertrag
-				Selektivvertrag,
-				/// IGeL
-				IGeL,
-				/// Sonstige Kostenübernahme
-				Sonstige_Kostenuebernahme,
-				/// ASV
-				Asv,
-				/// GKV Laborfacharzt präventiv
-				GkvLaborfacharztPraeventiv,
-				/// GKV LG präventiv
-				GkgLgPraeventiv,
-				/// keine Zuordnung
-				keine_Zuordnung,
-				/// storniert
-				storniert
-			}
+            /// <summary>
+            /// E050
+            /// </summary>
+            public enum Abrechnungsinfo
+            {
+                /// GKV Laborfacharzt
+                GkvLaborfacharzt,
+                /// GKV LG
+                GkvLg,
+                /// PKV Laborfacharzt
+                PkvLaborfacharzt,
+                /// PKG LG
+                PkvLg,
+                /// Selektivvertrag
+                Selektivvertrag,
+                /// IGeL
+                IGeL,
+                /// Sonstige Kostenübernahme
+                Sonstige_Kostenuebernahme,
+                /// ASV
+                Asv,
+                /// GKV Laborfacharzt präventiv
+                GkvLaborfacharztPraeventiv,
+                /// GKV LG präventiv
+                GkgLgPraeventiv,
+                /// keine Zuordnung
+                keine_Zuordnung,
+                /// storniert
+                storniert
+            }
 
-			public static class AbrechnungsinfoExtensions
-			{
-				public static string GetCode(this Abrechnungsinfo self)
-				{
-					switch (self)
-					{
-						case Abrechnungsinfo.GkvLaborfacharzt: return "1";
-						case Abrechnungsinfo.GkvLg: return "2";
-						case Abrechnungsinfo.PkvLaborfacharzt: return "3";
-						case Abrechnungsinfo.PkvLg: return "4";
-						case Abrechnungsinfo.Selektivvertrag: return "5";
-						case Abrechnungsinfo.IGeL: return "6";
-						case Abrechnungsinfo.Sonstige_Kostenuebernahme: return "7";
-						case Abrechnungsinfo.Asv: return "8";
-						case Abrechnungsinfo.GkvLaborfacharztPraeventiv: return "9";
-						case Abrechnungsinfo.GkgLgPraeventiv: return "10";
-						case Abrechnungsinfo.keine_Zuordnung: return "11";
-						case Abrechnungsinfo.storniert: return "99";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class AbrechnungsinfoExtensions
+            {
+                public static string GetCode(this Abrechnungsinfo self)
+                {
+                    switch (self)
+                    {
+                        case Abrechnungsinfo.GkvLaborfacharzt: return "1";
+                        case Abrechnungsinfo.GkvLg: return "2";
+                        case Abrechnungsinfo.PkvLaborfacharzt: return "3";
+                        case Abrechnungsinfo.PkvLg: return "4";
+                        case Abrechnungsinfo.Selektivvertrag: return "5";
+                        case Abrechnungsinfo.IGeL: return "6";
+                        case Abrechnungsinfo.Sonstige_Kostenuebernahme: return "7";
+                        case Abrechnungsinfo.Asv: return "8";
+                        case Abrechnungsinfo.GkvLaborfacharztPraeventiv: return "9";
+                        case Abrechnungsinfo.GkgLgPraeventiv: return "10";
+                        case Abrechnungsinfo.keine_Zuordnung: return "11";
+                        case Abrechnungsinfo.storniert: return "99";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

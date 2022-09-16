@@ -24,52 +24,52 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E047
-			 */
-			public enum ArztTypId
-			{
+            /**
+             * E047
+             */
+            public enum ArztTypId
+            {
 
-				/** IK des Arztes */
-				IK,
-				/** Telematik-ID */
-				TelematikId,
-				/** ID für GEVK-Verträge */
-				GevkId,
-				/** ID für HÄVG-Verträge */
-				HaevgId,
-				/** ID für MEDI-Verträge */
-				MediId,
-				/** Selektivvertrag */
-				Selektivvertrag,
-				/** Sonstige */
-				Sonstige
+                /** IK des Arztes */
+                IK,
+                /** Telematik-ID */
+                TelematikId,
+                /** ID für GEVK-Verträge */
+                GevkId,
+                /** ID für HÄVG-Verträge */
+                HaevgId,
+                /** ID für MEDI-Verträge */
+                MediId,
+                /** Selektivvertrag */
+                Selektivvertrag,
+                /** Sonstige */
+                Sonstige
 
-			}
+            }
 
-			public static class ArztTypIdExtensions
-			{
-				public static string GetCode(this ArztTypId self)
-				{
-					switch (self)
-					{
-						case ArztTypId.IK: return "2";
-						case ArztTypId.TelematikId: return "3";
-						case ArztTypId.GevkId: return "4";
-						case ArztTypId.HaevgId: return "5";
-						case ArztTypId.MediId: return "6";
-						case ArztTypId.Selektivvertrag: return "7";
-						case ArztTypId.Sonstige: return "9";
+            public static class ArztTypIdExtensions
+            {
+                public static string GetCode(this ArztTypId self)
+                {
+                    switch (self)
+                    {
+                        case ArztTypId.IK: return "2";
+                        case ArztTypId.TelematikId: return "3";
+                        case ArztTypId.GevkId: return "4";
+                        case ArztTypId.HaevgId: return "5";
+                        case ArztTypId.MediId: return "6";
+                        case ArztTypId.Selektivvertrag: return "7";
+                        case ArztTypId.Sonstige: return "9";
 
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

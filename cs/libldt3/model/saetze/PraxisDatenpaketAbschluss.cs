@@ -24,20 +24,20 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace saetze
-		{
+    namespace model
+    {
+        namespace saetze
+        {
 
-			/**
-			 * Satzart: P (Praxis)-Datenpaket-Abschluss "8231"
-			 */
-			[Datenpaket(Value = Satzart.PraxisDatenpaketAbschluss)]
-			public class PraxisDatenpaketAbschluss : Satz
-			{
-				[Feld(Value = "9300", Feldart = Feldart.muss)]
-				public string pruefsumme;
-			}
-		}
-	}
+            /**
+             * Satzart: P (Praxis)-Datenpaket-Abschluss "8231"
+             */
+            [Datenpaket(Value = Satzart.PraxisDatenpaketAbschluss)]
+            public class PraxisDatenpaketAbschluss : Satz
+            {
+                [Feld(Value = "9300", Feldart = Feldart.muss)]
+                public string pruefsumme;
+            }
+        }
+    }
 }

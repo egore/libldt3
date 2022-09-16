@@ -23,23 +23,23 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
 
-			/**
-			 * Format Datum
-			 */
-			public class F018 : RegularExpressionRegel
-			{
-				static readonly Regex PATTERN = new Regex("^[0-9]{4}(0[0-9]|1[012])([0-2][0-9]|3[01])$");
+            /**
+             * Format Datum
+             */
+            public class F018 : RegularExpressionRegel
+            {
+                static readonly Regex PATTERN = new Regex("^[0-9]{4}(0[0-9]|1[012])([0-2][0-9]|3[01])$");
 
-				public F018() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F018() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

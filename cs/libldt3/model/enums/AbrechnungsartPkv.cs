@@ -23,35 +23,35 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/// <summary>
-			/// E024
-			/// </summary>
-			public enum AbrechnungsartPkv
-			{
+            /// <summary>
+            /// E024
+            /// </summary>
+            public enum AbrechnungsartPkv
+            {
 
-				/// Abrechnung Laborfacharzt
-				AbrechnungLaborfacharzt,
-				/// Abrechnung Privat-LG
-				AbrechnungPrivatLG
-			}
+                /// Abrechnung Laborfacharzt
+                AbrechnungLaborfacharzt,
+                /// Abrechnung Privat-LG
+                AbrechnungPrivatLG
+            }
 
-			public static class AbrechnungsartPkvExtensions
-			{
-				public static string GetCode(this AbrechnungsartPkv self)
-				{
-					switch (self)
-					{
-						case AbrechnungsartPkv.AbrechnungLaborfacharzt: return "1";
-						case AbrechnungsartPkv.AbrechnungPrivatLG: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class AbrechnungsartPkvExtensions
+            {
+                public static string GetCode(this AbrechnungsartPkv self)
+                {
+                    switch (self)
+                    {
+                        case AbrechnungsartPkv.AbrechnungLaborfacharzt: return "1";
+                        case AbrechnungsartPkv.AbrechnungPrivatLG: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

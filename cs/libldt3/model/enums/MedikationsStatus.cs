@@ -23,42 +23,42 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E156
-			 */
-			public enum MedikationsStatus
-			{
+            /**
+             * E156
+             */
+            public enum MedikationsStatus
+            {
 
-				/** Akutmedikation */
-				Akutmedikation,
-				/** Bedarfsmedikation */
-				Bedarfsmedikation,
-				/** Dauermedikation */
-				Dauermedikation,
-				/** Selbstmedikation */
-				Selbstmedikation
+                /** Akutmedikation */
+                Akutmedikation,
+                /** Bedarfsmedikation */
+                Bedarfsmedikation,
+                /** Dauermedikation */
+                Dauermedikation,
+                /** Selbstmedikation */
+                Selbstmedikation
 
-			}
+            }
 
-			public static class MedikationsStatusExtensions
-			{
-				public static string GetCode(this MedikationsStatus self)
-				{
-					switch (self)
-					{
-						case MedikationsStatus.Akutmedikation: return "1";
-						case MedikationsStatus.Bedarfsmedikation: return "2";
-						case MedikationsStatus.Dauermedikation: return "3";
-						case MedikationsStatus.Selbstmedikation: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class MedikationsStatusExtensions
+            {
+                public static string GetCode(this MedikationsStatus self)
+                {
+                    switch (self)
+                    {
+                        case MedikationsStatus.Akutmedikation: return "1";
+                        case MedikationsStatus.Bedarfsmedikation: return "2";
+                        case MedikationsStatus.Dauermedikation: return "3";
+                        case MedikationsStatus.Selbstmedikation: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

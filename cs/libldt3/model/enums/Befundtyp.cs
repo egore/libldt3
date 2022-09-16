@@ -23,38 +23,38 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E006
-			 */
-			public enum Befundtyp
-			{
-				Endbefund,
-				Teilbefund,
-				VorlaeufigerBefund,
-				Archivbefund,
-				Nachforderungsendbefund
-			}
+            /**
+             * E006
+             */
+            public enum Befundtyp
+            {
+                Endbefund,
+                Teilbefund,
+                VorlaeufigerBefund,
+                Archivbefund,
+                Nachforderungsendbefund
+            }
 
-			public static class BefundtypExtensions
-			{
-				public static string GetCode(this Befundtyp self)
-				{
-					switch (self)
-					{
-						case Befundtyp.Endbefund: return "E";
-						case Befundtyp.Teilbefund: return "T";
-						case Befundtyp.VorlaeufigerBefund: return "V";
-						case Befundtyp.Archivbefund: return "A";
-						case Befundtyp.Nachforderungsendbefund: return "N";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class BefundtypExtensions
+            {
+                public static string GetCode(this Befundtyp self)
+                {
+                    switch (self)
+                    {
+                        case Befundtyp.Endbefund: return "E";
+                        case Befundtyp.Teilbefund: return "T";
+                        case Befundtyp.VorlaeufigerBefund: return "V";
+                        case Befundtyp.Archivbefund: return "A";
+                        case Befundtyp.Nachforderungsendbefund: return "N";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

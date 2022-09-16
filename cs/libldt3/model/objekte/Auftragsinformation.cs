@@ -26,68 +26,68 @@ using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
-			 * zum Auftrag zusammengefasst sowie zusätzliche Befundwege und die
-			 * Dringlichkeit des Auftrags definiert.
-			 */
-			[Objekt(Value = "0013")]
-			public class Auftragsinformation
-			{
-				[Objekt]
-				public class Befundweg
-				{
-					public ZusaetzlicherBefundweg? Value;
-					[Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
-					[Regelsatz(Laenge = 6)]
-					public Person Person;
-				}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
+             * zum Auftrag zusammengefasst sowie zusätzliche Befundwege und die
+             * Dringlichkeit des Auftrags definiert.
+             */
+            [Objekt(Value = "0013")]
+            public class Auftragsinformation
+            {
+                [Objekt]
+                public class Befundweg
+                {
+                    public ZusaetzlicherBefundweg? Value;
+                    [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 6)]
+                    public Person Person;
+                }
 
-				[Feld(Value = "8310", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string auftragsnummerEinsender;
-				[Feld(Value = "8313", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> nachforderungId;
-				[Feld(Value = "8311", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string auftragsnummerLabor;
-				[Feld(Value = "7268", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string fachrichtungStationskennung;
-				[Feld(Value = "0080", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string fallakteId;
-				[Feld(Value = "0081", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> fallakteBezeichnung;
-				[Feld(Value = "8501", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 1)]
-				public Dringlichkeit? dringlichkeit;
-				[Feld(Value = "7262", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 1)]
-				public StatusDringlichkeit? statusDringlichkeit;
-				[Feld(Value = "8118", Name = "Abweichender_Befundweg", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 22)]
-				public Kommunikationsdaten abweichenderBefundweg;
-				[Feld(Value = "8611", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 1)]
-				public IList<Befundweg> zusaetzlicherBefundweg;
-				[Feld(Value = "8213", Name = "Timestamp_Erstellung_Untersuchungsanforderung", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 45)]
-				public Timestamp timestampErstellungUntersuchungsanforderung;
-				[Feld(Value = "8238", Name = "Auftragsbezogene_Hinweise", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 25)]
-				public Fliesstext auftragsbezogeneHinweise;
-				[Feld(Value = "8141", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 13)]
-				public Namenskennung namenskennung;
+                [Feld(Value = "8310", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string auftragsnummerEinsender;
+                [Feld(Value = "8313", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> nachforderungId;
+                [Feld(Value = "8311", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string auftragsnummerLabor;
+                [Feld(Value = "7268", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string fachrichtungStationskennung;
+                [Feld(Value = "0080", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string fallakteId;
+                [Feld(Value = "0081", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> fallakteBezeichnung;
+                [Feld(Value = "8501", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 1)]
+                public Dringlichkeit? dringlichkeit;
+                [Feld(Value = "7262", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 1)]
+                public StatusDringlichkeit? statusDringlichkeit;
+                [Feld(Value = "8118", Name = "Abweichender_Befundweg", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 22)]
+                public Kommunikationsdaten abweichenderBefundweg;
+                [Feld(Value = "8611", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 1)]
+                public IList<Befundweg> zusaetzlicherBefundweg;
+                [Feld(Value = "8213", Name = "Timestamp_Erstellung_Untersuchungsanforderung", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 45)]
+                public Timestamp timestampErstellungUntersuchungsanforderung;
+                [Feld(Value = "8238", Name = "Auftragsbezogene_Hinweise", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 25)]
+                public Fliesstext auftragsbezogeneHinweise;
+                [Feld(Value = "8141", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 13)]
+                public Namenskennung namenskennung;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

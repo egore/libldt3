@@ -25,30 +25,30 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
-			 */
-			[Objekt(Value = "0036")]
-			public class Laborkennung
-			{
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
+             */
+            [Objekt(Value = "0036")]
+            public class Laborkennung
+            {
 
-				[Feld(Value = "8239", Name = "Laborbezeichnung", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 16)]
-				public Organisation laborbezeichnung;
-				[Feld(Value = "7352", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<string> katalogUrl;
-				[Feld(Value = "8324", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string laborStandortId;
-				[Feld(Value = "7266", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 1)]
-				public Laborart? laborart;
-			}
-		}
-	}
+                [Feld(Value = "8239", Name = "Laborbezeichnung", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 16)]
+                public Organisation laborbezeichnung;
+                [Feld(Value = "7352", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<string> katalogUrl;
+                [Feld(Value = "8324", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string laborStandortId;
+                [Feld(Value = "7266", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 1)]
+                public Laborart? laborart;
+            }
+        }
+    }
 }

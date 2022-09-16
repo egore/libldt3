@@ -21,17 +21,17 @@
  */
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			class RegelConstants
-			{
+            class RegelConstants
+            {
 
-				public static readonly string E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
+                public static readonly string E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

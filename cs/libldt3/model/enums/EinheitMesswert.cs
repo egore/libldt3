@@ -23,37 +23,37 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E070
-			 */
-			public enum EinheitMesswert
-			{
+            /**
+             * E070
+             */
+            public enum EinheitMesswert
+            {
 
-				/** SI-Einheit */
-				SI_Einheit,
-				/** konventionelle Einheit */
-				konventionelle_Einheit,
-				/** dimensionslose Größe */
-				dimensionslose_Groesse
-			}
-			public static class EinheitMesswertExtensions
-			{
-				public static string GetCode(this EinheitMesswert self)
-				{
-					switch (self)
-					{
-						case EinheitMesswert.SI_Einheit: return "1";
-						case EinheitMesswert.konventionelle_Einheit: return "2";
-						case EinheitMesswert.dimensionslose_Groesse: return "9";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                /** SI-Einheit */
+                SI_Einheit,
+                /** konventionelle Einheit */
+                konventionelle_Einheit,
+                /** dimensionslose Größe */
+                dimensionslose_Groesse
+            }
+            public static class EinheitMesswertExtensions
+            {
+                public static string GetCode(this EinheitMesswert self)
+                {
+                    switch (self)
+                    {
+                        case EinheitMesswert.SI_Einheit: return "1";
+                        case EinheitMesswert.konventionelle_Einheit: return "2";
+                        case EinheitMesswert.dimensionslose_Groesse: return "9";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

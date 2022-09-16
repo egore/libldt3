@@ -21,39 +21,39 @@
  */
 using System; namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E008
-			 */
-			public enum Gebuehrenordnung
-			{
-				/** BMÄ */
-				BMAE,
-				/** EGO */
-				EGO,
-				/** GOÄ */
-				GOAE,
-				BG_Tarif
-			}
+            /**
+             * E008
+             */
+            public enum Gebuehrenordnung
+            {
+                /** BMÄ */
+                BMAE,
+                /** EGO */
+                EGO,
+                /** GOÄ */
+                GOAE,
+                BG_Tarif
+            }
 
-			public static class GebuehrenordnungExtensions
-			{
-				public static string GetCode(this Gebuehrenordnung self)
-				{
-					switch (self)
-					{
-						case Gebuehrenordnung.BMAE: return "1";
-						case Gebuehrenordnung.EGO: return "2";
-						case Gebuehrenordnung.GOAE: return "3";
-						case Gebuehrenordnung.BG_Tarif: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class GebuehrenordnungExtensions
+            {
+                public static string GetCode(this Gebuehrenordnung self)
+                {
+                    switch (self)
+                    {
+                        case Gebuehrenordnung.BMAE: return "1";
+                        case Gebuehrenordnung.EGO: return "2";
+                        case Gebuehrenordnung.GOAE: return "3";
+                        case Gebuehrenordnung.BG_Tarif: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

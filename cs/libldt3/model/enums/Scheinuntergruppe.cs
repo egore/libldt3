@@ -23,44 +23,44 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E009
-			 */
-			public enum Scheinuntergruppe
-			{
-				Auftragsleistungen,
-				Konsiliaruntersuchung,
-				MitWeiterbehandlung,
-				/**
-				 * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
-				 */
-				Muster10,
-				/**
-				 * Anforderungsschein für Laboratoriumsuntersuchungen bei
-				 * Laborgemeinschaften
-				 */
-				Muster10A
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E009
+             */
+            public enum Scheinuntergruppe
+            {
+                Auftragsleistungen,
+                Konsiliaruntersuchung,
+                MitWeiterbehandlung,
+                /**
+                 * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
+                 */
+                Muster10,
+                /**
+                 * Anforderungsschein für Laboratoriumsuntersuchungen bei
+                 * Laborgemeinschaften
+                 */
+                Muster10A
+            }
 
-			public static class ScheinuntergruppeExtensions
-			{
-				public static string GetCode(this Scheinuntergruppe self)
-				{
-					switch (self)
-					{
-						case Scheinuntergruppe.Auftragsleistungen: return "21";
-						case Scheinuntergruppe.Konsiliaruntersuchung: return "23";
-						case Scheinuntergruppe.MitWeiterbehandlung: return "24";
-						case Scheinuntergruppe.Muster10: return "27";
-						case Scheinuntergruppe.Muster10A: return "28";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ScheinuntergruppeExtensions
+            {
+                public static string GetCode(this Scheinuntergruppe self)
+                {
+                    switch (self)
+                    {
+                        case Scheinuntergruppe.Auftragsleistungen: return "21";
+                        case Scheinuntergruppe.Konsiliaruntersuchung: return "23";
+                        case Scheinuntergruppe.MitWeiterbehandlung: return "24";
+                        case Scheinuntergruppe.Muster10: return "27";
+                        case Scheinuntergruppe.Muster10A: return "28";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

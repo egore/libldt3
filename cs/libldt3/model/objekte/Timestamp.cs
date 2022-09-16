@@ -25,29 +25,29 @@ using libldt3.model.regel;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Ein Zeitstempel
-			 */
-			[Objekt(Value = "0054")]
-			public class Timestamp
-			{
-				[Feld(Value = "7278", Feldart = Feldart.muss)]
-				[Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-				public LocalDate? datum;
-				[Feld(Value = "7279", Feldart = Feldart.kann)]
-				[Regelsatz(Value = new[] { typeof(F016) }, MinLaenge = 6, MaxLaenge = 9)]
-				public LocalTime? uhrzeit;
-				[Feld(Value = "7272", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string freitext;
-				[Feld(Value = "8235", Name = "Person_zum_Timestamp", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 20)]
-				public Person person;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Ein Zeitstempel
+             */
+            [Objekt(Value = "0054")]
+            public class Timestamp
+            {
+                [Feld(Value = "7278", Feldart = Feldart.muss)]
+                [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
+                public LocalDate? datum;
+                [Feld(Value = "7279", Feldart = Feldart.kann)]
+                [Regelsatz(Value = new[] { typeof(F016) }, MinLaenge = 6, MaxLaenge = 9)]
+                public LocalTime? uhrzeit;
+                [Feld(Value = "7272", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string freitext;
+                [Feld(Value = "8235", Name = "Person_zum_Timestamp", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 20)]
+                public Person person;
+            }
+        }
+    }
 }

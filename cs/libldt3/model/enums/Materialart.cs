@@ -23,33 +23,33 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E033
-			 */
-			public enum Materialart
-			{
+            /**
+             * E033
+             */
+            public enum Materialart
+            {
 
-				organisch,
-				anorganisch
-			}
+                organisch,
+                anorganisch
+            }
 
-			public static class MaterialartExtensions
-			{
-				public static string GetCode(this Materialart self)
-				{
-					switch (self)
-					{
-						case Materialart.organisch: return "1";
-						case Materialart.anorganisch: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class MaterialartExtensions
+            {
+                public static string GetCode(this Materialart self)
+                {
+                    switch (self)
+                    {
+                        case Materialart.organisch: return "1";
+                        case Materialart.anorganisch: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

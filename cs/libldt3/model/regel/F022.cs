@@ -23,22 +23,22 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			/**
-			 * Dummy-LANR für Krankenhausärzte
-			 */
-			public class F022 : RegularExpressionRegel
-			{
-				static readonly Regex PATTERN = new Regex("^555555([0-9])[0-9]{2}$");
+            /**
+             * Dummy-LANR für Krankenhausärzte
+             */
+            public class F022 : RegularExpressionRegel
+            {
+                static readonly Regex PATTERN = new Regex("^555555([0-9])[0-9]{2}$");
 
-				public F022() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F022() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

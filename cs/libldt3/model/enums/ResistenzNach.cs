@@ -21,34 +21,34 @@
  */
 using System; namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E065
-			 */
-			public enum ResistenzNach
-			{
-				CLSI,
-				EUCAST,
-				/** CA-FMS */
-				CA_FMS
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E065
+             */
+            public enum ResistenzNach
+            {
+                CLSI,
+                EUCAST,
+                /** CA-FMS */
+                CA_FMS
+            }
 
-			public static class ResistenzNachExtensions
-			{
-				public static string GetCode(this ResistenzNach self)
-				{
-					switch (self)
-					{
-						case ResistenzNach.CLSI: return "1";
-						case ResistenzNach.EUCAST: return "2";
-						case ResistenzNach.CA_FMS: return "3";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ResistenzNachExtensions
+            {
+                public static string GetCode(this ResistenzNach self)
+                {
+                    switch (self)
+                    {
+                        case ResistenzNach.CLSI: return "1";
+                        case ResistenzNach.EUCAST: return "2";
+                        case ResistenzNach.CA_FMS: return "3";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

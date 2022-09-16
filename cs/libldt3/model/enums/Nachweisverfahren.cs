@@ -23,53 +23,53 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E069
-			 */
-			public enum Nachweisverfahren
-			{
+            /**
+             * E069
+             */
+            public enum Nachweisverfahren
+            {
 
-				/** sonstige, wenn Erreger + Resistenz angefordert */
-				sonstige_wenn_Erreger_und_Resistenz_angefordert,
-				/** Antigen-Nachweis */
-				Antigen_Nachweis,
-				/** PCR */
-				PCR,
-				/** Mikroskopie */
-				Mikroskopie,
-				/** Aglutination */
-				Aglutination,
-				/** Kultur */
-				Kultur,
-				/** Biochemische Identifikation (z.B. Vitek) */
-				Biochemische_Identifikation,
-				/** Maldi-Tof */
-				Maldi_Tof
-			}
+                /** sonstige, wenn Erreger + Resistenz angefordert */
+                sonstige_wenn_Erreger_und_Resistenz_angefordert,
+                /** Antigen-Nachweis */
+                Antigen_Nachweis,
+                /** PCR */
+                PCR,
+                /** Mikroskopie */
+                Mikroskopie,
+                /** Aglutination */
+                Aglutination,
+                /** Kultur */
+                Kultur,
+                /** Biochemische Identifikation (z.B. Vitek) */
+                Biochemische_Identifikation,
+                /** Maldi-Tof */
+                Maldi_Tof
+            }
 
-			public static class NachweisverfahrenExtensions
-			{
-				public static string GetCode(this Nachweisverfahren self)
-				{
-					switch (self)
-					{
-						case Nachweisverfahren.sonstige_wenn_Erreger_und_Resistenz_angefordert: return "0";
-						case Nachweisverfahren.Antigen_Nachweis: return "1";
-						case Nachweisverfahren.PCR: return "2";
-						case Nachweisverfahren.Mikroskopie: return "3";
-						case Nachweisverfahren.Aglutination: return "4";
-						case Nachweisverfahren.Kultur: return "5";
-						case Nachweisverfahren.Biochemische_Identifikation: return "6";
-						case Nachweisverfahren.Maldi_Tof: return "7";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class NachweisverfahrenExtensions
+            {
+                public static string GetCode(this Nachweisverfahren self)
+                {
+                    switch (self)
+                    {
+                        case Nachweisverfahren.sonstige_wenn_Erreger_und_Resistenz_angefordert: return "0";
+                        case Nachweisverfahren.Antigen_Nachweis: return "1";
+                        case Nachweisverfahren.PCR: return "2";
+                        case Nachweisverfahren.Mikroskopie: return "3";
+                        case Nachweisverfahren.Aglutination: return "4";
+                        case Nachweisverfahren.Kultur: return "5";
+                        case Nachweisverfahren.Biochemische_Identifikation: return "6";
+                        case Nachweisverfahren.Maldi_Tof: return "7";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

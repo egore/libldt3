@@ -23,26 +23,26 @@ using libldt3.attributes;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
-			 */
-			[Objekt(Value = "0040")]
-			public class Mutterschaft
-			{
-				[Feld(Value = "3668", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 2)]
-				public int? anzahlSchwangerschaften;
-				[Feld(Value = "3664", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 2)]
-				public int? anzahlGeburten;
-				[Feld(Value = "3666", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 2)]
-				public int? anzahlKinder;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
+             */
+            [Objekt(Value = "0040")]
+            public class Mutterschaft
+            {
+                [Feld(Value = "3668", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 2)]
+                public int? anzahlSchwangerschaften;
+                [Feld(Value = "3664", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 2)]
+                public int? anzahlGeburten;
+                [Feld(Value = "3666", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 2)]
+                public int? anzahlKinder;
+            }
+        }
+    }
 }

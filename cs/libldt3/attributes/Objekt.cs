@@ -24,25 +24,25 @@ using System;
 
 namespace libldt3
 {
-	namespace attributes
-	{
+    namespace attributes
+    {
 
-		/**
-		 * Annotation zur Definition von Objekten aus dem Objektkatalog
-		 */
-		[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-		public class Objekt : Attribute
-		{
+        /**
+         * Annotation zur Definition von Objekten aus dem Objektkatalog
+         */
+        [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+        public class Objekt : Attribute
+        {
 
-			/**
-			 * @return ID aus dem Objektkatalog, oder wenn leer ein untypisiertes Wrapper-Objekt
-			 */
-			public string Value = "";
+            /**
+             * @return ID aus dem Objektkatalog, oder wenn leer ein untypisiertes Wrapper-Objekt
+             */
+            public string Value = "";
 
-			public string Name = "";
+            public string Name = "";
 
-			public Type[] Kontextregeln = { };
-		}
+            public Type[] Kontextregeln = { };
+        }
 
-	}
+    }
 }

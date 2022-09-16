@@ -21,38 +21,38 @@
  */
 using System; namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E034
-			 */
-			public enum OrganischesMaterial
-			{
+            /**
+             * E034
+             */
+            public enum OrganischesMaterial
+            {
 
-				/** tierisch */
-				tierisch,
-				/** pflanzlich */
-				pflanzlich,
-				/** nicht bestimmbar */
-				nicht_bestimmbar
-			}
+                /** tierisch */
+                tierisch,
+                /** pflanzlich */
+                pflanzlich,
+                /** nicht bestimmbar */
+                nicht_bestimmbar
+            }
 
-			public static class OrganischesMaterialExtensions
-			{
-				public static string GetCode(this OrganischesMaterial self)
-				{
-					switch (self)
-					{
-						case OrganischesMaterial.tierisch: return "1";
-						case OrganischesMaterial.pflanzlich: return "2";
-						case OrganischesMaterial.nicht_bestimmbar: return "3";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class OrganischesMaterialExtensions
+            {
+                public static string GetCode(this OrganischesMaterial self)
+                {
+                    switch (self)
+                    {
+                        case OrganischesMaterial.tierisch: return "1";
+                        case OrganischesMaterial.pflanzlich: return "2";
+                        case OrganischesMaterial.nicht_bestimmbar: return "3";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

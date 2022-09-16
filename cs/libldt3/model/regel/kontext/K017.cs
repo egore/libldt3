@@ -26,52 +26,52 @@ using static libldt3.model.regel.kontext.KontextregelHelper;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
-				/**
-				 * FK 3112 und/oder FK 3121 muss vorhanden sein.
-				 */
-				public class K017 : Kontextregel
-				{
+                /**
+                 * FK 3112 und/oder FK 3121 muss vorhanden sein.
+                 */
+                public class K017 : Kontextregel
+                {
 
-					static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
+                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
 
-					public bool IsValid(object owner)
-					{
+                    public bool IsValid(object owner)
+                    {
 
-						IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-						if (fields.Count != FIELDTYPES.Count)
-						{
-							Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
-							return false;
-						}
+                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
+                        if (fields.Count != FIELDTYPES.Count)
+                        {
+                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
+                            return false;
+                        }
 
-						return !checkExclusion(owner, fields, "3114", "3112") &&
-								!checkExclusion(owner, fields, "3124", "3121") &&
-								(ContainsAnyString(fields["3112"], owner) || ContainsAnyString(fields["3121"], owner));
+                        return !checkExclusion(owner, fields, "3114", "3112") &&
+                                !checkExclusion(owner, fields, "3124", "3121") &&
+                                (ContainsAnyString(fields["3112"], owner) || ContainsAnyString(fields["3121"], owner));
 
-					}
+                    }
 
-					bool checkExclusion(object owner, IDictionary<string, FieldInfo> fields, string first, string second)
-					{
-						string value = (string)fields[first].GetValue(owner);
-						// XXX 4109 does not exist on the current object, likely we need to traverse the object tree to find it in one
-						// of the holding classes
-						if (value != null && !"D".Equals(value) && ContainsAnyString(fields["4109"], owner) &&
-								ContainsAnyString(fields[second], owner))
-						{
-							Trace.TraceError("FK {} is present and not 'D'. Also FK 4109 is present. Then {} must not be present", first, second);
-							return true;
-						}
-						return false;
-					}
-				}
-			}
-		}
-	}
+                    bool checkExclusion(object owner, IDictionary<string, FieldInfo> fields, string first, string second)
+                    {
+                        string value = (string)fields[first].GetValue(owner);
+                        // XXX 4109 does not exist on the current object, likely we need to traverse the object tree to find it in one
+                        // of the holding classes
+                        if (value != null && !"D".Equals(value) && ContainsAnyString(fields["4109"], owner) &&
+                                ContainsAnyString(fields[second], owner))
+                        {
+                            Trace.TraceError("FK {} is present and not 'D'. Also FK 4109 is present. Then {} must not be present", first, second);
+                            return true;
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+    }
 }

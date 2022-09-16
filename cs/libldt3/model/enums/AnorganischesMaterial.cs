@@ -23,41 +23,41 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E035
-			 */
-			public enum AnorganischesMaterial
-			{
+            /**
+             * E035
+             */
+            public enum AnorganischesMaterial
+            {
 
-				/** Wasser */
-				Wasser,
-				/** Luft */
-				Luft,
-				/** nicht bestimmbar */
-				nicht_bestimmbar,
-				/** sonstiges */
-				sonstiges
-			}
+                /** Wasser */
+                Wasser,
+                /** Luft */
+                Luft,
+                /** nicht bestimmbar */
+                nicht_bestimmbar,
+                /** sonstiges */
+                sonstiges
+            }
 
-			public static class AnorganischesMaterialExtensions
-			{
-				public static string GetCode(this AnorganischesMaterial self)
-				{
-					switch (self)
-					{
-						case AnorganischesMaterial.Wasser: return "1";
-						case AnorganischesMaterial.Luft: return "2";
-						case AnorganischesMaterial.nicht_bestimmbar: return "3";
-						case AnorganischesMaterial.sonstiges: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class AnorganischesMaterialExtensions
+            {
+                public static string GetCode(this AnorganischesMaterial self)
+                {
+                    switch (self)
+                    {
+                        case AnorganischesMaterial.Wasser: return "1";
+                        case AnorganischesMaterial.Luft: return "2";
+                        case AnorganischesMaterial.nicht_bestimmbar: return "3";
+                        case AnorganischesMaterial.sonstiges: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

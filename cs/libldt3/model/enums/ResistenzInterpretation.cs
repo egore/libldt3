@@ -23,44 +23,44 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E030
-			 */
-			public enum ResistenzInterpretation
-			{
+            /**
+             * E030
+             */
+            public enum ResistenzInterpretation
+            {
 
-				/** nicht getestet */
-				nichtGetestet,
-				/** sensibel/wirksam */
-				sensibelWirksam,
-				/** mäßig sensibel/schwach wirksam */
-				maessigSensibelSchwachWirksam,
-				/** resistent/unwirksam */
-				resistentUnwirksam,
-				/** wirksam in hohen Konzentrationen */
-				wirksamInHohenKonzentrationen
-			}
+                /** nicht getestet */
+                nichtGetestet,
+                /** sensibel/wirksam */
+                sensibelWirksam,
+                /** mäßig sensibel/schwach wirksam */
+                maessigSensibelSchwachWirksam,
+                /** resistent/unwirksam */
+                resistentUnwirksam,
+                /** wirksam in hohen Konzentrationen */
+                wirksamInHohenKonzentrationen
+            }
 
-			public static class ResistenzInterpretationExtensions
-			{
-				public static string GetCode(this ResistenzInterpretation self)
-				{
-					switch (self)
-					{
-						case ResistenzInterpretation.nichtGetestet: return "0";
-						case ResistenzInterpretation.sensibelWirksam: return "1";
-						case ResistenzInterpretation.maessigSensibelSchwachWirksam: return "2";
-						case ResistenzInterpretation.resistentUnwirksam: return "3";
-						case ResistenzInterpretation.wirksamInHohenKonzentrationen: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ResistenzInterpretationExtensions
+            {
+                public static string GetCode(this ResistenzInterpretation self)
+                {
+                    switch (self)
+                    {
+                        case ResistenzInterpretation.nichtGetestet: return "0";
+                        case ResistenzInterpretation.sensibelWirksam: return "1";
+                        case ResistenzInterpretation.maessigSensibelSchwachWirksam: return "2";
+                        case ResistenzInterpretation.resistentUnwirksam: return "3";
+                        case ResistenzInterpretation.wirksamInHohenKonzentrationen: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

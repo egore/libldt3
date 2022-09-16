@@ -23,37 +23,37 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E067
-			 */
-			public enum DatensatzAbsender
-			{
-				/** Primärsystem */
-				Primaersystem,
-				/** Order Entry */
-				OrderEntry,
-				/** Scansystem */
-				Scansystem
-			}
+            /**
+             * E067
+             */
+            public enum DatensatzAbsender
+            {
+                /** Primärsystem */
+                Primaersystem,
+                /** Order Entry */
+                OrderEntry,
+                /** Scansystem */
+                Scansystem
+            }
 
-			public static class DatensatzAbsenderExtensions
-			{
-				public static string GetCode(this DatensatzAbsender self)
-				{
-					switch (self)
-					{
-						case DatensatzAbsender.Primaersystem: return "1";
-						case DatensatzAbsender.OrderEntry: return "2";
-						case DatensatzAbsender.Scansystem: return "3";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class DatensatzAbsenderExtensions
+            {
+                public static string GetCode(this DatensatzAbsender self)
+                {
+                    switch (self)
+                    {
+                        case DatensatzAbsender.Primaersystem: return "1";
+                        case DatensatzAbsender.OrderEntry: return "2";
+                        case DatensatzAbsender.Scansystem: return "3";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

@@ -23,42 +23,42 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E055
-			 * 
-			 * Direkter Coombstest (DCT)
-			 */
-			public enum DirekterCoombstest
-			{
+            /**
+             * E055
+             * 
+             * Direkter Coombstest (DCT)
+             */
+            public enum DirekterCoombstest
+            {
 
-				negativ,
-				einfachPositiv,
-				zweifachPositiv,
-				dreifachPositiv,
-				viewfachPositiv
-			}
+                negativ,
+                einfachPositiv,
+                zweifachPositiv,
+                dreifachPositiv,
+                viewfachPositiv
+            }
 
-			public static class DirekterCoombstestExtensions
-			{
-				public static string GetCode(this DirekterCoombstest self)
-				{
-					switch (self)
-					{
-						case DirekterCoombstest.negativ: return "0";
-						case DirekterCoombstest.einfachPositiv: return "1";
-						case DirekterCoombstest.zweifachPositiv: return "2";
-						case DirekterCoombstest.dreifachPositiv: return "3";
-						case DirekterCoombstest.viewfachPositiv: return "4";
+            public static class DirekterCoombstestExtensions
+            {
+                public static string GetCode(this DirekterCoombstest self)
+                {
+                    switch (self)
+                    {
+                        case DirekterCoombstest.negativ: return "0";
+                        case DirekterCoombstest.einfachPositiv: return "1";
+                        case DirekterCoombstest.zweifachPositiv: return "2";
+                        case DirekterCoombstest.dreifachPositiv: return "3";
+                        case DirekterCoombstest.viewfachPositiv: return "4";
 
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

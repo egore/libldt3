@@ -23,34 +23,34 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E060
-			 */
-			public enum EndozervikaleZellen
-			{
+            /**
+             * E060
+             */
+            public enum EndozervikaleZellen
+            {
 
-				vorhanden,
-				nicht_vorhanden
+                vorhanden,
+                nicht_vorhanden
 
-			}
+            }
 
-			public static class EndozervikaleZellenExtensions
-			{
-				public static string GetCode(this EndozervikaleZellen self)
-				{
-					switch (self)
-					{
-						case EndozervikaleZellen.vorhanden: return "1";
-						case EndozervikaleZellen.nicht_vorhanden: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class EndozervikaleZellenExtensions
+            {
+                public static string GetCode(this EndozervikaleZellen self)
+                {
+                    switch (self)
+                    {
+                        case EndozervikaleZellen.vorhanden: return "1";
+                        case EndozervikaleZellen.nicht_vorhanden: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

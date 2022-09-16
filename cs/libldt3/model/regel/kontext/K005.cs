@@ -28,78 +28,78 @@ using static libldt3.model.regel.kontext.KontextregelHelper;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
 
-				public class K005 : Kontextregel
-				{
+                public class K005 : Kontextregel
+                {
 
-					static readonly ISet<string> fieldtypes = new HashSet<string> { "4121", "7303" };
+                    static readonly ISet<string> fieldtypes = new HashSet<string> { "4121", "7303" };
 
-					bool Kontextregel.IsValid(object owner)
-					{
+                    bool Kontextregel.IsValid(object owner)
+                    {
 
-						Befund befund = (Befund)owner;
+                        Befund befund = (Befund)owner;
 
-						FieldInfo field = FindFieldInfo(befund.Befundinformationen, "8401");
-						if (field == null)
-						{
-							Trace.TraceError("Class of {0} must have field 8401", befund.Befundinformationen);
-							return false;
-						}
+                        FieldInfo field = FindFieldInfo(befund.Befundinformationen, "8401");
+                        if (field == null)
+                        {
+                            Trace.TraceError("Class of {0} must have field 8401", befund.Befundinformationen);
+                            return false;
+                        }
 
-						Befundtyp befundtyp = (Befundtyp)field.GetValue(befund.Befundinformationen);
+                        Befundtyp befundtyp = (Befundtyp)field.GetValue(befund.Befundinformationen);
 
-						if (befundtyp != Befundtyp.Endbefund || befundtyp != Befundtyp.Nachforderungsendbefund)
-						{
-							IDictionary<object, IList<FieldInfo>> findFieldsRecursive2 = FindFieldInfosRecursive(owner, fieldtypes);
+                        if (befundtyp != Befundtyp.Endbefund || befundtyp != Befundtyp.Nachforderungsendbefund)
+                        {
+                            IDictionary<object, IList<FieldInfo>> findFieldsRecursive2 = FindFieldInfosRecursive(owner, fieldtypes);
 
-							foreach (KeyValuePair<object, IList<FieldInfo>> entry in findFieldsRecursive2)
-							{
-								if (entry.Value.Count != 2)
-								{
-									// Likely a different type, e.g. Veranladssungsgrund
-									continue;
-								}
+                            foreach (KeyValuePair<object, IList<FieldInfo>> entry in findFieldsRecursive2)
+                            {
+                                if (entry.Value.Count != 2)
+                                {
+                                    // Likely a different type, e.g. Veranladssungsgrund
+                                    continue;
+                                }
 
-								Abrechnungsinfo abrechnungsinfo;
-								object other;
-								object o1 = entry.Value[0].GetValue(entry.Key);
-								object o2 = entry.Value[1].GetValue(entry.Key);
-								if (o1 is Abrechnungsinfo)
-								{
-									abrechnungsinfo = (Abrechnungsinfo)o1;
-									other = o2;
-								}
-								else
-								{
-									other = o1;
-									abrechnungsinfo = (Abrechnungsinfo)o2;
-								}
+                                Abrechnungsinfo abrechnungsinfo;
+                                object other;
+                                object o1 = entry.Value[0].GetValue(entry.Key);
+                                object o2 = entry.Value[1].GetValue(entry.Key);
+                                if (o1 is Abrechnungsinfo)
+                                {
+                                    abrechnungsinfo = (Abrechnungsinfo)o1;
+                                    other = o2;
+                                }
+                                else
+                                {
+                                    other = o1;
+                                    abrechnungsinfo = (Abrechnungsinfo)o2;
+                                }
 
-								if (abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharzt || abrechnungsinfo == Abrechnungsinfo.GkvLg ||
-										abrechnungsinfo == Abrechnungsinfo.Asv || abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharztPraeventiv ||
-										abrechnungsinfo == Abrechnungsinfo.GkgLgPraeventiv)
-								{
+                                if (abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharzt || abrechnungsinfo == Abrechnungsinfo.GkvLg ||
+                                        abrechnungsinfo == Abrechnungsinfo.Asv || abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharztPraeventiv ||
+                                        abrechnungsinfo == Abrechnungsinfo.GkgLgPraeventiv)
+                                {
 
-									if (ContainsAnyString(other))
-									{
-										return false;
-									}
-								}
-							}
-						}
+                                    if (ContainsAnyString(other))
+                                    {
+                                        return false;
+                                    }
+                                }
+                            }
+                        }
 
-						return true;
-					}
+                        return true;
+                    }
 
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 }

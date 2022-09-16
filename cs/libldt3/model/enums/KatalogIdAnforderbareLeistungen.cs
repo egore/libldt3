@@ -23,41 +23,41 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E057
-			 */
-			public enum KatalogIdAnforderbareLeistungen
-			{
+            /**
+             * E057
+             */
+            public enum KatalogIdAnforderbareLeistungen
+            {
 
-				/** LOINC */
-				LOINC,
-				/** LDT ELV */
-				LDT_ELV,
-				/** LVZ sonstige */
-				LVZ_sonstige,
-				/** sonstige mit URL */
-				sonstigeMitURL
-			}
+                /** LOINC */
+                LOINC,
+                /** LDT ELV */
+                LDT_ELV,
+                /** LVZ sonstige */
+                LVZ_sonstige,
+                /** sonstige mit URL */
+                sonstigeMitURL
+            }
 
-			public static class KatalogIdAnforderbareLeistungenExtensions
-			{
-				public static string GetCode(this KatalogIdAnforderbareLeistungen self)
-				{
-					switch (self)
-					{
-						case KatalogIdAnforderbareLeistungen.LOINC: return "1";
-						case KatalogIdAnforderbareLeistungen.LDT_ELV: return "2";
-						case KatalogIdAnforderbareLeistungen.LVZ_sonstige: return "3";
-						case KatalogIdAnforderbareLeistungen.sonstigeMitURL: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class KatalogIdAnforderbareLeistungenExtensions
+            {
+                public static string GetCode(this KatalogIdAnforderbareLeistungen self)
+                {
+                    switch (self)
+                    {
+                        case KatalogIdAnforderbareLeistungen.LOINC: return "1";
+                        case KatalogIdAnforderbareLeistungen.LDT_ELV: return "2";
+                        case KatalogIdAnforderbareLeistungen.LVZ_sonstige: return "3";
+                        case KatalogIdAnforderbareLeistungen.sonstigeMitURL: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

@@ -21,40 +21,40 @@
  */
 using System; namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E051
-			 */
-			public enum Laborart
-			{
-				/** Laborgemeinschaft */
-				Laborgemeinschaft,
-				/** Facharztlabor */
-				Facharztlabor,
-				/** Leistungserbringergemeinschaft */
-				Leistungserbringergemeinschaft,
-				/** Eigenlabor */
-				Eigenlabor
-			}
+            /**
+             * E051
+             */
+            public enum Laborart
+            {
+                /** Laborgemeinschaft */
+                Laborgemeinschaft,
+                /** Facharztlabor */
+                Facharztlabor,
+                /** Leistungserbringergemeinschaft */
+                Leistungserbringergemeinschaft,
+                /** Eigenlabor */
+                Eigenlabor
+            }
 
-			public static class LaborartExtensions
-			{
-				public static string GetCode(this Laborart self)
-				{
-					switch (self)
-					{
-						case Laborart.Laborgemeinschaft: return "1";
-						case Laborart.Facharztlabor: return "2";
-						case Laborart.Leistungserbringergemeinschaft: return "3";
-						case Laborart.Eigenlabor: return "4";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class LaborartExtensions
+            {
+                public static string GetCode(this Laborart self)
+                {
+                    switch (self)
+                    {
+                        case Laborart.Laborgemeinschaft: return "1";
+                        case Laborart.Facharztlabor: return "2";
+                        case Laborart.Leistungserbringergemeinschaft: return "3";
+                        case Laborart.Eigenlabor: return "4";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

@@ -24,41 +24,41 @@ using libldt3.model.regel;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
+    namespace model
+    {
+        namespace objekte
+        {
 
 
 
 
-			/**
-			 * Hier werden Informationen zu Wirkstoffen zusammengefasst.
-			 */
-			[Objekt(Value = "0071")]
-			public class Wirkstoff
-			{
+            /**
+             * Hier werden Informationen zu Wirkstoffen zusammengefasst.
+             */
+            [Objekt(Value = "0071")]
+            public class Wirkstoff
+            {
 
-				[Feld(Value = "6212", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string arzneimittelwirkstoff;
-				[Feld(Value = "6206", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Value = new[] { typeof(F020) }, Laenge = 8)]
-				public string pzn;
-				[Feld(Value = "6224", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string wirkstoffCode;
-				[Feld(Value = "6214", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string wirkstoffKlassifikation;
-				[Feld(Value = "8523", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string wirkstoffmenge;
-				[Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 20)]
-				public string mengeneinheit;
+                [Feld(Value = "6212", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string arzneimittelwirkstoff;
+                [Feld(Value = "6206", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Value = new[] { typeof(F020) }, Laenge = 8)]
+                public string pzn;
+                [Feld(Value = "6224", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string wirkstoffCode;
+                [Feld(Value = "6214", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string wirkstoffKlassifikation;
+                [Feld(Value = "8523", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string wirkstoffmenge;
+                [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 20)]
+                public string mengeneinheit;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

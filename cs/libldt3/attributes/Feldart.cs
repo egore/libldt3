@@ -21,17 +21,17 @@
  */
 namespace libldt3
 {
-	namespace attributes
-	{
+    namespace attributes
+    {
 
-		/**
-		 * Auswahl der Feldart (Pflicht oder Kann)
-		 */
-		public enum Feldart
-		{
+        /**
+         * Auswahl der Feldart (Pflicht oder Kann)
+         */
+        public enum Feldart
+        {
 
-			muss, bedingt_muss, kann, bedingt_kann
+            muss, bedingt_muss, kann, bedingt_kann
 
-		}
-	}
+        }
+    }
 }

@@ -23,33 +23,33 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E018
-			 */
-			public enum GeschlechtNormalbereich
-			{
+            /**
+             * E018
+             */
+            public enum GeschlechtNormalbereich
+            {
 
-				maennlich, weiblich, unbestimmt
-			}
+                maennlich, weiblich, unbestimmt
+            }
 
-			public static class GeschlechtNormalbereichExtensions
-			{
-				public static string GetCode(this GeschlechtNormalbereich self)
-				{
-					switch (self)
-					{
-						case GeschlechtNormalbereich.maennlich: return "M";
-						case GeschlechtNormalbereich.weiblich: return "W";
-						case GeschlechtNormalbereich.unbestimmt: return "X";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class GeschlechtNormalbereichExtensions
+            {
+                public static string GetCode(this GeschlechtNormalbereich self)
+                {
+                    switch (self)
+                    {
+                        case GeschlechtNormalbereich.maennlich: return "M";
+                        case GeschlechtNormalbereich.weiblich: return "W";
+                        case GeschlechtNormalbereich.unbestimmt: return "X";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

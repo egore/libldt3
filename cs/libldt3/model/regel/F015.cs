@@ -23,21 +23,21 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format Blutdruck
-			 */
-			public class F015 : RegularExpressionRegel
-			{
-				private static readonly Regex PATTERN = new Regex("^[0-9]{3}/[0-9]{3}$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format Blutdruck
+             */
+            public class F015 : RegularExpressionRegel
+            {
+                private static readonly Regex PATTERN = new Regex("^[0-9]{3}/[0-9]{3}$");
 
-				public F015() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F015() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

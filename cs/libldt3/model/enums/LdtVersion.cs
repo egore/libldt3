@@ -23,33 +23,33 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E001
-			 */
-			public enum LdtVersion
-			{
+            /**
+             * E001
+             */
+            public enum LdtVersion
+            {
 
-				/** LDT3.0.6 */
-				LDT3_0_6
+                /** LDT3.0.6 */
+                LDT3_0_6
 
-			}
+            }
 
-			public static class LdtVersionExtensions
-			{
-				public static string GetCode(this LdtVersion self)
-				{
-					switch (self)
-					{
-						case LdtVersion.LDT3_0_6: return "LDT3.0.6";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class LdtVersionExtensions
+            {
+                public static string GetCode(this LdtVersion self)
+                {
+                    switch (self)
+                    {
+                        case LdtVersion.LDT3_0_6: return "LDT3.0.6";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

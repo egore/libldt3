@@ -23,24 +23,24 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			/**
-			 * Format KBV-Prüfnummer
-			 */
-			public class F012 : RegularExpressionRegel
-			{
+            /**
+             * Format KBV-Prüfnummer
+             */
+            public class F012 : RegularExpressionRegel
+            {
 
-				private static readonly Regex PATTERN = new Regex("^[VXYZ]/3[1-9]/[0-9]{2}(0?[1-9]|1[012])/[0-9]{2}/.{3}$");
+                private static readonly Regex PATTERN = new Regex("^[VXYZ]/3[1-9]/[0-9]{2}(0?[1-9]|1[012])/[0-9]{2}/.{3}$");
 
-				public F012() : base(PATTERN)
-				{
-				}
+                public F012() : base(PATTERN)
+                {
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

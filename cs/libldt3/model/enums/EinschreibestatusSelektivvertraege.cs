@@ -23,39 +23,39 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E041
-			 */
-			public enum EinschreibestatusSelektivvertraege
-			{
+            /**
+             * E041
+             */
+            public enum EinschreibestatusSelektivvertraege
+            {
 
-				/** Nicht eingeschrieben */
-				NichtEingeschrieben,
-				/** Eingeschrieben */
-				Eingeschrieben,
-				/** Einschreibung beantragt */
-				EinschreibungBeantragt
-			}
+                /** Nicht eingeschrieben */
+                NichtEingeschrieben,
+                /** Eingeschrieben */
+                Eingeschrieben,
+                /** Einschreibung beantragt */
+                EinschreibungBeantragt
+            }
 
-			public static class EinschreibestatusSelektivvertraegeExtensions
-			{
-				public static string GetCode(this EinschreibestatusSelektivvertraege self)
-				{
-					switch (self)
-					{
-						case EinschreibestatusSelektivvertraege.NichtEingeschrieben: return "0";
-						case EinschreibestatusSelektivvertraege.Eingeschrieben: return "1";
-						case EinschreibestatusSelektivvertraege.EinschreibungBeantragt: return "2";
+            public static class EinschreibestatusSelektivvertraegeExtensions
+            {
+                public static string GetCode(this EinschreibestatusSelektivvertraege self)
+                {
+                    switch (self)
+                    {
+                        case EinschreibestatusSelektivvertraege.NichtEingeschrieben: return "0";
+                        case EinschreibestatusSelektivvertraege.Eingeschrieben: return "1";
+                        case EinschreibestatusSelektivvertraege.EinschreibungBeantragt: return "2";
 
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

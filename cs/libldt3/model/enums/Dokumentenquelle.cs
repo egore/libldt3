@@ -23,33 +23,33 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E044
-			 */
-			public enum Dokumentenquelle
-			{
+            /**
+             * E044
+             */
+            public enum Dokumentenquelle
+            {
 
-				eigen,
-				fremd
+                eigen,
+                fremd
 
-			}
-			public static class DokumentenquelleExtensions
-			{
-				public static string GetCode(this Dokumentenquelle self)
-				{
-					switch (self)
-					{
-						case Dokumentenquelle.eigen: return "1";
-						case Dokumentenquelle.fremd: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            }
+            public static class DokumentenquelleExtensions
+            {
+                public static string GetCode(this Dokumentenquelle self)
+                {
+                    switch (self)
+                    {
+                        case Dokumentenquelle.eigen: return "1";
+                        case Dokumentenquelle.fremd: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

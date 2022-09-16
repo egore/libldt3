@@ -26,40 +26,40 @@ using static libldt3.model.regel.kontext.KontextregelHelper;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
-				/// <summary>
-				/// Entweder FK 6305 oder FK 8242 ist vorhanden.
-				/// </summary>
-				public class K001 : Kontextregel
-				{
+                /// <summary>
+                /// Entweder FK 6305 oder FK 8242 ist vorhanden.
+                /// </summary>
+                public class K001 : Kontextregel
+                {
 
-					static readonly ISet<string> FIELDTYPES = new HashSet<string> { "6305", "8242" };
+                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "6305", "8242" };
 
-					public bool IsValid(object owner)
-					{
+                    public bool IsValid(object owner)
+                    {
 
-						IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-						if (fields.Count != FIELDTYPES.Count) {
-							Trace.TraceError("Class of {0} must have fields {1}", owner, FIELDTYPES);
-							return false;
-						}
+                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
+                        if (fields.Count != FIELDTYPES.Count) {
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, FIELDTYPES);
+                            return false;
+                        }
 
-						foreach (FieldInfo f in fields.Values) {
-							if (ContainsAnyString(f, owner))
-							{
-								return true;
-							}
-						}
-						return false;
-					}
-				}
-			}
-		}
-	}
+                        foreach (FieldInfo f in fields.Values) {
+                            if (ContainsAnyString(f, owner))
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                }
+            }
+        }
+    }
 }

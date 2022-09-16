@@ -23,37 +23,37 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E025
-			 */
-			public enum Sensitivitaet
-			{
-				/** sensibel */
-				sensibel,
-				/** intermediär */
-				intermediaer,
-				/** resistent */
-				resistent
-			}
+            /**
+             * E025
+             */
+            public enum Sensitivitaet
+            {
+                /** sensibel */
+                sensibel,
+                /** intermediär */
+                intermediaer,
+                /** resistent */
+                resistent
+            }
 
-			public static class SensitivitaetExtensions
-			{
-				public static string GetCode(this Sensitivitaet self)
-				{
-					switch (self)
-					{
-						case Sensitivitaet.sensibel: return "S";
-						case Sensitivitaet.intermediaer: return "I";
-						case Sensitivitaet.resistent: return "R";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class SensitivitaetExtensions
+            {
+                public static string GetCode(this Sensitivitaet self)
+                {
+                    switch (self)
+                    {
+                        case Sensitivitaet.sensibel: return "S";
+                        case Sensitivitaet.intermediaer: return "I";
+                        case Sensitivitaet.resistent: return "R";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

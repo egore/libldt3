@@ -23,35 +23,35 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E062
-			 */
-			public enum Ergebnis
-			{
+            /**
+             * E062
+             */
+            public enum Ergebnis
+            {
 
-				positiv,
-				negativ,
-				invalid
-			}
+                positiv,
+                negativ,
+                invalid
+            }
 
-			public static class ErgebnisExtensions
-			{
-				public static string GetCode(this Ergebnis self)
-				{
-					switch (self)
-					{
-						case Ergebnis.positiv: return "1";
-						case Ergebnis.negativ: return "2";
-						case Ergebnis.invalid: return "3";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class ErgebnisExtensions
+            {
+                public static string GetCode(this Ergebnis self)
+                {
+                    switch (self)
+                    {
+                        case Ergebnis.positiv: return "1";
+                        case Ergebnis.negativ: return "2";
+                        case Ergebnis.invalid: return "3";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

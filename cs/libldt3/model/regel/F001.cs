@@ -23,21 +23,21 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format der Abrechnungs-VKNR
-			 */
-			public class F001 : RegularExpressionRegel
-			{
-				static readonly Regex PATTERN = new Regex("^[0-9]{5}$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format der Abrechnungs-VKNR
+             */
+            public class F001 : RegularExpressionRegel
+            {
+                static readonly Regex PATTERN = new Regex("^[0-9]{5}$");
 
-				public F001() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F001() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

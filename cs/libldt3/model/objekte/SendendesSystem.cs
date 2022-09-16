@@ -25,39 +25,39 @@ using libldt3.model.regel;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
-			 * den LDT Datensatz erstellt hat.
-			 */
-			[Objekt(Value = "0051")]
-			public class SendendesSystem
-			{
-				[Feld(Value = "0001", Feldart = Feldart.muss)]
-				[Regelsatz(Value = new[] { typeof(F007) }, MaxLaenge = 12)]
-				public LdtVersion? version;
-				[Feld(Value = "8315", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string empfaengerId;
-				[Feld(Value = "8316", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string senderId;
-				[Feld(Value = "0105", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Value = new[] { typeof(F012) }, Laenge = 16)]
-				public string kvbPruefnummer;
-				[Feld(Value = "8212", Name = "Softwareverantwortlicher", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 24)]
-				public Organisation softwareverantwortlicher;
-				[Feld(Value = "0103", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string softwareName;
-				[Feld(Value = "0132", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string softwareVersion;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
+             * den LDT Datensatz erstellt hat.
+             */
+            [Objekt(Value = "0051")]
+            public class SendendesSystem
+            {
+                [Feld(Value = "0001", Feldart = Feldart.muss)]
+                [Regelsatz(Value = new[] { typeof(F007) }, MaxLaenge = 12)]
+                public LdtVersion? version;
+                [Feld(Value = "8315", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string empfaengerId;
+                [Feld(Value = "8316", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string senderId;
+                [Feld(Value = "0105", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Value = new[] { typeof(F012) }, Laenge = 16)]
+                public string kvbPruefnummer;
+                [Feld(Value = "8212", Name = "Softwareverantwortlicher", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 24)]
+                public Organisation softwareverantwortlicher;
+                [Feld(Value = "0103", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string softwareName;
+                [Feld(Value = "0132", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string softwareVersion;
+            }
+        }
+    }
 }

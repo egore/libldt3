@@ -23,36 +23,36 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E042
-			 */
-			public enum Adresstyp
-			{
+            /**
+             * E042
+             */
+            public enum Adresstyp
+            {
 
-				/** Physischer Ort */
-				PhysischerOrt,
-				/** Postanschrift */
-				Postanschrift
-			}
+                /** Physischer Ort */
+                PhysischerOrt,
+                /** Postanschrift */
+                Postanschrift
+            }
 
-			public static class AdresstypExtensions
-			{
+            public static class AdresstypExtensions
+            {
 
-				public static string GetCode(this Adresstyp self)
-				{
-					switch (self)
-					{
-						case Adresstyp.PhysischerOrt: return "1";
-						case Adresstyp.Postanschrift: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                public static string GetCode(this Adresstyp self)
+                {
+                    switch (self)
+                    {
+                        case Adresstyp.PhysischerOrt: return "1";
+                        case Adresstyp.Postanschrift: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

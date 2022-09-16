@@ -23,35 +23,35 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E056
-			 */
-			public enum AnforderungNothilfepass
-			{
+            /**
+             * E056
+             */
+            public enum AnforderungNothilfepass
+            {
 
-				/** Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen */
-				NurBeiErythrozytenantikoerperNachweis,
-				/** Nothilfepass ausstellen */
-				Ausstellen
-			}
+                /** Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen */
+                NurBeiErythrozytenantikoerperNachweis,
+                /** Nothilfepass ausstellen */
+                Ausstellen
+            }
 
-			public static class AnforderungNothilfepassExtensions
-			{
-				public static string GetCode(this AnforderungNothilfepass self)
-				{
-					switch (self)
-					{
-						case AnforderungNothilfepass.NurBeiErythrozytenantikoerperNachweis: return "0";
-						case AnforderungNothilfepass.Ausstellen: return "1";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class AnforderungNothilfepassExtensions
+            {
+                public static string GetCode(this AnforderungNothilfepass self)
+                {
+                    switch (self)
+                    {
+                        case AnforderungNothilfepass.NurBeiErythrozytenantikoerperNachweis: return "0";
+                        case AnforderungNothilfepass.Ausstellen: return "1";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

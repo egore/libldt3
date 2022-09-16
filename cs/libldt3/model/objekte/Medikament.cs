@@ -25,47 +25,47 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Hier werden Informationen zu Medikamenten zusammengefasst.
-			 */
-			[Objekt(Value = "0070")]
-			public class Medikament
-			{
-				[Feld(Value = "8243", Name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 40)]
-				public Timestamp TimestampZeitpunktMedikamenteneinnahme;
-				[Feld(Value = "6208", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string Handelsname;
-				[Feld(Value = "6207", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string Rezeptur;
-				[Feld(Value = "8171", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 9)]
-				public IList<Wirkstoff> Wirkstoff;
-				[Feld(Value = "8523", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string Wirkstoffmenge;
-				[Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 20)]
-				public string Einheit;
-				[Feld(Value = "3689", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 1)]
-				public IList<MedikationsStatus> Status;
-				[Feld(Value = "8226", Name = "Timestamp_Gueltig_ab", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 20)]
-				public Timestamp TimestampGueltigAb;
-				[Feld(Value = "8227", Name = "Timestamp_Gueltig_bis", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 21)]
-				public Timestamp TimestampGueltigBis;
-				[Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 26)]
-				public Fliesstext ZusaetzlicheInformationen;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Hier werden Informationen zu Medikamenten zusammengefasst.
+             */
+            [Objekt(Value = "0070")]
+            public class Medikament
+            {
+                [Feld(Value = "8243", Name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 40)]
+                public Timestamp TimestampZeitpunktMedikamenteneinnahme;
+                [Feld(Value = "6208", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string Handelsname;
+                [Feld(Value = "6207", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string Rezeptur;
+                [Feld(Value = "8171", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 9)]
+                public IList<Wirkstoff> Wirkstoff;
+                [Feld(Value = "8523", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string Wirkstoffmenge;
+                [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 20)]
+                public string Einheit;
+                [Feld(Value = "3689", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 1)]
+                public IList<MedikationsStatus> Status;
+                [Feld(Value = "8226", Name = "Timestamp_Gueltig_ab", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 20)]
+                public Timestamp TimestampGueltigAb;
+                [Feld(Value = "8227", Name = "Timestamp_Gueltig_bis", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 21)]
+                public Timestamp TimestampGueltigBis;
+                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 26)]
+                public Fliesstext ZusaetzlicheInformationen;
+            }
+        }
+    }
 }

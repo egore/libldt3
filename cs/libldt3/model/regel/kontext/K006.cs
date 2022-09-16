@@ -26,43 +26,43 @@ using System.Diagnostics;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
-				/// <summary>
-				/// Wenn FK 8428 oder FK 8430 oder FK 8429 vorhanden ist, darf FK 8431 vorhanden sein.
-				/// </summary>
-				public class K006 : Kontextregel
-				{
+                /// <summary>
+                /// Wenn FK 8428 oder FK 8430 oder FK 8429 vorhanden ist, darf FK 8431 vorhanden sein.
+                /// </summary>
+                public class K006 : Kontextregel
+                {
 
-					static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8428", "8430", "8429", "8431" };
+                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8428", "8430", "8429", "8431" };
 
-					public bool IsValid(object owner)
-					{
+                    public bool IsValid(object owner)
+                    {
 
-						IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-						if (fields.Count != FIELDTYPES.Count)
-						{
-							Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
-							return false;
-						}
+                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
+                        if (fields.Count != FIELDTYPES.Count)
+                        {
+                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
+                            return false;
+                        }
 
-						if (ContainsAnyString(fields["8428"], owner) ||
-							ContainsAnyString(fields["8430"], owner) ||
-							ContainsAnyString(fields["8429"], owner))
-						{
-							return true;
-						}
+                        if (ContainsAnyString(fields["8428"], owner) ||
+                            ContainsAnyString(fields["8430"], owner) ||
+                            ContainsAnyString(fields["8429"], owner))
+                        {
+                            return true;
+                        }
 
-						return !ContainsAnyString(fields["8431"], owner);
-					}
+                        return !ContainsAnyString(fields["8431"], owner);
+                    }
 
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 }

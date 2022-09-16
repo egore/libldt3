@@ -21,26 +21,26 @@
  */
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			using System.Text.RegularExpressions;
+            using System.Text.RegularExpressions;
 
-			/**
-			 * Format Jahreszahl
-			 */
-			public class F017 : RegularExpressionRegel
-			{
+            /**
+             * Format Jahreszahl
+             */
+            public class F017 : RegularExpressionRegel
+            {
 
-				static readonly Regex PATTERN = new Regex("^[0-9]{4}$");
+                static readonly Regex PATTERN = new Regex("^[0-9]{4}$");
 
-				public F017() : base(PATTERN)
-				{
-				}
+                public F017() : base(PATTERN)
+                {
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

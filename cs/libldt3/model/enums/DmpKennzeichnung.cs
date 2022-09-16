@@ -23,57 +23,57 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E020
-			 * 
-			 * Disease Management Program (DMP) bezeichnet die Behandlung von Patienten
-			 * anhand standardisierter Vorgaben. Diese richten sich an einzelnen
-			 * Krankheitsbildern aus. Wird beispielsweise festgestellt, dass ein Patient an
-			 * Diabetes leidet, ergeben sich aus der Diagnose vorgegebene
-			 * Behandlungsschritte.
-			 */
-			public enum DmpKennzeichnung
-			{
+            /**
+             * E020
+             * 
+             * Disease Management Program (DMP) bezeichnet die Behandlung von Patienten
+             * anhand standardisierter Vorgaben. Diese richten sich an einzelnen
+             * Krankheitsbildern aus. Wird beispielsweise festgestellt, dass ein Patient an
+             * Diabetes leidet, ergeben sich aus der Diagnose vorgegebene
+             * Behandlungsschritte.
+             */
+            public enum DmpKennzeichnung
+            {
 
-				/** keine Angabe */
-				keine_Angabe,
-				/** Diabetes mellitus Typ 2 */
-				DiabetesMellitusTyp2,
-				/** Brustkrebs */
-				Brustkrebs,
-				/** Koronare Herzkrankheit */
-				KoronareHerzkrankheit,
-				/** Diabetes mellitus Typ 1 */
-				DiabetesMellitusTyp1,
-				/** Asthma bronchiale */
-				AsthmaBronchiale,
-				/** COPD (chronic obstructive pulmo-nary disease) */
-				ChronicObstructivePulmonaryDisease
-			}
+                /** keine Angabe */
+                keine_Angabe,
+                /** Diabetes mellitus Typ 2 */
+                DiabetesMellitusTyp2,
+                /** Brustkrebs */
+                Brustkrebs,
+                /** Koronare Herzkrankheit */
+                KoronareHerzkrankheit,
+                /** Diabetes mellitus Typ 1 */
+                DiabetesMellitusTyp1,
+                /** Asthma bronchiale */
+                AsthmaBronchiale,
+                /** COPD (chronic obstructive pulmo-nary disease) */
+                ChronicObstructivePulmonaryDisease
+            }
 
-			public static class DmpKennzeichnungExtensions
-			{
-				public static string GetCode(this DmpKennzeichnung self)
-				{
-					switch (self)
-					{
-						case DmpKennzeichnung.keine_Angabe: return "00";
-						case DmpKennzeichnung.DiabetesMellitusTyp2: return "01";
-						case DmpKennzeichnung.Brustkrebs: return "02";
-						case DmpKennzeichnung.KoronareHerzkrankheit: return "03";
-						case DmpKennzeichnung.DiabetesMellitusTyp1: return "04";
-						case DmpKennzeichnung.AsthmaBronchiale: return "05";
-						case DmpKennzeichnung.ChronicObstructivePulmonaryDisease: return "06";
+            public static class DmpKennzeichnungExtensions
+            {
+                public static string GetCode(this DmpKennzeichnung self)
+                {
+                    switch (self)
+                    {
+                        case DmpKennzeichnung.keine_Angabe: return "00";
+                        case DmpKennzeichnung.DiabetesMellitusTyp2: return "01";
+                        case DmpKennzeichnung.Brustkrebs: return "02";
+                        case DmpKennzeichnung.KoronareHerzkrankheit: return "03";
+                        case DmpKennzeichnung.DiabetesMellitusTyp1: return "04";
+                        case DmpKennzeichnung.AsthmaBronchiale: return "05";
+                        case DmpKennzeichnung.ChronicObstructivePulmonaryDisease: return "06";
 
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

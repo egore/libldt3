@@ -23,22 +23,22 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format Woche/Tag
-			 */
-			public class F005 : RegularExpressionRegel
-			{
-				static readonly Regex PATTERN = new Regex("^[0-9]{2}[0-6]$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format Woche/Tag
+             */
+            public class F005 : RegularExpressionRegel
+            {
+                static readonly Regex PATTERN = new Regex("^[0-9]{2}[0-6]$");
 
-				public F005() : base(PATTERN)
-				{
-				}
-			}
+                public F005() : base(PATTERN)
+                {
+                }
+            }
 
-		}
-	}
+        }
+    }
 }

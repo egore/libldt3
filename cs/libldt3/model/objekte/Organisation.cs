@@ -24,45 +24,45 @@ using libldt3.attributes;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Mit diesem Objekt werden Organisationsstrukturen abgebildet.
-			 */
-			[Objekt(Value = "0043")]
-			public class Organisation
-			{
-				[Objekt]
-				public class Funktionsbezeichnung
-				{
-					public string Value;
-					[Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
-					[Regelsatz(Laenge = 6)]
-					public IList<Person> Person;
-				}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Mit diesem Objekt werden Organisationsstrukturen abgebildet.
+             */
+            [Objekt(Value = "0043")]
+            public class Organisation
+            {
+                [Objekt]
+                public class Funktionsbezeichnung
+                {
+                    public string Value;
+                    [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 6)]
+                    public IList<Person> Person;
+                }
 
-				[Feld(Value = "1250", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string organisationFirma;
-				[Feld(Value = "1251", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string rechtsformOrganisation;
-				[Feld(Value = "1252", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public IList<Funktionsbezeichnung> funktionsbezeichnung;
-				[Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 23)]
-				public IList<Anschrift> anschriftArbeitsstelle;
-				[Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 18)]
-				public Anschrift rechnungsanschrift;
-				[Feld(Value = "8131", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 19)]
-				public Kommunikationsdaten kommunikationsdaten;
+                [Feld(Value = "1250", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string organisationFirma;
+                [Feld(Value = "1251", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string rechtsformOrganisation;
+                [Feld(Value = "1252", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public IList<Funktionsbezeichnung> funktionsbezeichnung;
+                [Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 23)]
+                public IList<Anschrift> anschriftArbeitsstelle;
+                [Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 18)]
+                public Anschrift rechnungsanschrift;
+                [Feld(Value = "8131", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 19)]
+                public Kommunikationsdaten kommunikationsdaten;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

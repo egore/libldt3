@@ -23,24 +23,24 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			/**
-			 * Format ICD-Code
-			 */
-			public class F004 : RegularExpressionRegel
-			{
+            /**
+             * Format ICD-Code
+             */
+            public class F004 : RegularExpressionRegel
+            {
 
-				static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?$");
+                static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?$");
 
-				public F004() : base(PATTERN)
-				{
-				}
+                public F004() : base(PATTERN)
+                {
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

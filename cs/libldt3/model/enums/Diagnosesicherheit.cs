@@ -23,40 +23,40 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E037
-			 */
-			public enum Diagnosesicherheit
-			{
-				/** gesicherte Diagnose */
-				GesicherteDiagnose,
-				/** Ausschluss */
-				Ausschluss,
-				/** Verdacht auf */
-				VerdachtAuf,
-				/** Zustand nach */
-				ZustandNach
-			}
+            /**
+             * E037
+             */
+            public enum Diagnosesicherheit
+            {
+                /** gesicherte Diagnose */
+                GesicherteDiagnose,
+                /** Ausschluss */
+                Ausschluss,
+                /** Verdacht auf */
+                VerdachtAuf,
+                /** Zustand nach */
+                ZustandNach
+            }
 
-			public static class DiagnosesicherheitExtensions
-			{
-				public static string GetCode(this Diagnosesicherheit self)
-				{
-					switch (self)
-					{
-						case Diagnosesicherheit.GesicherteDiagnose: return "G";
-						case Diagnosesicherheit.Ausschluss: return "A";
-						case Diagnosesicherheit.VerdachtAuf: return "V";
-						case Diagnosesicherheit.ZustandNach: return "Z";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class DiagnosesicherheitExtensions
+            {
+                public static string GetCode(this Diagnosesicherheit self)
+                {
+                    switch (self)
+                    {
+                        case Diagnosesicherheit.GesicherteDiagnose: return "G";
+                        case Diagnosesicherheit.Ausschluss: return "A";
+                        case Diagnosesicherheit.VerdachtAuf: return "V";
+                        case Diagnosesicherheit.ZustandNach: return "Z";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

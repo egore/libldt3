@@ -23,35 +23,35 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E002
-			 */
-			public enum Versichertenart
-			{
+            /**
+             * E002
+             */
+            public enum Versichertenart
+            {
 
-				Mitglied,
-				Familienversicherter,
-				Rentner
-			}
+                Mitglied,
+                Familienversicherter,
+                Rentner
+            }
 
-			public static class VersichertenartExtensions
-			{
-				public static string GetCode(this Versichertenart self)
-				{
-					switch (self)
-					{
-						case Versichertenart.Mitglied: return "1";
-						case Versichertenart.Familienversicherter: return "3";
-						case Versichertenart.Rentner: return "5";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class VersichertenartExtensions
+            {
+                public static string GetCode(this Versichertenart self)
+                {
+                    switch (self)
+                    {
+                        case Versichertenart.Mitglied: return "1";
+                        case Versichertenart.Familienversicherter: return "3";
+                        case Versichertenart.Rentner: return "5";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

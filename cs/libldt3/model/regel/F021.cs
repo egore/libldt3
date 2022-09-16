@@ -21,26 +21,26 @@
  */
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			using System.Text.RegularExpressions;
+            using System.Text.RegularExpressions;
 
-			/**
-			 * Format BSNR Terminservicestelle (Anlage 28 BMV-Ä)
-			 */
-			public class F021 : RegularExpressionRegel
-			{
+            /**
+             * Format BSNR Terminservicestelle (Anlage 28 BMV-Ä)
+             */
+            public class F021 : RegularExpressionRegel
+            {
 
-				static readonly Regex PATTERN = new Regex("^35" + RegelConstants.E014 + "[0-9]{5}$");
+                static readonly Regex PATTERN = new Regex("^35" + RegelConstants.E014 + "[0-9]{5}$");
 
-				public F021() : base(PATTERN)
-				{
-				}
+                public F021() : base(PATTERN)
+                {
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

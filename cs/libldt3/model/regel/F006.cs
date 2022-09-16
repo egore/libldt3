@@ -23,21 +23,21 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format Zeitdauer
-			 */
-			public class F006 : RegularExpressionRegel
-			{
-				static readonly Regex PATTERN = new Regex("^[0-9]{2}[0-5][0-9]$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format Zeitdauer
+             */
+            public class F006 : RegularExpressionRegel
+            {
+                static readonly Regex PATTERN = new Regex("^[0-9]{2}[0-5][0-9]$");
 
-				public F006() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F006() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

@@ -27,41 +27,41 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
-				public class K076 : Kontextregel
-				{
+                public class K076 : Kontextregel
+                {
 
-					static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
+                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
 
-					public bool IsValid(object owner)
-					{
+                    public bool IsValid(object owner)
+                    {
 
-						IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-						if (fields.Count != FIELDTYPES.Count)
-						{
-							Trace.TraceError("Class of {0} must have fields {1}", owner, FIELDTYPES);
-							return false;
-						}
+                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
+                        if (fields.Count != FIELDTYPES.Count)
+                        {
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, FIELDTYPES);
+                            return false;
+                        }
 
-						TestStatus status = (TestStatus)fields["8418"].GetValue(owner);
-						switch (status)
-						{
-							case TestStatus.Material_fehlt_oder_nicht_verwendbar:
-							case TestStatus.Wert_fehlt:
-							case TestStatus.Untersuchungsanforderung_storniert:
-								return true;
-							default:
-								return ContainsAnyString(fields["8225"], owner);
-						}
-					}
-				}
-			}
-		}
-	}
+                        TestStatus status = (TestStatus)fields["8418"].GetValue(owner);
+                        switch (status)
+                        {
+                            case TestStatus.Material_fehlt_oder_nicht_verwendbar:
+                            case TestStatus.Wert_fehlt:
+                            case TestStatus.Untersuchungsanforderung_storniert:
+                                return true;
+                            default:
+                                return ContainsAnyString(fields["8225"], owner);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

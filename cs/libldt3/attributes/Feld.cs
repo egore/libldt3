@@ -23,33 +23,33 @@ using System;
 
 namespace libldt3
 {
-	namespace attributes
-	{
+    namespace attributes
+    {
 
-		/**
-		 * Annotation zur Definition eines Feldes. Der {@link LdtReader} liest die Daten
-		 * automatisch in die annotierten Felder, der {@link LdtWriter} schreibt
-		 * ausschließlich die annotierten Felder.
-		 */
-		[AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
-		public class Feld : Attribute
-		{
+        /**
+         * Annotation zur Definition eines Feldes. Der {@link LdtReader} liest die Daten
+         * automatisch in die annotierten Felder, der {@link LdtWriter} schreibt
+         * ausschließlich die annotierten Felder.
+         */
+        [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+        public class Feld : Attribute
+        {
 
-			/**
-			 * @return FK der Spezifikation (z.B. "7331" für Mobiltelefonnummer)
-			 */
-			public string Value;
+            /**
+             * @return FK der Spezifikation (z.B. "7331" für Mobiltelefonnummer)
+             */
+            public string Value;
 
-			/**
-			 * @return gibt an, ob es sich um ein Pflichtfeld handelt
-			 */
-			public Feldart Feldart;
+            /**
+             * @return gibt an, ob es sich um ein Pflichtfeld handelt
+             */
+            public Feldart Feldart;
 
-			/**
-			 * @return Name des Objektes im LDT (notwendig für das Schreiben von LDT
-			 *         durch den {@link LdtWriter})
-			 */
-			public string Name = "";
-		}
-	}
+            /**
+             * @return Name des Objektes im LDT (notwendig für das Schreiben von LDT
+             *         durch den {@link LdtWriter})
+             */
+            public string Name = "";
+        }
+    }
 }

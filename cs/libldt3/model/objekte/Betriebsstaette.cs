@@ -26,38 +26,38 @@ using libldt3.model.regel;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
-			 * medizinischen Einrichtungen zusammen.
-			 */
-			[Objekt(Value = "0019")]
-			public class Betriebsstaette
-			{
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
+             * medizinischen Einrichtungen zusammen.
+             */
+            [Objekt(Value = "0019")]
+            public class Betriebsstaette
+            {
 
-				[Feld(Value = "0204", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 1)]
-				public IList<Betriebsstaettenstatus> status;
-				[Feld(Value = "0203", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string bsnrBezeichnung;
-				[Feld(Value = "0200", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string betriebsstaettenId;
-				[Feld(Value = "0201", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Value = new[] { typeof(F010), typeof(F021) }, Laenge = 9)]
-				public string bsnr;
-				[Feld(Value = "0213", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 9)]
-				public string institutskennzeichen;
-				[Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 12)]
-				public Organisation organisation;
+                [Feld(Value = "0204", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 1)]
+                public IList<Betriebsstaettenstatus> status;
+                [Feld(Value = "0203", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string bsnrBezeichnung;
+                [Feld(Value = "0200", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string betriebsstaettenId;
+                [Feld(Value = "0201", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Value = new[] { typeof(F010), typeof(F021) }, Laenge = 9)]
+                public string bsnr;
+                [Feld(Value = "0213", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 9)]
+                public string institutskennzeichen;
+                [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 12)]
+                public Organisation organisation;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

@@ -23,53 +23,53 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E058
-			 */
-			public enum DarstellungErgebniswerte
-			{
+            /**
+             * E058
+             */
+            public enum DarstellungErgebniswerte
+            {
 
-				/** numerisch (exponentielle Darstellung möglich) */
-				Numerisch,
-				/** numerisch mit Messwertuntergrenze */
-				Numerisch_Untergrenze,
-				/** numerisch mit Messwertobergrenze */
-				Numerisch_Obergrenze,
-				/** alpha-numerisch */
-				Alphanumerisch,
-				/** Titer */
-				Titer,
-				/** Titer mit Untergrenze */
-				Titer_Untergrenze,
-				/** Titer mit Obergrenze */
-				Titer_Obergrenze,
-				/** Sonstige */
-				Sonstige
-			}
+                /** numerisch (exponentielle Darstellung möglich) */
+                Numerisch,
+                /** numerisch mit Messwertuntergrenze */
+                Numerisch_Untergrenze,
+                /** numerisch mit Messwertobergrenze */
+                Numerisch_Obergrenze,
+                /** alpha-numerisch */
+                Alphanumerisch,
+                /** Titer */
+                Titer,
+                /** Titer mit Untergrenze */
+                Titer_Untergrenze,
+                /** Titer mit Obergrenze */
+                Titer_Obergrenze,
+                /** Sonstige */
+                Sonstige
+            }
 
-			public static class DarstellungErgebniswerteExtensions
-			{
-				public static string GetCode(this DarstellungErgebniswerte self)
-				{
-					switch (self)
-					{
-						case DarstellungErgebniswerte.Numerisch: return "01";
-						case DarstellungErgebniswerte.Numerisch_Untergrenze: return "02";
-						case DarstellungErgebniswerte.Numerisch_Obergrenze: return "03";
-						case DarstellungErgebniswerte.Alphanumerisch: return "04";
-						case DarstellungErgebniswerte.Titer: return "05";
-						case DarstellungErgebniswerte.Titer_Untergrenze: return "06";
-						case DarstellungErgebniswerte.Titer_Obergrenze: return "07";
-						case DarstellungErgebniswerte.Sonstige: return "99";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class DarstellungErgebniswerteExtensions
+            {
+                public static string GetCode(this DarstellungErgebniswerte self)
+                {
+                    switch (self)
+                    {
+                        case DarstellungErgebniswerte.Numerisch: return "01";
+                        case DarstellungErgebniswerte.Numerisch_Untergrenze: return "02";
+                        case DarstellungErgebniswerte.Numerisch_Obergrenze: return "03";
+                        case DarstellungErgebniswerte.Alphanumerisch: return "04";
+                        case DarstellungErgebniswerte.Titer: return "05";
+                        case DarstellungErgebniswerte.Titer_Untergrenze: return "06";
+                        case DarstellungErgebniswerte.Titer_Obergrenze: return "07";
+                        case DarstellungErgebniswerte.Sonstige: return "99";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

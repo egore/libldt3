@@ -23,25 +23,25 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
 
-			/**
-			 * Format Uhrzeit
-			 */
-			public class F016 : RegularExpressionRegel
-			{
+            /**
+             * Format Uhrzeit
+             */
+            public class F016 : RegularExpressionRegel
+            {
 
-				static readonly Regex PATTERN = new Regex("^([0-1][0-9]|2[0-3])[0-5][0-9][0-5][0-9]([0-9]{3})?$");
+                static readonly Regex PATTERN = new Regex("^([0-1][0-9]|2[0-3])[0-5][0-9][0-5][0-9]([0-9]{3})?$");
 
-				public F016() : base(PATTERN)
-				{
-				}
+                public F016() : base(PATTERN)
+                {
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

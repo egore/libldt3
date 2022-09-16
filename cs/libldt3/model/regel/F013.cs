@@ -23,21 +23,21 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format Versicherten-ID
-			 */
-			public class F013 : RegularExpressionRegel
-			{
-				private static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{8}[0-9]$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format Versicherten-ID
+             */
+            public class F013 : RegularExpressionRegel
+            {
+                private static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{8}[0-9]$");
 
-				public F013() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F013() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

@@ -23,33 +23,33 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			public enum Lokalisation
-			{
-				/** rechts */
-				rechts,
-				/** links */
-				links,
-				/** beiderseits */
-				beiderseits
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            public enum Lokalisation
+            {
+                /** rechts */
+                rechts,
+                /** links */
+                links,
+                /** beiderseits */
+                beiderseits
+            }
 
-			public static class LokalisationExtensions
-			{
-				public static string GetCode(this Lokalisation self)
-				{
-					switch (self)
-					{
-						case Lokalisation.rechts: return "R";
-						case Lokalisation.links: return "L";
-						case Lokalisation.beiderseits: return "B";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class LokalisationExtensions
+            {
+                public static string GetCode(this Lokalisation self)
+                {
+                    switch (self)
+                    {
+                        case Lokalisation.rechts: return "R";
+                        case Lokalisation.links: return "L";
+                        case Lokalisation.beiderseits: return "B";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

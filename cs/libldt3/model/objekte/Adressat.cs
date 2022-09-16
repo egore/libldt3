@@ -23,20 +23,20 @@ using libldt3.attributes;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			[Objekt(Value = "0008")]
-			public class Adressat
-			{
-				[Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 6)]
-				public Person person;
-				[Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 12)]
-				public Organisation organisation;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            [Objekt(Value = "0008")]
+            public class Adressat
+            {
+                [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 6)]
+                public Person person;
+                [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 12)]
+                public Organisation organisation;
+            }
+        }
+    }
 }

@@ -21,20 +21,20 @@
  */
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
-				public interface Kontextregel
-				{
+                public interface Kontextregel
+                {
 
-					bool IsValid(object owner);
+                    bool IsValid(object owner);
 
-				}
-			}
-		}
-	}
+                }
+            }
+        }
+    }
 }

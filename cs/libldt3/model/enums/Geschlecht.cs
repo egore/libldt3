@@ -23,37 +23,37 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E019
-			 */
-			public enum Geschlecht
-			{
-				maennlich,
-				weiblich,
-				unbestimmt,
-				unbekannt
-			}
+            /**
+             * E019
+             */
+            public enum Geschlecht
+            {
+                maennlich,
+                weiblich,
+                unbestimmt,
+                unbekannt
+            }
 
 
-			public static class GeschlechtExtensions
-			{
-				public static string GetCode(this Geschlecht self)
-				{
-					switch (self)
-					{
-						case Geschlecht.maennlich: return "M";
-						case Geschlecht.weiblich: return "W";
-						case Geschlecht.unbestimmt: return "X";
-						case Geschlecht.unbekannt: return "U";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class GeschlechtExtensions
+            {
+                public static string GetCode(this Geschlecht self)
+                {
+                    switch (self)
+                    {
+                        case Geschlecht.maennlich: return "M";
+                        case Geschlecht.weiblich: return "W";
+                        case Geschlecht.unbestimmt: return "X";
+                        case Geschlecht.unbekannt: return "U";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

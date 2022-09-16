@@ -27,50 +27,50 @@ using static libldt3.model.regel.kontext.KontextregelHelper;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			namespace kontext
-			{
+    namespace model
+    {
+        namespace regel
+        {
+            namespace kontext
+            {
 
-				public class K002 : Kontextregel
-				{
+                public class K002 : Kontextregel
+                {
 
-					static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8419", "8421" };
+                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8419", "8421" };
 
-					public bool IsValid(object owner)
-					{
+                    public bool IsValid(object owner)
+                    {
 
-						IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-						if (fields.Count != FIELDTYPES.Count)
-						{
-							Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
-							return false;
-						}
+                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
+                        if (fields.Count != FIELDTYPES.Count)
+                        {
+                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
+                            return false;
+                        }
 
-						EinheitMesswert? einheitMesswert = (EinheitMesswert?)fields["8419"].GetValue(owner);
-						if (einheitMesswert == null)
-						{
-							return true;
-						}
+                        EinheitMesswert? einheitMesswert = (EinheitMesswert?)fields["8419"].GetValue(owner);
+                        if (einheitMesswert == null)
+                        {
+                            return true;
+                        }
 
-						// Wenn Feldinhalt von FK 8419 = 1 oder 2, muss FK 8421 vorkommen.
-						if (einheitMesswert == EinheitMesswert.SI_Einheit || einheitMesswert == EinheitMesswert.konventionelle_Einheit)
-						{
-							return ContainsAnyString(fields["8421"], owner);
-						}
+                        // Wenn Feldinhalt von FK 8419 = 1 oder 2, muss FK 8421 vorkommen.
+                        if (einheitMesswert == EinheitMesswert.SI_Einheit || einheitMesswert == EinheitMesswert.konventionelle_Einheit)
+                        {
+                            return ContainsAnyString(fields["8421"], owner);
+                        }
 
-						// Wenn Feldinhalt von FK 8419 = 9, darf FK 8421 nicht vorkommen.
-						if (einheitMesswert == EinheitMesswert.dimensionslose_Groesse)
-						{
-							return !ContainsAnyString(fields["8421"], owner);
-						}
+                        // Wenn Feldinhalt von FK 8419 = 9, darf FK 8421 nicht vorkommen.
+                        if (einheitMesswert == EinheitMesswert.dimensionslose_Groesse)
+                        {
+                            return !ContainsAnyString(fields["8421"], owner);
+                        }
 
-						return true;
-					}
-				}
-			}
-		}
-	}
+                        return true;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -23,31 +23,31 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E045
-			 */
-			public enum StatusDringlichkeit
-			{
-				Stroke,
-				bekannt
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E045
+             */
+            public enum StatusDringlichkeit
+            {
+                Stroke,
+                bekannt
+            }
 
-			public static class StatusDringlichkeitExtensions
-			{
-				public static string GetCode(this StatusDringlichkeit self)
-				{
-					switch (self)
-					{
-						case StatusDringlichkeit.Stroke: return "1";
-						case StatusDringlichkeit.bekannt: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class StatusDringlichkeitExtensions
+            {
+                public static string GetCode(this StatusDringlichkeit self)
+                {
+                    switch (self)
+                    {
+                        case StatusDringlichkeit.Stroke: return "1";
+                        case StatusDringlichkeit.bekannt: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

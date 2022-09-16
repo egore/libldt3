@@ -23,38 +23,38 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
+    namespace model
+    {
+        namespace regel
+        {
 
-			/**
-			 * Base class to implement regular expression based rules
-			 */
-			public abstract class RegularExpressionRegel : Regel
-			{
+            /**
+             * Base class to implement regular expression based rules
+             */
+            public abstract class RegularExpressionRegel : Regel
+            {
 
-				readonly Regex pattern;
+                readonly Regex pattern;
 
-				protected RegularExpressionRegel(Regex pattern)
-				{
-					this.pattern = pattern;
-				}
+                protected RegularExpressionRegel(Regex pattern)
+                {
+                    this.pattern = pattern;
+                }
 
-				public bool IsValid(string value)
-				{
-					if (value == null)
-					{
-						return true;
-					}
+                public bool IsValid(string value)
+                {
+                    if (value == null)
+                    {
+                        return true;
+                    }
 
-					// CharSequence is allowed, try to interpret the value as this first
-					return pattern.IsMatch(value);
+                    // CharSequence is allowed, try to interpret the value as this first
+                    return pattern.IsMatch(value);
 
-				}
+                }
 
-			}
+            }
 
-		}
-	}
+        }
+    }
 }

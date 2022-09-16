@@ -26,27 +26,27 @@ using libldt3.model.objekte;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace saetze
-		{
+    namespace model
+    {
+        namespace saetze
+        {
 
-			/**
-			 * Satzart: P (Praxis)-Datenpaket-Header "8230"
-			 */
-			[Datenpaket(Value = Satzart.PraxisDatenpaketHeader)]
-			public class PraxisDatenpaketHeader : Satz
-			{
-				[Feld(Value = "8132", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 9)]
-				public Kopfdaten Kopfdaten;
-				[Feld(Value = "7265", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 1)]
-				public DatensatzAbsender? Absender;
-				[Feld(Value = "8122", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 23)]
-				public IList<Einsenderidentifikation> Einsenderidentifikation;
-			}
-		}
-	}
+            /**
+             * Satzart: P (Praxis)-Datenpaket-Header "8230"
+             */
+            [Datenpaket(Value = Satzart.PraxisDatenpaketHeader)]
+            public class PraxisDatenpaketHeader : Satz
+            {
+                [Feld(Value = "8132", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 9)]
+                public Kopfdaten Kopfdaten;
+                [Feld(Value = "7265", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 1)]
+                public DatensatzAbsender? Absender;
+                [Feld(Value = "8122", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 23)]
+                public IList<Einsenderidentifikation> Einsenderidentifikation;
+            }
+        }
+    }
 }

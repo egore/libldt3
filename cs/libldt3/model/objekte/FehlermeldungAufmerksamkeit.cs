@@ -25,40 +25,40 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
-			 * Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung
-			 * des Einsenders erfordern.
-			 */
-			[Objekt(Value = "0026")]
-			public class FehlermeldungAufmerksamkeit
-			{
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
+             * Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung
+             * des Einsenders erfordern.
+             */
+            [Objekt(Value = "0026")]
+            public class FehlermeldungAufmerksamkeit
+            {
 
-				[Feld(Value = "7280", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 1)]
-				public Benachrichtigungsgrund? benachrichtigungsgrund;
-				[Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 1)]
-				public bool? recallEmpfohlen;
-				[Feld(Value = "8154", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(Laenge = 9)]
-				public Timestamp timestamp;
-				[Feld(Value = "8147", Feldart = Feldart.muss)]
-				[Regelsatz(Laenge = 6)]
-				public Person person;
-				[Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 26)]
-				public IList<Fliesstext> text;
-				[Feld(Value = "8110", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 6)]
-				public IList<Anhang> anhang;
+                [Feld(Value = "7280", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 1)]
+                public Benachrichtigungsgrund? benachrichtigungsgrund;
+                [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 1)]
+                public bool? recallEmpfohlen;
+                [Feld(Value = "8154", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(Laenge = 9)]
+                public Timestamp timestamp;
+                [Feld(Value = "8147", Feldart = Feldart.muss)]
+                [Regelsatz(Laenge = 6)]
+                public Person person;
+                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 26)]
+                public IList<Fliesstext> text;
+                [Feld(Value = "8110", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 6)]
+                public IList<Anhang> anhang;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }
 

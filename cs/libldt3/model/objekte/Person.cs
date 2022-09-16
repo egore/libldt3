@@ -27,64 +27,64 @@ using libldt3.model.regel;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
-			/**
-			 * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
-			 * Daten für die Abwicklung, Abrechnung oder Dokumentation von Aufträgen und
-			 * Befun-den notwendig sind.
-			 */
-			[Objekt(Value = "0047")]
-			public class Person
-			{
-				[Feld(Value = "7420", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 2)]
-				public StatusPerson? status;
-				[Feld(Value = "3100", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 20)]
-				public string namenszusatz;
-				[Feld(Value = "3120", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 20)]
-				public string vorsatzwort;
-				[Feld(Value = "3101", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 45)]
-				public string nachname;
-				[Feld(Value = "3102", Feldart = Feldart.muss)]
-				[Regelsatz(MaxLaenge = 45)]
-				public IList<string> vorname;
-				[Feld(Value = "3103", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Value = new[] { typeof(F003) }, Laenge = 8)]
-				public LocalDate? geburtsdatum;
-				[Feld(Value = "3104", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 20)]
-				public string titel;
-				[Feld(Value = "3110", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 1)]
-				public Geschlecht? geschlecht;
-				[Feld(Value = "3628", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string muttersprache;
-				[Feld(Value = "8990", Feldart = Feldart.kann)]
-				[Regelsatz(MaxLaenge = 60)]
-				public string namenskuerzelNamenszeichen;
-				[Feld(Value = "8228", Name = "Wohnanschrift", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(Laenge = 13)]
-				public Anschrift wohnanschrift;
-				[Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 23)]
-				public Anschrift anschriftArbeitsstelle;
-				[Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 18)]
-				public Anschrift rechnungsanschrift;
-				[Feld(Value = "8232", Name = "Private_Kommunikationsdaten", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 27)]
-				public Kommunikationsdaten privateKommunikationsdaten;
-				[Feld(Value = "8233", Name = "Geschaeftliche_Kommunikationsdaten", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 34)]
-				public Kommunikationsdaten geschaeftlicheKommunikationsdaten;
-			}
-		}
-	}
+    namespace model
+    {
+        namespace objekte
+        {
+            /**
+             * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
+             * Daten für die Abwicklung, Abrechnung oder Dokumentation von Aufträgen und
+             * Befun-den notwendig sind.
+             */
+            [Objekt(Value = "0047")]
+            public class Person
+            {
+                [Feld(Value = "7420", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 2)]
+                public StatusPerson? status;
+                [Feld(Value = "3100", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 20)]
+                public string namenszusatz;
+                [Feld(Value = "3120", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 20)]
+                public string vorsatzwort;
+                [Feld(Value = "3101", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 45)]
+                public string nachname;
+                [Feld(Value = "3102", Feldart = Feldart.muss)]
+                [Regelsatz(MaxLaenge = 45)]
+                public IList<string> vorname;
+                [Feld(Value = "3103", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Value = new[] { typeof(F003) }, Laenge = 8)]
+                public LocalDate? geburtsdatum;
+                [Feld(Value = "3104", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 20)]
+                public string titel;
+                [Feld(Value = "3110", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 1)]
+                public Geschlecht? geschlecht;
+                [Feld(Value = "3628", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string muttersprache;
+                [Feld(Value = "8990", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 60)]
+                public string namenskuerzelNamenszeichen;
+                [Feld(Value = "8228", Name = "Wohnanschrift", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 13)]
+                public Anschrift wohnanschrift;
+                [Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 23)]
+                public Anschrift anschriftArbeitsstelle;
+                [Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 18)]
+                public Anschrift rechnungsanschrift;
+                [Feld(Value = "8232", Name = "Private_Kommunikationsdaten", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 27)]
+                public Kommunikationsdaten privateKommunikationsdaten;
+                [Feld(Value = "8233", Name = "Geschaeftliche_Kommunikationsdaten", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 34)]
+                public Kommunikationsdaten geschaeftlicheKommunikationsdaten;
+            }
+        }
+    }
 }

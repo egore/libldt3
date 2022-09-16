@@ -24,34 +24,34 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E017
-			 */
-			public enum Privattarif
-			{
-				Privat,
-				PostB,
-				KVB
-			}
+            /**
+             * E017
+             */
+            public enum Privattarif
+            {
+                Privat,
+                PostB,
+                KVB
+            }
 
-			public static class PrivattarifExtensions
-			{
-				public static string GetCode(this Privattarif self)
-				{
-					switch (self)
-					{
-					    case Privattarif.Privat: return "1";
-					    case Privattarif.PostB: return "2";
-					    case Privattarif.KVB: return "3";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class PrivattarifExtensions
+            {
+                public static string GetCode(this Privattarif self)
+                {
+                    switch (self)
+                    {
+                        case Privattarif.Privat: return "1";
+                        case Privattarif.PostB: return "2";
+                        case Privattarif.KVB: return "3";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

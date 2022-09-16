@@ -23,33 +23,33 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E032
-			 */
-			public enum Dringlichkeit
-			{
+            /**
+             * E032
+             */
+            public enum Dringlichkeit
+            {
 
-				Notfall,
-				eilig
-			}
+                Notfall,
+                eilig
+            }
 
-			public static class DringlichkeitExtensions
-			{
-				public static string GetCode(this Dringlichkeit self)
-				{
-					switch (self)
-					{
-						case Dringlichkeit.Notfall: return "1";
-						case Dringlichkeit.eilig: return "2";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class DringlichkeitExtensions
+            {
+                public static string GetCode(this Dringlichkeit self)
+                {
+                    switch (self)
+                    {
+                        case Dringlichkeit.Notfall: return "1";
+                        case Dringlichkeit.eilig: return "2";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

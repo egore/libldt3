@@ -23,63 +23,63 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
-			/**
-			 * E147
-			 */
-			public enum SpezifizierungVeranlassungsgrund
-			{
-				/** Eingriff */
-				Eingriff,
-				/** Medikamentengabe */
-				Medikamentengabe,
-				/** unklares Fieber */
-				UnklaresFieber,
-				/** Infektion */
-				Infektion,
-				/** Rheuma */
-				Rheuma,
-				/** Allergie */
-				Allergie,
-				/** Herz/Kreislauf */
-				HerzKreislauf,
-				/** Tumor */
-				Tumor,
-				/** Impfungen */
-				Impfungen,
-				/** Reisen */
-				Reisen,
-				/** Immunität nach Infektion */
-				ImmunitaetNachInfektion,
-				/** Sonstiges */
-				Sonstiges
-			}
+    namespace model
+    {
+        namespace enums
+        {
+            /**
+             * E147
+             */
+            public enum SpezifizierungVeranlassungsgrund
+            {
+                /** Eingriff */
+                Eingriff,
+                /** Medikamentengabe */
+                Medikamentengabe,
+                /** unklares Fieber */
+                UnklaresFieber,
+                /** Infektion */
+                Infektion,
+                /** Rheuma */
+                Rheuma,
+                /** Allergie */
+                Allergie,
+                /** Herz/Kreislauf */
+                HerzKreislauf,
+                /** Tumor */
+                Tumor,
+                /** Impfungen */
+                Impfungen,
+                /** Reisen */
+                Reisen,
+                /** Immunität nach Infektion */
+                ImmunitaetNachInfektion,
+                /** Sonstiges */
+                Sonstiges
+            }
 
-			public static class SpezifizierungVeranlassungsgrundExtensions
-			{
-				public static string GetCode(this SpezifizierungVeranlassungsgrund self)
-				{
-					switch (self)
-					{
-						case SpezifizierungVeranlassungsgrund.Eingriff: return "01";
-						case SpezifizierungVeranlassungsgrund.Medikamentengabe: return "02";
-						case SpezifizierungVeranlassungsgrund.UnklaresFieber: return "03";
-						case SpezifizierungVeranlassungsgrund.Infektion: return "04";
-						case SpezifizierungVeranlassungsgrund.Rheuma: return "05";
-						case SpezifizierungVeranlassungsgrund.Allergie: return "06";
-						case SpezifizierungVeranlassungsgrund.HerzKreislauf: return "07";
-						case SpezifizierungVeranlassungsgrund.Tumor: return "08";
-						case SpezifizierungVeranlassungsgrund.Impfungen: return "09";
-						case SpezifizierungVeranlassungsgrund.Reisen: return "10";
-						case SpezifizierungVeranlassungsgrund.ImmunitaetNachInfektion: return "11";
-						case SpezifizierungVeranlassungsgrund.Sonstiges: return "12";
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+            public static class SpezifizierungVeranlassungsgrundExtensions
+            {
+                public static string GetCode(this SpezifizierungVeranlassungsgrund self)
+                {
+                    switch (self)
+                    {
+                        case SpezifizierungVeranlassungsgrund.Eingriff: return "01";
+                        case SpezifizierungVeranlassungsgrund.Medikamentengabe: return "02";
+                        case SpezifizierungVeranlassungsgrund.UnklaresFieber: return "03";
+                        case SpezifizierungVeranlassungsgrund.Infektion: return "04";
+                        case SpezifizierungVeranlassungsgrund.Rheuma: return "05";
+                        case SpezifizierungVeranlassungsgrund.Allergie: return "06";
+                        case SpezifizierungVeranlassungsgrund.HerzKreislauf: return "07";
+                        case SpezifizierungVeranlassungsgrund.Tumor: return "08";
+                        case SpezifizierungVeranlassungsgrund.Impfungen: return "09";
+                        case SpezifizierungVeranlassungsgrund.Reisen: return "10";
+                        case SpezifizierungVeranlassungsgrund.ImmunitaetNachInfektion: return "11";
+                        case SpezifizierungVeranlassungsgrund.Sonstiges: return "12";
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

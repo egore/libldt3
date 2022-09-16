@@ -23,21 +23,21 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format Versionsnummer der Datensatzbeschreibung
-			 */
-			public class F007 : RegularExpressionRegel
-			{
-				static readonly Regex PATTERN = new Regex("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format Versionsnummer der Datensatzbeschreibung
+             */
+            public class F007 : RegularExpressionRegel
+            {
+                static readonly Regex PATTERN = new Regex("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
 
-				public F007() : base(PATTERN)
-				{
-				}
-			}
-		}
-	}
+                public F007() : base(PATTERN)
+                {
+                }
+            }
+        }
+    }
 }

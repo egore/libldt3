@@ -23,22 +23,22 @@ using System.Text.RegularExpressions;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace regel
-		{
-			/**
-			 * Format der Pharmazentralnummer
-			 */
-			public class F020 : RegularExpressionRegel
-			{
-				static readonly Regex PATTERN = new Regex("^[0-9]{7}[0-9]$");
+    namespace model
+    {
+        namespace regel
+        {
+            /**
+             * Format der Pharmazentralnummer
+             */
+            public class F020 : RegularExpressionRegel
+            {
+                static readonly Regex PATTERN = new Regex("^[0-9]{7}[0-9]$");
 
-				public F020() : base(PATTERN)
-				{
-				}
+                public F020() : base(PATTERN)
+                {
+                }
 
-			}
-		}
-	}
+            }
+        }
+    }
 }

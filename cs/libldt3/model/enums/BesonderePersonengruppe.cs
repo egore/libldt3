@@ -23,50 +23,50 @@ using System;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace enums
-		{
+    namespace model
+    {
+        namespace enums
+        {
 
-			/**
-			 * E021
-			 */
-			public enum BesonderePersonengruppe
-			{
-				/** keine Angabe */
-				keine_Angabe,
-				/** BSHG (Bundessozialhilfegesetz) § 264 SGB V */
-				Bundessozialhilfegesetz,
-				/** BVG (Gesetz über die Versorgung der Opfer des Krieges) */
-				BVG,
-				/**
-				 * SVA-Kennzeichnung für zwischenstaatliches Krankenversicherun-recht:
-				 * Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
-				 */
-				SVAAufwand,
-				/** SVA-Kennzeichnung, pauschal */
-				SVAPauschal,
-				/** Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG */
-				AsylbLG
-			}
+            /**
+             * E021
+             */
+            public enum BesonderePersonengruppe
+            {
+                /** keine Angabe */
+                keine_Angabe,
+                /** BSHG (Bundessozialhilfegesetz) § 264 SGB V */
+                Bundessozialhilfegesetz,
+                /** BVG (Gesetz über die Versorgung der Opfer des Krieges) */
+                BVG,
+                /**
+                 * SVA-Kennzeichnung für zwischenstaatliches Krankenversicherun-recht:
+                 * Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
+                 */
+                SVAAufwand,
+                /** SVA-Kennzeichnung, pauschal */
+                SVAPauschal,
+                /** Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG */
+                AsylbLG
+            }
 
-			public static class BesonderePersonengruppeExtensions
-			{
-				public static string GetCode(this BesonderePersonengruppe self)
-				{
-					switch (self)
-					{
-						case BesonderePersonengruppe.keine_Angabe: return "00";
-						case BesonderePersonengruppe.Bundessozialhilfegesetz: return "04";
-						case BesonderePersonengruppe.BVG: return "06";
-						case BesonderePersonengruppe.SVAAufwand: return "07";
-						case BesonderePersonengruppe.SVAPauschal: return "08";
-						case BesonderePersonengruppe.AsylbLG: return "09";
+            public static class BesonderePersonengruppeExtensions
+            {
+                public static string GetCode(this BesonderePersonengruppe self)
+                {
+                    switch (self)
+                    {
+                        case BesonderePersonengruppe.keine_Angabe: return "00";
+                        case BesonderePersonengruppe.Bundessozialhilfegesetz: return "04";
+                        case BesonderePersonengruppe.BVG: return "06";
+                        case BesonderePersonengruppe.SVAAufwand: return "07";
+                        case BesonderePersonengruppe.SVAPauschal: return "08";
+                        case BesonderePersonengruppe.AsylbLG: return "09";
 
-						default: throw new Exception();
-					}
-				}
-			}
-		}
-	}
+                        default: throw new Exception();
+                    }
+                }
+            }
+        }
+    }
 }

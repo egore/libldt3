@@ -24,23 +24,23 @@ using libldt3.model.enums;
 
 namespace libldt3
 {
-	namespace attributes
-	{
+    namespace attributes
+    {
 
-		/**
-		 * Annotation zur Definition von Sätzen (siehe auch {@link libldt3.model.saetze.Satz})
-		 */
-		[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
-		public class Datenpaket : Attribute
-		{
+        /**
+         * Annotation zur Definition von Sätzen (siehe auch {@link libldt3.model.saetze.Satz})
+         */
+        [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+        public class Datenpaket : Attribute
+        {
 
-			/**
-			 * @return Satzart (z.B. "8220" für Labor-Datenpaket-Header)
-			 */
-			public Satzart Value;
+            /**
+             * @return Satzart (z.B. "8220" für Labor-Datenpaket-Header)
+             */
+            public Satzart Value;
 
-			public Type[] Kontextregeln = { };
+            public Type[] Kontextregeln = { };
 
-		}
-	}
+        }
+    }
 }

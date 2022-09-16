@@ -26,54 +26,54 @@ using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
-	namespace model
-	{
-		namespace objekte
-		{
+    namespace model
+    {
+        namespace objekte
+        {
 
-			/**
-			 * Das Objekt Anschrift definiert die Adresse. Dabei kann es sich entweder um
-			 * ein Postfach oder um eine physische Adresse handeln.
-			 */
-			[Objekt(Value = "0007", Kontextregeln = new[] { typeof(K017) })]
-			public class Anschrift
-			{
+            /**
+             * Das Objekt Anschrift definiert die Adresse. Dabei kann es sich entweder um
+             * ein Postfach oder um eine physische Adresse handeln.
+             */
+            [Objekt(Value = "0007", Kontextregeln = new[] { typeof(K017) })]
+            public class Anschrift
+            {
 
-				[Feld(Value = "3112", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 10)]
-				public string plz;
-				[Feld(Value = "3113", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 40)]
-				public string ort;
-				[Feld(Value = "3107", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 46)]
-				public string strasse;
-				[Feld(Value = "3109", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 9)]
-				public string hausnummer;
-				[Feld(Value = "3115", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 40)]
-				public string anschriftenzusatz;
-				[Feld(Value = "3114", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 3)]
-				public string wohnsitzlaendercode;
-				[Feld(Value = "3121", Feldart = Feldart.bedingt_muss)]
-				[Regelsatz(MaxLaenge = 10)]
-				public string postfachPlz;
-				[Feld(Value = "3122", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 40)]
-				public string postfachOrt;
-				[Feld(Value = "3123", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 8)]
-				public string postfach;
-				[Feld(Value = "3124", Feldart = Feldart.bedingt_kann)]
-				[Regelsatz(MaxLaenge = 3)]
-				public string postfachWohnsitzlaendercode;
-				[Feld(Value = "1202", Feldart = Feldart.kann)]
-				[Regelsatz(Laenge = 1)]
-				public IList<Adresstyp> adresstyp;
+                [Feld(Value = "3112", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 10)]
+                public string plz;
+                [Feld(Value = "3113", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 40)]
+                public string ort;
+                [Feld(Value = "3107", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 46)]
+                public string strasse;
+                [Feld(Value = "3109", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 9)]
+                public string hausnummer;
+                [Feld(Value = "3115", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 40)]
+                public string anschriftenzusatz;
+                [Feld(Value = "3114", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 3)]
+                public string wohnsitzlaendercode;
+                [Feld(Value = "3121", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(MaxLaenge = 10)]
+                public string postfachPlz;
+                [Feld(Value = "3122", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 40)]
+                public string postfachOrt;
+                [Feld(Value = "3123", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 8)]
+                public string postfach;
+                [Feld(Value = "3124", Feldart = Feldart.bedingt_kann)]
+                [Regelsatz(MaxLaenge = 3)]
+                public string postfachWohnsitzlaendercode;
+                [Feld(Value = "1202", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 1)]
+                public IList<Adresstyp> adresstyp;
 
-			}
-		}
-	}
+            }
+        }
+    }
 }
