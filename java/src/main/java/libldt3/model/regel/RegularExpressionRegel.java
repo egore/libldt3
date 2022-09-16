@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 /**
  * Base class to implement regular expression based rules
  */
-abstract class RegularExpressionRegel implements Regel {
+public abstract class RegularExpressionRegel implements Regel {
 
 	public final Pattern pattern;
 
