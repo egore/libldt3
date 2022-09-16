@@ -1,12 +1,30 @@
 <#import "attributes.ftl" as attributes/>
+<#import "method.ftl" as method_/>
 
 <#-- @ftlvariable name="class" type="spoon.reflect.declaration.CtClass" -->
 <#macro classmembers class>
     <#list class.fields as field>
     <@attributes.fieldattributes field/>
-    ${field.visibility} <@converttype type=field.type/> ${field.simpleName};
+    ${field.visibility!} <@converttype type=field.type/> ${field.simpleName};
+    </#list>
+    
+    <#list class.methods as method>
+    <@method_.signature method=method/>
+    <@method_.body method=method/>
     </#list>
 </#macro>
+
+<#macro interfacemembers interface>
+    <#list interface.fields as field>
+    <@attributes.fieldattributes field/>
+    ${field.visibility!} <@converttype type=field.type/> ${field.simpleName};
+    </#list>
+    
+    <#list interface.methods as method>
+    <@method_.signature method=method/>;
+    </#list>
+</#macro>
+
 
 <#macro enummembers enum>
     <#list enum.fields as field>

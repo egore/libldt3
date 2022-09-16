@@ -20,6 +20,6 @@ public interface ${klass.simpleName}<#if klass.superInterfaces?size gt 0> : <#li
     <#list klass.nestedTypes as nestedType>
     <@interface_ klass=nestedType/>
     </#list>
-    <@members.classmembers klass/>
+    <@members.interfacemembers klass/>
 }
 </#macro>

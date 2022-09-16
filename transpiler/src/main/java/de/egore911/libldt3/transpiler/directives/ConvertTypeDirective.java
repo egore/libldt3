@@ -29,6 +29,7 @@ public class ConvertTypeDirective implements TemplateDirectiveModel {
 	private static String convertType(CtTypeReference<?> type) {
 		String name;
 		switch (type.getQualifiedName()) {
+		case "boolean": name = "bool"; break;
 		case "java.lang.String": name = "string"; break;
 		case "java.lang.Boolean": name = "bool?"; break;
 		case "java.lang.Integer": name = "int?"; break;

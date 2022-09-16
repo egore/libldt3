@@ -56,7 +56,8 @@ public class TranspileCsharp {
 		for (CtType<?> type : launcher.getModel().getAllTypes()) {
 			if (type.getPackage().getQualifiedName().equals("libldt3.model.saetze")
 					|| type.getPackage().getQualifiedName().equals("libldt3.model.objekte")
-					|| type.getPackage().getQualifiedName().equals("libldt3.model.enums")) {
+					|| type.getPackage().getQualifiedName().equals("libldt3.model.enums")
+					|| type.getPackage().getQualifiedName().equals("libldt3.model.regel")) {
 				Path file = getOutputFile(base, type);
 				Template template;
 				if (type.isClass()) {
