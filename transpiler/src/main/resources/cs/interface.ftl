@@ -1,7 +1,7 @@
 <#-- @ftlvariable name="interface" type="spoon.reflect.declaration.CtInterface" -->
-<#import "members.ftl" as members/>
-<#import "attributes.ftl" as attributes/>
-<#import "comments.ftl" as comments/>
+<#import "./members.ftl" as members/>
+<#import "./attributes.ftl" as attributes/>
+<#import "./comments.ftl" as comments/>
 <#include "header.ftl"/>
 
 <@genusing class=interface/>

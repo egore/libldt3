@@ -173,6 +173,9 @@ public class GenUsingDirective implements TemplateDirectiveModel {
 		if (package_.equals("libldt3.annotations")) {
 			return "libldt3.attributes";
 		}
+		if (package_.equals("java.util.regex")) {
+			return "System.Text.RegularExpressions";
+		}
 		return package_;
 	}
 
