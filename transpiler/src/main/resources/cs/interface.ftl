@@ -1,25 +1,33 @@
 <#-- @ftlvariable name="interface" type="spoon.reflect.declaration.CtInterface" -->
-<#import "./members.ftl" as members/>
 <#import "./attributes.ftl" as attributes/>
 <#import "./comments.ftl" as comments/>
+<#import "./method.ftl" as method_/>
 <#include "header.ftl"/>
 
 <@genusing class=interface/>
 
 <@namespace package=interface.package>
 
-<@interface_ klass=interface/>
+<@interface_ interface=interface/>
 
 </@namespace>
 
-<#macro interface_ klass>
-<@comments.comments comments=klass.comments />
-<@attributes.classattributes klass/>
-public interface ${klass.simpleName}<#if klass.superInterfaces?size gt 0> : <#list klass.superInterfaces as interface>${interface.simpleName}<#sep>, </#list></#if>
+<#macro interface_ interface>
+<@comments.comments comments=interface.comments />
+<@attributes.classattributes interface/>
+public interface ${interface.simpleName}<#if interface.superInterfaces?size gt 0> : <#list interface.superInterfaces as interface>${interface.simpleName}<#sep>, </#list></#if>
 {
-    <#list klass.nestedTypes as nestedType>
-    <@interface_ klass=nestedType/>
+    <#list interface.nestedTypes as nestedType>
+    <@interface_ interface=nestedType/>
     </#list>
-    <@members.interfacemembers klass/>
+
+    <#list interface.fields as field>
+    <@attributes.fieldattributes field/>
+    ${field.visibility!} <@converttype type=field.type/> ${field.simpleName};
+    </#list>
+    
+    <#list interface.methods as method>
+    <@method_.signature method=method/>;
+    </#list>
 }
 </#macro>

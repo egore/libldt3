@@ -13,6 +13,9 @@
         <#case "CtIfImpl">
             <@renderIfStatement statement/>
             <#break>
+        <#case "CtLocalVariableImpl">
+            <@renderLocalVariableStatement statement/>
+        	<#break>
         <#case "CtReturnImpl">
             <@renderReturnStatement statement/>
             <#break>
@@ -43,6 +46,10 @@
         <@renderStatement statement=statement.elseStatement/>
     }
     </#if>
+</#macro>
+
+<#macro renderLocalVariableStatement statement>
+	<@converttype type=statement.type/> ${statement.simpleName}<#if statement.defaultExpression??> = <@expressions.renderExpression expression=statement.defaultExpression/></#if>;
 </#macro>
 
 <#macro renderReturnStatement statement>

@@ -1,7 +1,8 @@
 <#-- @ftlvariable name="class" type="spoon.reflect.declaration.CtClass" -->
-<#import "./members.ftl" as members/>
 <#import "./attributes.ftl" as attributes/>
 <#import "./comments.ftl" as comments/>
+<#import "./expressions.ftl" as expressions/>
+<#import "./method.ftl" as method_/>
 <#include "header.ftl"/>
 
 <@genusing class=class/>
@@ -20,6 +21,22 @@
     <#list klass.nestedTypes as nestedType>
     <@class_ klass=nestedType/>
     </#list>
-    <@members.classmembers klass/>
+    
+    <#list class.fields as field>
+    <@attributes.fieldattributes field/>
+    ${field.visibility!}<#if field.static> static</#if> <@converttype type=field.type/> ${field.simpleName}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
+    </#list>
+    
+    <#list class.constructors as constructor>
+    	<#if ! constructor.implicit>
+	        <@method_.constructor_signature constructor=constructor/>
+	        <@method_.constructor_body constructor=constructor/>
+        </#if>
+    </#list>
+    
+    <#list class.methods as method>
+    <@method_.signature method=method/>
+    <@method_.body method=method/>
+    </#list>
 }
 </#macro>

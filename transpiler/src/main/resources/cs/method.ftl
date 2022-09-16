@@ -19,7 +19,7 @@ ${constructor.visibility!} ${constructor.parent.simpleName}(<#list constructor.p
 </#macro>
 
 <#macro signature method>
-${method.visibility} <@converttype type=method.type/> ${method.simpleName}(<#list method.parameters as parameter><@converttype type=parameter.type/> ${parameter.simpleName}<#sep>, </#list>)
+${method.visibility!} <@converttype type=method.type/> ${method.simpleName}(<#list method.parameters as parameter><@converttype type=parameter.type/> ${parameter.simpleName}<#sep>, </#list>)
 </#macro>
 
 <#macro body method>
