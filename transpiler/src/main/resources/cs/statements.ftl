@@ -10,8 +10,14 @@
         <#case "CtBlockImpl">
             <@renderBlockStatement statement/>
             <#break>
+        <#case "CtForEachImpl">
+            <@renderForEachStatement statement/>
+            <#break>
         <#case "CtIfImpl">
             <@renderIfStatement statement/>
+            <#break>
+        <#case "CtInvocationImpl">
+            <@expressions.renderInvocationExpression statement/>
             <#break>
         <#case "CtLocalVariableImpl">
             <@renderLocalVariableStatement statement/>
@@ -33,6 +39,13 @@
     <#list statement.statements as statement_>
         <@renderStatement statement=statement_/>
     </#list>
+</#macro>
+
+<#macro renderForEachStatement statement>
+	foreach (<@converttype type=statement.variable.type/> ${statement.variable.simpleName} in <@expressions.renderExpression expression=statement.expression/>)
+	{
+		<@renderBlockStatement statement=statement.body/>
+	}
 </#macro>
 
 <#macro renderIfStatement statement>

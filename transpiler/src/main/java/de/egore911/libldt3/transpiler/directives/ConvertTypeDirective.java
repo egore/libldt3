@@ -36,11 +36,15 @@ public class ConvertTypeDirective implements TemplateDirectiveModel {
 		String name;
 		switch (type.getQualifiedName()) {
 		case "boolean": name = "bool"; break;
-		case "java.lang.String": name = "string"; break;
 		case "java.lang.Boolean": name = "bool?"; break;
-		case "java.lang.Integer": name = "int?"; break;
 		case "java.lang.Float": name = "float?"; break;
+		case "java.lang.Integer": name = "int?"; break;
+		case "java.lang.Object": name = "object"; break;
+		case "java.lang.String": name = "string"; break;
+		case "java.util.HashMap": name = "Dictionary"; break;
 		case "java.util.List": name = "IList"; break;
+		case "java.util.Map": name = "IDictionary"; break;
+		case "java.util.Set": name = "ISet"; break;
 		case "java.util.regex.Pattern": name = "Regex"; break;
 		default: name = type.getSimpleName(); break;
 		}

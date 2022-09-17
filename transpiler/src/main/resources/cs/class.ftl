@@ -23,8 +23,10 @@
     </#list>
     
     <#list class.fields as field>
-    <@attributes.fieldattributes field/>
-    ${field.visibility!}<#if field.static> static</#if> <@converttype type=field.type/> ${field.simpleName}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
+    <#if field.simpleName != "LOG">
+    	<@attributes.fieldattributes field/>
+    	${field.visibility!}<#if field.static> static</#if><#if field.final> readonly</#if> <@converttype type=field.type/> ${field.simpleName}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
+    </#if>
     </#list>
     
     <#list class.constructors as constructor>
