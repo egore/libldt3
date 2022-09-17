@@ -10,6 +10,9 @@
         <#case "CtBlockImpl">
             <@renderBlockStatement statement/>
             <#break>
+        <#case "CtCommentImpl">
+            <@comments.comment statement/>
+            <#break>
         <#case "CtForEachImpl">
             <@renderForEachStatement statement/>
             <#break>
@@ -27,6 +30,9 @@
             <#break>
         <#case "CtSwitchImpl">
             <@renderSwitchStatement statement/>
+            <#break>
+        <#case "CtThrowImpl">
+            <@renderThrowStatement statement/>
             <#break>
         <#default>
             // XXX renderStatement ${statement.class.simpleName} is unknown
@@ -85,4 +91,8 @@ switch (<@expressions.renderExpression expression=statement.selector/>) {
         </#list>
 </#list>
 }
+</#macro>
+
+<#macro renderThrowStatement statement>
+    throw <@expressions.renderExpression expression=statement.thrownExpression/>
 </#macro>

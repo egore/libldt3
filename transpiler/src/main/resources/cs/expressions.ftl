@@ -91,6 +91,9 @@
         <#case "CtVariableReadImpl">
             <@renderVariableAccessExpression expression=expression.target/>.${fieldName}
             <#break>
+        <#case "CtFieldReadImpl">
+            <@renderFieldReadExpression expression=expression.target force_array=false/>.${fieldName}
+            <#break>
         <#default>
             // XXX renderFieldReadExpression ${expression.target.class.simpleName} is unknown
     </#switch>

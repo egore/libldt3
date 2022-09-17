@@ -1,6 +1,11 @@
 
 <#macro comments comments>
-<#list comments as comment>
+<#list comments as comment_>
+<@comment comment=comment_/>
+</#list>
+</#macro>
+
+<#macro comment comment>
 <#switch comment.commentType>
     <#case "JAVADOC">
         /// ${comment.longDescription?replace('\n', '\n/// ')}
@@ -20,5 +25,4 @@
     <#default>
         // XXX comments ${comment.commentType} is unknown
 </#switch>
-</#list>
 </#macro>
