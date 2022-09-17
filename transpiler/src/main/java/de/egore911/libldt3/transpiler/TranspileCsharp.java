@@ -26,67 +26,67 @@ import spoon.reflect.declaration.CtType;
 
 public class TranspileCsharp {
 
-	public static void main(String[] args) throws TemplateNotFoundException, MalformedTemplateNameException,
-			ParseException, IOException, TemplateException {
-		
-		// Install java.util.Logging bridge to slf4j
-		SLF4JBridgeHandler.removeHandlersForRootLogger();
-		SLF4JBridgeHandler.install();
+    public static void main(String[] args) throws TemplateNotFoundException, MalformedTemplateNameException,
+            ParseException, IOException, TemplateException {
 
-		// Read the maven model from the java folder
-		MavenLauncher launcher = new MavenLauncher("../java", MavenLauncher.SOURCE_TYPE.APP_SOURCE);
-		launcher.run();
+        // Install java.util.Logging bridge to slf4j
+        SLF4JBridgeHandler.removeHandlersForRootLogger();
+        SLF4JBridgeHandler.install();
 
-		// Build up the freemarker configuration for C#
-		Configuration config = new Configuration(Configuration.VERSION_2_3_31);
-		config.setTemplateLoader(new ClassTemplateLoader(TranspileCsharp.class, "/cs/"));
+        // Read the maven model from the java folder
+        MavenLauncher launcher = new MavenLauncher("../java", MavenLauncher.SOURCE_TYPE.APP_SOURCE);
+        launcher.run();
 
-		// Add several directives which were simpler to implement in Java than in .ftl files
-		config.setSharedVariable("namespace", new NamespaceDirective());
-		config.setSharedVariable("genusing", new GenUsingDirective());
-		config.setSharedVariable("converttype", new ConvertTypeDirective());
+        // Build up the freemarker configuration for C#
+        Configuration config = new Configuration(Configuration.VERSION_2_3_31);
+        config.setTemplateLoader(new ClassTemplateLoader(TranspileCsharp.class, "/cs/"));
 
-		// Make the current year available as variable
-		config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
+        // Add several directives which were simpler to implement in Java than in .ftl files
+        config.setSharedVariable("namespace", new NamespaceDirective());
+        config.setSharedVariable("genusing", new GenUsingDirective());
+        config.setSharedVariable("converttype", new ConvertTypeDirective());
 
-		Path base = Paths.get("../cs");
+        // Make the current year available as variable
+        config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
 
-		for (CtType<?> type : launcher.getModel().getAllTypes()) {
-			if (type.getPackage().getQualifiedName().equals("libldt3.model.saetze")
-					|| type.getPackage().getQualifiedName().equals("libldt3.model.objekte")
-					|| type.getPackage().getQualifiedName().equals("libldt3.model.enums")
-					|| type.getPackage().getQualifiedName().equals("libldt3.model.regel")
-					|| type.getPackage().getQualifiedName().equals("libldt3.model.regel.kontext")) {
-				Path file = getOutputFile(base, type);
-				Template template;
-				if (type.isClass()) {
-					template = config.getTemplate("class.ftl");
-				} else if (type.isEnum()) {
-					template = config.getTemplate("enum.ftl");
-				} else if (type.isInterface()) {
-					template = config.getTemplate("interface.ftl");
-				} else {
-					throw new UnsupportedOperationException(type.getClass().getSimpleName());
-				}
-				try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))) {
-					template.process(Collections.singletonMap(template.getName().replace(".ftl", ""), type), writer);
-				}
+        Path base = Paths.get("../cs");
 
-				System.err.println(file.toAbsolutePath());
-			}
-		}
+        for (CtType<?> type : launcher.getModel().getAllTypes()) {
+            if (type.getPackage().getQualifiedName().equals("libldt3.model.saetze")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.objekte")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.enums")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.regel")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.regel.kontext")) {
+                Path file = getOutputFile(base, type);
+                Template template;
+                if (type.isClass()) {
+                    template = config.getTemplate("class.ftl");
+                } else if (type.isEnum()) {
+                    template = config.getTemplate("enum.ftl");
+                } else if (type.isInterface()) {
+                    template = config.getTemplate("interface.ftl");
+                } else {
+                    throw new UnsupportedOperationException(type.getClass().getSimpleName());
+                }
+                try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))) {
+                    template.process(Collections.singletonMap(template.getName().replace(".ftl", ""), type), writer);
+                }
 
-	}
+                System.err.println(file.toAbsolutePath());
+            }
+        }
 
-	private static Path getOutputFile(Path base, CtType<?> type) throws IOException {
-		Path dir = base;
-		for (String p : type.getPackage().getQualifiedName().split("\\.")) {
-			dir = dir.resolve(p);
-		}
-		Files.createDirectories(dir);
+    }
 
-		Path file = dir.resolve(type.getSimpleName() + ".cs");
-		return file;
-	}
+    private static Path getOutputFile(Path base, CtType<?> type) throws IOException {
+        Path dir = base;
+        for (String p : type.getPackage().getQualifiedName().split("\\.")) {
+            dir = dir.resolve(p);
+        }
+        Files.createDirectories(dir);
+
+        Path file = dir.resolve(type.getSimpleName() + ".cs");
+        return file;
+    }
 
 }
