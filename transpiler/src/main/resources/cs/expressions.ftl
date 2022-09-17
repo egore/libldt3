@@ -1,13 +1,13 @@
 <#macro renderExpression expression force_array=false>
-	<@comments.comments comments=expression.comments />
-	<@compress single_line=true>
+    <@comments.comments comments=expression.comments />
+    <@compress single_line=true>
     <#switch expression.class.simpleName>
         <#case "CtBinaryOperatorImpl">
             <@renderBinaryOperatorExpression expression/>
             <#break>
         <#case "CtConstructorCallImpl">
             <@renderConstructorCallExpression expression/>
-        	<#break>
+            <#break>
         <#case "CtFieldReadImpl">
         <#case "CtFieldWriteImpl">
             <@renderFieldReadExpression expression force_array/>
@@ -70,7 +70,7 @@
 </#macro>
 
 <#macro renderConstructorCallExpression expression>
-	<@converttype type=expression.executable.type/>(<#list expression.arguments as argument><@renderExpression expression=argument/><#sep>, </#list>)
+    <@converttype type=expression.executable.type/>(<#list expression.arguments as argument><@renderExpression expression=argument/><#sep>, </#list>)
 </#macro>
 
 <#macro renderFieldReadExpression expression force_array>
@@ -89,8 +89,8 @@
             <@renderThisAccessExpression expression=expression.target/>.${fieldName}
             <#break>
         <#case "CtVariableReadImpl">
-        	<@renderVariableAccessExpression expression=expression.target/>.${fieldName}
-        	<#break>
+            <@renderVariableAccessExpression expression=expression.target/>.${fieldName}
+            <#break>
         <#default>
             // XXX renderFieldReadExpression ${expression.target.class.simpleName} is unknown
     </#switch>
@@ -133,23 +133,23 @@
 </#macro>
 
 <#macro renderUnaryOperatorExpression expression>
-	<#switch expression.kind>
-		<#case "POS">+<#break>
-		<#case "NEG">-<#break>
-		<#case "NOT">!<#break>
-		<#case "COMPL">~<#break>
-		<#case "PREINC">++<#break>
-		<#case "PREDEC">--<#break>
-		<#case "POSTINC">
-		<#case "POSTDEC">
-			<#break>
-		<#default>// XXX renderUnaryOperatorExpression ${expression.kind} is unknown
-	</#switch>
-	<@renderExpression expression=expression.operand/>
-	<#switch expression.kind>
-		<#case "POSTINC">++<#break>
-		<#case "POSTDEC">--<#break>
-	</#switch>
+    <#switch expression.kind>
+        <#case "POS">+<#break>
+        <#case "NEG">-<#break>
+        <#case "NOT">!<#break>
+        <#case "COMPL">~<#break>
+        <#case "PREINC">++<#break>
+        <#case "PREDEC">--<#break>
+        <#case "POSTINC">
+        <#case "POSTDEC">
+            <#break>
+        <#default>// XXX renderUnaryOperatorExpression ${expression.kind} is unknown
+    </#switch>
+    <@renderExpression expression=expression.operand/>
+    <#switch expression.kind>
+        <#case "POSTINC">++<#break>
+        <#case "POSTDEC">--<#break>
+    </#switch>
 </#macro>
 
 <#macro renderVariableAccessExpression expression>

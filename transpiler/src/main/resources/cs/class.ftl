@@ -8,9 +8,7 @@
 <@genusing class=class/>
 
 <@namespace package=class.package>
-
 <@class_ klass=class/>
-
 </@namespace>
 
 <#macro class_ klass>
@@ -21,21 +19,18 @@
     <#list klass.nestedTypes as nestedType>
     <@class_ klass=nestedType/>
     </#list>
-    
     <#list class.fields as field>
     <#if field.simpleName != "LOG">
-    	<@attributes.fieldattributes field/>
-    	${field.visibility!}<#if field.static> static</#if><#if field.final> readonly</#if> <@converttype type=field.type/> ${field.simpleName}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
+        <@attributes.fieldattributes field/>
+        ${field.visibility!}<#if field.static> static</#if><#if field.final> readonly</#if> <@converttype type=field.type/> ${field.simpleName}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
     </#if>
     </#list>
-    
     <#list class.constructors as constructor>
-    	<#if ! constructor.implicit>
-	        <@method_.constructor_signature constructor=constructor/>
-	        <@method_.constructor_body constructor=constructor/>
+        <#if ! constructor.implicit>
+            <@method_.constructor_signature constructor=constructor/>
+            <@method_.constructor_body constructor=constructor/>
         </#if>
     </#list>
-    
     <#list class.methods as method>
     <@method_.signature method=method/>
     <@method_.body method=method/>

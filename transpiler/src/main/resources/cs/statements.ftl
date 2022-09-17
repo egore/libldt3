@@ -2,7 +2,7 @@
 <#import "./comments.ftl" as comments/>
 
 <#macro renderStatement statement>
-	<@comments.comments comments=statement.comments />
+    <@comments.comments comments=statement.comments />
     <#switch statement.class.simpleName>
         <#case "CtAssignmentImpl">
             <@renderAssignmentStatement statement/>
@@ -21,9 +21,12 @@
             <#break>
         <#case "CtLocalVariableImpl">
             <@renderLocalVariableStatement statement/>
-        	<#break>
+            <#break>
         <#case "CtReturnImpl">
             <@renderReturnStatement statement/>
+            <#break>
+        <#case "CtSwitchImpl">
+            <@renderSwitchStatement statement/>
             <#break>
         <#default>
             // XXX renderStatement ${statement.class.simpleName} is unknown
@@ -42,10 +45,10 @@
 </#macro>
 
 <#macro renderForEachStatement statement>
-	foreach (<@converttype type=statement.variable.type/> ${statement.variable.simpleName} in <@expressions.renderExpression expression=statement.expression/>)
-	{
-		<@renderBlockStatement statement=statement.body/>
-	}
+    foreach (<@converttype type=statement.variable.type/> ${statement.variable.simpleName} in <@expressions.renderExpression expression=statement.expression/>)
+    {
+        <@renderBlockStatement statement=statement.body/>
+    }
 </#macro>
 
 <#macro renderIfStatement statement>
@@ -62,9 +65,24 @@
 </#macro>
 
 <#macro renderLocalVariableStatement statement>
-	<@converttype type=statement.type/> ${statement.simpleName}<#if statement.defaultExpression??> = <@expressions.renderExpression expression=statement.defaultExpression/></#if>;
+    <@converttype type=statement.type/> ${statement.simpleName}<#if statement.defaultExpression??> = <@expressions.renderExpression expression=statement.defaultExpression/></#if>;
 </#macro>
 
 <#macro renderReturnStatement statement>
 return <#if statement.returnedExpression??><@expressions.renderExpression expression=statement.returnedExpression/></#if>;
+</#macro>
+
+<#macro renderSwitchStatement statement>
+switch (<@expressions.renderExpression expression=statement.selector/>) {
+<#list statement.cases as case>
+	<#if case.caseExpression??>
+    case <@expressions.renderExpression expression=case.caseExpression/>:
+   	<#else>
+   	default:
+   	</#if>
+        <#list case.statements as caseStatement>
+            <@renderStatement statement=caseStatement/>
+        </#list>
+</#list>
+}
 </#macro>
