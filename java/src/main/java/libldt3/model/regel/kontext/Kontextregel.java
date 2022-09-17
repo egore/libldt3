@@ -23,6 +23,6 @@ package libldt3.model.regel.kontext;
 
 public interface Kontextregel {
 
-	boolean isValid(Object owner) throws IllegalAccessException;
+    boolean isValid(Object owner) throws IllegalAccessException;
 
 }

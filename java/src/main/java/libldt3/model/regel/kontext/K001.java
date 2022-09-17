@@ -38,26 +38,26 @@ import org.slf4j.LoggerFactory;
  * Entweder FK 6305 oder FK 8242 ist vorhanden.
  */
 public class K001 implements Kontextregel {
-	
-	public static final Logger LOG = LoggerFactory.getLogger(K001.class);
+    
+    private static final Logger LOG = LoggerFactory.getLogger(K001.class);
 
-	public static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("6305", "8242")));
+    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("6305", "8242")));
 
-	@Override
-	public boolean isValid(Object owner) throws IllegalAccessException {
+    @Override
+    public boolean isValid(Object owner) throws IllegalAccessException {
 
-		Map<String, Field> fields = findFields(owner, FIELDTYPES);
-		if (fields.size() != FIELDTYPES.size()) {
-			LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
-			return false;
-		}
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
 
-		for (Field f : fields.values()) {
-			if (containsAnyString(f, owner)) {
-				return true;
-			}
-		}
-		return false;
-	}
+        for (Field f : fields.values()) {
+            if (containsAnyString(f, owner)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

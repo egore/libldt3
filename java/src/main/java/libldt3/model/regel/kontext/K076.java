@@ -28,7 +28,7 @@ public class K076 implements Kontextregel {
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
-    	throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
     }
 
 }

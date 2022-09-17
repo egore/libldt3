@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2017  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,14 +34,19 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import libldt3.model.enums.Abrechnungsinfo;
+
 /**
- * Wenn FK 8428 oder FK 8430 oder FK 8429 vorhanden ist, darf FK 8431 vorhanden sein.
+ * Wird die FK 8410 (Test-Ident) im Kontext mit der Überweisung von
+ * Laborleistungen an einen Laborfacharzt verwendet, muss die FK 8411
+ * (Testbezeichnung) im Datensatz vorkommen (mit Inhalt der FK 8411 muss das
+ * Auftragsfeld des digitalen Musters 10 befüllt werden).
  */
-public class K006 implements Kontextregel {
+public class K003 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K006.class);
+    private static final Logger LOG = LoggerFactory.getLogger(K003.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8428", "8430", "8429", "8431")));
+    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("7303", "8410", "8411")));
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
@@ -52,14 +57,21 @@ public class K006 implements Kontextregel {
             return false;
         }
 
-        if (containsAnyString(fields.get("8428"), owner) ||
-            containsAnyString(fields.get("8430"), owner) ||
-            containsAnyString(fields.get("8429"), owner))
-        {
+        Abrechnungsinfo abrechnungsinfo = (Abrechnungsinfo) fields.get("7303").get(owner);
+        if (abrechnungsinfo == null) {
             return true;
         }
 
-        return !containsAnyString(fields.get("8431"), owner);
+        // Wenn Feldinhalt von FK 7303 = 1, 8 oder 9 ist und FK 8410 vorhanden, muss auch FK 8411 vorhanden sein.
+        if (abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharzt ||
+                abrechnungsinfo == Abrechnungsinfo.Asv ||
+                abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharztPraeventiv) {
+            if (containsAnyString(fields.get("8410"), owner)) {
+                return containsAnyString(fields.get("8411"), owner);
+            }
+        }
+
+        return true;
     }
 
 }

@@ -31,14 +31,14 @@ import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Gebuehrenordnung;
 import libldt3.model.regel.F008;
 import libldt3.model.regel.F009;
-import libldt3.model.regel.kontext.K004;
+import libldt3.model.regel.kontext.K005;
 
 /**
  * Jeder Untersuchung wird direkt eine Abrechnung zugeordnet. Hier werden alle
  * Werte transportiert, die für die ordnungsgemäße Abrechnung des Auftrages
  * notwendig sind.
  */
-@Objekt(value = "0058", kontextregeln = K004.class)
+@Objekt(value = "0058", kontextregeln = { K005.class })
 public class Untersuchungsabrechnung {
 
 	@Objekt

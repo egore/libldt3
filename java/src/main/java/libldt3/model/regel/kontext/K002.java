@@ -35,11 +35,18 @@ import java.util.Set;
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
+/**
+ * Wenn zu einem Ergebniswert Maßeinheit angegeben wird, muss angegeben werden,
+ * ob es sich bei der Maßeinheit um eine konventionelle oder SI-Einheit
+ * handelt. Wenn zu einem Ergebniswert keine Maßeinheit angegeben wird, muss
+ * angegeben werden, dass es sich bei dem Ergebniswert um eine sogenannte
+ * "dimensionslose Größe" handelt.
+ */
 public class K002 implements Kontextregel {
 
-    public static final Logger LOG = LoggerFactory.getLogger(K002.class);
+    private static final Logger LOG = LoggerFactory.getLogger(K002.class);
 
-    public static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8419", "8421")));
+    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8419", "8421")));
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {

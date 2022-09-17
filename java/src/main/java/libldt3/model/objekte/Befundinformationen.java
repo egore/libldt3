@@ -29,12 +29,13 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.Auftragsstatus;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
+import libldt3.model.regel.kontext.K005;
 
 /**
  * Dieses Objekt bündelt alle Daten zum Befund inklusive aller Kennungen, welche
  * eine eineindeutige Zuordnung von Auftrag und Befund sicherstellen.
  */
-@Objekt(value = "0017")
+@Objekt(value = "0017", kontextregeln = { K005.class })
 public class Befundinformationen {
 
 	@Objekt

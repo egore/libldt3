@@ -40,9 +40,9 @@ import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
  */
 public class K017 implements Kontextregel {
 
-    public static final Logger LOG = LoggerFactory.getLogger(K017.class);
+    private static final Logger LOG = LoggerFactory.getLogger(K017.class);
 
-    public static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("3112", "3121", "3114", "3124")));
+    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("3112", "3121", "3114", "3124")));
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {

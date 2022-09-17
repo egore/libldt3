@@ -40,7 +40,6 @@ import libldt3.model.regel.F002;
 import libldt3.model.regel.F010;
 import libldt3.model.regel.F011;
 import libldt3.model.regel.F022;
-import libldt3.model.regel.kontext.K004;
 import libldt3.model.regel.kontext.K041;
 
 /**
@@ -58,7 +57,7 @@ import libldt3.model.regel.kontext.K041;
  * zugeordnet werden können.
  * </p>
  */
-@Objekt(value = "0002", kontextregeln = {K004.class, K041.class})
+@Objekt(value = "0002", kontextregeln = { K041.class })
 public class AbrechnungGkv {
 
 	@Feld(value = "4239", feldart = Feldart.muss)
