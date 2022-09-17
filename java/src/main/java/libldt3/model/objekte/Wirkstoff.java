@@ -33,23 +33,23 @@ import libldt3.model.regel.F020;
 @Objekt("0071")
 public class Wirkstoff {
 
-	@Feld(value = "6212", feldart = Feldart.muss)
-	@Regelsatz(maxLaenge = 60)
-	public String arzneimittelwirkstoff;
-	@Feld(value = "6206", feldart = Feldart.bedingt_muss)
-	@Regelsatz(value = F020.class, laenge = 8)
-	public String pzn;
-	@Feld(value = "6224", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-	public String wirkstoffCode;
-	@Feld(value = "6214", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String wirkstoffKlassifikation;
-	@Feld(value = "8523", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-	public String wirkstoffmenge;
-	@Feld(value = "8421", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 20)
-	public String mengeneinheit;
+    @Feld(value = "6212", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 60)
+    public String arzneimittelwirkstoff;
+    @Feld(value = "6206", feldart = Feldart.bedingt_muss)
+    @Regelsatz(value = F020.class, laenge = 8)
+    public String pzn;
+    @Feld(value = "6224", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+    public String wirkstoffCode;
+    @Feld(value = "6214", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String wirkstoffKlassifikation;
+    @Feld(value = "8523", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+    public String wirkstoffmenge;
+    @Feld(value = "8421", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 20)
+    public String mengeneinheit;
 
 }

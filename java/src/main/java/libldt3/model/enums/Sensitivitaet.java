@@ -26,20 +26,20 @@ package libldt3.model.enums;
  */
 public enum Sensitivitaet {
 
-	/** sensibel */
-	sensibel("S"),
-	/** intermediär */
-	intermediaer("I"),
-	/** resistent */
-	resistent("R");
+    /** sensibel */
+    sensibel("S"),
+    /** intermediär */
+    intermediaer("I"),
+    /** resistent */
+    resistent("R");
 
-	public final String code;
+    public final String code;
 
-	Sensitivitaet(String code) {
-		this.code = code;
-	}
+    Sensitivitaet(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 }

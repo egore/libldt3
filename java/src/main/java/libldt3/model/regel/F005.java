@@ -28,10 +28,10 @@ import java.util.regex.Pattern;
  */
 public class F005 extends RegularExpressionRegel {
 
-	public static final Pattern PATTERN = Pattern.compile("^[0-9]{2}[0-6]$");
+    public static final Pattern PATTERN = Pattern.compile("^[0-9]{2}[0-6]$");
 
-	public F005() {
-		super(PATTERN);
-	}
+    public F005() {
+        super(PATTERN);
+    }
 
 }

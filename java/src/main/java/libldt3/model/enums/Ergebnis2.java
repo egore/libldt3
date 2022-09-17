@@ -26,12 +26,12 @@ package libldt3.model.enums;
  */
 public enum Ergebnis2 {
 
-	positiv("1"), negativ("2"), nicht_auswertbar("3"), suspekt("4");
+    positiv("1"), negativ("2"), nicht_auswertbar("3"), suspekt("4");
 
-	public final String code;
+    public final String code;
 
-	Ergebnis2(String code) {
-		this.code = code;
-	}
+    Ergebnis2(String code) {
+        this.code = code;
+    }
 
 }

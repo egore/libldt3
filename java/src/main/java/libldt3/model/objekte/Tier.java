@@ -39,32 +39,32 @@ import libldt3.model.regel.F002;
 @Objekt("0053")
 public class Tier {
 
-	@Feld(value = "7319", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String identifikationsnummerQuelle;
-	@Feld(value = "7313", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String artRasseMaterial;
-	@Feld(value = "7314", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String nameKennung;
-	@Feld(value = "7315", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 10)
-	public String alter;
-	@Feld(value = "7326", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 1)
-	public Zeiteinheit alterIn;
-	@Feld(value = "7351", feldart = Feldart.kann)
-	@Regelsatz(value = F002.class, laenge = 8)
-	public LocalDate geburtsdatum;
-	@Feld(value = "8107", feldart = Feldart.kann)
-	@Regelsatz(laenge = 9)
-	public Anschrift anschrift;
-	@Feld(value = "8147", feldart = Feldart.kann)
-	@Regelsatz(laenge = 6)
-	public Person person;
-	@Feld(value = "8110", feldart = Feldart.kann)
-	@Regelsatz(laenge = 6)
-	public List<Anhang> anhang;
+    @Feld(value = "7319", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String identifikationsnummerQuelle;
+    @Feld(value = "7313", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String artRasseMaterial;
+    @Feld(value = "7314", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String nameKennung;
+    @Feld(value = "7315", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 10)
+    public String alter;
+    @Feld(value = "7326", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 1)
+    public Zeiteinheit alterIn;
+    @Feld(value = "7351", feldart = Feldart.kann)
+    @Regelsatz(value = F002.class, laenge = 8)
+    public LocalDate geburtsdatum;
+    @Feld(value = "8107", feldart = Feldart.kann)
+    @Regelsatz(laenge = 9)
+    public Anschrift anschrift;
+    @Feld(value = "8147", feldart = Feldart.kann)
+    @Regelsatz(laenge = 6)
+    public Person person;
+    @Feld(value = "8110", feldart = Feldart.kann)
+    @Regelsatz(laenge = 6)
+    public List<Anhang> anhang;
 
 }

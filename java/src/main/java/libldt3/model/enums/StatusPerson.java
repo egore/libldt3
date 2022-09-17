@@ -25,43 +25,43 @@ package libldt3.model.enums;
  * E027
  */
 public enum StatusPerson {
-	/** Erstveranlasser */
-	Erstveranlasser("01"),
-	/** Einsender Arzt */
-	EinsenderArzt("02"),
-	/** Einsender Sonstige */
-	EinsenderSonstige("03"),
-	/** Versicherter */
-	Versicherter("04"),
-	/** Rechnungsempfänger */
-	Rechnungsempfaenger("05"),
-	/** Bevollmächtigter */
-	Bevollmaechtigter("06"),
-	/** Laborarzt/Befundersteller */
-	Laborarzt_Befundersteller("07"),
-	/** Leistungserbringer */
-	Leistungserbringer("08"),
-	/** Softwareverantwortlicher */
-	Softwareverantwortlicher("09"),
-	/** Zusätzlicher Befundempfänger */
-	ZusaetzlicherBefundempfaenger("10"),
-	/** Halter (eines Tieres) */
-	Tierhalter("11"),
-	/** Patient */
-	Patient("12"),
-	/** Überweiser */
-	Ueberweiser("14"),
-	/** sonstige juristische Person */
-	sonstigeJuristischePerson("16"),
-	/** Medizinisch-technische/r Assistent/in (MTA) */
-	MTA("17"),
-	/** Medizinische/r Fachangestellte/r (MFA) */
-	MFA("18");
+    /** Erstveranlasser */
+    Erstveranlasser("01"),
+    /** Einsender Arzt */
+    EinsenderArzt("02"),
+    /** Einsender Sonstige */
+    EinsenderSonstige("03"),
+    /** Versicherter */
+    Versicherter("04"),
+    /** Rechnungsempfänger */
+    Rechnungsempfaenger("05"),
+    /** Bevollmächtigter */
+    Bevollmaechtigter("06"),
+    /** Laborarzt/Befundersteller */
+    Laborarzt_Befundersteller("07"),
+    /** Leistungserbringer */
+    Leistungserbringer("08"),
+    /** Softwareverantwortlicher */
+    Softwareverantwortlicher("09"),
+    /** Zusätzlicher Befundempfänger */
+    ZusaetzlicherBefundempfaenger("10"),
+    /** Halter (eines Tieres) */
+    Tierhalter("11"),
+    /** Patient */
+    Patient("12"),
+    /** Überweiser */
+    Ueberweiser("14"),
+    /** sonstige juristische Person */
+    sonstigeJuristischePerson("16"),
+    /** Medizinisch-technische/r Assistent/in (MTA) */
+    MTA("17"),
+    /** Medizinische/r Fachangestellte/r (MFA) */
+    MFA("18");
 
-	public final String code;
+    public final String code;
 
-	StatusPerson(String code) {
-		this.code = code;
-	}
+    StatusPerson(String code) {
+        this.code = code;
+    }
 
 }

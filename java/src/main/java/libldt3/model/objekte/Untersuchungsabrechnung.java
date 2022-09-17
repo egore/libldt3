@@ -41,38 +41,38 @@ import libldt3.model.regel.kontext.K005;
 @Objekt(value = "0058", kontextregeln = { K005.class })
 public class Untersuchungsabrechnung {
 
-	@Objekt
-	public static class Gebuehrennummer {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "8406", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-		public String kosten;
-		@Feld(value = "5005", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 3)
-		public Integer multiplikator;
-		@Feld(value = "5009", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-		public List<String> begruendungstext;
-		@Feld(value = "8614", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-		public Boolean abgerechnet;
-	}
+    @Objekt
+    public static class Gebuehrennummer {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "8406", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+        public String kosten;
+        @Feld(value = "5005", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 3)
+        public Integer multiplikator;
+        @Feld(value = "5009", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+        public List<String> begruendungstext;
+        @Feld(value = "8614", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+        public Boolean abgerechnet;
+    }
 
-	@Feld(value = "7303", feldart = Feldart.muss)
-	@Regelsatz(maxLaenge = 2)
-	public Abrechnungsinfo abrechnungsinfo;
-	@Feld(value = "4121", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 1)
-	public Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "5001", feldart = Feldart.bedingt_muss)
-	@Regelsatz(value = {F008.class, F009.class}, maxLaenge = 9)
-	public List<Gebuehrennummer> gebuehrennummer;
-	@Feld(value = "7259", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String abrechenbareLeistungenKatalogId;
-	@Feld(value = "7251", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String katalog;
+    @Feld(value = "7303", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 2)
+    public Abrechnungsinfo abrechnungsinfo;
+    @Feld(value = "4121", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 1)
+    public Gebuehrenordnung gebuehrenordnung;
+    @Feld(value = "5001", feldart = Feldart.bedingt_muss)
+    @Regelsatz(value = {F008.class, F009.class}, maxLaenge = 9)
+    public List<Gebuehrennummer> gebuehrennummer;
+    @Feld(value = "7259", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String abrechenbareLeistungenKatalogId;
+    @Feld(value = "7251", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String katalog;
 
 }

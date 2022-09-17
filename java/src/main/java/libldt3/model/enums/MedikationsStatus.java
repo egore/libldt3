@@ -26,19 +26,19 @@ package libldt3.model.enums;
  */
 public enum MedikationsStatus {
 
-	/** Akutmedikation */
-	Akutmedikation("1"),
-	/** Bedarfsmedikation */
-	Bedarfsmedikation("2"),
-	/** Dauermedikation */
-	Dauermedikation("3"),
-	/** Selbstmedikation */
-	Selbstmedikation("4");
+    /** Akutmedikation */
+    Akutmedikation("1"),
+    /** Bedarfsmedikation */
+    Bedarfsmedikation("2"),
+    /** Dauermedikation */
+    Dauermedikation("3"),
+    /** Selbstmedikation */
+    Selbstmedikation("4");
 
-	public final String code;
+    public final String code;
 
-	MedikationsStatus(String code) {
-		this.code = code;
-	}
+    MedikationsStatus(String code) {
+        this.code = code;
+    }
 
 }

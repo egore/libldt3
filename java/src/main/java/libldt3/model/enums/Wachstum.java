@@ -26,21 +26,21 @@ package libldt3.model.enums;
  */
 public enum Wachstum {
 
-	/** nicht nachweisbar / kein Wachstum */
-	nicht_nachweisbar_kein_Wachstum("0"),
-	/** spärlich */
-	spaerlich("1"),
-	/** mäßig/vereinzelt */
-	maessig_vereinzelt("2"),
-	/** reichlich */
-	reichlich("3"),
-	/** massenhaft */
-	massenhaft("4");
+    /** nicht nachweisbar / kein Wachstum */
+    nicht_nachweisbar_kein_Wachstum("0"),
+    /** spärlich */
+    spaerlich("1"),
+    /** mäßig/vereinzelt */
+    maessig_vereinzelt("2"),
+    /** reichlich */
+    reichlich("3"),
+    /** massenhaft */
+    massenhaft("4");
 
-	public final String code;
+    public final String code;
 
-	Wachstum(String code) {
-		this.code = code;
-	}
+    Wachstum(String code) {
+        this.code = code;
+    }
 
 }

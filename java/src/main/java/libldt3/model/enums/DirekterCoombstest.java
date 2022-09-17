@@ -28,16 +28,16 @@ package libldt3.model.enums;
  */
 public enum DirekterCoombstest {
 
-	negativ("0"),
-	einfachPositiv("1"),
-	zweifachPositiv("2"),
-	dreifachPositiv("3"),
-	viewfachPositiv("4");
+    negativ("0"),
+    einfachPositiv("1"),
+    zweifachPositiv("2"),
+    dreifachPositiv("3"),
+    viewfachPositiv("4");
 
-	public final String code;
+    public final String code;
 
-	DirekterCoombstest(String code) {
-		this.code = code;
-	}
+    DirekterCoombstest(String code) {
+        this.code = code;
+    }
 
 }

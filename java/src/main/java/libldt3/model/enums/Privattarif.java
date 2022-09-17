@@ -26,12 +26,12 @@ package libldt3.model.enums;
  */
 public enum Privattarif {
 
-	Privat("1"), PostB("2"), KVB("3");
+    Privat("1"), PostB("2"), KVB("3");
 
-	public final String code;
+    public final String code;
 
-	Privattarif(String code) {
-		this.code = code;
-	}
+    Privattarif(String code) {
+        this.code = code;
+    }
 
 }

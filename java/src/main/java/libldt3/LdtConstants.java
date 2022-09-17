@@ -28,21 +28,21 @@ import java.time.format.DateTimeFormatter;
  */
 public class LdtConstants {
 
-	public static final DateTimeFormatter FORMAT_DATE = DateTimeFormatter.ofPattern("yyyyMMdd");
-	public static final DateTimeFormatter FORMAT_TIME = DateTimeFormatter.ofPattern("HHmmss");
+    public static final DateTimeFormatter FORMAT_DATE = DateTimeFormatter.ofPattern("yyyyMMdd");
+    public static final DateTimeFormatter FORMAT_TIME = DateTimeFormatter.ofPattern("HHmmss");
 
-	/** Determines how the reader deals with invalid LDT */
-	public enum Mode {
-		/**
-		 * In case invalid LDT is detected, the reader will abort with an
-		 * exception
-		 */
-		STRICT,
-		/**
-		 * When the reader encounters invalid LDT, it will log as error and
-		 * continue
-		 */
-		RELAXED
-	}
+    /** Determines how the reader deals with invalid LDT */
+    public enum Mode {
+        /**
+         * In case invalid LDT is detected, the reader will abort with an
+         * exception
+         */
+        STRICT,
+        /**
+         * When the reader encounters invalid LDT, it will log as error and
+         * continue
+         */
+        RELAXED
+    }
 
 }

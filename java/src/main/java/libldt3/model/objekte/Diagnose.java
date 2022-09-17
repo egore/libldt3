@@ -37,23 +37,23 @@ import libldt3.model.regel.F004;
 @Objekt("0100")
 public class Diagnose {
 
-	@Feld(value = "4207", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> diagnoseVerdachtsdiagnose;
-	@Feld(value = "6001", feldart = Feldart.bedingt_muss)
-	@Regelsatz(F004.class)
-	public String icdCode;
-	@Feld(value = "6003", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 1)
-	public Diagnosesicherheit diagnosesicherheit;
-	@Feld(value = "6004", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 1)
-	public Lokalisation lokalisation;
-	@Feld(value = "6006", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> erlaeuterung;
-	@Feld(value = "6008", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> ausnahmetatbestand;
+    @Feld(value = "4207", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> diagnoseVerdachtsdiagnose;
+    @Feld(value = "6001", feldart = Feldart.bedingt_muss)
+    @Regelsatz(F004.class)
+    public String icdCode;
+    @Feld(value = "6003", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 1)
+    public Diagnosesicherheit diagnosesicherheit;
+    @Feld(value = "6004", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 1)
+    public Lokalisation lokalisation;
+    @Feld(value = "6006", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> erlaeuterung;
+    @Feld(value = "6008", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> ausnahmetatbestand;
 
 }

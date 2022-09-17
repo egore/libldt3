@@ -23,6 +23,6 @@ package libldt3.model.regel;
 
 public interface Regel {
 
-	boolean isValid(String value);
+    boolean isValid(String value);
 
 }

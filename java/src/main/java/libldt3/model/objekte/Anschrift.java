@@ -37,39 +37,39 @@ import libldt3.model.regel.kontext.K017;
 @Objekt(value = "0007", kontextregeln = K017.class)
 public class Anschrift {
 
-	@Feld(value = "3112", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 10)
-	public String plz;
-	@Feld(value = "3113", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 40)
-	public String ort;
-	@Feld(value = "3107", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 46)
-	public String strasse;
-	@Feld(value = "3109", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 9)
-	public String hausnummer;
-	@Feld(value = "3115", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 40)
-	public String anschriftenzusatz;
-	@Feld(value = "3114", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 3)
-	public String wohnsitzlaendercode;
+    @Feld(value = "3112", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 10)
+    public String plz;
+    @Feld(value = "3113", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 40)
+    public String ort;
+    @Feld(value = "3107", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 46)
+    public String strasse;
+    @Feld(value = "3109", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 9)
+    public String hausnummer;
+    @Feld(value = "3115", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 40)
+    public String anschriftenzusatz;
+    @Feld(value = "3114", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 3)
+    public String wohnsitzlaendercode;
 
-	@Feld(value = "3121", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 10)
-	public String postfachPlz;
-	@Feld(value = "3122", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 40)
-	public String postfachOrt;
-	@Feld(value = "3123", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 8)
-	public String postfach;
-	@Feld(value = "3124", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 3)
-	public String postfachWohnsitzlaendercode;
-	@Feld(value = "1202", feldart = Feldart.kann)
-	@Regelsatz(laenge = 1)
-	public List<Adresstyp> adresstyp;
+    @Feld(value = "3121", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 10)
+    public String postfachPlz;
+    @Feld(value = "3122", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 40)
+    public String postfachOrt;
+    @Feld(value = "3123", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 8)
+    public String postfach;
+    @Feld(value = "3124", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 3)
+    public String postfachWohnsitzlaendercode;
+    @Feld(value = "1202", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public List<Adresstyp> adresstyp;
 
 }

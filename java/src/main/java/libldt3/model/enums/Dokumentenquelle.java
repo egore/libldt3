@@ -26,12 +26,12 @@ package libldt3.model.enums;
  */
 public enum Dokumentenquelle {
 
-	eigen("1"), fremd("2");
+    eigen("1"), fremd("2");
 
-	public final String code;
+    public final String code;
 
-	Dokumentenquelle(String code) {
-		this.code = code;
-	}
+    Dokumentenquelle(String code) {
+        this.code = code;
+    }
 
 }

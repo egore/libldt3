@@ -28,10 +28,10 @@ import java.util.regex.Pattern;
  */
 public class F007 extends RegularExpressionRegel {
 
-	public static final Pattern PATTERN = Pattern.compile("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
+    public static final Pattern PATTERN = Pattern.compile("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
 
-	public F007() {
-		super(PATTERN);
-	}
+    public F007() {
+        super(PATTERN);
+    }
 
 }

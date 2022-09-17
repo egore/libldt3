@@ -38,50 +38,50 @@ import libldt3.model.enums.Untersuchungsanlass;
 @Objekt("0027")
 public class Veranlassungsgrund {
 
-	@Objekt
-	public static class AbrechnungsinfoErweitert {
-		@SuppressWarnings("unused")
-		public Abrechnungsinfo value;
-		@Feld(value = "8417", feldart = Feldart.kann)
-	@Regelsatz(laenge = 2)
-		public Untersuchungsanlass anlass;
-		@Feld(value = "8427", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 2)
-		public SpezifizierungVeranlassungsgrund spezifizierung;
-		@Feld(value = "8217", name = "Praezisierung_Veranlassungsgrund", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 32)
-		public Fliesstext praezisierung;
-		@Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 12)
-		public List<Diagnose> akutDiagnose;
-		@Feld(value = "4208", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-		public List<Medikation> vorbefundMedikation;
-	}
-	
-	@Objekt
-	public static class Medikation {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "6212", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-		public List<Arzneimittelwirkstoff> arzneimittelwirkstoff;
-	}
-	
-	@Objekt
-	public static class Arzneimittelwirkstoff {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "6214", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-		public String wirkstoffKlassifikation;
-	}
+    @Objekt
+    public static class AbrechnungsinfoErweitert {
+        @SuppressWarnings("unused")
+        public Abrechnungsinfo value;
+        @Feld(value = "8417", feldart = Feldart.kann)
+    @Regelsatz(laenge = 2)
+        public Untersuchungsanlass anlass;
+        @Feld(value = "8427", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 2)
+        public SpezifizierungVeranlassungsgrund spezifizierung;
+        @Feld(value = "8217", name = "Praezisierung_Veranlassungsgrund", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 32)
+        public Fliesstext praezisierung;
+        @Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 12)
+        public List<Diagnose> akutDiagnose;
+        @Feld(value = "4208", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+        public List<Medikation> vorbefundMedikation;
+    }
+    
+    @Objekt
+    public static class Medikation {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "6212", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+        public List<Arzneimittelwirkstoff> arzneimittelwirkstoff;
+    }
+    
+    @Objekt
+    public static class Arzneimittelwirkstoff {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "6214", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+        public String wirkstoffKlassifikation;
+    }
 
-	@Feld(value = "7303", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 2)
-	public List<AbrechnungsinfoErweitert> abrechnungsinfo;
-	@Feld(value = "8110", feldart = Feldart.kann)
-	@Regelsatz(laenge = 6)
-	public List<Anhang> anhang;
+    @Feld(value = "7303", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 2)
+    public List<AbrechnungsinfoErweitert> abrechnungsinfo;
+    @Feld(value = "8110", feldart = Feldart.kann)
+    @Regelsatz(laenge = 6)
+    public List<Anhang> anhang;
 
 }

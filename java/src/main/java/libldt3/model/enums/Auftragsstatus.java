@@ -25,13 +25,13 @@ package libldt3.model.enums;
  * E006
  */
 public enum Auftragsstatus {
-	Auftrag_nicht_abgeschlossen("1"),
-	Auftrag_abgeschlossen("2");
+    Auftrag_nicht_abgeschlossen("1"),
+    Auftrag_abgeschlossen("2");
 
-	public final String code;
+    public final String code;
 
-	Auftragsstatus(String code) {
-		this.code = code;
-	}
+    Auftragsstatus(String code) {
+        this.code = code;
+    }
 
 }

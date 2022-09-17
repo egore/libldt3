@@ -35,14 +35,14 @@ import libldt3.model.enums.Gebuehrenordnung;
 @Objekt("0004")
 public class AbrechnungIgel {
 
-	@Feld(value = "4121", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "7253", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public Boolean kostenuebernahmeerklaerungAuftraggeberLiegtVor;
-	@Feld(value = "8148", feldart = Feldart.muss)
-	@Regelsatz(laenge = 12)
-	public Rechnungsempfaenger rechnungsempfaenger;
+    @Feld(value = "4121", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Gebuehrenordnung gebuehrenordnung;
+    @Feld(value = "7253", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Boolean kostenuebernahmeerklaerungAuftraggeberLiegtVor;
+    @Feld(value = "8148", feldart = Feldart.muss)
+    @Regelsatz(laenge = 12)
+    public Rechnungsempfaenger rechnungsempfaenger;
 
 }

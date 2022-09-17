@@ -26,19 +26,19 @@ package libldt3.model.enums;
  */
 public enum Laborart {
 
-	/** Laborgemeinschaft */
-	Laborgemeinschaft("1"),
-	/** Facharztlabor */
-	Facharztlabor("2"),
-	/** Leistungserbringergemeinschaft */
-	Leistungserbringergemeinschaft("3"),
-	/** Eigenlabor */
-	Eigenlabor("4");
+    /** Laborgemeinschaft */
+    Laborgemeinschaft("1"),
+    /** Facharztlabor */
+    Facharztlabor("2"),
+    /** Leistungserbringergemeinschaft */
+    Leistungserbringergemeinschaft("3"),
+    /** Eigenlabor */
+    Eigenlabor("4");
 
-	public final String code;
+    public final String code;
 
-	Laborart(String code) {
-		this.code = code;
-	}
+    Laborart(String code) {
+        this.code = code;
+    }
 
 }

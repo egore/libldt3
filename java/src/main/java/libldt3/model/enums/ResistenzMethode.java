@@ -26,21 +26,21 @@ package libldt3.model.enums;
  */
 public enum ResistenzMethode {
 
-	/** kein Antibiogramm erstellt */
-	KeinAntibiogrammErstellt("0"),
-	/** Agardiffusion */
-	Agardiffusion("1"),
-	/** Agardilution */
-	Agardilution("2"),
-	/** PCR + Hybridisierung */
-	PcrUndHybridisierung("3"),
-	/** sonstige */
-	sonstige("4");
+    /** kein Antibiogramm erstellt */
+    KeinAntibiogrammErstellt("0"),
+    /** Agardiffusion */
+    Agardiffusion("1"),
+    /** Agardilution */
+    Agardilution("2"),
+    /** PCR + Hybridisierung */
+    PcrUndHybridisierung("3"),
+    /** sonstige */
+    sonstige("4");
 
-	public final String code;
+    public final String code;
 
-	ResistenzMethode(String code) {
-		this.code = code;
-	}
+    ResistenzMethode(String code) {
+        this.code = code;
+    }
 
 }

@@ -25,18 +25,18 @@ package libldt3.model.enums;
  * E008
  */
 public enum Gebuehrenordnung {
-	/** BMÄ */
-	BMAE("1"),
-	/** EGO */
-	EGO("2"),
-	/** GOÄ */
-	GOAE("3"),
-	BG_Tarif("4");
+    /** BMÄ */
+    BMAE("1"),
+    /** EGO */
+    EGO("2"),
+    /** GOÄ */
+    GOAE("3"),
+    BG_Tarif("4");
 
-	public final String code;
+    public final String code;
 
-	Gebuehrenordnung(String code) {
-		this.code = code;
-	}
+    Gebuehrenordnung(String code) {
+        this.code = code;
+    }
 
 }

@@ -26,6 +26,6 @@ package libldt3.annotations;
  */
 public enum Feldart {
 
-	muss, bedingt_muss, kann, bedingt_kann
+    muss, bedingt_muss, kann, bedingt_kann
 
 }

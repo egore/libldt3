@@ -28,43 +28,43 @@ import libldt3.model.objekte.Veranlassungsgrund;
 @Datenpaket(Satzart.Auftrag)
 public class Auftrag implements Satz {
 
-	@Feld(value = "8122", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 23)
-	public Einsenderidentifikation einsenderidentifikation;
-	@Feld(value = "8145", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 7)
-	public Patient patient;
-	@Feld(value = "8169", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 19)
-	public Koerperkenngroessen koerperkenngroessen;
-	@Feld(value = "8150", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 15)
-	public Schwangerschaft schwangerschaft;
-	@Feld(value = "8140", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 12)
-	public Mutterschaft mutterschaft;
-	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 14)
-	public Tier tier;
-	@Feld(value = "8113", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 19)
-	public Auftragsinformation auftragsinformation;
-	@Feld(value = "8127", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 18)
-	public List<Veranlassungsgrund> veranlassungsgrund;
-	@Feld(value = "8101", feldart = Feldart.muss)
-	@Regelsatz(laenge = 22)
-	public Abrechnungsinformation abrechnungsinformationen;
-	@Feld(value = "8137", feldart = Feldart.bedingt_kann)
-	public List<Material> material;
-	@Feld(value = "8159", feldart = Feldart.muss)
-	@Regelsatz(laenge = 24)
-	public List<Untersuchungsanforderung> untersuchungsanforderung;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	@Regelsatz(laenge = 26)
-	public List<Fliesstext> zusaeztlicheInformationen;
-	@Feld(value = "8110", feldart = Feldart.kann)
-	@Regelsatz(laenge = 6)
-	public List<Anhang> anhang;
+    @Feld(value = "8122", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 23)
+    public Einsenderidentifikation einsenderidentifikation;
+    @Feld(value = "8145", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 7)
+    public Patient patient;
+    @Feld(value = "8169", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 19)
+    public Koerperkenngroessen koerperkenngroessen;
+    @Feld(value = "8150", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 15)
+    public Schwangerschaft schwangerschaft;
+    @Feld(value = "8140", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 12)
+    public Mutterschaft mutterschaft;
+    @Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 14)
+    public Tier tier;
+    @Feld(value = "8113", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 19)
+    public Auftragsinformation auftragsinformation;
+    @Feld(value = "8127", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 18)
+    public List<Veranlassungsgrund> veranlassungsgrund;
+    @Feld(value = "8101", feldart = Feldart.muss)
+    @Regelsatz(laenge = 22)
+    public Abrechnungsinformation abrechnungsinformationen;
+    @Feld(value = "8137", feldart = Feldart.bedingt_kann)
+    public List<Material> material;
+    @Feld(value = "8159", feldart = Feldart.muss)
+    @Regelsatz(laenge = 24)
+    public List<Untersuchungsanforderung> untersuchungsanforderung;
+    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Regelsatz(laenge = 26)
+    public List<Fliesstext> zusaeztlicheInformationen;
+    @Feld(value = "8110", feldart = Feldart.kann)
+    @Regelsatz(laenge = 6)
+    public List<Anhang> anhang;
 
 }

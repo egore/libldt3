@@ -25,42 +25,42 @@ package libldt3.model.enums;
  * E023
  */
 public enum Einsenderstatus {
-	/** Erstveranlasser */
-	Erstveranlasser("01"),
-	/** Einsender Arzt */
-	EinsenderArzt("02"),
-	/** Einsender sonstige */
-	EinsenderSonstige("03"),
-	/** Versicherter */
-	Versicherter("04"),
-	/** Rechnungsempfänger */
-	Rechnungsempfaenger("05"),
-	/** Bevollmächtigter */
-	Bevollmaechtigter("06"),
-	/** Laborarzt/Befundersteller */
-	Laborarzt_Befundersteller("07"),
-	/** Leistungserbringer */
-	Leistungserbringer("08"),
-	/** Halter (eines Tieres) */
-	Tierhalter("11"),
-	/** Patient */
-	Patient("12"),
-	/** Überweiser */
-	Ueberweiser("14"),
-	/** staatliche Einrichtung */
-	staatliche_Einrichtung("15"),
-	/** sonstige juristische Person */
-	sonstige_juristische_Person("16"),
-	/** sonstige medizinische Einrichtung */
-	sonstige_medizinische_Einrichtung("17");
+    /** Erstveranlasser */
+    Erstveranlasser("01"),
+    /** Einsender Arzt */
+    EinsenderArzt("02"),
+    /** Einsender sonstige */
+    EinsenderSonstige("03"),
+    /** Versicherter */
+    Versicherter("04"),
+    /** Rechnungsempfänger */
+    Rechnungsempfaenger("05"),
+    /** Bevollmächtigter */
+    Bevollmaechtigter("06"),
+    /** Laborarzt/Befundersteller */
+    Laborarzt_Befundersteller("07"),
+    /** Leistungserbringer */
+    Leistungserbringer("08"),
+    /** Halter (eines Tieres) */
+    Tierhalter("11"),
+    /** Patient */
+    Patient("12"),
+    /** Überweiser */
+    Ueberweiser("14"),
+    /** staatliche Einrichtung */
+    staatliche_Einrichtung("15"),
+    /** sonstige juristische Person */
+    sonstige_juristische_Person("16"),
+    /** sonstige medizinische Einrichtung */
+    sonstige_medizinische_Einrichtung("17");
 
-	public final String code;
+    public final String code;
 
-	Einsenderstatus(String code) {
-		this.code = code;
-	}
+    Einsenderstatus(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 }

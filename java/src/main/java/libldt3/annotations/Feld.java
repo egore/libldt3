@@ -38,20 +38,20 @@ import libldt3.LdtWriter;
 @Target(ElementType.FIELD)
 public @interface Feld {
 
-	/**
-	 * @return FK der Spezifikation (z.B. "7331" für Mobiltelefonnummer)
-	 */
-	String value();
+    /**
+     * @return FK der Spezifikation (z.B. "7331" für Mobiltelefonnummer)
+     */
+    String value();
 
-	/**
-	 * @return gibt an, ob es sich um ein Pflichtfeld handelt
-	 */
-	Feldart feldart();
+    /**
+     * @return gibt an, ob es sich um ein Pflichtfeld handelt
+     */
+    Feldart feldart();
 
-	/**
-	 * @return Name des Objektes im LDT (notwendig für das Schreiben von LDT
-	 *         durch den {@link LdtWriter})
-	 */
-	String name() default "";
+    /**
+     * @return Name des Objektes im LDT (notwendig für das Schreiben von LDT
+     *         durch den {@link LdtWriter})
+     */
+    String name() default "";
 
 }

@@ -28,10 +28,10 @@ import java.util.regex.Pattern;
  */
 public class F009 extends RegularExpressionRegel {
 
-	public static final Pattern PATTERN = Pattern.compile("^[0-9]{5}[A-Z]?$");
+    public static final Pattern PATTERN = Pattern.compile("^[0-9]{5}[A-Z]?$");
 
-	public F009() {
-		super(PATTERN);
-	}
+    public F009() {
+        super(PATTERN);
+    }
 
 }

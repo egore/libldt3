@@ -32,25 +32,25 @@ package libldt3.model.enums;
  */
 public enum DmpKennzeichnung {
 
-	/** keine Angabe */
-	keine_Angabe("00"),
-	/** Diabetes mellitus Typ 2 */
-	DiabetesMellitusTyp2("01"),
-	/** Brustkrebs */
-	Brustkrebs("02"),
-	/** Koronare Herzkrankheit */
-	KoronareHerzkrankheit("03"),
-	/** Diabetes mellitus Typ 1 */
-	DiabetesMellitusTyp1("04"),
-	/** Asthma bronchiale */
-	AsthmaBronchiale("05"),
-	/** COPD (chronic obstructive pulmo-nary disease) */
-	ChronicObstructivePulmonaryDisease("06");
+    /** keine Angabe */
+    keine_Angabe("00"),
+    /** Diabetes mellitus Typ 2 */
+    DiabetesMellitusTyp2("01"),
+    /** Brustkrebs */
+    Brustkrebs("02"),
+    /** Koronare Herzkrankheit */
+    KoronareHerzkrankheit("03"),
+    /** Diabetes mellitus Typ 1 */
+    DiabetesMellitusTyp1("04"),
+    /** Asthma bronchiale */
+    AsthmaBronchiale("05"),
+    /** COPD (chronic obstructive pulmo-nary disease) */
+    ChronicObstructivePulmonaryDisease("06");
 
-	public final String code;
+    public final String code;
 
-	DmpKennzeichnung(String code) {
-		this.code = code;
-	}
+    DmpKennzeichnung(String code) {
+        this.code = code;
+    }
 
 }

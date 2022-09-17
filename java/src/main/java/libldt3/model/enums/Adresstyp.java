@@ -26,15 +26,15 @@ package libldt3.model.enums;
  */
 public enum Adresstyp {
 
-	/** Physischer Ort */
-	PhysischerOrt("1"),
-	/** Postanschrift */
-	Postanschrift("2");
+    /** Physischer Ort */
+    PhysischerOrt("1"),
+    /** Postanschrift */
+    Postanschrift("2");
 
-	public final String code;
+    public final String code;
 
-	Adresstyp(String code) {
-		this.code = code;
-	}
+    Adresstyp(String code) {
+        this.code = code;
+    }
 
 }

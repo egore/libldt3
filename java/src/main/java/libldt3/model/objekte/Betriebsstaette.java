@@ -38,23 +38,23 @@ import libldt3.model.regel.F021;
 @Objekt("0019")
 public class Betriebsstaette {
 
-	@Feld(value = "0204", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public List<Betriebsstaettenstatus> status;
-	@Feld(value = "0203", feldart = Feldart.muss)
-	@Regelsatz(maxLaenge = 60)
-	public String bsnrBezeichnung;
-	@Feld(value = "0200", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String betriebsstaettenId;
-	@Feld(value = "0201", feldart = Feldart.bedingt_muss)
-	@Regelsatz(value = {F010.class, F021.class}, laenge = 9)
-	public String bsnr;
-	@Feld(value = "0213", feldart = Feldart.kann)
-	@Regelsatz(laenge = 9)
-	public String institutskennzeichen;
-	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 12)
-	public Organisation organisation;
+    @Feld(value = "0204", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public List<Betriebsstaettenstatus> status;
+    @Feld(value = "0203", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 60)
+    public String bsnrBezeichnung;
+    @Feld(value = "0200", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String betriebsstaettenId;
+    @Feld(value = "0201", feldart = Feldart.bedingt_muss)
+    @Regelsatz(value = {F010.class, F021.class}, laenge = 9)
+    public String bsnr;
+    @Feld(value = "0213", feldart = Feldart.kann)
+    @Regelsatz(laenge = 9)
+    public String institutskennzeichen;
+    @Feld(value = "8143", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 12)
+    public Organisation organisation;
 
 }

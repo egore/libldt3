@@ -26,17 +26,17 @@ package libldt3.model.enums;
  */
 public enum EinschreibestatusSelektivvertraege {
 
-	/** Nicht eingeschrieben */
-	NichtEingeschrieben("0"),
-	/** Eingeschrieben */
-	Eingeschrieben("1"),
-	/** Einschreibung beantragt */
-	EinschreibungBeantragt("2");
+    /** Nicht eingeschrieben */
+    NichtEingeschrieben("0"),
+    /** Eingeschrieben */
+    Eingeschrieben("1"),
+    /** Einschreibung beantragt */
+    EinschreibungBeantragt("2");
 
-	public final String code;
+    public final String code;
 
-	EinschreibestatusSelektivvertraege(String code) {
-		this.code = code;
-	}
+    EinschreibestatusSelektivvertraege(String code) {
+        this.code = code;
+    }
 
 }

@@ -32,14 +32,14 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0032")
 public class Kopfdaten {
 
-	@Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
-	@Regelsatz(laenge = 16)
-	public SendendesSystem sendendesSystem;
-	@Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann)
-	@Regelsatz(laenge = 30)
-	public Timestamp timestampErstellungDatensatz;
-	@Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann)
-	@Regelsatz(laenge = 24)
-	public Organisation softwareverantwortlicher;
+    @Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
+    @Regelsatz(laenge = 16)
+    public SendendesSystem sendendesSystem;
+    @Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann)
+    @Regelsatz(laenge = 30)
+    public Timestamp timestampErstellungDatensatz;
+    @Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann)
+    @Regelsatz(laenge = 24)
+    public Organisation softwareverantwortlicher;
 
 }

@@ -26,15 +26,15 @@ package libldt3.model.enums;
  */
 public enum ResistenzNach {
 
-	CLSI("1"),
-	EUCAST("2"),
-	/** CA-FMS */
-	CA_FMS("3");
+    CLSI("1"),
+    EUCAST("2"),
+    /** CA-FMS */
+    CA_FMS("3");
 
-	public final String code;
+    public final String code;
 
-	ResistenzNach(String code) {
-		this.code = code;
-	}
+    ResistenzNach(String code) {
+        this.code = code;
+    }
 
 }

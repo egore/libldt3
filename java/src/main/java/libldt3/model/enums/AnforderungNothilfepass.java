@@ -26,15 +26,15 @@ package libldt3.model.enums;
  */
 public enum AnforderungNothilfepass {
 
-	/** Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen */
-	NurBeiErythrozytenantikoerperNachweis("0"),
-	/** Nothilfepass ausstellen */
-	Ausstellen("1");
+    /** Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen */
+    NurBeiErythrozytenantikoerperNachweis("0"),
+    /** Nothilfepass ausstellen */
+    Ausstellen("1");
 
-	public final String code;
+    public final String code;
 
-	AnforderungNothilfepass(String code) {
-		this.code = code;
-	}
+    AnforderungNothilfepass(String code) {
+        this.code = code;
+    }
 
 }

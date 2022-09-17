@@ -36,11 +36,11 @@ import libldt3.model.regel.kontext.Kontextregel;
 @Target(ElementType.TYPE)
 public @interface Datenpaket {
 
-	/**
-	 * @return Satzart (z.B. "8220" für Labor-Datenpaket-Header)
-	 */
-	Satzart value();
+    /**
+     * @return Satzart (z.B. "8220" für Labor-Datenpaket-Header)
+     */
+    Satzart value();
 
-	Class<? extends Kontextregel>[] kontextregeln() default {};
+    Class<? extends Kontextregel>[] kontextregeln() default {};
 
 }

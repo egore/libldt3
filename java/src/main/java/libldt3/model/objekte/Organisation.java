@@ -34,32 +34,32 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0043")
 public class Organisation {
 
-	@Objekt
-	public static class Funktionsbezeichnung {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "8147", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 6)
-		public List<Person> person;
-	}
+    @Objekt
+    public static class Funktionsbezeichnung {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "8147", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 6)
+        public List<Person> person;
+    }
 
-	@Feld(value = "1250", feldart = Feldart.muss)
-	@Regelsatz(maxLaenge = 60)
-	public String organisationFirma;
-	@Feld(value = "1251", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String rechtsformOrganisation;
-	@Feld(value = "1252", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<Funktionsbezeichnung> funktionsbezeichnung;
-	@Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann)
-	@Regelsatz(laenge = 23)
-	public List<Anschrift> anschriftArbeitsstelle;
-	@Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
-	@Regelsatz(laenge = 18)
-	public Anschrift rechnungsanschrift;
-	@Feld(value = "8131", feldart = Feldart.kann)
-	@Regelsatz(laenge = 19)
-	public Kommunikationsdaten kommunikationsdaten;
+    @Feld(value = "1250", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 60)
+    public String organisationFirma;
+    @Feld(value = "1251", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String rechtsformOrganisation;
+    @Feld(value = "1252", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<Funktionsbezeichnung> funktionsbezeichnung;
+    @Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann)
+    @Regelsatz(laenge = 23)
+    public List<Anschrift> anschriftArbeitsstelle;
+    @Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
+    @Regelsatz(laenge = 18)
+    public Anschrift rechnungsanschrift;
+    @Feld(value = "8131", feldart = Feldart.kann)
+    @Regelsatz(laenge = 19)
+    public Kommunikationsdaten kommunikationsdaten;
 
 }

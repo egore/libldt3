@@ -28,20 +28,20 @@ import java.util.regex.Pattern;
  */
 public abstract class RegularExpressionRegel implements Regel {
 
-	public final Pattern pattern;
+    public final Pattern pattern;
 
-	RegularExpressionRegel(Pattern pattern) {
-		this.pattern = pattern;
-	}
+    public RegularExpressionRegel(Pattern pattern) {
+        this.pattern = pattern;
+    }
 
-	public boolean isValid(String value) {
-		if (value == null) {
-			return true;
-		}
+    public boolean isValid(String value) {
+        if (value == null) {
+            return true;
+        }
 
-		// CharSequence is allowed, try to interpret the value as this first
-		return pattern.matcher(value).matches();
+        // CharSequence is allowed, try to interpret the value as this first
+        return pattern.matcher(value).matches();
 
-	}
+    }
 
 }

@@ -38,14 +38,14 @@ import libldt3.model.objekte.Kopfdaten;
 @Datenpaket(Satzart.PraxisDatenpaketHeader)
 public class PraxisDatenpaketHeader implements Satz {
 
-	@Feld(value = "8132", feldart = Feldart.muss)
-	@Regelsatz(laenge = 9)
-	public Kopfdaten kopfdaten;
-	@Feld(value = "7265", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public DatensatzAbsender absender;
-	@Feld(value = "8122", feldart = Feldart.muss)
-	@Regelsatz(laenge = 23)
-	public List<Einsenderidentifikation> einsenderidentifikation;
+    @Feld(value = "8132", feldart = Feldart.muss)
+    @Regelsatz(laenge = 9)
+    public Kopfdaten kopfdaten;
+    @Feld(value = "7265", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public DatensatzAbsender absender;
+    @Feld(value = "8122", feldart = Feldart.muss)
+    @Regelsatz(laenge = 23)
+    public List<Einsenderidentifikation> einsenderidentifikation;
 
 }

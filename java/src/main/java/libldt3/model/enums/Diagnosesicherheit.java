@@ -26,19 +26,19 @@ package libldt3.model.enums;
  */
 public enum Diagnosesicherheit {
 
-	/** gesicherte Diagnose */
-	GesicherteDiagnose("G"),
-	/** Ausschluss */
-	Ausschluss("A"),
-	/** Verdacht auf */
-	VerdachtAuf("V"),
-	 /** Zustand nach */
-	ZustandNach("Z");
+    /** gesicherte Diagnose */
+    GesicherteDiagnose("G"),
+    /** Ausschluss */
+    Ausschluss("A"),
+    /** Verdacht auf */
+    VerdachtAuf("V"),
+     /** Zustand nach */
+    ZustandNach("Z");
 
-	public final String code;
+    public final String code;
 
-	Diagnosesicherheit(String code) {
-		this.code = code;
-	}
+    Diagnosesicherheit(String code) {
+        this.code = code;
+    }
 
 }

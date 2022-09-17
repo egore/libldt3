@@ -26,25 +26,25 @@ package libldt3.model.enums;
  */
 public enum ArztTypId {
 
-	/** IK des Arztes */
-	IK("2"),
-	/** Telematik-ID */
-	TelematikId("3"),
-	/** ID für GEVK-Verträge */
-	GevkId("4"),
-	/** ID für HÄVG-Verträge */
-	HaevgId("5"),
-	/** ID für MEDI-Verträge */
-	MediId("6"),
-	/** Selektivvertrag */
-	Selektivvertrag("7"),
-	/** Sonstige */
-	Sonstige("9");
+    /** IK des Arztes */
+    IK("2"),
+    /** Telematik-ID */
+    TelematikId("3"),
+    /** ID für GEVK-Verträge */
+    GevkId("4"),
+    /** ID für HÄVG-Verträge */
+    HaevgId("5"),
+    /** ID für MEDI-Verträge */
+    MediId("6"),
+    /** Selektivvertrag */
+    Selektivvertrag("7"),
+    /** Sonstige */
+    Sonstige("9");
 
-	public final String code;
+    public final String code;
 
-	ArztTypId(String code) {
-		this.code = code;
-	}
+    ArztTypId(String code) {
+        this.code = code;
+    }
 
 }

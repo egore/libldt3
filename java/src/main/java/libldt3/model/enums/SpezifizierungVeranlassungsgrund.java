@@ -26,35 +26,35 @@ package libldt3.model.enums;
  */
 public enum SpezifizierungVeranlassungsgrund {
 
-	/** Eingriff */
-	Eingriff("01"),
-	/** Medikamentengabe */
-	Medikamentengabe("02"),
-	/** unklares Fieber */
-	UnklaresFieber("03"),
-	/** Infektion */
-	Infektion("04"),
-	/** Rheuma */
-	Rheuma("05"),
-	/** Allergie */
-	Allergie("06"),
-	/** Herz/Kreislauf */
-	HerzKreislauf("07"),
-	/** Tumor */
-	Tumor("08"),
-	/** Impfungen */
-	Impfungen("09"),
-	/** Reisen */
-	Reisen("10"),
-	/** Immunität nach Infektion */
-	ImmunitaetNachInfektion("11"),
-	/** Sonstiges */
-	Sonstiges("12");
+    /** Eingriff */
+    Eingriff("01"),
+    /** Medikamentengabe */
+    Medikamentengabe("02"),
+    /** unklares Fieber */
+    UnklaresFieber("03"),
+    /** Infektion */
+    Infektion("04"),
+    /** Rheuma */
+    Rheuma("05"),
+    /** Allergie */
+    Allergie("06"),
+    /** Herz/Kreislauf */
+    HerzKreislauf("07"),
+    /** Tumor */
+    Tumor("08"),
+    /** Impfungen */
+    Impfungen("09"),
+    /** Reisen */
+    Reisen("10"),
+    /** Immunität nach Infektion */
+    ImmunitaetNachInfektion("11"),
+    /** Sonstiges */
+    Sonstiges("12");
 
-	public final String code;
+    public final String code;
 
-	SpezifizierungVeranlassungsgrund(String code) {
-		this.code = code;
-	}
+    SpezifizierungVeranlassungsgrund(String code) {
+        this.code = code;
+    }
 
 }

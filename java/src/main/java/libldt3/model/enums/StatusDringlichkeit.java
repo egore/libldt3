@@ -26,13 +26,13 @@ package libldt3.model.enums;
  */
 public enum StatusDringlichkeit {
 
-	Stroke("1"),
-	bekannt("2");
+    Stroke("1"),
+    bekannt("2");
 
-	public final String code;
+    public final String code;
 
-	StatusDringlichkeit(String code) {
-		this.code = code;
-	}
+    StatusDringlichkeit(String code) {
+        this.code = code;
+    }
 
 }

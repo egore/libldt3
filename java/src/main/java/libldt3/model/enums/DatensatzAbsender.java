@@ -26,17 +26,17 @@ package libldt3.model.enums;
  */
 public enum DatensatzAbsender {
 
-	/** Primärsystem */
-	Primaersystem("1"),
-	/** Order Entry */
-	OrderEntry("2"),
-	/** Scansystem */
-	Scansystem("3");
+    /** Primärsystem */
+    Primaersystem("1"),
+    /** Order Entry */
+    OrderEntry("2"),
+    /** Scansystem */
+    Scansystem("3");
 
-	public final String code;
+    public final String code;
 
-	DatensatzAbsender(String code) {
-		this.code = code;
-	}
+    DatensatzAbsender(String code) {
+        this.code = code;
+    }
 
 }

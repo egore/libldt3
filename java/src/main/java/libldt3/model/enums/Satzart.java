@@ -25,13 +25,13 @@ package libldt3.model.enums;
  * E004
  */
 public enum Satzart {
-	LaborDatenpaketHeader("8220"), LaborDatenpaketAbschluss("8221"), PraxisDatenpaketHeader(
-			"8230"), PraxisDatenpaketAbschluss("8231"), Befund("8205"), Auftrag("8215");
+    LaborDatenpaketHeader("8220"), LaborDatenpaketAbschluss("8221"), PraxisDatenpaketHeader(
+            "8230"), PraxisDatenpaketAbschluss("8231"), Befund("8205"), Auftrag("8215");
 
-	public final String code;
+    public final String code;
 
-	Satzart(String code) {
-		this.code = code;
-	}
+    Satzart(String code) {
+        this.code = code;
+    }
 
 }

@@ -37,14 +37,14 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0005")
 public class AbrechnungSonstigeKostenuebernahme {
 
-	@Feld(value = "7261", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String sonstigeVersichertennummer;
-	@Feld(value = "7253", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public Boolean kostenuebernahmeerklaerungAuftraggeber;
-	@Feld(value = "8148", feldart = Feldart.muss)
-	@Regelsatz(laenge = 12)
-	public Rechnungsempfaenger rechnungsempfaenger;
+    @Feld(value = "7261", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String sonstigeVersichertennummer;
+    @Feld(value = "7253", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Boolean kostenuebernahmeerklaerungAuftraggeber;
+    @Feld(value = "8148", feldart = Feldart.muss)
+    @Regelsatz(laenge = 12)
+    public Rechnungsempfaenger rechnungsempfaenger;
 
 }

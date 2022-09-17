@@ -39,53 +39,53 @@ import libldt3.model.enums.ZusaetzlicherBefundweg;
 @Objekt(value = "0013")
 public class Auftragsinformation {
 
-	@Objekt
-	public static class Befundweg {
-		@SuppressWarnings("unused")
-		public ZusaetzlicherBefundweg value;
-		@Feld(value = "8147", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 6)
-		public Person person;
-	}
+    @Objekt
+    public static class Befundweg {
+        @SuppressWarnings("unused")
+        public ZusaetzlicherBefundweg value;
+        @Feld(value = "8147", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 6)
+        public Person person;
+    }
 
-	@Feld(value = "8310", feldart = Feldart.muss)
-	@Regelsatz(maxLaenge = 60)
-	public String auftragsnummerEinsender;
-	@Feld(value = "8313", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> nachforderungId;
-	@Feld(value = "8311", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String auftragsnummerLabor;
-	@Feld(value = "7268", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String fachrichtungStationskennung;
-	@Feld(value = "0080", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String fallakteId;
-	@Feld(value = "0081", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> fallakteBezeichnung;
-	@Feld(value = "8501", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 1)
-	public Dringlichkeit dringlichkeit;
-	@Feld(value = "7262", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 1)
-	public StatusDringlichkeit statusDringlichkeit;
-	@Feld(value = "8118", name = "Abweichender_Befundweg", feldart = Feldart.kann)
-	@Regelsatz(laenge = 22)
-	public Kommunikationsdaten abweichenderBefundweg;
-	@Feld(value = "8611", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 1)
-	public List<Befundweg> zusaetzlicherBefundweg;
-	@Feld(value = "8213", name = "Timestamp_Erstellung_Untersuchungsanforderung", feldart = Feldart.muss)
-	@Regelsatz(laenge = 45)
-	public Timestamp timestampErstellungUntersuchungsanforderung;
-	@Feld(value = "8238", name = "Auftragsbezogene_Hinweise", feldart = Feldart.kann)
-	@Regelsatz(laenge = 25)
-	public Fliesstext auftragsbezogeneHinweise;
-	@Feld(value = "8141", feldart = Feldart.kann)
-	@Regelsatz(laenge = 13)
-	public Namenskennung namenskennung;
+    @Feld(value = "8310", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 60)
+    public String auftragsnummerEinsender;
+    @Feld(value = "8313", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> nachforderungId;
+    @Feld(value = "8311", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String auftragsnummerLabor;
+    @Feld(value = "7268", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String fachrichtungStationskennung;
+    @Feld(value = "0080", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String fallakteId;
+    @Feld(value = "0081", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> fallakteBezeichnung;
+    @Feld(value = "8501", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 1)
+    public Dringlichkeit dringlichkeit;
+    @Feld(value = "7262", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 1)
+    public StatusDringlichkeit statusDringlichkeit;
+    @Feld(value = "8118", name = "Abweichender_Befundweg", feldart = Feldart.kann)
+    @Regelsatz(laenge = 22)
+    public Kommunikationsdaten abweichenderBefundweg;
+    @Feld(value = "8611", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 1)
+    public List<Befundweg> zusaetzlicherBefundweg;
+    @Feld(value = "8213", name = "Timestamp_Erstellung_Untersuchungsanforderung", feldart = Feldart.muss)
+    @Regelsatz(laenge = 45)
+    public Timestamp timestampErstellungUntersuchungsanforderung;
+    @Feld(value = "8238", name = "Auftragsbezogene_Hinweise", feldart = Feldart.kann)
+    @Regelsatz(laenge = 25)
+    public Fliesstext auftragsbezogeneHinweise;
+    @Feld(value = "8141", feldart = Feldart.kann)
+    @Regelsatz(laenge = 13)
+    public Namenskennung namenskennung;
 
 }

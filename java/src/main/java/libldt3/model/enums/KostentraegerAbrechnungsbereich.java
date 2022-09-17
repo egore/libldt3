@@ -26,31 +26,31 @@ package libldt3.model.enums;
  */
 public enum KostentraegerAbrechnungsbereich {
 
-	/** Primärabrechnung */
-	Primaerabrechnung("00"),
-	/** Sozialversicherungsabkommen (SVA) */
-	Sozialversicherungsabkommen("01"),
-	/** Bundesversorgungsgesetz (BVG) */
-	Bundesversorgungsgesetz("02"),
-	/** Bundesentschädigungsgesetz (BEG) */
-	Bundesentschaedigungsgesetz("03"),
-	/** Grenzgänger (GG) */
-	Grenzgaenger("04"),
-	/** Rheinschiffer (RHS) */
-	Rheinschiffer("05"),
-	/** Sozialhilfeträger, ohne Asylstellen (SHT) */
-	Sozialhilfetraeger("06"),
-	/** Bundesvertriebenengesetz (BVFG) */
-	Bundesvertriebenengesetz("07"),
-	/** Asylstellen (AS) */
-	Asylstellen("08"),
-	/** Schwangerschaftsabbrüche */
-	Schwangerschaftsabbrueche("09");
+    /** Primärabrechnung */
+    Primaerabrechnung("00"),
+    /** Sozialversicherungsabkommen (SVA) */
+    Sozialversicherungsabkommen("01"),
+    /** Bundesversorgungsgesetz (BVG) */
+    Bundesversorgungsgesetz("02"),
+    /** Bundesentschädigungsgesetz (BEG) */
+    Bundesentschaedigungsgesetz("03"),
+    /** Grenzgänger (GG) */
+    Grenzgaenger("04"),
+    /** Rheinschiffer (RHS) */
+    Rheinschiffer("05"),
+    /** Sozialhilfeträger, ohne Asylstellen (SHT) */
+    Sozialhilfetraeger("06"),
+    /** Bundesvertriebenengesetz (BVFG) */
+    Bundesvertriebenengesetz("07"),
+    /** Asylstellen (AS) */
+    Asylstellen("08"),
+    /** Schwangerschaftsabbrüche */
+    Schwangerschaftsabbrueche("09");
 
-	public final String code;
+    public final String code;
 
-	KostentraegerAbrechnungsbereich(String code) {
-		this.code = code;
-	}
+    KostentraegerAbrechnungsbereich(String code) {
+        this.code = code;
+    }
 
 }

@@ -28,9 +28,9 @@ import java.util.regex.Pattern;
  */
 public class F022 extends RegularExpressionRegel {
 
-	public static final Pattern PATTERN = Pattern.compile("^555555([0-9])[0-9]{2}$");
+    public static final Pattern PATTERN = Pattern.compile("^555555([0-9])[0-9]{2}$");
 
-	public F022() {
-		super(PATTERN);
-	}
+    public F022() {
+        super(PATTERN);
+    }
 }

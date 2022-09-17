@@ -29,11 +29,11 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0008")
 public class Adressat {
 
-	@Feld(value = "8147", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 6)
-	public Person person;
-	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 12)
-	public Organisation organisation;
+    @Feld(value = "8147", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 6)
+    public Person person;
+    @Feld(value = "8143", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 12)
+    public Organisation organisation;
 
 }

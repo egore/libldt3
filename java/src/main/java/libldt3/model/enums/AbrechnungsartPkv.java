@@ -26,15 +26,15 @@ package libldt3.model.enums;
  */
 public enum AbrechnungsartPkv {
 
-	/** Abrechnung Laborfacharzt */
-	AbrechnungLaborfacharzt("1"),
-	/** Abrechnung Privat-LG */
-	AbrechnungPrivatLG("2");
+    /** Abrechnung Laborfacharzt */
+    AbrechnungLaborfacharzt("1"),
+    /** Abrechnung Privat-LG */
+    AbrechnungPrivatLG("2");
 
-	public final String code;
+    public final String code;
 
-	AbrechnungsartPkv(String code) {
-		this.code = code;
-	}
+    AbrechnungsartPkv(String code) {
+        this.code = code;
+    }
 
 }

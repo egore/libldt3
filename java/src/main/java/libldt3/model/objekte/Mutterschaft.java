@@ -32,14 +32,14 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0040")
 public class Mutterschaft {
 
-	@Feld(value = "3668", feldart = Feldart.muss)
-	@Regelsatz(laenge = 2)
-	public Integer anzahlSchwangerschaften;
-	@Feld(value = "3664", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 2)
-	public Integer anzahlGeburten;
-	@Feld(value = "3666", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 2)
-	public Integer anzahlKinder;
+    @Feld(value = "3668", feldart = Feldart.muss)
+    @Regelsatz(laenge = 2)
+    public Integer anzahlSchwangerschaften;
+    @Feld(value = "3664", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 2)
+    public Integer anzahlGeburten;
+    @Feld(value = "3666", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 2)
+    public Integer anzahlKinder;
 
 }

@@ -35,32 +35,32 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0031")
 public class Kommunikationsdaten {
 
-	@Objekt
-	public static class ElektronischePostadresse {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "7340", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-		public String spezifizierung;
-	}
+    @Objekt
+    public static class ElektronischePostadresse {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7340", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+        public String spezifizierung;
+    }
 
-	@Feld(value = "7330", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> phone;
-	@Feld(value = "7331", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> mobile;
-	@Feld(value = "7332", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<ElektronischePostadresse> elektronischePostadresse;
-	@Feld(value = "7333", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> fax;
-	@Feld(value = "7335", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> email;
-	@Feld(value = "7334", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> website;
+    @Feld(value = "7330", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> phone;
+    @Feld(value = "7331", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> mobile;
+    @Feld(value = "7332", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<ElektronischePostadresse> elektronischePostadresse;
+    @Feld(value = "7333", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> fax;
+    @Feld(value = "7335", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> email;
+    @Feld(value = "7334", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> website;
 
 }

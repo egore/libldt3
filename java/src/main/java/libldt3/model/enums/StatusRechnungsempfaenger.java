@@ -26,31 +26,31 @@ package libldt3.model.enums;
  */
 public enum StatusRechnungsempfaenger {
 
-	/** Einsender Arzt */
-	EinsenderArzt("02"),
-	/** Einsender sonstige */
-	EinsenderSonstige("03"),
-	/** Versicherter */
-	Versicherter("04"),
-	/** Rechnungsempfänger */
-	Rechnungsempfaenger("05"),
-	/** Bevollmächtigter */
-	Bevollmaechtigter("06"),
-	/** Halter (eines Tieres) */
-	Tierhalter("11"),
-	/** Patient */
-	Patient("12"),
-	/** staatliche Einrichtung */
-	StaatlicheEinrichtung("15"),
-	/** sonstige juristische Person */
-	SonstigeJuristischePerson("16"),
-	/** sonstige medizinische Einrichtung */
-	SonstigeMedizinischeEinrichtung("17");
+    /** Einsender Arzt */
+    EinsenderArzt("02"),
+    /** Einsender sonstige */
+    EinsenderSonstige("03"),
+    /** Versicherter */
+    Versicherter("04"),
+    /** Rechnungsempfänger */
+    Rechnungsempfaenger("05"),
+    /** Bevollmächtigter */
+    Bevollmaechtigter("06"),
+    /** Halter (eines Tieres) */
+    Tierhalter("11"),
+    /** Patient */
+    Patient("12"),
+    /** staatliche Einrichtung */
+    StaatlicheEinrichtung("15"),
+    /** sonstige juristische Person */
+    SonstigeJuristischePerson("16"),
+    /** sonstige medizinische Einrichtung */
+    SonstigeMedizinischeEinrichtung("17");
 
-	public final String code;
+    public final String code;
 
-	StatusRechnungsempfaenger(String code) {
-		this.code = code;
-	}
+    StatusRechnungsempfaenger(String code) {
+        this.code = code;
+    }
 
 }

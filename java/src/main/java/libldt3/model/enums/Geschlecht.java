@@ -26,12 +26,12 @@ package libldt3.model.enums;
  */
 public enum Geschlecht {
 
-	maennlich("M"), weiblich("W"), unbestimmt("X"), unbekannt("U");
+    maennlich("M"), weiblich("W"), unbestimmt("X"), unbekannt("U");
 
-	public final String code;
+    public final String code;
 
-	Geschlecht(String code) {
-		this.code = code;
-	}
+    Geschlecht(String code) {
+        this.code = code;
+    }
 
 }

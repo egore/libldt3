@@ -26,13 +26,13 @@ package libldt3.model.enums;
  */
 public enum Materialart {
 
-	organisch("1"),
-	anorganisch("2");
+    organisch("1"),
+    anorganisch("2");
 
-	public final String code;
+    public final String code;
 
-	Materialart(String code) {
-		this.code = code;
-	}
+    Materialart(String code) {
+        this.code = code;
+    }
 
 }

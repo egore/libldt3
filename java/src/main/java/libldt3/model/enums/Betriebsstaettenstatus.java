@@ -26,23 +26,23 @@ package libldt3.model.enums;
  */
 public enum Betriebsstaettenstatus {
 
-	/** Arztpraxis */
-	Arztpraxis("1"),
-	/** Laborarztpraxis */
-	Laborarztpraxis("2"),
-	/** Laborgemeinschaft */
-	Laborgemeinschaft("3"),
-	/** sonstige medizinische Einrichtung */
-	sonstigeMedizinischeEinrichtung("4"),
-	/** Hauptbetriebsstätte */
-	Hauptbetriebsstaette("5"),
-	/** Nebenbetriebsstätte */
-	Nebenbetriebsstaette("6");
+    /** Arztpraxis */
+    Arztpraxis("1"),
+    /** Laborarztpraxis */
+    Laborarztpraxis("2"),
+    /** Laborgemeinschaft */
+    Laborgemeinschaft("3"),
+    /** sonstige medizinische Einrichtung */
+    sonstigeMedizinischeEinrichtung("4"),
+    /** Hauptbetriebsstätte */
+    Hauptbetriebsstaette("5"),
+    /** Nebenbetriebsstätte */
+    Nebenbetriebsstaette("6");
 
-	public final String code;
+    public final String code;
 
-	Betriebsstaettenstatus(String code) {
-		this.code = code;
-	}
+    Betriebsstaettenstatus(String code) {
+        this.code = code;
+    }
 
 }

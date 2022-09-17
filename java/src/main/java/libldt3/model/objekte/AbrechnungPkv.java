@@ -40,20 +40,20 @@ import libldt3.model.enums.Gebuehrenordnung;
 @Objekt("0003")
 public class AbrechnungPkv {
 
-	@Feld(value = "7362", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public AbrechnungsartPkv abrechnungsartPkv;
-	@Feld(value = "4134", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 28)
-	public List<String> kostentraegerName;
-	@Feld(value = "4121", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public Gebuehrenordnung gebuehrenordnung;
-	@Feld(value = "4202", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 1)
-	public Boolean unfallFolgen;
-	@Feld(value = "8148", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 12)
-	public Rechnungsempfaenger rechnungsempfaenger;
+    @Feld(value = "7362", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public AbrechnungsartPkv abrechnungsartPkv;
+    @Feld(value = "4134", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 28)
+    public List<String> kostentraegerName;
+    @Feld(value = "4121", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Gebuehrenordnung gebuehrenordnung;
+    @Feld(value = "4202", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 1)
+    public Boolean unfallFolgen;
+    @Feld(value = "8148", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 12)
+    public Rechnungsempfaenger rechnungsempfaenger;
 
 }

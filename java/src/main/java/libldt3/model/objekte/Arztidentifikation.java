@@ -38,32 +38,32 @@ import libldt3.model.regel.F022;
 @Objekt(value = "0014")
 public class Arztidentifikation {
 
-	@Objekt
-	public static class ArztId {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "0308", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 1)
-		public ArztTypId arztTypId;
-	}
+    @Objekt
+    public static class ArztId {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "0308", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 1)
+        public ArztTypId arztTypId;
+    }
 
-	@Feld(value = "8147", feldart = Feldart.muss)
-	@Regelsatz(laenge = 6)
-	public Person person;
-	@Feld(value = "0212", feldart = Feldart.bedingt_muss)
-	@Regelsatz(value = {F011.class, F022.class}, laenge = 9)
-	public List<String> lanr;
-	@Feld(value = "0223", feldart = Feldart.bedingt_muss)
-	@Regelsatz(value = {F011.class, F022.class}, laenge = 9)
-	public List<String> pseudoLanr;
-	@Feld(value = "0306", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String vertragsId;
-	@Feld(value = "0307", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<ArztId> arztIds;
-	@Feld(value = "0222", feldart = Feldart.bedingt_muss)
-	@Regelsatz(value = F014.class, laenge = 9)
-	public String asvTeamnummer;
+    @Feld(value = "8147", feldart = Feldart.muss)
+    @Regelsatz(laenge = 6)
+    public Person person;
+    @Feld(value = "0212", feldart = Feldart.bedingt_muss)
+    @Regelsatz(value = {F011.class, F022.class}, laenge = 9)
+    public List<String> lanr;
+    @Feld(value = "0223", feldart = Feldart.bedingt_muss)
+    @Regelsatz(value = {F011.class, F022.class}, laenge = 9)
+    public List<String> pseudoLanr;
+    @Feld(value = "0306", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String vertragsId;
+    @Feld(value = "0307", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<ArztId> arztIds;
+    @Feld(value = "0222", feldart = Feldart.bedingt_muss)
+    @Regelsatz(value = F014.class, laenge = 9)
+    public String asvTeamnummer;
 
 }

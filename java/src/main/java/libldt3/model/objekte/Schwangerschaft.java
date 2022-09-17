@@ -37,14 +37,14 @@ import libldt3.model.regel.F018;
 @Objekt("0050")
 public class Schwangerschaft {
 
-	@Feld(value = "8511", feldart = Feldart.kann)
-	@Regelsatz(value = F005.class, laenge = 3)
-	public String schwangerschaftsdauer;
-	@Feld(value = "8512", feldart = Feldart.muss)
-	@Regelsatz(value = F018.class, laenge = 8)
-	public LocalDate ersterTagLetzterZyklus;
-	@Feld(value = "3471", feldart = Feldart.bedingt_kann)
-	@Regelsatz(value = F002.class, laenge = 8)
-	public LocalDate entbindungstermin;
+    @Feld(value = "8511", feldart = Feldart.kann)
+    @Regelsatz(value = F005.class, laenge = 3)
+    public String schwangerschaftsdauer;
+    @Feld(value = "8512", feldart = Feldart.muss)
+    @Regelsatz(value = F018.class, laenge = 8)
+    public LocalDate ersterTagLetzterZyklus;
+    @Feld(value = "3471", feldart = Feldart.bedingt_kann)
+    @Regelsatz(value = F002.class, laenge = 8)
+    public LocalDate entbindungstermin;
 
 }

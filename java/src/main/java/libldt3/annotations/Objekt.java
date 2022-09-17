@@ -35,13 +35,13 @@ import libldt3.model.regel.kontext.Kontextregel;
 @Target(ElementType.TYPE)
 public @interface Objekt {
 
-	/**
-	 * @return ID aus dem Objektkatalog, oder wenn leer ein untypisiertes Wrapper-Objekt
-	 */
-	String value() default "";
+    /**
+     * @return ID aus dem Objektkatalog, oder wenn leer ein untypisiertes Wrapper-Objekt
+     */
+    String value() default "";
 
-	String name() default "";
+    String name() default "";
 
-	Class<? extends Kontextregel>[] kontextregeln() default {};
+    Class<? extends Kontextregel>[] kontextregeln() default {};
 
 }

@@ -26,19 +26,19 @@ package libldt3.model.enums;
  */
 public enum Behandlungsanlass {
 
-	/** kurativ */
-	Kurativ("1"),
-	/** präventiv */
-	Praeventiv("2"),
-	/** Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch */
-	EmpfaengnisregelungSterilisationSchwangerschaftsabbruch("3"),
-	/** belegärztliche Behandlung */
-	BelegaerztlicheBehandlung("4");
+    /** kurativ */
+    Kurativ("1"),
+    /** präventiv */
+    Praeventiv("2"),
+    /** Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch */
+    EmpfaengnisregelungSterilisationSchwangerschaftsabbruch("3"),
+    /** belegärztliche Behandlung */
+    BelegaerztlicheBehandlung("4");
 
-	public final String code;
+    public final String code;
 
-	Behandlungsanlass(String code) {
-		this.code = code;
-	}
+    Behandlungsanlass(String code) {
+        this.code = code;
+    }
 
 }

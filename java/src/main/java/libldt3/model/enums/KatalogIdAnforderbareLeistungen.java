@@ -26,19 +26,19 @@ package libldt3.model.enums;
  */
 public enum KatalogIdAnforderbareLeistungen {
 
-	/** LOINC */
-	LOINC("1"),
-	/** LDT ELV */
-	LDT_ELV("2"),
-	/** LVZ sonstige */
-	LVZ_sonstige("3"),
-	/** sonstige mit URL */
-	sonstigeMitURL("4");
+    /** LOINC */
+    LOINC("1"),
+    /** LDT ELV */
+    LDT_ELV("2"),
+    /** LVZ sonstige */
+    LVZ_sonstige("3"),
+    /** sonstige mit URL */
+    sonstigeMitURL("4");
 
-	public final String code;
+    public final String code;
 
-	KatalogIdAnforderbareLeistungen(String code) {
-		this.code = code;
-	}
+    KatalogIdAnforderbareLeistungen(String code) {
+        this.code = code;
+    }
 
 }

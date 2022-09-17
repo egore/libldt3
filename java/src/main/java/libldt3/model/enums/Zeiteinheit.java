@@ -26,15 +26,15 @@ package libldt3.model.enums;
  */
 public enum Zeiteinheit {
 
-	Sekunden("1"),
-	Minuten("2"),
-	Tage("3"),
-	Jahre("4");
+    Sekunden("1"),
+    Minuten("2"),
+    Tage("3"),
+    Jahre("4");
 
-	public final String code;
+    public final String code;
 
-	Zeiteinheit(String code) {
-		this.code = code;
-	}
+    Zeiteinheit(String code) {
+        this.code = code;
+    }
 
 }

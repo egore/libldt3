@@ -26,12 +26,12 @@ package libldt3.model.enums;
  */
 public enum Versichertenart {
 
-	Mitglied("1"), Familienversicherter("3"), Rentner("5");
+    Mitglied("1"), Familienversicherter("3"), Rentner("5");
 
-	public final String code;
+    public final String code;
 
-	Versichertenart(String code) {
-		this.code = code;
-	}
+    Versichertenart(String code) {
+        this.code = code;
+    }
 
 }

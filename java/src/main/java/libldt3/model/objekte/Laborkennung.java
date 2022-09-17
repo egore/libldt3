@@ -35,17 +35,17 @@ import libldt3.model.enums.Laborart;
 @Objekt("0036")
 public class Laborkennung {
 
-	@Feld(value = "8239", name = "Laborbezeichnung", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 16)
-	public Organisation laborbezeichnung;
-	@Feld(value = "7352", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> katalogUrl;
-	@Feld(value = "8324", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String laborStandortId;
-	@Feld(value = "7266", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public Laborart laborart;
+    @Feld(value = "8239", name = "Laborbezeichnung", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 16)
+    public Organisation laborbezeichnung;
+    @Feld(value = "7352", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> katalogUrl;
+    @Feld(value = "8324", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String laborStandortId;
+    @Feld(value = "7266", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Laborart laborart;
 
 }

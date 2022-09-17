@@ -36,14 +36,14 @@ import libldt3.model.objekte.Laborkennung;
 @Datenpaket(Satzart.LaborDatenpaketHeader)
 public class LaborDatenpaketHeader implements Satz {
 
-	@Feld(value = "8132", feldart = Feldart.muss)
-	@Regelsatz(laenge = 9)
-	public Kopfdaten kopfdaten;
-	@Feld(value = "8136", feldart = Feldart.muss)
-	@Regelsatz(laenge = 12)
-	public Laborkennung laborkennung;
-	@Feld(value = "8119", feldart = Feldart.muss)
-	@Regelsatz(laenge = 15)
-	public Betriebsstaette betriebsstaette;
+    @Feld(value = "8132", feldart = Feldart.muss)
+    @Regelsatz(laenge = 9)
+    public Kopfdaten kopfdaten;
+    @Feld(value = "8136", feldart = Feldart.muss)
+    @Regelsatz(laenge = 12)
+    public Laborkennung laborkennung;
+    @Feld(value = "8119", feldart = Feldart.muss)
+    @Regelsatz(laenge = 15)
+    public Betriebsstaette betriebsstaette;
 
 }

@@ -49,44 +49,44 @@ import libldt3.model.regel.kontext.K005;
 @Datenpaket(value = Satzart.Befund, kontextregeln = K005.class)
 public class Befund implements Satz {
 
-	@Feld(value = "8136", feldart = Feldart.kann)
-	@Regelsatz(laenge = 12)
-	public List<Laborkennung> laborkennung;
-	@Feld(value = "8122", feldart = Feldart.muss)
-	@Regelsatz(laenge = 23)
-	public Einsenderidentifikation senderIdentification;
-	@Feld(value = "8145", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 7)
-	public Patient patient;
-	@Feld(value = "8169", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 19)
-	public Koerperkenngroessen koerperkenngroessen;
-	@Feld(value = "8150", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 15)
-	public Schwangerschaft schwangerschaft;
-	@Feld(value = "8140", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 12)
-	public Mutterschaft mutterschaft;
-	@Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 14)
-	public Tier tier;
-	@Feld(value = "8117", feldart = Feldart.muss)
-	@Regelsatz(laenge = 19)
-	public Befundinformationen befundinformationen;
-	@Feld(value = "8127", feldart = Feldart.kann)
-	@Regelsatz(laenge = 18)
-	public List<Veranlassungsgrund> veranlassungsgrund;
-	@Feld(value = "8137", feldart = Feldart.muss)
-	@Regelsatz(laenge = 8)
-	public List<Material> material;
-	@Feld(value = "8135", feldart = Feldart.muss)
-	@Regelsatz(laenge = 20)
-	public Laborergebnisbericht laborergebnisbericht;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	@Regelsatz(laenge = 26)
-	public List<Fliesstext> text;
-	@Feld(value = "8110", feldart = Feldart.kann)
-	@Regelsatz(laenge = 6)
-	public List<Anhang> anhang;
+    @Feld(value = "8136", feldart = Feldart.kann)
+    @Regelsatz(laenge = 12)
+    public List<Laborkennung> laborkennung;
+    @Feld(value = "8122", feldart = Feldart.muss)
+    @Regelsatz(laenge = 23)
+    public Einsenderidentifikation senderIdentification;
+    @Feld(value = "8145", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 7)
+    public Patient patient;
+    @Feld(value = "8169", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 19)
+    public Koerperkenngroessen koerperkenngroessen;
+    @Feld(value = "8150", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 15)
+    public Schwangerschaft schwangerschaft;
+    @Feld(value = "8140", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 12)
+    public Mutterschaft mutterschaft;
+    @Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 14)
+    public Tier tier;
+    @Feld(value = "8117", feldart = Feldart.muss)
+    @Regelsatz(laenge = 19)
+    public Befundinformationen befundinformationen;
+    @Feld(value = "8127", feldart = Feldart.kann)
+    @Regelsatz(laenge = 18)
+    public List<Veranlassungsgrund> veranlassungsgrund;
+    @Feld(value = "8137", feldart = Feldart.muss)
+    @Regelsatz(laenge = 8)
+    public List<Material> material;
+    @Feld(value = "8135", feldart = Feldart.muss)
+    @Regelsatz(laenge = 20)
+    public Laborergebnisbericht laborergebnisbericht;
+    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Regelsatz(laenge = 26)
+    public List<Fliesstext> text;
+    @Feld(value = "8110", feldart = Feldart.kann)
+    @Regelsatz(laenge = 6)
+    public List<Anhang> anhang;
 
 }

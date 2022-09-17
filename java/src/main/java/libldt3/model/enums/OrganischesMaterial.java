@@ -26,17 +26,17 @@ package libldt3.model.enums;
  */
 public enum OrganischesMaterial {
 
-	/** tierisch */
-	tierisch("1"),
-	/** pflanzlich */
-	pflanzlich("2"),
-	/** nicht bestimmbar */
-	nicht_bestimmbar("3");
+    /** tierisch */
+    tierisch("1"),
+    /** pflanzlich */
+    pflanzlich("2"),
+    /** nicht bestimmbar */
+    nicht_bestimmbar("3");
 
-	public final String code;
+    public final String code;
 
-	OrganischesMaterial(String code) {
-		this.code = code;
-	}
+    OrganischesMaterial(String code) {
+        this.code = code;
+    }
 
 }

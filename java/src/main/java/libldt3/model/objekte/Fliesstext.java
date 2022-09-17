@@ -34,11 +34,11 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0068")
 public class Fliesstext {
 
-	@Feld(value = "3564", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 990)
-	public List<String> text;
-	@Feld(value = "6329", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<String> base64text;
+    @Feld(value = "3564", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 990)
+    public List<String> text;
+    @Feld(value = "6329", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<String> base64text;
 
 }

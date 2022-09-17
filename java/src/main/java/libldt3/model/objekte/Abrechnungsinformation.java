@@ -38,20 +38,20 @@ import libldt3.annotations.Regelsatz;
 @Objekt("0001")
 public class Abrechnungsinformation {
 
-	@Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 14)
-	public List<AbrechnungGkv> abrechnungGkv;
-	@Feld(value = "8103", name = "Abrechnung_PKV", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 14)
-	public List<AbrechnungPkv> abrechnungPkv;
-	@Feld(value = "8104", name = "Abrechnung_IGe-Leistungen", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 25 /* XXX 15 according to spec 3.0.3 */)
-	public AbrechnungIgel abrechnungIgel;
-	@Feld(value = "8105", name = "Abrechnung_Sonstige_Kostenuebernahme", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 36)
-	public AbrechnungSonstigeKostenuebernahme abrechnungSonstigeKostenuebernahme;
-	@Feld(value = "8106", name = "Abrechnung_Selektivvertrag", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 26)
-	public AbrechnungSelektivvertrag abrechnungSelektivvertrag;
+    @Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 14)
+    public List<AbrechnungGkv> abrechnungGkv;
+    @Feld(value = "8103", name = "Abrechnung_PKV", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 14)
+    public List<AbrechnungPkv> abrechnungPkv;
+    @Feld(value = "8104", name = "Abrechnung_IGe-Leistungen", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 25 /* XXX 15 according to spec 3.0.3 */)
+    public AbrechnungIgel abrechnungIgel;
+    @Feld(value = "8105", name = "Abrechnung_Sonstige_Kostenuebernahme", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 36)
+    public AbrechnungSonstigeKostenuebernahme abrechnungSonstigeKostenuebernahme;
+    @Feld(value = "8106", name = "Abrechnung_Selektivvertrag", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 26)
+    public AbrechnungSelektivvertrag abrechnungSelektivvertrag;
 
 }

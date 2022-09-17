@@ -26,19 +26,19 @@ package libldt3.model.enums;
  */
 public enum AnorganischesMaterial {
 
-	/** Wasser */
-	Wasser("1"),
-	/** Luft */
-	Luft("2"),
-	/** nicht bestimmbar */
-	nicht_bestimmbar("3"),
-	/** sonstiges */
-	sonstiges("4");
+    /** Wasser */
+    Wasser("1"),
+    /** Luft */
+    Luft("2"),
+    /** nicht bestimmbar */
+    nicht_bestimmbar("3"),
+    /** sonstiges */
+    sonstiges("4");
 
-	public final String code;
+    public final String code;
 
-	AnorganischesMaterial(String code) {
-		this.code = code;
-	}
+    AnorganischesMaterial(String code) {
+        this.code = code;
+    }
 
 }

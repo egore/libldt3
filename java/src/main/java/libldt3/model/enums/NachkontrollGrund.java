@@ -26,17 +26,17 @@ package libldt3.model.enums;
  */
 public enum NachkontrollGrund {
 
-	/** nach Entzündungsbehandlung */
-	NachEntzuendungsbehandlung("1"),
-	/** nach Oestrogenbehandlung */
-	NachOestrogenbehandlung("2"),
-	/** Sonstiges */
-	Sonstiges("3");
+    /** nach Entzündungsbehandlung */
+    NachEntzuendungsbehandlung("1"),
+    /** nach Oestrogenbehandlung */
+    NachOestrogenbehandlung("2"),
+    /** Sonstiges */
+    Sonstiges("3");
 
-	public final String code;
+    public final String code;
 
-	NachkontrollGrund(String code) {
-		this.code = code;
-	}
+    NachkontrollGrund(String code) {
+        this.code = code;
+    }
 
 }

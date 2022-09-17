@@ -26,13 +26,13 @@ package libldt3.model.enums;
  */
 public enum EndozervikaleZellen {
 
-	vorhanden("1"),
-	nicht_vorhanden("2");
+    vorhanden("1"),
+    nicht_vorhanden("2");
 
-	public final String code;
+    public final String code;
 
-	EndozervikaleZellen(String code) {
-		this.code = code;
-	}
+    EndozervikaleZellen(String code) {
+        this.code = code;
+    }
 
 }

@@ -8,18 +8,18 @@ package libldt3.model.enums;
  */
 public enum Antikoerpersuchtest {
 
-	positiv("1"),
-	negativ("2"),
-	unspezifisch("3"),
-	/** in Abklärung */
-	InAbklaerung("4"),
-	/** Abklärung empfohlen */
-	AbklaerungEmpfohlen("5");
+    positiv("1"),
+    negativ("2"),
+    unspezifisch("3"),
+    /** in Abklärung */
+    InAbklaerung("4"),
+    /** Abklärung empfohlen */
+    AbklaerungEmpfohlen("5");
 
-	public final String code;
+    public final String code;
 
-	Antikoerpersuchtest(String code) {
-		this.code = code;
-	}
+    Antikoerpersuchtest(String code) {
+        this.code = code;
+    }
 
 }

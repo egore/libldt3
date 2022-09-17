@@ -26,26 +26,26 @@ package libldt3.model.enums;
  */
 public enum BesonderePersonengruppe {
 
-	/** keine Angabe */
-	keine_Angabe("00"),
-	/** BSHG (Bundessozialhilfegesetz) § 264 SGB V */
-	Bundessozialhilfegesetz("04"),
-	/** BVG (Gesetz über die Versorgung der Opfer des Krieges) */
-	BVG("06"),
-	/**
-	 * SVA-Kennzeichnung für zwischenstaatliches Krankenversicherun-recht:
-	 * Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
-	 */
-	SVAAufwand("07"),
-	/** SVA-Kennzeichnung, pauschal */
-	SVAPauschal("08"),
-	/** Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG */
-	AsylbLG("09");
+    /** keine Angabe */
+    keine_Angabe("00"),
+    /** BSHG (Bundessozialhilfegesetz) § 264 SGB V */
+    Bundessozialhilfegesetz("04"),
+    /** BVG (Gesetz über die Versorgung der Opfer des Krieges) */
+    BVG("06"),
+    /**
+     * SVA-Kennzeichnung für zwischenstaatliches Krankenversicherun-recht:
+     * Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
+     */
+    SVAAufwand("07"),
+    /** SVA-Kennzeichnung, pauschal */
+    SVAPauschal("08"),
+    /** Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG */
+    AsylbLG("09");
 
-	public final String code;
+    public final String code;
 
-	BesonderePersonengruppe(String code) {
-		this.code = code;
-	}
+    BesonderePersonengruppe(String code) {
+        this.code = code;
+    }
 
 }

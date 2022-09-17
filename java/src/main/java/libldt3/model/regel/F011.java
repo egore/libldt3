@@ -28,10 +28,10 @@ import java.util.regex.Pattern;
  */
 public class F011 extends RegularExpressionRegel {
 
-	public static final Pattern PATTERN = Pattern.compile("^([0-9]{6})([0-9])([0-9]{2})$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-9]{6})([0-9])([0-9]{2})$");
 
-	public F011() {
-		super(PATTERN);
-	}
+    public F011() {
+        super(PATTERN);
+    }
 
 }

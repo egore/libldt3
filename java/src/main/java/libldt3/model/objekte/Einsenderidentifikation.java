@@ -35,35 +35,35 @@ import libldt3.model.enums.Einsenderstatus;
 @Objekt("0022")
 public class Einsenderidentifikation {
 
-	@Feld(value = "7321", feldart = Feldart.muss)
-	@Regelsatz(laenge = 2)
-	public List<Einsenderstatus> status;
-	@Feld(value = "8312", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 20)
-	public String kundenNummer;
-	@Feld(value = "7267", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String auftraggeberId;
-	@Feld(value = "8114", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 18)
-	public Arztidentifikation arztidentifikation;
-	@Feld(value = "8240", name = "Ueberweisung_von_anderen_Aerzten", feldart = Feldart.kann)
-	@Regelsatz(laenge = 32)
-	public Arztidentifikation ueberweisungVon;
-	@Feld(value = "8241", name = "Ueberweisung_an", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 15)
-	public Arztidentifikation ueberweisungAn;
-	@Feld(value = "8147", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 6)
-	public Person person;
-	@Feld(value = "7268", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String fachrichtung;
-	@Feld(value = "8119", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 15)
-	public Betriebsstaette permanentEstablishment;
-	@Feld(value = "8143", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 12)
-	public Organisation organisation;
+    @Feld(value = "7321", feldart = Feldart.muss)
+    @Regelsatz(laenge = 2)
+    public List<Einsenderstatus> status;
+    @Feld(value = "8312", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 20)
+    public String kundenNummer;
+    @Feld(value = "7267", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String auftraggeberId;
+    @Feld(value = "8114", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 18)
+    public Arztidentifikation arztidentifikation;
+    @Feld(value = "8240", name = "Ueberweisung_von_anderen_Aerzten", feldart = Feldart.kann)
+    @Regelsatz(laenge = 32)
+    public Arztidentifikation ueberweisungVon;
+    @Feld(value = "8241", name = "Ueberweisung_an", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 15)
+    public Arztidentifikation ueberweisungAn;
+    @Feld(value = "8147", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 6)
+    public Person person;
+    @Feld(value = "7268", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String fachrichtung;
+    @Feld(value = "8119", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 15)
+    public Betriebsstaette permanentEstablishment;
+    @Feld(value = "8143", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 12)
+    public Organisation organisation;
 
 }

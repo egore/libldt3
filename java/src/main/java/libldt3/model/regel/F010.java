@@ -28,10 +28,10 @@ import java.util.regex.Pattern;
  */
 public class F010 extends RegularExpressionRegel {
 
-	public static final Pattern PATTERN = Pattern.compile("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
+    public static final Pattern PATTERN = Pattern.compile("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
 
-	public F010() {
-		super(PATTERN);
-	}
+    public F010() {
+        super(PATTERN);
+    }
 
 }

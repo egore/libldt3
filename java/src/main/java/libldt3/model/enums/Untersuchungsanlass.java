@@ -26,37 +26,37 @@ package libldt3.model.enums;
  */
 public enum Untersuchungsanlass {
 
-	/** Vorsorge */
-	Vorsorge("01"),
-	/** Verlaufskontrolle */
-	Verlaufskontrolle("02"),
-	/** Zustand vor */
-	ZustandVor("03"),
-	/** Zustand nach */
-	ZustandNach("04"),
-	/** Ausschluss */
-	Ausschluss("05"),
-	/** Bestätigung */
-	Bestaetigung("06"),
-	/** gezielte Suche */
-	GezielteSuche("07"),
-	/** ungezielte Suche */
-	UngezielteSuche("08"),
-	/** Erfolgskontrolle */
-	Erfolgskontrolle("09"),
-	/** Abschlusskontrolle */
-	Abschlusskontrolle("10"),
-	/** Immunität/Impferfolg */
-	ImmunitaetImpferfolg("11");
+    /** Vorsorge */
+    Vorsorge("01"),
+    /** Verlaufskontrolle */
+    Verlaufskontrolle("02"),
+    /** Zustand vor */
+    ZustandVor("03"),
+    /** Zustand nach */
+    ZustandNach("04"),
+    /** Ausschluss */
+    Ausschluss("05"),
+    /** Bestätigung */
+    Bestaetigung("06"),
+    /** gezielte Suche */
+    GezielteSuche("07"),
+    /** ungezielte Suche */
+    UngezielteSuche("08"),
+    /** Erfolgskontrolle */
+    Erfolgskontrolle("09"),
+    /** Abschlusskontrolle */
+    Abschlusskontrolle("10"),
+    /** Immunität/Impferfolg */
+    ImmunitaetImpferfolg("11");
 
-	public final String code;
+    public final String code;
 
-	Untersuchungsanlass(String code) {
-		this.code = code;
-	}
+    Untersuchungsanlass(String code) {
+        this.code = code;
+    }
 
-	public String getCode() {
-		return code;
-	}
-	
+    public String getCode() {
+        return code;
+    }
+    
 }

@@ -26,21 +26,21 @@ package libldt3.model.enums;
  */
 public enum Benachrichtigungsgrund {
 
-	/** Pathologisch auffälliger Befund */
-	PathologischAuffaelligerBefund("1"),
-	/** Lebensbedrohlicher Zustand */
-	LebensbedrohlicherZustand("2"),
-	/** Wiedervorstellung empfohlen */
-	WiedervorstellungEmpfohlen("3"),
-	/** Probenmaterial nicht verwendbar */
-	ProbenmaterialNichtVerwendbar("4"),
-	/** Probenmaterial unvollständig */
-	ProbenmaterialUnvollstaendig("5");
+    /** Pathologisch auffälliger Befund */
+    PathologischAuffaelligerBefund("1"),
+    /** Lebensbedrohlicher Zustand */
+    LebensbedrohlicherZustand("2"),
+    /** Wiedervorstellung empfohlen */
+    WiedervorstellungEmpfohlen("3"),
+    /** Probenmaterial nicht verwendbar */
+    ProbenmaterialNichtVerwendbar("4"),
+    /** Probenmaterial unvollständig */
+    ProbenmaterialUnvollstaendig("5");
 
-	public final String code;
+    public final String code;
 
-	Benachrichtigungsgrund(String code) {
-		this.code = code;
-	}
+    Benachrichtigungsgrund(String code) {
+        this.code = code;
+    }
 
 }

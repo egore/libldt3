@@ -37,23 +37,23 @@ import libldt3.model.enums.Benachrichtigungsgrund;
 @Objekt("0026")
 public class FehlermeldungAufmerksamkeit {
 
-	@Feld(value = "7280", feldart = Feldart.muss)
-	@Regelsatz(laenge = 1)
-	public Benachrichtigungsgrund benachrichtigungsgrund;
-	@Feld(value = "7320", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 1)
-	public Boolean recallEmpfohlen;
-	@Feld(value = "8154", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 9)
-	public Timestamp timestamp;
-	@Feld(value = "8147", feldart = Feldart.muss)
-	@Regelsatz(laenge = 6)
-	public Person person;
-	@Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
-	@Regelsatz(laenge = 26)
-	public List<Fliesstext> text;
-	@Feld(value = "8110", feldart = Feldart.kann)
-	@Regelsatz(laenge = 6)
-	public List<Anhang> anhang;
+    @Feld(value = "7280", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Benachrichtigungsgrund benachrichtigungsgrund;
+    @Feld(value = "7320", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 1)
+    public Boolean recallEmpfohlen;
+    @Feld(value = "8154", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 9)
+    public Timestamp timestamp;
+    @Feld(value = "8147", feldart = Feldart.muss)
+    @Regelsatz(laenge = 6)
+    public Person person;
+    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Regelsatz(laenge = 26)
+    public List<Fliesstext> text;
+    @Feld(value = "8110", feldart = Feldart.kann)
+    @Regelsatz(laenge = 6)
+    public List<Anhang> anhang;
 
 }

@@ -26,21 +26,21 @@ package libldt3.model.enums;
  */
 public enum ResistenzInterpretation {
 
-	/** nicht getestet */
-	nichtGetestet("0"),
-	/** sensibel/wirksam */
-	sensibelWirksam("1"),
-	/** mäßig sensibel/schwach wirksam */
-	maessigSensibelSchwachWirksam("2"),
-	/** resistent/unwirksam */
-	resistentUnwirksam("3"),
-	/** wirksam in hohen Konzentrationen */
-	wirksamInHohenKonzentrationen("4");
+    /** nicht getestet */
+    nichtGetestet("0"),
+    /** sensibel/wirksam */
+    sensibelWirksam("1"),
+    /** mäßig sensibel/schwach wirksam */
+    maessigSensibelSchwachWirksam("2"),
+    /** resistent/unwirksam */
+    resistentUnwirksam("3"),
+    /** wirksam in hohen Konzentrationen */
+    wirksamInHohenKonzentrationen("4");
 
-	public final String code;
+    public final String code;
 
-	ResistenzInterpretation(String code) {
-		this.code = code;
-	}
+    ResistenzInterpretation(String code) {
+        this.code = code;
+    }
 
 }

@@ -34,17 +34,17 @@ import libldt3.model.enums.StatusPerson;
 @Objekt("0041")
 public class Namenskennung {
 
-	@Feld(value = "7420", feldart = Feldart.muss)
-	@Regelsatz(laenge = 2)
-	public StatusPerson status;
-	@Feld(value = "7358", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String name;
-	@Feld(value = "8990", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String shorthand;
-	@Feld(value = "8110", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 6)
-	public Anhang anhang;
+    @Feld(value = "7420", feldart = Feldart.muss)
+    @Regelsatz(laenge = 2)
+    public StatusPerson status;
+    @Feld(value = "7358", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String name;
+    @Feld(value = "8990", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String shorthand;
+    @Feld(value = "8110", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 6)
+    public Anhang anhang;
 
 }

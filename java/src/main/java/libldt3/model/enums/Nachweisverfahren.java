@@ -26,27 +26,27 @@ package libldt3.model.enums;
  */
 public enum Nachweisverfahren {
 
-	/** sonstige, wenn Erreger + Resistenz angefordert */
-	sonstige_wenn_Erreger_und_Resistenz_angefordert("0"),
-	/** Antigen-Nachweis */
-	Antigen_Nachweis("1"),
-	/** PCR */
-	PCR("2"),
-	/** Mikroskopie */
-	Mikroskopie("3"),
-	/** Aglutination */
-	Aglutination("4"),
-	/** Kultur */
-	Kultur("5"),
-	/** Biochemische Identifikation (z.B. Vitek) */
-	Biochemische_Identifikation("6"),
-	/** Maldi-Tof */
-	Maldi_Tof("7");
+    /** sonstige, wenn Erreger + Resistenz angefordert */
+    sonstige_wenn_Erreger_und_Resistenz_angefordert("0"),
+    /** Antigen-Nachweis */
+    Antigen_Nachweis("1"),
+    /** PCR */
+    PCR("2"),
+    /** Mikroskopie */
+    Mikroskopie("3"),
+    /** Aglutination */
+    Aglutination("4"),
+    /** Kultur */
+    Kultur("5"),
+    /** Biochemische Identifikation (z.B. Vitek) */
+    Biochemische_Identifikation("6"),
+    /** Maldi-Tof */
+    Maldi_Tof("7");
 
-	public final String code;
+    public final String code;
 
-	Nachweisverfahren(String code) {
-		this.code = code;
-	}
+    Nachweisverfahren(String code) {
+        this.code = code;
+    }
 
 }

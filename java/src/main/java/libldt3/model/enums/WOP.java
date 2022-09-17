@@ -26,72 +26,72 @@ package libldt3.model.enums;
  */
 public enum WOP {
 
-	/** Dummy bei eGK */
-	Dummy("00"),
-	/** Schleswig-Holstein */
-	SchleswigHolstein("01"),
-	/** Hamburg */
-	Hamburg("02"),
-	/** Bremen */
-	Bremen("03"),
-	/** Niedersachsen */
-	Niedersachsen("17"),
-	/** Westfalen-Lippe */
-	WestfalenLippe("20"),
-	/** Nordrhein */
-	Nordrhein("38"),
-	/** Hessen */
-	Hessen("46"),
-	@Deprecated
-	Koblenz("47"),
-	/** Rheinhessen */
-	@Deprecated
-	Rheinhessen("48"),
-	/** Pfalz */
-	@Deprecated
-	Pfalz("49"),
-	/** Trier */
-	@Deprecated
-	Trier("51"),
-	/** Rheinland-Pfalz */
-	RheinlandPfalz("51"),
-	/** Baden-Württemberg */
-	BadenWuerttemberg("52"),
-	/** Nordbaden */
-	@Deprecated
-	Nordbaden("55"),
-	/** Südbaden */
-	@Deprecated
-	Suedbaden("60"),
-	/** Nordwürttemberg */
-	@Deprecated
-	Nordwuerttemberg("61"),
-	/** Südwürttemberg */
-	@Deprecated
-	Suedwuerttemberg("62"),
-	/** Bayern */
-	Bayern("71"),
-	/** Berlin */
-	Berlin("72"),
-	/** Saarland */
-	Saarland("73"),
-	/** KBV */
-	KBV("74"),
-	/** Mecklenburg-Vorpommern */
-	MecklenburgVorpommern("78"),
-	/** Brandenburg */
-	Brandenburg("83"),
-	/** Sachsen-Anhalt */
-	SachsenAnhalt("88"),
-	/** Thüringen */
-	Thueringen("93"),
-	/** Sachsen */
-	Sachsen("98");
+    /** Dummy bei eGK */
+    Dummy("00"),
+    /** Schleswig-Holstein */
+    SchleswigHolstein("01"),
+    /** Hamburg */
+    Hamburg("02"),
+    /** Bremen */
+    Bremen("03"),
+    /** Niedersachsen */
+    Niedersachsen("17"),
+    /** Westfalen-Lippe */
+    WestfalenLippe("20"),
+    /** Nordrhein */
+    Nordrhein("38"),
+    /** Hessen */
+    Hessen("46"),
+    @Deprecated
+    Koblenz("47"),
+    /** Rheinhessen */
+    @Deprecated
+    Rheinhessen("48"),
+    /** Pfalz */
+    @Deprecated
+    Pfalz("49"),
+    /** Trier */
+    @Deprecated
+    Trier("51"),
+    /** Rheinland-Pfalz */
+    RheinlandPfalz("51"),
+    /** Baden-Württemberg */
+    BadenWuerttemberg("52"),
+    /** Nordbaden */
+    @Deprecated
+    Nordbaden("55"),
+    /** Südbaden */
+    @Deprecated
+    Suedbaden("60"),
+    /** Nordwürttemberg */
+    @Deprecated
+    Nordwuerttemberg("61"),
+    /** Südwürttemberg */
+    @Deprecated
+    Suedwuerttemberg("62"),
+    /** Bayern */
+    Bayern("71"),
+    /** Berlin */
+    Berlin("72"),
+    /** Saarland */
+    Saarland("73"),
+    /** KBV */
+    KBV("74"),
+    /** Mecklenburg-Vorpommern */
+    MecklenburgVorpommern("78"),
+    /** Brandenburg */
+    Brandenburg("83"),
+    /** Sachsen-Anhalt */
+    SachsenAnhalt("88"),
+    /** Thüringen */
+    Thueringen("93"),
+    /** Sachsen */
+    Sachsen("98");
 
-	public final String code;
+    public final String code;
 
-	WOP(String code) {
-		this.code = code;
-	}
+    WOP(String code) {
+        this.code = code;
+    }
 
 }

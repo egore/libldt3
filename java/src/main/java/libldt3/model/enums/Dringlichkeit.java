@@ -26,13 +26,13 @@ package libldt3.model.enums;
  */
 public enum Dringlichkeit {
 
-	Notfall("1"),
-	eilig("2");
+    Notfall("1"),
+    eilig("2");
 
-	public final String code;
+    public final String code;
 
-	Dringlichkeit(String code) {
-		this.code = code;
-	}
+    Dringlichkeit(String code) {
+        this.code = code;
+    }
 
 }

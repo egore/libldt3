@@ -23,17 +23,17 @@ package libldt3.model.enums;
 
 public enum Lokalisation {
 
-	/** rechts */
-	rechts("R"),
-	/** links */
-	links("L"),
-	/** beiderseits */
-	beiderseits("B");
+    /** rechts */
+    rechts("R"),
+    /** links */
+    links("L"),
+    /** beiderseits */
+    beiderseits("B");
 
-	public final String code;
+    public final String code;
 
-	Lokalisation(String code) {
-		this.code = code;
-	}
+    Lokalisation(String code) {
+        this.code = code;
+    }
 
 }

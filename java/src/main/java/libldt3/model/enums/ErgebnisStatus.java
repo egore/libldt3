@@ -26,12 +26,12 @@ package libldt3.model.enums;
  */
 public enum ErgebnisStatus {
 
-	nicht_nachweisbar("0"), zweifelhaft_unspezifisch("1"), nachweisbar("2");
+    nicht_nachweisbar("0"), zweifelhaft_unspezifisch("1"), nachweisbar("2");
 
-	public final String code;
+    public final String code;
 
-	ErgebnisStatus(String code) {
-		this.code = code;
-	}
+    ErgebnisStatus(String code) {
+        this.code = code;
+    }
 
 }

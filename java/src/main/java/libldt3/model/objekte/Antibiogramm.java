@@ -39,56 +39,56 @@ import libldt3.model.enums.Sensitivitaet;
 @Objekt("0011")
 public class Antibiogramm {
 
-	@Objekt
-	public static class WirkstoffIdent {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "7288", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-		public List<String> wirkstoffGenericNummer;
-		@Feld(value = "7359", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-		public List<String> wirkstoffOid;
-		@Feld(value = "7370", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-		public List<String> wirkstoffname;
-		@Feld(value = "7354", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-		public List<KeimIdentifizierung> keimIdentifizierung;
-	}
+    @Objekt
+    public static class WirkstoffIdent {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7288", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+        public List<String> wirkstoffGenericNummer;
+        @Feld(value = "7359", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+        public List<String> wirkstoffOid;
+        @Feld(value = "7370", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+        public List<String> wirkstoffname;
+        @Feld(value = "7354", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+        public List<KeimIdentifizierung> keimIdentifizierung;
+    }
 
-	@Objekt
-	public static class KeimIdentifizierung {
-		@SuppressWarnings("unused")
-		public String value;
-		@Feld(value = "7367", feldart = Feldart.bedingt_muss)
-	@Regelsatz(laenge = 1)
-		public Sensitivitaet sensitivitaet;
-		@Feld(value = "7289", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-		public String mhk;
-		@Feld(value = "7369", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 60)
-		public String mhkEinheit;
-		@Feld(value = "7290", feldart = Feldart.kann)
-	@Regelsatz(laenge = 1)
-		public List<ResistenzInterpretationErweitert> resistenzInterpretation;
-	}
-	
-	@Objekt
-	public static class ResistenzInterpretationErweitert {
-		@SuppressWarnings("unused")
-		public ResistenzInterpretation value;
-		@Feld(value = "7424", feldart = Feldart.kann)
-	@Regelsatz(laenge = 1)
-		public ResistenzNach resistenzNach;
-	}
+    @Objekt
+    public static class KeimIdentifizierung {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7367", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 1)
+        public Sensitivitaet sensitivitaet;
+        @Feld(value = "7289", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+        public String mhk;
+        @Feld(value = "7369", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+        public String mhkEinheit;
+        @Feld(value = "7290", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+        public List<ResistenzInterpretationErweitert> resistenzInterpretation;
+    }
+    
+    @Objekt
+    public static class ResistenzInterpretationErweitert {
+        @SuppressWarnings("unused")
+        public ResistenzInterpretation value;
+        @Feld(value = "7424", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+        public ResistenzNach resistenzNach;
+    }
 
-	@Feld(value = "7287", feldart = Feldart.muss)
-	@Regelsatz(maxLaenge = 60)
-	public List<WirkstoffIdent> wirkstoffIdent;
-	@Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_kann)
-	@Regelsatz(laenge = 12)
-	public Fliesstext ergebnistext;
+    @Feld(value = "7287", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<WirkstoffIdent> wirkstoffIdent;
+    @Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 12)
+    public Fliesstext ergebnistext;
 
 }

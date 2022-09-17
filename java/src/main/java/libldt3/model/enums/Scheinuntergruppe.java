@@ -26,21 +26,21 @@ package libldt3.model.enums;
  */
 public enum Scheinuntergruppe {
 
-	Auftragsleistungen("21"), Konsiliaruntersuchung("23"), MitWeiterbehandlung("24"),
-	/**
-	 * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
-	 */
-	Muster10("27"),
-	/**
-	 * Anforderungsschein für Laboratoriumsuntersuchungen bei
-	 * Laborgemeinschaften
-	 */
-	Muster10A("28");
+    Auftragsleistungen("21"), Konsiliaruntersuchung("23"), MitWeiterbehandlung("24"),
+    /**
+     * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
+     */
+    Muster10("27"),
+    /**
+     * Anforderungsschein für Laboratoriumsuntersuchungen bei
+     * Laborgemeinschaften
+     */
+    Muster10A("28");
 
-	public final String code;
+    public final String code;
 
-	Scheinuntergruppe(String code) {
-		this.code = code;
-	}
+    Scheinuntergruppe(String code) {
+        this.code = code;
+    }
 
 }

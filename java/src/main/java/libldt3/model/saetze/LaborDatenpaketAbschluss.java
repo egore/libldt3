@@ -32,7 +32,7 @@ import libldt3.model.enums.Satzart;
 @Datenpaket(Satzart.LaborDatenpaketAbschluss)
 public class LaborDatenpaketAbschluss implements Satz {
 
-	@Feld(value = "9300", feldart = Feldart.muss)
-	public String pruefsumme;
+    @Feld(value = "9300", feldart = Feldart.muss)
+    public String pruefsumme;
 
 }

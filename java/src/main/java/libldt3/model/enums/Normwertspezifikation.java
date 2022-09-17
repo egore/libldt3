@@ -26,39 +26,39 @@ package libldt3.model.enums;
  */
 public enum Normwertspezifikation {
 
-	/** Methodenspezifische Standards nach WHO */
-	MethodenspezifischeStandardsWHO("10"),
-	/** Methodenspezifische Standards nach IFCC (u.a. serologische Verfahren) */
-	MethodenspezifischeStandardsIFCC("11"),
-	/** Methodenspezifische Standards nach DGKL */
-	MethodenspezifischeStandardsDGKL("12"),
-	/** Sonstige Standards */
-	SonstigeStandards("13"),
-	/** Patientenspezifische Einflussgröße Alter betreffend */
-	PatientenspezifischeEinflussgroesseAlter("20"),
-	/** Patientenspezifische Einflussgröße Geschlecht betreffend */
-	PatientenspezifischeEinflussgroesseGeschlecht("21"),
-	/** Patientenspezifische Einflussgröße Alter und Geschlecht betreffend */
-	PatientenspezifischeEinflussgroesseAlterGeschlecht("22"),
-	/** Patientenspezifische Einflussgröße SSW betreffend */
-	PatientenspezifischeEinflussgroesseSSW("23"),
-	/** Patientenspezifische Einflussgröße Alter und SSW betreffend */
-	PatientenspezifischeEinflussgroesseAlterSSW("24"),
-	/** weitere patientenspezifische Einflussgrößen (z.B. Mediaktion) */
-	WeiterePatientenspezifischeEinflussgroessen("25"),
-	/** Information zu Patientenspezifischer Einflussgröße Alter fehlte */
-	InformationPatientenspezifischerEinflussgroesseAlterFehlte("26"),
-	/** Information zu Patientenspezifischer Einflussgröße Geschlecht fehlte */
-	InformationPatientenspezifischerEinflussgroesseGeschlechtFehlte("27"),
-	/** Information zu Patientenspezifischer Einflussgröße Alter und Geschlecht fehlte */
-	InformationPatientenspezifischerEinflussgroesseAlterGeschlechtFehlte("28"),
-	/** Funktionsprofile */
-	Funktionsprofile("30");
+    /** Methodenspezifische Standards nach WHO */
+    MethodenspezifischeStandardsWHO("10"),
+    /** Methodenspezifische Standards nach IFCC (u.a. serologische Verfahren) */
+    MethodenspezifischeStandardsIFCC("11"),
+    /** Methodenspezifische Standards nach DGKL */
+    MethodenspezifischeStandardsDGKL("12"),
+    /** Sonstige Standards */
+    SonstigeStandards("13"),
+    /** Patientenspezifische Einflussgröße Alter betreffend */
+    PatientenspezifischeEinflussgroesseAlter("20"),
+    /** Patientenspezifische Einflussgröße Geschlecht betreffend */
+    PatientenspezifischeEinflussgroesseGeschlecht("21"),
+    /** Patientenspezifische Einflussgröße Alter und Geschlecht betreffend */
+    PatientenspezifischeEinflussgroesseAlterGeschlecht("22"),
+    /** Patientenspezifische Einflussgröße SSW betreffend */
+    PatientenspezifischeEinflussgroesseSSW("23"),
+    /** Patientenspezifische Einflussgröße Alter und SSW betreffend */
+    PatientenspezifischeEinflussgroesseAlterSSW("24"),
+    /** weitere patientenspezifische Einflussgrößen (z.B. Mediaktion) */
+    WeiterePatientenspezifischeEinflussgroessen("25"),
+    /** Information zu Patientenspezifischer Einflussgröße Alter fehlte */
+    InformationPatientenspezifischerEinflussgroesseAlterFehlte("26"),
+    /** Information zu Patientenspezifischer Einflussgröße Geschlecht fehlte */
+    InformationPatientenspezifischerEinflussgroesseGeschlechtFehlte("27"),
+    /** Information zu Patientenspezifischer Einflussgröße Alter und Geschlecht fehlte */
+    InformationPatientenspezifischerEinflussgroesseAlterGeschlechtFehlte("28"),
+    /** Funktionsprofile */
+    Funktionsprofile("30");
 
-	public final String code;
+    public final String code;
 
-	Normwertspezifikation(String code) {
-		this.code = code;
-	}
+    Normwertspezifikation(String code) {
+        this.code = code;
+    }
 
 }

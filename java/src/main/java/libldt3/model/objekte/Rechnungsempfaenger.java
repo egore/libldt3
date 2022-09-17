@@ -34,26 +34,26 @@ import libldt3.model.enums.StatusRechnungsempfaenger;
 @Objekt(value = "0048", name = "RgEmpfaenger")
 public class Rechnungsempfaenger {
 
-	@Feld(value = "8310", feldart = Feldart.muss)
-	@Regelsatz(maxLaenge = 60)
-	public String auftragsnummerEinsender;
-	@Feld(value = "7421", feldart = Feldart.muss)
-	@Regelsatz(laenge = 2)
-	public StatusRechnungsempfaenger statusRechnungsempfaenger;
-	@Feld(value = "0600", feldart = Feldart.bedingt_muss)
-	@Regelsatz(maxLaenge = 60)
-	public String nameEinrichtungAuftraggeber;
-	@Feld(value = "7328", feldart = Feldart.bedingt_kann)
-	@Regelsatz(maxLaenge = 10)
-	public String zusaetzlicheNamenszeile;
-	@Feld(value = "8108", feldart = Feldart.muss)
-	@Regelsatz(laenge = 8)
-	public Adressat adressat;
-	@Feld(value = "8610", feldart = Feldart.kann)
-	@Regelsatz(laenge = 1)
-	public Privattarif privattarif;
-	@Feld(value = "8608", feldart = Feldart.kann)
-	@Regelsatz(maxLaenge = 60)
-	public String kommentarAktenzeichen;
+    @Feld(value = "8310", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 60)
+    public String auftragsnummerEinsender;
+    @Feld(value = "7421", feldart = Feldart.muss)
+    @Regelsatz(laenge = 2)
+    public StatusRechnungsempfaenger statusRechnungsempfaenger;
+    @Feld(value = "0600", feldart = Feldart.bedingt_muss)
+    @Regelsatz(maxLaenge = 60)
+    public String nameEinrichtungAuftraggeber;
+    @Feld(value = "7328", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 10)
+    public String zusaetzlicheNamenszeile;
+    @Feld(value = "8108", feldart = Feldart.muss)
+    @Regelsatz(laenge = 8)
+    public Adressat adressat;
+    @Feld(value = "8610", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public Privattarif privattarif;
+    @Feld(value = "8608", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 60)
+    public String kommentarAktenzeichen;
 
 }
