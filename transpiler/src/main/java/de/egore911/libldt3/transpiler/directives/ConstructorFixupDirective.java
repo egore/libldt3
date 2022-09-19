@@ -5,7 +5,6 @@ import static de.egore911.libldt3.transpiler.directives.InvocationFixupDirective
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

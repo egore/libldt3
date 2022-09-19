@@ -45,6 +45,9 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
 
             map.put(Pattern.class.getMethod("compile", String.class), "new Regex(${arguments})");
 
+            // Ignore matches call, but fixup ${target}
+            map.put(Matcher.class.getMethod("matches"), "${target}");
+
             map.put(Logger.class.getMethod("error", String.class), "Trace.TraceError(${arguments})");
             map.put(Logger.class.getMethod("error", String.class, Object.class, Object.class), "Trace.TraceError(${arguments})");
             map.put(Logger.class.getMethod("warn", String.class), "Trace.TraceWarning(${arguments})");
@@ -125,6 +128,15 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
                     if (index == 0) {
                         String replace = argument.replace("typeof(", "");
                         return replace.substring(0, replace.length() - 1);
+                    }
+                    return argument;
+                }
+            });
+            map.put(Matcher.class.getMethod("matches"), new ArgumentHandler() {
+                @Override
+                public String fixArguments(String argument, int index) {
+                    if (index == -1) {
+                        return argument.replace(".matcher(", ".IsMatch(");
                     }
                     return argument;
                 }
@@ -235,12 +247,20 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
                     break;
                 }
                 String argument = render(env, invocation.getArguments().get(i), "argument");
+                ArgumentHandler argumentHandler = METHOD_TEMPLATE_ARGUMENT_HANDLERS.get(method);
+                if (argumentHandler != null) {
+                    argument = argumentHandler.fixArguments(argument, i);
+                }
                 template = template.replace("${arguments:" + i + "}", argument);
             }
 
             // Replace the target
             if (template.contains("${target}")) {
                 template = template.replace("${target}", render(env, invocation, "target"));
+                ArgumentHandler argumentHandler = METHOD_TEMPLATE_ARGUMENT_HANDLERS.get(method);
+                if (argumentHandler != null) {
+                    template = argumentHandler.fixArguments(template, -1);
+                }
             }
 
             // And this is it
