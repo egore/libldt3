@@ -9,8 +9,7 @@ public enum ${enum.simpleName}
 {
     <#list enum.enumValues as value>
     <@comments.comments comments=value.comments />
-    ${value.simpleName}
-    <#sep>,
+    ${value.simpleName}<#sep>,
     </#list>
 }
 
@@ -31,5 +30,4 @@ public static class ${enum.simpleName}Extensions
     </#if>
     </#list>
 }
-
 </@namespace>
