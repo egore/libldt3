@@ -19,7 +19,7 @@
     <#list klass.nestedTypes as nestedType>
     <@class_ klass=nestedType/>
     </#list>
-    <#list class.fields as field>
+    <#list klass.fields as field>
     <#if field.simpleName != "LOG">
         <@attributes.fieldattributes field/>
         ${field.visibility!}<#if field.static> static</#if><#if field.final> readonly</#if> <@converttype type=field.type/> ${field.simpleName}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
