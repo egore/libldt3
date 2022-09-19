@@ -29,6 +29,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>de.egore911</groupId>
+			<artifactId>libldt3</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
 			<version>2.0.0</version>

@@ -34,6 +34,8 @@ public class ConvertTypeDirective implements TemplateDirectiveModel {
     private static String convertType(CtTypeReference<?> type, boolean withNullability) {
         String name;
         switch (type.getQualifiedName()) {
+        // Quirk for generics
+        case "?": name = "object"; break;
         case "boolean": name = "bool"; break;
         case "java.lang.Boolean": name = "bool?"; break;
         case "java.lang.Float": name = "float?"; break;
@@ -47,9 +49,10 @@ public class ConvertTypeDirective implements TemplateDirectiveModel {
         case "java.util.ArrayList": name = "List"; break;
         case "java.util.regex.Pattern": name = "Regex"; break;
         case "java.lang.reflect.Field": name = "FieldInfo"; break;
+        case "java.lang.Iterable": name = "IEnumerable"; break;
         default: name = type.getSimpleName(); break;
         }
-        if (withNullability && (type.isEnum() || type.getQualifiedName().startsWith("java.time."))) {
+        if (withNullability && (type.isEnum() || type.isAnnotationType() ||type.getQualifiedName().startsWith("java.time."))) {
             name += "?";
         }
         if (type.getActualTypeArguments() != null && !type.getActualTypeArguments().isEmpty()) {

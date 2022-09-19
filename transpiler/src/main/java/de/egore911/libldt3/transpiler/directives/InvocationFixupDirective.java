@@ -26,6 +26,7 @@ import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateNotFoundException;
+import libldt3.annotations.Feld;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
@@ -38,7 +39,8 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
         Map<Method, String> map = new HashMap<>();
         try {
             map.put(Field.class.getMethod("get", Object.class), "${target}.GetValue(${arguments})");
-            map.put(Field.class.getMethod("getAnnotation", Class.class), "${target}.GetCustomAttribute(${arguments})");
+            map.put(Field.class.getMethod("getAnnotation", Class.class), "${target}.GetCustomAttribute<${arguments}>()");
+            map.put(Field.class.getMethod("setAccessible", boolean.class), "");
 
             map.put(Pattern.class.getMethod("compile", String.class), "new Regex(${arguments})");
 
@@ -55,14 +57,21 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
             map.put(Map.class.getMethod("put", Object.class, Object.class), "${target}[${arguments:0}] = ${arguments:1}");
 
             map.put(Set.class.getMethod("size"), "${target}.Count");
+            // TODO potentially obsolete, when switching to ?cap_first
+            map.put(Set.class.getMethod("contains", Object.class), "${target}.Contains(${arguments})");
 
             map.put(List.class.getMethod("add", Object.class), "${target}.Add(${arguments})");
 
             map.put(String.class.getMethod("isEmpty"), "string.IsNullOrEmpty(${target})");
 
             map.put(Object.class.getMethod("getClass"), "${target}.GetType()");
+            // TODO potentially obsolete, when switching to ?cap_first
+            map.put(Object.class.getMethod("equals", Object.class), "${target}.Equals(${arguments})");
 
             map.put(Class.class.getMethod("getDeclaredFields"), "${target}.GetFields()");
+            map.put(Class.class.getMethod("getAnnotation", Class.class), "${target}.GetCustomAttribute<${arguments}>()");
+
+            map.put(Feld.class.getMethod("value"), "${target}.Value");
 
         } catch (NoSuchMethodException | SecurityException e) {
             throw new Error(e);
@@ -71,7 +80,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
     }
 
     public static interface ArgumentHandler {
-        String fixArguments(String arguments);
+        String fixArguments(String argument, int index);
     }
 
     private static final Map<Method, ArgumentHandler> METHOD_TEMPLATE_ARGUMENT_HANDLERS;
@@ -80,16 +89,39 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
         try {
             map.put(Logger.class.getMethod("error", String.class, Object.class, Object.class), new ArgumentHandler() {
                 @Override
-                public String fixArguments(String arguments) {
-                    int index = 0;
-                    Matcher m = Pattern.compile("\\{\\}").matcher(arguments);
-                    StringBuilder sb = new StringBuilder();
-                    while (m.find()) {
-                        m.appendReplacement(sb, "{" + index + "}");
-                        index++;
+                public String fixArguments(String argument, int index) {
+                    if (index == 0) {
+                        int counter = 0;
+                        Matcher m = Pattern.compile("\\{\\}").matcher(argument);
+                        StringBuilder sb = new StringBuilder();
+                        while (m.find()) {
+                            m.appendReplacement(sb, "{" + counter + "}");
+                            counter++;
+                        }
+                        m.appendTail(sb);
+                        return sb.toString();
                     }
-                    m.appendTail(sb);
-                    return sb.toString();
+                    return argument;
+                }
+            });
+            map.put(Field.class.getMethod("getAnnotation", Class.class), new ArgumentHandler() {
+                @Override
+                public String fixArguments(String argument, int index) {
+                    if (index == 0) {
+                        String replace = argument.replace("typeof(", "");
+                        return replace.substring(0, replace.length() - 1);
+                    }
+                    return argument;
+                }
+            });
+            map.put(Class.class.getMethod("getAnnotation", Class.class), new ArgumentHandler() {
+                @Override
+                public String fixArguments(String argument, int index) {
+                    if (index == 0) {
+                        String replace = argument.replace("typeof(", "");
+                        return replace.substring(0, replace.length() - 1);
+                    }
+                    return argument;
                 }
             });
         } catch (NoSuchMethodException | SecurityException e) {
@@ -182,7 +214,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
                     String argument = render(env, invocation.getArguments().get(i), "argument");
                     ArgumentHandler argumentHandler = METHOD_TEMPLATE_ARGUMENT_HANDLERS.get(method);
                     if (argumentHandler != null) {
-                        argument = argumentHandler.fixArguments(argument);
+                        argument = argumentHandler.fixArguments(argument, i);
                     }
                     if (!arguments.isEmpty()) {
                         arguments.append(", ");
@@ -216,8 +248,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
     }
 
     private Class<?> determineClass(String qualifiedName) throws ClassNotFoundException {
-        if (qualifiedName.equals("void") || 
-                qualifiedName.startsWith("libldt3.")) {
+        if (qualifiedName.equals("void")) {
             return null;
         }
         if ("boolean".equals(qualifiedName)) {
