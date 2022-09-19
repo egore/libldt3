@@ -71,7 +71,9 @@
 </#macro>
 
 <#macro renderConstructorCallExpression expression>
+<@constructorfixup constructor=expression>
     new <@converttype type=expression.executable.type/>(<#list expression.arguments as argument><@renderExpression expression=argument/><#sep>, </#list>)
+</@constructorfixup>
 </#macro>
 
 <#macro renderFieldReadExpression expression force_array>

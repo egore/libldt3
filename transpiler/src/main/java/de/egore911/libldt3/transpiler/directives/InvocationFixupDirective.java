@@ -30,6 +30,7 @@ import libldt3.annotations.Feld;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.code.CtTypeAccess;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.reference.CtTypeReference;
 
 public class InvocationFixupDirective implements TemplateDirectiveModel {
@@ -247,17 +248,20 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
         body.render(env.getOut());
     }
 
-    private Class<?> determineClass(String qualifiedName) throws ClassNotFoundException {
+    static Class<?> determineClass(String qualifiedName) throws ClassNotFoundException {
         if (qualifiedName.equals("void")) {
             return null;
         }
         if ("boolean".equals(qualifiedName)) {
             return boolean.class;
         }
+        if ("int".equals(qualifiedName)) {
+            return int.class;
+        }
         return Class.forName(qualifiedName);
     }
 
-    private String render(Environment env, CtExpression<?> invocation, String type) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+    static String render(Environment env, CtElement invocation, String type) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
         Template template = env.getConfiguration().getTemplate("invocation/" + type + ".ftl");
         Map<String, Object> data = Collections.singletonMap("expression", invocation);
         Writer writer = new StringWriter();

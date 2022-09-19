@@ -11,6 +11,7 @@ import java.util.Collections;
 
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
+import de.egore911.libldt3.transpiler.directives.ConstructorFixupDirective;
 import de.egore911.libldt3.transpiler.directives.ConvertTypeDirective;
 import de.egore911.libldt3.transpiler.directives.GenUsingDirective;
 import de.egore911.libldt3.transpiler.directives.InvocationFixupDirective;
@@ -47,6 +48,7 @@ public class TranspileCsharp {
         config.setSharedVariable("genusing", new GenUsingDirective());
         config.setSharedVariable("converttype", new ConvertTypeDirective());
         config.setSharedVariable("invocationfixup", new InvocationFixupDirective());
+        config.setSharedVariable("constructorfixup", new ConstructorFixupDirective());
 
         // Make the current year available as variable
         config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));

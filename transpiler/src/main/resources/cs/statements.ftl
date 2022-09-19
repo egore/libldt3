@@ -99,5 +99,5 @@ switch (<@expressions.renderExpression expression=statement.selector/>) {
 </#macro>
 
 <#macro renderThrowStatement statement>
-    throw <@expressions.renderExpression expression=statement.thrownExpression/>
+    throw <@expressions.renderExpression expression=statement.thrownExpression/>;
 </#macro>
