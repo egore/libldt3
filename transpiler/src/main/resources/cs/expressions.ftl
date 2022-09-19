@@ -103,7 +103,7 @@
 
 <#macro renderInvocationExpression expression>
 <#if expression.typeCasts?size gt 0><#list expression.typeCasts as typeCast>(<@converttype type=typeCast/>) </#list></#if><@invocationfixup invocation=expression>
-    <#if expression.target??><#include "./invocation/target.ftl">.</#if>${expression.executable.simpleName}(<#include "./invocation/arguments.ftl">)
+<#if expression.target??><#include "./invocation/target.ftl">.</#if>${expression.executable.simpleName}(<#include "./invocation/arguments.ftl">)
 </@invocationfixup>
 </#macro>
 

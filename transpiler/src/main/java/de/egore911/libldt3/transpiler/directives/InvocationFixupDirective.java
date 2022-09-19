@@ -52,6 +52,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
             map.put(Map.class.getMethod("size"), "${target}.Count");
             map.put(Map.class.getMethod("get", Object.class), "${target}[${arguments}]");
             map.put(Map.class.getMethod("values"), "${target}.Values");
+            map.put(Map.class.getMethod("put", Object.class, Object.class), "${target}[${arguments:0}] = ${arguments:1}");
 
             map.put(Set.class.getMethod("size"), "${target}.Count");
 
@@ -184,6 +185,14 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
                 template = template.replace("${arguments}", arguments);
             }
 
+            for (int i = 0; i < invocation.getArguments().size(); i++) {
+                if (!template.contains("${arguments:" + i + "}")) {
+                    break;
+                }
+                String argument = render(env, invocation.getArguments().get(i), "argument");
+                template = template.replace("${arguments:" + i + "}", argument);
+            }
+
             if (template.contains("${target}")) {
                 template = template.replace("${target}", render(env, invocation, "target"));
             }
@@ -207,7 +216,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
         return Class.forName(qualifiedName);
     }
 
-    private String render(Environment env, CtInvocation<?> invocation, String type) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
+    private String render(Environment env, CtExpression<?> invocation, String type) throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException, TemplateException {
         Template template = env.getConfiguration().getTemplate("invocation/" + type + ".ftl");
         Map<String, Object> data = Collections.singletonMap("expression", invocation);
         Writer writer = new StringWriter();
