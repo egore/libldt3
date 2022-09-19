@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,14 +26,12 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E055
-             * 
-             * Direkter Coombstest (DCT)
-             */
+            /// <summary>
+            /// E055
+            /// </summary>
+            /// Direkter Coombstest (DCT)
             public enum DirekterCoombstest
             {
-
                 negativ,
                 einfachPositiv,
                 zweifachPositiv,
@@ -54,7 +50,6 @@ namespace libldt3
                         case DirekterCoombstest.zweifachPositiv: return "2";
                         case DirekterCoombstest.dreifachPositiv: return "3";
                         case DirekterCoombstest.viewfachPositiv: return "4";
-
                         default: throw new Exception();
                     }
                 }

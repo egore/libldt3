@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,21 +26,20 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E049
-             */
+            /// <summary>
+            /// E049
+            /// </summary>
             public enum Benachrichtigungsgrund
             {
-
-                /** Pathologisch auffälliger Befund */
+                /// Pathologisch auffälliger Befund
                 PathologischAuffaelligerBefund,
-                /** Lebensbedrohlicher Zustand */
+                /// Lebensbedrohlicher Zustand
                 LebensbedrohlicherZustand,
-                /** Wiedervorstellung empfohlen */
+                /// Wiedervorstellung empfohlen
                 WiedervorstellungEmpfohlen,
-                /** Probenmaterial nicht verwendbar */
+                /// Probenmaterial nicht verwendbar
                 ProbenmaterialNichtVerwendbar,
-                /** Probenmaterial unvollständig */
+                /// Probenmaterial unvollständig
                 ProbenmaterialUnvollstaendig
             }
 

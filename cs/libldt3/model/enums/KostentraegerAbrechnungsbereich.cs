@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,31 +26,30 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E015
-             */
+            /// <summary>
+            /// E015
+            /// </summary>
             public enum KostentraegerAbrechnungsbereich
             {
-
-                /** Primärabrechnung */
+                /// Primärabrechnung
                 Primaerabrechnung,
-                /** Sozialversicherungsabkommen (SVA) */
+                /// Sozialversicherungsabkommen (SVA)
                 Sozialversicherungsabkommen,
-                /** Bundesversorgungsgesetz (BVG) */
+                /// Bundesversorgungsgesetz (BVG)
                 Bundesversorgungsgesetz,
-                /** Bundesentschädigungsgesetz (BEG) */
+                /// Bundesentschädigungsgesetz (BEG)
                 Bundesentschaedigungsgesetz,
-                /** Grenzgänger (GG) */
+                /// Grenzgänger (GG)
                 Grenzgaenger,
-                /** Rheinschiffer (RHS) */
+                /// Rheinschiffer (RHS)
                 Rheinschiffer,
-                /** Sozialhilfeträger, ohne Asylstellen (SHT) */
+                /// Sozialhilfeträger, ohne Asylstellen (SHT)
                 Sozialhilfetraeger,
-                /** Bundesvertriebenengesetz (BVFG) */
+                /// Bundesvertriebenengesetz (BVFG)
                 Bundesvertriebenengesetz,
-                /** Asylstellen (AS) */
+                /// Asylstellen (AS)
                 Asylstellen,
-                /** Schwangerschaftsabbrüche */
+                /// Schwangerschaftsabbrüche
                 Schwangerschaftsabbrueche
             }
 

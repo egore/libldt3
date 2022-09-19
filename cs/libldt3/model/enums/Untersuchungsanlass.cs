@@ -19,40 +19,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
-            /**
-             * E146
-             */
+
+            /// <summary>
+            /// E146
+            /// </summary>
             public enum Untersuchungsanlass
             {
-                /** Vorsorge */
+                /// Vorsorge
                 Vorsorge,
-                /** Verlaufskontrolle */
+                /// Verlaufskontrolle
                 Verlaufskontrolle,
-                /** Zustand vor */
+                /// Zustand vor
                 ZustandVor,
-                /** Zustand nach */
+                /// Zustand nach
                 ZustandNach,
-                /** Ausschluss */
+                /// Ausschluss
                 Ausschluss,
-                /** Bestätigung */
+                /// Bestätigung
                 Bestaetigung,
-                /** gezielte Suche */
+                /// gezielte Suche
                 GezielteSuche,
-                /** ungezielte Suche */
+                /// ungezielte Suche
                 UngezielteSuche,
-                /** Erfolgskontrolle */
+                /// Erfolgskontrolle
                 Erfolgskontrolle,
-                /** Abschlusskontrolle */
+                /// Abschlusskontrolle
                 Abschlusskontrolle,
-                /** Immunität/Impferfolg */
+                /// Immunität/Impferfolg
                 ImmunitaetImpferfolg
             }
 

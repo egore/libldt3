@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,19 +26,18 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E035
-             */
+            /// <summary>
+            /// E035
+            /// </summary>
             public enum AnorganischesMaterial
             {
-
-                /** Wasser */
+                /// Wasser
                 Wasser,
-                /** Luft */
+                /// Luft
                 Luft,
-                /** nicht bestimmbar */
+                /// nicht bestimmbar
                 nicht_bestimmbar,
-                /** sonstiges */
+                /// sonstiges
                 sonstiges
             }
 

@@ -19,20 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System; namespace libldt3
+namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
-            /**
-             * E065
-             */
+
+            /// <summary>
+            /// E065
+            /// </summary>
             public enum ResistenzNach
             {
                 CLSI,
                 EUCAST,
-                /** CA-FMS */
+                /// CA-FMS
                 CA_FMS
             }
 

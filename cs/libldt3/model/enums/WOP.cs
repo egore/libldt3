@@ -19,9 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -29,72 +26,63 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E022
-             */
+            /// <summary>
+            /// E022
+            /// </summary>
             public enum WOP
             {
-
-                /** Dummy bei eGK */
+                /// Dummy bei eGK
                 Dummy,
-                /** Schleswig-Holstein */
+                /// Schleswig-Holstein
                 SchleswigHolstein,
-                /** Hamburg */
+                /// Hamburg
                 Hamburg,
-                /** Bremen */
+                /// Bremen
                 Bremen,
-                /** Niedersachsen */
+                /// Niedersachsen
                 Niedersachsen,
-                /** Westfalen-Lippe */
+                /// Westfalen-Lippe
                 WestfalenLippe,
-                /** Nordrhein */
+                /// Nordrhein
                 Nordrhein,
-                /** Hessen */
+                /// Hessen
                 Hessen,
-                [Obsolete]
                 Koblenz,
-                /** Rheinhessen */
-                [Obsolete]
+                /// Rheinhessen
                 Rheinhessen,
-                /** Pfalz */
-                [Obsolete]
+                /// Pfalz
                 Pfalz,
-                /** Trier */
-                [Obsolete]
+                /// Trier
                 Trier,
-                /** Rheinland-Pfalz */
+                /// Rheinland-Pfalz
                 RheinlandPfalz,
-                /** Baden-Württemberg */
+                /// Baden-Württemberg
                 BadenWuerttemberg,
-                /** Nordbaden */
-                [Obsolete]
+                /// Nordbaden
                 Nordbaden,
-                /** Südbaden */
-                [Obsolete]
+                /// Südbaden
                 Suedbaden,
-                /** Nordwürttemberg */
-                [Obsolete]
+                /// Nordwürttemberg
                 Nordwuerttemberg,
-                /** Südwürttemberg */
-                [Obsolete]
+                /// Südwürttemberg
                 Suedwuerttemberg,
-                /** Bayern */
+                /// Bayern
                 Bayern,
-                /** Berlin */
+                /// Berlin
                 Berlin,
-                /** Saarland */
+                /// Saarland
                 Saarland,
-                /** KBV */
+                /// KBV
                 KBV,
-                /** Mecklenburg-Vorpommern */
+                /// Mecklenburg-Vorpommern
                 MecklenburgVorpommern,
-                /** Brandenburg */
+                /// Brandenburg
                 Brandenburg,
-                /** Sachsen-Anhalt */
+                /// Sachsen-Anhalt
                 SachsenAnhalt,
-                /** Thüringen */
+                /// Thüringen
                 Thueringen,
-                /** Sachsen */
+                /// Sachsen
                 Sachsen
             }
 
@@ -104,7 +92,6 @@ namespace libldt3
                 {
                     switch (self)
                     {
-#pragma warning disable CS0612 // Type or member is obsolete
                         case WOP.Dummy: return "00";
                         case WOP.SchleswigHolstein: return "01";
                         case WOP.Hamburg: return "02";
@@ -133,7 +120,6 @@ namespace libldt3
                         case WOP.Thueringen: return "93";
                         case WOP.Sachsen: return "98";
                         default: throw new Exception();
-#pragma warning restore CS0612 // Type or member is obsolete
                     }
                 }
             }

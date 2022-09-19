@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,19 +26,18 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E057
-             */
+            /// <summary>
+            /// E057
+            /// </summary>
             public enum KatalogIdAnforderbareLeistungen
             {
-
-                /** LOINC */
+                /// LOINC
                 LOINC,
-                /** LDT ELV */
+                /// LDT ELV
                 LDT_ELV,
-                /** LVZ sonstige */
+                /// LVZ sonstige
                 LVZ_sonstige,
-                /** sonstige mit URL */
+                /// sonstige mit URL
                 sonstigeMitURL
             }
 

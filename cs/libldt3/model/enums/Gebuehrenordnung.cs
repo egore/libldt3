@@ -19,23 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System; namespace libldt3
+namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
 
-            /**
-             * E008
-             */
+            /// <summary>
+            /// E008
+            /// </summary>
             public enum Gebuehrenordnung
             {
-                /** BMÄ */
+                /// BMÄ
                 BMAE,
-                /** EGO */
+                /// EGO
                 EGO,
-                /** GOÄ */
+                /// GOÄ
                 GOAE,
                 BG_Tarif
             }

@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,29 +26,23 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E006
-             */
-            public enum Befundtyp
+            /// <summary>
+            /// E006
+            /// </summary>
+            public enum Auftragsstatus
             {
-                Endbefund,
-                Teilbefund,
-                VorlaeufigerBefund,
-                Archivbefund,
-                Nachforderungsendbefund
+                Auftrag_nicht_abgeschlossen,
+                Auftrag_abgeschlossen
             }
 
-            public static class BefundtypExtensions
+            public static class AuftragsstatusExtensions
             {
-                public static string GetCode(this Befundtyp self)
+                public static string GetCode(this Auftragsstatus self)
                 {
                     switch (self)
                     {
-                        case Befundtyp.Endbefund: return "E";
-                        case Befundtyp.Teilbefund: return "T";
-                        case Befundtyp.VorlaeufigerBefund: return "V";
-                        case Befundtyp.Archivbefund: return "A";
-                        case Befundtyp.Nachforderungsendbefund: return "N";
+                        case Auftragsstatus.Auftrag_nicht_abgeschlossen: return "1";
+                        case Auftragsstatus.Auftrag_abgeschlossen: return "2";
                         default: throw new Exception();
                     }
                 }

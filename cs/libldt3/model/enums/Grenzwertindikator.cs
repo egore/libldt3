@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,40 +26,40 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E005
-             */
+            /// <summary>
+            /// E005
+            /// </summary>
             public enum Grenzwertindikator
             {
-                /** im Normalbereich */
+                /// im Normalbereich
                 N,
-                /** schwach erhöht */
+                /// schwach erhöht
                 H,
-                /** schwach erhöht */
+                /// schwach erhöht
                 PLUS,
-                /** stark erhöht */
+                /// stark erhöht
                 HH,
-                /** stark erhöht */
+                /// stark erhöht
                 PLUS_PLUS,
-                /** schwach erniedrigt */
+                /// schwach erniedrigt
                 L,
-                /** schwach erniedrigt */
+                /// schwach erniedrigt
                 MINUS,
-                /** stark erniedrigt */
+                /// stark erniedrigt
                 LL,
-                /** stark erniedrigt */
+                /// stark erniedrigt
                 MINUS_MINUS,
-                /** Wert extrem erhöht */
+                /// Wert extrem erhöht
                 EXTREM_H,
-                /** Wert extrem erhöht */
+                /// Wert extrem erhöht
                 EXTREM_PLUS,
-                /** Wert extrem erniedrigt */
+                /// Wert extrem erniedrigt
                 EXTREM_L,
-                /** Wert extrem erniedrigt */
+                /// Wert extrem erniedrigt
                 EXTREM_MINUS,
-                /** auffällig */
+                /// auffällig
                 A,
-                /** sehr auffällig */
+                /// sehr auffällig
                 AA
             }
 

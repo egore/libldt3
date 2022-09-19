@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,17 +26,15 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E068
-             */
+            /// <summary>
+            /// E068
+            /// </summary>
             public enum Zeiteinheit
             {
-
                 Sekunden,
                 Minuten,
                 Tage,
                 Jahre
-
             }
 
             public static class ZeiteinheitExtensions

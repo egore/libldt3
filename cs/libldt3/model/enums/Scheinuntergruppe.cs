@@ -19,30 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
-            /**
-             * E009
-             */
+
+            /// <summary>
+            /// E009
+            /// </summary>
             public enum Scheinuntergruppe
             {
                 Auftragsleistungen,
                 Konsiliaruntersuchung,
                 MitWeiterbehandlung,
-                /**
-                 * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
-                 */
+                /// Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
                 Muster10,
-                /**
-                 * Anforderungsschein für Laboratoriumsuntersuchungen bei
-                 * Laborgemeinschaften
-                 */
+                /// Laborgemeinschaften
                 Muster10A
             }
 

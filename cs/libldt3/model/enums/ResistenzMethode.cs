@@ -19,26 +19,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System; namespace libldt3
+namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
-            /**
-             * E059
-             */
+
+            /// <summary>
+            /// E059
+            /// </summary>
             public enum ResistenzMethode
             {
-                /** kein Antibiogramm erstellt */
+                /// kein Antibiogramm erstellt
                 KeinAntibiogrammErstellt,
-                /** Agardiffusion */
+                /// Agardiffusion
                 Agardiffusion,
-                /** Agardilution */
+                /// Agardilution
                 Agardilution,
-                /** PCR + Hybridisierung */
+                /// PCR + Hybridisierung
                 PcrUndHybridisierung,
-                /** sonstige */
+                /// sonstige
                 sonstige
             }
 

@@ -19,24 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System; namespace libldt3
+namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
 
-            /**
-             * E034
-             */
+            /// <summary>
+            /// E034
+            /// </summary>
             public enum OrganischesMaterial
             {
-
-                /** tierisch */
+                /// tierisch
                 tierisch,
-                /** pflanzlich */
+                /// pflanzlich
                 pflanzlich,
-                /** nicht bestimmbar */
+                /// nicht bestimmbar
                 nicht_bestimmbar
             }
 

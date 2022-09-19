@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,30 +26,30 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E029
-             */
+            /// <summary>
+            /// E029
+            /// </summary>
             public enum StatusRechnungsempfaenger
             {
-                /** Einsender Arzt */
+                /// Einsender Arzt
                 EinsenderArzt,
-                /** Einsender sonstige */
+                /// Einsender sonstige
                 EinsenderSonstige,
-                /** Versicherter */
+                /// Versicherter
                 Versicherter,
-                /** Rechnungsempfänger */
+                /// Rechnungsempfänger
                 Rechnungsempfaenger,
-                /** Bevollmächtigter */
+                /// Bevollmächtigter
                 Bevollmaechtigter,
-                /** Halter (eines Tieres) */
+                /// Halter (eines Tieres)
                 Tierhalter,
-                /** Patient */
+                /// Patient
                 Patient,
-                /** staatliche Einrichtung */
+                /// staatliche Einrichtung
                 StaatlicheEinrichtung,
-                /** sonstige juristische Person */
+                /// sonstige juristische Person
                 SonstigeJuristischePerson,
-                /** sonstige medizinische Einrichtung */
+                /// sonstige medizinische Einrichtung
                 SonstigeMedizinischeEinrichtung
             }
 

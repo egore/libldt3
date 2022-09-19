@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,31 +26,31 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E020
-             * 
-             * Disease Management Program (DMP) bezeichnet die Behandlung von Patienten
-             * anhand standardisierter Vorgaben. Diese richten sich an einzelnen
-             * Krankheitsbildern aus. Wird beispielsweise festgestellt, dass ein Patient an
-             * Diabetes leidet, ergeben sich aus der Diagnose vorgegebene
-             * Behandlungsschritte.
-             */
+            /// <summary>
+            /// E020
+            /// 
+            /// Disease Management Program (DMP) bezeichnet die Behandlung von Patienten
+            /// anhand standardisierter Vorgaben.
+            /// </summary>
+            /// Diese richten sich an einzelnen
+            /// Krankheitsbildern aus. Wird beispielsweise festgestellt, dass ein Patient an
+            /// Diabetes leidet, ergeben sich aus der Diagnose vorgegebene
+            /// Behandlungsschritte.
             public enum DmpKennzeichnung
             {
-
-                /** keine Angabe */
+                /// keine Angabe
                 keine_Angabe,
-                /** Diabetes mellitus Typ 2 */
+                /// Diabetes mellitus Typ 2
                 DiabetesMellitusTyp2,
-                /** Brustkrebs */
+                /// Brustkrebs
                 Brustkrebs,
-                /** Koronare Herzkrankheit */
+                /// Koronare Herzkrankheit
                 KoronareHerzkrankheit,
-                /** Diabetes mellitus Typ 1 */
+                /// Diabetes mellitus Typ 1
                 DiabetesMellitusTyp1,
-                /** Asthma bronchiale */
+                /// Asthma bronchiale
                 AsthmaBronchiale,
-                /** COPD (chronic obstructive pulmo-nary disease) */
+                /// COPD (chronic obstructive pulmo-nary disease)
                 ChronicObstructivePulmonaryDisease
             }
 
@@ -69,7 +67,6 @@ namespace libldt3
                         case DmpKennzeichnung.DiabetesMellitusTyp1: return "04";
                         case DmpKennzeichnung.AsthmaBronchiale: return "05";
                         case DmpKennzeichnung.ChronicObstructivePulmonaryDisease: return "06";
-
                         default: throw new Exception();
                     }
                 }

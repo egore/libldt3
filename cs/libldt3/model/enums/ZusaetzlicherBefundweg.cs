@@ -19,32 +19,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
-            /**
-             * E013
-             */
+
+            /// <summary>
+            /// E013
+            /// </summary>
             public enum ZusaetzlicherBefundweg
             {
-                /** Papier */
+                /// Papier
                 Papier,
-                /** Telefon */
+                /// Telefon
                 Telefon,
-                /** Fax */
+                /// Fax
                 Fax,
-                /** E-Mail */
+                /// E-Mail
                 EMail,
-                /** DFÜ */
+                /// DFÜ
                 DFUE,
-                /** Tourpost */
+                /// Tourpost
                 Tourpost,
-                /** KV-Connect */
+                /// KV-Connect
                 kvConnect
             }
 

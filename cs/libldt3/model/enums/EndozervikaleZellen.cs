@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,15 +26,13 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E060
-             */
+            /// <summary>
+            /// E060
+            /// </summary>
             public enum EndozervikaleZellen
             {
-
                 vorhanden,
                 nicht_vorhanden
-
             }
 
             public static class EndozervikaleZellenExtensions

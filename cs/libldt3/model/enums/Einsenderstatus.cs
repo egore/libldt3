@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,40 +26,41 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E023
-             */
+            /// <summary>
+            /// E023
+            /// </summary>
             public enum Einsenderstatus
             {
-                /** Erstveranlasser */
+                /// Erstveranlasser
                 Erstveranlasser,
-                /** Einsender Arzt */
+                /// Einsender Arzt
                 EinsenderArzt,
-                /** Einsender sonstige */
+                /// Einsender sonstige
                 EinsenderSonstige,
-                /** Versicherter */
+                /// Versicherter
                 Versicherter,
-                /** Rechnungsempfänger */
+                /// Rechnungsempfänger
                 Rechnungsempfaenger,
-                /** Bevollmächtigter */
+                /// Bevollmächtigter
                 Bevollmaechtigter,
-                /** Laborarzt/Befundersteller */
+                /// Laborarzt/Befundersteller
                 Laborarzt_Befundersteller,
-                /** Leistungserbringer */
+                /// Leistungserbringer
                 Leistungserbringer,
-                /** Halter (eines Tieres) */
+                /// Halter (eines Tieres)
                 Tierhalter,
-                /** Patient */
+                /// Patient
                 Patient,
-                /** Überweiser */
+                /// Überweiser
                 Ueberweiser,
-                /** staatliche Einrichtung */
+                /// staatliche Einrichtung
                 staatliche_Einrichtung,
-                /** sonstige juristische Person */
+                /// sonstige juristische Person
                 sonstige_juristische_Person,
-                /** sonstige medizinische Einrichtung */
+                /// sonstige medizinische Einrichtung
                 sonstige_medizinische_Einrichtung
             }
+
             public static class EinsenderstatusExtensions
             {
                 public static string GetCode(this Einsenderstatus self)

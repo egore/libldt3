@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,23 +26,22 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E046
-             */
+            /// <summary>
+            /// E046
+            /// </summary>
             public enum Betriebsstaettenstatus
             {
-
-                /** Arztpraxis */
+                /// Arztpraxis
                 Arztpraxis,
-                /** Laborarztpraxis */
+                /// Laborarztpraxis
                 Laborarztpraxis,
-                /** Laborgemeinschaft */
+                /// Laborgemeinschaft
                 Laborgemeinschaft,
-                /** sonstige medizinische Einrichtung */
+                /// sonstige medizinische Einrichtung
                 sonstigeMedizinischeEinrichtung,
-                /** Hauptbetriebsstätte */
+                /// Hauptbetriebsstätte
                 Hauptbetriebsstaette,
-                /** Nebenbetriebsstätte */
+                /// Nebenbetriebsstätte
                 Nebenbetriebsstaette
             }
 

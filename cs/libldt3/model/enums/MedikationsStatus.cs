@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,21 +26,19 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E156
-             */
+            /// <summary>
+            /// E156
+            /// </summary>
             public enum MedikationsStatus
             {
-
-                /** Akutmedikation */
+                /// Akutmedikation
                 Akutmedikation,
-                /** Bedarfsmedikation */
+                /// Bedarfsmedikation
                 Bedarfsmedikation,
-                /** Dauermedikation */
+                /// Dauermedikation
                 Dauermedikation,
-                /** Selbstmedikation */
+                /// Selbstmedikation
                 Selbstmedikation
-
             }
 
             public static class MedikationsStatusExtensions

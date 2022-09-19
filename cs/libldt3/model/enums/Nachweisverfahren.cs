@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,27 +26,26 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E069
-             */
+            /// <summary>
+            /// E069
+            /// </summary>
             public enum Nachweisverfahren
             {
-
-                /** sonstige, wenn Erreger + Resistenz angefordert */
+                /// sonstige, wenn Erreger + Resistenz angefordert
                 sonstige_wenn_Erreger_und_Resistenz_angefordert,
-                /** Antigen-Nachweis */
+                /// Antigen-Nachweis
                 Antigen_Nachweis,
-                /** PCR */
+                /// PCR
                 PCR,
-                /** Mikroskopie */
+                /// Mikroskopie
                 Mikroskopie,
-                /** Aglutination */
+                /// Aglutination
                 Aglutination,
-                /** Kultur */
+                /// Kultur
                 Kultur,
-                /** Biochemische Identifikation (z.B. Vitek) */
+                /// Vitek)
                 Biochemische_Identifikation,
-                /** Maldi-Tof */
+                /// Maldi-Tof
                 Maldi_Tof
             }
 

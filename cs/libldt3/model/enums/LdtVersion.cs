@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,15 +26,13 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E001
-             */
+            /// <summary>
+            /// E001
+            /// </summary>
             public enum LdtVersion
             {
-
-                /** LDT3.0.6 */
-                LDT3_0_6
-
+                /// LDT3.1.0
+                LDT3_1_0
             }
 
             public static class LdtVersionExtensions
@@ -45,7 +41,7 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case LdtVersion.LDT3_0_6: return "LDT3.0.6";
+                        case LdtVersion.LDT3_1_0: return "LDT3.1.0";
                         default: throw new Exception();
                     }
                 }

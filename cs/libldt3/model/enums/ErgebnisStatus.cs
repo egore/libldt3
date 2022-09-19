@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,12 +26,11 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E064
-             */
+            /// <summary>
+            /// E064
+            /// </summary>
             public enum ErgebnisStatus
             {
-
                 nicht_nachweisbar,
                 zweifelhaft_unspezifisch,
                 nachweisbar
@@ -55,4 +52,3 @@ namespace libldt3
         }
     }
 }
-        

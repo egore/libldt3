@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,19 +26,19 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E070
-             */
+            /// <summary>
+            /// E070
+            /// </summary>
             public enum EinheitMesswert
             {
-
-                /** SI-Einheit */
+                /// SI-Einheit
                 SI_Einheit,
-                /** konventionelle Einheit */
+                /// konventionelle Einheit
                 konventionelle_Einheit,
-                /** dimensionslose Größe */
+                /// dimensionslose Größe
                 dimensionslose_Groesse
             }
+
             public static class EinheitMesswertExtensions
             {
                 public static string GetCode(this EinheitMesswert self)

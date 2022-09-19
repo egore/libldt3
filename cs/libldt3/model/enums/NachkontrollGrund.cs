@@ -19,24 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
-            /**
-             * E061
-             */
+
+            /// <summary>
+            /// E061
+            /// </summary>
             public enum NachkontrollGrund
             {
-                /** nach Entzündungsbehandlung */
+                /// nach Entzündungsbehandlung
                 NachEntzuendungsbehandlung,
-                /** nach Oestrogenbehandlung */
+                /// nach Oestrogenbehandlung
                 NachOestrogenbehandlung,
-                /** Sonstiges */
+                /// Sonstiges
                 Sonstiges
             }
 

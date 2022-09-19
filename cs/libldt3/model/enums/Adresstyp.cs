@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,21 +26,19 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E042
-             */
+            /// <summary>
+            /// E042
+            /// </summary>
             public enum Adresstyp
             {
-
-                /** Physischer Ort */
+                /// Physischer Ort
                 PhysischerOrt,
-                /** Postanschrift */
+                /// Postanschrift
                 Postanschrift
             }
 
             public static class AdresstypExtensions
             {
-
                 public static string GetCode(this Adresstyp self)
                 {
                     switch (self)

@@ -31,7 +31,6 @@ namespace libldt3
             /// </summary>
             public enum AbrechnungsartPkv
             {
-
                 /// Abrechnung Laborfacharzt
                 AbrechnungLaborfacharzt,
                 /// Abrechnung Privat-LG

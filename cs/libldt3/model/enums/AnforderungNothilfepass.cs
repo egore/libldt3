@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,15 +26,14 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E056
-             */
+            /// <summary>
+            /// E056
+            /// </summary>
             public enum AnforderungNothilfepass
             {
-
-                /** Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen */
+                /// Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen
                 NurBeiErythrozytenantikoerperNachweis,
-                /** Nothilfepass ausstellen */
+                /// Nothilfepass ausstellen
                 Ausstellen
             }
 

@@ -19,25 +19,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System; namespace libldt3
+namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
 
-            /**
-             * E051
-             */
+            /// <summary>
+            /// E051
+            /// </summary>
             public enum Laborart
             {
-                /** Laborgemeinschaft */
+                /// Laborgemeinschaft
                 Laborgemeinschaft,
-                /** Facharztlabor */
+                /// Facharztlabor
                 Facharztlabor,
-                /** Leistungserbringergemeinschaft */
+                /// Leistungserbringergemeinschaft
                 Leistungserbringergemeinschaft,
-                /** Eigenlabor */
+                /// Eigenlabor
                 Eigenlabor
             }
 

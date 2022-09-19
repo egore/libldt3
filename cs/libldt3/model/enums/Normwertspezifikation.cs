@@ -19,48 +19,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System; namespace libldt3
+namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
 
-            /**
-             * E052
-             */
+            /// <summary>
+            /// E052
+            /// </summary>
             public enum Normwertspezifikation
             {
-
-                /** Methodenspezifische Standards nach WHO */
+                /// Methodenspezifische Standards nach WHO
                 MethodenspezifischeStandardsWHO,
-                /** Methodenspezifische Standards nach IFCC (u.a. serologische Verfahren) */
+                /// serologische Verfahren)
                 MethodenspezifischeStandardsIFCC,
-                /** Methodenspezifische Standards nach DGKL */
+                /// Methodenspezifische Standards nach DGKL
                 MethodenspezifischeStandardsDGKL,
-                /** Sonstige Standards */
+                /// Sonstige Standards
                 SonstigeStandards,
-                /** Patientenspezifische Einflussgröße Alter betreffend */
+                /// Patientenspezifische Einflussgröße Alter betreffend
                 PatientenspezifischeEinflussgroesseAlter,
-                /** Patientenspezifische Einflussgröße Geschlecht betreffend */
+                /// Patientenspezifische Einflussgröße Geschlecht betreffend
                 PatientenspezifischeEinflussgroesseGeschlecht,
-                /** Patientenspezifische Einflussgröße Alter und Geschlecht betreffend */
+                /// Patientenspezifische Einflussgröße Alter und Geschlecht betreffend
                 PatientenspezifischeEinflussgroesseAlterGeschlecht,
-                /** Patientenspezifische Einflussgröße SSW betreffend */
+                /// Patientenspezifische Einflussgröße SSW betreffend
                 PatientenspezifischeEinflussgroesseSSW,
-                /** Patientenspezifische Einflussgröße Alter und SSW betreffend */
+                /// Patientenspezifische Einflussgröße Alter und SSW betreffend
                 PatientenspezifischeEinflussgroesseAlterSSW,
-                /** weitere patientenspezifische Einflussgrößen (z.B. Mediaktion) */
+                /// Mediaktion)
                 WeiterePatientenspezifischeEinflussgroessen,
-                /** Information zu Patientenspezifischer Einflussgröße Alter fehlte */
+                /// Information zu Patientenspezifischer Einflussgröße Alter fehlte
                 InformationPatientenspezifischerEinflussgroesseAlterFehlte,
-                /** Information zu Patientenspezifischer Einflussgröße Geschlecht fehlte */
+                /// Information zu Patientenspezifischer Einflussgröße Geschlecht fehlte
                 InformationPatientenspezifischerEinflussgroesseGeschlechtFehlte,
-                /** Information zu Patientenspezifischer Einflussgröße Alter und Geschlecht fehlte */
+                /// Information zu Patientenspezifischer Einflussgröße Alter und Geschlecht fehlte
                 InformationPatientenspezifischerEinflussgroesseAlterGeschlechtFehlte,
-                /** Funktionsprofile */
+                /// Funktionsprofile
                 Funktionsprofile
             }
+
             public static class NormwertspezifikationExtensions
             {
                 public static string GetCode(this Normwertspezifikation self)

@@ -19,42 +19,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
     {
         namespace enums
         {
-            /**
-             * E147
-             */
+
+            /// <summary>
+            /// E147
+            /// </summary>
             public enum SpezifizierungVeranlassungsgrund
             {
-                /** Eingriff */
+                /// Eingriff
                 Eingriff,
-                /** Medikamentengabe */
+                /// Medikamentengabe
                 Medikamentengabe,
-                /** unklares Fieber */
+                /// unklares Fieber
                 UnklaresFieber,
-                /** Infektion */
+                /// Infektion
                 Infektion,
-                /** Rheuma */
+                /// Rheuma
                 Rheuma,
-                /** Allergie */
+                /// Allergie
                 Allergie,
-                /** Herz/Kreislauf */
+                /// Herz/Kreislauf
                 HerzKreislauf,
-                /** Tumor */
+                /// Tumor
                 Tumor,
-                /** Impfungen */
+                /// Impfungen
                 Impfungen,
-                /** Reisen */
+                /// Reisen
                 Reisen,
-                /** Immunität nach Infektion */
+                /// Immunität nach Infektion
                 ImmunitaetNachInfektion,
-                /** Sonstiges */
+                /// Sonstiges
                 Sonstiges
             }
 

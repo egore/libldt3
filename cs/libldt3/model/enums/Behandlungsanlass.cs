@@ -19,9 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -29,18 +26,18 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E039
-             */
+            /// <summary>
+            /// E039
+            /// </summary>
             public enum Behandlungsanlass
             {
-                /** kurativ */
+                /// kurativ
                 Kurativ,
-                /** präventiv */
+                /// präventiv
                 Praeventiv,
-                /** Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch */
+                /// Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch
                 EmpfaengnisregelungSterilisationSchwangerschaftsabbruch,
-                /** belegärztliche Behandlung */
+                /// belegärztliche Behandlung
                 BelegaerztlicheBehandlung
             }
 

@@ -19,9 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -29,27 +26,25 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E047
-             */
+            /// <summary>
+            /// E047
+            /// </summary>
             public enum ArztTypId
             {
-
-                /** IK des Arztes */
+                /// IK des Arztes
                 IK,
-                /** Telematik-ID */
+                /// Telematik-ID
                 TelematikId,
-                /** ID für GEVK-Verträge */
+                /// ID für GEVK-Verträge
                 GevkId,
-                /** ID für HÄVG-Verträge */
+                /// ID für HÄVG-Verträge
                 HaevgId,
-                /** ID für MEDI-Verträge */
+                /// ID für MEDI-Verträge
                 MediId,
-                /** Selektivvertrag */
+                /// Selektivvertrag
                 Selektivvertrag,
-                /** Sonstige */
+                /// Sonstige
                 Sonstige
-
             }
 
             public static class ArztTypIdExtensions
@@ -65,7 +60,6 @@ namespace libldt3
                         case ArztTypId.MediId: return "6";
                         case ArztTypId.Selektivvertrag: return "7";
                         case ArztTypId.Sonstige: return "9";
-
                         default: throw new Exception();
                     }
                 }

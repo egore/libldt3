@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,21 +26,20 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E030
-             */
+            /// <summary>
+            /// E030
+            /// </summary>
             public enum ResistenzInterpretation
             {
-
-                /** nicht getestet */
+                /// nicht getestet
                 nichtGetestet,
-                /** sensibel/wirksam */
+                /// sensibel/wirksam
                 sensibelWirksam,
-                /** mäßig sensibel/schwach wirksam */
+                /// mäßig sensibel/schwach wirksam
                 maessigSensibelSchwachWirksam,
-                /** resistent/unwirksam */
+                /// resistent/unwirksam
                 resistentUnwirksam,
-                /** wirksam in hohen Konzentrationen */
+                /// wirksam in hohen Konzentrationen
                 wirksamInHohenKonzentrationen
             }
 

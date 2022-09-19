@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,16 +26,16 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E025
-             */
+            /// <summary>
+            /// E025
+            /// </summary>
             public enum Sensitivitaet
             {
-                /** sensibel */
+                /// sensibel
                 sensibel,
-                /** intermediär */
+                /// intermediär
                 intermediaer,
-                /** resistent */
+                /// resistent
                 resistent
             }
 

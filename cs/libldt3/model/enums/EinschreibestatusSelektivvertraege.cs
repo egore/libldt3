@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,17 +26,16 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E041
-             */
+            /// <summary>
+            /// E041
+            /// </summary>
             public enum EinschreibestatusSelektivvertraege
             {
-
-                /** Nicht eingeschrieben */
+                /// Nicht eingeschrieben
                 NichtEingeschrieben,
-                /** Eingeschrieben */
+                /// Eingeschrieben
                 Eingeschrieben,
-                /** Einschreibung beantragt */
+                /// Einschreibung beantragt
                 EinschreibungBeantragt
             }
 
@@ -51,7 +48,6 @@ namespace libldt3
                         case EinschreibestatusSelektivvertraege.NichtEingeschrieben: return "0";
                         case EinschreibestatusSelektivvertraege.Eingeschrieben: return "1";
                         case EinschreibestatusSelektivvertraege.EinschreibungBeantragt: return "2";
-
                         default: throw new Exception();
                     }
                 }

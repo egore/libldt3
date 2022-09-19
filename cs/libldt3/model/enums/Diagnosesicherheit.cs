@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,18 +26,18 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E037
-             */
+            /// <summary>
+            /// E037
+            /// </summary>
             public enum Diagnosesicherheit
             {
-                /** gesicherte Diagnose */
+                /// gesicherte Diagnose
                 GesicherteDiagnose,
-                /** Ausschluss */
+                /// Ausschluss
                 Ausschluss,
-                /** Verdacht auf */
+                /// Verdacht auf
                 VerdachtAuf,
-                /** Zustand nach */
+                /// Zustand nach
                 ZustandNach
             }
 

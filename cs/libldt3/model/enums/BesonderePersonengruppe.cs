@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,25 +26,22 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E021
-             */
+            /// <summary>
+            /// E021
+            /// </summary>
             public enum BesonderePersonengruppe
             {
-                /** keine Angabe */
+                /// keine Angabe
                 keine_Angabe,
-                /** BSHG (Bundessozialhilfegesetz) § 264 SGB V */
+                /// BSHG (Bundessozialhilfegesetz) § 264 SGB V
                 Bundessozialhilfegesetz,
-                /** BVG (Gesetz über die Versorgung der Opfer des Krieges) */
+                /// BVG (Gesetz über die Versorgung der Opfer des Krieges)
                 BVG,
-                /**
-                 * SVA-Kennzeichnung für zwischenstaatliches Krankenversicherun-recht:
-                 * Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
-                 */
+                /// Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
                 SVAAufwand,
-                /** SVA-Kennzeichnung, pauschal */
+                /// SVA-Kennzeichnung, pauschal
                 SVAPauschal,
-                /** Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG */
+                /// Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG
                 AsylbLG
             }
 
@@ -62,7 +57,6 @@ namespace libldt3
                         case BesonderePersonengruppe.SVAAufwand: return "07";
                         case BesonderePersonengruppe.SVAPauschal: return "08";
                         case BesonderePersonengruppe.AsylbLG: return "09";
-
                         default: throw new Exception();
                     }
                 }

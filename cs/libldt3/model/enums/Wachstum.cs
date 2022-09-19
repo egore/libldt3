@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,20 +26,20 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E026
-             */
+            /// <summary>
+            /// E026
+            /// </summary>
             public enum Wachstum
             {
-                /** nicht nachweisbar / kein Wachstum */
+                /// nicht nachweisbar / kein Wachstum
                 nicht_nachweisbar_kein_Wachstum,
-                /** spärlich */
+                /// spärlich
                 spaerlich,
-                /** mäßig/vereinzelt */
+                /// mäßig/vereinzelt
                 maessig_vereinzelt,
-                /** reichlich */
+                /// reichlich
                 reichlich,
-                /** massenhaft */
+                /// massenhaft
                 massenhaft
             }
 
@@ -56,7 +54,6 @@ namespace libldt3
                         case Wachstum.maessig_vereinzelt: return "2";
                         case Wachstum.reichlich: return "3";
                         case Wachstum.massenhaft: return "4";
-
                         default: throw new Exception();
                     }
                 }

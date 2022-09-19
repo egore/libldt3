@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,9 +26,9 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E019
-             */
+            /// <summary>
+            /// E019
+            /// </summary>
             public enum Geschlecht
             {
                 maennlich,
@@ -38,7 +36,6 @@ namespace libldt3
                 unbestimmt,
                 unbekannt
             }
-
 
             public static class GeschlechtExtensions
             {

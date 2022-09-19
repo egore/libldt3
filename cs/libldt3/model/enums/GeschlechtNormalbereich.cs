@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,13 +26,14 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E018
-             */
+            /// <summary>
+            /// E018
+            /// </summary>
             public enum GeschlechtNormalbereich
             {
-
-                maennlich, weiblich, unbestimmt
+                maennlich,
+                weiblich,
+                unbestimmt
             }
 
             public static class GeschlechtNormalbereichExtensions

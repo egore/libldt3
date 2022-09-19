@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System;
-
 namespace libldt3
 {
     namespace model
@@ -28,27 +26,26 @@ namespace libldt3
         namespace enums
         {
 
-            /**
-             * E058
-             */
+            /// <summary>
+            /// E058
+            /// </summary>
             public enum DarstellungErgebniswerte
             {
-
-                /** numerisch (exponentielle Darstellung möglich) */
+                /// numerisch (exponentielle Darstellung möglich)
                 Numerisch,
-                /** numerisch mit Messwertuntergrenze */
+                /// numerisch mit Messwertuntergrenze
                 Numerisch_Untergrenze,
-                /** numerisch mit Messwertobergrenze */
+                /// numerisch mit Messwertobergrenze
                 Numerisch_Obergrenze,
-                /** alpha-numerisch */
+                /// alpha-numerisch
                 Alphanumerisch,
-                /** Titer */
+                /// Titer
                 Titer,
-                /** Titer mit Untergrenze */
+                /// Titer mit Untergrenze
                 Titer_Untergrenze,
-                /** Titer mit Obergrenze */
+                /// Titer mit Obergrenze
                 Titer_Obergrenze,
-                /** Sonstige */
+                /// Sonstige
                 Sonstige
             }
 
