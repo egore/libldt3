@@ -1,5 +1,6 @@
 package de.egore911.libldt3.transpiler;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.Charset;
@@ -54,6 +55,13 @@ public class TranspileCsharp {
         config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
 
         Path base = Paths.get("../cs");
+
+        Path model = base.resolve("libldt3").resolve("model");
+        Files.list(model.resolve("saetze")).map(Path::toFile).forEach(File::delete);
+        Files.list(model.resolve("objekte")).map(Path::toFile).forEach(File::delete);
+        Files.list(model.resolve("enums")).map(Path::toFile).forEach(File::delete);
+        Files.list(model.resolve("regel")).map(Path::toFile).forEach(File::delete);
+        Files.list(model.resolve("regel").resolve("kontext")).map(Path::toFile).forEach(File::delete);
 
         for (CtType<?> type : launcher.getModel().getAllTypes()) {
             if (type.getPackage().getQualifiedName().equals("libldt3.model.saetze")

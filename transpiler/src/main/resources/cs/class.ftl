@@ -12,7 +12,7 @@
 </@namespace>
 
 <#macro class_ klass>
-<@comments.comments comments=klass.comments />
+<@comments.comments comments=klass.comments with_summary=true />
 <@attributes.classattributes klass/>
 <@compress single_line=true>${klass.visibility!} ${klass.abstract?string("abstract", "")} class ${klass.simpleName}<#if klass.superInterfaces?size gt 0> : <#list klass.superInterfaces as interface>${interface.simpleName}<#sep>, </#list></#if><#if klass.superclass??><#if klass.superInterfaces?size gt 0>, <#else> : </#if>${klass.superclass.simpleName}</#if></@compress>
 {

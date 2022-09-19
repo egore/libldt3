@@ -13,7 +13,7 @@
 </@namespace>
 
 <#macro interface_ interface>
-<@comments.comments comments=interface.comments />
+<@comments.comments comments=interface.comments with_summary=true />
 <@attributes.classattributes interface/>
 public interface ${interface.simpleName}<#if interface.superInterfaces?size gt 0> : <#list interface.superInterfaces as interface>${interface.simpleName}<#sep>, </#list></#if>
 {
@@ -25,7 +25,7 @@ public interface ${interface.simpleName}<#if interface.superInterfaces?size gt 0
     <@attributes.fieldattributes field/>
     ${field.visibility!} <@converttype type=field.type/> ${field.simpleName};
     </#list>
-    
+
     <#list interface.methods as method>
     <@method_.signature method=method/>;
     </#list>

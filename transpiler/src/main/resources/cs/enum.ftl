@@ -4,7 +4,7 @@
 
 <@namespace package=enum.package>
 
-<@comments.comments comments=enum.comments />
+<@comments.comments comments=enum.comments with_summary=true />
 public enum ${enum.simpleName}
 {
     <#list enum.enumValues as value>
