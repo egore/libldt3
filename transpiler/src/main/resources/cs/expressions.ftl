@@ -78,24 +78,23 @@
 
 <#macro renderFieldReadExpression expression force_array>
     <#if force_array!false>new [] { </#if>
-    <#assign fieldName>${expression.variable.simpleName}</#assign>
     <#switch expression.target.class.simpleName>
         <#case "CtTypeAccessImpl">
             <#assign typeName>${expression.target.accessedType.simpleName}</#assign>
-            <#if fieldName == "class">
+            <#if expression.variable.simpleName == "class">
                 typeof(${typeName})
             <#else>
-                <@renderTypeAccessExpression expression=expression.target/>.${fieldName}
+                <@renderTypeAccessExpression expression=expression.target/>.${expression.variable.simpleName}
             </#if>
             <#break>
         <#case "CtThisAccessImpl">
-            <@renderThisAccessExpression expression=expression.target/>.${fieldName}
+            <@renderThisAccessExpression expression=expression.target/>.${expression.variable.simpleName}
             <#break>
         <#case "CtVariableReadImpl">
-            <@renderVariableAccessExpression expression=expression.target/>.${fieldName}
+            <@renderVariableAccessExpression expression=expression.target/>.${expression.variable.simpleName}
             <#break>
         <#case "CtFieldReadImpl">
-            <@renderFieldReadExpression expression=expression.target force_array=false/>.${fieldName}
+            <@renderFieldReadExpression expression=expression.target force_array=false/>.${expression.variable.simpleName}
             <#break>
         <#default>
             // XXX renderFieldReadExpression ${expression.target.class.simpleName} is unknown
