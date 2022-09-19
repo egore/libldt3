@@ -175,16 +175,24 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
         String template = METHOD_TEMPLATE.get(method);
         if (template != null) {
 
+            // Replace all arguments in one block
             if (template.contains("${arguments}")) {
-                // It would be better to operate no the single arguments, but using the string works for now
-                String arguments = render(env, invocation, "arguments");
-                ArgumentHandler argumentHandler = METHOD_TEMPLATE_ARGUMENT_HANDLERS.get(method);
-                if (argumentHandler != null) {
-                    arguments = argumentHandler.fixArguments(arguments);
+                StringBuilder arguments = new StringBuilder();
+                for (int i = 0; i < invocation.getArguments().size(); i++) {
+                    String argument = render(env, invocation.getArguments().get(i), "argument");
+                    ArgumentHandler argumentHandler = METHOD_TEMPLATE_ARGUMENT_HANDLERS.get(method);
+                    if (argumentHandler != null) {
+                        argument = argumentHandler.fixArguments(argument);
+                    }
+                    if (!arguments.isEmpty()) {
+                        arguments.append(", ");
+                    }
+                    arguments.append(argument);
                 }
-                template = template.replace("${arguments}", arguments);
+                template = template.replace("${arguments}", arguments.toString());
             }
 
+            // Replace single arguments
             for (int i = 0; i < invocation.getArguments().size(); i++) {
                 if (!template.contains("${arguments:" + i + "}")) {
                     break;
@@ -193,10 +201,12 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
                 template = template.replace("${arguments:" + i + "}", argument);
             }
 
+            // Replace the target
             if (template.contains("${target}")) {
                 template = template.replace("${target}", render(env, invocation, "target"));
             }
 
+            // And this is it
             env.getOut().write(template);
             return;
         }
