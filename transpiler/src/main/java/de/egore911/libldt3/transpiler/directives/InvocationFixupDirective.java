@@ -56,14 +56,18 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
             map.put(Map.class.getMethod("get", Object.class), "${target}[${arguments}]");
             map.put(Map.class.getMethod("values"), "${target}.Values");
             map.put(Map.class.getMethod("put", Object.class, Object.class), "${target}[${arguments:0}] = ${arguments:1}");
+            map.put(Map.class.getMethod("putAll", Map.class), "foreach (var x in ${arguments}) { ${target}[x.Key] = x.Value; }");
 
             map.put(Set.class.getMethod("size"), "${target}.Count");
             // TODO potentially obsolete, when switching to ?cap_first
             map.put(Set.class.getMethod("contains", Object.class), "${target}.Contains(${arguments})");
 
             map.put(List.class.getMethod("add", Object.class), "${target}.Add(${arguments})");
+            map.put(List.class.getMethod("isEmpty"), "${target}.Count == 0");
 
             map.put(String.class.getMethod("isEmpty"), "string.IsNullOrEmpty(${target})");
+            // TODO potentially obsolete, when switching to ?cap_first
+            map.put(String.class.getMethod("equals", Object.class), "${target}.Equals(${arguments})");
 
             map.put(Object.class.getMethod("getClass"), "${target}.GetType()");
             // TODO potentially obsolete, when switching to ?cap_first

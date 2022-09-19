@@ -50,6 +50,8 @@ public class ConvertTypeDirective implements TemplateDirectiveModel {
         case "java.util.regex.Pattern": name = "Regex"; break;
         case "java.lang.reflect.Field": name = "FieldInfo"; break;
         case "java.lang.Iterable": name = "IEnumerable"; break;
+        case "java.util.Collection": name = "IEnumerable"; break;
+        case "java.lang.UnsupportedOperationException": name = "NotImplementedException"; break;
         default: name = type.getSimpleName(); break;
         }
         if (withNullability && (type.isEnum() || type.isAnnotationType() ||type.getQualifiedName().startsWith("java.time."))) {
