@@ -2,6 +2,7 @@ package de.egore911.libldt3.transpiler.directives;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -21,6 +22,7 @@ import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtNewArray;
 import spoon.reflect.code.CtTypeAccess;
 import spoon.reflect.declaration.CtAnnotation;
+import spoon.reflect.declaration.CtElement;
 import spoon.reflect.declaration.CtField;
 import spoon.reflect.declaration.CtMethod;
 import spoon.reflect.declaration.CtPackage;
@@ -96,6 +98,16 @@ public class GenUsingDirective implements TemplateDirectiveModel {
                         addFromAnnotation(class_, usings, annotation);
                     }
                 }
+                // Add from method body
+                if (method.getBody() != null) {
+                    Iterator<CtElement> iter = method.getBody().descendantIterator();
+                    while (iter.hasNext()) {
+                        CtElement element = iter.next();
+                        for (CtTypeReference<?> ref : element.getReferencedTypes()) {
+                            addIfDifferent(usings, class_.getPackage(), ref.getPackage());
+                        }
+                    }
+                }
             }
         }
 
@@ -164,6 +176,9 @@ public class GenUsingDirective implements TemplateDirectiveModel {
         if (package_.equals("java.lang") || package_.equals("java.util")) {
             return null;
         }
+        if (package_.equals("org.slf4j")) {
+            return "System.Diagnostics";
+        }
         if (package_.equals("java.time")) {
             return "NodaTime";
         }
@@ -172,6 +187,9 @@ public class GenUsingDirective implements TemplateDirectiveModel {
         }
         if (package_.equals("java.util.regex")) {
             return "System.Text.RegularExpressions";
+        }
+        if (package_.equals("java.lang.reflect")) {
+            return "System.Reflection";
         }
         return package_;
     }

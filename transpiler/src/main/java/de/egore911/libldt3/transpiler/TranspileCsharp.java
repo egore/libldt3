@@ -13,6 +13,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import de.egore911.libldt3.transpiler.directives.ConvertTypeDirective;
 import de.egore911.libldt3.transpiler.directives.GenUsingDirective;
+import de.egore911.libldt3.transpiler.directives.InvocationFixupDirective;
 import de.egore911.libldt3.transpiler.directives.NamespaceDirective;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.core.ParseException;
@@ -45,6 +46,7 @@ public class TranspileCsharp {
         config.setSharedVariable("namespace", new NamespaceDirective());
         config.setSharedVariable("genusing", new GenUsingDirective());
         config.setSharedVariable("converttype", new ConvertTypeDirective());
+        config.setSharedVariable("invocationfixup", new InvocationFixupDirective());
 
         // Make the current year available as variable
         config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
@@ -72,9 +74,10 @@ public class TranspileCsharp {
                     template.process(Collections.singletonMap(template.getName().replace(".ftl", ""), type), writer);
                 }
 
-                System.err.println(file.toAbsolutePath());
             }
         }
+
+        System.err.println("DONE");
 
     }
 

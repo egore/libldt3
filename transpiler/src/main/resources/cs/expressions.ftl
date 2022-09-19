@@ -1,3 +1,4 @@
+<#import "./comments.ftl" as comments>
 <#macro renderExpression expression force_array=false>
     <@comments.comments comments=expression.comments />
     <@compress single_line=true>
@@ -70,7 +71,7 @@
 </#macro>
 
 <#macro renderConstructorCallExpression expression>
-    <@converttype type=expression.executable.type/>(<#list expression.arguments as argument><@renderExpression expression=argument/><#sep>, </#list>)
+    new <@converttype type=expression.executable.type/>(<#list expression.arguments as argument><@renderExpression expression=argument/><#sep>, </#list>)
 </#macro>
 
 <#macro renderFieldReadExpression expression force_array>
@@ -101,12 +102,9 @@
 </#macro>
 
 <#macro renderInvocationExpression expression>
-<#if expression.target?? && expression.target.class.simpleName == "CtTypeAccessImpl" && expression.target.accessedType.simpleName == "Pattern" && expression.executable.simpleName == "compile">
-    new Regex(<#list expression.arguments as argument><@renderExpression expression=argument/><#sep>, </#list>)
-<#else>
-    <#if expression.target??><@renderExpression expression=expression.target/>.</#if>
-    ${expression.executable.simpleName}(<#list expression.arguments as argument><@renderExpression expression=argument/><#sep>, </#list>)
-</#if>
+<#if expression.typeCasts?size gt 0><#list expression.typeCasts as typeCast>(<@converttype type=typeCast/>) </#list></#if><@invocationfixup invocation=expression>
+    <#if expression.target??><#include "./invocation/target.ftl">.</#if>${expression.executable.simpleName}(<#include "./invocation/arguments.ftl">)
+</@invocationfixup>
 </#macro>
 
 <#macro renderLiteralExpression expression>
@@ -156,5 +154,5 @@
 </#macro>
 
 <#macro renderVariableAccessExpression expression>
-    ${expression.variable.simpleName}
+    <#if expression.typeCasts?size gt 0><#list expression.typeCasts as typeCast>(<@converttype type=typeCast/>) </#list></#if>${expression.variable.simpleName}
 </#macro>

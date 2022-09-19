@@ -44,7 +44,9 @@ public class ConvertTypeDirective implements TemplateDirectiveModel {
         case "java.util.List": name = "IList"; break;
         case "java.util.Map": name = "IDictionary"; break;
         case "java.util.Set": name = "ISet"; break;
+        case "java.util.ArrayList": name = "List"; break;
         case "java.util.regex.Pattern": name = "Regex"; break;
+        case "java.lang.reflect.Field": name = "FieldInfo"; break;
         default: name = type.getSimpleName(); break;
         }
         if (withNullability && (type.isEnum() || type.getQualifiedName().startsWith("java.time."))) {

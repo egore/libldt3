@@ -32,6 +32,7 @@
         </#if>
     </#list>
     <#list class.methods as method>
+    <@comments.comments comments=method.comments />
     <@method_.signature method=method/>
     <@method_.body method=method/>
     </#list>

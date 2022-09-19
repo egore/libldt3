@@ -20,7 +20,7 @@
             <@renderIfStatement statement/>
             <#break>
         <#case "CtInvocationImpl">
-            <@expressions.renderInvocationExpression statement/>
+            <@renderInvocationStatement statement/>
             <#break>
         <#case "CtLocalVariableImpl">
             <@renderLocalVariableStatement statement/>
@@ -68,6 +68,11 @@
         <@renderStatement statement=statement.elseStatement/>
     }
     </#if>
+
+</#macro>
+
+<#macro renderInvocationStatement statement>
+<@expressions.renderInvocationExpression statement/>;
 </#macro>
 
 <#macro renderLocalVariableStatement statement>
