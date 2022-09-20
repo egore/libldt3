@@ -43,22 +43,22 @@ public class Befundinformationen {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8313", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<String> nachforderungId;
         @Feld(value = "8214", name = "Timestamp_Auftragserteilung", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 27)
+        @Regelsatz(laenge = 27)
         public Timestamp orderRequestTimestamp;
         @Feld(value = "8215", name = "Timestamp_Auftragseingang", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 25)
+        @Regelsatz(laenge = 25)
         public Timestamp timestampAuftragseingang;
     }
-    
+
     @Objekt
     public static class Befundweg {
         @SuppressWarnings("unused")
         public ZusaetzlicherBefundweg value;
         @Feld(value = "8147", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 6)
+        @Regelsatz(laenge = 6)
         public Person person;
     }
 

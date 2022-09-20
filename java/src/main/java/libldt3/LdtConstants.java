@@ -34,13 +34,11 @@ public class LdtConstants {
     /** Determines how the reader deals with invalid LDT */
     public enum Mode {
         /**
-         * In case invalid LDT is detected, the reader will abort with an
-         * exception
+         * In case invalid LDT is detected, the reader will abort with an exception
          */
         STRICT,
         /**
-         * When the reader encounters invalid LDT, it will log as error and
-         * continue
+         * When the reader encounters invalid LDT, it will log as error and continue
          */
         RELAXED
     }

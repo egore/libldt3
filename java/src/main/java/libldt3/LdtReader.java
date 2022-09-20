@@ -81,12 +81,9 @@ public class LdtReader {
     /**
      * Read the LDT found on a given path.
      * 
-     * @param path
-     *            the path of the LDT file (any format handled by NIO
-     *            {@link Path})
+     * @param path the path of the LDT file (any format handled by NIO {@link Path})
      * @return the list of Satz elements found in the LDT file
-     * @throws IOException
-     *             thrown if reading the file failed
+     * @throws IOException thrown if reading the file failed
      */
     public List<Satz> read(String path) throws IOException {
         return read(Paths.get(path));
@@ -95,11 +92,9 @@ public class LdtReader {
     /**
      * Read the LDT found on a given path.
      * 
-     * @param path
-     *            the path of the LDT file
+     * @param path the path of the LDT file
      * @return the list of Satz elements found in the LDT file
-     * @throws IOException
-     *             thrown if reading the file failed
+     * @throws IOException thrown if reading the file failed
      */
     public List<Satz> read(Path path) throws IOException {
         try (Stream<String> stream = Files.lines(path, StandardCharsets.ISO_8859_1)) {
@@ -110,8 +105,7 @@ public class LdtReader {
     /**
      * Read the LDT from a given string stream.
      * 
-     * @param stream
-     *            the LDT lines as string stream
+     * @param stream the LDT lines as string stream
      * @return the list of Satz elements found in the LDT file
      */
     public List<Satz> read(Stream<String> stream) {
@@ -223,10 +217,11 @@ public class LdtReader {
 
                     // No match found, abort or inform the developer
                     if (mode == Mode.STRICT) {
-                        throw new IllegalArgumentException(
-                                "In line '" + line + "' (" + lineNo + ") expected Obj_" + annotation.value() + ", got " + payload);
+                        throw new IllegalArgumentException("In line '" + line + "' (" + lineNo + ") expected Obj_"
+                                + annotation.value() + ", got " + payload);
                     } else {
-                        LOG.error("In line '{}' ({}) expected Obj_{}, got {}", line, lineNo, annotation.value(), payload);
+                        LOG.error("In line '{}' ({}) expected Obj_{}, got {}", line, lineNo, annotation.value(),
+                                payload);
                         break;
                     }
                 }
@@ -326,7 +321,8 @@ public class LdtReader {
 
             // Neither we nor our parent could deal with this line
             if (mode == Mode.STRICT) {
-                throw new IllegalArgumentException("Failed reading line " + line + " (" + lineNo + "), current stack: " + stack);
+                throw new IllegalArgumentException(
+                        "Failed reading line " + line + " (" + lineNo + "), current stack: " + stack);
             } else {
                 LOG.warn("Failed reading line {} ({}), current stack: {}, skipping line", line, lineNo, stack);
             }
@@ -339,14 +335,16 @@ public class LdtReader {
             try {
                 if (!kontextregel.newInstance().isValid(o)) {
                     if (mode == Mode.STRICT) {
-                        throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o);
+                        throw new IllegalArgumentException(
+                                "Context rule " + kontextregel.getSimpleName() + " failed on object " + o);
                     } else {
                         LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o);
                     }
                 }
             } catch (IllegalAccessException | InstantiationException e) {
                 if (mode == Mode.STRICT) {
-                    throw new IllegalArgumentException("Context rule " + kontextregel.getSimpleName() + " failed on object " + o, e);
+                    throw new IllegalArgumentException(
+                            "Context rule " + kontextregel.getSimpleName() + " failed on object " + o, e);
                 } else {
                     LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o, e);
                 }
@@ -354,27 +352,31 @@ public class LdtReader {
         }
     }
 
-    private void validateFieldPayload(Field field, String payload) throws IllegalAccessException, InstantiationException {
+    private void validateFieldPayload(Field field, String payload)
+            throws IllegalAccessException, InstantiationException {
         outer: for (Regelsatz regelsatz : field.getAnnotationsByType(Regelsatz.class)) {
 
             if (regelsatz.laenge() >= 0) {
                 if (payload.length() != regelsatz.laenge()) {
-                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not match expected length "
-                            + regelsatz.laenge() + ", was " + payload.length());
+                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value "
+                            + payload + " did not match expected length " + regelsatz.laenge() + ", was "
+                            + payload.length());
                 }
             }
 
             if (regelsatz.minLaenge() >= 0) {
                 if (payload.length() < regelsatz.minLaenge()) {
-                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not match expected minimum length "
-                            + regelsatz.minLaenge() + ", was " + payload.length());
+                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value "
+                            + payload + " did not match expected minimum length " + regelsatz.minLaenge() + ", was "
+                            + payload.length());
                 }
             }
 
             if (regelsatz.maxLaenge() >= 0) {
                 if (payload.length() > regelsatz.maxLaenge()) {
-                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not match expected maximum length "
-                            + regelsatz.maxLaenge() + ", was " + payload.length());
+                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value "
+                            + payload + " did not match expected maximum length " + regelsatz.maxLaenge() + ", was "
+                            + payload.length());
                 }
             }
 
@@ -388,8 +390,8 @@ public class LdtReader {
                     continue outer;
                 }
             }
-            validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload + " did not confirm to any rule of "
-                    + toString(regelsatz.value()));
+            validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload
+                    + " did not confirm to any rule of " + toString(regelsatz.value()));
         }
     }
 
@@ -424,8 +426,7 @@ public class LdtReader {
     /**
      * Extract the Satzart form a given payload
      * 
-     * @param payload
-     *            the payload of the line
+     * @param payload the payload of the line
      * @return the Satzart or {@code null}
      */
     private Satzart getSatzart(String payload) {
@@ -442,8 +443,7 @@ public class LdtReader {
     /**
      * Peek the current objekt from the stack, if any.
      * 
-     * @param stack
-     *            the stack to peek the object from
+     * @param stack the stack to peek the object from
      * @return the current top level element of the stack or {@code null}
      */
     private static Object peekCurrentObject(Stack<Object> stack) {
@@ -456,12 +456,9 @@ public class LdtReader {
     /**
      * Check if the line matches the expected length.
      * 
-     * @param line
-     *            the line to check
-     * @param length
-     *            the actual length
-     * @param target
-     *            the length specified by the line
+     * @param line   the line to check
+     * @param length the actual length
+     * @param target the length specified by the line
      */
     private void assureLength(String line, int length, int target) {
         if (length != target) {
@@ -475,9 +472,8 @@ public class LdtReader {
     }
 
     /**
-     * Convert the string payload into a target class. (Note: There are
-     * certainly better options out there but this one is simple enough for our
-     * needs.)
+     * Convert the string payload into a target class. (Note: There are certainly
+     * better options out there but this one is simple enough for our needs.)
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private static Object convertType(Field field, Type type, String payload, Stack<Object> stack)

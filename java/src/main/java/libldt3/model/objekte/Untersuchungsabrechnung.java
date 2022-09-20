@@ -46,17 +46,18 @@ public class Untersuchungsabrechnung {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8406", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String kosten;
         @Feld(value = "5005", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 3)
+        @Regelsatz(laenge = 3)
         public Integer multiplikator;
         @Feld(value = "5009", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<String> begruendungstext;
         @Feld(value = "8614", feldart = Feldart.muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public Boolean abgerechnet;
+        public int asd;
     }
 
     @Feld(value = "7303", feldart = Feldart.muss)
@@ -66,7 +67,7 @@ public class Untersuchungsabrechnung {
     @Regelsatz(laenge = 1)
     public Gebuehrenordnung gebuehrenordnung;
     @Feld(value = "5001", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = {F008.class, F009.class}, maxLaenge = 9)
+    @Regelsatz(value = { F008.class, F009.class }, maxLaenge = 9)
     public List<Gebuehrennummer> gebuehrennummer;
     @Feld(value = "7259", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)

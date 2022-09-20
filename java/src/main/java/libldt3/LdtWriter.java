@@ -60,12 +60,9 @@ public class LdtWriter {
     /**
      * Write a given set of Satz elements to a given path
      * 
-     * @param data
-     *            the Satz elements to write
-     * @param path
-     *            the path to write to
-     * @throws IOException
-     *             if writing the Satz elements failed
+     * @param data the Satz elements to write
+     * @param path the path to write to
+     * @throws IOException if writing the Satz elements failed
      */
     public void write(List<Satz> data, String path) throws IOException {
         try (PrintWriter w = new PrintWriter(path, "ISO-8859-1")) {
@@ -76,12 +73,9 @@ public class LdtWriter {
     /**
      * Write a given set of Satz elements to a given path
      * 
-     * @param data
-     *            the Satz elements to write
-     * @param path
-     *            the path to write to
-     * @throws IOException
-     *             if writing the Satz elements failed
+     * @param data the Satz elements to write
+     * @param path the path to write to
+     * @throws IOException if writing the Satz elements failed
      */
     public void write(List<Satz> data, Path path) throws IOException {
         write(data, path.toString());
@@ -90,12 +84,9 @@ public class LdtWriter {
     /**
      * Write a given set of Satz elements to a given writer
      * 
-     * @param data
-     *            the Satz elements to write
-     * @param writer
-     *            the writer to write to
-     * @throws IOException
-     *             if writing the Satz elements failed
+     * @param data   the Satz elements to write
+     * @param writer the writer to write to
+     * @throws IOException if writing the Satz elements failed
      */
     public void write(List<Satz> data, PrintWriter writer) throws IOException {
         try {
@@ -108,8 +99,8 @@ public class LdtWriter {
         }
     }
 
-    private void handleOutput(Object o, PrintWriter writer) throws IllegalArgumentException,
-            IllegalAccessException, NoSuchMethodException, SecurityException, InvocationTargetException {
+    private void handleOutput(Object o, PrintWriter writer) throws IllegalArgumentException, IllegalAccessException,
+            NoSuchMethodException, SecurityException, InvocationTargetException {
         Datenpaket datenpaket = o.getClass().getAnnotation(Datenpaket.class);
         if (datenpaket != null) {
             writer.printf("0138000%s\r\n", datenpaket.value().code);
@@ -158,8 +149,9 @@ public class LdtWriter {
     /**
      * Transform an object into its LDT 3.0 represenation
      */
-    private void writeTextualRepresentation(Field field, PrintWriter writer, Feld feld, Object object) throws NoSuchMethodException, SecurityException,
-            IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    private void writeTextualRepresentation(Field field, PrintWriter writer, Feld feld, Object object)
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+            InvocationTargetException {
         if (feld.feldart() == Feldart.muss && object == null) {
             if (mode == Mode.STRICT) {
                 throw new IllegalArgumentException(
@@ -176,25 +168,36 @@ public class LdtWriter {
                 if (regelsatz.maxLaenge() >= 0) {
                     if (value.length() > regelsatz.maxLaenge()) {
                         if (mode == Mode.STRICT) {
-                            throw new IllegalArgumentException("Value " + value + " must have maximum length of " + regelsatz.maxLaenge() + ", but was " + value.length());
+                            throw new IllegalArgumentException("Value " + value + " must have maximum length of "
+                                    + regelsatz.maxLaenge() + ", but was " + value.length());
                         } else {
-                            LOG.warn("{}.{}: Value {} must have maximum length of {}, but was {}, trimming", field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.maxLaenge(), value.length());
+                            LOG.warn("{}.{}: Value {} must have maximum length of {}, but was {}, trimming",
+                                    field.getDeclaringClass().getSimpleName(), field.getName(), value,
+                                    regelsatz.maxLaenge(), value.length());
                             value = value.substring(0, Math.min(value.length(), regelsatz.maxLaenge()));
                         }
                     }
                 } else if (regelsatz.laenge() >= 0) {
                     if (value.length() > regelsatz.laenge()) {
                         if (mode == Mode.STRICT) {
-                            throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
+                            throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "."
+                                    + field.getName() + ": Value " + value + " must have exact length of "
+                                    + regelsatz.laenge() + ", but was " + value.length());
                         } else {
-                            LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, trimming", field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.laenge(), value.length());
+                            LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, trimming",
+                                    field.getDeclaringClass().getSimpleName(), field.getName(), value,
+                                    regelsatz.laenge(), value.length());
                             value = value.substring(0, regelsatz.laenge());
                         }
                     } else if (value.length() < regelsatz.laenge()) {
                         if (mode == Mode.STRICT) {
-                            throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + value + " must have exact length of " + regelsatz.laenge() + ", but was " + value.length());
+                            throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "."
+                                    + field.getName() + ": Value " + value + " must have exact length of "
+                                    + regelsatz.laenge() + ", but was " + value.length());
                         } else {
-                            LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, ignoring", field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.laenge(), value.length());
+                            LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, ignoring",
+                                    field.getDeclaringClass().getSimpleName(), field.getName(), value,
+                                    regelsatz.laenge(), value.length());
                         }
                     }
                 }

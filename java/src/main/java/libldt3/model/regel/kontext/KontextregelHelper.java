@@ -41,7 +41,7 @@ class KontextregelHelper {
     /**
      * Check if a given field has any string content (either simply text or multiline Fliesstext)
      */
-    static boolean containsAnyString(Field field, Object owner) throws IllegalAccessException {
+    public static boolean containsAnyString(Field field, Object owner) throws IllegalAccessException {
         if (field == null) {
             LOG.warn("No field given, cannot check for content");
             return false;
@@ -54,7 +54,7 @@ class KontextregelHelper {
     /**
      * Check if a given field has any string content (either simply text or multiline Fliesstext)
      */
-    static boolean containsAnyString(Object value) throws IllegalAccessException {
+    public static boolean containsAnyString(Object value) throws IllegalAccessException {
         if (value instanceof String) {
             String o = (String) value;
             return !o.isEmpty();
@@ -82,7 +82,7 @@ class KontextregelHelper {
     /**
      * Find a field matching their {@link Feld#value()} with the given fieldtype. Not recursive, only a single field.
      */
-    static Field findField(Object owner, String fieldtype) {
+    public static Field findField(Object owner, String fieldtype) {
         for (Field f : owner.getClass().getDeclaredFields()) {
             Feld annotation = f.getAnnotation(Feld.class);
             if (annotation != null && annotation.value().equals(fieldtype)) {
@@ -96,7 +96,7 @@ class KontextregelHelper {
     /**
      * Find fields matching their {@link Feld#value()} with the given fieldtypes. Not recursive, but for multiple field.
      */
-    static Map<String, Field> findFields(Object owner, Set<String> fieldtypes) {
+    public static Map<String, Field> findFields(Object owner, Set<String> fieldtypes) {
         Map<String, Field> result = new HashMap<>(fieldtypes.size());
         for (Field f : owner.getClass().getDeclaredFields()) {
             Feld annotation = f.getAnnotation(Feld.class);
@@ -111,7 +111,7 @@ class KontextregelHelper {
     /**
      * Find fields matching their {@link Feld#value()} with the given fieldtypes. Recursive and for multiple field.
      */
-    static Map<Object, List<Field>> findFieldsRecursive(Object owner, Set<String> fieldtypes) throws IllegalArgumentException, IllegalAccessException {
+    public static Map<Object, List<Field>> findFieldsRecursive(Object owner, Set<String> fieldtypes) throws IllegalArgumentException, IllegalAccessException {
         Map<Object, List<Field>> result = new HashMap<>();
         List<Field> fields = new ArrayList<>();
         for (Field f : owner.getClass().getDeclaredFields()) {
@@ -122,12 +122,12 @@ class KontextregelHelper {
                 result.put(owner, fields);
             }
             f.setAccessible(true);
-            Object object = f.get(owner);
-            if (object != null) {
-                if (object.getClass().getAnnotation(Objekt.class) != null) {
-                    result.putAll(findFieldsRecursive(object, fieldtypes));
-                } else if (object instanceof Iterable) {
-                    for (Object o : (Iterable) object) {
+            Object obj = f.get(owner);
+            if (obj != null) {
+                if (obj.getClass().getAnnotation(Objekt.class) != null) {
+                    result.putAll(findFieldsRecursive(obj, fieldtypes));
+                } else if (obj instanceof Iterable<?>) {
+                    for (Object o : (Iterable<?>) obj) {
                         result.putAll(findFieldsRecursive(o, fieldtypes));
                     }
                 }

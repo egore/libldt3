@@ -23,6 +23,6 @@ package libldt3.model.regel;
 
 class RegelConstants {
 
-    static final String E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
+    public static final String E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
 
 }

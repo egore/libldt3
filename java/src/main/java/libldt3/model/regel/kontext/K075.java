@@ -51,7 +51,7 @@ public class K075 implements Kontextregel {
             return false;
         }
 
-        if (fields.get("9970").get(owner) == Dokumententyp.sonstige) {
+        if (((Dokumententyp) fields.get("9970").get(owner)) == Dokumententyp.sonstige) {
             return containsAnyString(fields.get("6327"), owner);
         }
 

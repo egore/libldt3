@@ -53,7 +53,7 @@ public class K099 implements Kontextregel {
         }
 
         Object o = fields.get("8422").get(owner);
-        if (o instanceof Collection) {
+        if (o instanceof Collection<?>) {
             for (GrenzwertindikatorErweitert grenzwertindikatorErweitert : (Collection<GrenzwertindikatorErweitert>) o) {
                 Grenzwertindikator grenzwertindikator = grenzwertindikatorErweitert.value;
                 if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
@@ -66,7 +66,8 @@ public class K099 implements Kontextregel {
             }
             return true;
         } else {
-            Grenzwertindikator grenzwertindikator = ((GrenzwertindikatorErweitert) o).value;
+            GrenzwertindikatorErweitert indikatorErweitert = (GrenzwertindikatorErweitert) o;
+            Grenzwertindikator grenzwertindikator = indikatorErweitert.value;
             if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
                     grenzwertindikator == Grenzwertindikator.EXTREM_MINUS ||
                     grenzwertindikator == Grenzwertindikator.EXTREM_H ||
