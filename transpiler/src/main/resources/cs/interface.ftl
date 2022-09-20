@@ -11,7 +11,6 @@
 <@interface_ interface=interface/>
 
 </@namespace>
-
 <#macro interface_ interface>
 <@comments.comments comments=interface.comments with_summary=true />
 <@attributes.classattributes interface/>
@@ -23,7 +22,7 @@ public interface ${interface.simpleName}<#if interface.superInterfaces?size gt 0
 
     <#list interface.fields as field>
     <@attributes.fieldattributes field/>
-    ${field.visibility!} <@converttype type=field.type/> ${field.simpleName};
+    ${field.visibility!} <@converttype type=field.type/> ${field.simpleName?cap_first};
     </#list>
 
     <#list interface.methods as method>

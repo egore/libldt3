@@ -52,7 +52,7 @@ public class ConvertTypeDirective implements TemplateDirectiveModel {
         case "java.lang.Iterable": name = "IEnumerable"; break;
         case "java.util.Collection": name = "IEnumerable"; break;
         case "java.lang.UnsupportedOperationException": name = "NotImplementedException"; break;
-        default: name = type.getSimpleName(); break;
+        default: name = ConvertClassDirective.CLASS_REPLACEMENTS.getOrDefault(type.getQualifiedName(), type.getSimpleName()); break;
         }
         if (withNullability && (type.isEnum() || type.isAnnotationType() ||type.getQualifiedName().startsWith("java.time."))) {
             name += "?";

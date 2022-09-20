@@ -80,21 +80,24 @@
     <#if force_array!false>new [] { </#if>
     <#switch expression.target.class.simpleName>
         <#case "CtTypeAccessImpl">
-            <#assign typeName>${expression.target.accessedType.simpleName}</#assign>
             <#if expression.variable.simpleName == "class">
-                typeof(${typeName})
+                typeof(${expression.target.accessedType.simpleName})
             <#else>
-                <@renderTypeAccessExpression expression=expression.target/>.${expression.variable.simpleName}
+                <#if expression.target.accessedType.isEnum()>
+                    <@renderTypeAccessExpression expression=expression.target/>.${expression.variable.simpleName}
+                <#else>
+                    <@renderTypeAccessExpression expression=expression.target/>.${expression.variable.simpleName?cap_first}
+                </#if>
             </#if>
             <#break>
         <#case "CtThisAccessImpl">
-            <@renderThisAccessExpression expression=expression.target/>.${expression.variable.simpleName}
+            <@renderThisAccessExpression expression=expression.target/>.${expression.variable.simpleName?cap_first}
             <#break>
         <#case "CtVariableReadImpl">
-            <@renderVariableAccessExpression expression=expression.target/>.${expression.variable.simpleName}
+            <@renderVariableAccessExpression expression=expression.target/>.${expression.variable.simpleName?cap_first}
             <#break>
         <#case "CtFieldReadImpl">
-            <@renderFieldReadExpression expression=expression.target force_array=false/>.${expression.variable.simpleName}
+            <@renderFieldReadExpression expression=expression.target force_array=false/>.${expression.variable.simpleName?cap_first}
             <#break>
         <#default>
             // XXX renderFieldReadExpression ${expression.target.class.simpleName} is unknown
@@ -104,7 +107,7 @@
 
 <#macro renderInvocationExpression expression>
 <#if expression.typeCasts?size gt 0><#list expression.typeCasts as typeCast>(<@converttype type=typeCast/>) </#list></#if><@invocationfixup invocation=expression>
-<#if expression.target??><#include "./invocation/target.ftl">.</#if>${expression.executable.simpleName}(<#list expression.arguments as argument><@expressions.renderExpression expression=argument/><#sep>, </#list>)
+<#if expression.target??><#include "./invocation/target.ftl">.</#if>${expression.executable.simpleName?cap_first}(<#list expression.arguments as argument><@expressions.renderExpression expression=argument/><#sep>, </#list>)
 </@invocationfixup>
 </#macro>
 

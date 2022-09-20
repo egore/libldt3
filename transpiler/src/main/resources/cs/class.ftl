@@ -10,21 +10,23 @@
 <@namespace package=class.package>
 <@class_ klass=class/>
 </@namespace>
-
 <#macro class_ klass>
 <@comments.comments comments=klass.comments with_summary=true />
 <@attributes.classattributes klass/>
-<@compress single_line=true>${klass.visibility!} ${klass.abstract?string("abstract", "")} class ${klass.simpleName}<#if klass.superInterfaces?size gt 0> : <#list klass.superInterfaces as interface>${interface.simpleName}<#sep>, </#list></#if><#if klass.superclass??><#if klass.superInterfaces?size gt 0>, <#else> : </#if>${klass.superclass.simpleName}</#if></@compress>
+<@compress single_line=true>${klass.visibility!} ${klass.abstract?string("abstract", "")} class <@convertclass class=klass/><#if klass.superInterfaces?size gt 0> : <#list klass.superInterfaces as interface>${interface.simpleName}<#sep>, </#list></#if><#if klass.superclass??><#if klass.superInterfaces?size gt 0>, <#else> : </#if>${klass.superclass.simpleName}</#if></@compress>
 {
     <#list klass.nestedTypes as nestedType>
     <@class_ klass=nestedType/>
     </#list>
+    <#if klass.fields?size gt 0>
     <#list klass.fields as field>
     <#if field.simpleName != "LOG">
         <@attributes.fieldattributes field/>
-        ${field.visibility!}<#if field.static> static</#if><#if field.final> readonly</#if> <@converttype type=field.type/> ${field.simpleName}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
+        ${field.visibility!}<#if field.static> static</#if><#if field.final> readonly</#if> <@converttype type=field.type/> ${field.simpleName?cap_first}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
     </#if>
     </#list>
+
+    </#if>
     <#list class.constructors as constructor>
         <#if ! constructor.implicit>
             <@method_.constructor_signature constructor=constructor/>
