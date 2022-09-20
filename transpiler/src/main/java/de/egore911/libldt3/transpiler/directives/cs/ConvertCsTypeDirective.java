@@ -1,10 +1,11 @@
-package de.egore911.libldt3.transpiler.directives;
+package de.egore911.libldt3.transpiler.directives.cs;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import de.egore911.libldt3.transpiler.directives.ConvertClassDirective;
 import freemarker.core.Environment;
 import freemarker.ext.beans.BeanModel;
 import freemarker.template.TemplateBooleanModel;
@@ -14,7 +15,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import spoon.reflect.reference.CtTypeReference;
 
-public class ConvertTypeDirective implements TemplateDirectiveModel {
+public class ConvertCsTypeDirective implements TemplateDirectiveModel {
 
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
             throws TemplateException, IOException {
