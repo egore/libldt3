@@ -59,11 +59,11 @@ public class TranspileCsharp {
         Path base = Paths.get("../cs");
 
         Path model = base.resolve("libldt3").resolve("model");
-        Files.list(model.resolve("saetze")).map(Path::toFile).forEach(File::delete);
-        Files.list(model.resolve("objekte")).map(Path::toFile).forEach(File::delete);
-        Files.list(model.resolve("enums")).map(Path::toFile).forEach(File::delete);
-        Files.list(model.resolve("regel")).map(Path::toFile).forEach(File::delete);
-        Files.list(model.resolve("regel").resolve("kontext")).map(Path::toFile).forEach(File::delete);
+        Files.list(model.resolve("saetze")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
+        Files.list(model.resolve("objekte")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
+        Files.list(model.resolve("enums")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
+        Files.list(model.resolve("regel")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
+        Files.list(model.resolve("regel").resolve("kontext")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
 
         for (CtType<?> type : launcher.getModel().getAllTypes()) {
             if (type.getPackage().getQualifiedName().equals("libldt3.model.saetze")
