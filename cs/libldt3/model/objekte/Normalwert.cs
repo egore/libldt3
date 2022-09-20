@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
@@ -30,9 +29,9 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
-             */
+            /// <summary>
+            /// Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
+            /// </summary>
             [Objekt(Value = "0042", Kontextregeln = new[] { typeof(K099) })]
             public class Normalwert
             {
@@ -42,42 +41,43 @@ namespace libldt3
                     public float? Value;
                     [Feld(Value = "8419", Feldart = Feldart.kann)]
                     [Regelsatz(Laenge = 1)]
-                    public EinheitMesswert? einheitDesWertes;
+                    public EinheitMesswert? EinheitDesWertes;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 20)]
-                    public string sizeUnit;
-                }
+                    public string SizeUnit;
 
+                }
                 [Feld(Value = "8424", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public Normwertspezifikation? normwertspezifikation;
+                public Normwertspezifikation? Normwertspezifikation;
                 [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 26)]
-                public Fliesstext zusaetzlicheInformationen;
+                public Fliesstext ZusaetzlicheInformationen;
                 [Feld(Value = "8460", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<string> normalwertText;
+                [Regelsatz(MaxLaenge = 990)]
+                public IList<string> NormalwertText;
                 [Feld(Value = "8461", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze normalwertUntereGrenze;
+                public NormalwertGrenze NormalwertUntereGrenze;
                 [Feld(Value = "8462", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze normalwertObereGrenze;
+                public NormalwertGrenze NormalwertObereGrenze;
                 [Feld(Value = "7316", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string normalwertListenbezeichnung;
+                public string NormalwertListenbezeichnung;
                 [Feld(Value = "7317", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> normalwertListenzeile;
+                public IList<string> NormalwertListenzeile;
                 [Feld(Value = "7363", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze alarmwertUntereGrenze;
+                public NormalwertGrenze AlarmwertUntereGrenze;
                 [Feld(Value = "7371", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze alarmwertObereGrenze;
+                public NormalwertGrenze AlarmwertObereGrenze;
                 [Feld(Value = "8422", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public GrenzwertindikatorErweitert grenzwertindikator;
+                public GrenzwertindikatorErweitert Grenzwertindikator;
+
             }
         }
     }

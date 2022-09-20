@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,11 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Diagnostics;
-using System.Reflection;
-using System.Collections.Generic;
-using static libldt3.model.regel.kontext.KontextregelHelper;
-using libldt3.model.enums;
 
 namespace libldt3
 {
@@ -33,32 +28,14 @@ namespace libldt3
         {
             namespace kontext
             {
-
+                /// <summary>
+                /// Wenn Inhalt von FK 8418 ≠ M, F oder S ist, dann muss FK 8225 mindestens einmal vorkommen.
+                /// </summary>
                 public class K076 : Kontextregel
                 {
-
-                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
-
                     public bool IsValid(object owner)
                     {
-
-                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-                        if (fields.Count != FIELDTYPES.Count)
-                        {
-                            Trace.TraceError("Class of {0} must have fields {1}", owner, FIELDTYPES);
-                            return false;
-                        }
-
-                        TestStatus status = (TestStatus)fields["8418"].GetValue(owner);
-                        switch (status)
-                        {
-                            case TestStatus.Material_fehlt_oder_nicht_verwendbar:
-                            case TestStatus.Wert_fehlt:
-                            case TestStatus.Untersuchungsanforderung_storniert:
-                                return true;
-                            default:
-                                return ContainsAnyString(fields["8225"], owner);
-                        }
+                        throw new NotImplementedException();
                     }
                 }
             }

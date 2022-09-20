@@ -265,7 +265,8 @@ namespace libldt3
                             annotation1 = o.GetType().GetCustomAttribute<Objekt>();
                             if (annotation1 != null)
                             {
-                                if (annotation1.Value.Length != 0 && !("Obj_" + annotation1.Value).Equals(payload)) {
+                                if (annotation1.Value.Length != 0 && !("Obj_" + annotation1.Value).Equals(payload))
+                                {
                                     Trace.TraceWarning("Line: {0} ({1}), annotation {2}, payload {3}", line, lineNo, annotation1.Value, payload);
                                 }
                                 EvaluateContextRules(o, annotation1.Kontextregeln);
@@ -520,7 +521,7 @@ namespace libldt3
          *            the stack to peek the object from
          * @return the current top level element of the stack or {@code null}
          */
-        static object PeekCurrentObject(Stack<object> stack)
+        static object? PeekCurrentObject(Stack<object> stack)
         {
             if (stack.Count == 0)
             {
@@ -560,7 +561,7 @@ namespace libldt3
          * certainly better options out there but this one is simple enough for our
          * needs.)
          */
-        static object ConvertType(FieldInfo field, Type type, string payload, Stack<object> stack)
+        static object? ConvertType(FieldInfo field, Type type, string payload, Stack<object> stack)
         {
             if (type == typeof(string))
             {
@@ -627,10 +628,10 @@ namespace libldt3
             if (genericType != null)
             {
                 object currentObject = PeekCurrentObject(stack);
-                var o = (System.Collections.IList) field.GetValue(currentObject);
+                var o = (System.Collections.IList)field.GetValue(currentObject);
                 if (o == null)
                 {
-                    o = (System.Collections.IList) Activator.CreateInstance(typeof(List<>).MakeGenericType(genericType.GetGenericArguments()[0]));
+                    o = (System.Collections.IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(genericType.GetGenericArguments()[0]));
                     field.SetValue(currentObject, o);
                 }
                 o.Add(ConvertType(field, type.GenericTypeArguments[0], payload, stack));
@@ -656,7 +657,7 @@ namespace libldt3
             return (u != null) && u.IsEnum;
         }
 
-        static Type GetGenericList(Type type)
+        static Type? GetGenericList(Type type)
         {
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IList<>))
             {

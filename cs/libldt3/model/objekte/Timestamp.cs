@@ -29,24 +29,25 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Ein Zeitstempel
-             */
+            /// <summary>
+            /// Ein Zeitstempel
+            /// </summary>
             [Objekt(Value = "0054")]
             public class Timestamp
             {
                 [Feld(Value = "7278", Feldart = Feldart.muss)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? datum;
+                public LocalDate? Datum;
                 [Feld(Value = "7279", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F016) }, MinLaenge = 6, MaxLaenge = 9)]
-                public LocalTime? uhrzeit;
+                public LocalTime? Uhrzeit;
                 [Feld(Value = "7272", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string freitext;
+                [Regelsatz(MaxLaenge = 990)]
+                public string Freitext;
                 [Feld(Value = "8235", Name = "Person_zum_Timestamp", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 20)]
-                public Person person;
+                public Person Person;
+
             }
         }
     }

@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 using NodaTime;
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
@@ -31,38 +30,37 @@ namespace libldt3
     {
         namespace objekte
         {
-
-
-            /**
-             * In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
-             */
+            /// <summary>
+            /// In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
+            /// </summary>
             [Objekt(Value = "0045")]
             public class Patient
             {
                 [Feld(Value = "8147", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 6)]
-                public Person person;
+                public Person Person;
                 [Feld(Value = "3119", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F013) }, Laenge = 10)]
-                public string versichertenId;
+                public string VersichertenId;
                 [Feld(Value = "3105", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MinLaenge = 6, MaxLaenge = 12)]
-                public string versichertennummer;
+                public string Versichertennummer;
                 [Feld(Value = "7329", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public GeschlechtNormalbereich? geschlecht;
+                public GeschlechtNormalbereich? Geschlecht;
                 [Feld(Value = "7922", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? sterbedatum;
+                public LocalDate? Sterbedatum;
                 [Feld(Value = "3000", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string patientNumber;
+                public string PatientNumber;
                 [Feld(Value = "3620", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> profession;
+                public IList<string> Profession;
                 [Feld(Value = "3621", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string currentProfession;
+                public string CurrentProfession;
+
             }
         }
     }

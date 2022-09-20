@@ -32,10 +32,11 @@ namespace libldt3
             {
                 [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
-                public Person person;
+                public Person Person;
                 [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
-                public Organisation organisation;
+                public Organisation Organisation;
+
             }
         }
     }

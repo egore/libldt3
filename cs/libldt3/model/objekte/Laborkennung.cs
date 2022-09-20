@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 
@@ -29,25 +28,25 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
-             */
+            /// <summary>
+            /// Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
+            /// </summary>
             [Objekt(Value = "0036")]
             public class Laborkennung
             {
-
                 [Feld(Value = "8239", Name = "Laborbezeichnung", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 16)]
-                public Organisation laborbezeichnung;
+                public Organisation Laborbezeichnung;
                 [Feld(Value = "7352", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> katalogUrl;
+                public IList<string> KatalogUrl;
                 [Feld(Value = "8324", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string laborStandortId;
+                public string LaborStandortId;
                 [Feld(Value = "7266", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public Laborart? laborart;
+                public Laborart? Laborart;
+
             }
         }
     }

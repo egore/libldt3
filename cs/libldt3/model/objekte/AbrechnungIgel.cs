@@ -28,24 +28,24 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            /**
-             * Mit diesem Objekt werden die Informationen für die Abrechnung von
-             * Untersuchungsanforderungen zusammengefasst, welche als IGe-Leistungen
-             * gegenüber gesetzlich versicherten Patienten erbracht werden können.
-             */
+            /// <summary>
+            /// Mit diesem Objekt werden die Informationen für die Abrechnung von
+            /// Untersuchungsanforderungen zusammengefasst, welche als IGe-Leistungen
+            /// gegenüber gesetzlich versicherten Patienten erbracht werden können.
+            /// </summary>
             [Objekt(Value = "0004")]
             public class AbrechnungIgel
             {
                 [Feld(Value = "4121", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public Gebuehrenordnung? gebuehrenordnung;
+                public Gebuehrenordnung? Gebuehrenordnung;
                 [Feld(Value = "7253", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public bool kostenuebernahmeerklaerungAuftraggeberLiegtVor;
+                public bool? KostenuebernahmeerklaerungAuftraggeberLiegtVor;
                 [Feld(Value = "8148", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 12)]
-                public Rechnungsempfaenger rechnungsempfaenger;
+                public Rechnungsempfaenger Rechnungsempfaenger;
+
             }
         }
     }

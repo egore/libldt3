@@ -19,27 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+using System.Text.RegularExpressions;
+
 namespace libldt3
 {
     namespace model
     {
         namespace regel
         {
-
-            using System.Text.RegularExpressions;
-
-            /**
-             * Format BSNR Terminservicestelle (Anlage 28 BMV-Ä)
-             */
+            /// <summary>
+            /// Format BSNR Terminservicestelle (Anlage 28 BMV-Ä)
+            /// </summary>
             public class F021 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^35" + RegelConstants.E014 + "[0-9]{5}$");
 
-                static readonly Regex PATTERN = new Regex("^35" + RegelConstants.E014 + "[0-9]{5}$");
-
-                public F021() : base(PATTERN)
+                public F021() : base(F021.PATTERN)
                 {
                 }
-
             }
         }
     }

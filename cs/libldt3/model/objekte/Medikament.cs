@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 
@@ -29,9 +28,9 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Hier werden Informationen zu Medikamenten zusammengefasst.
-             */
+            /// <summary>
+            /// Hier werden Informationen zu Medikamenten zusammengefasst.
+            /// </summary>
             [Objekt(Value = "0070")]
             public class Medikament
             {
@@ -42,7 +41,7 @@ namespace libldt3
                 [Regelsatz(MaxLaenge = 60)]
                 public string Handelsname;
                 [Feld(Value = "6207", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 60)]
+                [Regelsatz(MaxLaenge = 990)]
                 public string Rezeptur;
                 [Feld(Value = "8171", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 9)]
@@ -55,16 +54,17 @@ namespace libldt3
                 public string Einheit;
                 [Feld(Value = "3689", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public IList<MedikationsStatus> Status;
+                public IList<MedikationsStatus?> Status;
                 [Feld(Value = "8226", Name = "Timestamp_Gueltig_ab", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 20)]
                 public Timestamp TimestampGueltigAb;
                 [Feld(Value = "8227", Name = "Timestamp_Gueltig_bis", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 21)]
                 public Timestamp TimestampGueltigBis;
-                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.bedingt_muss)]
+                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
                 public Fliesstext ZusaetzlicheInformationen;
+
             }
         }
     }

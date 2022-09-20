@@ -1,4 +1,24 @@
-using System.Collections.Generic;
+/*
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -9,15 +29,12 @@ namespace libldt3
     {
         namespace saetze
         {
-
-
-            /**
-             * Satzart: Auftrag "8215"
-             */
+            /// <summary>
+            /// Satzart: Auftrag "8215"
+            /// </summary>
             [Datenpaket(Value = Satzart.Auftrag)]
             public class Auftrag : Satz
             {
-
                 [Feld(Value = "8122", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 23)]
                 public Einsenderidentifikation Einsenderidentifikation;
@@ -52,10 +69,10 @@ namespace libldt3
                 public IList<Untersuchungsanforderung> Untersuchungsanforderung;
                 [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
-                public IList<Fliesstext> zusaeztlicheInformationen;
+                public IList<Fliesstext> ZusaeztlicheInformationen;
                 [Feld(Value = "8110", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 6)]
-                public IList<Anhang> Ahang;
+                public IList<Anhang> Anhang;
 
             }
         }

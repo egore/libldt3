@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
@@ -31,16 +30,17 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Jeder Untersuchung wird direkt eine Abrechnung zugeordnet. Hier werden alle
-             * Werte transportiert, die für die ordnungsgemäße Abrechnung des Auftrages
-             * notwendig sind.
-             */
-            [Objekt(Value = "0058", Kontextregeln = new[] { typeof(K004) })]
+            /// <summary>
+            /// Jeder Untersuchung wird direkt eine Abrechnung zugeordnet.
+            /// </summary>
+            /// Hier werden alle
+            /// Werte transportiert, die für die ordnungsgemäße Abrechnung des Auftrages
+            /// notwendig sind.
+            [Objekt(Value = "0058", Kontextregeln = new[] { typeof(K005) })]
             public class Untersuchungsabrechnung
             {
                 [Objekt]
-                public class Gebuehrennummer
+                public class Gebuehrennummer_
                 {
                     public string Value;
                     [Feld(Value = "8406", Feldart = Feldart.bedingt_muss)]
@@ -51,27 +51,29 @@ namespace libldt3
                     public int? Multiplikator;
                     [Feld(Value = "5009", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public IList<string> begruendungstext;
+                    public IList<string> Begruendungstext;
                     [Feld(Value = "8614", Feldart = Feldart.muss)]
                     [Regelsatz(Laenge = 1)]
-                    public bool? abgerechnet;
-                }
+                    public bool? Abgerechnet;
+                    public int Asd;
 
+                }
                 [Feld(Value = "7303", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public Abrechnungsinfo? abrechnungsinfo;
+                public Abrechnungsinfo? Abrechnungsinfo;
                 [Feld(Value = "4121", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public Gebuehrenordnung? gebuehrenordnung;
+                public Gebuehrenordnung? Gebuehrenordnung;
                 [Feld(Value = "5001", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F008), typeof(F009) }, MaxLaenge = 9)]
-                public IList<Gebuehrennummer> gebuehrennummer;
+                public IList<Gebuehrennummer_> Gebuehrennummer;
                 [Feld(Value = "7259", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string abrechenbareLeistungenKatalogId;
+                public string AbrechenbareLeistungenKatalogId;
                 [Feld(Value = "7251", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string katalog;
+                public string Katalog;
+
             }
         }
     }

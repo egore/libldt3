@@ -20,28 +20,24 @@
  * SOFTWARE.
  */
 using System.Text.RegularExpressions;
+
 namespace libldt3
 {
     namespace model
     {
         namespace regel
         {
-
-            /**
-             * Format Gebührennummer
-             */
+            /// <summary>
+            /// Format Gebührennummer
+            /// </summary>
             public class F009 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^[0-9]{5}[A-Z]?$");
 
-                static readonly Regex PATTERN = new Regex("^[0-9]{5}[A-Z]?$");
-
-                public F009() : base(PATTERN)
+                public F009() : base(F009.PATTERN)
                 {
                 }
-
             }
-
-
         }
     }
 }

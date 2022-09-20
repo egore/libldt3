@@ -27,14 +27,14 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format Versicherten-ID
-             */
+            /// <summary>
+            /// Format Versicherten-ID
+            /// </summary>
             public class F013 : RegularExpressionRegel
             {
-                private static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{8}[0-9]$");
+                public static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{8}[0-9]$");
 
-                public F013() : base(PATTERN)
+                public F013() : base(F013.PATTERN)
                 {
                 }
             }

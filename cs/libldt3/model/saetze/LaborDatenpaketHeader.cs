@@ -29,21 +29,21 @@ namespace libldt3
     {
         namespace saetze
         {
-            /**
-             * Satzart: L (Labor)-Datenpaket-Header "8220"
-             */
+            /// <summary>
+            /// Satzart: L (Labor)-Datenpaket-Header "8220"
+            /// </summary>
             [Datenpaket(Value = Satzart.LaborDatenpaketHeader)]
             public class LaborDatenpaketHeader : Satz
             {
                 [Feld(Value = "8132", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 9)]
-                public Kopfdaten kopfdaten;
+                public Kopfdaten Kopfdaten;
                 [Feld(Value = "8136", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 12)]
-                public Laborkennung laborkennung;
+                public Laborkennung Laborkennung;
                 [Feld(Value = "8119", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 15)]
-                public Betriebsstaette betriebsstaette;
+                public Betriebsstaette Betriebsstaette;
 
             }
         }

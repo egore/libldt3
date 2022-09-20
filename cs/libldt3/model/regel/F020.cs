@@ -27,17 +27,16 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format der Pharmazentralnummer
-             */
+            /// <summary>
+            /// Format der Pharmazentralnummer
+            /// </summary>
             public class F020 : RegularExpressionRegel
             {
-                static readonly Regex PATTERN = new Regex("^[0-9]{7}[0-9]$");
+                public static readonly Regex PATTERN = new Regex("^[0-9]{7}[0-9]$");
 
-                public F020() : base(PATTERN)
+                public F020() : base(F020.PATTERN)
                 {
                 }
-
             }
         }
     }

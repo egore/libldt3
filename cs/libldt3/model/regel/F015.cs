@@ -27,14 +27,14 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format Blutdruck
-             */
+            /// <summary>
+            /// Format Blutdruck
+            /// </summary>
             public class F015 : RegularExpressionRegel
             {
-                private static readonly Regex PATTERN = new Regex("^[0-9]{3}/[0-9]{3}$");
+                public static readonly Regex PATTERN = new Regex("^[0-9]{3}/[0-9]{3}$");
 
-                public F015() : base(PATTERN)
+                public F015() : base(F015.PATTERN)
                 {
                 }
             }

@@ -19,6 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 namespace libldt3
 {
     namespace model
@@ -26,11 +27,13 @@ namespace libldt3
         namespace saetze
         {
 
-            /**
-             * Tagging-Interface, um Sätze zu identifiziern
-             */
+            /// <summary>
+            /// Tagging-Interface, um Sätze zu identifiziern
+            /// </summary>
             public interface Satz
             {
+
+
             }
 
         }

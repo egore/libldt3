@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
@@ -31,14 +30,13 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Im Objekt werden die Informationen zur Identifikation des zu untersuchenden
-             * Materials übermittelt sowie Angaben zum Material selbst.
-             */
+            /// <summary>
+            /// Im Objekt werden die Informationen zur Identifikation des zu untersuchenden
+            /// Materials übermittelt sowie Angaben zum Material selbst.
+            /// </summary>
             [Objekt(Value = "0037", Kontextregeln = new[] { typeof(K006) })]
             public class Material
             {
-
                 [Objekt]
                 public class AnorganischesMaterialErweitert
                 {
@@ -46,8 +44,8 @@ namespace libldt3
                     [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(Laenge = 26)]
                     public Fliesstext ZusaetzlicheInformatioen;
-                }
 
+                }
                 [Objekt]
                 public class Medikamenteneinnahme_
                 {
@@ -55,8 +53,8 @@ namespace libldt3
                     [Feld(Value = "8170", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(Laenge = 10)]
                     public Medikament Medication;
-                }
 
+                }
                 [Feld(Value = "7364", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string ProbengefaessIdent;
@@ -100,7 +98,8 @@ namespace libldt3
                 [Regelsatz(Value = new[] { typeof(F006) }, Laenge = 4)]
                 public string Sammelzeit;
                 [Feld(Value = "8219", Name = "Timestamp_Materialabnahme_entnahme", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Laenge = 34 /* XXX 33 according to the spec */)]
+                [Regelsatz(Laenge =     /* XXX 33 according to the spec */
+            34)]
                 public Timestamp TimestampMaterialabnahmeEntnahme;
                 [Feld(Value = "8220", Name = "Timestamp_Eingangserfassung_Material", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 36)]

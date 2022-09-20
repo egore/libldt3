@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 using NodaTime;
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.regel;
 
@@ -30,69 +29,68 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            /**
-             * In diesem Objekt können Information zu einem Tumor sowohl für die
-             * Beauftragung und für den Befund transportiert werden.
-             */
+            /// <summary>
+            /// In diesem Objekt können Information zu einem Tumor sowohl für die
+            /// Beauftragung und für den Befund transportiert werden.
+            /// </summary>
             [Objekt(Value = "0056")]
             public class Tumor
             {
-
                 [Feld(Value = "7364", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string probengefaessIdent;
+                public string ProbengefaessIdent;
                 [Feld(Value = "7372", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string tumorklassifikation;
+                public string Tumorklassifikation;
                 [Feld(Value = "7373", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 5)]
-                public string grading;
+                public string Grading;
                 [Feld(Value = "7374", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 4)]
-                public string stadium;
+                public string Stadium;
                 [Feld(Value = "7375", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F017) }, Laenge = 4)]
-                public string jahrTumordiagnose;
+                public string JahrTumordiagnose;
                 [Feld(Value = "7376", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string lokalisationTumor;
+                public string LokalisationTumor;
                 [Feld(Value = "7377", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> masse;
+                public IList<string> Masse;
                 [Feld(Value = "7378", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string farbe;
+                public string Farbe;
                 [Feld(Value = "7379", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string infiltrationstiefe;
+                public string Infiltrationstiefe;
                 [Feld(Value = "3424", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? therapiebeginn;
+                public LocalDate? Therapiebeginn;
                 [Feld(Value = "3425", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? therapieende;
+                public LocalDate? Therapieende;
                 [Feld(Value = "8220", Name = "Timestamp_Eingangserfassung_Material", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 36)]
-                public Timestamp timestampEingangserfassungMaterial;
+                public Timestamp TimestampEingangserfassungMaterial;
                 [Feld(Value = "8222", Name = "Timestamp_Beginn_Analytik", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 25)]
-                public Timestamp timestampBeginnAnalytik;
+                public Timestamp TimestampBeginnAnalytik;
                 [Feld(Value = "8223", Name = "Timestamp_Ergebniserstellung", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 28)]
-                public Timestamp timestampErgebniserstellung;
+                public Timestamp TimestampErgebniserstellung;
                 [Feld(Value = "8224", Name = "Timestamp_QM_Erfassung", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 22)]
-                public Timestamp timestampQmErfassung;
+                public Timestamp TimestampQmErfassung;
                 [Feld(Value = "8225", Name = "Timestamp_Messung", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 17)]
-                public Timestamp timestampMessung;
+                public Timestamp TimestampMessung;
                 [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
-                public IList<Fliesstext> zusaetzlicheInformationen;
+                public IList<Fliesstext> ZusaetzlicheInformationen;
                 [Feld(Value = "8110", Name = "Anhang", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 6)]
-                public IList<Anhang> anhang;
+                public IList<Anhang> Anhang;
+
             }
         }
     }

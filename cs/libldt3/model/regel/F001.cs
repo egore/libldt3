@@ -27,14 +27,14 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format der Abrechnungs-VKNR
-             */
+            /// <summary>
+            /// Format der Abrechnungs-VKNR
+            /// </summary>
             public class F001 : RegularExpressionRegel
             {
-                static readonly Regex PATTERN = new Regex("^[0-9]{5}$");
+                public static readonly Regex PATTERN = new Regex("^[0-9]{5}$");
 
-                public F001() : base(PATTERN)
+                public F001() : base(F001.PATTERN)
                 {
                 }
             }

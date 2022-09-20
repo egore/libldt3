@@ -19,10 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using static libldt3.model.regel.kontext.KontextregelHelper;
-using System.Reflection;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace libldt3
 {
@@ -32,35 +30,29 @@ namespace libldt3
         {
             namespace kontext
             {
-
                 /// <summary>
                 /// Wenn FK 8428 oder FK 8430 oder FK 8429 vorhanden ist, darf FK 8431 vorhanden sein.
                 /// </summary>
                 public class K006 : Kontextregel
                 {
-
-                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8428", "8430", "8429", "8431" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8428", "8430", "8429", "8431" };
 
                     public bool IsValid(object owner)
                     {
-
-                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-                        if (fields.Count != FIELDTYPES.Count)
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K006.FIELDTYPES);
+                        if (fields.Count != K006.FIELDTYPES.Count)
                         {
-                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K006.FIELDTYPES);
                             return false;
                         }
 
-                        if (ContainsAnyString(fields["8428"], owner) ||
-                            ContainsAnyString(fields["8430"], owner) ||
-                            ContainsAnyString(fields["8429"], owner))
+                        if (KontextregelHelper.ContainsAnyString(fields["8428"], owner) || KontextregelHelper.ContainsAnyString(fields["8430"], owner) || KontextregelHelper.ContainsAnyString(fields["8429"], owner))
                         {
                             return true;
                         }
 
-                        return !ContainsAnyString(fields["8431"], owner);
+                        return !KontextregelHelper.ContainsAnyString(fields["8431"], owner);
                     }
-
                 }
             }
         }

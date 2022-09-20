@@ -27,14 +27,14 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format ASV-Teamnummer
-             */
+            /// <summary>
+            /// Format ASV-Teamnummer
+            /// </summary>
             public class F014 : RegularExpressionRegel
             {
-                private static readonly Regex PATTERN = new Regex("^00[0-9]{6}[0-9]$");
+                public static readonly Regex PATTERN = new Regex("^00[0-9]{6}[0-9]$");
 
-                public F014() : base(PATTERN)
+                public F014() : base(F014.PATTERN)
                 {
                 }
             }

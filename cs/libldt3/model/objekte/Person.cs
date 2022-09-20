@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 using NodaTime;
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
@@ -31,59 +30,60 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
-             * Daten für die Abwicklung, Abrechnung oder Dokumentation von Aufträgen und
-             * Befun-den notwendig sind.
-             */
+            /// <summary>
+            /// Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
+            /// Daten für die Abwicklung, Abrechnung oder Dokumentation von Aufträgen und
+            /// Befun-den notwendig sind.
+            /// </summary>
             [Objekt(Value = "0047")]
             public class Person
             {
                 [Feld(Value = "7420", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 2)]
-                public StatusPerson? status;
+                public StatusPerson? Status;
                 [Feld(Value = "3100", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 20)]
-                public string namenszusatz;
+                public string Namenszusatz;
                 [Feld(Value = "3120", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 20)]
-                public string vorsatzwort;
+                public string Vorsatzwort;
                 [Feld(Value = "3101", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 45)]
-                public string nachname;
+                public string Nachname;
                 [Feld(Value = "3102", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 45)]
-                public IList<string> vorname;
+                public IList<string> Vorname;
                 [Feld(Value = "3103", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F003) }, Laenge = 8)]
-                public LocalDate? geburtsdatum;
+                public LocalDate? Geburtsdatum;
                 [Feld(Value = "3104", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 20)]
-                public string titel;
+                public string Titel;
                 [Feld(Value = "3110", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public Geschlecht? geschlecht;
+                public Geschlecht? Geschlecht;
                 [Feld(Value = "3628", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string muttersprache;
+                public string Muttersprache;
                 [Feld(Value = "8990", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string namenskuerzelNamenszeichen;
+                public string NamenskuerzelNamenszeichen;
                 [Feld(Value = "8228", Name = "Wohnanschrift", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 13)]
-                public Anschrift wohnanschrift;
+                public Anschrift Wohnanschrift;
                 [Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 23)]
-                public Anschrift anschriftArbeitsstelle;
+                public Anschrift AnschriftArbeitsstelle;
                 [Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 18)]
-                public Anschrift rechnungsanschrift;
+                public Anschrift Rechnungsanschrift;
                 [Feld(Value = "8232", Name = "Private_Kommunikationsdaten", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 27)]
-                public Kommunikationsdaten privateKommunikationsdaten;
+                public Kommunikationsdaten PrivateKommunikationsdaten;
                 [Feld(Value = "8233", Name = "Geschaeftliche_Kommunikationsdaten", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 34)]
-                public Kommunikationsdaten geschaeftlicheKommunikationsdaten;
+                public Kommunikationsdaten GeschaeftlicheKommunikationsdaten;
+
             }
         }
     }

@@ -27,19 +27,16 @@ namespace libldt3
     {
         namespace regel
         {
-
-            /**
-             * Format KBV-Prüfnummer
-             */
+            /// <summary>
+            /// Format KBV-Prüfnummer
+            /// </summary>
             public class F012 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^[VXYZ]/[0-9]{2}/[0-9]{2}(0?[1-9]|1[012])/[0-9]{2}/.{3}$");
 
-                private static readonly Regex PATTERN = new Regex("^[VXYZ]/3[1-9]/[0-9]{2}(0?[1-9]|1[012])/[0-9]{2}/.{3}$");
-
-                public F012() : base(PATTERN)
+                public F012() : base(F012.PATTERN)
                 {
                 }
-
             }
         }
     }

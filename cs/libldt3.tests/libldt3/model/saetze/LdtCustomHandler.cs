@@ -18,7 +18,7 @@ namespace libldt3
             {
                 readonly Random random = new Random();
 
-                public object randomValue(FieldInfo field)
+                public object? randomValue(FieldInfo field)
                 {
                     var annotation = field.GetCustomAttribute<Feld>();
                     if (annotation != null)
@@ -76,7 +76,7 @@ namespace libldt3
                                 }
                                 if (klass == typeof(F007))
                                 {
-                                    return LdtVersion.LDT3_0_6;
+                                    return LdtVersion.LDT3_1_0;
                                 }
                                 if (klass == typeof(F012))
                                 {
@@ -88,9 +88,9 @@ namespace libldt3
                                 }
                                 if (klass == typeof(F009))
                                 {
-                                    var gebuehrennummer = new Untersuchungsabrechnung.Gebuehrennummer();
+                                    var gebuehrennummer = new Untersuchungsabrechnung.Gebuehrennummer_();
                                     gebuehrennummer.Value = "01234";
-                                    return new List<Untersuchungsabrechnung.Gebuehrennummer> { gebuehrennummer };
+                                    return new List<Untersuchungsabrechnung.Gebuehrennummer_> { gebuehrennummer };
                                 }
                             }
                             if (regelsatz.Laenge >= 0)
@@ -115,7 +115,7 @@ namespace libldt3
                     return null;
                 }
 
-                object getRandomAtLength(FieldInfo field, int laenge)
+                object? getRandomAtLength(FieldInfo field, int laenge)
                 {
                     if (field.FieldType.IsAssignableFrom(typeof(int?)))
                     {

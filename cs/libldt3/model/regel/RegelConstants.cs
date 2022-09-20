@@ -19,16 +19,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 namespace libldt3
 {
     namespace model
     {
         namespace regel
         {
-
             class RegelConstants
             {
-
                 public static readonly string E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
 
             }

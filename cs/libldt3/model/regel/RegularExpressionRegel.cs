@@ -27,20 +27,17 @@ namespace libldt3
     {
         namespace regel
         {
-
-            /**
-             * Base class to implement regular expression based rules
-             */
+            /// <summary>
+            /// Base class to implement regular expression based rules
+            /// </summary>
             public abstract class RegularExpressionRegel : Regel
             {
+                public readonly Regex Pattern;
 
-                readonly Regex pattern;
-
-                protected RegularExpressionRegel(Regex pattern)
+                public RegularExpressionRegel(Regex pattern)
                 {
-                    this.pattern = pattern;
+                    this.Pattern = pattern;
                 }
-
                 public bool IsValid(string value)
                 {
                     if (value == null)
@@ -49,12 +46,9 @@ namespace libldt3
                     }
 
                     // CharSequence is allowed, try to interpret the value as this first
-                    return pattern.IsMatch(value);
-
+                    return this.Pattern.IsMatch(value);
                 }
-
             }
-
         }
     }
 }

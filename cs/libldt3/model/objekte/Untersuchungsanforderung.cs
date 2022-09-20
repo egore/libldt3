@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
@@ -30,10 +29,10 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung zusammengefasst.
-             */
-            [Objekt(Value = "0059")]
+            /// <summary>
+            /// In diesem Objekt werden alle Informationen zur Untersuchungsanforderung zusammengefasst.
+            /// </summary>
+            [Objekt(Value = "0059", Kontextregeln = new[] { typeof(K003) })]
             public class Untersuchungsanforderung
             {
                 [Objekt]
@@ -52,8 +51,8 @@ namespace libldt3
                     [Feld(Value = "7366", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 60)]
                     public string Leistungsbezeichnung;
-                }
 
+                }
                 [Objekt]
                 public class Test
                 {
@@ -61,10 +60,10 @@ namespace libldt3
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(MaxLaenge = 60)]
                     public string Testbezeichnung;
-                }
 
+                }
                 [Objekt]
-                public class ProbengefaessIdent
+                public class ProbengefaessIdent_
                 {
                     public string Value;
                     [Feld(Value = "8428", Feldart = Feldart.kann)]
@@ -73,8 +72,8 @@ namespace libldt3
                     [Feld(Value = "8429", Feldart = Feldart.kann)]
                     [Regelsatz(MaxLaenge = 4)]
                     public string ProbenmaterialIndex;
-                }
 
+                }
                 [Objekt]
                 public class Einwilligungserklaerung
                 {
@@ -82,59 +81,60 @@ namespace libldt3
                     [Feld(Value = "8110", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(Laenge = 6)]
                     public Anhang Anhang;
-                }
 
+                }
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public KatalogReferenz anforderbareLeistungenKatalogId;
+                public KatalogReferenz AnforderbareLeistungenKatalogId;
                 [Feld(Value = "7276", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string nummernpoolId;
+                public string NummernpoolId;
                 [Feld(Value = "8410", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public Test testIdent;
+                public Test TestIdent;
                 [Feld(Value = "7303", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public Abrechnungsinfo? abrechnungsinfo;
+                public Abrechnungsinfo? Abrechnungsinfo;
                 [Feld(Value = "8501", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Dringlichkeit? dringlichkeit;
+                public Dringlichkeit? Dringlichkeit;
                 [Feld(Value = "7262", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public StatusDringlichkeit? statusDringlichkeit;
+                public StatusDringlichkeit? StatusDringlichkeit;
                 [Feld(Value = "8423", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public bool? pathologischBekannt;
+                public bool? PathologischBekannt;
                 [Feld(Value = "7364", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<ProbengefaessIdent> probengefaessIdent;
+                public IList<ProbengefaessIdent_> ProbengefaessIdent;
                 [Feld(Value = "8434", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string anforderungen;
+                public string Anforderungen;
                 [Feld(Value = "8134", Name = "Krebsfrueherkennung_Frauen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
-                public KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
+                public KrebsfrueherkennungFrauen KrebsfrueherkennungFrauen;
                 [Feld(Value = "8156", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 5)]
-                public Tumor tumor;
+                public Tumor Tumor;
                 [Feld(Value = "8110", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 6)]
-                public IList<Anhang> anhang;
+                public IList<Anhang> Anhang;
                 [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
-                public IList<Fliesstext> zusaetzlicheInformationen;
+                public IList<Fliesstext> ZusaetzlicheInformationen;
                 [Feld(Value = "8238", Name = "Auftragsbezogene_Hinweise", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 25)]
-                public Fliesstext auftragsbezogeneHinweise;
+                public Fliesstext AuftragsbezogeneHinweise;
                 [Feld(Value = "8491", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Einwilligungserklaerung einwilligungserklaerungLiegtVor;
+                public Einwilligungserklaerung EinwilligungserklaerungLiegtVor;
                 [Feld(Value = "8213", Name = "Timestamp_Erstellung_Untersuchungsanforderung", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 45)]
-                public Timestamp timestampErstellungUntersuchungsanforderung;
+                public Timestamp TimestampErstellungUntersuchungsanforderung;
                 [Feld(Value = "8141", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 13)]
-                public Namenskennung namenskennung;
+                public Namenskennung Namenskennung;
+
             }
         }
     }

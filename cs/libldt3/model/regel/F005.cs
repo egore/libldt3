@@ -27,18 +27,17 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format Woche/Tag
-             */
+            /// <summary>
+            /// Format Woche/Tag
+            /// </summary>
             public class F005 : RegularExpressionRegel
             {
-                static readonly Regex PATTERN = new Regex("^[0-9]{2}[0-6]$");
+                public static readonly Regex PATTERN = new Regex("^[0-9]{2}[0-6]$");
 
-                public F005() : base(PATTERN)
+                public F005() : base(F005.PATTERN)
                 {
                 }
             }
-
         }
     }
 }

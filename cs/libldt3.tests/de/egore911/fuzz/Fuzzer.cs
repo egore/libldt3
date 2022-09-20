@@ -51,7 +51,7 @@ namespace de
                 readonly int MAX_COLLECTION_ELEMENTS = 2;
                 readonly CustomHandler customHandler;
 
-                public Fuzzer(CustomHandler customHandler = null)
+                public Fuzzer(CustomHandler? customHandler = null)
                 {
                     this.customHandler = customHandler;
                 }
@@ -67,11 +67,11 @@ namespace de
 
                 T instantiate<T>(Type klass, string packageName)
                 {
-                    T t = default(T);
+                    T? t = default(T);
                     if (klass.IsAbstract)
                     {
                         IEnumerable<Type> subTypes = klass.Assembly.GetTypes().Where(type => type.IsSubclassOf(klass));
-                        Exception ie = null;
+                        Exception? ie = null;
                         foreach (Type subType in subTypes)
                         {
                             try
@@ -98,7 +98,7 @@ namespace de
                     return t;
                 }
 
-                T fuzz<T>(Type klass, string packageName, int depth)
+                T? fuzz<T>(Type klass, string packageName, int depth)
                 {
                     if (depth > MAX_DEPTH)
                     {
@@ -118,7 +118,7 @@ namespace de
                                 continue;
                             }
                             Type type = field.FieldType;
-                            object value = null;
+                            object? value = null;
                             if (customHandler != null)
                             {
                                 value = customHandler.randomValue(field);
@@ -196,20 +196,20 @@ namespace de
                         System.Collections.IList o;
                         if (type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
                         {
-                            o = (System.Collections.IList) Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]));
+                            o = (System.Collections.IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]));
                         }
                         else if (type.GetGenericTypeDefinition() == typeof(IList<>))
                         {
-                            o = (System.Collections.IList) Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]));
+                            o = (System.Collections.IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]));
                         }
                         else if (type.GetGenericTypeDefinition() == typeof(ISet<>))
                         {
                             // FIXME o = Activator.CreateInstance(typeof(HashSet<>).MakeGenericType(type.GetGenericArguments()[0]));
-                            o = (System.Collections.IList) Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]));
+                            o = (System.Collections.IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(type.GetGenericArguments()[0]));
                         }
                         else
                         {
-                            o = (System.Collections.IList) Activator.CreateInstance(type);
+                            o = (System.Collections.IList)Activator.CreateInstance(type);
                         }
                         Type[] actualTypeArguments = type.GenericTypeArguments;
                         foreach (Type t in actualTypeArguments)

@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 
@@ -29,33 +28,32 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            /**
-             * Mit diesem Objekt werden die Informationen für die Abrechnung von
-             * Untersuchungsanforderungen zusammengefasst, die über die GOÄ abgerechnet
-             * werden. Das Objekt bezieht sich auf Patienten, welche bei privaten
-             * Krankenkassen versichert sind. Dabei kann der Rechnungsempfänger aber auch
-             * ein anderer sein, als der Versicherte.
-             */
+            /// <summary>
+            /// Mit diesem Objekt werden die Informationen für die Abrechnung von
+            /// Untersuchungsanforderungen zusammengefasst, die über die GOÄ abgerechnet
+            /// werden.
+            /// </summary>
+            /// Das Objekt bezieht sich auf Patienten, welche bei privaten
+            /// Krankenkassen versichert sind. Dabei kann der Rechnungsempfänger aber auch
+            /// ein anderer sein, als der Versicherte.
             [Objekt(Value = "0003")]
             public class AbrechnungPkv
             {
-
                 [Feld(Value = "7362", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public AbrechnungsartPkv? abrechnungsartPkv;
+                public AbrechnungsartPkv? AbrechnungsartPkv;
                 [Feld(Value = "4134", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 28)]
-                public IList<string> kostentraegerName;
+                public IList<string> KostentraegerName;
                 [Feld(Value = "4121", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public Gebuehrenordnung? gebuehrenordnung;
+                public Gebuehrenordnung? Gebuehrenordnung;
                 [Feld(Value = "4202", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public bool? unfallFolgen;
+                public bool? UnfallFolgen;
                 [Feld(Value = "8148", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
-                public Rechnungsempfaenger rechnungsempfaenger;
+                public Rechnungsempfaenger Rechnungsempfaenger;
 
             }
         }

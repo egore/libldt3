@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 using NodaTime;
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
@@ -31,42 +30,41 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden
-             * die entsprechenden Informationen zur Materialquelle in diesem Objekt
-             * beschrieben.
-             */
+            /// <summary>
+            /// Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden
+            /// die entsprechenden Informationen zur Materialquelle in diesem Objekt
+            /// beschrieben.
+            /// </summary>
             [Objekt(Value = "0053")]
             public class Tier
             {
-
                 [Feld(Value = "7319", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string identifikationsnummerQuelle;
+                public string IdentifikationsnummerQuelle;
                 [Feld(Value = "7313", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string artRasseMaterial;
+                public string ArtRasseMaterial;
                 [Feld(Value = "7314", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string nameKennung;
+                public string NameKennung;
                 [Feld(Value = "7315", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 10)]
-                public string alter;
+                public string Alter;
                 [Feld(Value = "7326", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public Zeiteinheit? alterIn;
+                public Zeiteinheit? AlterIn;
                 [Feld(Value = "7351", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? geburtsdatum;
+                public LocalDate? Geburtsdatum;
                 [Feld(Value = "8107", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 9)]
-                public Anschrift anschrift;
+                public Anschrift Anschrift;
                 [Feld(Value = "8147", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 6)]
-                public Person person;
+                public Person Person;
                 [Feld(Value = "8110", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 6)]
-                public IList<Anhang> anhang;
+                public IList<Anhang> Anhang;
 
             }
         }

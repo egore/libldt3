@@ -29,23 +29,21 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            /**
-             * Dieses Objekt enthält schwangerschaftsspezifische Informationen.
-             */
+            /// <summary>
+            /// Dieses Objekt enthält schwangerschaftsspezifische Informationen.
+            /// </summary>
             [Objekt(Value = "0050")]
             public class Schwangerschaft
             {
-
                 [Feld(Value = "8511", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F005) }, Laenge = 3)]
-                public string schwangerschaftsdauer;
+                public string Schwangerschaftsdauer;
                 [Feld(Value = "8512", Feldart = Feldart.muss)]
                 [Regelsatz(Value = new[] { typeof(F018) }, Laenge = 8)]
-                public LocalDate? ersterTagLetzterZyklus;
+                public LocalDate? ErsterTagLetzterZyklus;
                 [Feld(Value = "3471", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? entbindungstermin;
+                public LocalDate? Entbindungstermin;
 
             }
         }

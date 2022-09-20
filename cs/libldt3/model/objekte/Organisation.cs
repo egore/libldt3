@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 
 namespace libldt3
@@ -28,39 +27,39 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Mit diesem Objekt werden Organisationsstrukturen abgebildet.
-             */
+            /// <summary>
+            /// Mit diesem Objekt werden Organisationsstrukturen abgebildet.
+            /// </summary>
             [Objekt(Value = "0043")]
             public class Organisation
             {
                 [Objekt]
-                public class Funktionsbezeichnung
+                public class Funktionsbezeichnung_
                 {
                     public string Value;
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 6)]
                     public IList<Person> Person;
-                }
 
+                }
                 [Feld(Value = "1250", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string organisationFirma;
+                public string OrganisationFirma;
                 [Feld(Value = "1251", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string rechtsformOrganisation;
+                public string RechtsformOrganisation;
                 [Feld(Value = "1252", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<Funktionsbezeichnung> funktionsbezeichnung;
+                public IList<Funktionsbezeichnung_> Funktionsbezeichnung;
                 [Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 23)]
-                public IList<Anschrift> anschriftArbeitsstelle;
+                public IList<Anschrift> AnschriftArbeitsstelle;
                 [Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 18)]
-                public Anschrift rechnungsanschrift;
+                public Anschrift Rechnungsanschrift;
                 [Feld(Value = "8131", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 19)]
-                public Kommunikationsdaten kommunikationsdaten;
+                public Kommunikationsdaten Kommunikationsdaten;
 
             }
         }

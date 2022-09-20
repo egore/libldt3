@@ -20,15 +20,6 @@
  * SOFTWARE.
  */
 
-using libldt3.model.enums;
-using System.Diagnostics;
-
-
-using System.Reflection;
-using System.Collections.Generic;
-
-using static libldt3.model.regel.kontext.KontextregelHelper;
-
 namespace libldt3
 {
     namespace model
@@ -37,34 +28,12 @@ namespace libldt3
         {
             namespace kontext
             {
-
                 public class K072 : Kontextregel
                 {
-
-                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8158", "8418" };
-
                     public bool IsValid(object owner)
                     {
-
-                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-                        if (fields.Count != FIELDTYPES.Count)
-                        {
-                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
-                            return false;
-                        }
-
-                        TestStatus testStatus = (TestStatus)fields["8418"].GetValue(owner);
-                        if ((testStatus == TestStatus.Material_fehlt_oder_nicht_verwendbar ||
-                                testStatus == TestStatus.weiterer_Wert_fuer_Funktionsprofil_folgt ||
-                                testStatus == TestStatus.Untersuchungsanforderung_storniert) &&
-                                ContainsAnyString(fields["8158"], owner))
-                        {
-                            return false;
-                        }
-
-                        return true;
+                        throw new NotImplementedException();
                     }
-
                 }
             }
         }

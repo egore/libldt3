@@ -20,7 +20,6 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
-using System.Collections.Generic;
 using libldt3.model.enums;
 using libldt3.model.objekte;
 
@@ -30,10 +29,9 @@ namespace libldt3
     {
         namespace saetze
         {
-
-            /**
-             * Satzart: P (Praxis)-Datenpaket-Header "8230"
-             */
+            /// <summary>
+            /// Satzart: P (Praxis)-Datenpaket-Header "8230"
+            /// </summary>
             [Datenpaket(Value = Satzart.PraxisDatenpaketHeader)]
             public class PraxisDatenpaketHeader : Satz
             {
@@ -46,6 +44,7 @@ namespace libldt3
                 [Feld(Value = "8122", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 23)]
                 public IList<Einsenderidentifikation> Einsenderidentifikation;
+
             }
         }
     }

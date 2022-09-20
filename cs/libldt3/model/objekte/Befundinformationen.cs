@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
@@ -30,17 +29,13 @@ namespace libldt3
     {
         namespace objekte
         {
-
-
-
-            /**
-             * Dieses Objekt bündelt alle Daten zum Befund inklusive aller Kennungen, welche
-             * eine eineindeutige Zuordnung von Auftrag und Befund sicherstellen.
-             */
-            [Objekt(Value = "0017")]
+            /// <summary>
+            /// Dieses Objekt bündelt alle Daten zum Befund inklusive aller Kennungen, welche
+            /// eine eineindeutige Zuordnung von Auftrag und Befund sicherstellen.
+            /// </summary>
+            [Objekt(Value = "0017", Kontextregeln = new[] { typeof(K005) })]
             public class Befundinformationen
             {
-
                 [Objekt]
                 public class OrderNumber_
                 {
@@ -54,17 +49,17 @@ namespace libldt3
                     [Feld(Value = "8215", Name = "Timestamp_Auftragseingang", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(Laenge = 25)]
                     public Timestamp TimestampAuftragseingang;
-                }
 
+                }
                 [Objekt]
-                public class Befundweg_
+                public class Befundweg
                 {
                     public ZusaetzlicherBefundweg? Value;
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 6)]
                     public Person Person;
-                }
 
+                }
                 [Feld(Value = "8310", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public OrderNumber_ OrderNumber;
@@ -76,7 +71,7 @@ namespace libldt3
                 public string FindingId;
                 [Feld(Value = "8401", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public Befundtyp? Type;
+                public Auftragsstatus? Status;
                 [Feld(Value = "0080", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string FallakteId;
@@ -97,7 +92,7 @@ namespace libldt3
                 public Kommunikationsdaten AbweichenderBefundweg;
                 [Feld(Value = "8611", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public IList<Befundweg_> ZusaetzlicherBefundweg;
+                public IList<Befundweg> ZusaetzlicherBefundweg;
                 [Feld(Value = "7320", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public bool? RecallEmpfohlen;
@@ -115,7 +110,7 @@ namespace libldt3
                 public IList<Anhang> Anhang;
                 [Feld(Value = "8126", Name = "Fehlermeldung_Aufmerksamkeit", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 28)]
-                public IList<FehlermeldungAufmerksamkeit> fehlermeldungAufmerksamkeit;
+                public IList<FehlermeldungAufmerksamkeit> FehlermeldungAufmerksamkeit;
                 [Feld(Value = "8141", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 13)]
                 public Namenskennung Namenskennung;

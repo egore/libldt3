@@ -27,18 +27,16 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format Gebührennummer
-             */
+            /// <summary>
+            /// Format Gebührennummer
+            /// </summary>
             public class F008 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^([A-Z][0-9]{0,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?|[A-Z]?[0-9]{1,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?)$");
 
-                static readonly Regex PATTERN = new Regex("^([A-Z][0-9]{0,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?|[A-Z]?[0-9]{1,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?)$");
-
-                public F008() : base(PATTERN)
+                public F008() : base(F008.PATTERN)
                 {
                 }
-
             }
         }
     }

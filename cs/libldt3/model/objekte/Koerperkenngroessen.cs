@@ -33,19 +33,18 @@ namespace libldt3
             [Objekt(Value = "0069")]
             public class Koerperkenngroessen
             {
-
                 [Objekt]
                 public class Messwert
                 {
-                    public float Value;
+                    public float? Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 20)]
                     public string Einheit;
                     [Feld(Value = "8225", Name = "Timestamp_Messung", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 17)]
                     public Timestamp Timestamp;
-                }
 
+                }
                 [Feld(Value = "3622", Feldart = Feldart.kann)]
                 public Messwert Groesse;
                 [Feld(Value = "3623", Feldart = Feldart.kann)]

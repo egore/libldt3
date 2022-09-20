@@ -27,21 +27,22 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
-             */
+            /// <summary>
+            /// Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
+            /// </summary>
             [Objekt(Value = "0040")]
             public class Mutterschaft
             {
                 [Feld(Value = "3668", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public int? anzahlSchwangerschaften;
+                public int? AnzahlSchwangerschaften;
                 [Feld(Value = "3664", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 2)]
-                public int? anzahlGeburten;
+                public int? AnzahlGeburten;
                 [Feld(Value = "3666", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 2)]
-                public int? anzahlKinder;
+                public int? AnzahlKinder;
+
             }
         }
     }

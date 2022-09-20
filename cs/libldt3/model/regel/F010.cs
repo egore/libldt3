@@ -19,27 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+using System.Text.RegularExpressions;
+
 namespace libldt3
 {
     namespace model
     {
         namespace regel
         {
-
-            using System.Text.RegularExpressions;
-
-            /**
-             * Format BSNR
-             */
+            /// <summary>
+            /// Format BSNR
+            /// </summary>
             public class F010 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
 
-                static readonly Regex PATTERN = new Regex("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
-
-                public F010() : base(PATTERN)
+                public F010() : base(F010.PATTERN)
                 {
                 }
-
             }
         }
     }

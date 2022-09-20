@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
@@ -30,146 +29,145 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            /**
-             * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie transportiert werden.
-             */
-            [Objekt(Value = "0063", Kontextregeln = new[] { typeof(K076)})]
+            /// <summary>
+            /// In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie transportiert werden.
+            /// </summary>
+            [Objekt(Value = "0063", Kontextregeln = new[] { typeof(K076) })]
             public class UntersuchungsergebnisZytologie
             {
-
                 [Objekt]
-                public class RecallEmpfohlen
+                public class RecallEmpfohlen_
                 {
                     public string Value;
                     [Feld(Value = "8154", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(Laenge = 9)]
-                    public Timestamp timestamp;
-                }
+                    public Timestamp Timestamp;
 
+                }
                 [Objekt]
                 public class KatalogReferenz
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public string katalogUrl;
+                    public string KatalogUrl;
                     [Feld(Value = "7251", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public string katalogBezeichnung;
+                    public string KatalogBezeichnung;
                     [Feld(Value = "7365", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 20)]
-                    public string analysenId;
+                    public string AnalysenId;
                     [Feld(Value = "7366", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public string leistungsbezeichnung;
-                }
+                    public string Leistungsbezeichnung;
 
+                }
                 [Objekt]
                 public class GrenzwertindikatorLaborwert
                 {
                     public Grenzwertindikator? Value;
                     [Feld(Value = "8126", Name = "Fehlermeldung_Aufmerksamkeit", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 28)]
-                    public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
-                }
+                    public FehlermeldungAufmerksamkeit FehlermeldungAufmerksamkeit;
 
+                }
                 [Objekt]
                 public class Test
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public string testbezeichnung;
+                    public string Testbezeichnung;
                     [Feld(Value = "8418", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 1)]
-                    public TestStatus? teststatus;
+                    public TestStatus? Teststatus;
                     [Feld(Value = "8422", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 2)]
-                    public IList<GrenzwertindikatorLaborwert> grenzwertindikatorLaborwert;
-                }
+                    public IList<GrenzwertindikatorLaborwert> GrenzwertindikatorLaborwert;
 
+                }
                 [Feld(Value = "7304", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string ergebnisId;
+                public string ErgebnisId;
                 [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public IList<RecallEmpfohlen> recallEmpfohlen;
+                public IList<RecallEmpfohlen_> RecallEmpfohlen;
                 [Feld(Value = "7364", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> probengefaessIdent;
+                public IList<string> ProbengefaessIdent;
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public KatalogReferenz katalogIdAnforderbareLeistungen;
+                public KatalogReferenz KatalogIdAnforderbareLeistungen;
                 [Feld(Value = "8410", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<Test> testIdent;
+                public IList<Test> TestIdent;
                 [Feld(Value = "8237", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Laenge = 10 /* XXX 12 according to spec */)]
-                public Fliesstext ergebnistext;
+                [Regelsatz(Laenge =     /* XXX 12 according to spec */
+            10)]
+                public Fliesstext Ergebnistext;
                 [Feld(Value = "7368", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public bool? zellmaterialNichtVerwertbar;
+                public bool? ZellmaterialNichtVerwertbar;
                 [Feld(Value = "7400", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public string hpvBefund;
+                public string HpvBefund;
                 [Feld(Value = "7401", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public Ergebnis? highRisk;
+                public Ergebnis? HighRisk;
                 [Feld(Value = "7402", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public IList<string> highRiskTyp;
+                public IList<string> HighRiskTyp;
                 [Feld(Value = "7403", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public Ergebnis? lowRisk;
+                public Ergebnis? LowRisk;
                 [Feld(Value = "7404", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public IList<string> lowRiskTyp;
+                public IList<string> LowRiskTyp;
                 [Feld(Value = "7418", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Ergebnis? p16Ki67;
+                public Ergebnis? P16Ki67;
                 [Feld(Value = "7419", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Ergebnis? l1;
+                public Ergebnis? L1;
                 [Feld(Value = "7422", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Ergebnis? chlamydien;
+                public Ergebnis? Chlamydien;
                 [Feld(Value = "7425", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Ergebnis2? extragynaekologischeZytologie;
+                public Ergebnis2? ExtragynaekologischeZytologie;
                 [Feld(Value = "7426", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Ergebnis? neisseriaGonorrhoeae;
+                public Ergebnis? NeisseriaGonorrhoeae;
                 [Feld(Value = "8126", Name = "Fehlermeldung_Aufmerksamkeit", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 28)]
-                public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
+                public FehlermeldungAufmerksamkeit FehlermeldungAufmerksamkeit;
                 [Feld(Value = "8220", Name = "Timestamp_Eingangserfassung_Material", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 36)]
-                public Timestamp timestampEingangserfassungMaterial;
+                public Timestamp TimestampEingangserfassungMaterial;
                 [Feld(Value = "8222", Name = "Timestamp_Beginn_Analytik", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 25)]
-                public Timestamp timestampBeginnAnalytik;
+                public Timestamp TimestampBeginnAnalytik;
                 [Feld(Value = "8223", Name = "Timestamp_Ergebniserstellung", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 28)]
-                public Timestamp timestampErgebniserstellung;
+                public Timestamp TimestampErgebniserstellung;
                 [Feld(Value = "8224", Name = "Timestamp_QM_Erfassung", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 22)]
-                public Timestamp timestampQmErfassung;
+                public Timestamp TimestampQmErfassung;
                 [Feld(Value = "8225", Name = "Timestamp_Messung", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 17)]
-                public Timestamp timestampMessung;
+                public Timestamp TimestampMessung;
                 [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
-                public IList<Fliesstext> zusaetzlicheInformationen;
+                public IList<Fliesstext> ZusaetzlicheInformationen;
                 [Feld(Value = "8110", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 6)]
-                public IList<Anhang> anhang;
+                public IList<Anhang> Anhang;
                 [Feld(Value = "8141", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 13)]
-                public Namenskennung namenskennung;
+                public Namenskennung Namenskennung;
                 [Feld(Value = "8158", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 23)]
-                public Untersuchungsabrechnung untersuchungsabrechnung;
+                public Untersuchungsabrechnung Untersuchungsabrechnung;
 
             }
         }

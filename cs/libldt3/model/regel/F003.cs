@@ -27,14 +27,14 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format Geburtsdatum eines Patienten
-             */
+            /// <summary>
+            /// Format Geburtsdatum eines Patienten
+            /// </summary>
             public class F003 : RegularExpressionRegel
             {
-                static readonly Regex PATTERN = new Regex("^[0-9]{4}(0[0-9]|1[012])([0-2][0-9]|3[01])$");
+                public static readonly Regex PATTERN = new Regex("^[0-9]{4}(0[0-9]|1[012])([0-2][0-9]|3[01])$");
 
-                public F003() : base(PATTERN)
+                public F003() : base(F003.PATTERN)
                 {
                 }
             }

@@ -27,14 +27,14 @@ namespace libldt3
     {
         namespace regel
         {
-            /**
-             * Format Versionsnummer der Datensatzbeschreibung
-             */
+            /// <summary>
+            /// Format Versionsnummer der Datensatzbeschreibung
+            /// </summary>
             public class F007 : RegularExpressionRegel
             {
-                static readonly Regex PATTERN = new Regex("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
+                public static readonly Regex PATTERN = new Regex("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
 
-                public F007() : base(PATTERN)
+                public F007() : base(F007.PATTERN)
                 {
                 }
             }

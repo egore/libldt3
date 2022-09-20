@@ -19,9 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Diagnostics;
-using System.Reflection;
 using libldt3.model.enums;
+using libldt3.model.objekte;
+using libldt3.model.saetze;
 
 namespace libldt3
 {
@@ -32,41 +32,39 @@ namespace libldt3
             namespace kontext
             {
                 /// <summary>
-                /// In Befunden mit dem Status "Auftrag nicht abgeschlossen" dürfen keine
-                /// Abrechnungsinformationen übertragen werden.
+                /// FK 0222 muss vorhanden sein, wenn in mindestens einem Obj_0059 (Obj_Untersuchungsanforderung) die FK 7303 mit dem
+                /// Inhalt 8 vorhanden ist.
                 /// </summary>
-                /// Nur in Befunden mit dem Status "Auftrag abgeschlossen" können
-                /// Abrechnungsinformationen übertragen werden.
-                public class K005 : Kontextregel
+                public class K057 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8000", "8401", "4121" };
-
+                    public bool IsNotEmpty(Arztidentifikation arztidentifikation)
+                    {
+                        return arztidentifikation.AsvTeamnummer != null && !string.IsNullOrEmpty(arztidentifikation.AsvTeamnummer);
+                    }
                     public bool IsValid(object owner)
                     {
-                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K005.FIELDTYPES);
-                        if (fields.Count != K005.FIELDTYPES.Count)
+                        Auftrag auftrag = (Auftrag)owner;
+                        // Valid, as no Obj_0059 present
+                        if (auftrag.Untersuchungsanforderung == null || auftrag.Untersuchungsanforderung.Count == 0)
                         {
-                            Trace.TraceError("Class of {0} must have fields {1}", owner, K005.FIELDTYPES);
-                            return false;
+                            return true;
                         }
 
-                        Satzart? satzart = (Satzart?)fields["8000"].GetValue(owner);
-                        if (satzart == Satzart.Befund)
+                        foreach (Untersuchungsanforderung untersuchungsanforderung in auftrag.Untersuchungsanforderung)
                         {
-                            // Wenn Feldinhalt von FK 8000 = 8205 und der Inhalt FK 8401 = 1, darf FK 4121 nicht vorhanden sein.
-                            Auftragsstatus? auftragsstatus = (Auftragsstatus?)fields["8401"].GetValue(owner);
-                            if (auftragsstatus == Auftragsstatus.Auftrag_nicht_abgeschlossen)
+                            if (untersuchungsanforderung.Abrechnungsinfo == Abrechnungsinfo.Asv)
                             {
-                                if (KontextregelHelper.ContainsAnyString(fields["8410"], owner))
+                                // No identification at all, not valid
+                                if (auftrag.Einsenderidentifikation == null)
                                 {
                                     return false;
                                 }
 
+                                // If any FK 0222 is present, it's valid
+                                return this.IsNotEmpty(auftrag.Einsenderidentifikation.Arztidentifikation) || this.IsNotEmpty(auftrag.Einsenderidentifikation.UeberweisungAn) || this.IsNotEmpty(auftrag.Einsenderidentifikation.UeberweisungVon);
                             }
 
-                            // Wenn Feldinhalt von FK 8000 = 8205 und der Inhalt FK 8401 = 2, kann FK 4121 vorhanden sein
                         }
-
                         return true;
                     }
                 }

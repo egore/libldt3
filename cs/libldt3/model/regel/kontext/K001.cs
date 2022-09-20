@@ -19,10 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
-using static libldt3.model.regel.kontext.KontextregelHelper;
 
 namespace libldt3
 {
@@ -32,29 +30,29 @@ namespace libldt3
         {
             namespace kontext
             {
-
                 /// <summary>
                 /// Entweder FK 6305 oder FK 8242 ist vorhanden.
                 /// </summary>
                 public class K001 : Kontextregel
                 {
-
-                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "6305", "8242" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "6305", "8242" };
 
                     public bool IsValid(object owner)
                     {
-
-                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-                        if (fields.Count != FIELDTYPES.Count) {
-                            Trace.TraceError("Class of {0} must have fields {1}", owner, FIELDTYPES);
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K001.FIELDTYPES);
+                        if (fields.Count != K001.FIELDTYPES.Count)
+                        {
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K001.FIELDTYPES);
                             return false;
                         }
 
-                        foreach (FieldInfo f in fields.Values) {
-                            if (ContainsAnyString(f, owner))
+                        foreach (FieldInfo f in fields.Values)
+                        {
+                            if (KontextregelHelper.ContainsAnyString(f, owner))
                             {
                                 return true;
                             }
+
                         }
                         return false;
                     }

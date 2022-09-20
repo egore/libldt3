@@ -28,26 +28,25 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Das Objekt dient der Darstellung und elektronischen Übermittlung von
-             * Namenskennzeichnungen.
-             */
+            /// <summary>
+            /// Das Objekt dient der Darstellung und elektronischen Übermittlung von
+            /// Namenskennzeichnungen.
+            /// </summary>
             [Objekt(Value = "0041")]
             public class Namenskennung
             {
-
                 [Feld(Value = "7420", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public StatusPerson? status;
+                public StatusPerson? Status;
                 [Feld(Value = "7358", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string name;
+                public string Name;
                 [Feld(Value = "8990", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string shorthand;
+                public string Shorthand;
                 [Feld(Value = "8110", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 6)]
-                public Anhang anhang;
+                public Anhang Anhang;
 
             }
         }

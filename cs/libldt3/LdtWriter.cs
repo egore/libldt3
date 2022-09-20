@@ -314,7 +314,7 @@ namespace libldt3
             return (u != null) && u.IsEnum;
         }
 
-        static Type GetGenericList(Type type)
+        static Type? GetGenericList(Type type)
         {
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IList<>))
             {

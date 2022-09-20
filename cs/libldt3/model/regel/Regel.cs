@@ -19,16 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 namespace libldt3
 {
     namespace model
     {
         namespace regel
         {
+
             public interface Regel
             {
-                bool IsValid(string value);
+
+
+                public bool IsValid(string value);
             }
+
         }
     }
 }

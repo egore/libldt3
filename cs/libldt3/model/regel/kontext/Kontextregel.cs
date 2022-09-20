@@ -19,6 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 namespace libldt3
 {
     namespace model
@@ -31,9 +32,10 @@ namespace libldt3
                 public interface Kontextregel
                 {
 
-                    bool IsValid(object owner);
 
+                    public bool IsValid(object owner);
                 }
+
             }
         }
     }

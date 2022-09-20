@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
@@ -30,30 +29,31 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
-             */
+            /// <summary>
+            /// Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
+            /// </summary>
             [Objekt(Value = "0100")]
             public class Diagnose
             {
                 [Feld(Value = "4207", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> diagnoseVerdachtsdiagnose;
+                public IList<string> DiagnoseVerdachtsdiagnose;
                 [Feld(Value = "6001", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F004) })]
-                public string icdCode;
+                public string IcdCode;
                 [Feld(Value = "6003", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public Diagnosesicherheit? diagnosesicherheit;
+                public Diagnosesicherheit? Diagnosesicherheit;
                 [Feld(Value = "6004", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public Lokalisation? lokalisation;
+                public Lokalisation? Lokalisation;
                 [Feld(Value = "6006", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> erlaeuterung;
+                public IList<string> Erlaeuterung;
                 [Feld(Value = "6008", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> ausnahmetatbestand;
+                public IList<string> Ausnahmetatbestand;
+
             }
         }
     }

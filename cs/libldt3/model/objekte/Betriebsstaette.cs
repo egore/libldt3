@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
@@ -30,32 +29,31 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
-             * medizinischen Einrichtungen zusammen.
-             */
+            /// <summary>
+            /// Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
+            /// medizinischen Einrichtungen zusammen.
+            /// </summary>
             [Objekt(Value = "0019")]
             public class Betriebsstaette
             {
-
                 [Feld(Value = "0204", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public IList<Betriebsstaettenstatus> status;
+                public IList<Betriebsstaettenstatus?> Status;
                 [Feld(Value = "0203", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string bsnrBezeichnung;
+                public string BsnrBezeichnung;
                 [Feld(Value = "0200", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string betriebsstaettenId;
+                public string BetriebsstaettenId;
                 [Feld(Value = "0201", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F010), typeof(F021) }, Laenge = 9)]
-                public string bsnr;
+                public string Bsnr;
                 [Feld(Value = "0213", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 9)]
-                public string institutskennzeichen;
+                public string Institutskennzeichen;
                 [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
-                public Organisation organisation;
+                public Organisation Organisation;
 
             }
         }

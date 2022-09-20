@@ -31,22 +31,27 @@ namespace libldt3
         {
             namespace kontext
             {
-                public class K075 : Kontextregel
+                /// <summary>
+                /// Wenn Inhalt von FK 8401 = 2, darf der Inhalt von FK 8418 nicht 02, 05 oder 10 sein.
+                /// </summary>
+                public class K096 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "9970", "6327" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8401", "8418" };
 
                     public bool IsValid(object owner)
                     {
-                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K075.FIELDTYPES);
-                        if (fields.Count != K075.FIELDTYPES.Count)
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K096.FIELDTYPES);
+                        if (fields.Count != K096.FIELDTYPES.Count)
                         {
-                            Trace.TraceError("Class of {0} must have fields {1}", owner, K075.FIELDTYPES);
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K096.FIELDTYPES);
                             return false;
                         }
 
-                        if ((Dokumententyp?)fields["9970"].GetValue(owner) == Dokumententyp.sonstige)
+                        Auftragsstatus? status = (Auftragsstatus?)fields["8401"].GetValue(owner);
+                        if (status == Auftragsstatus.Auftrag_abgeschlossen)
                         {
-                            return KontextregelHelper.ContainsAnyString(fields["6327"], owner);
+                            TestStatus? testStatus = (TestStatus?)fields["8418"].GetValue(owner);
+                            return testStatus != TestStatus.Ergebnis_folgt && testStatus != TestStatus.Ergebnis_ermittelt && testStatus != TestStatus.Erweiterte_Analytik_erforderlich;
                         }
 
                         return true;

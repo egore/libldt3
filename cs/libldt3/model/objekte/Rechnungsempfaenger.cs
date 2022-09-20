@@ -28,33 +28,34 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Hier sind alle Angaben zum Rechnungsempfänger enthalten.
-             */
+            /// <summary>
+            /// Hier sind alle Angaben zum Rechnungsempfänger enthalten.
+            /// </summary>
             [Objekt(Value = "0048", Name = "RgEmpfaenger")]
             public class Rechnungsempfaenger
             {
                 [Feld(Value = "8310", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string auftragsnummerEinsender;
+                public string AuftragsnummerEinsender;
                 [Feld(Value = "7421", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public StatusRechnungsempfaenger? statusRechnungsempfaenger;
+                public StatusRechnungsempfaenger? StatusRechnungsempfaenger;
                 [Feld(Value = "0600", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string nameEinrichtungAuftraggeber;
+                public string NameEinrichtungAuftraggeber;
                 [Feld(Value = "7328", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 10)]
-                public string zusaetzlicheNamenszeile;
+                public string ZusaetzlicheNamenszeile;
                 [Feld(Value = "8108", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 8)]
-                public Adressat adressat;
+                public Adressat Adressat;
                 [Feld(Value = "8610", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Privattarif? privattarif;
+                public Privattarif? Privattarif;
                 [Feld(Value = "8608", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string kommentarAktenzeichen;
+                public string KommentarAktenzeichen;
+
             }
         }
     }

@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 
@@ -29,16 +28,17 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * In diesem Objekt wird ein Antibiogramm (Matrix) aus dem Bereich Mikrobiologie
-             * transportiert. Die Darstellung des Antibiogramms erfolgt als mehrdimensionale
-             * Matrix.
-             */
+            /// <summary>
+            /// In diesem Objekt wird ein Antibiogramm (Matrix) aus dem Bereich Mikrobiologie
+            /// transportiert.
+            /// </summary>
+            /// Die Darstellung des Antibiogramms erfolgt als mehrdimensionale
+            /// Matrix.
             [Objekt(Value = "0011")]
             public class Antibiogramm
             {
                 [Objekt]
-                public class WirkstoffIdent
+                public class WirkstoffIdent_
                 {
                     public string Value;
                     [Feld(Value = "7288", Feldart = Feldart.bedingt_kann)]
@@ -52,9 +52,9 @@ namespace libldt3
                     public IList<string> Wirkstoffname;
                     [Feld(Value = "7354", Feldart = Feldart.kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public IList<KeimIdentifizierung> keimIdentifizierung;
-                }
+                    public IList<KeimIdentifizierung> KeimIdentifizierung;
 
+                }
                 [Objekt]
                 public class KeimIdentifizierung
                 {
@@ -71,8 +71,8 @@ namespace libldt3
                     [Feld(Value = "7290", Feldart = Feldart.kann)]
                     [Regelsatz(Laenge = 1)]
                     public IList<ResistenzInterpretationErweitert> ResistenzInterpretation;
-                }
 
+                }
                 [Objekt]
                 public class ResistenzInterpretationErweitert
                 {
@@ -80,14 +80,14 @@ namespace libldt3
                     [Feld(Value = "7424", Feldart = Feldart.kann)]
                     [Regelsatz(Laenge = 1)]
                     public ResistenzNach? ResistenzNach;
-                }
 
+                }
                 [Feld(Value = "7287", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<WirkstoffIdent> wirkstoffIdent;
+                public IList<WirkstoffIdent_> WirkstoffIdent;
                 [Feld(Value = "8237", Name = "Ergebnistext", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 12)]
-                public Fliesstext ergebnistext;
+                public Fliesstext Ergebnistext;
 
             }
         }

@@ -27,28 +27,27 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            /**
-             * Mit diesem Objekt werden die Informationen für die Abrechnung von
-             * Untersuchungsanforderungen zusammengefasst, welche ein Labor außerhalb der
-             * Regelleistungen EBM und GOÄ erbringen kann. Es werden hierüber auch
-             * Leistungen abgerechnet, welche nicht durch medizinische Einsender abgefordert
-             * werden oder die Materialien betreffen, die nicht humanen Ursprungs sind. Der
-             * Rechnungsempfänger ist frei wählbar.
-             */
+            /// <summary>
+            /// Mit diesem Objekt werden die Informationen für die Abrechnung von
+            /// Untersuchungsanforderungen zusammengefasst, welche ein Labor außerhalb der
+            /// Regelleistungen EBM und GOÄ erbringen kann.
+            /// </summary>
+            /// Es werden hierüber auch
+            /// Leistungen abgerechnet, welche nicht durch medizinische Einsender abgefordert
+            /// werden oder die Materialien betreffen, die nicht humanen Ursprungs sind. Der
+            /// Rechnungsempfänger ist frei wählbar.
             [Objekt(Value = "0005")]
             public class AbrechnungSonstigeKostenuebernahme
             {
-
                 [Feld(Value = "7261", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string sonstigeVersichertennummer;
+                public string SonstigeVersichertennummer;
                 [Feld(Value = "7253", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public bool? kostenuebernahmeerklaerungAuftraggeber;
+                public bool? KostenuebernahmeerklaerungAuftraggeber;
                 [Feld(Value = "8148", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 12)]
-                public Rechnungsempfaenger rechnungsempfaenger;
+                public Rechnungsempfaenger Rechnungsempfaenger;
 
             }
         }

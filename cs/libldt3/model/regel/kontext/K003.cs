@@ -31,22 +31,39 @@ namespace libldt3
         {
             namespace kontext
             {
-                public class K075 : Kontextregel
+                /// <summary>
+                /// Wird die FK 8410 (Test-Ident) im Kontext mit der Überweisung von
+                /// Laborleistungen an einen Laborfacharzt verwendet, muss die FK 8411
+                /// (Testbezeichnung) im Datensatz vorkommen (mit Inhalt der FK 8411 muss das
+                /// Auftragsfeld des digitalen Musters 10 befüllt werden).
+                /// </summary>
+                public class K003 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "9970", "6327" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "7303", "8410", "8411" };
 
                     public bool IsValid(object owner)
                     {
-                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K075.FIELDTYPES);
-                        if (fields.Count != K075.FIELDTYPES.Count)
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K003.FIELDTYPES);
+                        if (fields.Count != K003.FIELDTYPES.Count)
                         {
-                            Trace.TraceError("Class of {0} must have fields {1}", owner, K075.FIELDTYPES);
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K003.FIELDTYPES);
                             return false;
                         }
 
-                        if ((Dokumententyp?)fields["9970"].GetValue(owner) == Dokumententyp.sonstige)
+                        Abrechnungsinfo? abrechnungsinfo = (Abrechnungsinfo?)fields["7303"].GetValue(owner);
+                        if (abrechnungsinfo == null)
                         {
-                            return KontextregelHelper.ContainsAnyString(fields["6327"], owner);
+                            return true;
+                        }
+
+                        // Wenn Feldinhalt von FK 7303 = 1, 8 oder 9 ist und FK 8410 vorhanden, muss auch FK 8411 vorhanden sein.
+                        if (abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharzt || abrechnungsinfo == Abrechnungsinfo.Asv || abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharztPraeventiv)
+                        {
+                            if (KontextregelHelper.ContainsAnyString(fields["8410"], owner))
+                            {
+                                return KontextregelHelper.ContainsAnyString(fields["8411"], owner);
+                            }
+
                         }
 
                         return true;

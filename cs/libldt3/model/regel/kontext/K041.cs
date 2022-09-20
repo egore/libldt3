@@ -32,39 +32,43 @@ namespace libldt3
             namespace kontext
             {
                 /// <summary>
-                /// In Befunden mit dem Status "Auftrag nicht abgeschlossen" dürfen keine
-                /// Abrechnungsinformationen übertragen werden.
+                /// Wenn Inhalt von FK 4239 = 27 und FK 8240 vorhanden, dann muss eine der
+                /// folgenden Kombinationen vorhanden sein:
+                /// - FK 4217 und FK 4241 oder
+                /// - FK 4225 und FK 4241 oder
+                /// - FK 4225 und FK 4248.
                 /// </summary>
-                /// Nur in Befunden mit dem Status "Auftrag abgeschlossen" können
-                /// Abrechnungsinformationen übertragen werden.
-                public class K005 : Kontextregel
+                public class K041 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8000", "8401", "4121" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "4239", "8240", "4217", "4241", "4225", "4248" };
 
                     public bool IsValid(object owner)
                     {
-                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K005.FIELDTYPES);
-                        if (fields.Count != K005.FIELDTYPES.Count)
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K041.FIELDTYPES);
+                        if (fields.Count != K041.FIELDTYPES.Count)
                         {
-                            Trace.TraceError("Class of {0} must have fields {1}", owner, K005.FIELDTYPES);
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K041.FIELDTYPES);
                             return false;
                         }
 
-                        Satzart? satzart = (Satzart?)fields["8000"].GetValue(owner);
-                        if (satzart == Satzart.Befund)
+                        if ((Scheinuntergruppe?)fields["4239"].GetValue(owner) == Scheinuntergruppe.Muster10 && KontextregelHelper.ContainsAnyString(fields["8240"], owner))
                         {
-                            // Wenn Feldinhalt von FK 8000 = 8205 und der Inhalt FK 8401 = 1, darf FK 4121 nicht vorhanden sein.
-                            Auftragsstatus? auftragsstatus = (Auftragsstatus?)fields["8401"].GetValue(owner);
-                            if (auftragsstatus == Auftragsstatus.Auftrag_nicht_abgeschlossen)
+                            if (KontextregelHelper.ContainsAnyString(fields["4217"], owner) && KontextregelHelper.ContainsAnyString(fields["4241"], owner))
                             {
-                                if (KontextregelHelper.ContainsAnyString(fields["8410"], owner))
-                                {
-                                    return false;
-                                }
-
+                                return true;
                             }
 
-                            // Wenn Feldinhalt von FK 8000 = 8205 und der Inhalt FK 8401 = 2, kann FK 4121 vorhanden sein
+                            if (KontextregelHelper.ContainsAnyString(fields["4225"], owner) && KontextregelHelper.ContainsAnyString(fields["4241"], owner))
+                            {
+                                return true;
+                            }
+
+                            if (KontextregelHelper.ContainsAnyString(fields["4225"], owner) && KontextregelHelper.ContainsAnyString(fields["4248"], owner))
+                            {
+                                return true;
+                            }
+
+                            return false;
                         }
 
                         return true;

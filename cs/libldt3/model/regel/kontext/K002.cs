@@ -19,11 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using libldt3.model.enums;
-using System.Collections.Generic;
-using System.Reflection;
 using System.Diagnostics;
-using static libldt3.model.regel.kontext.KontextregelHelper;
+using System.Reflection;
+using libldt3.model.enums;
 
 namespace libldt3
 {
@@ -33,19 +31,24 @@ namespace libldt3
         {
             namespace kontext
             {
-
+                /// <summary>
+                /// Wenn zu einem Ergebniswert Maßeinheit angegeben wird, muss angegeben werden,
+                /// ob es sich bei der Maßeinheit um eine konventionelle oder SI-Einheit
+                /// handelt.
+                /// </summary>
+                /// Wenn zu einem Ergebniswert keine Maßeinheit angegeben wird, muss
+                /// angegeben werden, dass es sich bei dem Ergebniswert um eine sogenannte
+                /// "dimensionslose Größe" handelt.
                 public class K002 : Kontextregel
                 {
-
-                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8419", "8421" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8419", "8421" };
 
                     public bool IsValid(object owner)
                     {
-
-                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-                        if (fields.Count != FIELDTYPES.Count)
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K002.FIELDTYPES);
+                        if (fields.Count != K002.FIELDTYPES.Count)
                         {
-                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K002.FIELDTYPES);
                             return false;
                         }
 
@@ -58,13 +61,13 @@ namespace libldt3
                         // Wenn Feldinhalt von FK 8419 = 1 oder 2, muss FK 8421 vorkommen.
                         if (einheitMesswert == EinheitMesswert.SI_Einheit || einheitMesswert == EinheitMesswert.konventionelle_Einheit)
                         {
-                            return ContainsAnyString(fields["8421"], owner);
+                            return KontextregelHelper.ContainsAnyString(fields["8421"], owner);
                         }
 
                         // Wenn Feldinhalt von FK 8419 = 9, darf FK 8421 nicht vorkommen.
                         if (einheitMesswert == EinheitMesswert.dimensionslose_Groesse)
                         {
-                            return !ContainsAnyString(fields["8421"], owner);
+                            return !KontextregelHelper.ContainsAnyString(fields["8421"], owner);
                         }
 
                         return true;

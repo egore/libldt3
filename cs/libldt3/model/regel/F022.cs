@@ -27,15 +27,14 @@ namespace libldt3
     {
         namespace regel
         {
-
-            /**
-             * Dummy-LANR für Krankenhausärzte
-             */
+            /// <summary>
+            /// Dummy-LANR für Krankenhausärzte
+            /// </summary>
             public class F022 : RegularExpressionRegel
             {
-                static readonly Regex PATTERN = new Regex("^555555([0-9])[0-9]{2}$");
+                public static readonly Regex PATTERN = new Regex("^555555([0-9])[0-9]{2}$");
 
-                public F022() : base(PATTERN)
+                public F022() : base(F022.PATTERN)
                 {
                 }
             }

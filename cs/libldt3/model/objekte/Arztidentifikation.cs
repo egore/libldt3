@@ -19,11 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel;
-using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -31,41 +29,39 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
-             */
+            /// <summary>
+            /// Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
+            /// </summary>
             [Objekt(Value = "0014")]
             public class Arztidentifikation
             {
-
                 [Objekt]
                 public class ArztId
                 {
-
                     public string Value;
                     [Feld(Value = "0308", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 1)]
                     public ArztTypId? ArztTypId;
-                }
 
+                }
                 [Feld(Value = "8147", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 6)]
-                public Person person;
+                public Person Person;
                 [Feld(Value = "0212", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F011), typeof(F022) }, Laenge = 9)]
-                public IList<string> lanr;
+                public IList<string> Lanr;
                 [Feld(Value = "0223", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F011), typeof(F022) }, Laenge = 9)]
-                public IList<string> pseudoLanr;
+                public IList<string> PseudoLanr;
                 [Feld(Value = "0306", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string vertragsId;
+                public string VertragsId;
                 [Feld(Value = "0307", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<ArztId> arztIds;
+                public IList<ArztId> ArztIds;
                 [Feld(Value = "0222", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F014) }, Laenge = 9)]
-                public string asvTeamnummer;
+                public string AsvTeamnummer;
 
             }
         }

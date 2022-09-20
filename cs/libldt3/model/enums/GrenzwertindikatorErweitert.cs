@@ -31,10 +31,10 @@ namespace libldt3
             [Objekt]
             public class GrenzwertindikatorErweitert
             {
-                public Grenzwertindikator? value;
+                public Grenzwertindikator? Value;
                 [Feld(Value = "8126", Name = "Fehlermeldung_Aufmerksamkeit", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 28)]
-                public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
+                public FehlermeldungAufmerksamkeit FehlermeldungAufmerksamkeit;
 
             }
         }

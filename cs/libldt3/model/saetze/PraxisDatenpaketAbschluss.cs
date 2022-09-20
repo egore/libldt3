@@ -28,15 +28,15 @@ namespace libldt3
     {
         namespace saetze
         {
-
-            /**
-             * Satzart: P (Praxis)-Datenpaket-Abschluss "8231"
-             */
+            /// <summary>
+            /// Satzart: P (Praxis)-Datenpaket-Abschluss "8231"
+            /// </summary>
             [Datenpaket(Value = Satzart.PraxisDatenpaketAbschluss)]
             public class PraxisDatenpaketAbschluss : Satz
             {
                 [Feld(Value = "9300", Feldart = Feldart.muss)]
-                public string pruefsumme;
+                public string Pruefsumme;
+
             }
         }
     }

@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 
@@ -29,36 +28,34 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
-             * Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung
-             * des Einsenders erfordern.
-             */
+            /// <summary>
+            /// Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
+            /// Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung
+            /// des Einsenders erfordern.
+            /// </summary>
             [Objekt(Value = "0026")]
             public class FehlermeldungAufmerksamkeit
             {
-
                 [Feld(Value = "7280", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public Benachrichtigungsgrund? benachrichtigungsgrund;
+                public Benachrichtigungsgrund? Benachrichtigungsgrund;
                 [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public bool? recallEmpfohlen;
+                public bool? RecallEmpfohlen;
                 [Feld(Value = "8154", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 9)]
-                public Timestamp timestamp;
+                public Timestamp Timestamp;
                 [Feld(Value = "8147", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 6)]
-                public Person person;
+                public Person Person;
                 [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
-                public IList<Fliesstext> text;
+                public IList<Fliesstext> Text;
                 [Feld(Value = "8110", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 6)]
-                public IList<Anhang> anhang;
+                public IList<Anhang> Anhang;
 
             }
         }
     }
 }
-

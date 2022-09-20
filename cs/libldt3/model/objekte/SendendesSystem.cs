@@ -29,34 +29,35 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
-             * den LDT Datensatz erstellt hat.
-             */
+            /// <summary>
+            /// Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
+            /// den LDT Datensatz erstellt hat.
+            /// </summary>
             [Objekt(Value = "0051")]
             public class SendendesSystem
             {
                 [Feld(Value = "0001", Feldart = Feldart.muss)]
                 [Regelsatz(Value = new[] { typeof(F007) }, MaxLaenge = 12)]
-                public LdtVersion? version;
+                public LdtVersion? Version;
                 [Feld(Value = "8315", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string empfaengerId;
+                public string EmpfaengerId;
                 [Feld(Value = "8316", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string senderId;
+                public string SenderId;
                 [Feld(Value = "0105", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F012) }, Laenge = 16)]
-                public string kvbPruefnummer;
+                public string KvbPruefnummer;
                 [Feld(Value = "8212", Name = "Softwareverantwortlicher", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 24)]
-                public Organisation softwareverantwortlicher;
+                public Organisation Softwareverantwortlicher;
                 [Feld(Value = "0103", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string softwareName;
+                public string SoftwareName;
                 [Feld(Value = "0132", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string softwareVersion;
+                public string SoftwareVersion;
+
             }
         }
     }

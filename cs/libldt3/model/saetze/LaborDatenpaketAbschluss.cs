@@ -28,17 +28,15 @@ namespace libldt3
     {
         namespace saetze
         {
-
-
-
-            /**
-             * Satzart: L (Labor)-Datenpaket-Abschluss "8221"
-             */
+            /// <summary>
+            /// Satzart: L (Labor)-Datenpaket-Abschluss "8221"
+            /// </summary>
             [Datenpaket(Value = Satzart.LaborDatenpaketAbschluss)]
             public class LaborDatenpaketAbschluss : Satz
             {
                 [Feld(Value = "9300", Feldart = Feldart.muss)]
-                public string pruefsumme;
+                public string Pruefsumme;
+
             }
         }
     }

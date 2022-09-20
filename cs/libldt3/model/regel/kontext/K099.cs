@@ -19,11 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using libldt3.model.enums;
-using System.Reflection;
 using System.Diagnostics;
-using System.Collections.Generic;
-using static libldt3.model.regel.kontext.KontextregelHelper;
+using System.Reflection;
+using libldt3.model.enums;
 
 namespace libldt3
 {
@@ -33,51 +31,46 @@ namespace libldt3
         {
             namespace kontext
             {
-
                 public class K099 : Kontextregel
                 {
-
-                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8422" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8422" };
 
                     public bool IsValid(object owner)
                     {
-
-                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-                        if (fields.Count != FIELDTYPES.Count)
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K099.FIELDTYPES);
+                        if (fields.Count != K099.FIELDTYPES.Count)
                         {
-                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K099.FIELDTYPES);
                             return false;
                         }
 
                         object o = fields["8422"].GetValue(owner);
-                        if (o is IEnumerable<GrenzwertindikatorErweitert>) {
+                        if (o is IEnumerable<object>)
+                        {
                             foreach (GrenzwertindikatorErweitert grenzwertindikatorErweitert in (IEnumerable<GrenzwertindikatorErweitert>)o)
                             {
-                                Grenzwertindikator grenzwertindikator = grenzwertindikatorErweitert.Value;
-                                if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
-                                        grenzwertindikator == Grenzwertindikator.EXTREM_MINUS ||
-                                        grenzwertindikator == Grenzwertindikator.EXTREM_H ||
-                                        grenzwertindikator == Grenzwertindikator.EXTREM_PLUS) &&
-                                        !ContainsAnyString(fields["8126"], grenzwertindikatorErweitert))
+                                Grenzwertindikator? grenzwertindikator = grenzwertindikatorErweitert.Value;
+                                if (grenzwertindikator == Grenzwertindikator.EXTREM_L || grenzwertindikator == Grenzwertindikator.EXTREM_MINUS || grenzwertindikator == Grenzwertindikator.EXTREM_H || grenzwertindikator == Grenzwertindikator.EXTREM_PLUS && !KontextregelHelper.ContainsAnyString(fields["8126"], grenzwertindikatorErweitert))
                                 {
                                     return false;
                                 }
+
                             }
                             return true;
-                        } else {
-                            Grenzwertindikator grenzwertindikator = ((GrenzwertindikatorErweitert)o).Value;
-                            if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
-                                    grenzwertindikator == Grenzwertindikator.EXTREM_MINUS ||
-                                    grenzwertindikator == Grenzwertindikator.EXTREM_H ||
-                                    grenzwertindikator == Grenzwertindikator.EXTREM_PLUS) &&
-                                    !ContainsAnyString(fields["8126"], o))
+                        }
+                        else
+                        {
+                            GrenzwertindikatorErweitert indikatorErweitert = (GrenzwertindikatorErweitert)o;
+                            Grenzwertindikator? grenzwertindikator = indikatorErweitert.Value;
+                            if (grenzwertindikator == Grenzwertindikator.EXTREM_L || grenzwertindikator == Grenzwertindikator.EXTREM_MINUS || grenzwertindikator == Grenzwertindikator.EXTREM_H || grenzwertindikator == Grenzwertindikator.EXTREM_PLUS && !KontextregelHelper.ContainsAnyString(fields["8126"], o))
                             {
                                 return false;
                             }
+
                         }
+
                         return true;
                     }
-
                 }
             }
         }

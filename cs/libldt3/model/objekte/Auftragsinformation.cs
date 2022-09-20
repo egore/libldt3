@@ -19,10 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
-using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -30,11 +28,11 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
-             * zum Auftrag zusammengefasst sowie zusätzliche Befundwege und die
-             * Dringlichkeit des Auftrags definiert.
-             */
+            /// <summary>
+            /// In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
+            /// zum Auftrag zusammengefasst sowie zusätzliche Befundwege und die
+            /// Dringlichkeit des Auftrags definiert.
+            /// </summary>
             [Objekt(Value = "0013")]
             public class Auftragsinformation
             {
@@ -45,47 +43,47 @@ namespace libldt3
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 6)]
                     public Person Person;
-                }
 
+                }
                 [Feld(Value = "8310", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string auftragsnummerEinsender;
+                public string AuftragsnummerEinsender;
                 [Feld(Value = "8313", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> nachforderungId;
+                public IList<string> NachforderungId;
                 [Feld(Value = "8311", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string auftragsnummerLabor;
+                public string AuftragsnummerLabor;
                 [Feld(Value = "7268", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string fachrichtungStationskennung;
+                public string FachrichtungStationskennung;
                 [Feld(Value = "0080", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string fallakteId;
+                public string FallakteId;
                 [Feld(Value = "0081", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> fallakteBezeichnung;
+                public IList<string> FallakteBezeichnung;
                 [Feld(Value = "8501", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public Dringlichkeit? dringlichkeit;
+                public Dringlichkeit? Dringlichkeit;
                 [Feld(Value = "7262", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public StatusDringlichkeit? statusDringlichkeit;
+                public StatusDringlichkeit? StatusDringlichkeit;
                 [Feld(Value = "8118", Name = "Abweichender_Befundweg", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 22)]
-                public Kommunikationsdaten abweichenderBefundweg;
+                public Kommunikationsdaten AbweichenderBefundweg;
                 [Feld(Value = "8611", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public IList<Befundweg> zusaetzlicherBefundweg;
+                public IList<Befundweg> ZusaetzlicherBefundweg;
                 [Feld(Value = "8213", Name = "Timestamp_Erstellung_Untersuchungsanforderung", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 45)]
-                public Timestamp timestampErstellungUntersuchungsanforderung;
+                public Timestamp TimestampErstellungUntersuchungsanforderung;
                 [Feld(Value = "8238", Name = "Auftragsbezogene_Hinweise", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 25)]
-                public Fliesstext auftragsbezogeneHinweise;
+                public Fliesstext AuftragsbezogeneHinweise;
                 [Feld(Value = "8141", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 13)]
-                public Namenskennung namenskennung;
+                public Namenskennung Namenskennung;
 
             }
         }

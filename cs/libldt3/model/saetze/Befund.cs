@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -31,15 +30,12 @@ namespace libldt3
     {
         namespace saetze
         {
-
-
-            /**
-             * Befund "8205"
-             */
+            /// <summary>
+            /// Befund "8205"
+            /// </summary>
             [Datenpaket(Value = Satzart.Befund, Kontextregeln = new[] { typeof(K005) })]
             public class Befund : Satz
             {
-
                 [Feld(Value = "8136", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 12)]
                 public IList<Laborkennung> Laborkennung;

@@ -38,7 +38,7 @@ namespace libldt3
             /**
              * @return FK der Spezifikation (z.B. "7331" für Mobiltelefonnummer)
              */
-            public string Value;
+            public string? Value;
 
             /**
              * @return gibt an, ob es sich um ein Pflichtfeld handelt

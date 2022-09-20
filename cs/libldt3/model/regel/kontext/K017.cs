@@ -21,8 +21,6 @@
  */
 using System.Diagnostics;
 using System.Reflection;
-using System.Collections.Generic;
-using static libldt3.model.regel.kontext.KontextregelHelper;
 
 namespace libldt3
 {
@@ -32,43 +30,36 @@ namespace libldt3
         {
             namespace kontext
             {
-
-                /**
-                 * FK 3112 und/oder FK 3121 muss vorhanden sein.
-                 */
+                /// <summary>
+                /// FK 3112 und/oder FK 3121 muss vorhanden sein.
+                /// </summary>
                 public class K017 : Kontextregel
                 {
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
 
-                    static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
-
-                    public bool IsValid(object owner)
-                    {
-
-                        IDictionary<string, FieldInfo> fields = FindFieldInfos(owner, FIELDTYPES);
-                        if (fields.Count != FIELDTYPES.Count)
-                        {
-                            Trace.TraceError("Class of {} must have fields {}", owner, FIELDTYPES);
-                            return false;
-                        }
-
-                        return !checkExclusion(owner, fields, "3114", "3112") &&
-                                !checkExclusion(owner, fields, "3124", "3121") &&
-                                (ContainsAnyString(fields["3112"], owner) || ContainsAnyString(fields["3121"], owner));
-
-                    }
-
-                    bool checkExclusion(object owner, IDictionary<string, FieldInfo> fields, string first, string second)
+                    public bool CheckExclusion(object owner, IDictionary<string, FieldInfo> fields, string first, string second)
                     {
                         string value = (string)fields[first].GetValue(owner);
                         // XXX 4109 does not exist on the current object, likely we need to traverse the object tree to find it in one
                         // of the holding classes
-                        if (value != null && !"D".Equals(value) && ContainsAnyString(fields["4109"], owner) &&
-                                ContainsAnyString(fields[second], owner))
+                        if (value != null && !"D".Equals(value) && KontextregelHelper.ContainsAnyString(KontextregelHelper.FindField(owner, "4109")) && KontextregelHelper.ContainsAnyString(fields[second], owner))
                         {
-                            Trace.TraceError("FK {} is present and not 'D'. Also FK 4109 is present. Then {} must not be present", first, second);
+                            Trace.TraceError("FK {0} is present and not 'D'. Also FK 4109 is present. Then {1} must not be present", first, second);
                             return true;
                         }
+
                         return false;
+                    }
+                    public bool IsValid(object owner)
+                    {
+                        IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K017.FIELDTYPES);
+                        if (fields.Count != K017.FIELDTYPES.Count)
+                        {
+                            Trace.TraceError("Class of {0} must have fields {1}", owner, K017.FIELDTYPES);
+                            return false;
+                        }
+
+                        return !this.CheckExclusion(owner, fields, "3114", "3112") && !this.CheckExclusion(owner, fields, "3124", "3121") && KontextregelHelper.ContainsAnyString(fields["3112"], owner) || KontextregelHelper.ContainsAnyString(fields["3121"], owner);
                     }
                 }
             }

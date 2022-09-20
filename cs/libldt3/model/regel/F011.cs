@@ -19,27 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+using System.Text.RegularExpressions;
+
 namespace libldt3
 {
     namespace model
     {
         namespace regel
         {
-
-            using System.Text.RegularExpressions;
-
-            /**
-             * Format LANR
-             */
+            /// <summary>
+            /// Format LANR
+            /// </summary>
             public class F011 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^([0-9]{6})([0-9])([0-9]{2})$");
 
-                static readonly Regex PATTERN = new Regex("^([0-9]{6})([0-9])([0-9]{2})$");
-
-                public F011() : base(PATTERN)
+                public F011() : base(F011.PATTERN)
                 {
                 }
-
             }
         }
     }

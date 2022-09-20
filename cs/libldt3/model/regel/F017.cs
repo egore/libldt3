@@ -19,27 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+using System.Text.RegularExpressions;
+
 namespace libldt3
 {
     namespace model
     {
         namespace regel
         {
-
-            using System.Text.RegularExpressions;
-
-            /**
-             * Format Jahreszahl
-             */
+            /// <summary>
+            /// Format Jahreszahl
+            /// </summary>
             public class F017 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^[0-9]{4}$");
 
-                static readonly Regex PATTERN = new Regex("^[0-9]{4}$");
-
-                public F017() : base(PATTERN)
+                public F017() : base(F017.PATTERN)
                 {
                 }
-
             }
         }
     }

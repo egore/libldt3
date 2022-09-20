@@ -28,35 +28,30 @@ namespace libldt3
     {
         namespace objekte
         {
-
-
-
-
-            /**
-             * Hier werden Informationen zu Wirkstoffen zusammengefasst.
-             */
+            /// <summary>
+            /// Hier werden Informationen zu Wirkstoffen zusammengefasst.
+            /// </summary>
             [Objekt(Value = "0071")]
             public class Wirkstoff
             {
-
                 [Feld(Value = "6212", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string arzneimittelwirkstoff;
+                public string Arzneimittelwirkstoff;
                 [Feld(Value = "6206", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F020) }, Laenge = 8)]
-                public string pzn;
+                public string Pzn;
                 [Feld(Value = "6224", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string wirkstoffCode;
+                public string WirkstoffCode;
                 [Feld(Value = "6214", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string wirkstoffKlassifikation;
+                public string WirkstoffKlassifikation;
                 [Feld(Value = "8523", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string wirkstoffmenge;
+                public string Wirkstoffmenge;
                 [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 20)]
-                public string mengeneinheit;
+                public string Mengeneinheit;
 
             }
         }

@@ -27,19 +27,16 @@ namespace libldt3
     {
         namespace regel
         {
-
-            /**
-             * Format ICD-Code
-             */
+            /// <summary>
+            /// Format ICD-Code
+            /// </summary>
             public class F004 : RegularExpressionRegel
             {
+                public static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?$");
 
-                static readonly Regex PATTERN = new Regex("^[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?$");
-
-                public F004() : base(PATTERN)
+                public F004() : base(F004.PATTERN)
                 {
                 }
-
             }
         }
     }

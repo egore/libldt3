@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 
 namespace libldt3
@@ -28,18 +27,19 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
-             */
+            /// <summary>
+            /// In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
+            /// </summary>
             [Objekt(Value = "0068")]
             public class Fliesstext
             {
                 [Feld(Value = "3564", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
+                [Regelsatz(MaxLaenge = 990)]
                 public IList<string> Text;
                 [Feld(Value = "6329", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> Base64text;
+
             }
         }
     }

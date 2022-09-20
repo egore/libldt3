@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
@@ -30,11 +29,9 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            [Objekt(Value = "0055", Kontextregeln = new[] { typeof(K076)})]
+            [Objekt(Value = "0055", Kontextregeln = new[] { typeof(K076) })]
             public class TransfusionsmedizinMutterschaftsvorsorge
             {
-
                 [Feld(Value = "7304", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string ErgebnisId;
@@ -94,7 +91,7 @@ namespace libldt3
                 public Timestamp TimestampMessung;
                 [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 26)]
-                public IList<Fliesstext> zusaetzlicheInformationen;
+                public IList<Fliesstext> ZusaetzlicheInformationen;
                 [Feld(Value = "8158", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 23)]
                 public Untersuchungsabrechnung Untersuchungsabrechnung;

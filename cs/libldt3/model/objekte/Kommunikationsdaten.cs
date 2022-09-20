@@ -19,8 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-using System.Collections.Generic;
 using libldt3.attributes;
 
 namespace libldt3
@@ -29,15 +27,13 @@ namespace libldt3
     {
         namespace objekte
         {
-
-            /**
-             * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
-             * mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
-             */
+            /// <summary>
+            /// Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
+            /// </summary>
+            /// mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
             [Objekt(Value = "0031")]
             public class Kommunikationsdaten
             {
-
                 [Objekt]
                 public class ElektronischePostadresse_
                 {
@@ -45,8 +41,8 @@ namespace libldt3
                     [Feld(Value = "7340", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 60)]
                     public string Spezifizierung;
-                }
 
+                }
                 [Feld(Value = "7330", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> Phone;
@@ -65,6 +61,7 @@ namespace libldt3
                 [Feld(Value = "7334", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> Website;
+
             }
         }
     }

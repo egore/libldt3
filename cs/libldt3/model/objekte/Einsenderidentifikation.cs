@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Collections.Generic;
 using libldt3.attributes;
 using libldt3.model.enums;
 
@@ -29,43 +28,42 @@ namespace libldt3
     {
         namespace objekte
         {
-            /**
-             * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
-             */
+            /// <summary>
+            /// Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
+            /// </summary>
             [Objekt(Value = "0022")]
             public class Einsenderidentifikation
             {
-
                 [Feld(Value = "7321", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public IList<Einsenderstatus> status;
+                public IList<Einsenderstatus?> Status;
                 [Feld(Value = "8312", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 20)]
-                public string kundenNummer;
+                public string KundenNummer;
                 [Feld(Value = "7267", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string auftraggeberId;
+                public string AuftraggeberId;
                 [Feld(Value = "8114", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 18)]
-                public Arztidentifikation arztidentifikation;
-                [Feld(Value = "8240", Name = "Ueberweisung_von_anderen_Aerzten", Feldart = Feldart.bedingt_muss)]
+                public Arztidentifikation Arztidentifikation;
+                [Feld(Value = "8240", Name = "Ueberweisung_von_anderen_Aerzten", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 32)]
-                public Arztidentifikation ueberweisungVon;
+                public Arztidentifikation UeberweisungVon;
                 [Feld(Value = "8241", Name = "Ueberweisung_an", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 15)]
-                public Arztidentifikation ueberweisungAn;
+                public Arztidentifikation UeberweisungAn;
                 [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
-                public Person person;
+                public Person Person;
                 [Feld(Value = "7268", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string fachrichtung;
+                public string Fachrichtung;
                 [Feld(Value = "8119", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 15)]
-                public Betriebsstaette permanentEstablishment;
+                public Betriebsstaette PermanentEstablishment;
                 [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
-                public Organisation organisation;
+                public Organisation Organisation;
 
             }
         }
