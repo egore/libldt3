@@ -46,6 +46,9 @@ public class ConvertRustTypeDirective implements TemplateDirectiveModel {
                 break;
             }
         }
+        if (type.isEnum()) {
+            name += "<'static>";
+        }
         if (type.getActualTypeArguments() != null && !type.getActualTypeArguments().isEmpty()) {
             name += "<" + type.getActualTypeArguments()
                 .stream()

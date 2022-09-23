@@ -19,6 +19,7 @@ import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import de.egore911.libldt3.transpiler.directives.rust.ConvertRustTypeDirective;
 import de.egore911.libldt3.transpiler.directives.rust.GenUseDirective;
+import de.egore911.libldt3.transpiler.directives.rust.SnakeCaseDirective;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.core.ParseException;
 import freemarker.template.Configuration;
@@ -49,6 +50,7 @@ public class TranspileRust {
         // Add several directives which were simpler to implement in Java than in .ftl files
         config.setSharedVariable("genuse", new GenUseDirective());
         config.setSharedVariable("converttype", new ConvertRustTypeDirective());
+        config.setSharedVariable("snakecase", new SnakeCaseDirective());
 
         Path base = Paths.get("../rust");
 
@@ -66,8 +68,10 @@ public class TranspileRust {
 
                 Path file = getOutputFile(base, type);
                 Template template;
-                if (type.isClass() || type.isInterface()) {
+                if (type.isClass() ) {
                     template = config.getTemplate("struct.ftl");
+                } else if (type.isInterface()) {
+                    template = config.getTemplate("trait.ftl");
                 } else if (type.isEnum()) {
                     template = config.getTemplate("enum.ftl");
                 } else {
@@ -99,6 +103,7 @@ public class TranspileRust {
             Path file = dir.resolve("mod.rs");
             try (FileWriter fw = new FileWriter(file.toFile());
                     BufferedWriter w = new BufferedWriter(fw);) {
+                fw.write("#![allow(non_snake_case)]\n\n");
                 for (String m : mod.getValue()) {
                     w.write("pub mod ");
                     w.write(m);
