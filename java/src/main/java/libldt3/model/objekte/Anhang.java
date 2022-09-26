@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Dokumentenquelle;
 import libldt3.model.enums.Dokumententyp;
 import libldt3.model.regel.kontext.K001;
@@ -37,8 +38,8 @@ import libldt3.model.regel.kontext.K075;
  * Dokumentationen, die in einem digitalen Standardformat vorliegen,
  * transportiert werden.
  */
-@Objekt(value = "0010", kontextregeln = {K001.class, K075.class})
-public class Anhang {
+@Objekt(value = "0010", kontextregeln = { K001.class, K075.class })
+public class Anhang implements Kontext {
 
     @Feld(value = "9970", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 3)

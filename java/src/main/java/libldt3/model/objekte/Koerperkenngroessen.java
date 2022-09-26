@@ -25,25 +25,27 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
- * In diesem Objekt können Körperkenngrößen zum Patienten (Größe, Gewicht) übertragen werden.
+ * In diesem Objekt können Körperkenngrößen zum Patienten (Größe, Gewicht)
+ * übertragen werden.
  */
 @Objekt("0069")
-public class Koerperkenngroessen {
+public class Koerperkenngroessen implements Kontext {
 
     @Objekt
-    public static class Messwert {
+    public static class Messwert implements Kontext {
         @SuppressWarnings("unused")
         public Float value;
         @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
+        @Regelsatz(maxLaenge = 20)
         public String einheit;
         @Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 17)
+        @Regelsatz(laenge = 17)
         public Timestamp timestamp;
     }
-    
+
     @Feld(value = "3622", feldart = Feldart.kann)
     public Messwert groesse;
     @Feld(value = "3623", feldart = Feldart.kann)

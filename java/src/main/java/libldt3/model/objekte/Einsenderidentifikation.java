@@ -27,13 +27,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Einsenderstatus;
 
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
 @Objekt("0022")
-public class Einsenderidentifikation {
+public class Einsenderidentifikation implements Kontext {
 
     @Feld(value = "7321", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)

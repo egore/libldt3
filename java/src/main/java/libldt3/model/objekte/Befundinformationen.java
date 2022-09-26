@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Auftragsstatus;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
 import libldt3.model.regel.kontext.K005;
@@ -36,10 +37,10 @@ import libldt3.model.regel.kontext.K005;
  * eine eineindeutige Zuordnung von Auftrag und Befund sicherstellen.
  */
 @Objekt(value = "0017", kontextregeln = { K005.class })
-public class Befundinformationen {
+public class Befundinformationen implements Kontext {
 
     @Objekt
-    public static class OrderNumber {
+    public static class OrderNumber implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8313", feldart = Feldart.bedingt_kann)
@@ -54,7 +55,7 @@ public class Befundinformationen {
     }
 
     @Objekt
-    public static class Befundweg {
+    public static class Befundweg implements Kontext {
         @SuppressWarnings("unused")
         public ZusaetzlicherBefundweg value;
         @Feld(value = "8147", feldart = Feldart.bedingt_muss)

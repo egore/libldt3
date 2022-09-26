@@ -24,13 +24,14 @@ package libldt3.model.saetze;
 import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Satzart;
 
 /**
  * Satzart: L (Labor)-Datenpaket-Abschluss "8221"
  */
 @Datenpaket(Satzart.LaborDatenpaketAbschluss)
-public class LaborDatenpaketAbschluss implements Satz {
+public class LaborDatenpaketAbschluss implements Satz, Kontext {
 
     @Feld(value = "9300", feldart = Feldart.muss)
     public String pruefsumme;

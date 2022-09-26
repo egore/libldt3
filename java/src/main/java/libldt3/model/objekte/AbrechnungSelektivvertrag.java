@@ -1,15 +1,16 @@
 
 package libldt3.model.objekte;
 
+import java.time.LocalDate;
+
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.EinschreibestatusSelektivvertraege;
 import libldt3.model.enums.Gebuehrenordnung;
 import libldt3.model.regel.F002;
-
-import java.time.LocalDate;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -23,7 +24,7 @@ import java.time.LocalDate;
  * Versorgung (§§ 140ff SGB V).
  */
 @Objekt("0006")
-public class AbrechnungSelektivvertrag {
+public class AbrechnungSelektivvertrag implements Kontext {
 
     @Feld(value = "3130", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)

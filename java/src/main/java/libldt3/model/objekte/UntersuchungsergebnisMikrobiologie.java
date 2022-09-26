@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.Nachweisverfahren;
@@ -47,81 +48,81 @@ import libldt3.model.regel.kontext.K076;
  * Erregermenge wird als semiquantitatives Ergebnis abhängig des
  * Untersuchungsmaterials dargestellt.
  */
-@Objekt(value = "0061", kontextregeln = { K073.class, K076.class})
-public class UntersuchungsergebnisMikrobiologie {
+@Objekt(value = "0061", kontextregeln = { K073.class, K076.class })
+public class UntersuchungsergebnisMikrobiologie implements Kontext {
 
     @Objekt
-    public static class Keim {
+    public static class Keim implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "7355", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String keimName;
         @Feld(value = "7301", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public Ergebnis ergebnis;
         @Feld(value = "7357", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public Wachstum wachstum;
         @Feld(value = "7293", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<String> einheit;
         @Feld(value = "7356", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String keimOid;
         @Feld(value = "7285", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String keimNummer;
         @Feld(value = "7361", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogId;
         @Feld(value = "7251", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogBezeichnung;
         @Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 21)
+        @Regelsatz(laenge = 21)
         public Fliesstext testbezogeneHinweise;
         @Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 17)
+        @Regelsatz(laenge = 17)
         public Timestamp timestamp;
         @Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann)
-    @Regelsatz(laenge = 12)
+        @Regelsatz(laenge = 12)
         public Fliesstext ergebnistext;
     }
 
     @Objekt
-    public static class KatalogReferenz {
+    public static class KatalogReferenz implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
         @Feld(value = "7352", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogUrl;
         @Feld(value = "7251", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogBezeichnung;
         @Feld(value = "7365", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
+        @Regelsatz(maxLaenge = 20)
         public String analysenId;
         @Feld(value = "7366", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String leistungsbezeichnung;
     }
 
     @Objekt
-    public static class NachweisverfahrenErweitert {
+    public static class NachweisverfahrenErweitert implements Kontext {
         @SuppressWarnings("unused")
         public Nachweisverfahren value;
         @Feld(value = "7302", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String testmethode;
     }
 
     @Objekt
-    public static class ResistenzMethodeErweitert {
+    public static class ResistenzMethodeErweitert implements Kontext {
         @SuppressWarnings("unused")
         public ResistenzMethode value;
         @Feld(value = "8111", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 12)
+        @Regelsatz(laenge = 12)
         public Antibiogramm antibiogramm;
     }
 

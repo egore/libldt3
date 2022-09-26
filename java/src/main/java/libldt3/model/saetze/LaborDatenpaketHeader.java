@@ -25,6 +25,7 @@ import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Betriebsstaette;
 import libldt3.model.objekte.Kopfdaten;
@@ -34,7 +35,7 @@ import libldt3.model.objekte.Laborkennung;
  * Satzart: L (Labor)-Datenpaket-Header "8220"
  */
 @Datenpaket(Satzart.LaborDatenpaketHeader)
-public class LaborDatenpaketHeader implements Satz {
+public class LaborDatenpaketHeader implements Satz, Kontext {
 
     @Feld(value = "8132", feldart = Feldart.muss)
     @Regelsatz(laenge = 9)

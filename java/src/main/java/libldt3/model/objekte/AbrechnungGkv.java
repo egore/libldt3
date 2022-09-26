@@ -28,6 +28,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Behandlungsanlass;
 import libldt3.model.enums.BesonderePersonengruppe;
 import libldt3.model.enums.DmpKennzeichnung;
@@ -58,7 +59,7 @@ import libldt3.model.regel.kontext.K041;
  * </p>
  */
 @Objekt(value = "0002", kontextregeln = { K041.class })
-public class AbrechnungGkv {
+public class AbrechnungGkv implements Kontext {
 
     @Feld(value = "4239", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)
@@ -124,7 +125,7 @@ public class AbrechnungGkv {
     @Regelsatz(laenge = 1)
     public String kontrolluntersuchungBekannterInfektion;
     @Feld(value = "4241", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = {F011.class, F022.class}, laenge = 9)
+    @Regelsatz(value = { F011.class, F022.class }, laenge = 9)
     public String lebenslangeArztnummer;
     @Feld(value = "4248", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 9)

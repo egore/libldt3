@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.GrenzwertindikatorErweitert;
 import libldt3.model.enums.Normwertspezifikation;
@@ -37,17 +38,17 @@ import libldt3.model.regel.kontext.K099;
  * Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
  */
 @Objekt(value = "0042", kontextregeln = K099.class)
-public class Normalwert {
+public class Normalwert implements Kontext {
 
     @Objekt(kontextregeln = K002.class)
-    public static class NormalwertGrenze {
+    public static class NormalwertGrenze implements Kontext {
         @SuppressWarnings("unused")
         public Float value;
         @Feld(value = "8419", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public EinheitMesswert einheitDesWertes;
         @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
+        @Regelsatz(maxLaenge = 20)
         public String sizeUnit;
     }
 

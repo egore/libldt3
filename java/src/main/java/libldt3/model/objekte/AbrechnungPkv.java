@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.AbrechnungsartPkv;
 import libldt3.model.enums.Gebuehrenordnung;
 
@@ -38,7 +39,7 @@ import libldt3.model.enums.Gebuehrenordnung;
  * ein anderer sein, als der Versicherte.
  */
 @Objekt("0003")
-public class AbrechnungPkv {
+public class AbrechnungPkv implements Kontext {
 
     @Feld(value = "7362", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)

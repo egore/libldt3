@@ -25,6 +25,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Privattarif;
 import libldt3.model.enums.StatusRechnungsempfaenger;
 
@@ -32,7 +33,7 @@ import libldt3.model.enums.StatusRechnungsempfaenger;
  * Hier sind alle Angaben zum Rechnungsempfänger enthalten.
  */
 @Objekt(value = "0048", name = "RgEmpfaenger")
-public class Rechnungsempfaenger {
+public class Rechnungsempfaenger implements Kontext {
 
     @Feld(value = "8310", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)

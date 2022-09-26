@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Betriebsstaettenstatus;
 import libldt3.model.regel.F010;
 import libldt3.model.regel.F021;
@@ -36,7 +37,7 @@ import libldt3.model.regel.F021;
  * medizinischen Einrichtungen zusammen.
  */
 @Objekt("0019")
-public class Betriebsstaette {
+public class Betriebsstaette implements Kontext {
 
     @Feld(value = "0204", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
@@ -48,7 +49,7 @@ public class Betriebsstaette {
     @Regelsatz(maxLaenge = 60)
     public String betriebsstaettenId;
     @Feld(value = "0201", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = {F010.class, F021.class}, laenge = 9)
+    @Regelsatz(value = { F010.class, F021.class }, laenge = 9)
     public String bsnr;
     @Feld(value = "0213", feldart = Feldart.kann)
     @Regelsatz(laenge = 9)

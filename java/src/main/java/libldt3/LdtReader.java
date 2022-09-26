@@ -52,6 +52,7 @@ import libldt3.LdtConstants.Mode;
 import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Objekt;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Satzart;
 import libldt3.model.saetze.Auftrag;
 import libldt3.model.saetze.Befund;
@@ -109,14 +110,14 @@ public class LdtReader {
      * @return the list of Satz elements found in the LDT file
      */
     public List<Satz> read(Stream<String> stream) {
-        Stack<Object> stack = new Stack<>();
+        Stack<Kontext> stack = new Stack<>();
         List<Satz> data = new ArrayList<>();
         AtomicInteger integer = new AtomicInteger();
         stream.forEach(line -> handleInput(line, stack, data, integer.incrementAndGet()));
         return data;
     }
 
-    private void handleInput(String line, Stack<Object> stack, List<Satz> data, int lineNo) {
+    private void handleInput(String line, Stack<Kontext> stack, List<Satz> data, int lineNo) {
         LOG.trace("Reading line {}", line);
 
         // Check if the line meets the minimum requirements (3 digits for
@@ -203,7 +204,7 @@ public class LdtReader {
         case "8002": {
             // Start: Objekt
             assureLength(line, length, 17);
-            Object currentObject = peekCurrentObject(stack);
+            Kontext currentObject = peekCurrentObject(stack);
             Objekt annotation = currentObject.getClass().getAnnotation(Objekt.class);
             if (annotation != null) {
                 if (annotation.value().isEmpty()) {
@@ -255,7 +256,7 @@ public class LdtReader {
         }
         default:
             // Any line not starting or completing a Satz or Objekt
-            Object currentObject = peekCurrentObject(stack);
+            Kontext currentObject = peekCurrentObject(stack);
             if (currentObject == null) {
                 throw new IllegalStateException("No object when applying line " + line);
             }
@@ -446,7 +447,7 @@ public class LdtReader {
      * @param stack the stack to peek the object from
      * @return the current top level element of the stack or {@code null}
      */
-    private static Object peekCurrentObject(Stack<Object> stack) {
+    private static Kontext peekCurrentObject(Stack<Kontext> stack) {
         if (stack.isEmpty()) {
             return null;
         }
@@ -476,7 +477,7 @@ public class LdtReader {
      * better options out there but this one is simple enough for our needs.)
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private static Object convertType(Field field, Type type, String payload, Stack<Object> stack)
+    private static Object convertType(Field field, Type type, String payload, Stack<Kontext> stack)
             throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException, InstantiationException {
         if (type == String.class) {
@@ -521,7 +522,7 @@ public class LdtReader {
             return object;
         }
         if (type instanceof Class && ((Class) type).getAnnotation(Objekt.class) != null) {
-            Object instance = ((Class) type).newInstance();
+            Kontext instance = (Kontext) ((Class) type).newInstance();
             stack.push(instance);
             try {
                 Field declaredField = ((Class) type).getDeclaredField("value");

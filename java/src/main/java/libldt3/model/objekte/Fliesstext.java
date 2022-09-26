@@ -27,12 +27,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
- * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
+ * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien
+ * (Base64-kodiert) übertragen werden.
  */
 @Objekt("0068")
-public class Fliesstext {
+public class Fliesstext implements Kontext {
 
     @Feld(value = "3564", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 990)

@@ -28,6 +28,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Zeiteinheit;
 import libldt3.model.regel.F002;
 
@@ -37,7 +38,7 @@ import libldt3.model.regel.F002;
  * beschrieben.
  */
 @Objekt("0053")
-public class Tier {
+public class Tier implements Kontext {
 
     @Feld(value = "7319", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)

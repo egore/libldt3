@@ -28,6 +28,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F017;
 
@@ -36,7 +37,7 @@ import libldt3.model.regel.F017;
  * Beauftragung und für den Befund transportiert werden.
  */
 @Objekt("0056")
-public class Tumor {
+public class Tumor implements Kontext {
 
     @Feld(value = "7364", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)

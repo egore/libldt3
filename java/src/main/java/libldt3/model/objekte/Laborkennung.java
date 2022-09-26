@@ -27,13 +27,15 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Laborart;
 
 /**
- * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
+ * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt
+ * hat.
  */
 @Objekt("0036")
-public class Laborkennung {
+public class Laborkennung implements Kontext {
 
     @Feld(value = "8239", name = "Laborbezeichnung", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 16)

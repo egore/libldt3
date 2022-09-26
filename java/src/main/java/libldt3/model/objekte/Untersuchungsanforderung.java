@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
@@ -34,56 +35,57 @@ import libldt3.model.enums.StatusDringlichkeit;
 import libldt3.model.regel.kontext.K003;
 
 /**
- * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung zusammengefasst.
+ * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung
+ * zusammengefasst.
  */
-@Objekt(value = "0059", kontextregeln = {K003.class})
-public class Untersuchungsanforderung {
+@Objekt(value = "0059", kontextregeln = { K003.class })
+public class Untersuchungsanforderung implements Kontext {
 
     @Objekt
-    public static class KatalogReferenz {
+    public static class KatalogReferenz implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
         @Feld(value = "7352", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogUrl;
         @Feld(value = "7251", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogBezeichnung;
         @Feld(value = "7365", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
+        @Regelsatz(maxLaenge = 20)
         public String analysenId;
         @Feld(value = "7366", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String leistungsbezeichnung;
     }
 
     @Objekt
-    public static class Test {
+    public static class Test implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8411", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String testbezeichnung;
     }
 
     @Objekt
-    public static class ProbengefaessIdent {
+    public static class ProbengefaessIdent implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8428", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String probenmaterialIdent;
         @Feld(value = "8429", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 4)
+        @Regelsatz(maxLaenge = 4)
         public String probenmaterialIndex;
     }
 
     @Objekt
-    public static class Einwilligungserklaerung {
+    public static class Einwilligungserklaerung implements Kontext {
         @SuppressWarnings("unused")
         public Boolean value;
         @Feld(value = "8110", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 6)
+        @Regelsatz(laenge = 6)
         public Anhang anhang;
     }
 

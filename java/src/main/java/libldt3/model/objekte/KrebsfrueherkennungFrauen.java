@@ -8,6 +8,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F015;
 import libldt3.model.regel.F018;
@@ -17,7 +18,7 @@ import libldt3.model.regel.F018;
  * Krebsfrüherkennungsuntersuchung für Frauen, abgebildet.
  */
 @Objekt("0034")
-public class KrebsfrueherkennungFrauen {
+public class KrebsfrueherkennungFrauen implements Kontext {
 
     @Feld(value = "7295", feldart = Feldart.muss)
     @Regelsatz(value = F002.class, laenge = 8)

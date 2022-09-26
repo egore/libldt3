@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Gebuehrenordnung;
 import libldt3.model.regel.F008;
@@ -39,10 +40,10 @@ import libldt3.model.regel.kontext.K005;
  * notwendig sind.
  */
 @Objekt(value = "0058", kontextregeln = { K005.class })
-public class Untersuchungsabrechnung {
+public class Untersuchungsabrechnung implements Kontext {
 
     @Objekt
-    public static class Gebuehrennummer {
+    public static class Gebuehrennummer implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8406", feldart = Feldart.bedingt_muss)

@@ -25,6 +25,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -35,7 +36,7 @@ import libldt3.annotations.Regelsatz;
  * Rechnungsempfänger ist frei wählbar.
  */
 @Objekt("0005")
-public class AbrechnungSonstigeKostenuebernahme {
+public class AbrechnungSonstigeKostenuebernahme implements Kontext {
 
     @Feld(value = "7261", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)

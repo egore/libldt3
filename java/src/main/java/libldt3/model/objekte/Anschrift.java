@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Adresstyp;
 import libldt3.model.regel.kontext.K017;
 
@@ -35,7 +36,7 @@ import libldt3.model.regel.kontext.K017;
  * ein Postfach oder um eine physische Adresse handeln.
  */
 @Objekt(value = "0007", kontextregeln = K017.class)
-public class Anschrift {
+public class Anschrift implements Kontext {
 
     @Feld(value = "3112", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 10)

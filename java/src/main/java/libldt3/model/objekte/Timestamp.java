@@ -28,6 +28,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F016;
 
@@ -35,7 +36,7 @@ import libldt3.model.regel.F016;
  * Ein Zeitstempel
  */
 @Objekt("0054")
-public class Timestamp {
+public class Timestamp implements Kontext {
 
     @Feld(value = "7278", feldart = Feldart.muss)
     @Regelsatz(value = F002.class, laenge = 8)

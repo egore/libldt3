@@ -25,12 +25,13 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
  * Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
  */
 @Objekt("0040")
-public class Mutterschaft {
+public class Mutterschaft implements Kontext {
 
     @Feld(value = "3668", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)

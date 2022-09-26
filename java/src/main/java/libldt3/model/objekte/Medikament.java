@@ -27,13 +27,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.MedikationsStatus;
 
 /**
  * Hier werden Informationen zu Medikamenten zusammengefasst.
  */
 @Objekt("0070")
-public class Medikament {
+public class Medikament implements Kontext {
 
     @Feld(value = "8243", name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", feldart = Feldart.kann)
     @Regelsatz(laenge = 40)

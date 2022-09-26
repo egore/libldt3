@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.AnorganischesMaterial;
 import libldt3.model.enums.Materialart;
 import libldt3.model.enums.OrganischesMaterial;
@@ -37,11 +38,11 @@ import libldt3.model.regel.kontext.K006;
  * Im Objekt werden die Informationen zur Identifikation des zu untersuchenden
  * Materials übermittelt sowie Angaben zum Material selbst.
  */
-@Objekt(value = "0037",kontextregeln = K006.class)
-public class Material {
+@Objekt(value = "0037", kontextregeln = K006.class)
+public class Material implements Kontext {
 
     @Objekt
-    public static class AnorganischesMaterialErweitert {
+    public static class AnorganischesMaterialErweitert implements Kontext {
         @SuppressWarnings("unused")
         public AnorganischesMaterial value;
         @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann)
@@ -50,7 +51,7 @@ public class Material {
     }
 
     @Objekt
-    public static class Medikamenteneinnahme {
+    public static class Medikamenteneinnahme implements Kontext {
         @SuppressWarnings("unused")
         public Boolean value;
         @Feld(value = "8170", feldart = Feldart.bedingt_kann)

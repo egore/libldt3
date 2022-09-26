@@ -27,20 +27,21 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
  * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
  * mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
  */
 @Objekt("0031")
-public class Kommunikationsdaten {
+public class Kommunikationsdaten implements Kontext {
 
     @Objekt
-    public static class ElektronischePostadresse {
+    public static class ElektronischePostadresse implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "7340", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String spezifizierung;
     }
 

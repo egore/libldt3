@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.ArztTypId;
 import libldt3.model.regel.F011;
 import libldt3.model.regel.F014;
@@ -36,14 +37,14 @@ import libldt3.model.regel.F022;
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
 @Objekt(value = "0014")
-public class Arztidentifikation {
+public class Arztidentifikation implements Kontext {
 
     @Objekt
-    public static class ArztId {
+    public static class ArztId implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "0308", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public ArztTypId arztTypId;
     }
 
@@ -51,10 +52,10 @@ public class Arztidentifikation {
     @Regelsatz(laenge = 6)
     public Person person;
     @Feld(value = "0212", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = {F011.class, F022.class}, laenge = 9)
+    @Regelsatz(value = { F011.class, F022.class }, laenge = 9)
     public List<String> lanr;
     @Feld(value = "0223", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = {F011.class, F022.class}, laenge = 9)
+    @Regelsatz(value = { F011.class, F022.class }, laenge = 9)
     public List<String> pseudoLanr;
     @Feld(value = "0306", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)

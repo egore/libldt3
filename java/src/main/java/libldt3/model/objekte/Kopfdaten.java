@@ -25,12 +25,14 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
- * Hier werden alle Informationen zusammengefasst, die im Kontext mit der Erstellung des Datensatzes stehen.
+ * Hier werden alle Informationen zusammengefasst, die im Kontext mit der
+ * Erstellung des Datensatzes stehen.
  */
 @Objekt("0032")
-public class Kopfdaten {
+public class Kopfdaten implements Kontext {
 
     @Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
     @Regelsatz(laenge = 16)

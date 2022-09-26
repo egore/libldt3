@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.EndozervikaleZellen;
 import libldt3.model.enums.GrenzwertindikatorErweitert;
 import libldt3.model.enums.NachkontrollGrund;
@@ -39,20 +40,20 @@ import libldt3.model.regel.kontext.K099;
  * Krebsvorsorge transportiert. Die Inhalte richten sich nach dem Muster 39b.
  */
 @Objekt(value = "0062", kontextregeln = K076.class)
-public class UntersuchungsergebnisZytologieKrebsvorsorge {
+public class UntersuchungsergebnisZytologieKrebsvorsorge implements Kontext {
 
     @Objekt(kontextregeln = K099.class)
-    public static class TestIdent {
+    public static class TestIdent implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8411", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String testbezeichnung;
         @Feld(value = "8422", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 2)
+        @Regelsatz(maxLaenge = 2)
         public List<GrenzwertindikatorErweitert> grenzwertindikator;
         @Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 12)
+        @Regelsatz(laenge = 12)
         public Fliesstext ergebnistextVerweis;
     }
 

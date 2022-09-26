@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.AnforderungNothilfepass;
 import libldt3.model.enums.Antikoerpersuchtest;
 import libldt3.model.enums.DirekterCoombstest;
@@ -34,7 +35,7 @@ import libldt3.model.enums.TestStatus;
 import libldt3.model.regel.kontext.K076;
 
 @Objekt(value = "0055", kontextregeln = K076.class)
-public class TransfusionsmedizinMutterschaftsvorsorge {
+public class TransfusionsmedizinMutterschaftsvorsorge implements Kontext {
 
     @Feld(value = "7304", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)

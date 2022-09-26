@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.DarstellungErgebniswerte;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
@@ -37,52 +38,52 @@ import libldt3.model.enums.TestStatus;
  * übermittelt.
  */
 @Objekt("0060")
-public class UntersuchungsergebnisKlinischeChemie {
+public class UntersuchungsergebnisKlinischeChemie implements Kontext {
 
     @Objekt(/* TODO kontextregeln = K072.class, K076.class */)
-    public static class KatalogReferenz {
+    public static class KatalogReferenz implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
         @Feld(value = "7352", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogUrl;
         @Feld(value = "7251", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogBezeichnung;
         @Feld(value = "7365", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
+        @Regelsatz(maxLaenge = 20)
         public String analysenId;
         @Feld(value = "7366", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String leistungsbezeichnung;
         @Feld(value = "8418", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public TestStatus teststatus;
     }
 
     @Objekt(/* TODO kontextregeln = K072.class, K076.class */)
-    public static class Test {
+    public static class Test implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8411", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String testbezeichnung;
         @Feld(value = "7263", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String testId;
         @Feld(value = "7264", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String testGeraetUid;
         @Feld(value = "8418", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public TestStatus teststatus;
         @Feld(value = "7302", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<String> testmethode;
     }
 
     @Objekt
-    public static class DarstellungErgebniswerteErweitert {
+    public static class DarstellungErgebniswerteErweitert implements Kontext {
         @SuppressWarnings("unused")
         public DarstellungErgebniswerte value;
         @Feld(value = "8420", feldart = Feldart.bedingt_kann)
@@ -93,23 +94,23 @@ public class UntersuchungsergebnisKlinischeChemie {
     }
 
     @Objekt
-    public static class ErgebnisWert {
+    public static class ErgebnisWert implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8419", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public EinheitMesswert einheitNorm;
         @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
+        @Regelsatz(maxLaenge = 20)
         public String einheit;
         @Feld(value = "8142", feldart = Feldart.kann)
-    @Regelsatz(laenge = 10)
+        @Regelsatz(laenge = 10)
         public List<Normalwert> normalValue;
         @Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 17)
+        @Regelsatz(laenge = 17)
         public Timestamp timestamp;
         @Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann)
-    @Regelsatz(laenge = 12)
+        @Regelsatz(laenge = 12)
         public Fliesstext ergebnistext;
     }
 

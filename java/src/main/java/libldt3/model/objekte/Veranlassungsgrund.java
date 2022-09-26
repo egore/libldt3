@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.SpezifizierungVeranlassungsgrund;
 import libldt3.model.enums.Untersuchungsanlass;
@@ -36,44 +37,44 @@ import libldt3.model.enums.Untersuchungsanlass;
  * laboratoriumsmedizinischen Untersuchung übertragen werden.
  */
 @Objekt("0027")
-public class Veranlassungsgrund {
+public class Veranlassungsgrund implements Kontext {
 
     @Objekt
-    public static class AbrechnungsinfoErweitert {
+    public static class AbrechnungsinfoErweitert implements Kontext {
         @SuppressWarnings("unused")
         public Abrechnungsinfo value;
         @Feld(value = "8417", feldart = Feldart.kann)
-    @Regelsatz(laenge = 2)
+        @Regelsatz(laenge = 2)
         public Untersuchungsanlass anlass;
         @Feld(value = "8427", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 2)
+        @Regelsatz(laenge = 2)
         public SpezifizierungVeranlassungsgrund spezifizierung;
         @Feld(value = "8217", name = "Praezisierung_Veranlassungsgrund", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 32)
+        @Regelsatz(laenge = 32)
         public Fliesstext praezisierung;
         @Feld(value = "8200", name = "Akutdiagnose", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 12)
+        @Regelsatz(laenge = 12)
         public List<Diagnose> akutDiagnose;
         @Feld(value = "4208", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<Medikation> vorbefundMedikation;
     }
-    
+
     @Objekt
-    public static class Medikation {
+    public static class Medikation implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "6212", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<Arzneimittelwirkstoff> arzneimittelwirkstoff;
     }
-    
+
     @Objekt
-    public static class Arzneimittelwirkstoff {
+    public static class Arzneimittelwirkstoff implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "6214", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String wirkstoffKlassifikation;
     }
 

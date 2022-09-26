@@ -27,19 +27,20 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
  * Mit diesem Objekt werden Organisationsstrukturen abgebildet.
  */
 @Objekt("0043")
-public class Organisation {
+public class Organisation implements Kontext {
 
     @Objekt
-    public static class Funktionsbezeichnung {
+    public static class Funktionsbezeichnung implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8147", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 6)
+        @Regelsatz(laenge = 6)
         public List<Person> person;
     }
 

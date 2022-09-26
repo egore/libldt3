@@ -27,6 +27,7 @@ import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Satzart;
 import libldt3.model.objekte.Anhang;
 import libldt3.model.objekte.Befundinformationen;
@@ -47,7 +48,7 @@ import libldt3.model.regel.kontext.K005;
  * Befund "8205"
  */
 @Datenpaket(value = Satzart.Befund, kontextregeln = K005.class)
-public class Befund implements Satz {
+public class Befund implements Satz, Kontext {
 
     @Feld(value = "8136", feldart = Feldart.kann)
     @Regelsatz(laenge = 12)

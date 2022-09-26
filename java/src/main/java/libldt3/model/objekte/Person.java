@@ -28,6 +28,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Geschlecht;
 import libldt3.model.enums.StatusPerson;
 import libldt3.model.regel.F003;
@@ -38,7 +39,7 @@ import libldt3.model.regel.F003;
  * Befun-den notwendig sind.
  */
 @Objekt("0047")
-public class Person {
+public class Person implements Kontext {
 
     @Feld(value = "7420", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 2)

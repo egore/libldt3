@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.Ergebnis2;
 import libldt3.model.enums.Grenzwertindikator;
@@ -35,59 +36,60 @@ import libldt3.model.enums.TestStatus;
 import libldt3.model.regel.kontext.K076;
 
 /**
- * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie transportiert werden.
+ * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie
+ * transportiert werden.
  */
 @Objekt(value = "0063", kontextregeln = K076.class)
-public class UntersuchungsergebnisZytologie {
+public class UntersuchungsergebnisZytologie implements Kontext {
 
     @Objekt
-    public static class RecallEmpfohlen {
+    public static class RecallEmpfohlen implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8154", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 9)
+        @Regelsatz(laenge = 9)
         public Timestamp timestamp;
     }
 
     @Objekt
-    public static class KatalogReferenz {
+    public static class KatalogReferenz implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
         @Feld(value = "7352", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogUrl;
         @Feld(value = "7251", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String katalogBezeichnung;
         @Feld(value = "7365", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
+        @Regelsatz(maxLaenge = 20)
         public String analysenId;
         @Feld(value = "7366", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String leistungsbezeichnung;
     }
-    
+
     @Objekt
-    public static class GrenzwertindikatorLaborwert {
+    public static class GrenzwertindikatorLaborwert implements Kontext {
         @SuppressWarnings("unused")
         public Grenzwertindikator value;
         @Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 28)
+        @Regelsatz(laenge = 28)
         public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
     }
 
     @Objekt
-    public static class Test {
+    public static class Test implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8411", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String testbezeichnung;
         @Feld(value = "8418", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public TestStatus teststatus;
         @Feld(value = "8422", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 2)
+        @Regelsatz(maxLaenge = 2)
         public List<GrenzwertindikatorLaborwert> grenzwertindikatorLaborwert;
     }
 

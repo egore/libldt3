@@ -27,15 +27,17 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Diagnosesicherheit;
 import libldt3.model.enums.Lokalisation;
 import libldt3.model.regel.F004;
 
 /**
- * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
+ * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen
+ * werden.
  */
 @Objekt("0100")
-public class Diagnose {
+public class Diagnose implements Kontext {
 
     @Feld(value = "4207", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)

@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
  * Dieses Objekt wird als Zusammenfassung aller im Auftrag vorhandenen
@@ -36,7 +37,7 @@ import libldt3.annotations.Regelsatz;
  * Objekt nur einmal vorhanden sein.
  */
 @Objekt("0001")
-public class Abrechnungsinformation {
+public class Abrechnungsinformation implements Kontext {
 
     @Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)

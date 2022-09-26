@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.StatusDringlichkeit;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
@@ -37,14 +38,14 @@ import libldt3.model.enums.ZusaetzlicherBefundweg;
  * Dringlichkeit des Auftrags definiert.
  */
 @Objekt(value = "0013")
-public class Auftragsinformation {
+public class Auftragsinformation implements Kontext {
 
     @Objekt
-    public static class Befundweg {
+    public static class Befundweg implements Kontext {
         @SuppressWarnings("unused")
         public ZusaetzlicherBefundweg value;
         @Feld(value = "8147", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 6)
+        @Regelsatz(laenge = 6)
         public Person person;
     }
 

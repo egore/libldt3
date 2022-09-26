@@ -21,6 +21,8 @@
  */
 package libldt3.model.saetze;
 
+import libldt3.model.Kontext;
+
 /**
  * Tagging-Interface, um Sätze zu identifiziern
  */

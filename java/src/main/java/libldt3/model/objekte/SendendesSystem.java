@@ -25,6 +25,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.LdtVersion;
 import libldt3.model.regel.F007;
 import libldt3.model.regel.F012;
@@ -34,7 +35,7 @@ import libldt3.model.regel.F012;
  * den LDT Datensatz erstellt hat.
  */
 @Objekt(value = "0051")
-public class SendendesSystem {
+public class SendendesSystem implements Kontext {
 
     @Feld(value = "0001", feldart = Feldart.muss)
     @Regelsatz(value = F007.class, maxLaenge = 12)

@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F005;
 import libldt3.model.regel.F018;
@@ -35,7 +36,7 @@ import libldt3.model.regel.F018;
  * Dieses Objekt enthält schwangerschaftsspezifische Informationen.
  */
 @Objekt("0050")
-public class Schwangerschaft {
+public class Schwangerschaft implements Kontext {
 
     @Feld(value = "8511", feldart = Feldart.kann)
     @Regelsatz(value = F005.class, laenge = 3)

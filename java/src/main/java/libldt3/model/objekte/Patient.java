@@ -28,6 +28,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.GeschlechtNormalbereich;
 import libldt3.model.regel.F002;
 import libldt3.model.regel.F013;
@@ -36,7 +37,7 @@ import libldt3.model.regel.F013;
  * In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
  */
 @Objekt("0045")
-public class Patient {
+public class Patient implements Kontext {
 
     @Feld(value = "8147", feldart = Feldart.muss)
     @Regelsatz(laenge = 6)

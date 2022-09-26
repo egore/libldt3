@@ -27,6 +27,7 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 import libldt3.model.enums.ResistenzInterpretation;
 import libldt3.model.enums.ResistenzNach;
 import libldt3.model.enums.Sensitivitaet;
@@ -37,50 +38,50 @@ import libldt3.model.enums.Sensitivitaet;
  * Matrix.
  */
 @Objekt("0011")
-public class Antibiogramm {
+public class Antibiogramm implements Kontext {
 
     @Objekt
-    public static class WirkstoffIdent {
+    public static class WirkstoffIdent implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "7288", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<String> wirkstoffGenericNummer;
         @Feld(value = "7359", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<String> wirkstoffOid;
         @Feld(value = "7370", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<String> wirkstoffname;
         @Feld(value = "7354", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public List<KeimIdentifizierung> keimIdentifizierung;
     }
 
     @Objekt
-    public static class KeimIdentifizierung {
+    public static class KeimIdentifizierung implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "7367", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public Sensitivitaet sensitivitaet;
         @Feld(value = "7289", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String mhk;
         @Feld(value = "7369", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
+        @Regelsatz(maxLaenge = 60)
         public String mhkEinheit;
         @Feld(value = "7290", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public List<ResistenzInterpretationErweitert> resistenzInterpretation;
     }
-    
+
     @Objekt
-    public static class ResistenzInterpretationErweitert {
+    public static class ResistenzInterpretationErweitert implements Kontext {
         @SuppressWarnings("unused")
         public ResistenzInterpretation value;
         @Feld(value = "7424", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
+        @Regelsatz(laenge = 1)
         public ResistenzNach resistenzNach;
     }
 

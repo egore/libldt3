@@ -27,12 +27,13 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
+import libldt3.model.Kontext;
 
 /**
  * Im Objekt werden die Untersuchungsergebnisse zusammengefasst.
  */
 @Objekt("0035")
-public class Laborergebnisbericht {
+public class Laborergebnisbericht implements Kontext {
 
     @Feld(value = "8160", name = "UE_Klinische_Chemie", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 19)
