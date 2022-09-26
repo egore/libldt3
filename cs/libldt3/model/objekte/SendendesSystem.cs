@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -34,7 +35,7 @@ namespace libldt3
             /// den LDT Datensatz erstellt hat.
             /// </summary>
             [Objekt(Value = "0051")]
-            public class SendendesSystem
+            public class SendendesSystem : Kontext
             {
                 [Feld(Value = "0001", Feldart = Feldart.muss)]
                 [Regelsatz(Value = new[] { typeof(F007) }, MaxLaenge = 12)]

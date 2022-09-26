@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.regel;
 
 namespace libldt3
@@ -33,7 +34,7 @@ namespace libldt3
             /// Dieses Objekt enthält schwangerschaftsspezifische Informationen.
             /// </summary>
             [Objekt(Value = "0050")]
-            public class Schwangerschaft
+            public class Schwangerschaft : Kontext
             {
                 [Feld(Value = "8511", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F005) }, Laenge = 3)]

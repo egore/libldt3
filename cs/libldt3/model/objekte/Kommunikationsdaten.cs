@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -32,10 +33,10 @@ namespace libldt3
             /// </summary>
             /// mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
             [Objekt(Value = "0031")]
-            public class Kommunikationsdaten
+            public class Kommunikationsdaten : Kontext
             {
                 [Objekt]
-                public class ElektronischePostadresse_
+                public class ElektronischePostadresse_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7340", Feldart = Feldart.bedingt_muss)]

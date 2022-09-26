@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -37,7 +38,7 @@ namespace libldt3
             /// Krankenkassen versichert sind. Dabei kann der Rechnungsempfänger aber auch
             /// ein anderer sein, als der Versicherte.
             [Objekt(Value = "0003")]
-            public class AbrechnungPkv
+            public class AbrechnungPkv : Kontext
             {
                 [Feld(Value = "7362", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]

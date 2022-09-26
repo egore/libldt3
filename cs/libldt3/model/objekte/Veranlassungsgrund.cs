@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -33,10 +34,10 @@ namespace libldt3
             /// laboratoriumsmedizinischen Untersuchung übertragen werden.
             /// </summary>
             [Objekt(Value = "0027")]
-            public class Veranlassungsgrund
+            public class Veranlassungsgrund : Kontext
             {
                 [Objekt]
-                public class AbrechnungsinfoErweitert
+                public class AbrechnungsinfoErweitert : Kontext
                 {
                     public Abrechnungsinfo? Value;
                     [Feld(Value = "8417", Feldart = Feldart.kann)]
@@ -57,7 +58,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Medikation
+                public class Medikation : Kontext
                 {
                     public string Value;
                     [Feld(Value = "6212", Feldart = Feldart.bedingt_kann)]
@@ -66,7 +67,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Arzneimittelwirkstoff
+                public class Arzneimittelwirkstoff : Kontext
                 {
                     public string Value;
                     [Feld(Value = "6214", Feldart = Feldart.bedingt_muss)]

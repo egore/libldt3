@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -29,10 +30,11 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
+            /// Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt
+            /// hat.
             /// </summary>
             [Objekt(Value = "0036")]
-            public class Laborkennung
+            public class Laborkennung : Kontext
             {
                 [Feld(Value = "8239", Name = "Laborbezeichnung", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 16)]

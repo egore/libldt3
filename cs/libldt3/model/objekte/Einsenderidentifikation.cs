@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -32,7 +33,7 @@ namespace libldt3
             /// Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
             /// </summary>
             [Objekt(Value = "0022")]
-            public class Einsenderidentifikation
+            public class Einsenderidentifikation : Kontext
             {
                 [Feld(Value = "7321", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]

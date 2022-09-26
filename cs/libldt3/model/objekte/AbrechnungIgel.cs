@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -34,7 +35,7 @@ namespace libldt3
             /// gegenüber gesetzlich versicherten Patienten erbracht werden können.
             /// </summary>
             [Objekt(Value = "0004")]
-            public class AbrechnungIgel
+            public class AbrechnungIgel : Kontext
             {
                 [Feld(Value = "4121", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]

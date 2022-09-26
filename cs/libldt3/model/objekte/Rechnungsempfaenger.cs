@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -32,7 +33,7 @@ namespace libldt3
             /// Hier sind alle Angaben zum Rechnungsempfänger enthalten.
             /// </summary>
             [Objekt(Value = "0048", Name = "RgEmpfaenger")]
-            public class Rechnungsempfaenger
+            public class Rechnungsempfaenger : Kontext
             {
                 [Feld(Value = "8310", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]

@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -36,7 +37,7 @@ namespace libldt3
             /// darunterliegenden Objekte eingeführt werden. Pro Satzart "8215" darf dieses
             /// Objekt nur einmal vorhanden sein.
             [Objekt(Value = "0001")]
-            public class Abrechnungsinformation
+            public class Abrechnungsinformation : Kontext
             {
                 [Feld(Value = "8102", Name = "Abrechnung_GKV", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 14)]

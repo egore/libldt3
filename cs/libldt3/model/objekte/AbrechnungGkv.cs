@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 using libldt3.model.regel.kontext;
@@ -48,7 +49,7 @@ namespace libldt3
             /// zugeordnet werden können.
             /// </p>
             [Objekt(Value = "0002", Kontextregeln = new[] { typeof(K041) })]
-            public class AbrechnungGkv
+            public class AbrechnungGkv : Kontext
             {
                 [Feld(Value = "4239", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]

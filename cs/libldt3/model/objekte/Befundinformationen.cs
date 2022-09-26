@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -34,10 +35,10 @@ namespace libldt3
             /// eine eineindeutige Zuordnung von Auftrag und Befund sicherstellen.
             /// </summary>
             [Objekt(Value = "0017", Kontextregeln = new[] { typeof(K005) })]
-            public class Befundinformationen
+            public class Befundinformationen : Kontext
             {
                 [Objekt]
-                public class OrderNumber_
+                public class OrderNumber_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8313", Feldart = Feldart.bedingt_kann)]
@@ -52,7 +53,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Befundweg
+                public class Befundweg : Kontext
                 {
                     public ZusaetzlicherBefundweg? Value;
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]

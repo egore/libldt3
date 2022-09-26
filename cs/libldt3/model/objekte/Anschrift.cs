@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -35,7 +36,7 @@ namespace libldt3
             /// Dabei kann es sich entweder um
             /// ein Postfach oder um eine physische Adresse handeln.
             [Objekt(Value = "0007", Kontextregeln = new[] { typeof(K017) })]
-            public class Anschrift
+            public class Anschrift : Kontext
             {
                 [Feld(Value = "3112", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 10)]

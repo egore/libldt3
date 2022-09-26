@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -30,13 +31,14 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// In diesem Objekt werden alle Informationen zur Untersuchungsanforderung zusammengefasst.
+            /// In diesem Objekt werden alle Informationen zur Untersuchungsanforderung
+            /// zusammengefasst.
             /// </summary>
             [Objekt(Value = "0059", Kontextregeln = new[] { typeof(K003) })]
-            public class Untersuchungsanforderung
+            public class Untersuchungsanforderung : Kontext
             {
                 [Objekt]
-                public class KatalogReferenz
+                public class KatalogReferenz : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -54,7 +56,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Test
+                public class Test : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_kann)]
@@ -63,7 +65,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class ProbengefaessIdent_
+                public class ProbengefaessIdent_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8428", Feldart = Feldart.kann)]
@@ -75,7 +77,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Einwilligungserklaerung
+                public class Einwilligungserklaerung : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8110", Feldart = Feldart.bedingt_kann)]

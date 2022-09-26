@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.regel;
 
 namespace libldt3
@@ -34,7 +35,7 @@ namespace libldt3
             /// Krebsfrüherkennungsuntersuchung für Frauen, abgebildet.
             /// </summary>
             [Objekt(Value = "0034")]
-            public class KrebsfrueherkennungFrauen
+            public class KrebsfrueherkennungFrauen : Kontext
             {
                 [Feld(Value = "7295", Feldart = Feldart.muss)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]

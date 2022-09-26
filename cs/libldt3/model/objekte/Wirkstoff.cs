@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.regel;
 
 namespace libldt3
@@ -32,7 +33,7 @@ namespace libldt3
             /// Hier werden Informationen zu Wirkstoffen zusammengefasst.
             /// </summary>
             [Objekt(Value = "0071")]
-            public class Wirkstoff
+            public class Wirkstoff : Kontext
             {
                 [Feld(Value = "6212", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]

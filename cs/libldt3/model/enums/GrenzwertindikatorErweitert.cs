@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.objekte;
 
 namespace libldt3
@@ -29,7 +30,7 @@ namespace libldt3
         namespace enums
         {
             [Objekt]
-            public class GrenzwertindikatorErweitert
+            public class GrenzwertindikatorErweitert : Kontext
             {
                 public Grenzwertindikator? Value;
                 [Feld(Value = "8126", Name = "Fehlermeldung_Aufmerksamkeit", Feldart = Feldart.bedingt_muss)]

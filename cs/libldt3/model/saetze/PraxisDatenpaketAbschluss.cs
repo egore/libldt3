@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -32,7 +33,7 @@ namespace libldt3
             /// Satzart: P (Praxis)-Datenpaket-Abschluss "8231"
             /// </summary>
             [Datenpaket(Value = Satzart.PraxisDatenpaketAbschluss)]
-            public class PraxisDatenpaketAbschluss : Satz
+            public class PraxisDatenpaketAbschluss : Satz, Kontext
             {
                 [Feld(Value = "9300", Feldart = Feldart.muss)]
                 public string Pruefsumme;

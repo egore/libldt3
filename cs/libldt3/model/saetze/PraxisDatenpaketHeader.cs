@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
 
@@ -33,7 +34,7 @@ namespace libldt3
             /// Satzart: P (Praxis)-Datenpaket-Header "8230"
             /// </summary>
             [Datenpaket(Value = Satzart.PraxisDatenpaketHeader)]
-            public class PraxisDatenpaketHeader : Satz
+            public class PraxisDatenpaketHeader : Satz, Kontext
             {
                 [Feld(Value = "8132", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 9)]

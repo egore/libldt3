@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -31,7 +32,7 @@ namespace libldt3
             /// Im Objekt werden die Untersuchungsergebnisse zusammengefasst.
             /// </summary>
             [Objekt(Value = "0035")]
-            public class Laborergebnisbericht
+            public class Laborergebnisbericht : Kontext
             {
                 [Feld(Value = "8160", Name = "UE_Klinische_Chemie", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 19)]

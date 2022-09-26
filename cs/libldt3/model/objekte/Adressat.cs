@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -28,7 +29,7 @@ namespace libldt3
         namespace objekte
         {
             [Objekt(Value = "0008")]
-            public class Adressat
+            public class Adressat : Kontext
             {
                 [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]

@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -30,13 +31,14 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie transportiert werden.
+            /// In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie
+            /// transportiert werden.
             /// </summary>
             [Objekt(Value = "0063", Kontextregeln = new[] { typeof(K076) })]
-            public class UntersuchungsergebnisZytologie
+            public class UntersuchungsergebnisZytologie : Kontext
             {
                 [Objekt]
-                public class RecallEmpfohlen_
+                public class RecallEmpfohlen_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8154", Feldart = Feldart.bedingt_kann)]
@@ -45,7 +47,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class KatalogReferenz
+                public class KatalogReferenz : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -63,7 +65,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class GrenzwertindikatorLaborwert
+                public class GrenzwertindikatorLaborwert : Kontext
                 {
                     public Grenzwertindikator? Value;
                     [Feld(Value = "8126", Name = "Fehlermeldung_Aufmerksamkeit", Feldart = Feldart.bedingt_muss)]
@@ -72,7 +74,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Test
+                public class Test : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]

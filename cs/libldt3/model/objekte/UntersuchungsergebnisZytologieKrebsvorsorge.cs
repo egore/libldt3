@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -35,10 +36,10 @@ namespace libldt3
             /// </summary>
             /// Die Inhalte richten sich nach dem Muster 39b.
             [Objekt(Value = "0062", Kontextregeln = new[] { typeof(K076) })]
-            public class UntersuchungsergebnisZytologieKrebsvorsorge
+            public class UntersuchungsergebnisZytologieKrebsvorsorge : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K099) })]
-                public class TestIdent_
+                public class TestIdent_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]

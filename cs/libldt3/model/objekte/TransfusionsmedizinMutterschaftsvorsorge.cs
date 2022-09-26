@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -30,7 +31,7 @@ namespace libldt3
         namespace objekte
         {
             [Objekt(Value = "0055", Kontextregeln = new[] { typeof(K076) })]
-            public class TransfusionsmedizinMutterschaftsvorsorge
+            public class TransfusionsmedizinMutterschaftsvorsorge : Kontext
             {
                 [Feld(Value = "7304", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]

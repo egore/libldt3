@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -33,7 +34,7 @@ namespace libldt3
             /// Namenskennzeichnungen.
             /// </summary>
             [Objekt(Value = "0041")]
-            public class Namenskennung
+            public class Namenskennung : Kontext
             {
                 [Feld(Value = "7420", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]

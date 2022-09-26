@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
 
@@ -33,7 +34,7 @@ namespace libldt3
             /// Satzart: Auftrag "8215"
             /// </summary>
             [Datenpaket(Value = Satzart.Auftrag)]
-            public class Auftrag : Satz
+            public class Auftrag : Satz, Kontext
             {
                 [Feld(Value = "8122", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 23)]

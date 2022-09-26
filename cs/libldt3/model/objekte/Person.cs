@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -36,7 +37,7 @@ namespace libldt3
             /// Befun-den notwendig sind.
             /// </summary>
             [Objekt(Value = "0047")]
-            public class Person
+            public class Person : Kontext
             {
                 [Feld(Value = "7420", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 2)]

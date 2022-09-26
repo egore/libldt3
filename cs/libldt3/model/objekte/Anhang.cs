@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -35,7 +36,7 @@ namespace libldt3
             /// transportiert werden.
             /// </summary>
             [Objekt(Value = "0010", Kontextregeln = new[] { typeof(K001), typeof(K075) })]
-            public class Anhang
+            public class Anhang : Kontext
             {
                 [Feld(Value = "9970", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 3)]

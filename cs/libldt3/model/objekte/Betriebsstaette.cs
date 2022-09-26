@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -34,7 +35,7 @@ namespace libldt3
             /// medizinischen Einrichtungen zusammen.
             /// </summary>
             [Objekt(Value = "0019")]
-            public class Betriebsstaette
+            public class Betriebsstaette : Kontext
             {
                 [Feld(Value = "0204", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]

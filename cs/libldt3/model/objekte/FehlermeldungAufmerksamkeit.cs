@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -34,7 +35,7 @@ namespace libldt3
             /// des Einsenders erfordern.
             /// </summary>
             [Objekt(Value = "0026")]
-            public class FehlermeldungAufmerksamkeit
+            public class FehlermeldungAufmerksamkeit : Kontext
             {
                 [Feld(Value = "7280", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]

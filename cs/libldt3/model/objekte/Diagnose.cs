@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -30,10 +31,11 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
+            /// Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen
+            /// werden.
             /// </summary>
             [Objekt(Value = "0100")]
-            public class Diagnose
+            public class Diagnose : Kontext
             {
                 [Feld(Value = "4207", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]

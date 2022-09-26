@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -28,13 +29,14 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// In diesem Objekt können Körperkenngrößen zum Patienten (Größe, Gewicht) übertragen werden.
+            /// In diesem Objekt können Körperkenngrößen zum Patienten (Größe, Gewicht)
+            /// übertragen werden.
             /// </summary>
             [Objekt(Value = "0069")]
-            public class Koerperkenngroessen
+            public class Koerperkenngroessen : Kontext
             {
                 [Objekt]
-                public class Messwert
+                public class Messwert : Kontext
                 {
                     public float? Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]

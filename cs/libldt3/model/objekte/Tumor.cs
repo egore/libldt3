@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.regel;
 
 namespace libldt3
@@ -34,7 +35,7 @@ namespace libldt3
             /// Beauftragung und für den Befund transportiert werden.
             /// </summary>
             [Objekt(Value = "0056")]
-            public class Tumor
+            public class Tumor : Kontext
             {
                 [Feld(Value = "7364", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]

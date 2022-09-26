@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -33,10 +34,10 @@ namespace libldt3
             /// Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
             /// </summary>
             [Objekt(Value = "0014")]
-            public class Arztidentifikation
+            public class Arztidentifikation : Kontext
             {
                 [Objekt]
-                public class ArztId
+                public class ArztId : Kontext
                 {
                     public string Value;
                     [Feld(Value = "0308", Feldart = Feldart.bedingt_muss)]

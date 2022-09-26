@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
 using libldt3.model.regel.kontext;
@@ -34,7 +35,7 @@ namespace libldt3
             /// Befund "8205"
             /// </summary>
             [Datenpaket(Value = Satzart.Befund, Kontextregeln = new[] { typeof(K005) })]
-            public class Befund : Satz
+            public class Befund : Satz, Kontext
             {
                 [Feld(Value = "8136", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 12)]

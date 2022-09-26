@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -28,10 +29,11 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// In diesem Objekt können semantisch zusammenhängende Texte oder Dateien (Base64-kodiert) übertragen werden.
+            /// In diesem Objekt können semantisch zusammenhängende Texte oder Dateien
+            /// (Base64-kodiert) übertragen werden.
             /// </summary>
             [Objekt(Value = "0068")]
-            public class Fliesstext
+            public class Fliesstext : Kontext
             {
                 [Feld(Value = "3564", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 990)]

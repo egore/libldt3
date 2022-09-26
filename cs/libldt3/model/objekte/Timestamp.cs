@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.regel;
 
 namespace libldt3
@@ -33,7 +34,7 @@ namespace libldt3
             /// Ein Zeitstempel
             /// </summary>
             [Objekt(Value = "0054")]
-            public class Timestamp
+            public class Timestamp : Kontext
             {
                 [Feld(Value = "7278", Feldart = Feldart.muss)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]

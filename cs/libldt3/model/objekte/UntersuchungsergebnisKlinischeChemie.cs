@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -33,10 +34,10 @@ namespace libldt3
             /// übermittelt.
             /// </summary>
             [Objekt(Value = "0060")]
-            public class UntersuchungsergebnisKlinischeChemie
+            public class UntersuchungsergebnisKlinischeChemie : Kontext
             {
                 [Objekt]
-                public class KatalogReferenz
+                public class KatalogReferenz : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -57,7 +58,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Test
+                public class Test : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
@@ -78,7 +79,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class DarstellungErgebniswerteErweitert
+                public class DarstellungErgebniswerteErweitert : Kontext
                 {
                     public DarstellungErgebniswerte? Value;
                     [Feld(Value = "8420", Feldart = Feldart.bedingt_kann)]
@@ -89,7 +90,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class ErgebnisWert
+                public class ErgebnisWert : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]

@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -32,7 +33,7 @@ namespace libldt3
             /// Hier werden Informationen zu Medikamenten zusammengefasst.
             /// </summary>
             [Objekt(Value = "0070")]
-            public class Medikament
+            public class Medikament : Kontext
             {
                 [Feld(Value = "8243", Name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 40)]

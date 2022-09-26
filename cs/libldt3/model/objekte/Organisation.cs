@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -31,10 +32,10 @@ namespace libldt3
             /// Mit diesem Objekt werden Organisationsstrukturen abgebildet.
             /// </summary>
             [Objekt(Value = "0043")]
-            public class Organisation
+            public class Organisation : Kontext
             {
                 [Objekt]
-                public class Funktionsbezeichnung_
+                public class Funktionsbezeichnung_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]

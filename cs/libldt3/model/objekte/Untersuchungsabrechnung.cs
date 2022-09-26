@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 using libldt3.model.regel.kontext;
@@ -37,10 +38,10 @@ namespace libldt3
             /// Werte transportiert, die für die ordnungsgemäße Abrechnung des Auftrages
             /// notwendig sind.
             [Objekt(Value = "0058", Kontextregeln = new[] { typeof(K005) })]
-            public class Untersuchungsabrechnung
+            public class Untersuchungsabrechnung : Kontext
             {
                 [Objekt]
-                public class Gebuehrennummer_
+                public class Gebuehrennummer_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8406", Feldart = Feldart.bedingt_muss)]

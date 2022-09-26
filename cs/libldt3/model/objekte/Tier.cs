@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -36,7 +37,7 @@ namespace libldt3
             /// beschrieben.
             /// </summary>
             [Objekt(Value = "0053")]
-            public class Tier
+            public class Tier : Kontext
             {
                 [Feld(Value = "7319", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]

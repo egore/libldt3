@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -35,10 +36,10 @@ namespace libldt3
             /// Die Darstellung des Antibiogramms erfolgt als mehrdimensionale
             /// Matrix.
             [Objekt(Value = "0011")]
-            public class Antibiogramm
+            public class Antibiogramm : Kontext
             {
                 [Objekt]
-                public class WirkstoffIdent_
+                public class WirkstoffIdent_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7288", Feldart = Feldart.bedingt_kann)]
@@ -56,7 +57,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class KeimIdentifizierung
+                public class KeimIdentifizierung : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7367", Feldart = Feldart.bedingt_muss)]
@@ -74,7 +75,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class ResistenzInterpretationErweitert
+                public class ResistenzInterpretationErweitert : Kontext
                 {
                     public ResistenzInterpretation? Value;
                     [Feld(Value = "7424", Feldart = Feldart.kann)]

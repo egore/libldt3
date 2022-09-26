@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -33,10 +34,10 @@ namespace libldt3
             /// Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
             /// </summary>
             [Objekt(Value = "0042", Kontextregeln = new[] { typeof(K099) })]
-            public class Normalwert
+            public class Normalwert : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K002) })]
-                public class NormalwertGrenze
+                public class NormalwertGrenze : Kontext
                 {
                     public float? Value;
                     [Feld(Value = "8419", Feldart = Feldart.kann)]

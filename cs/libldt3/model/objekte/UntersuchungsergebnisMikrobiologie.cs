@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel.kontext;
 
@@ -42,10 +43,10 @@ namespace libldt3
             /// Erregermenge wird als semiquantitatives Ergebnis abhängig des
             /// Untersuchungsmaterials dargestellt.
             [Objekt(Value = "0061", Kontextregeln = new[] { typeof(K073), typeof(K076) })]
-            public class UntersuchungsergebnisMikrobiologie
+            public class UntersuchungsergebnisMikrobiologie : Kontext
             {
                 [Objekt]
-                public class Keim
+                public class Keim : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7355", Feldart = Feldart.bedingt_muss)]
@@ -84,7 +85,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class KatalogReferenz
+                public class KatalogReferenz : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -102,7 +103,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class NachweisverfahrenErweitert
+                public class NachweisverfahrenErweitert : Kontext
                 {
                     public Nachweisverfahren? Value;
                     [Feld(Value = "7302", Feldart = Feldart.bedingt_muss)]
@@ -111,7 +112,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class ResistenzMethodeErweitert
+                public class ResistenzMethodeErweitert : Kontext
                 {
                     public ResistenzMethode? Value;
                     [Feld(Value = "8111", Feldart = Feldart.bedingt_muss)]

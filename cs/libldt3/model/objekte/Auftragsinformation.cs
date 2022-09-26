@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -34,10 +35,10 @@ namespace libldt3
             /// Dringlichkeit des Auftrags definiert.
             /// </summary>
             [Objekt(Value = "0013")]
-            public class Auftragsinformation
+            public class Auftragsinformation : Kontext
             {
                 [Objekt]
-                public class Befundweg
+                public class Befundweg : Kontext
                 {
                     public ZusaetzlicherBefundweg? Value;
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]

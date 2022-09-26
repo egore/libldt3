@@ -19,32 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using libldt3.attributes;
-using libldt3.model;
 
 namespace libldt3
 {
     namespace model
     {
-        namespace objekte
-        {
-            /// <summary>
-            /// Das Objekt Mutterschaft fasst die Angaben zur Mutterschaft zusammen.
-            /// </summary>
-            [Objekt(Value = "0040")]
-            public class Mutterschaft : Kontext
-            {
-                [Feld(Value = "3668", Feldart = Feldart.muss)]
-                [Regelsatz(Laenge = 2)]
-                public int? AnzahlSchwangerschaften;
-                [Feld(Value = "3664", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 2)]
-                public int? AnzahlGeburten;
-                [Feld(Value = "3666", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 2)]
-                public int? AnzahlKinder;
 
-            }
+        /// <summary>
+        ///  Tagging-Interface, für Objekte oder Sätze.
+        /// </summary>
+        /// Nur diese Objekte können als Kontext für das einlesen von Zeilen verwendet werden.
+        public interface Kontext
+        {
+
+
         }
+
     }
 }

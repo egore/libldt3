@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -28,10 +29,11 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// Hier werden alle Informationen zusammengefasst, die im Kontext mit der Erstellung des Datensatzes stehen.
+            /// Hier werden alle Informationen zusammengefasst, die im Kontext mit der
+            /// Erstellung des Datensatzes stehen.
             /// </summary>
             [Objekt(Value = "0032")]
-            public class Kopfdaten
+            public class Kopfdaten : Kontext
             {
                 [Feld(Value = "8151", Name = "Sendendes_System", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 16)]

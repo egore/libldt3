@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -43,7 +44,7 @@ namespace libldt3
             /// (Disease-Management-Programme) (§ 137 f SGB V) und in der Integrierten
             /// Versorgung (§§ 140ff SGB V).
             [Objekt(Value = "0006")]
-            public class AbrechnungSelektivvertrag
+            public class AbrechnungSelektivvertrag : Kontext
             {
                 [Feld(Value = "3130", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]

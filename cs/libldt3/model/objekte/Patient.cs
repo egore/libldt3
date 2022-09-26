@@ -21,6 +21,7 @@
  */
 using NodaTime;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 
@@ -34,7 +35,7 @@ namespace libldt3
             /// In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
             /// </summary>
             [Objekt(Value = "0045")]
-            public class Patient
+            public class Patient : Kontext
             {
                 [Feld(Value = "8147", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 6)]

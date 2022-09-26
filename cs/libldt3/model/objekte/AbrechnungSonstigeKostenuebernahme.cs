@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -37,7 +38,7 @@ namespace libldt3
             /// werden oder die Materialien betreffen, die nicht humanen Ursprungs sind. Der
             /// Rechnungsempfänger ist frei wählbar.
             [Objekt(Value = "0005")]
-            public class AbrechnungSonstigeKostenuebernahme
+            public class AbrechnungSonstigeKostenuebernahme : Kontext
             {
                 [Feld(Value = "7261", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]

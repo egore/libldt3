@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 using libldt3.model.regel.kontext;
@@ -35,10 +36,10 @@ namespace libldt3
             /// Materials übermittelt sowie Angaben zum Material selbst.
             /// </summary>
             [Objekt(Value = "0037", Kontextregeln = new[] { typeof(K006) })]
-            public class Material
+            public class Material : Kontext
             {
                 [Objekt]
-                public class AnorganischesMaterialErweitert
+                public class AnorganischesMaterialErweitert : Kontext
                 {
                     public AnorganischesMaterial? Value;
                     [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.bedingt_kann)]
@@ -47,7 +48,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Medikamenteneinnahme_
+                public class Medikamenteneinnahme_ : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8170", Feldart = Feldart.bedingt_kann)]
