@@ -1,5 +1,6 @@
 <#import "./comments.ftl" as comments/>
-#![allow(dead_code)]
+<#import "./attributes.ftl" as attributes/>
+#![allow(dead_code, unused_imports, non_camel_case_types)]
 
 <@genuse struct=struct/>
 
@@ -16,6 +17,7 @@ pub struct ${struct.simpleName}_${nestedType.simpleName} {
 pub struct ${struct.simpleName} {
 <#list struct.fields as field>
 <#if field.simpleName != "LOG">
+    <@attributes.fieldattributes field/>
     <@snakecase name=field.simpleName/>: <@converttype type=field.type/><#sep>,
 </#if>
 </#list>
@@ -26,3 +28,9 @@ pub struct ${struct.simpleName} {
 impl ${interface.simpleName} for ${struct.simpleName} {
 }
 </#list>
+<#assign asd=struct.getAnnotation(Objekt.class)>
+<#if asd??>
+asd
+<#else>
+bsd
+</#if>

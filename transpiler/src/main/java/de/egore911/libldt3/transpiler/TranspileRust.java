@@ -27,7 +27,9 @@ import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateNotFoundException;
+import libldt3.annotations.Objekt;
 import spoon.MavenLauncher;
+import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtType;
 
 public class TranspileRust {

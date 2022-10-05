@@ -1,0 +1,8 @@
+[package]
+name = "libldt3_macros"
+version = "0.1.0"
+edition = "2021"
+authors = ["Christoph Brill <opensource@christophbrill.de>"]
+
+[lib]
+crate_type = ["proc-macro"]
