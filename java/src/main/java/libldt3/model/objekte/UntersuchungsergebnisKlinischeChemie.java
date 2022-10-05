@@ -32,6 +32,8 @@ import libldt3.model.enums.DarstellungErgebniswerte;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.regel.kontext.K072;
+import libldt3.model.regel.kontext.K076;
 
 /**
  * In diesem Objekt werden die Ergebnisse aus dem Bereich Klinische Chemie
@@ -40,7 +42,7 @@ import libldt3.model.enums.TestStatus;
 @Objekt("0060")
 public class UntersuchungsergebnisKlinischeChemie implements Kontext {
 
-    @Objekt(/* TODO kontextregeln = K072.class, K076.class */)
+    @Objekt(kontextregeln = {K072.class, K076.class})
     public static class KatalogReferenz implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
@@ -61,7 +63,7 @@ public class UntersuchungsergebnisKlinischeChemie implements Kontext {
         public TestStatus teststatus;
     }
 
-    @Objekt(/* TODO kontextregeln = K072.class, K076.class */)
+    @Objekt(kontextregeln = {K072.class, K076.class})
     public static class Test implements Kontext {
         @SuppressWarnings("unused")
         public String value;
