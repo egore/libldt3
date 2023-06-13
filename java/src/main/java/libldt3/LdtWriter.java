@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -93,14 +92,14 @@ public class LdtWriter {
             for (Satz o : data) {
                 handleOutput(o, writer);
             }
-        } catch (IllegalArgumentException | IllegalAccessException | NoSuchMethodException | SecurityException
+        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException
                 | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void handleOutput(Object o, PrintWriter writer) throws IllegalArgumentException, IllegalAccessException,
-            NoSuchMethodException, SecurityException, InvocationTargetException {
+            NoSuchFieldException, SecurityException, InvocationTargetException {
         Datenpaket datenpaket = o.getClass().getAnnotation(Datenpaket.class);
         if (datenpaket != null) {
             writer.printf("0138000%s\r\n", datenpaket.value().code);
@@ -113,7 +112,7 @@ public class LdtWriter {
 
     @SuppressWarnings("rawtypes")
     private void writeObjekt(Object o, PrintWriter writer)
-            throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+            throws IllegalAccessException, NoSuchFieldException, InvocationTargetException {
         Objekt objekt = o.getClass().getAnnotation(Objekt.class);
         if (objekt != null && !objekt.value().isEmpty()) {
             writer.printf("0178002Obj_%s\r\n", objekt.value());
@@ -150,7 +149,7 @@ public class LdtWriter {
      * Transform an object into its LDT 3.0 represenation
      */
     private void writeTextualRepresentation(Field field, PrintWriter writer, Feld feld, Object object)
-            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+            throws NoSuchFieldException, SecurityException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException {
         if (feld.feldart() == Feldart.muss && object == null) {
             if (mode == Mode.STRICT) {
@@ -226,11 +225,9 @@ public class LdtWriter {
             return;
         }
         if (Enum.class.isAssignableFrom(object.getClass())) {
-            Method method = object.getClass().getDeclaredMethod("getCode");
-            if (method != null) {
-                writeLdtLine(writer, feld, (String) method.invoke(object));
-                return;
-            }
+            Field codeField = object.getClass().getDeclaredField("code");
+            writeLdtLine(writer, feld, (String) codeField.get(object));
+            return;
         }
         Objekt annotation = object.getClass().getAnnotation(Objekt.class);
         if (annotation != null && annotation.value().isEmpty()) {

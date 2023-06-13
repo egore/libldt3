@@ -24,7 +24,6 @@ package libldt3;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
@@ -298,7 +297,7 @@ public class LdtReader {
 
                     // .. and set the value on the target object
                     field.set(currentObject, value);
-                } catch (IllegalArgumentException | IllegalAccessException | NoSuchMethodException | SecurityException
+                } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException
                         | InvocationTargetException | InstantiationException e) {
                     if (mode == Mode.STRICT) {
                         throw new IllegalStateException(e);
@@ -478,7 +477,7 @@ public class LdtReader {
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private static Object convertType(Field field, Type type, String payload, Stack<Kontext> stack)
-            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+            throws NoSuchFieldException, SecurityException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException, InstantiationException {
         if (type == String.class) {
             return payload;
@@ -499,16 +498,14 @@ public class LdtReader {
             return LocalTime.parse(payload, LdtConstants.FORMAT_TIME);
         }
         if ((type instanceof Class && ((Class<?>) type).isEnum())) {
-            Method method = ((Class) type).getDeclaredMethod("getCode");
-            if (method != null) {
-                for (Object e : EnumSet.allOf((Class<? extends Enum>) type)) {
-                    String code = (String) method.invoke(e);
-                    if (payload.equals(code)) {
-                        return e;
-                    }
+            Field codeField = ((Class) type).getDeclaredField("code");
+            for (Object e : EnumSet.allOf((Class<? extends Enum>) type)) {
+                String code = (String) codeField.get(e);
+                if (payload.equals(code)) {
+                    return e;
                 }
-                return null;
             }
+            return null;
         }
         if ((type instanceof Class && ((Class<?>) type).isAssignableFrom(List.class))) {
             Object currentObject = peekCurrentObject(stack);

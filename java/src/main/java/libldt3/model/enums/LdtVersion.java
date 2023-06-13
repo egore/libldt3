@@ -35,8 +35,4 @@ public enum LdtVersion {
         this.code = code;
     }
 
-    public String getCode() {
-        return code;
-    }
-
 }

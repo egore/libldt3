@@ -47,8 +47,4 @@ public enum ZusaetzlicherBefundweg {
         this.code = code;
     }
 
-    public String getCode() {
-        return code;
-    }
-
 }

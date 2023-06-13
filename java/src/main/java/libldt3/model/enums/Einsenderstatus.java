@@ -60,7 +60,4 @@ public enum Einsenderstatus {
         this.code = code;
     }
 
-    public String getCode() {
-        return code;
-    }
 }

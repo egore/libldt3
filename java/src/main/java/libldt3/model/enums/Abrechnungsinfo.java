@@ -56,8 +56,4 @@ public enum Abrechnungsinfo {
         this.code = code;
     }
 
-    public String getCode() {
-        return code;
-    }
-
 }
