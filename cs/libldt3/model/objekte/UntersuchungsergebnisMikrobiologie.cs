@@ -42,7 +42,7 @@ namespace libldt3
             /// bzw. MHK´s (Minimale Hemm Konzentration) für einzelne Antibiotika. Die
             /// Erregermenge wird als semiquantitatives Ergebnis abhängig des
             /// Untersuchungsmaterials dargestellt.
-            [Objekt(Value = "0061", Kontextregeln = new[] { typeof(K073), typeof(K076) })]
+            [Objekt(Value = "0061", Kontextregeln = new[] { typeof(K076) })]
             public class UntersuchungsergebnisMikrobiologie : Kontext
             {
                 [Objekt]

@@ -14,7 +14,6 @@ use crate::model::objekte::Namenskennung::Namenskennung;
 use crate::model::objekte::Normalwert::Normalwert;
 use crate::model::objekte::Timestamp::Timestamp;
 use crate::model::objekte::Untersuchungsabrechnung::Untersuchungsabrechnung;
-use crate::model::regel::kontext::K073::K073;
 use crate::model::regel::kontext::K076::K076;
 use crate::model::regel::kontext::Kontextregel::Kontextregel;
 
