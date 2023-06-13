@@ -21,14 +21,51 @@
  */
 package libldt3.model.regel.kontext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+
 /**
- * Wenn Inhalt von FK 8418 ≠ M, F oder S ist, dann muss FK 8225 mindestens einmal vorkommen.
+ * Wenn FK 3412, FK 3413, FK 3414, FK 3415, FK 3416, FK 3417, FK 3418 oder FK 3419 vorhanden sind, dann muss FK 8225
+ * mindestens einmal im Obj_0055 vorkommen.
  */
 public class K076 implements Kontextregel {
 
+    private static final Logger LOG = LoggerFactory.getLogger(K076.class);
+
+    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("3412", "3413",
+            "3414", "3415", "3416", "3417", "3418", "3419", "8225")));
+
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        if (containsAnyString(fields.get("3412"), owner) ||
+                containsAnyString(fields.get("3413"), owner) ||
+                containsAnyString(fields.get("3414"), owner) ||
+                containsAnyString(fields.get("3415"), owner) ||
+                containsAnyString(fields.get("3416"), owner) ||
+                containsAnyString(fields.get("3417"), owner) ||
+                containsAnyString(fields.get("3418"), owner) ||
+                containsAnyString(fields.get("3419"), owner)) {
+            return containsAnyString(fields.get("8225"), owner);
+        }
+
+        return true;
     }
 
 }
