@@ -1,5 +1,6 @@
-package libldt3.model.regel;
+package libldt3.model.regel.test;
 
+import libldt3.model.regel.F001;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

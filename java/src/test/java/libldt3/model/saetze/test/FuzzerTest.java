@@ -1,10 +1,17 @@
-package libldt3.model.saetze;
+package libldt3.model.saetze.test;
 
 import de.egore911.fuzz.Fuzzer;
 import libldt3.LdtConstants;
 import libldt3.LdtReader;
 import libldt3.LdtWriter;
 
+import libldt3.model.saetze.Auftrag;
+import libldt3.model.saetze.Befund;
+import libldt3.model.saetze.LaborDatenpaketAbschluss;
+import libldt3.model.saetze.LaborDatenpaketHeader;
+import libldt3.model.saetze.PraxisDatenpaketAbschluss;
+import libldt3.model.saetze.PraxisDatenpaketHeader;
+import libldt3.model.saetze.Satz;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

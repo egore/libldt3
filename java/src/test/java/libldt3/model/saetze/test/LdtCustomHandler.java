@@ -1,4 +1,4 @@
-package libldt3.model.saetze;
+package libldt3.model.saetze.test;
 
 import de.egore911.fuzz.Fuzzer;
 import libldt3.annotations.Feld;
@@ -74,7 +74,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                         return "C12";
                     }
                     if (klass == F007.class) {
-                        return LdtVersion.LDT3_1_0;
+                        return LdtVersion.LDT3_2_15;
                     }
                     if (klass == F012.class) {
                         return "X/31/0101/01/[]}";
