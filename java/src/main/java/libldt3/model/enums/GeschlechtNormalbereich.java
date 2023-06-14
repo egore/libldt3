@@ -26,7 +26,7 @@ package libldt3.model.enums;
  */
 public enum GeschlechtNormalbereich {
 
-    maennlich("M"), weiblich("W"), unbestimmt("X");
+    maennlich("M"), weiblich("W"), divers("D"), unbestimmt("X");
 
     public final String code;
 

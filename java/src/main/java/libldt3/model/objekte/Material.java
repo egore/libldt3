@@ -32,6 +32,7 @@ import libldt3.model.enums.AnorganischesMaterial;
 import libldt3.model.enums.Materialart;
 import libldt3.model.enums.OrganischesMaterial;
 import libldt3.model.regel.F006;
+import libldt3.model.regel.erlaubt.E012;
 import libldt3.model.regel.kontext.K006;
 
 /**
@@ -63,7 +64,7 @@ public class Material implements Kontext {
     @Regelsatz(maxLaenge = 60)
     public String probengefaessIdent;
     @Feld(value = "8429", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 4)
+    @Regelsatz(value = E012.class, maxLaenge = 4)
     public String probenmaterialIndex;
     @Feld(value = "8428", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)

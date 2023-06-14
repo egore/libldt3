@@ -21,15 +21,27 @@
  */
 package libldt3.model.enums;
 
+/**
+ * E053
+ */
 public enum Dokumententyp {
+    /** Muster 6 */
     Muster6("006"),
+    /** Muster 10 */
     Muster10("010"),
+    /** Muster 10A */
     Muster10A("10A"),
+    /** Muster 39 */
     Muster39("039"),
+    /** Auftragsdokument PKV-FA */
     AuftragsdokumentPKV_FA("090"),
+    /** Auftragsdokument PKV-LG */
     AuftragsdokumentPKV_LG("091"),
+    /** Auftragsdokument IGeL */
     Auftragsdokument_IGeL("092"),
+    /** Auftragsdokument Sonstige Kostenübernahme */
     Auftragsdokument_Sonstige_Kostenuebernahme("093"),
+    /** Auftragsdokument Selektivvertrag */
     Auftragsdokument_Selektivvertrag("094"),
     Laborbefund("100"),
     Mutterpass("101"),
@@ -39,8 +51,11 @@ public enum Dokumententyp {
     Medikationsplan("120"),
     Verlaufsbericht("150"),
     Behandlungsbericht("160"),
-    Einverstaendniserklärung_lt_GenDG_Gen_Diagnostik_Gesetz("200"),
+    /** Einverständniserklärung lt. GenDG (Gen-Diagnostik-Gesetz) */
+    Einverstaendniserklaerung_lt_GenDG_Gen_Diagnostik_Gesetz("200"),
+    /** weitere laborspezifische Dokumente */
     weitere_laborspezifische_Dokumente("250"),
+    /** Allergie/RAST */
     Allergie_RAST("251"),
     Molekulardiagnostik("252"),
     Endokrinologie("253"),
@@ -49,10 +64,13 @@ public enum Dokumententyp {
     Funktionsdiagnostik("256"),
     Infektionsserologie("257"),
     Kinderwunsch("258"),
+    /** Meldung gemäß IfSG (Infektionsschutz-Gesetz) */
     Meldung_gemaess_IfSG_Infektionsschutz_Gesetz("300"),
+    /** Meldung Krebsregister */
     Meldung_Krebsregister("301"),
     Normbereichsgrafik("400"),
     Rechnung("500"),
+    /** LDT-Datensatz */
     LDT_Daten("900"),
     sonstige("999");
 

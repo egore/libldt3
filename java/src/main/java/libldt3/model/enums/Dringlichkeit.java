@@ -26,7 +26,18 @@ package libldt3.model.enums;
  */
 public enum Dringlichkeit {
 
+    /**
+     * Es besteht der Verdacht bzw. der Patient ist vital bedroht oder der Befund ist für das weitere operative Vorgehen
+     * maßgeblich. Für die Differentialdiagnostik ist die unverzügliche Erbringung und Übermittlung der Laborbefunde
+     * unabdingbar (z.B. Troponin zum Ausschluss akuter Myokardinfarkt, PTH bei Nebenschilddrüsen-OP, histologische
+     * Schnellschnitte bei Ablation mammae).
+     */
     Notfall("1"),
+    /**
+     * Der Patient ist nicht vital bedroht, aber eine routinemäßige Abarbeitung der Proben beeinträchtigt das therapeutische
+     * Vorgehen (z.B. Quick bei Marcumar-Einstellung). Die Ergebnisse werden schnellstmöglich nach Probeneingang im Labor an
+     * den Einsender übermittelt. Einsender und Labor sollten sich über die Frist einigen.
+     */
     eilig("2");
 
     public final String code;

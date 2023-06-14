@@ -45,7 +45,14 @@ public enum DmpKennzeichnung {
     /** Asthma bronchiale */
     AsthmaBronchiale("05"),
     /** COPD (chronic obstructive pulmo-nary disease) */
-    ChronicObstructivePulmonaryDisease("06");
+    ChronicObstructivePulmonaryDisease("06"),
+    /** Chronische Herzinsuffizienz */
+    ChronischeHerzinsuffizienz("07"),
+    Depression("08"),
+    /** Rückenschmerz */
+    Rueckenschmerz("09"),
+    Rheuma("10"),
+    Osteoporose("11");
 
     public final String code;
 

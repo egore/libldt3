@@ -36,7 +36,7 @@ Folgende Punkte sind als Einschränkungen anzumerken:
 - Im Datenmodell wurde "String" als default Datentyp verwendet, sofern dieser nicht anderweitig erkennbar ist. Daher gibt es potentiell Felder, die sich besser andere Typen darstellen lassen.
 
 Folgende Details sind nicht umgesetzt
-- Nicht unterstützt: E003, E010, E011, E012, E014, E028, E036, E048, E066, E071-E145, E149-E155, E157
+- Nicht unterstützt: E028, E048, E066, E071-E145, E149-E155, E157-E181
 - Nicht in LDT 3.0 verwendet: E031, 9300, F019
 
 # Verwendung in kommerziellen Projekten

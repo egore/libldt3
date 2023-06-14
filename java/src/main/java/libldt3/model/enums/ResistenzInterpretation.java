@@ -35,7 +35,9 @@ public enum ResistenzInterpretation {
     /** resistent/unwirksam */
     resistentUnwirksam("3"),
     /** wirksam in hohen Konzentrationen */
-    wirksamInHohenKonzentrationen("4");
+    wirksamInHohenKonzentrationen("4"),
+    /** natürliche Resistenz */
+    natuerlicheResistenz("5");
 
     public final String code;
 

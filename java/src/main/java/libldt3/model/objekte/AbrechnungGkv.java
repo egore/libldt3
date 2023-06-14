@@ -41,6 +41,7 @@ import libldt3.model.regel.F002;
 import libldt3.model.regel.F010;
 import libldt3.model.regel.F011;
 import libldt3.model.regel.F022;
+import libldt3.model.regel.erlaubt.E010;
 import libldt3.model.regel.kontext.K041;
 
 /**
@@ -98,7 +99,7 @@ public class AbrechnungGkv implements Kontext {
     @Regelsatz(laenge = 5)
     public List<String> ausnahmeindikation;
     @Feld(value = "4122", feldart = Feldart.muss)
-    @Regelsatz(laenge = 2)
+    @Regelsatz(value = E010.class, laenge = 2)
     public String abrechnungsgebiet;
     @Feld(value = "4124", feldart = Feldart.kann)
     @Regelsatz(minLaenge = 5, maxLaenge = 60)
@@ -123,7 +124,7 @@ public class AbrechnungGkv implements Kontext {
     public Behandlungsanlass kurativPraeventivEss;
     @Feld(value = "4231", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public String kontrolluntersuchungBekannterInfektion;
+    public Boolean kontrolluntersuchungBekannterInfektion;
     @Feld(value = "4241", feldart = Feldart.bedingt_muss)
     @Regelsatz(value = { F011.class, F022.class }, laenge = 9)
     public String lebenslangeArztnummer;

@@ -30,6 +30,7 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
+import libldt3.model.enums.KeimArt;
 import libldt3.model.enums.Nachweisverfahren;
 import libldt3.model.enums.ResistenzMethode;
 import libldt3.model.enums.TestStatus;
@@ -57,6 +58,8 @@ public class UntersuchungsergebnisMikrobiologie implements Kontext {
         @Feld(value = "7355", feldart = Feldart.bedingt_muss)
         @Regelsatz(maxLaenge = 60)
         public String keimName;
+        @Feld(value = "7427", feldart = Feldart.bedingt_muss)
+        KeimArt art;
         @Feld(value = "7301", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 1)
         public Ergebnis ergebnis;

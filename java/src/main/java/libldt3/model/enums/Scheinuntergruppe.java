@@ -28,12 +28,12 @@ public enum Scheinuntergruppe {
 
     Auftragsleistungen("21"), Konsiliaruntersuchung("23"), MitWeiterbehandlung("24"),
     /**
-     * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
+     * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung (Muster 10)
      */
     Muster10("27"),
     /**
      * Anforderungsschein für Laboratoriumsuntersuchungen bei
-     * Laborgemeinschaften
+     * Laborgemeinschaften (Muster 10A)
      */
     Muster10A("28");
 

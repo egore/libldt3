@@ -116,7 +116,7 @@ public class UntersuchungsergebnisZytologie implements Kontext {
     public Boolean zellmaterialNichtVerwertbar;
     @Feld(value = "7400", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public String hpvBefund;
+    public Boolean hpvBefund;
     @Feld(value = "7401", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 1)
     public Ergebnis highRisk;

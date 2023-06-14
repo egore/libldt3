@@ -21,6 +21,9 @@
  */
 package libldt3.model.enums;
 
+/**
+ * E038
+ */
 public enum Lokalisation {
 
     /** rechts */

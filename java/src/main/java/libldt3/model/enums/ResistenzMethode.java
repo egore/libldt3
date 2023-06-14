@@ -35,7 +35,9 @@ public enum ResistenzMethode {
     /** PCR + Hybridisierung */
     PcrUndHybridisierung("3"),
     /** sonstige */
-    sonstige("4");
+    sonstige("4"),
+    /** Breakpoint-Methode */
+    BreakpointMethode("5");
 
     public final String code;
 

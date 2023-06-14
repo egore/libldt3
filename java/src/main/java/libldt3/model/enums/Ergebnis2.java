@@ -22,7 +22,7 @@
 package libldt3.model.enums;
 
 /**
- * E062
+ * E063
  */
 public enum Ergebnis2 {
 

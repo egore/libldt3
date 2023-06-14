@@ -25,6 +25,7 @@ package libldt3.model.enums;
  * E008
  */
 public enum Gebuehrenordnung {
+    EBM("0"),
     /** BMÄ */
     BMAE("1"),
     /** EGO */

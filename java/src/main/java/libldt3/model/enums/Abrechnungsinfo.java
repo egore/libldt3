@@ -47,7 +47,19 @@ public enum Abrechnungsinfo {
     GkgLgPraeventiv("10"),
     /** keine Zuordnung */
     keine_Zuordnung("11"),
-    /** storniert */
+    /** PräOP (Präoperative Laborleistungen**) */
+    PraeOP("12"),
+    /** GKV Krankenhaus */
+    GkvKrankenhaus("13"),
+    /** PKV Krankenhaus */
+    PkvKrankenhaus("14"),
+    /** GKV Muster 6 / 39 */
+    GkvMuster639("15"),
+    /** GKV Muster 10C */
+    GkvMuster10C("16"),
+    /** ÖGD */
+    OeGD("17"),
+    /** storniert (nur in Satzart 8215-Nachforderung zulässig) */
     storniert("99");
 
     public final String code;

@@ -26,7 +26,7 @@ package libldt3.model.enums;
  */
 public enum Geschlecht {
 
-    maennlich("M"), weiblich("W"), unbestimmt("X"), unbekannt("U");
+    maennlich("M"), weiblich("W"), divers("D"), unbestimmt("X"), unbekannt("U");
 
     public final String code;
 

@@ -32,6 +32,7 @@ import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Gebuehrenordnung;
 import libldt3.model.regel.F008;
 import libldt3.model.regel.F009;
+import libldt3.model.regel.erlaubt.E003;
 import libldt3.model.regel.kontext.K005;
 
 /**
@@ -50,7 +51,7 @@ public class Untersuchungsabrechnung implements Kontext {
         @Regelsatz(maxLaenge = 60)
         public String kosten;
         @Feld(value = "5005", feldart = Feldart.bedingt_kann)
-        @Regelsatz(laenge = 3)
+        @Regelsatz(value = E003.class, laenge = 3)
         public Integer multiplikator;
         @Feld(value = "5009", feldart = Feldart.bedingt_kann)
         @Regelsatz(maxLaenge = 60)

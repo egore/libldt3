@@ -45,7 +45,7 @@ public enum StatusRechnungsempfaenger {
     /** sonstige juristische Person */
     SonstigeJuristischePerson("16"),
     /** sonstige medizinische Einrichtung */
-    SonstigeMedizinischeEinrichtung("17");
+    SonstigeMedizinischeEinrichtung("90");
 
     public final String code;
 

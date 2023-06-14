@@ -32,6 +32,7 @@ import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.StatusDringlichkeit;
+import libldt3.model.regel.erlaubt.E012;
 import libldt3.model.regel.kontext.K003;
 
 /**
@@ -76,7 +77,7 @@ public class Untersuchungsanforderung implements Kontext {
         @Regelsatz(maxLaenge = 60)
         public String probenmaterialIdent;
         @Feld(value = "8429", feldart = Feldart.kann)
-        @Regelsatz(maxLaenge = 4)
+        @Regelsatz(value = E012.class, maxLaenge = 4)
         public String probenmaterialIndex;
     }
 

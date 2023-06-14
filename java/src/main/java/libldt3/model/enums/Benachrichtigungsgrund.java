@@ -35,7 +35,11 @@ public enum Benachrichtigungsgrund {
     /** Probenmaterial nicht verwendbar */
     ProbenmaterialNichtVerwendbar("4"),
     /** Probenmaterial unvollständig */
-    ProbenmaterialUnvollstaendig("5");
+    ProbenmaterialUnvollstaendig("5"),
+    /** Meldung nach KFRG* erfolgt */
+    MeldungNachKFRG("6"),
+    /** Meldung nach IfSG** erfolgt */
+    MeldungNachIfSG("7");
 
     public final String code;
 

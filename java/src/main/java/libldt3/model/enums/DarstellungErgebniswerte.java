@@ -40,6 +40,8 @@ public enum DarstellungErgebniswerte {
     Titer_Untergrenze("06"),
     /** Titer mit Obergrenze */
     Titer_Obergrenze("07"),
+    /** trinäres Testergebnis: 1 | 2 | 3 */
+    trinaeresTestergebnis("08"),
     /** Sonstige */
     Sonstige("99");
 

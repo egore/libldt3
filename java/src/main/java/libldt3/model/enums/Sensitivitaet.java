@@ -23,6 +23,7 @@ package libldt3.model.enums;
 
 /**
  * E025
+ * siehe {@see http://www.eucast.org/clinical_breakpoints/} und {@see http://www.nak-deutschland.org}
  */
 public enum Sensitivitaet {
 
@@ -31,7 +32,9 @@ public enum Sensitivitaet {
     /** intermediär */
     intermediaer("I"),
     /** resistent */
-    resistent("R");
+    resistent("R"),
+    /** N = IE (keine Interpretation) */
+    keineInterpretation("N");
 
     public final String code;
 
