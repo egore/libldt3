@@ -24,6 +24,7 @@ package de.egore911.fuzz;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -84,9 +85,9 @@ public class Fuzzer {
                 Exception ie = null;
                 for (Class<? extends T> subType : subTypes) {
                     try {
-                        t = subType.newInstance();
+                        t = subType.getDeclaredConstructor().newInstance();
                         break;
-                    } catch (InstantiationException e) {
+                    } catch (InstantiationException | NoSuchMethodException | InvocationTargetException e) {
                         // Ok, let's try again
                         ie = e;
                     }
@@ -96,10 +97,10 @@ public class Fuzzer {
                     throw new RuntimeException("Could not instantiate " + klass + " in " + subTypes, ie);
                 }
             } else {
-                t = klass.newInstance();
+                t = klass.getDeclaredConstructor().newInstance();
             }
             return t;
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
@@ -135,13 +136,13 @@ public class Fuzzer {
             }
 
             return t;
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	private Object randomForType(Type type, String packageName, int depth) throws IllegalAccessException, InstantiationException {
+	private Object randomForType(Type type, String packageName, int depth) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         if (type.equals(int.class) || type.equals(Integer.class)) {
             return randomInt();
         } else if (type.equals(long.class) ||type.equals(Long.class)) {
@@ -177,7 +178,7 @@ public class Fuzzer {
             } else if (rawType.equals(Set.class)) {
                 o = new HashSet();
             } else {
-                o = rawType.newInstance();
+                o = rawType.getDeclaredConstructor().newInstance();
             }
             Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
             for (Type t : actualTypeArguments) {

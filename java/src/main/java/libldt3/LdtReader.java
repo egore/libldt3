@@ -297,8 +297,8 @@ public class LdtReader {
 
                     // .. and set the value on the target object
                     field.set(currentObject, value);
-                } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException
-                        | InvocationTargetException | InstantiationException e) {
+                } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException |
+                         InvocationTargetException | InstantiationException | NoSuchMethodException e) {
                     if (mode == Mode.STRICT) {
                         throw new IllegalStateException(e);
                     } else {
@@ -333,7 +333,7 @@ public class LdtReader {
     private void evaluateContextRules(Object o, Class<? extends Kontextregel>[] kontextRegeln) {
         for (Class<? extends Kontextregel> kontextregel : kontextRegeln) {
             try {
-                if (!kontextregel.newInstance().isValid(o)) {
+                if (!kontextregel.getDeclaredConstructor().newInstance().isValid(o)) {
                     if (mode == Mode.STRICT) {
                         throw new IllegalArgumentException(
                                 "Context rule " + kontextregel.getSimpleName() + " failed on object " + o);
@@ -341,7 +341,7 @@ public class LdtReader {
                         LOG.warn("Context rule {} failed on object {}", kontextregel.getSimpleName(), o);
                     }
                 }
-            } catch (IllegalAccessException | InstantiationException e) {
+            } catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
                 if (mode == Mode.STRICT) {
                     throw new IllegalArgumentException(
                             "Context rule " + kontextregel.getSimpleName() + " failed on object " + o, e);
@@ -353,7 +353,7 @@ public class LdtReader {
     }
 
     private void validateFieldPayload(Field field, String payload)
-            throws IllegalAccessException, InstantiationException {
+            throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
         outer: for (Regelsatz regelsatz : field.getAnnotationsByType(Regelsatz.class)) {
 
             if (regelsatz.laenge() >= 0) {
@@ -414,10 +414,11 @@ public class LdtReader {
         return buffer.toString();
     }
 
-    private Regel getRegel(Class<? extends Regel> regel) throws IllegalAccessException, InstantiationException {
+    private Regel getRegel(Class<? extends Regel> regel) throws IllegalAccessException, InstantiationException,
+            NoSuchMethodException, InvocationTargetException {
         Regel instance = regelCache.get(regel);
         if (instance == null) {
-            instance = regel.newInstance();
+            instance = regel.getDeclaredConstructor().newInstance();
             regelCache.put(regel, instance);
         }
         return instance;
@@ -478,7 +479,7 @@ public class LdtReader {
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private static Object convertType(Field field, Type type, String payload, Stack<Kontext> stack)
             throws NoSuchFieldException, SecurityException, IllegalAccessException, IllegalArgumentException,
-            InvocationTargetException, InstantiationException {
+            InvocationTargetException, InstantiationException, NoSuchMethodException {
         if (type == String.class) {
             return payload;
         }
@@ -519,7 +520,7 @@ public class LdtReader {
             return object;
         }
         if (type instanceof Class && ((Class) type).getAnnotation(Objekt.class) != null) {
-            Kontext instance = (Kontext) ((Class) type).newInstance();
+            Kontext instance = (Kontext) ((Class) type).getDeclaredConstructor().newInstance();
             stack.push(instance);
             try {
                 Field declaredField = ((Class) type).getDeclaredField("value");

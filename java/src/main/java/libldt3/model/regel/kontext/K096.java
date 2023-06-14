@@ -38,7 +38,7 @@ public class K096 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K096.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8401", "8418")));
+    private static final Set<String> FIELDTYPES = Set.of("8401", "8418");
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {

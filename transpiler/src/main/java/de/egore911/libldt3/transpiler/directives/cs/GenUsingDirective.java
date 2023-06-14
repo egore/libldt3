@@ -14,7 +14,6 @@ import freemarker.core.Environment;
 import freemarker.ext.beans.StringModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
-import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtFieldRead;
@@ -34,11 +33,11 @@ import spoon.reflect.reference.CtTypeReference;
 public class GenUsingDirective implements TemplateDirectiveModel {
 
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
-            throws TemplateException, IOException {
+            throws IOException {
         CtType<?> class_ = (CtType<?>) (((StringModel) params.get("class")).getWrappedObject());
 
         // Collect all things for "using ..." statements
-        Set<String> usings = new TreeSet<String>();
+        Set<String> usings = new TreeSet<>();
 
         addForClass(class_, usings);
 
@@ -172,7 +171,7 @@ public class GenUsingDirective implements TemplateDirectiveModel {
         }
     }
 
-    private static final String convertPackageToUsing(String package_) {
+    private static String convertPackageToUsing(String package_) {
         if (package_.equals("java.lang") || package_.equals("java.util")) {
             return null;
         }

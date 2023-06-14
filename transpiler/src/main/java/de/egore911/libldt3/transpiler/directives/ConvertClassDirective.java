@@ -2,8 +2,6 @@ package de.egore911.libldt3.transpiler.directives;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import freemarker.core.Environment;
@@ -16,20 +14,16 @@ import spoon.reflect.declaration.CtClass;
 
 public class ConvertClassDirective implements TemplateDirectiveModel {
 
-    public static Map<String, String> CLASS_REPLACEMENTS;
-    static {
-        Map<String, String> map = new HashMap<>();
-        map.put("libldt3.model.objekte.UntersuchungsergebnisZytologie$RecallEmpfohlen", "RecallEmpfohlen_");
-        map.put("libldt3.model.objekte.UntersuchungsergebnisZytologieKrebsvorsorge$TestIdent", "TestIdent_");
-        map.put("libldt3.model.objekte.Antibiogramm$WirkstoffIdent", "WirkstoffIdent_");
-        map.put("libldt3.model.objekte.Befundinformationen$OrderNumber", "OrderNumber_");
-        map.put("libldt3.model.objekte.Material$Medikamenteneinnahme", "Medikamenteneinnahme_");
-        map.put("libldt3.model.objekte.Kommunikationsdaten$ElektronischePostadresse", "ElektronischePostadresse_");
-        map.put("libldt3.model.objekte.Untersuchungsabrechnung$Gebuehrennummer", "Gebuehrennummer_");
-        map.put("libldt3.model.objekte.Organisation$Funktionsbezeichnung", "Funktionsbezeichnung_");
-        map.put("libldt3.model.objekte.Untersuchungsanforderung$ProbengefaessIdent", "ProbengefaessIdent_");
-        CLASS_REPLACEMENTS = Collections.unmodifiableMap(map);
-    }
+    public static Map<String, String> CLASS_REPLACEMENTS = Map.of(
+            "libldt3.model.objekte.UntersuchungsergebnisZytologie$RecallEmpfohlen", "RecallEmpfohlen_",
+            "libldt3.model.objekte.UntersuchungsergebnisZytologieKrebsvorsorge$TestIdent", "TestIdent_",
+            "libldt3.model.objekte.Antibiogramm$WirkstoffIdent", "WirkstoffIdent_",
+            "libldt3.model.objekte.Befundinformationen$OrderNumber", "OrderNumber_",
+            "libldt3.model.objekte.Material$Medikamenteneinnahme", "Medikamenteneinnahme_",
+            "libldt3.model.objekte.Kommunikationsdaten$ElektronischePostadresse", "ElektronischePostadresse_",
+            "libldt3.model.objekte.Untersuchungsabrechnung$Gebuehrennummer", "Gebuehrennummer_",
+            "libldt3.model.objekte.Organisation$Funktionsbezeichnung", "Funktionsbezeichnung_",
+            "libldt3.model.objekte.Untersuchungsanforderung$ProbengefaessIdent", "ProbengefaessIdent_");
 
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
             throws TemplateException, IOException {

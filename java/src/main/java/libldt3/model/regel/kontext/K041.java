@@ -42,7 +42,7 @@ public class K041 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K076.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("4239", "8240", "4217", "4241", "4225", "4248")));
+    private static final Set<String> FIELDTYPES = Set.of("4239", "8240", "4217", "4241", "4225", "4248");
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {

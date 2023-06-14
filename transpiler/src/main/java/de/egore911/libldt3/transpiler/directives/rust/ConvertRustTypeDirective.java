@@ -5,10 +5,8 @@ import java.io.Writer;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import de.egore911.libldt3.transpiler.directives.ConvertClassDirective;
 import freemarker.core.Environment;
 import freemarker.ext.beans.BeanModel;
-import freemarker.template.TemplateBooleanModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
@@ -52,7 +50,7 @@ public class ConvertRustTypeDirective implements TemplateDirectiveModel {
         if (type.getActualTypeArguments() != null && !type.getActualTypeArguments().isEmpty()) {
             name += "<" + type.getActualTypeArguments()
                 .stream()
-                .map(x -> convertType(x))
+                .map(ConvertRustTypeDirective::convertType)
                 .collect(Collectors.joining(", "))+ ">";
         }
         return name;

@@ -81,7 +81,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
         METHOD_TEMPLATE = Collections.unmodifiableMap(map);
     }
 
-    public static interface ArgumentHandler {
+    public interface ArgumentHandler {
         String fixArguments(String argument, int index);
     }
 
@@ -89,51 +89,39 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
     static {
         Map<Method, ArgumentHandler> map = new HashMap<>();
         try {
-            map.put(Logger.class.getMethod("error", String.class, Object.class, Object.class), new ArgumentHandler() {
-                @Override
-                public String fixArguments(String argument, int index) {
-                    if (index == 0) {
-                        int counter = 0;
-                        Matcher m = Pattern.compile("\\{\\}").matcher(argument);
-                        StringBuilder sb = new StringBuilder();
-                        while (m.find()) {
-                            m.appendReplacement(sb, "{" + counter + "}");
-                            counter++;
-                        }
-                        m.appendTail(sb);
-                        return sb.toString();
+            map.put(Logger.class.getMethod("error", String.class, Object.class, Object.class), (argument, index) -> {
+                if (index == 0) {
+                    int counter = 0;
+                    Matcher m = Pattern.compile("\\{\\}").matcher(argument);
+                    StringBuilder sb = new StringBuilder();
+                    while (m.find()) {
+                        m.appendReplacement(sb, "{" + counter + "}");
+                        counter++;
                     }
-                    return argument;
+                    m.appendTail(sb);
+                    return sb.toString();
                 }
+                return argument;
             });
-            map.put(Field.class.getMethod("getAnnotation", Class.class), new ArgumentHandler() {
-                @Override
-                public String fixArguments(String argument, int index) {
-                    if (index == 0) {
-                        String replace = argument.replace("typeof(", "");
-                        return replace.substring(0, replace.length() - 1);
-                    }
-                    return argument;
+            map.put(Field.class.getMethod("getAnnotation", Class.class), (argument, index) -> {
+                if (index == 0) {
+                    String replace = argument.replace("typeof(", "");
+                    return replace.substring(0, replace.length() - 1);
                 }
+                return argument;
             });
-            map.put(Class.class.getMethod("getAnnotation", Class.class), new ArgumentHandler() {
-                @Override
-                public String fixArguments(String argument, int index) {
-                    if (index == 0) {
-                        String replace = argument.replace("typeof(", "");
-                        return replace.substring(0, replace.length() - 1);
-                    }
-                    return argument;
+            map.put(Class.class.getMethod("getAnnotation", Class.class), (argument, index) -> {
+                if (index == 0) {
+                    String replace = argument.replace("typeof(", "");
+                    return replace.substring(0, replace.length() - 1);
                 }
+                return argument;
             });
-            map.put(Matcher.class.getMethod("matches"), new ArgumentHandler() {
-                @Override
-                public String fixArguments(String argument, int index) {
-                    if (index == -1) {
-                        return argument.replace(".Matcher(", ".IsMatch(");
-                    }
-                    return argument;
+            map.put(Matcher.class.getMethod("matches"), (argument, index) -> {
+                if (index == -1) {
+                    return argument.replace(".Matcher(", ".IsMatch(");
                 }
+                return argument;
             });
         } catch (NoSuchMethodException | SecurityException e) {
             throw new Error(e);
