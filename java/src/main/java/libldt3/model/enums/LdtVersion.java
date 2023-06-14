@@ -26,8 +26,8 @@ package libldt3.model.enums;
  */
 public enum LdtVersion {
 
-    /** LDT3.1.0 */
-    LDT3_1_0("LDT3.1.0");
+    /** LDT3.2.15 */
+    LDT3_2_15("LDT3.2.15");
 
     public final String code;
 
