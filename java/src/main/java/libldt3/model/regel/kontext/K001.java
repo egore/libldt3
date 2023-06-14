@@ -25,9 +25,6 @@ import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,7 +38,7 @@ public class K001 implements Kontextregel {
     
     private static final Logger LOG = LoggerFactory.getLogger(K001.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("6305", "8242")));
+    private static final Set<String> FIELDTYPES = Set.of("6305", "8242");
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {

@@ -41,15 +41,12 @@ public class ConstructorFixupDirective implements TemplateDirectiveModel {
     static {
         Map<Constructor<?>, ArgumentHandler> map = new HashMap<>();
         try {
-            map.put(HashSet.class.getConstructor(Collection.class), new ArgumentHandler() {
-                @Override
-                public String fixArguments(String argument, int index) {
-                    if (index == 0) {
-                        String replace = argument.replace("Arrays.AsList(", "");
-                        return replace.substring(0, replace.length() - 1);
-                    }
-                    return argument;
+            map.put(HashSet.class.getConstructor(Collection.class), (argument, index) -> {
+                if (index == 0) {
+                    String replace = argument.replace("Arrays.AsList(", "");
+                    return replace.substring(0, replace.length() - 1);
                 }
+                return argument;
             });
         } catch (NoSuchMethodException | SecurityException e) {
             throw new Error(e);

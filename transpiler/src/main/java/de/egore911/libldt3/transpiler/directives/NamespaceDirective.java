@@ -17,24 +17,24 @@ public class NamespaceDirective implements TemplateDirectiveModel {
             throws TemplateException, IOException {
 
         TemplateModel p = (TemplateModel) params.get("package");
-        Writer writer = env.getOut();
-        int length = 1;
-        if (p instanceof StringModel) {
-            String namespace = ((StringModel) p).getAsString();
-            String[] parts = namespace.split("\\.");
-            length = parts.length;
-            for (int i = 0; i < length; i++) {
-                if (i != 0) {
-                    writer.append(" ");
-                }
-                writer.append("namespace ");
-                writer.append(parts[i]);
-                writer.append(" {");
-            }
-            writer.append("\n");
-        } else {
+        if (!(p instanceof StringModel)) {
             throw new UnsupportedOperationException("Cannot handle class template model " + p.getClass().getSimpleName());
         }
+
+        Writer writer = env.getOut();
+
+        String namespace = ((StringModel) p).getAsString();
+        String[] parts = namespace.split("\\.");
+        int length = parts.length;
+        for (int i = 0; i < length; i++) {
+            if (i != 0) {
+                writer.append(" ");
+            }
+            writer.append("namespace ");
+            writer.append(parts[i]);
+            writer.append(" {");
+        }
+        writer.append("\n");
         body.render(writer);
         for (int i = 0; i < length; i++) {
             if (i != 0) {

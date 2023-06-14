@@ -27,10 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,7 +38,7 @@ public class K099 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K099.class);
 
-    private static final Set<String> FIELDTYPES = Collections.unmodifiableSet(new HashSet<>(Arrays.asList("8422")));
+    private static final Set<String> FIELDTYPES = Set.of("8422");
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {

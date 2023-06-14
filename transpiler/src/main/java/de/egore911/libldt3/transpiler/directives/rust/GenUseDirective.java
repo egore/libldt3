@@ -12,7 +12,6 @@ import freemarker.core.Environment;
 import freemarker.ext.beans.StringModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
-import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtTypeReference;
@@ -20,11 +19,11 @@ import spoon.reflect.reference.CtTypeReference;
 public class GenUseDirective implements TemplateDirectiveModel {
 
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
-            throws TemplateException, IOException {
+            throws IOException {
         CtType<?> struct = (CtType<?>) (((StringModel) params.get("struct")).getWrappedObject());
         String structQualifiedName = struct.getQualifiedName();
 
-        Set<String> uses = new TreeSet<String>();
+        Set<String> uses = new TreeSet<>();
 
         addReferencedTypes(struct.getUsedTypes(true), structQualifiedName, uses);
 

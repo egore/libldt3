@@ -3,7 +3,7 @@ package de.egore911.libldt3.transpiler;
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -82,7 +82,7 @@ public class TranspileCsharp {
                 } else {
                     throw new UnsupportedOperationException(type.getClass().getSimpleName());
                 }
-                try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))) {
+                try (Writer writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
                     template.process(Collections.singletonMap(template.getName().replace(".ftl", ""), type), writer);
                 }
 

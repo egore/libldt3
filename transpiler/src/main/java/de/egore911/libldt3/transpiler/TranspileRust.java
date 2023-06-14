@@ -1,11 +1,10 @@
 package de.egore911.libldt3.transpiler;
 
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,9 +26,7 @@ import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateNotFoundException;
-import libldt3.annotations.Objekt;
 import spoon.MavenLauncher;
-import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtType;
 
 public class TranspileRust {
@@ -65,7 +62,7 @@ public class TranspileRust {
                     || type.getPackage().getQualifiedName().equals("libldt3.model.enums")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.regel")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.regel.kontext")) {
-                Set<String> mod = mods.computeIfAbsent(type.getPackage().getQualifiedName().substring("libldt3.model.".length()), x -> new TreeSet<String>());
+                Set<String> mod = mods.computeIfAbsent(type.getPackage().getQualifiedName().substring("libldt3.model.".length()), x -> new TreeSet<>());
                 mod.add(type.getSimpleName());
 
                 Path file = getOutputFile(base, type);
@@ -79,7 +76,7 @@ public class TranspileRust {
                 } else {
                     throw new UnsupportedOperationException(type.getClass().getSimpleName());
                 }
-                try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))) {
+                try (Writer writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
                     template.process(Collections.singletonMap(template.getName().replace(".ftl", ""), type), writer);
                 }
 
@@ -104,7 +101,7 @@ public class TranspileRust {
             }
             Path file = dir.resolve("mod.rs");
             try (FileWriter fw = new FileWriter(file.toFile());
-                    BufferedWriter w = new BufferedWriter(fw);) {
+                    BufferedWriter w = new BufferedWriter(fw)) {
                 fw.write("#![allow(non_snake_case)]\n\n");
                 for (String m : mod.getValue()) {
                     w.write("pub mod ");

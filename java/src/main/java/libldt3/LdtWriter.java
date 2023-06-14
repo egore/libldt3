@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -64,7 +65,7 @@ public class LdtWriter {
      * @throws IOException if writing the Satz elements failed
      */
     public void write(List<Satz> data, String path) throws IOException {
-        try (PrintWriter w = new PrintWriter(path, "ISO-8859-1")) {
+        try (PrintWriter w = new PrintWriter(path, StandardCharsets.ISO_8859_1)) {
             write(data, w);
         }
     }
