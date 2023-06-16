@@ -8,6 +8,7 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateModelException;
 import libldt3.parser.Main;
 import libldt3.parser.RegelNaming;
+import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 public class Generator {
@@ -45,6 +47,16 @@ public class Generator {
             }
             try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/enums/" + RegelNaming.REPLACEMENTS.get(regel.regelnummer) + ".java"), StandardCharsets.UTF_8)) {
                 enumTemplate.process(Map.of("enum", regel), writer);
+            }
+        }
+    }
+
+    public void generateObjekte(Collection<Objekt> objekte) throws IOException, TemplateException {
+        Template objektTemplate = config.getTemplate("objekt.ftl");
+        Files.createDirectories(Path.of("./generated/libldt3/model/objekte"));
+        for (Objekt objekt : objekte) {
+            try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/objekte/" + objekt.name + ".java"), StandardCharsets.UTF_8)) {
+                objektTemplate.process(Map.of("objekt", objekt), writer);
             }
         }
     }

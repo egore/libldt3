@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class ErlaubterInhalt extends Regel {
 
-    private static String normalizeEnumValue(String value) {
+    public static String normalizeJavaIdentifier(String value) {
         return value
                 .replace('.', '_')
                 .replace(" / ", "_")
@@ -40,7 +40,7 @@ public class ErlaubterInhalt extends Regel {
     }
 
     public String getNormalizedPruefung() {
-        return normalizeEnumValue(pruefung);
+        return normalizeJavaIdentifier(pruefung);
     }
 
     public boolean isSingle() {
@@ -118,7 +118,7 @@ public class ErlaubterInhalt extends Regel {
                     }
                     string = string.replace("„", "").replace("“", "").replace("”", "");
                     String[] values = string.split(" oder ");
-                    String normalizedValue = normalizeEnumValue(value.toString());
+                    String normalizedValue = normalizeJavaIdentifier(value.toString());
                     String comment = value.toString();
                     for (String v : values) {
                         e = new EnumValue(v, FALLBACK.getOrDefault(regelnummer, Collections.emptyMap()).getOrDefault(v, normalizedValue), comment.equals(normalizedValue) ? null : comment, isDeprecated);

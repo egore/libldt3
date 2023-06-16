@@ -17,6 +17,9 @@ public class LineWrapDirective implements TemplateDirectiveModel {
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws IOException {
 
         TemplateModel textModel = (TemplateModel) params.get("text");
+        if (textModel == null) {
+            return;
+        }
         String text;
         if (textModel instanceof StringModel) {
             text = ((StringModel) textModel).getAsString();

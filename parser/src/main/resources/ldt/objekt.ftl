@@ -37,8 +37,8 @@ import libldt3.model.Kontext;
 public class ${objekt.name} implements Kontext {
 
 <#list objekt.felder as feld>
-    @Feld(value = "${feld.feld.fk}", name = "${feld.bezeichnung}", feldart = Feldart.${feld.feldart.readable()})
-    @Regelsatz(laenge = ${feld.feld.laenge})
-    public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> abrechnungGkv;
+    @Feld(value = "${feld.feld.fk}", feldart = Feldart.${feld.feldart.readable()})
+    @Regelsatz(<#if feld.feld.laenge?startsWith('≤')>maxLaenge = ${feld.feld.laenge?substring(2)}<#else>laenge = ${feld.feld.laenge}</#if>)
+    public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> ${feld.name};
 </#list>
 }

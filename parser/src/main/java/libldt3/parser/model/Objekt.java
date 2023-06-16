@@ -1,5 +1,8 @@
 package libldt3.parser.model;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Objekt {
@@ -11,6 +14,16 @@ public class Objekt {
         public Feldart feldart;
         public List<Regel> regeln;
         public String erlaeuterung;
+
+        public String getName() {
+            String lowercased;
+            if (bezeichnung.matches("^[A-Z]+")) {
+                lowercased = bezeichnung.toLowerCase();
+            } else {
+                lowercased = bezeichnung.substring(0, 1).toLowerCase() + bezeichnung.substring(1);
+            }
+            return ErlaubterInhalt.normalizeJavaIdentifier(lowercased);
+        }
     }
 
     public static class Vorkommen {
@@ -32,9 +45,18 @@ public class Objekt {
         }
     }
 
+    public Objekt(String nummer, String name) {
+        this.nummer = nummer;
+        this.name = name;
+    }
+
     public String name;
     public String beschreibung;
     public String nummer;
-    public List<FeldExtended> felder;
+    public List<FeldExtended> felder = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Obj_" + nummer + " " + name;
+    }
 }
