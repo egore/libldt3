@@ -60,7 +60,7 @@ public class Praser {
                     float firstY = 0.0f;
                     for (TextPosition p : textPositions) {
                         // If too much space is between the words, split them into two text blocks
-                        if (p.getX() - lastX > 10.0f) {
+                        if (p.getX() - lastX > 8.0f) {
                             if (buffer.length() > 0) {
                                 handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText);
                             }
@@ -88,6 +88,9 @@ public class Praser {
                              Holder<Integer> lastColumn, Map<String, Regel> regeln, Holder<State> state,
                              Holder<String> lastText) {
         if (text.isEmpty()) {
+            return;
+        }
+        if (text.matches("Seite [0-9]+ von [0-9]+")) {
             return;
         }
         LOG.debug("Found text '{}' at {},{}", text, x, y);
@@ -125,7 +128,7 @@ public class Praser {
 
             switch (column) {
                 case 0:
-                    if (lastColumn.value >= 3) {
+                    if (lastColumn.value >= 3 || lastColumn.value == -1) {
                         regel.value = new ErlaubterInhalt();
                     }
                     regel.value.regelnummer = text;
@@ -139,9 +142,17 @@ public class Praser {
                     regel.value.fehlerstatus = Regel.Fehlerstatus.valueOf(text);
                     break;
                 case 3:
-                    regel.value.pruefung = text;
+                    if (regel.value.pruefung == null) {
+                        regel.value.pruefung = text;
+                    } else {
+                        regel.value.pruefung += " " + text;
+                    }
                     break;
                 case 4:
+                    // Workaround: PDFBox returns the first prefix multiple times
+                    if (regel.value.erlaeuterung.length() > 0 && text.startsWith("00 = ")) {
+                        text = text.substring(4);
+                    }
                     regel.value.erlaeuterung.append(text).append("\n");
                     break;
             }

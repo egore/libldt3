@@ -5,7 +5,6 @@ import freemarker.ext.beans.StringModel;
 import freemarker.template.SimpleScalar;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
-import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import org.apache.commons.text.WordUtils;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 
 public class LineWrapDirective implements TemplateDirectiveModel {
     @Override
-    public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
+    public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws IOException {
 
         TemplateModel textModel = (TemplateModel) params.get("text");
         String text;
@@ -23,7 +22,7 @@ public class LineWrapDirective implements TemplateDirectiveModel {
             text = ((StringModel) textModel).getAsString();
         } else if (textModel instanceof SimpleScalar) {
             text = ((SimpleScalar) textModel).getAsString();
-        } else{
+        } else {
             throw new UnsupportedOperationException("Cannot handle class template model " + textModel.getClass().getSimpleName());
         }
 
@@ -33,16 +32,22 @@ public class LineWrapDirective implements TemplateDirectiveModel {
             prefix = ((StringModel) prefixModel).getAsString();
         } else if (prefixModel instanceof SimpleScalar) {
             prefix = ((SimpleScalar) prefixModel).getAsString();
-        } else{
+        } else {
             throw new UnsupportedOperationException("Cannot handle class template model " + prefixModel.getClass().getSimpleName());
         }
 
-        text = text.replaceAll("[\r\n]", "\n " + prefix);
+        text = text.replaceAll("\r?\n", "\n");
         text = text.replaceAll("[„“]", "\"");
 
         Writer writer = env.getOut();
-        writer.append(WordUtils.wrap(text, 80, "\n " + prefix, false));
-
-
+        String[] split = text.split("\n");
+        boolean first = true;
+        for (String t : split) {
+            if (!first) {
+                writer.append("\n ").append(prefix);
+            }
+            writer.append(WordUtils.wrap(t, 80, "\n " + prefix, false));
+            first = false;
+        }
     }
 }

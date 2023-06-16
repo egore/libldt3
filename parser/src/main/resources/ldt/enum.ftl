@@ -31,7 +31,7 @@ public enum ${regelnaming[enum.regelnummer]} {
     ${enum.normalizedPruefung}("${enum.pruefung}");
 <#else>
     <#list enum.multiple>
-    <#items as xxx><#if xxx.comment??>/** ${xxx.comment} */
+    <#items as xxx><#if xxx.comment??>/** <@linewrap text=xxx.comment prefix="    * "/> */
     </#if><#if xxx.isDeprecated>@Deprecated
     </#if>${xxx.value}("${xxx.code}")<#sep>,${'\n    '}</#items>;
     </#list>
