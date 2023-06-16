@@ -33,5 +33,6 @@
 	<modules>
 		<module>java</module>
 		<module>transpiler</module>
+		<module>parser</module>
 	</modules>
 </project>
