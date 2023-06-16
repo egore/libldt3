@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,15 @@ package libldt3.model.enums;
  * E009
  */
 public enum Scheinuntergruppe {
-
-    Auftragsleistungen("21"), Konsiliaruntersuchung("23"), MitWeiterbehandlung("24"),
-    /**
-     * Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung (Muster 10)
-     */
+    Auftragsleistungen("21"),
+    Konsiliaruntersuchung("23"),
+    /** Mit-/Weiterbehandlung */
+    Mit_Weiterbehandlung("24"),
+    /** Überweisungsschein für Laboratoriumsuntersuchungen als
+     * Auftragsleistung (Muster 10) */
     Muster10("27"),
-    /**
-     * Anforderungsschein für Laboratoriumsuntersuchungen bei
-     * Laborgemeinschaften (Muster 10A)
-     */
+    /** Anforderungsschein für Laboratoriumsuntersuchungen bei
+     * Laborgemeinschaften (Muster 10A) */
     Muster10A("28");
 
     public final String code;

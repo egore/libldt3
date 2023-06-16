@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,12 @@ package libldt3.model.enums;
  * E059
  */
 public enum ResistenzMethode {
-
     /** kein Antibiogramm erstellt */
-    KeinAntibiogrammErstellt("0"),
-    /** Agardiffusion */
+    keinAntibiogramm_erstellt("0"),
     Agardiffusion("1"),
-    /** Agardilution */
     Agardilution("2"),
     /** PCR + Hybridisierung */
-    PcrUndHybridisierung("3"),
-    /** sonstige */
+    PCR_und_Hybridisierung("3"),
     sonstige("4"),
     /** Breakpoint-Methode */
     BreakpointMethode("5");

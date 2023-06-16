@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,12 @@ package libldt3.model.enums;
  * E004
  */
 public enum Satzart {
-    LaborDatenpaketHeader("8220"), LaborDatenpaketAbschluss("8221"), PraxisDatenpaketHeader(
-            "8230"), PraxisDatenpaketAbschluss("8231"), Befund("8205"), Auftrag("8215");
+    LaborDatenpaketHeader("8220"),
+    LaborDatenpaketAbschluss("8221"),
+    PraxisDatenpaketHeader("8230"),
+    PraxisDatenpaketAbschluss("8231"),
+    Befund("8205"),
+    Auftrag("8215");
 
     public final String code;
 

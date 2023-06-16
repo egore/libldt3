@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,15 +25,11 @@ package libldt3.model.enums;
  * E046
  */
 public enum Betriebsstaettenstatus {
-
-    /** Arztpraxis */
     Arztpraxis("1"),
-    /** Laborarztpraxis */
     Laborarztpraxis("2"),
-    /** Laborgemeinschaft */
     Laborgemeinschaft("3"),
     /** sonstige medizinische Einrichtung */
-    sonstigeMedizinischeEinrichtung("4"),
+    sonstige_medizinischeEinrichtung("4"),
     /** Hauptbetriebsstätte */
     Hauptbetriebsstaette("5"),
     /** Nebenbetriebsstätte */

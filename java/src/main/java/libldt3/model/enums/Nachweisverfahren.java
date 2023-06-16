@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,23 +25,18 @@ package libldt3.model.enums;
  * E069
  */
 public enum Nachweisverfahren {
-
     /** sonstige, wenn Erreger + Resistenz angefordert */
-    sonstige_wenn_Erreger_und_Resistenz_angefordert("0"),
+    sonstige_wennErreger_und_Resistenz_angefordert("0"),
     /** Antigen-Nachweis */
-    Antigen_Nachweis("1"),
-    /** PCR */
+    AntigenNachweis("1"),
     PCR("2"),
-    /** Mikroskopie */
     Mikroskopie("3"),
-    /** Aglutination */
     Aglutination("4"),
-    /** Kultur */
     Kultur("5"),
     /** Biochemische Identifikation (z.B. Vitek) */
-    Biochemische_Identifikation("6"),
+    BiochemischeIdentifikation("6"),
     /** Maldi-Tof */
-    Maldi_Tof("7");
+    MaldiTof("7");
 
     public final String code;
 

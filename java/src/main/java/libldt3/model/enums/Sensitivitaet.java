@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,18 +23,17 @@ package libldt3.model.enums;
 
 /**
  * E025
- * siehe {@see http://www.eucast.org/clinical_breakpoints/} und {@see http://www.nak-deutschland.org}
  */
 public enum Sensitivitaet {
-
-    /** sensibel */
-    sensibel("S"),
-    /** intermediär */
-    intermediaer("I"),
-    /** resistent */
-    resistent("R"),
-    /** N = IE (keine Interpretation) */
-    keineInterpretation("N");
+    /** Sensibel bei Standardexposition */
+    Sensibel_beiStandardexposition("S"),
+    /** Sensibel bei erhöhter Exposition */
+    Sensibel_bei_erhoehterExposition("I"),
+    Resistent("R"),
+    /** IE (keine Interpretation)
+     * siehe http://www.eucast.org/clinical_breakpoints/ und http://www.nak-
+     * deutschland.org/ */
+    IE("N");
 
     public final String code;
 

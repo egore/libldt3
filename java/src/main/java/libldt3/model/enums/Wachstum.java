@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,14 @@ package libldt3.model.enums;
  * E026
  */
 public enum Wachstum {
-
     /** nicht nachweisbar / kein Wachstum */
-    nicht_nachweisbar_kein_Wachstum("0"),
-    /** spärlich */
+    nicht_nachweisbar_keinWachstum("0"),
+    /** spärlich, */
     spaerlich("1"),
-    /** mäßig/vereinzelt */
+    /** mäßig/vereinzelt, */
     maessig_vereinzelt("2"),
-    /** reichlich */
+    /** reichlich, */
     reichlich("3"),
-    /** massenhaft */
     massenhaft("4");
 
     public final String code;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,20 +25,19 @@ package libldt3.model.enums;
  * E032
  */
 public enum Dringlichkeit {
-
-    /**
-     * Es besteht der Verdacht bzw. der Patient ist vital bedroht oder der Befund ist für das weitere operative Vorgehen
-     * maßgeblich. Für die Differentialdiagnostik ist die unverzügliche Erbringung und Übermittlung der Laborbefunde
-     * unabdingbar (z.B. Troponin zum Ausschluss akuter Myokardinfarkt, PTH bei Nebenschilddrüsen-OP, histologische
-     * Schnellschnitte bei Ablation mammae).
-     */
-    Notfall("1"),
-    /**
-     * Der Patient ist nicht vital bedroht, aber eine routinemäßige Abarbeitung der Proben beeinträchtigt das therapeutische
-     * Vorgehen (z.B. Quick bei Marcumar-Einstellung). Die Ergebnisse werden schnellstmöglich nach Probeneingang im Labor an
-     * den Einsender übermittelt. Einsender und Labor sollten sich über die Frist einigen.
-     */
-    eilig("2");
+    /** Notfall/intraoperativ
+     * Es besteht der Verdacht bzw. der Patient ist vital bedroht oder der Befund ist
+     * für das weitere operative Vorgehen maßgeblich. Für die Differentialdiagnostik
+     * ist die unverzügliche Erbringung und Übermittlung der Laborbefunde unabdingbar
+     * (z.B. Troponin zum Ausschluss akuter Myokardinfarkt, PTH bei Nebenschilddrüsen-
+     * OP, histologische Schnellschnitte bei Ablation mammae). */
+    Notfall_intraoperativ("1"),
+    /** Der Patient ist nicht vital bedroht, aber eine routinemäßige Abarbeitung der
+     * Proben beeinträchtigt das therapeutische Vorgehen (z.B. Quick bei Marcumar-
+     * Einstellung). Die Ergebnisse werden schnellstmöglich nach Probeneingang im Labor
+     * an den Einsender übermittelt. Einsender und Labor sollten sich über die Frist
+     * einigen. */
+    Eilig("2");
 
     public final String code;
 

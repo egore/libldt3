@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,40 +26,42 @@ package libldt3.model.enums;
  */
 public enum Abrechnungsinfo {
     /** GKV Laborfacharzt */
-    GkvLaborfacharzt("1"),
+    GKV_Laborfacharzt("1"),
     /** GKV LG */
-    GkvLg("2"),
+    GKV_LG("2"),
     /** PKV Laborfacharzt */
-    PkvLaborfacharzt("3"),
-    /** PKG LG */
-    PkvLg("4"),
-    /** Selektivvertrag */
+    PKV_Laborfacharzt("3"),
+    /** PKV LG */
+    PKV_LG("4"),
     Selektivvertrag("5"),
-    /** IGeL */
-    IGeL("6"),
+    IgeL("6"),
     /** Sonstige Kostenübernahme */
-    Sonstige_Kostenuebernahme("7"),
-    /** ASV */
-    Asv("8"),
+    SonstigeKostenuebernahme("7"),
+    ASV("8"),
     /** GKV Laborfacharzt präventiv */
-    GkvLaborfacharztPraeventiv("9"),
+    GKV_Laborfacharzt_praeventiv("9"),
     /** GKV LG präventiv */
-    GkgLgPraeventiv("10"),
-    /** keine Zuordnung */
-    keine_Zuordnung("11"),
+    GKV_LG_praeventiv("10"),
+    /** keine Zuordnung (nur zulässig im Obj_0027) */
+    keineZuordnung("11"),
     /** PräOP (Präoperative Laborleistungen**) */
     PraeOP("12"),
     /** GKV Krankenhaus */
-    GkvKrankenhaus("13"),
+    GKV_Krankenhaus("13"),
     /** PKV Krankenhaus */
-    PkvKrankenhaus("14"),
+    PKV_Krankenhaus("14"),
     /** GKV Muster 6 / 39 */
-    GkvMuster639("15"),
+    GKV_Muster6_39("15"),
     /** GKV Muster 10C */
-    GkvMuster10C("16"),
+    GKV_Muster10C("16"),
     /** ÖGD */
     OeGD("17"),
-    /** storniert (nur in Satzart 8215-Nachforderung zulässig) */
+    /** storniert (nur in Satzart 8215-Nachforderung zulässig)*
+     * *   der Workflow einer Stornierung muss zwischen Einsender und Labor definiert
+     * werden ** Laborleistungen, die dazu dienen, den Patienten auf eine ambulante
+     * oder belegärztliche Operation vorzubereiten, werden dem einsendenden Arzt in
+     * Rechnung gestellt und können nicht über die Kassenärztliche Vereinigung
+     * abgerechnet werden (vgl. Abschnitt 31.1 des EBM) */
     storniert("99");
 
     public final String code;

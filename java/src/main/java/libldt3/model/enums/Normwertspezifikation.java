@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,34 +25,34 @@ package libldt3.model.enums;
  * E052
  */
 public enum Normwertspezifikation {
-
     /** Methodenspezifische Standards nach WHO */
-    MethodenspezifischeStandardsWHO("10"),
+    MethodenspezifischeStandards_nachWHO("10"),
     /** Methodenspezifische Standards nach IFCC (u.a. serologische Verfahren) */
-    MethodenspezifischeStandardsIFCC("11"),
+    MethodenspezifischeStandards_nachIFCC("11"),
     /** Methodenspezifische Standards nach DGKL */
-    MethodenspezifischeStandardsDGKL("12"),
-    /** Sonstige Standards */
+    MethodenspezifischeStandards_nachDGKL("12"),
+    /** Sonstige Standards 1) */
     SonstigeStandards("13"),
-    /** Patientenspezifische Einflussgröße Alter betreffend */
-    PatientenspezifischeEinflussgroesseAlter("20"),
-    /** Patientenspezifische Einflussgröße Geschlecht betreffend */
-    PatientenspezifischeEinflussgroesseGeschlecht("21"),
-    /** Patientenspezifische Einflussgröße Alter und Geschlecht betreffend */
-    PatientenspezifischeEinflussgroesseAlterGeschlecht("22"),
-    /** Patientenspezifische Einflussgröße SSW betreffend */
-    PatientenspezifischeEinflussgroesseSSW("23"),
-    /** Patientenspezifische Einflussgröße Alter und SSW betreffend */
-    PatientenspezifischeEinflussgroesseAlterSSW("24"),
-    /** weitere patientenspezifische Einflussgrößen (z.B. Mediaktion) */
-    WeiterePatientenspezifischeEinflussgroessen("25"),
-    /** Information zu Patientenspezifischer Einflussgröße Alter fehlte */
-    InformationPatientenspezifischerEinflussgroesseAlterFehlte("26"),
-    /** Information zu Patientenspezifischer Einflussgröße Geschlecht fehlte */
-    InformationPatientenspezifischerEinflussgroesseGeschlechtFehlte("27"),
+    /** Patientenspezifische Einflussgröße "Alter" betreffend */
+    PatientenspezifischeEinflussgroesseAlter_betreffend("20"),
+    /** Patientenspezifische Einflussgröße "Geschlecht" betreffend */
+    PatientenspezifischeEinflussgroesseGeschlecht_betreffend("21"),
+    /** Patientenspezifische Einflussgröße "Alter + Geschlecht" betreffend */
+    PatientenspezifischeEinflussgroesseAlter_und_Geschlecht_betreffend("22"),
+    /** Patientenspezifische Einflussgröße "SSW" betreffend */
+    PatientenspezifischeEinflussgroesseSSW_betreffend("23"),
+    /** Patientenspezifische Einflussgröße "Alter + SSW" betreffend */
+    PatientenspezifischeEinflussgroesseAlter_und_SSW_betreffend("24"),
+    /** weitere patientenspezifische Einflussgrößen (z.B. Medikation) 1) */
+    weitere_patientenspezifischeEinflussgroessen("25"),
+    /** Information zu Patientenspezifischer Einflussgröße "Alter" fehlte */
+    Information_zuPatientenspezifischerEinflussgroesseAlter_fehlte("26"),
+    /** Information zu Patientenspezifischer Einflussgröße "Geschlecht" fehlte */
+    Information_zuPatientenspezifischerEinflussgroesseGeschlecht_fehlte("27"),
     /** Information zu Patientenspezifischer Einflussgröße Alter und Geschlecht fehlte */
     InformationPatientenspezifischerEinflussgroesseAlterGeschlechtFehlte("28"),
-    /** Funktionsprofile */
+    /** Funktionsprofile 1)
+     * 1) Zur weiteren Spezifikation FK 8167 verwenden. */
     Funktionsprofile("30");
 
     public final String code;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,11 @@ package libldt3.model.enums;
  * E018
  */
 public enum GeschlechtNormalbereich {
-
-    maennlich("M"), weiblich("W"), divers("D"), unbestimmt("X");
+    /** männlich */
+    maennlich("M"),
+    weiblich("W"),
+    divers("D"),
+    unbestimmt("X");
 
     public final String code;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,21 +25,24 @@ package libldt3.model.enums;
  * E049
  */
 public enum Benachrichtigungsgrund {
-
     /** Pathologisch auffälliger Befund */
-    PathologischAuffaelligerBefund("1"),
+    Pathologisch_auffaelligerBefund("1"),
     /** Lebensbedrohlicher Zustand */
     LebensbedrohlicherZustand("2"),
     /** Wiedervorstellung empfohlen */
-    WiedervorstellungEmpfohlen("3"),
+    Wiedervorstellung_empfohlen("3"),
     /** Probenmaterial nicht verwendbar */
-    ProbenmaterialNichtVerwendbar("4"),
+    Probenmaterial_nicht_verwendbar("4"),
     /** Probenmaterial unvollständig */
-    ProbenmaterialUnvollstaendig("5"),
+    Probenmaterial_unvollstaendig("5"),
     /** Meldung nach KFRG* erfolgt */
-    MeldungNachKFRG("6"),
-    /** Meldung nach IfSG** erfolgt */
-    MeldungNachIfSG("7");
+    Meldung_nachKFRG_erfolgt("6"),
+    /** Meldung nach IfSG** erfolgt
+     * *   Krebsfrüherkennungs- und -registergesetz ** Infektionsschutzgesetz Hinweis:
+     * Die Information zur erfolgten Meldung nach KFRG bzw. IfSG erfolgt immer im
+     * Obj_0026, welches sich in dem Untersuchungsergebnis befindet, dass die
+     * Meldepflicht begründet. */
+    Meldung_nachIfSG_erfolgt("7");
 
     public final String code;
 

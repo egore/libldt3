@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,30 +25,20 @@ package libldt3.model.enums;
  * E147
  */
 public enum SpezifizierungVeranlassungsgrund {
-
-    /** Eingriff */
     Eingriff("01"),
-    /** Medikamentengabe */
     Medikamentengabe("02"),
     /** unklares Fieber */
-    UnklaresFieber("03"),
-    /** Infektion */
+    unklaresFieber("03"),
     Infektion("04"),
-    /** Rheuma */
     Rheuma("05"),
-    /** Allergie */
     Allergie("06"),
     /** Herz/Kreislauf */
-    HerzKreislauf("07"),
-    /** Tumor */
+    Herz_Kreislauf("07"),
     Tumor("08"),
-    /** Impfungen */
     Impfungen("09"),
-    /** Reisen */
     Reisen("10"),
     /** Immunität nach Infektion */
-    ImmunitaetNachInfektion("11"),
-    /** Sonstiges */
+    Immunitaet_nachInfektion("11"),
     Sonstiges("12");
 
     public final String code;

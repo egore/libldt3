@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2017  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,35 +26,38 @@ package libldt3.model.enums;
  */
 public enum Grenzwertindikator {
     /** im Normalbereich */
-    N("N"),
-    /** schwach erhöht */
-    H("H"),
-    /** schwach erhöht */
-    PLUS("+"),
-    /** stark erhöht */
-    HH("HH"),
-    /** stark erhöht */
-    PLUS_PLUS("++"),
-    /** schwach erniedrigt */
-    L("L"),
-    /** schwach erniedrigt */
-    MINUS("-"),
-    /** stark erniedrigt */
-    LL("LL"),
-    /** stark erniedrigt */
-    MINUS_MINUS("--"),
-    /** Wert extrem erhöht */
-    EXTREM_H("!H"),
-    /** Wert extrem erhöht */
-    EXTREM_PLUS("!+"),
-    /** Wert extrem erniedrigt */
-    EXTREM_L("!L"),
-    /** Wert extrem erniedrigt */
-    EXTREM_MINUS("!-"),
-    /** auffällig */
-    A("A"),
-    /** sehr auffällig */
-    AA("AA");
+    imNormalbereich("N"),
+    /** schwach erhöht, */
+    schwach_erhoeht("H"),
+    /** schwach erhöht, */
+    schwach_erhoeht("+"),
+    /** stark erhöht, */
+    stark_erhoeht("HH"),
+    /** stark erhöht, */
+    stark_erhoeht("++"),
+    /** schwach erniedrigt, */
+    schwach_erniedrigt("L"),
+    /** schwach erniedrigt, */
+    schwach_erniedrigt("-"),
+    /** stark erniedrigt, */
+    stark_erniedrigt("LL"),
+    /** stark erniedrigt, */
+    stark_erniedrigt("–"),
+    /** Wert extrem erhöht, */
+    Wert_extrem_erhoeht("!H"),
+    /** Wert extrem erhöht, */
+    Wert_extrem_erhoeht("!+"),
+    /** Wert extrem erniedrigt. */
+    Wert_extrem_erniedrigt_("!L"),
+    /** Wert extrem erniedrigt.
+     * Bei nicht numerischen Werten: */
+    Wert_extrem_erniedrigt_("!-"),
+    /** normal (anzuwenden bei nicht numerischen Werten), */
+    normal("N"),
+    /** auffällig (anzuwenden bei nicht numerischen Werten), */
+    auffaellig("A"),
+    /** sehr auffällig (anzuwenden bei nicht numerischen Werten). */
+    sehr_auffaellig_("AA");
 
     public final String code;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,29 +25,23 @@ package libldt3.model.enums;
  * E146
  */
 public enum Untersuchungsanlass {
-
-    /** Vorsorge */
     Vorsorge("01"),
-    /** Verlaufskontrolle */
     Verlaufskontrolle("02"),
     /** Zustand vor */
-    ZustandVor("03"),
+    Zustand_vor("03"),
     /** Zustand nach */
-    ZustandNach("04"),
-    /** Ausschluss */
+    Zustand_nach("04"),
     Ausschluss("05"),
     /** Bestätigung */
     Bestaetigung("06"),
     /** gezielte Suche */
-    GezielteSuche("07"),
+    gezielteSuche("07"),
     /** ungezielte Suche */
-    UngezielteSuche("08"),
-    /** Erfolgskontrolle */
+    ungezielteSuche("08"),
     Erfolgskontrolle("09"),
-    /** Abschlusskontrolle */
     Abschlusskontrolle("10"),
     /** Immunität/Impferfolg */
-    ImmunitaetImpferfolg("11");
+    Immunitaet_Impferfolg("11");
 
     public final String code;
 

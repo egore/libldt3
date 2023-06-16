@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,22 +25,20 @@ package libldt3.model.enums;
  * E021
  */
 public enum BesonderePersonengruppe {
-
     /** keine Angabe */
-    keine_Angabe("00"),
+    keineAngabe("00"),
     /** BSHG (Bundessozialhilfegesetz) § 264 SGB V */
-    Bundessozialhilfegesetz("04"),
+    BSHG264SGB_V("04"),
     /** BVG (Gesetz über die Versorgung der Opfer des Krieges) */
     BVG("06"),
-    /**
-     * SVA-Kennzeichnung für zwischenstaatliches Krankenversicherun-recht:
-     * Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
-     */
-    SVAAufwand("07"),
+    /** SVA-Kennzeichnung für zwischenstaatliches
+     * Krankenversicherungsrecht: Personen mit Wohnsitz im Inland,  Abrechnung nach
+     * Aufwand */
+    SVA_Kennzeichnung_fuer_zwischenstaatliches("07"),
     /** SVA-Kennzeichnung, pauschal */
-    SVAPauschal("08"),
+    SVA_Kennzeichnung_pauschal("08"),
     /** Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG */
-    AsylbLG("09");
+    Empfaenger_vonGesundheitsleistungen_nach_den46AsylbLG("09");
 
     public final String code;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,17 +25,16 @@ package libldt3.model.enums;
  * E030
  */
 public enum ResistenzInterpretation {
-
     /** nicht getestet */
-    nichtGetestet("0"),
+    nicht_getestet("0"),
     /** sensibel/wirksam */
-    sensibelWirksam("1"),
+    sensibel_wirksam("1"),
     /** mäßig sensibel/schwach wirksam */
-    maessigSensibelSchwachWirksam("2"),
+    maessig_sensibel_schwach_wirksam("2"),
     /** resistent/unwirksam */
-    resistentUnwirksam("3"),
+    resistent_unwirksam("3"),
     /** wirksam in hohen Konzentrationen */
-    wirksamInHohenKonzentrationen("4"),
+    wirksam_in_hohenKonzentrationen("4"),
     /** natürliche Resistenz */
     natuerlicheResistenz("5");
 

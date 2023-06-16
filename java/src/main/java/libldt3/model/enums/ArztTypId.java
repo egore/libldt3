@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,20 +25,17 @@ package libldt3.model.enums;
  * E047
  */
 public enum ArztTypId {
-
     /** IK des Arztes */
-    IK("2"),
+    IK_desArztes("2"),
     /** Telematik-ID */
-    TelematikId("3"),
+    TelematikID("3"),
     /** ID für GEVK-Verträge */
-    GevkId("4"),
+    ID_fuerGEVK_Vertraege("4"),
     /** ID für HÄVG-Verträge */
-    HaevgId("5"),
+    ID_fuerHAeVG_Vertraege("5"),
     /** ID für MEDI-Verträge */
-    MediId("6"),
-    /** Selektivvertrag */
+    ID_fuerMEDI_Vertraege("6"),
     Selektivvertrag("7"),
-    /** Sonstige */
     Sonstige("9");
 
     public final String code;

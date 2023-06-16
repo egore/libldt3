@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,14 +25,9 @@ package libldt3.model.enums;
  * E156
  */
 public enum MedikationsStatus {
-
-    /** Akutmedikation */
     Akutmedikation("1"),
-    /** Bedarfsmedikation */
     Bedarfsmedikation("2"),
-    /** Dauermedikation */
     Dauermedikation("3"),
-    /** Selbstmedikation */
     Selbstmedikation("4");
 
     public final String code;

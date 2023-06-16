@@ -1,5 +1,5 @@
 /*
- * Copyright 2021  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,11 +38,11 @@ public enum Dokumententyp {
     /** Auftragsdokument PKV-LG */
     AuftragsdokumentPKV_LG("091"),
     /** Auftragsdokument IGeL */
-    Auftragsdokument_IGeL("092"),
+    AuftragsdokumentIGeL("092"),
     /** Auftragsdokument Sonstige Kostenübernahme */
-    Auftragsdokument_Sonstige_Kostenuebernahme("093"),
+    AuftragsdokumentSonstigeKostenuebernahme("093"),
     /** Auftragsdokument Selektivvertrag */
-    Auftragsdokument_Selektivvertrag("094"),
+    AuftragsdokumentSelektivvertrag("094"),
     Laborbefund("100"),
     Mutterpass("101"),
     Impfpass("102"),
@@ -52,9 +52,9 @@ public enum Dokumententyp {
     Verlaufsbericht("150"),
     Behandlungsbericht("160"),
     /** Einverständniserklärung lt. GenDG (Gen-Diagnostik-Gesetz) */
-    Einverstaendniserklaerung_lt_GenDG_Gen_Diagnostik_Gesetz("200"),
+    Einverstaendniserklaerung_lt_GenDG("200"),
     /** weitere laborspezifische Dokumente */
-    weitere_laborspezifische_Dokumente("250"),
+    weitere_laborspezifischeDokumente("250"),
     /** Allergie/RAST */
     Allergie_RAST("251"),
     Molekulardiagnostik("252"),
@@ -65,13 +65,15 @@ public enum Dokumententyp {
     Infektionsserologie("257"),
     Kinderwunsch("258"),
     /** Meldung gemäß IfSG (Infektionsschutz-Gesetz) */
-    Meldung_gemaess_IfSG_Infektionsschutz_Gesetz("300"),
+    Meldung_gemaessIfSG("300"),
     /** Meldung Krebsregister */
-    Meldung_Krebsregister("301"),
+    MeldungKrebsregister("301"),
     Normbereichsgrafik("400"),
     Rechnung("500"),
     /** LDT-Datensatz */
-    LDT_Daten("900"),
+    LDT_Datensatz("900"),
+    /** Hinweis: Werte 001 bis 089 reserviert für Muster der vertragsärztlichen
+     * Versorgung */
     sonstige("999");
 
     public final String code;

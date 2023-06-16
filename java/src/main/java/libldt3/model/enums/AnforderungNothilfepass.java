@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +25,10 @@ package libldt3.model.enums;
  * E056
  */
 public enum AnforderungNothilfepass {
-
     /** Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen */
-    NurBeiErythrozytenantikoerperNachweis("0"),
+    Nothilfepass_nur_beiNachweisErythrozytenantikoerper_ausfuellen("0"),
     /** Nothilfepass ausstellen */
-    Ausstellen("1");
+    Nothilfepass_ausstellen("1");
 
     public final String code;
 

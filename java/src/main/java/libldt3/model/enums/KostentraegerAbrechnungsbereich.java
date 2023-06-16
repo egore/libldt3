@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@ package libldt3.model.enums;
  * E015
  */
 public enum KostentraegerAbrechnungsbereich {
-
     /** Primärabrechnung */
     Primaerabrechnung("00"),
     /** Sozialversicherungsabkommen (SVA) */
@@ -39,7 +38,7 @@ public enum KostentraegerAbrechnungsbereich {
     /** Rheinschiffer (RHS) */
     Rheinschiffer("05"),
     /** Sozialhilfeträger, ohne Asylstellen (SHT) */
-    Sozialhilfetraeger("06"),
+    Sozialhilfetraeger_ohneAsylstellen("06"),
     /** Bundesvertriebenengesetz (BVFG) */
     Bundesvertriebenengesetz("07"),
     /** Asylstellen (AS) */

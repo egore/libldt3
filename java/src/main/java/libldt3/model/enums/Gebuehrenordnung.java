@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,11 +27,11 @@ package libldt3.model.enums;
 public enum Gebuehrenordnung {
     EBM("0"),
     /** BMÄ */
-    BMAE("1"),
-    /** EGO */
+    BMAe("1"),
     EGO("2"),
     /** GOÄ */
-    GOAE("3"),
+    GOAe("3"),
+    /** BG Tarif */
     BG_Tarif("4");
 
     public final String code;

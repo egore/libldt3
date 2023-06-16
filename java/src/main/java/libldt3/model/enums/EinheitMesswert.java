@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,13 +25,12 @@ package libldt3.model.enums;
  * E070
  */
 public enum EinheitMesswert {
-
     /** SI-Einheit */
     SI_Einheit("1"),
-    /** konventionelle Einheit */
-    konventionelle_Einheit("2"),
+    /** abweichende Einheit */
+    abweichendeEinheit("2"),
     /** dimensionslose Größe */
-    dimensionslose_Groesse("9");
+    dimensionsloseGroesse("9");
 
     public final String code;
 

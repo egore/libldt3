@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2017  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@ package libldt3.model.enums;
  * E001
  */
 public enum LdtVersion {
-
     /** LDT3.2.15 */
     LDT3_2_15("LDT3.2.15");
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,29 +23,21 @@ package libldt3.model.enums;
 
 /**
  * E020
- * 
- * Disease Management Program (DMP) bezeichnet die Behandlung von Patienten
- * anhand standardisierter Vorgaben. Diese richten sich an einzelnen
- * Krankheitsbildern aus. Wird beispielsweise festgestellt, dass ein Patient an
- * Diabetes leidet, ergeben sich aus der Diagnose vorgegebene
- * Behandlungsschritte.
  */
 public enum DmpKennzeichnung {
-
     /** keine Angabe */
-    keine_Angabe("00"),
+    keineAngabe("00"),
     /** Diabetes mellitus Typ 2 */
-    DiabetesMellitusTyp2("01"),
-    /** Brustkrebs */
+    Diabetes_mellitusTyp2("01"),
     Brustkrebs("02"),
     /** Koronare Herzkrankheit */
     KoronareHerzkrankheit("03"),
     /** Diabetes mellitus Typ 1 */
-    DiabetesMellitusTyp1("04"),
+    Diabetes_mellitusTyp1("04"),
     /** Asthma bronchiale */
-    AsthmaBronchiale("05"),
+    Asthma_bronchiale("05"),
     /** COPD (chronic obstructive pulmo-nary disease) */
-    ChronicObstructivePulmonaryDisease("06"),
+    COPD("06"),
     /** Chronische Herzinsuffizienz */
     ChronischeHerzinsuffizienz("07"),
     Depression("08"),

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,27 +25,24 @@ package libldt3.model.enums;
  * E029
  */
 public enum StatusRechnungsempfaenger {
-
     /** Einsender Arzt */
     EinsenderArzt("02"),
     /** Einsender sonstige */
-    EinsenderSonstige("03"),
-    /** Versicherter */
+    Einsender_sonstige("03"),
     Versicherter("04"),
     /** Rechnungsempfänger */
     Rechnungsempfaenger("05"),
     /** Bevollmächtigter */
     Bevollmaechtigter("06"),
     /** Halter (eines Tieres) */
-    Tierhalter("11"),
-    /** Patient */
+    Halter("11"),
     Patient("12"),
     /** staatliche Einrichtung */
-    StaatlicheEinrichtung("15"),
+    staatlicheEinrichtung("15"),
     /** sonstige juristische Person */
-    SonstigeJuristischePerson("16"),
+    sonstige_juristischePerson("16"),
     /** sonstige medizinische Einrichtung */
-    SonstigeMedizinischeEinrichtung("90");
+    sonstige_medizinischeEinrichtung("90");
 
     public final String code;
 

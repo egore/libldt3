@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,13 +25,11 @@ package libldt3.model.enums;
  * E027
  */
 public enum StatusPerson {
-    /** Erstveranlasser */
     Erstveranlasser("01"),
     /** Einsender Arzt */
     EinsenderArzt("02"),
-    /** Einsender Sonstige */
-    EinsenderSonstige("03"),
-    /** Versicherter */
+    /** Einsender sonstige */
+    Einsender_sonstige("03"),
     Versicherter("04"),
     /** Rechnungsempfänger */
     Rechnungsempfaenger("05"),
@@ -39,24 +37,21 @@ public enum StatusPerson {
     Bevollmaechtigter("06"),
     /** Laborarzt/Befundersteller */
     Laborarzt_Befundersteller("07"),
-    /** Leistungserbringer */
     Leistungserbringer("08"),
-    /** Softwareverantwortlicher */
     Softwareverantwortlicher("09"),
     /** Zusätzlicher Befundempfänger */
     ZusaetzlicherBefundempfaenger("10"),
     /** Halter (eines Tieres) */
-    Tierhalter("11"),
-    /** Patient */
+    Halter("11"),
     Patient("12"),
     /** Überweiser */
     Ueberweiser("14"),
     /** sonstige juristische Person */
-    sonstigeJuristischePerson("16"),
+    sonstige_juristischePerson("16"),
     /** Medizinisch-technische/r Assistent/in (MTA) */
-    MTA("17"),
+    Medizinischtechnische_rAssistent_in("17"),
     /** Medizinische/r Fachangestellte/r (MFA) */
-    MFA("18");
+    Medizinische_rFachangestellte_r("18");
 
     public final String code;
 

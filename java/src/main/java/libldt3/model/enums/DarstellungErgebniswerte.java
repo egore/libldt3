@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2017  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,24 +25,26 @@ package libldt3.model.enums;
  * E058
  */
 public enum DarstellungErgebniswerte {
-
     /** numerisch (exponentielle Darstellung möglich) */
-    Numerisch("01"),
+    numerisch("01"),
     /** numerisch mit Messwertuntergrenze */
-    Numerisch_Untergrenze("02"),
+    numerisch_mitMesswertuntergrenze("02"),
     /** numerisch mit Messwertobergrenze */
-    Numerisch_Obergrenze("03"),
+    numerisch_mitMesswertobergrenze("03"),
     /** alpha-numerisch */
-    Alphanumerisch("04"),
-    /** Titer */
+    alphanumerisch("04"),
     Titer("05"),
     /** Titer mit Untergrenze */
-    Titer_Untergrenze("06"),
+    Titer_mitUntergrenze("06"),
     /** Titer mit Obergrenze */
-    Titer_Obergrenze("07"),
-    /** trinäres Testergebnis: 1 | 2 | 3 */
-    trinaeresTestergebnis("08"),
-    /** Sonstige */
+    Titer_mitObergrenze("07"),
+    /** trinäres Testergebnis: 1 | 2 | 3 ** */
+    trinaeresTestergebnis:1|2|3("08"),
+    /** Beispiele
+     * 01: 47.85, 5.00E+07, 1x10^6 02: <100, <1.00E+04 03: >2000, >5.00E+04 04:
+     * positiv, negativ, A positiv * 05: 1:2 06: <1:2 07: >1:2 08: 1, 2, 3 ** *   für
+     * die Übertragung von Blutgruppen ist vorzugsweise das Obj_0055 zu verwenden **
+     * Abbildung der Regel E169 */
     Sonstige("99");
 
     public final String code;
