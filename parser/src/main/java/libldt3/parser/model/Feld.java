@@ -1,11 +1,12 @@
 package libldt3.parser.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Feld {
 
     public enum Format {
-        alnum, num
+        alnum, num, date, f
     }
 
     /** e.g. "0001" */
@@ -13,7 +14,7 @@ public class Feld {
     public String inhalt;
     public String laenge;
     public Format format;
-    public List<Regel> regeln;
+    public List<Regel> regeln = new ArrayList<>();
     public String inhalte;
 
     public String typ;

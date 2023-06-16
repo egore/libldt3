@@ -1,27 +1,14 @@
 package libldt3.parser;
 
-import freemarker.cache.ClassTemplateLoader;
-import freemarker.template.Configuration;
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import libldt3.parser.generation.Generator;
-import libldt3.parser.generation.LineWrapDirective;
-import libldt3.parser.model.ErlaubterInhalt;
 import libldt3.parser.model.Feld;
-import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
 import libldt3.parser.parsing.Praser;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.IOException;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -61,10 +48,12 @@ public class Main {
             objektTemplate.process(Map.of("objekt", objekt), writer);
         }*/
 
-        Map<String, Regel> regeln = Praser.parse("./EXT_ITA_VGEX_LDT 3_2_15_Gesamtdokument.pdf");
+        Pair<Map<String, Regel>, Map<String, Feld>> regeln = Praser.parse("./EXT_ITA_VGEX_LDT 3_2_15_Gesamtdokument.pdf");
 
         var generator = new Generator();
-        generator.generateRegeln(regeln.values());
+        generator.generateRegeln(regeln.getLeft().values());
+        System.err.println(regeln.getRight().size());
+        System.err.println(regeln.getRight().get("0001"));
     }
 
 
