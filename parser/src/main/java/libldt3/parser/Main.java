@@ -6,7 +6,6 @@ import libldt3.parser.model.Feld;
 import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
 import libldt3.parser.parsing.Praser;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.io.IOException;
@@ -53,7 +52,8 @@ public class Main {
         Triple<Map<String, Regel>, Map<String, Feld>, Map<String, Objekt>> regeln = Praser.parse("./EXT_ITA_VGEX_LDT 3_2_15_Gesamtdokument.pdf");
 
         var generator = new Generator();
-        generator.generateRegeln(regeln.getLeft().values());
+        generator.generateErlaubteInhalte(regeln.getLeft().values());
+        generator.generateKontextregeln(regeln.getLeft().values());
         generator.generateObjekte(regeln.getRight().values());
     }
 

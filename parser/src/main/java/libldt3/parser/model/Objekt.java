@@ -12,7 +12,7 @@ public class Objekt {
         public Vorkommen vorkommen = new Vorkommen();
         public String bezeichnung;
         public Feldart feldart;
-        public List<Regel> regeln;
+        public List<Regel> regeln = new ArrayList<>();
         public String erlaeuterung;
 
         public String getName() {

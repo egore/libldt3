@@ -9,7 +9,7 @@ public abstract class Regel {
     }
 
     public enum Fehlerstatus {
-        F, W
+        F, W, I
     }
 
     /**

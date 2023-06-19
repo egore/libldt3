@@ -8,6 +8,8 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateModelException;
 import libldt3.parser.Main;
 import libldt3.parser.RegelNaming;
+import libldt3.parser.model.ErlaubterInhalt;
+import libldt3.parser.model.Kontextregel;
 import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
 import org.slf4j.Logger;
@@ -40,16 +42,30 @@ public class Generator {
         config.setSharedVariable("regelnaming", RegelNaming.REPLACEMENTS);
     }
 
-    public void generateRegeln(Collection<Regel> regeln) throws IOException, TemplateException {
+    public void generateErlaubteInhalte(Collection<Regel> regeln) throws IOException, TemplateException {
         Template enumTemplate = config.getTemplate("enum.ftl");
         Files.createDirectories(Path.of("./generated/libldt3/model/enums"));
         for (Regel regel : regeln) {
-            String name = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
-            if (name == null || "Boolean".equals(name)) {
-                continue;
+            if (regel instanceof ErlaubterInhalt) {
+                String name = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
+                if (name == null || "Boolean".equals(name)) {
+                    continue;
+                }
+                try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/enums/" + name + ".java"), StandardCharsets.UTF_8)) {
+                    enumTemplate.process(Map.of("enum", regel), writer);
+                }
             }
-            try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/enums/" + name + ".java"), StandardCharsets.UTF_8)) {
-                enumTemplate.process(Map.of("enum", regel), writer);
+        }
+    }
+
+    public void generateKontextregeln(Collection<Regel> regeln) throws IOException, TemplateException {
+        Template kontextTemplate = config.getTemplate("kontext.ftl");
+        Files.createDirectories(Path.of("./generated/libldt3/model/regel/kontext"));
+        for (Regel regel : regeln) {
+            if (regel instanceof Kontextregel) {
+                try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/regel/kontext/" + regel.regelnummer + ".java"), StandardCharsets.UTF_8)) {
+                    kontextTemplate.process(Map.of("kontext", regel), writer);
+                }
             }
         }
     }

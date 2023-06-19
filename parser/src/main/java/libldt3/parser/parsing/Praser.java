@@ -2,6 +2,8 @@ package libldt3.parser.parsing;
 
 import libldt3.parser.model.ErlaubterInhalt;
 import libldt3.parser.model.Feld;
+import libldt3.parser.model.Formatregel;
+import libldt3.parser.model.Kontextregel;
 import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
 import org.apache.commons.lang3.tuple.Triple;
@@ -14,11 +16,11 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,6 +62,8 @@ public class Praser {
         Map<String, Objekt> objekte = new HashMap<>();
 
         try (PDDocument document = Loader.loadPDF(new File(filePath))) {
+
+            // Erlaubte Inhalte
             {
                 Holder<State> state = new Holder<>(State.HEADER);
                 Holder<String> lastText = new Holder<>(null);
@@ -79,7 +83,7 @@ public class Praser {
                             // If too much space is between the words, split them into two text blocks
                             if (p.getX() - lastX > 8.0f) {
                                 if (buffer.length() > 0) {
-                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText);
+                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, ErlaubterInhalt::new);
                                 }
                                 buffer.setLength(0);
                                 firstX = p.getX();
@@ -89,7 +93,7 @@ public class Praser {
                             buffer.append(p.getUnicode());
                         }
                         if (buffer.length() > 0) {
-                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText);
+                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, ErlaubterInhalt::new);
                         }
                         super.writeString(text, textPositions);
                     }
@@ -99,6 +103,87 @@ public class Praser {
                 stripper.getText(document);
             }
 
+            // Kontextregeln
+            {
+                Holder<State> state = new Holder<>(State.HEADER);
+                Holder<String> lastText = new Holder<>(null);
+                Holder<Regel> currentRegel = new Holder<>(new Kontextregel());
+
+                List<Column> columns = Arrays.asList(new Column(), new Column(), new Column(), new Column(), new Column());
+                final Holder<Integer> lastColumn = new Holder<>(-1);
+
+                PDFTextStripper stripper = new PDFTextStripper() {
+                    @Override
+                    protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
+                        StringBuilder buffer = new StringBuilder();
+                        float lastX = Float.NEGATIVE_INFINITY;
+                        float firstX = 0.0f;
+                        float firstY = 0.0f;
+                        for (TextPosition p : textPositions) {
+                            // If too much space is between the words, split them into two text blocks
+                            if (p.getX() - lastX > 8.0f) {
+                                if (buffer.length() > 0) {
+                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, Kontextregel::new);
+                                }
+                                buffer.setLength(0);
+                                firstX = p.getX();
+                                firstY = p.getY();
+                            }
+                            lastX = p.getEndX();
+                            buffer.append(p.getUnicode());
+                        }
+                        if (buffer.length() > 0) {
+                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, Kontextregel::new);
+                        }
+                        super.writeString(text, textPositions);
+                    }
+                };
+                stripper.setStartPage(102);
+                stripper.setEndPage(116);
+                stripper.getText(document);
+            }
+
+            // Formatregeln
+            {
+                Holder<State> state = new Holder<>(State.HEADER);
+                Holder<String> lastText = new Holder<>(null);
+                Holder<Regel> currentRegel = new Holder<>(new Formatregel());
+
+                List<Column> columns = Arrays.asList(new Column(), new Column(), new Column(), new Column(), new Column());
+                final Holder<Integer> lastColumn = new Holder<>(-1);
+
+                PDFTextStripper stripper = new PDFTextStripper() {
+                    @Override
+                    protected void writeString(String text, List<TextPosition> textPositions) throws IOException {
+                        StringBuilder buffer = new StringBuilder();
+                        float lastX = Float.NEGATIVE_INFINITY;
+                        float firstX = 0.0f;
+                        float firstY = 0.0f;
+                        for (TextPosition p : textPositions) {
+                            // If too much space is between the words, split them into two text blocks
+                            if (p.getX() - lastX > 8.0f) {
+                                if (buffer.length() > 0) {
+                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, Formatregel::new);
+                                }
+                                buffer.setLength(0);
+                                firstX = p.getX();
+                                firstY = p.getY();
+                            }
+                            lastX = p.getEndX();
+                            buffer.append(p.getUnicode());
+                        }
+                        if (buffer.length() > 0) {
+                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, Formatregel::new);
+                        }
+                        super.writeString(text, textPositions);
+                    }
+                };
+                stripper.setStartPage(74);
+                stripper.setEndPage(77);
+                stripper.getText(document);
+            }
+
+            // Felder
             {
                 Holder<State> state = new Holder<>(State.HEADER);
                 Holder<String> lastText = new Holder<>(null);
@@ -212,6 +297,7 @@ public class Praser {
                 objekt.value.stub = false;
                 objekt.value.name = name;
                 state.value = State.DESCRIPTION;
+                LOG.info("Adding objekt {}", objekt.value);
             }
         } else if (state.value == State.DESCRIPTION) {
             if ("OID: noch nicht vergeben".equals(text)) {
@@ -252,7 +338,7 @@ public class Praser {
                     state.value = State.BODY;
                     // Adjust values: The text in the header is centered
                     columns.get(0).x -= 4.02;
-                    LOG.error("All headers found, {}", columns);
+                    LOG.debug("All headers found, {}", columns);
                     break;
             }
             lastText.value = text;
@@ -286,8 +372,10 @@ public class Praser {
                 case 2:
                     if (text.startsWith("Obj_")) {
                         String childnummer = text.substring(4, 8);
-                        Objekt child = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_" + objekt.value.nummer, true));
-                        currentFeld.value.feld.forcedTyp = child;
+                        if (!childnummer.matches("[0-9]{4}")) {
+                            LOG.warn("Found invalid child number {} of {} when parsing {}", childnummer, text, objekt.value);
+                        }
+                        currentFeld.value.feld.forcedTyp = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_Parent" + objekt.value.nummer, true));
                     } else {
                         currentFeld.value.bezeichnung = text;
                     }
@@ -390,8 +478,8 @@ public class Praser {
     }
 
     private static void handleRegel(float x, float y, String text, List<Column> columns, Holder<Regel> regel,
-                             Holder<Integer> lastColumn, Map<String, Regel> regeln, Holder<State> state,
-                             Holder<String> lastText) {
+                                    Holder<Integer> lastColumn, Map<String, Regel> regeln, Holder<State> state,
+                                    Holder<String> lastText, Supplier<Regel> constructor) {
         if (text.isEmpty()) {
             return;
         }
@@ -434,7 +522,7 @@ public class Praser {
             switch (column) {
                 case 0:
                     if (lastColumn.value >= 3 || lastColumn.value == -1) {
-                        regel.value = new ErlaubterInhalt();
+                        regel.value = constructor.get();
                     }
                     regel.value.regelnummer = text;
                     regeln.put(regel.value.regelnummer, regel.value);

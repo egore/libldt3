@@ -20,6 +20,13 @@ public class Feld {
     public String inhalte;
     public Objekt forcedTyp;
 
+    public Feld() {
+    }
+
+    public Feld(String fk) {
+        this.fk = fk;
+    }
+
     public String getTyp() {
         if (forcedTyp != null) {
             return forcedTyp.name;
