@@ -4,6 +4,7 @@ import libldt3.parser.RegelNaming;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Feld {
 
@@ -46,4 +47,21 @@ public class Feld {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Feld[" + fk + ']';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Feld feld = (Feld) o;
+        return Objects.equals(fk, feld.fk);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fk);
+    }
 }

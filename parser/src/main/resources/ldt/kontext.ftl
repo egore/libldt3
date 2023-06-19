@@ -22,7 +22,7 @@
  */
 package libldt3.model.regel.kontext;
 
-<#if kontext.mandatoryFields?has_content>
+<#if kontext.usedFields?has_content>
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
@@ -35,19 +35,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ${kontext.pruefung}
+ * <@linewrap text=kontext.pruefung prefix="* "/>
+<#if kontext.erlaeuterung?length gt 0>
+ *
+ * <@linewrap text=kontext.erlaeuterung prefix="* "/>
+</#if>
  */
 public class ${kontext.regelnummer} implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(${kontext.regelnummer}.class);
-<#if kontext.mandatoryFields?has_content>
+<#if kontext.usedFields?has_content>
 
-    private static final Set<String> FIELDTYPES = Set.of(<#list kontext.mandatoryFields as field>"${field.fk}"<#sep>, </#list>);
+    private static final Set<String> FIELDTYPES = Set.of(<#list kontext.usedFields as field>"${field.fk}"<#sep>, </#list>);
 </#if>
 
     @Override
     public boolean isValid(Object owner) throws IllegalAccessException {
-    <#if kontext.mandatoryFields?has_content>
+<#if kontext.usedFields?has_content>
 
         Map<String, Field> fields = findFields(owner, FIELDTYPES);
         if (fields.size() != FIELDTYPES.size()) {
@@ -55,12 +59,22 @@ public class ${kontext.regelnummer} implements Kontextregel {
             return false;
         }
 
+<#if kontext.mandatoryFields?has_content>
         for (Field f : fields.values()) {
             if (containsAnyString(f, owner)) {
                 return true;
             }
         }
         return false;
+</#if>
+<#if kontext.mustRules?has_content>
+<#list kontext.mustRules as mustRule>
+        // ${mustRule.comment}
+        if (<#list mustRule.felder as feld>${feld.feld} == ${feld.init}<#sep> || </#list>) {
+            return containsAnyString(fields.get("${mustRule.must.fk}"), owner);
+        }
+</#list>
+</#if>
 </#if>
     }
 

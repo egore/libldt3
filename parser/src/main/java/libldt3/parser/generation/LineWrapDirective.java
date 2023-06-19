@@ -40,7 +40,7 @@ public class LineWrapDirective implements TemplateDirectiveModel {
         }
 
         text = text.replaceAll("\r?\n", "\n");
-        text = text.replaceAll("[„“]", "\"");
+        text = text.replaceAll("[„“”]", "\"");
 
         Writer writer = env.getOut();
         String[] split = text.split("\n");

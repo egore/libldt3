@@ -9,6 +9,7 @@
 		<version.java>11</version.java>
 		<maven.compiler.target>${version.java}</maven.compiler.target>
 		<maven.compiler.source>${version.java}</maven.compiler.source>
+		<version.antlr>4.13.0</version.antlr>
 	</properties>
 
 	<dependencies>
@@ -32,6 +33,62 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.4.8</version>
 		</dependency>
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr4-runtime</artifactId>
+			<version>${version.antlr}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.9.3</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.antlr</groupId>
+				<artifactId>antlr4-maven-plugin</artifactId>
+				<version>${version.antlr}</version>
+				<configuration>
+					<sourceDirectory>${basedir}/src/main/antlr</sourceDirectory>
+					<includes>
+						<include>libldt3/ruleparser/Kontext.g4</include>
+					</includes>
+					<visitor>true</visitor>
+					<listener>true</listener>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>antlr4</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>antlr-sources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/antlr</source>
+								<source>target/generated-sources/antlr4</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
