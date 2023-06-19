@@ -14,6 +14,7 @@ public class Formatregel extends Regel {
         pruefung = pruefung.replace("mm", "([0-5][0-9])");
         pruefung = pruefung.replace("ss", "([0-5][0-9])");
         pruefung = pruefung.replace("(ms)", "([0-9]{3})?");
+        pruefung = pruefung.replace("a", "([A-Z])");
 
         // Replace 'nnn' etc. by [0-9]{3}
         {
@@ -21,7 +22,20 @@ public class Formatregel extends Regel {
             Matcher matcher = PATTERN.matcher(pruefung);
             while (matcher.find()) {
                 int length = matcher.group(1).length();
-                matcher.appendReplacement(result, length > 1 ? "([0-9]{" + length + "})" : "([0-9])");
+                StringBuilder buffer = new StringBuilder();
+                if (length != pruefung.length()) {
+                    buffer.append('(');
+                }
+                if (length > 1) {
+                    buffer.append("[0-9]{").append(length).append("}");
+                }
+                else {
+                    buffer.append("[0-9]");
+                }
+                if (length != pruefung.length()) {
+                    buffer.append(')');
+                }
+                matcher.appendReplacement(result, buffer.toString());
             }
             matcher.appendTail(result);
             pruefung = result.toString();
