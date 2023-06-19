@@ -191,7 +191,8 @@ public class Praser {
             if (matcher.matches()) {
                 String nummer = matcher.group(2);
                 String name = ErlaubterInhalt.normalizeJavaIdentifier(matcher.group(1));
-                objekt.value = objekte.computeIfAbsent(nummer, (k) -> new Objekt(nummer, name));
+                objekt.value = objekte.computeIfAbsent(nummer, (k) -> new Objekt(nummer, name, false));
+                objekt.value.stub = false;
                 objekt.value.name = name;
                 state.value = State.DESCRIPTION;
             }
@@ -267,7 +268,7 @@ public class Praser {
                 case 2:
                     if (text.startsWith("Obj_")) {
                         String childnummer = text.substring(4, 8);
-                        Objekt child = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_" + objekt.value.nummer));
+                        Objekt child = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_" + objekt.value.nummer, true));
                         currentFeld.value.feld.forcedTyp = child;
                     } else {
                         currentFeld.value.bezeichnung = text;

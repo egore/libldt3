@@ -55,6 +55,9 @@ public class Generator {
         Template objektTemplate = config.getTemplate("objekt.ftl");
         Files.createDirectories(Path.of("./generated/libldt3/model/objekte"));
         for (Objekt objekt : objekte) {
+            if (objekt.stub) {
+                continue;
+            }
             try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/objekte/" + objekt.name + ".java"), StandardCharsets.UTF_8)) {
                 objektTemplate.process(Map.of("objekt", objekt), writer);
             }

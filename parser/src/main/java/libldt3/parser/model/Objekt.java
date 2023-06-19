@@ -45,15 +45,17 @@ public class Objekt {
         }
     }
 
-    public Objekt(String nummer, String name) {
+    public Objekt(String nummer, String name, boolean stub) {
         this.nummer = nummer;
         this.name = name;
+        this.stub = stub;
     }
 
     public String name;
     public String beschreibung;
     public String nummer;
     public List<FeldExtended> felder = new ArrayList<>();
+    public boolean stub;
 
     @Override
     public String toString() {
