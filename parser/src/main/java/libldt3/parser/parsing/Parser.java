@@ -24,9 +24,9 @@ import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Praser {
+public class Parser {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Praser.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Parser.class);
 
     private static final Pattern OBJEKT_HEADLINE_PATTERN = Pattern.compile("^[0-9.]+[ ]+Obj_([A-Za-z()0-9 -]+) „Obj_([0-9]+)“$");
     private static final Pattern OBJEKT_PATTERN = Pattern.compile("Obj_([0-9]{4}).*");
