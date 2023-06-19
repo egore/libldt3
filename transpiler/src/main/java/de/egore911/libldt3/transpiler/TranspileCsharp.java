@@ -42,7 +42,7 @@ public class TranspileCsharp {
         launcher.run();
 
         // Build up the freemarker configuration for C#
-        Configuration config = new Configuration(Configuration.VERSION_2_3_31);
+        Configuration config = new Configuration(Configuration.VERSION_2_3_32);
         config.setTemplateLoader(new ClassTemplateLoader(TranspileCsharp.class, "/cs/"));
 
         // Add several directives which were simpler to implement in Java than in .ftl files
