@@ -290,7 +290,7 @@ public class Parser {
         LOG.debug("Found text '{}' at {},{}", text, x, y);
         // Workaround: From page 143 on the header is duplicated for objekte spanning multiple pages, therefore force
         // the state to HEADER
-        if ("OID: noch nicht vergeben".equals(text)) {
+        if ("OID: noch nicht vergeben".equals(text) || "OID noch nicht vergeben".equals(text)) {
             state.value = State.HEADER;
         } else if (state.value == State.NAME) {
             Matcher matcher = OBJEKT_HEADLINE_PATTERN.matcher(text);
@@ -304,9 +304,7 @@ public class Parser {
                 LOG.error("Adding objekt {}", objekt.value);
             }
         } else if (state.value == State.DESCRIPTION) {
-            if ("OID: noch nicht vergeben".equals(text) || "OID noch nicht vergeben".equals(text)) {
-                state.value = State.HEADER;
-            } else if (objekt.value.beschreibung == null) {
+            if (objekt.value.beschreibung == null) {
                 objekt.value.beschreibung = text;
             } else if (!text.startsWith("Obj_")) {
                 objekt.value.beschreibung += " " + text;
