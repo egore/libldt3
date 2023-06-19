@@ -25,6 +25,7 @@ public class Kontextregel extends Regel {
         public String comment;
         public List<FeldInitialized> felder = new ArrayList<>();
         public Feld must;
+        public boolean inverted;
     }
 
     public List<Feld> mandatoryFields;
@@ -82,12 +83,18 @@ public class Kontextregel extends Regel {
 
                 @Override
                 public void exitIfRuleMustNot(KontextParser.IfRuleMustNotContext ctx) {
+                    MustRule rule = new MustRule();
+                    rule.comment = ctx.getText();
+                    rule.inverted = true;
                     // Workaround for incomplete parsing
                     if (ctx.fkInitialized() != null) {
                         for (var fkInitialized : ctx.fkInitialized()) {
                             Feld e = new Feld(fkInitialized.fk().INTEGER().toString());
                             if (!usedFields.contains(e)) {
                                 usedFields.add(e);
+                            }
+                            for (var i : fkInitialized.values().INTEGER()) {
+                                rule.felder.add(new FeldInitialized(e, i.toString()));
                             }
                         }
                     }
@@ -97,8 +104,9 @@ public class Kontextregel extends Regel {
                         if (!usedFields.contains(e)) {
                             usedFields.add(e);
                         }
+                        rule.must = e;
                     }
-                    //System.err.println(ctx.fkInitialized().fk().INTEGER() + "=" + ctx.fkInitialized().values().INTEGER() + " -> !" + ctx.fk().INTEGER());
+                    mustRules.add(rule);
                     super.exitIfRuleMustNot(ctx);
                 }
             };

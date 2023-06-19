@@ -70,9 +70,10 @@ public class ${kontext.regelnummer} implements Kontextregel {
 <#if kontext.mustRules?has_content>
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
-        if (<#list mustRule.felder as feld>${feld.feld} == ${feld.init}<#sep> || </#list>) {
+        if (<#list mustRule.felder as feld>${feld.feld} <#if mustRule.inverted>!=<#else>==</#if> ${feld.init}<#sep> || </#list>) {
             return containsAnyString(fields.get("${mustRule.must.fk}"), owner);
         }
+
 </#list>
 </#if>
 </#if>
