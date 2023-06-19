@@ -359,7 +359,7 @@ public class Praser {
                         LOG.warn("Feld {} not found, not adding to Objekt", text);
                     } else {
                         if ("8002".equals(text)) {
-                            LOG.debug("Using field to fill, but not addint to Objekt");
+                            LOG.debug("Using field to fill, but not adding to Objekt");
                         } else {
                             objekt.value.felder.add(currentFeld.value);
                         }
@@ -445,7 +445,7 @@ public class Praser {
 
             switch (column) {
                 case 0:
-                    if (lastColumn.value >= 5 || lastColumn.value == -1) {
+                    if (lastColumn.value >= 4 || lastColumn.value == -1) {
                         feld.value = new Feld();
                     }
                     feld.value.fk = text;
