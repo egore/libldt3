@@ -19,7 +19,7 @@ public class RegelNaming {
         map.put("E008", "Gebuehrenordnung");
         map.put("E009", "Scheinuntergruppe");
         // E010 -> rule, not enum
-        // E011 -> Boolean
+        map.put("E011", "Boolean");
         // E012 -> rule, not enum
         map.put("E013", "ZusaetzlicherBefundweg");
         // E014 -> unused

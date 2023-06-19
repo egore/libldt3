@@ -26,7 +26,7 @@ public class Praser {
 
     private static final Logger LOG = LoggerFactory.getLogger(Praser.class);
 
-    private static final Pattern OBJEKT_HEADLINE_PATTERN = Pattern.compile("^[0-9.]+[ ]+Obj_([A-Za-z ]+) „Obj_([0-9]+)“$");
+    private static final Pattern OBJEKT_HEADLINE_PATTERN = Pattern.compile("^[0-9.]+[ ]+Obj_([A-Za-z()0-9 -]+) „Obj_([0-9]+)“$");
 
     static class Column {
         float x = 0.0f;
@@ -46,6 +46,11 @@ public class Praser {
         T value;
         public Holder(T value) {
             this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return value != null ? value.toString() : "null";
         }
     }
 
@@ -169,7 +174,15 @@ public class Praser {
                     }
                 };
                 stripper.setStartPage(117);
-                stripper.setEndPage(120);
+                stripper.setEndPage(127);
+                stripper.getText(document);
+                // Skip 128
+                stripper.setStartPage(129);
+                stripper.setEndPage(169);
+                stripper.getText(document);
+                // Skip 170
+                stripper.setStartPage(171);
+                stripper.setEndPage(185);
                 stripper.getText(document);
             }
         }
@@ -186,7 +199,11 @@ public class Praser {
             return;
         }
         LOG.debug("Found text '{}' at {},{}", text, x, y);
-        if (state.value == State.NAME) {
+        // Workaround: From page 143 on the header is duplicated for objekte spanning multiple pages, therefore force
+        // the state to HEADER
+        if ("OID: noch nicht vergeben".equals(text)) {
+            state.value = State.HEADER;
+        } else if (state.value == State.NAME) {
             Matcher matcher = OBJEKT_HEADLINE_PATTERN.matcher(text);
             if (matcher.matches()) {
                 String nummer = matcher.group(2);
@@ -223,7 +240,8 @@ public class Praser {
                     columns.get(3).y = y;
                     break;
                 case "Regel":
-                    columns.get(4).x = x;
+                    // Adjust values: The text in the header is centered
+                    columns.get(4).x = x - 0.75f;
                     columns.get(4).y = y;
                     break;
                 case "Erläuterung":

@@ -52,8 +52,6 @@ public class Main {
 
         Triple<Map<String, Regel>, Map<String, Feld>, Map<String, Objekt>> regeln = Praser.parse("./EXT_ITA_VGEX_LDT 3_2_15_Gesamtdokument.pdf");
 
-        System.err.println(regeln.getRight());
-
         var generator = new Generator();
         generator.generateRegeln(regeln.getLeft().values());
         generator.generateObjekte(regeln.getRight().values());

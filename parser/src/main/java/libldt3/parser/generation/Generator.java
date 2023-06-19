@@ -10,6 +10,8 @@ import libldt3.parser.Main;
 import libldt3.parser.RegelNaming;
 import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -18,10 +20,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 public class Generator {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Generator.class);
 
     private final Configuration config;
 
@@ -41,11 +44,11 @@ public class Generator {
         Template enumTemplate = config.getTemplate("enum.ftl");
         Files.createDirectories(Path.of("./generated/libldt3/model/enums"));
         for (Regel regel : regeln) {
-            // TODO hack
-            if (regel == null || !RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer)) {
+            String name = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
+            if (name == null || "Boolean".equals(name)) {
                 continue;
             }
-            try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/enums/" + RegelNaming.REPLACEMENTS.get(regel.regelnummer) + ".java"), StandardCharsets.UTF_8)) {
+            try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/enums/" + name + ".java"), StandardCharsets.UTF_8)) {
                 enumTemplate.process(Map.of("enum", regel), writer);
             }
         }
@@ -56,6 +59,7 @@ public class Generator {
         Files.createDirectories(Path.of("./generated/libldt3/model/objekte"));
         for (Objekt objekt : objekte) {
             if (objekt.stub) {
+                LOG.warn("Skipping stub {}", objekt.name);
                 continue;
             }
             try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/objekte/" + objekt.name + ".java"), StandardCharsets.UTF_8)) {
