@@ -33,8 +33,8 @@ import libldt3.model.regel.F002;
 import libldt3.model.regel.F017;
 
 /**
- * In diesem Objekt können Information zu einem Tumor sowohl für die
- * Beauftragung und für den Befund transportiert werden.
+ * In diesem Objekt können Information zu einem Tumor sowohl für die Beauftragung
+ * und für den Befund transportiert werden.
  */
 @Objekt("0056")
 public class Tumor implements Kontext {
@@ -49,7 +49,7 @@ public class Tumor implements Kontext {
     @Regelsatz(maxLaenge = 5)
     public String grading;
     @Feld(value = "7374", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 4)
+    @Regelsatz(maxLaenge = 5)
     public String stadium;
     @Feld(value = "7375", feldart = Feldart.kann)
     @Regelsatz(value = F017.class, laenge = 4)

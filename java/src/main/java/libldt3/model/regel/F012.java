@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,11 @@ import java.util.regex.Pattern;
 
 /**
  * Format KBV-Prüfnummer
+ * A = [V, X, Y, Z]
+ * nn = [00-99]
+ * JJMM = Jahr/Monat
+ * MM = Dauer in Monaten
+ * aaa = Systemident (alphanumerisch)
  */
 public class F012 extends RegularExpressionRegel {
 

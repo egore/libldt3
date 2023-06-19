@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,10 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 
 /**
- * Im Objekt werden die Untersuchungsergebnisse zusammengefasst.
+ * Im Objekt werden die Untersuchungsergebnisse zusammengefasst. Hinweis: Die
+ * Feldkennungen 8160, 8161, 8162, 8163, 8155, 8248 und 8156 können im Obj_0035 in
+ * beliebiger Reihenfolge angeordnet und übertragen werden. Damit wird es möglich,
+ * im Obj_0035 die Struktur eines schriftlichen Befundes nachzubilden.
  */
 @Objekt("0035")
 public class Laborergebnisbericht implements Kontext {

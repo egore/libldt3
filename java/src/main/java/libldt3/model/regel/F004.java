@@ -25,6 +25,9 @@ import java.util.regex.Pattern;
 
 /**
  * Format ICD-Code
+ * Hinweis:
+ * ICD-Codes im Format "ann.-" dürfen nicht in Abrechnungsdateien
+ * verwendet werden.
  */
 public class F004 extends RegularExpressionRegel {
 

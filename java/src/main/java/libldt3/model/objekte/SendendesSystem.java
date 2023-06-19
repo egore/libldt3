@@ -31,10 +31,10 @@ import libldt3.model.regel.F007;
 import libldt3.model.regel.F012;
 
 /**
- * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
- * den LDT Datensatz erstellt hat.
+ * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches den
+ * LDT Datensatz erstellt hat.
  */
-@Objekt(value = "0051")
+@Objekt("0051")
 public class SendendesSystem implements Kontext {
 
     @Feld(value = "0001", feldart = Feldart.muss)

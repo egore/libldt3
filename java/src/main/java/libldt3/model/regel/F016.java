@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,10 +25,14 @@ import java.util.regex.Pattern;
 
 /**
  * Format Uhrzeit
+ * hh = Stunden (00 – 23)
+ * mm = Minuten (00 – 59)
+ * ss = Sekunden (00 – 59)
+ * ms = Millisekunden (000 – 999)
  */
 public class F016 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^([0-1][0-9]|2[0-3])[0-5][0-9][0-5][0-9]([0-9]{3})?$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-1][0-9]|2[0-3])([0-5][0-9])([0-5][0-9])([0-9]{3})?$");
 
     public F016() {
         super(PATTERN);

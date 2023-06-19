@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,10 +25,14 @@ import java.util.regex.Pattern;
 
 /**
  * Format Versicherten-ID
+ * a = A-Z (ohne Umlaute)
+ * n = numerisch
+ * P = Prüfziffer, numerisch (Verfahren zur Bestimmung der Prüfziffer vgl.
+ * Erläuterung der FK 3119 in Feldtabelle)
  */
 public class F013 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[A-Z][0-9]{8}[0-9]$");
+    public static final Pattern PATTERN = Pattern.compile("^([A-Z])([0-9]{8})([0-9])$");
 
     public F013() {
         super(PATTERN);

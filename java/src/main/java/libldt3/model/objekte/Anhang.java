@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,14 +35,14 @@ import libldt3.model.regel.kontext.K075;
 
 /**
  * Im Objekt Anhang können Informationen wie Befunde, Fotos oder sonstige
- * Dokumentationen, die in einem digitalen Standardformat vorliegen,
- * transportiert werden.
+ * Dokumentationen, die in einem digitalen Standardformat vorliegen, transportiert
+ * werden.
  */
 @Objekt(value = "0010", kontextregeln = { K001.class, K075.class })
 public class Anhang implements Kontext {
 
     @Feld(value = "9970", feldart = Feldart.muss)
-    @Regelsatz(maxLaenge = 3)
+    @Regelsatz(laenge = 3)
     public Dokumententyp dokumentTyp;
     @Feld(value = "6221", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)

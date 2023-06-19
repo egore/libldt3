@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,19 +45,14 @@ import libldt3.model.regel.erlaubt.E010;
 import libldt3.model.regel.kontext.K041;
 
 /**
- * <p>
  * Hier werden alle Angaben für die Abrechnung von Untersuchungsanforderungen in
  * der GKV gegenüber der KV hinterlegt. Der Patient ist in der gesetzlichen
- * Kranken-versicherung pflichtversichert oder freiwillig versichert. Der
- * Auftrag für die geplanten Untersuchungen erfolgt über Muster 10/Muster
- * 10A/Muster 39.
- * </p>
- * <p>
+ * Krankenversicherung pflichtversichert oder freiwillig versichert. Der Auftrag
+ * für die geplanten Untersuchungen erfolgt über Muster 10/Muster 10A/Muster 39.
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
  * Untersuchungsanforderungen zusammengefasst, die im Regelleistungskatalog der
  * Krankenkassen vorhanden sind oder anderweitig z.B. über eDMP dem Patienten
  * zugeordnet werden können.
- * </p>
  */
 @Objekt(value = "0002", kontextregeln = { K041.class })
 public class AbrechnungGKV implements Kontext {
@@ -66,7 +61,7 @@ public class AbrechnungGKV implements Kontext {
     @Regelsatz(laenge = 2)
     public Scheinuntergruppe scheinuntergruppe;
     @Feld(value = "4134", feldart = Feldart.muss)
-    @Regelsatz(maxLaenge = 28)
+    @Regelsatz(maxLaenge = 45)
     public String kostentraegername;
     @Feld(value = "4104", feldart = Feldart.muss)
     @Regelsatz(value = F001.class, laenge = 5)
@@ -94,7 +89,7 @@ public class AbrechnungGKV implements Kontext {
     public LocalDate versicherungsschutzEnde;
     @Feld(value = "4111", feldart = Feldart.muss)
     @Regelsatz(laenge = 9)
-    public String kstentraegerkennung;
+    public String kostentraegerkennung;
     @Feld(value = "4229", feldart = Feldart.bedingt_kann)
     @Regelsatz(laenge = 5)
     public List<String> ausnahmeindikation;

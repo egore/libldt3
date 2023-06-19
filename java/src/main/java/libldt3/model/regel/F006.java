@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,9 @@ import java.util.regex.Pattern;
 
 /**
  * Format Zeitdauer
+ * hh = Stunde, mm = Minute
+ * hh = 00 – 99
+ * mm = 00 – 59
  */
 public class F006 extends RegularExpressionRegel {
 

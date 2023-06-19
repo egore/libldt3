@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,10 +25,18 @@ import java.util.regex.Pattern;
 
 /**
  * Format ASV-Teamnummer
+ * ASV-ID-Kürzel
+ * nnnnnn = eindeutige Nummer
+ * P = Prüfziffer *
+ * * Die Prüfziffer wird mittels des Modulo 10 – Verfahrens der Stellen 3 bis 8 der
+ * ASV-Teamnummer ermittelt. Bei diesem Verfahren werden die Ziffern 3 bis 8 von
+ * links nach rechts abwechselnd mit 4 und 9 multipliziert. Die Summe dieser
+ * Produkte wird Modulo 10 berechnet. Die Prüfziffer ergibt sich aus der Differenz
+ * dieser Zahl zu 10.
  */
 public class F014 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^00[0-9]{6}[0-9]$");
+    public static final Pattern PATTERN = Pattern.compile("^00([0-9]{6})([0-9])$");
 
     public F014() {
         super(PATTERN);

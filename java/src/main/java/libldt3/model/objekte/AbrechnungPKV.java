@@ -33,10 +33,10 @@ import libldt3.model.enums.Gebuehrenordnung;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
- * Untersuchungsanforderungen zusammengefasst, die über die GOÄ abgerechnet
- * werden. Das Objekt bezieht sich auf Patienten, welche bei privaten
- * Krankenkassen versichert sind. Dabei kann der Rechnungsempfänger aber auch
- * ein anderer sein, als der Versicherte.
+ * Untersuchungsanforderungen zusammengefasst, die über die GOÄ abgerechnet werden.
+ * Das Objekt bezieht sich auf Patienten, welche bei privaten Krankenkassen
+ * versichert sind. Dabei kann der Rechnungsempfänger aber auch ein anderer sein,
+ * als der Versicherte.
  */
 @Objekt("0003")
 public class AbrechnungPKV implements Kontext {

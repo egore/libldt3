@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,8 +30,8 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 
 /**
- * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
- * mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
+ * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw. Mit
+ * einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
  */
 @Objekt("0031")
 public class Kommunikationsdaten implements Kontext {
@@ -62,6 +62,6 @@ public class Kommunikationsdaten implements Kontext {
     public List<String> email;
     @Feld(value = "7334", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public List<String> website;
+    public List<String> webadresse;
 
 }

@@ -33,7 +33,15 @@ import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 
 /**
- * FK 3112 und/oder FK 3121 muss vorhanden sein.
+ * FK 3112 und/oder FK 3121 muss vorhanden sein. Ausnahmen: Nur wenn FK 3114
+ * vorhanden und der Feldinhalt ungleich "D" ist, dann gilt: Ist die FK 4109
+ * vorhanden, dann muss die FK 3112 nicht vorhanden sein. Nur wenn FK 3124
+ * vorhanden und der Feldinhalt ungleich "D" ist, dann gilt: Ist die FK 4109
+ * vorhanden, dann muss die FK 3121 nicht vorhanden sein.
+ *
+ * Diese Regel beschreibt die mindestens erforderlichen Angaben im
+ * Obj_0007 (Anschrift). Grundlage für diese Regel bilden die Vorgaben des
+ * KVDT.
  */
 public class K017 implements Kontextregel {
 

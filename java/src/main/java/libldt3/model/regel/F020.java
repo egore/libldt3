@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,13 @@ package libldt3.model.regel;
 import java.util.regex.Pattern;
 
 /**
- * Format der Pharmazentralnummer
+ * Format der Pharmazentralnummer (PZN)
+ * nnnnnnn = Nummer
+ * P = Prüfziffer
  */
 public class F020 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{7}[0-9]$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-9]{7})([0-9])$");
 
     public F020() {
         super(PATTERN);

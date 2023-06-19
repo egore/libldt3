@@ -25,6 +25,9 @@ import java.util.regex.Pattern;
 
 /**
  * Format BSNR
+ * kk = erlaubter Inhalt gemäß Regel  E014
+ * nnnnn = Seriennummer
+ * mm = [undefiniert]
  */
 public class F010 extends RegularExpressionRegel {
 
