@@ -15,6 +15,7 @@ import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -32,6 +33,8 @@ public class Generator {
     private final Configuration config;
 
     public Generator() throws TemplateModelException {
+        SLF4JBridgeHandler.removeHandlersForRootLogger();
+        SLF4JBridgeHandler.install();
         DefaultObjectWrapper wrapper = new DefaultObjectWrapper(Configuration.VERSION_2_3_32);
         wrapper.setExposeFields(true);
 
@@ -92,6 +95,7 @@ public class Generator {
                 LOG.warn("Skipping stub {}", objekt.name);
                 continue;
             }
+            LOG.error("{}", objekt);
             try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/objekte/" + objekt.name + ".java"), StandardCharsets.UTF_8)) {
                 objektTemplate.process(Map.of("objekt", objekt), writer);
             }

@@ -301,10 +301,10 @@ public class Parser {
                 objekt.value.stub = false;
                 objekt.value.name = name;
                 state.value = State.DESCRIPTION;
-                LOG.debug("Adding objekt {}", objekt.value);
+                LOG.error("Adding objekt {}", objekt.value);
             }
         } else if (state.value == State.DESCRIPTION) {
-            if ("OID: noch nicht vergeben".equals(text)) {
+            if ("OID: noch nicht vergeben".equals(text) || "OID noch nicht vergeben".equals(text)) {
                 state.value = State.HEADER;
             } else if (objekt.value.beschreibung == null) {
                 objekt.value.beschreibung = text;
@@ -336,6 +336,7 @@ public class Parser {
                     columns.get(1).subcolumns.get(3).y = y;
                     break;
                 case "Feld-/Objektbezeichnung":
+                case "Bezeichnung der Feldinhalte":
                     columns.get(2).x = x;
                     columns.get(2).y = y;
                     break;
