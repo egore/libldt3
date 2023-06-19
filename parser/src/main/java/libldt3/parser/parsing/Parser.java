@@ -1,5 +1,6 @@
 package libldt3.parser.parsing;
 
+import freemarker.ext.beans.BeanModel;
 import libldt3.parser.model.ErlaubterInhalt;
 import libldt3.parser.model.Feld;
 import libldt3.parser.model.Formatregel;
@@ -32,6 +33,7 @@ public class Parser {
     private static final Pattern OBJEKT_PATTERN = Pattern.compile("Obj_([0-9]{4}).*");
 
     static class Column {
+        public List<Column> subcolumns;
         float x = 0.0f;
         float y = 0.0f;
         public String toString() {
@@ -231,6 +233,7 @@ public class Parser {
                 Holder<Objekt.FeldExtended> currentFeld = new Holder<>(null);
 
                 List<Column> columns = Arrays.asList(new Column(), new Column(), new Column(), new Column(), new Column(), new Column());
+                columns.get(1).subcolumns = Arrays.asList(new Column(), new Column(), new Column(), new Column(), new Column());
                 final Holder<Integer> lastColumn = new Holder<>(-1);
 
                 PDFTextStripper stripper = new PDFTextStripper() {
@@ -317,6 +320,20 @@ public class Parser {
                 case "1":
                     columns.get(1).x = x;
                     columns.get(1).y = y;
+                    columns.get(1).subcolumns.get(0).x = x;
+                    columns.get(1).subcolumns.get(0).y = y;
+                    break;
+                case "2":
+                    columns.get(1).subcolumns.get(1).x = x;
+                    columns.get(1).subcolumns.get(1).y = y;
+                    break;
+                case "3":
+                    columns.get(1).subcolumns.get(2).x = x;
+                    columns.get(1).subcolumns.get(2).y = y;
+                    break;
+                case "4":
+                    columns.get(1).subcolumns.get(3).x = x;
+                    columns.get(1).subcolumns.get(3).y = y;
                     break;
                 case "Feld-/Objektbezeichnung":
                     columns.get(2).x = x;
@@ -336,6 +353,8 @@ public class Parser {
                     columns.get(5).y = y;
                     break;
                 case "5":
+                    columns.get(1).subcolumns.get(4).x = x;
+                    columns.get(1).subcolumns.get(4).y = y;
                     state.value = State.BODY;
                     // Adjust values: The text in the header is centered
                     columns.get(0).x -= 4.02;
@@ -367,8 +386,18 @@ public class Parser {
                     }
                     break;
                 case 1:
-                    // TODO determine sub-column and put into position
-                    currentFeld.value.vorkommen.wert = text;
+                    int subcolumn = determineColumn(columns.get(1).subcolumns, x);
+                    if (currentFeld.value.vorkommen.wert != null) {
+                        if (currentFeld.value.vorkommen.position < subcolumn) {
+                            LOG.debug("Not replacing occurrence with higher precedence: {} vs {}", currentFeld.value.vorkommen.position, subcolumn);
+                        } else {
+                            currentFeld.value.vorkommen.wert = text;
+                            currentFeld.value.vorkommen.position = subcolumn;
+                        }
+                    } else {
+                        currentFeld.value.vorkommen.wert = text;
+                        currentFeld.value.vorkommen.position = subcolumn;
+                    }
                     break;
                 case 2:
                     Matcher matcher = OBJEKT_PATTERN.matcher(text);
