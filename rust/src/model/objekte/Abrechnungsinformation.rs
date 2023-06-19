@@ -1,9 +1,9 @@
 #![allow(dead_code, unused_imports, non_camel_case_types)]
 
 use crate::model::Kontext::Kontext;
-use crate::model::objekte::AbrechnungGkv::AbrechnungGkv;
+use crate::model::objekte::AbrechnungGKV::AbrechnungGKV;
 use crate::model::objekte::AbrechnungIgel::AbrechnungIgel;
-use crate::model::objekte::AbrechnungPkv::AbrechnungPkv;
+use crate::model::objekte::AbrechnungPKV::AbrechnungPKV;
 use crate::model::objekte::AbrechnungSelektivvertrag::AbrechnungSelektivvertrag;
 use crate::model::objekte::AbrechnungSonstigeKostenuebernahme::AbrechnungSonstigeKostenuebernahme;
 
@@ -14,10 +14,10 @@ use crate::model::objekte::AbrechnungSonstigeKostenuebernahme::AbrechnungSonstig
 pub struct Abrechnungsinformation {
     #[feld(Value = "8102", Name = "Abrechnung_GKV", Feldart = libldt3.annotations.Feldart.bedingt_muss)]
     #[regelsatz(Laenge = 14)]
-    abrechnung_gkv: Vec<AbrechnungGkv>,
+    abrechnung_gkv: Vec<AbrechnungGKV>,
     #[feld(Value = "8103", Name = "Abrechnung_PKV", Feldart = libldt3.annotations.Feldart.bedingt_muss)]
     #[regelsatz(Laenge = 14)]
-    abrechnung_pkv: Vec<AbrechnungPkv>,
+    abrechnung_pkv: Vec<AbrechnungPKV>,
     #[feld(Value = "8104", Name = "Abrechnung_IGe-Leistungen", Feldart = libldt3.annotations.Feldart.bedingt_muss)]
     #[regelsatz(Laenge = 25/* XXX 15 according to spec 3.0.3 */
 )]

@@ -169,7 +169,7 @@ public class Praser {
                     }
                 };
                 stripper.setStartPage(117);
-                stripper.setEndPage(119);
+                stripper.setEndPage(120);
                 stripper.getText(document);
             }
         }

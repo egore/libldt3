@@ -1,8 +1,8 @@
 #![allow(non_snake_case)]
 
-pub mod AbrechnungGkv;
+pub mod AbrechnungGKV;
 pub mod AbrechnungIgel;
-pub mod AbrechnungPkv;
+pub mod AbrechnungPKV;
 pub mod AbrechnungSelektivvertrag;
 pub mod AbrechnungSonstigeKostenuebernahme;
 pub mod Abrechnungsinformation;

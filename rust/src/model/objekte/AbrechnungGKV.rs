@@ -29,7 +29,7 @@ use datetime::LocalDate;
 /// Krankenkassen vorhanden sind oder anderweitig z.B. über eDMP dem Patienten
 /// zugeordnet werden können.
 /// </p>
-pub struct AbrechnungGkv {
+pub struct AbrechnungGKV {
     #[feld(Value = "4239", Feldart = libldt3.annotations.Feldart.muss)]
     #[regelsatz(Laenge = 2)]
     scheinuntergruppe: Scheinuntergruppe<'static>,
@@ -107,5 +107,5 @@ pub struct AbrechnungGkv {
     asv_teamnummer: String
 }
 
-impl Kontext for AbrechnungGkv {
+impl Kontext for AbrechnungGKV {
 }

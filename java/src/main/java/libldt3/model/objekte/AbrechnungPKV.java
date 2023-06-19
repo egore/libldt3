@@ -39,7 +39,7 @@ import libldt3.model.enums.Gebuehrenordnung;
  * ein anderer sein, als der Versicherte.
  */
 @Objekt("0003")
-public class AbrechnungPkv implements Kontext {
+public class AbrechnungPKV implements Kontext {
 
     @Feld(value = "7362", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)

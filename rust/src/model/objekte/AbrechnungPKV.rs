@@ -8,7 +8,7 @@ use crate::model::objekte::Rechnungsempfaenger::Rechnungsempfaenger;
 /// Das Objekt bezieht sich auf Patienten, welche bei privaten
 /// Krankenkassen versichert sind. Dabei kann der Rechnungsempfänger aber auch
 /// ein anderer sein, als der Versicherte.
-pub struct AbrechnungPkv {
+pub struct AbrechnungPKV {
     #[feld(Value = "7362", Feldart = libldt3.annotations.Feldart.muss)]
     #[regelsatz(Laenge = 1)]
     abrechnungsart_pkv: AbrechnungsartPkv<'static>,
@@ -26,5 +26,5 @@ pub struct AbrechnungPkv {
     rechnungsempfaenger: Rechnungsempfaenger
 }
 
-impl Kontext for AbrechnungPkv {
+impl Kontext for AbrechnungPKV {
 }

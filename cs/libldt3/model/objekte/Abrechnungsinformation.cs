@@ -41,10 +41,10 @@ namespace libldt3
             {
                 [Feld(Value = "8102", Name = "Abrechnung_GKV", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 14)]
-                public IList<AbrechnungGkv> AbrechnungGkv;
+                public IList<AbrechnungGKV> AbrechnungGKV;
                 [Feld(Value = "8103", Name = "Abrechnung_PKV", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 14)]
-                public IList<AbrechnungPkv> AbrechnungPkv;
+                public IList<AbrechnungPKV> AbrechnungPKV;
                 [Feld(Value = "8104", Name = "Abrechnung_IGe-Leistungen", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge =     /* XXX 15 according to spec 3.0.3 */
             25)]

@@ -38,7 +38,7 @@ namespace libldt3
             /// Krankenkassen versichert sind. Dabei kann der Rechnungsempfänger aber auch
             /// ein anderer sein, als der Versicherte.
             [Objekt(Value = "0003")]
-            public class AbrechnungPkv : Kontext
+            public class AbrechnungPKV : Kontext
             {
                 [Feld(Value = "7362", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]

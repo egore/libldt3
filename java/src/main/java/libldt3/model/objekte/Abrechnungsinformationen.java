@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,14 +37,14 @@ import libldt3.model.Kontext;
  * Objekt nur einmal vorhanden sein.
  */
 @Objekt("0001")
-public class Abrechnungsinformation implements Kontext {
+public class Abrechnungsinformationen implements Kontext {
 
     @Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public List<AbrechnungGkv> abrechnungGkv;
+    public List<AbrechnungGKV> abrechnungGkv;
     @Feld(value = "8103", name = "Abrechnung_PKV", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public List<AbrechnungPkv> abrechnungPkv;
+    public List<AbrechnungPKV> abrechnungPkv;
     @Feld(value = "8104", name = "Abrechnung_IGe-Leistungen", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 25 /* XXX 15 according to spec 3.0.3 */)
     public AbrechnungIgel abrechnungIgel;

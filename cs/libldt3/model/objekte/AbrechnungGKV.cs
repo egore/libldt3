@@ -49,7 +49,7 @@ namespace libldt3
             /// zugeordnet werden können.
             /// </p>
             [Objekt(Value = "0002", Kontextregeln = new[] { typeof(K041) })]
-            public class AbrechnungGkv : Kontext
+            public class AbrechnungGKV : Kontext
             {
                 [Feld(Value = "4239", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]

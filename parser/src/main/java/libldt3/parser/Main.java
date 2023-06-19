@@ -26,7 +26,7 @@ public class Main {
         feld8102.laenge = "14";
         feld8102.format = Feld.Format.alnum;
         feld8102.regeln = all(regeln, "E072", "K027", "K070", "K097");
-        feld8102.typ = "AbrechnungGkv";
+        feld8102.typ = "AbrechnungGKV";
         felder.put(feld8102.fk, feld8102);
 
         Objekt objekt = new Objekt();

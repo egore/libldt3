@@ -60,7 +60,7 @@ import libldt3.model.regel.kontext.K041;
  * </p>
  */
 @Objekt(value = "0002", kontextregeln = { K041.class })
-public class AbrechnungGkv implements Kontext {
+public class AbrechnungGKV implements Kontext {
 
     @Feld(value = "4239", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)

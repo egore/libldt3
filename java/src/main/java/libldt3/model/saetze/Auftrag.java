@@ -9,7 +9,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Satzart;
-import libldt3.model.objekte.Abrechnungsinformation;
+import libldt3.model.objekte.Abrechnungsinformationen;
 import libldt3.model.objekte.Anhang;
 import libldt3.model.objekte.Auftragsinformation;
 import libldt3.model.objekte.Einsenderidentifikation;
@@ -55,7 +55,7 @@ public class Auftrag implements Satz, Kontext {
     public List<Veranlassungsgrund> veranlassungsgrund;
     @Feld(value = "8101", feldart = Feldart.muss)
     @Regelsatz(laenge = 22)
-    public Abrechnungsinformation abrechnungsinformationen;
+    public Abrechnungsinformationen abrechnungsinformationen;
     @Feld(value = "8137", feldart = Feldart.bedingt_kann)
     public List<Material> material;
     @Feld(value = "8159", feldart = Feldart.muss)
