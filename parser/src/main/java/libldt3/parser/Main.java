@@ -54,6 +54,7 @@ public class Main {
         var generator = new Generator();
         generator.generateErlaubteInhalte(regeln.getLeft().values());
         generator.generateKontextregeln(regeln.getLeft().values());
+        generator.generateFormatregeln(regeln.getLeft().values());
         generator.generateObjekte(regeln.getRight().values());
     }
 

@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="enum" type="libldt3.parser.model.Regel" -->
+<#-- @ftlvariable name="kontext" type="libldt3.parser.model.Kontextregel" -->
 /*
  * Copyright 2016-${year}  Christoph Brill <opensource@christophbrill.de>
  *

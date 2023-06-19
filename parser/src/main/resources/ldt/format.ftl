@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="objekt" type="libldt3.parser.model.Objekt" -->
+<#-- @ftlvariable name="format" type="libldt3.parser.model.Formatregel" -->
 /*
  * Copyright 2016-${year}  Christoph Brill <opensource@christophbrill.de>
  *
@@ -20,25 +20,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
+package libldt3.model.regel;
 
-import java.util.List;
-
-import libldt3.annotations.Feld;
-import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
-import libldt3.annotations.Regelsatz;
-import libldt3.model.Kontext;
+import java.util.regex.Pattern;
 
 /**
- * <@linewrap text=objekt.beschreibung prefix="* "/>
+ * <@linewrap text=format.erlaeuterung prefix="* "/>
  */
-@Objekt("${objekt.nummer}")
-public class ${objekt.name} implements Kontext {
+public class ${format.regelnummer} extends RegularExpressionRegel {
 
-<#list objekt.felder as feld>
-    @Feld(value = "${feld.feld.fk}", feldart = Feldart.${feld.feldart.readable()})
-    @Regelsatz(<#if feld.regeln?hasContent>value = { <#list feld.regeln as regel>${regel.regelnummer}.class<#sep>, </#list> }, </#if><#if feld.feld.laenge?startsWith('≤')>maxLaenge = ${feld.feld.laenge?substring(2)}<#else>laenge = ${feld.feld.laenge}</#if>)
-    public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> ${feld.name};
-</#list>
+    public static final Pattern PATTERN = Pattern.compile("${format.regexp}");
+
+    public ${format.regelnummer}() {
+        super(PATTERN);
+    }
+
 }

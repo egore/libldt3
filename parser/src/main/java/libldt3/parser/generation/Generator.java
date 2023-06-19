@@ -9,6 +9,7 @@ import freemarker.template.TemplateModelException;
 import libldt3.parser.Main;
 import libldt3.parser.RegelNaming;
 import libldt3.parser.model.ErlaubterInhalt;
+import libldt3.parser.model.Formatregel;
 import libldt3.parser.model.Kontextregel;
 import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
@@ -69,6 +70,19 @@ public class Generator {
             }
         }
     }
+
+    public void generateFormatregeln(Collection<Regel> regeln) throws IOException, TemplateException {
+        Template formatTemplate = config.getTemplate("format.ftl");
+        Files.createDirectories(Path.of("./generated/libldt3/model/regel"));
+        for (Regel regel : regeln) {
+            if (regel instanceof Formatregel) {
+                try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/regel/" + regel.regelnummer + ".java"), StandardCharsets.UTF_8)) {
+                    formatTemplate.process(Map.of("format", regel), writer);
+                }
+            }
+        }
+    }
+
 
     public void generateObjekte(Collection<Objekt> objekte) throws IOException, TemplateException {
         Template objektTemplate = config.getTemplate("objekt.ftl");
