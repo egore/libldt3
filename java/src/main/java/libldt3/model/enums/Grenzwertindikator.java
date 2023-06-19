@@ -30,28 +30,28 @@ public enum Grenzwertindikator {
     /** schwach erhöht, */
     schwach_erhoeht("H"),
     /** schwach erhöht, */
-    schwach_erhoeht("+"),
+    schwach_erhoeht_("+"),
     /** stark erhöht, */
     stark_erhoeht("HH"),
     /** stark erhöht, */
-    stark_erhoeht("++"),
+    stark_erhoeht_("++"),
     /** schwach erniedrigt, */
     schwach_erniedrigt("L"),
     /** schwach erniedrigt, */
-    schwach_erniedrigt("-"),
+    schwach_erniedrigt_("-"),
     /** stark erniedrigt, */
     stark_erniedrigt("LL"),
     /** stark erniedrigt, */
-    stark_erniedrigt("–"),
+    stark_erniedrigt_("–"),
     /** Wert extrem erhöht, */
     Wert_extrem_erhoeht("!H"),
     /** Wert extrem erhöht, */
-    Wert_extrem_erhoeht("!+"),
+    Wert_extrem_erhoeht_("!+"),
     /** Wert extrem erniedrigt. */
     Wert_extrem_erniedrigt_("!L"),
     /** Wert extrem erniedrigt.
      * Bei nicht numerischen Werten: */
-    Wert_extrem_erniedrigt_("!-"),
+    Wert_extrem_erniedrigt__("!-"),
     /** normal (anzuwenden bei nicht numerischen Werten), */
     normal("N"),
     /** auffällig (anzuwenden bei nicht numerischen Werten), */

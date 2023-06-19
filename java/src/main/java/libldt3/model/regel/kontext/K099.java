@@ -53,10 +53,10 @@ public class K099 implements Kontextregel {
         if (o instanceof Collection<?>) {
             for (GrenzwertindikatorErweitert grenzwertindikatorErweitert : (Collection<GrenzwertindikatorErweitert>) o) {
                 Grenzwertindikator grenzwertindikator = grenzwertindikatorErweitert.value;
-                if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
-                        grenzwertindikator == Grenzwertindikator.EXTREM_MINUS ||
-                        grenzwertindikator == Grenzwertindikator.EXTREM_H ||
-                        grenzwertindikator == Grenzwertindikator.EXTREM_PLUS) &&
+                if ((grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt_ ||
+                        grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt__ ||
+                        grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht ||
+                        grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht_) &&
                         !containsAnyString(fields.get("8126"), grenzwertindikatorErweitert)) {
                     return false;
                 }
@@ -65,10 +65,10 @@ public class K099 implements Kontextregel {
         } else {
             GrenzwertindikatorErweitert indikatorErweitert = (GrenzwertindikatorErweitert) o;
             Grenzwertindikator grenzwertindikator = indikatorErweitert.value;
-            if ((grenzwertindikator == Grenzwertindikator.EXTREM_L ||
-                    grenzwertindikator == Grenzwertindikator.EXTREM_MINUS ||
-                    grenzwertindikator == Grenzwertindikator.EXTREM_H ||
-                    grenzwertindikator == Grenzwertindikator.EXTREM_PLUS) &&
+            if ((grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt_ ||
+                    grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt__ ||
+                    grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht ||
+                    grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht_) &&
                     !containsAnyString(fields.get("8126"), o)) {
                 return false;
             }

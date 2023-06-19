@@ -54,7 +54,7 @@ public class K096 implements Kontextregel {
             TestStatus testStatus = (TestStatus) fields.get("8418").get(owner);
             return testStatus != TestStatus.Ergebnis_folgt &&
                 testStatus != TestStatus.Ergebnis_ermittelt &&
-                testStatus != TestStatus.Erweiterte_Analytik_erforderlich;
+                testStatus != TestStatus.ErweiterteAnalytik_erforderlich;
         }
 
         return true;

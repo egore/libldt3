@@ -60,9 +60,9 @@ public class K003 implements Kontextregel {
         }
 
         // Wenn Feldinhalt von FK 7303 = 1, 8 oder 9 ist und FK 8410 vorhanden, muss auch FK 8411 vorhanden sein.
-        if (abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharzt ||
-                abrechnungsinfo == Abrechnungsinfo.Asv ||
-                abrechnungsinfo == Abrechnungsinfo.GkvLaborfacharztPraeventiv) {
+        if (abrechnungsinfo == Abrechnungsinfo.GKV_Laborfacharzt ||
+                abrechnungsinfo == Abrechnungsinfo.ASV ||
+                abrechnungsinfo == Abrechnungsinfo.GKV_Laborfacharzt_praeventiv) {
             if (containsAnyString(fields.get("8410"), owner)) {
                 return containsAnyString(fields.get("8411"), owner);
             }

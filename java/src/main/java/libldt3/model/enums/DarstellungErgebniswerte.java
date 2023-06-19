@@ -39,7 +39,7 @@ public enum DarstellungErgebniswerte {
     /** Titer mit Obergrenze */
     Titer_mitObergrenze("07"),
     /** trinäres Testergebnis: 1 | 2 | 3 ** */
-    trinaeresTestergebnis:1|2|3("08"),
+    trinaeresTestergebnis("08"),
     /** Beispiele
      * 01: 47.85, 5.00E+07, 1x10^6 02: <100, <1.00E+04 03: >2000, >5.00E+04 04:
      * positiv, negativ, A positiv * 05: 1:2 06: <1:2 07: >1:2 08: 1, 2, 3 ** *   für
