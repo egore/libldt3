@@ -20,8 +20,11 @@ fk:
 fkInitialized:
     fk values?;
 
-orRule:
+mustExistRule:
     ENTWEDER fk (ODER fk)+ IST_VORHADEN;
+
+canExistRule:
+  'Es kann entweder die' fk (ODER fk)+ 'vorhanden sein' PUNKT;
 
 values:
     '=' INTEGER (ODER INTEGER)*;
@@ -32,9 +35,6 @@ ifRuleMust:
 ifRuleMustNot:
     WENN (FELDINHALT_VON|INHALT_VON) fkInitialized ('und der Inhalt' fkInitialized)? KOMMA? 'darf' fk ('nicht vorkommen'|'nicht vorhanden sein') PUNKT;
 
-ifAndNot:
-    ifRuleMust ifRuleMustNot;
-
 regel:
-    (orRule | ifAndNot | ifRuleMust | ifRuleMustNot)+;
+    (mustExistRule | canExistRule | ifRuleMust | ifRuleMustNot)+;
 

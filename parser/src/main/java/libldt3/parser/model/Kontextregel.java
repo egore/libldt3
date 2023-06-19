@@ -29,6 +29,7 @@ public class Kontextregel extends Regel {
     }
 
     public List<Feld> mandatoryFields;
+    public List<Feld> possibleFields;
     public List<Feld> usedFields;
     public List<MustRule> mustRules;
 
@@ -36,13 +37,15 @@ public class Kontextregel extends Regel {
         if (usedFields == null) {
             usedFields = new ArrayList<>();
             mandatoryFields = new ArrayList<>();
+            possibleFields = new ArrayList<>();
             mustRules = new ArrayList<>();
             KontextLexer lexer = new KontextLexer(CharStreams.fromString(pruefung));
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             KontextParser parser = new KontextParser(tokens);
             KontextBaseListener kontextBaseListener = new KontextBaseListener() {
+
                 @Override
-                public void exitOrRule(KontextParser.OrRuleContext ctx) {
+                public void exitMustExistRule(KontextParser.MustExistRuleContext ctx) {
                     for (var x : ctx.fk()) {
                         Feld e = new Feld(x.INTEGER().toString());
                         if (!usedFields.contains(e)) {
@@ -50,7 +53,19 @@ public class Kontextregel extends Regel {
                         }
                         mandatoryFields.add(e);
                     }
-                    super.exitOrRule(ctx);
+                    super.exitMustExistRule(ctx);
+                }
+
+                @Override
+                public void enterCanExistRule(KontextParser.CanExistRuleContext ctx) {
+                    for (var x : ctx.fk()) {
+                        Feld e = new Feld(x.INTEGER().toString());
+                        if (!usedFields.contains(e)) {
+                            usedFields.add(e);
+                        }
+                        possibleFields.add(e);
+                    }
+                    super.enterCanExistRule(ctx);
                 }
 
                 @Override

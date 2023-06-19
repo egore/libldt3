@@ -29,6 +29,7 @@ public class Praser {
     private static final Logger LOG = LoggerFactory.getLogger(Praser.class);
 
     private static final Pattern OBJEKT_HEADLINE_PATTERN = Pattern.compile("^[0-9.]+[ ]+Obj_([A-Za-z()0-9 -]+) „Obj_([0-9]+)“$");
+    private static final Pattern OBJEKT_PATTERN = Pattern.compile("Obj_([0-9]{4}).*");
 
     static class Column {
         float x = 0.0f;
@@ -297,7 +298,7 @@ public class Praser {
                 objekt.value.stub = false;
                 objekt.value.name = name;
                 state.value = State.DESCRIPTION;
-                LOG.info("Adding objekt {}", objekt.value);
+                LOG.debug("Adding objekt {}", objekt.value);
             }
         } else if (state.value == State.DESCRIPTION) {
             if ("OID: noch nicht vergeben".equals(text)) {
@@ -370,11 +371,9 @@ public class Praser {
                     currentFeld.value.vorkommen.wert = text;
                     break;
                 case 2:
-                    if (text.startsWith("Obj_")) {
-                        String childnummer = text.substring(4, 8);
-                        if (!childnummer.matches("[0-9]{4}")) {
-                            LOG.warn("Found invalid child number {} of {} when parsing {}", childnummer, text, objekt.value);
-                        }
+                    Matcher matcher = OBJEKT_PATTERN.matcher(text);
+                    if (matcher.matches()) {
+                        String childnummer = matcher.group(1);
                         currentFeld.value.feld.forcedTyp = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_Parent" + objekt.value.nummer, true));
                     } else {
                         currentFeld.value.bezeichnung = text;
@@ -445,12 +444,18 @@ public class Praser {
 
             switch (column) {
                 case 0:
-                    if (lastColumn.value >= 4 || lastColumn.value == -1) {
+                    if (lastColumn.value >= 1 || lastColumn.value == -1) {
                         feld.value = new Feld();
+                    }
+                    if (!text.matches("[0-9]{4}")) {
+                        LOG.warn("Invalid field number detected: {}", text);
+                    }
+                    if (feld.value.fk != null && !feld.value.fk.equals(text)) {
+                        LOG.error("Replacing field number {} by {}", feld.value.fk, text);
                     }
                     feld.value.fk = text;
                     felder.put(feld.value.fk, feld.value);
-                    LOG.info("Adding feld {}", feld.value.fk);
+                    LOG.debug("Adding feld {}", feld.value.fk);
                     break;
                 case 1:
                     feld.value.inhalt = text;
@@ -526,7 +531,7 @@ public class Praser {
                     }
                     regel.value.regelnummer = text;
                     regeln.put(regel.value.regelnummer, regel.value);
-                    LOG.info("Adding regel {}", regel.value.regelnummer);
+                    LOG.debug("Adding regel {}", regel.value.regelnummer);
                     break;
                 case 1:
                     regel.value.kategorie = Regel.Kategorie.valueOf(text);

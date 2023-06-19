@@ -14,9 +14,9 @@ public class KontextParserTest {
         KontextParser parser = new KontextParser(tokens);
         KontextBaseListener kontextBaseListener = new KontextBaseListener() {
             @Override
-            public void exitOrRule(KontextParser.OrRuleContext ctx) {
+            public void exitMustExistRule(KontextParser.MustExistRuleContext ctx) {
                 Assertions.assertEquals(2, ctx.fk().size());
-                super.exitOrRule(ctx);
+                super.exitMustExistRule(ctx);
             }
         };
         parser.addParseListener(kontextBaseListener);
@@ -30,9 +30,9 @@ public class KontextParserTest {
         KontextParser parser = new KontextParser(tokens);
         KontextBaseListener kontextBaseListener = new KontextBaseListener() {
             @Override
-            public void exitOrRule(KontextParser.OrRuleContext ctx) {
+            public void exitMustExistRule(KontextParser.MustExistRuleContext ctx) {
                 Assertions.assertEquals(3, ctx.fk().size());
-                super.exitOrRule(ctx);
+                super.exitMustExistRule(ctx);
             }
         };
         parser.addParseListener(kontextBaseListener);

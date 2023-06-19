@@ -41,4 +41,5 @@ public class ${objekt.name} implements Kontext {
     @Regelsatz(<#if feld.regeln?hasContent>value = { <#list feld.regeln as regel>${regel.regelnummer}.class<#sep>, </#list> }, </#if><#if feld.feld.laenge?startsWith('≤')>maxLaenge = ${feld.feld.laenge?substring(2)}<#else>laenge = ${feld.feld.laenge}</#if>)
     public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> ${feld.name};
 </#list>
+
 }
