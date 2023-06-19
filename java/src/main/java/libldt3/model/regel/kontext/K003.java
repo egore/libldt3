@@ -34,10 +34,13 @@ import org.slf4j.LoggerFactory;
 import libldt3.model.enums.Abrechnungsinfo;
 
 /**
+ * Wenn Feldinhalt von FK 7303 = 1, 8 oder 9 ist und FK 8410 vorhanden, muss auch
+ * FK 8411 vorhanden sein.
+ *
  * Wird die FK 8410 (Test-Ident) im Kontext mit der Überweisung von
  * Laborleistungen an einen Laborfacharzt verwendet, muss die FK 8411
- * (Testbezeichnung) im Datensatz vorkommen (mit Inhalt der FK 8411 muss das
- * Auftragsfeld des digitalen Musters 10 befüllt werden).
+ * (Testbezeichnung) im Datensatz vorkommen (mit Inhalt der FK 8411
+ * muss das Auftragsfeld des digitalen Musters 10 befüllt werden)
  */
 public class K003 implements Kontextregel {
 

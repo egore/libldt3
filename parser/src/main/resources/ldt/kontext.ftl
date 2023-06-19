@@ -75,6 +75,7 @@ public class ${kontext.regelnummer} implements Kontextregel {
         }
 
 </#list>
+        return true;
 </#if>
 </#if>
     }
