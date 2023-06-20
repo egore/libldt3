@@ -36,6 +36,7 @@ public class Parser {
         public List<Column> subcolumns;
         float x = 0.0f;
         float y = 0.0f;
+
         public String toString() {
             return "(" + x + "," + y + ")";
         }
@@ -49,6 +50,7 @@ public class Parser {
 
     static class Holder<T> {
         T value;
+
         public Holder(T value) {
             this.value = value;
         }
@@ -368,6 +370,55 @@ public class Parser {
             switch (column) {
                 case 0:
                     if ("8003".equals(text)) {
+
+                        LOG.debug("Completed {} with {} fields", objekt.value, objekt.value.felder.size());
+
+                        // Cleanup fields of the object
+                        for (int i = 1; i < objekt.value.felder.size(); i++) {
+
+                            Objekt.FeldExtended current = objekt.value.felder.get(i);
+                            Objekt.FeldExtended previous = objekt.value.felder.get(i - 1);
+                            if (current.vorkommen.position == previous.vorkommen.position + 1) {
+
+                                // We found a child definition, create it as Objekt below its parent
+                                Objekt child = null;
+                                for (Objekt o : objekt.value.children) {
+                                    if (o.name.equals(objekt.value.name + "_" + previous.getName())) {
+                                        child = o;
+                                        break;
+                                    }
+                                }
+                                boolean isNew = false;
+                                if (child == null) {
+                                    child = new Objekt("0", objekt.value.name + "_" + previous.getName(), false);
+                                    objekt.value.children.add(child);
+                                    isNew = true;
+                                }
+
+                                // Detach the current field from its parent
+                                objekt.value.felder.remove(current);
+                                i--;
+
+                                if (isNew) {
+                                    // Add a value field as first member
+                                    Objekt.FeldExtended value = new Objekt.FeldExtended();
+                                    value.bezeichnung = "value";
+                                    value.vorkommen = new Objekt.Vorkommen();
+                                    value.vorkommen.wert = "1";
+                                    value.feld = new Feld();
+                                    value.feld.format = Feld.Format.alnum;
+                                    child.felder.add(value);
+                                }
+
+                                // Move the current field below the new object
+                                child.felder.add(current);
+
+                                if (isNew) {
+                                    // Force type
+                                    previous.feld.forcedTyp = child;
+                                }
+                            }
+                        }
                         state.value = State.NAME;
                         break;
                     }

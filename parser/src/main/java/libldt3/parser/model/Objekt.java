@@ -2,6 +2,7 @@ package libldt3.parser.model;
 
 import libldt3.parser.generation.Normalizer;
 
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,11 @@ public class Objekt {
                     .stream()
                     .filter(regel -> !(regel instanceof Kontextregel))
                     .collect(Collectors.toList());
+        }
+
+        @Override
+        public String toString() {
+            return feld.toString() + ": " + bezeichnung;
         }
     }
 
@@ -58,6 +64,7 @@ public class Objekt {
     public String nummer;
     public List<FeldExtended> felder = new ArrayList<>();
     public boolean stub;
+    public List<Objekt> children = new ArrayList<>();
 
     public List<Kontextregel> getKontextregeln() {
         List<Kontextregel> result = new ArrayList<>();

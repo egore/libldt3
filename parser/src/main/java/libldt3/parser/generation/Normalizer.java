@@ -78,11 +78,16 @@ public class Normalizer {
 
     public static String getFieldName(String value) {
 
+
         if (value.matches("^[A-Z]+$")) {
             value = value.toLowerCase();
         } else {
+            value = value.replaceAll("^ID (.*)$", "$1Id");
             value = value.substring(0, 1).toLowerCase() + value.substring(1);
         }
+
+        value = value
+                .replaceAll(" des ([A-Za-z]+)s", "$1");
 
         return getObjektName(value);
     }

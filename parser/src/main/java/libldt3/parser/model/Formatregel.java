@@ -15,6 +15,8 @@ public class Formatregel extends Regel {
         pruefung = pruefung.replace("ss", "([0-5][0-9])");
         pruefung = pruefung.replace("(ms)", "([0-9]{3})?");
         pruefung = pruefung.replace("a", "([A-Z])");
+        pruefung = pruefung.replace("TT", "([0-2][0-9]|3[01])");
+        pruefung = pruefung.replace("MM", "(0[0-9]|1[012])");
 
         // Replace 'nnn' etc. by [0-9]{3}
         {
