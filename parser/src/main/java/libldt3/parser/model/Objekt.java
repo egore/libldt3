@@ -1,9 +1,10 @@
 package libldt3.parser.model;
 
-import org.apache.commons.lang3.StringUtils;
+import libldt3.parser.generation.Normalizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Objekt {
 
@@ -16,13 +17,14 @@ public class Objekt {
         public String erlaeuterung;
 
         public String getName() {
-            String lowercased;
-            if (bezeichnung.matches("^[A-Z]+")) {
-                lowercased = bezeichnung.toLowerCase();
-            } else {
-                lowercased = bezeichnung.substring(0, 1).toLowerCase() + bezeichnung.substring(1);
-            }
-            return ErlaubterInhalt.normalizeJavaIdentifier(lowercased);
+            return Normalizer.getFieldName(bezeichnung);
+        }
+
+        public List<Regel> getFeldregeln() {
+            return regeln
+                    .stream()
+                    .filter(regel -> !(regel instanceof Kontextregel))
+                    .collect(Collectors.toList());
         }
     }
 
@@ -56,6 +58,20 @@ public class Objekt {
     public String nummer;
     public List<FeldExtended> felder = new ArrayList<>();
     public boolean stub;
+
+    public List<Kontextregel> getKontextregeln() {
+        List<Kontextregel> result = new ArrayList<>();
+        for (FeldExtended feld : felder) {
+            for (Regel regel : feld.regeln) {
+                if (regel instanceof Kontextregel) {
+                    if (!result.contains(regel)) {
+                        result.add((Kontextregel) regel);
+                    }
+                }
+            }
+        }
+        return result;
+    }
 
     @Override
     public String toString() {

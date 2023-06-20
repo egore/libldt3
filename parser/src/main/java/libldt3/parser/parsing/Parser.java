@@ -1,6 +1,6 @@
 package libldt3.parser.parsing;
 
-import freemarker.ext.beans.BeanModel;
+import libldt3.parser.generation.Normalizer;
 import libldt3.parser.model.ErlaubterInhalt;
 import libldt3.parser.model.Feld;
 import libldt3.parser.model.Formatregel;
@@ -296,7 +296,7 @@ public class Parser {
             Matcher matcher = OBJEKT_HEADLINE_PATTERN.matcher(text);
             if (matcher.matches()) {
                 String nummer = matcher.group(2);
-                String name = ErlaubterInhalt.normalizeJavaIdentifier(matcher.group(1));
+                String name = Normalizer.getObjektName(matcher.group(1));
                 objekt.value = objekte.computeIfAbsent(nummer, (k) -> new Objekt(nummer, name, false));
                 objekt.value.stub = false;
                 objekt.value.name = name;

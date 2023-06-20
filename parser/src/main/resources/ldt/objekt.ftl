@@ -29,16 +29,18 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.enums.*;
+import libldt3.model.regel.kontext.*;
 
 /**
  * <@linewrap text=objekt.beschreibung prefix="* "/>
  */
-@Objekt("${objekt.nummer}")
+@Objekt(<#if objekt.kontextregeln?hasContent>value = "${objekt.nummer}", kontextregeln = {<#list objekt.kontextregeln as regel>${regel.regelnummer}.class<#sep>, </#list>}<#else>"${objekt.nummer}"</#if>)
 public class ${objekt.name} implements Kontext {
 
 <#list objekt.felder as feld>
     @Feld(value = "${feld.feld.fk}", feldart = Feldart.${feld.feldart.readable()})
-    @Regelsatz(<#if feld.regeln?hasContent>value = { <#list feld.regeln as regel>${regel.regelnummer}.class<#sep>, </#list> }, </#if><#if feld.feld.laenge?startsWith('≤')>maxLaenge = ${feld.feld.laenge?substring(2)}<#else>laenge = ${feld.feld.laenge}</#if>)
+    @Regelsatz(<#if feld.feldregeln?hasContent>value = {<#list feld.feldregeln as regel>${regel.regelnummer}.class<#sep>, </#list>}, </#if><#if feld.feld.laenge?startsWith('≤')>maxLaenge = ${feld.feld.laenge?substring(2)}<#else>laenge = ${feld.feld.laenge}</#if>)
     public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> ${feld.name};
 </#list>
 

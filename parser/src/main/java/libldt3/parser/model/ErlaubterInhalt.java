@@ -1,5 +1,7 @@
 package libldt3.parser.model;
 
+import libldt3.parser.generation.Normalizer;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,40 +9,8 @@ import java.util.Map;
 
 public class ErlaubterInhalt extends Regel {
 
-    public static String normalizeJavaIdentifier(String value) {
-        return value
-                .replace('.', '_')
-                .replace(" / ", "_")
-                .replaceAll("([a-z])/([a-zA-Z])", "$1_$2")
-                .replaceAll(" ([a-z])", "_$1")
-                .replaceAll("\\([^)]+\\)", "")
-                .replace("ä", "ae")
-                .replace("ö", "oe")
-                .replace("ü", "ue")
-                .replace("Ä", "Ae")
-                .replace("Ö", "Oe")
-                .replace("Ü", "Ue")
-                .replace("ß", "ss")
-                .replace(",", "")
-                .replaceAll("([A-Z])-([A-Z])", "$1_$2")
-                .replace("-/", "_")
-                .replace("-", "")
-                .replace("“", "")
-                .replace("„", "")
-                .replace("*", "")
-                .replace(" + ", "_und_")
-                .replaceAll("([A-Z]) ([A-Z])", "$1_$2")
-                .replace(" ", "")
-                .replace("§", "")
-                .replaceAll("[0-9]+\\)", "")
-                .replaceAll("^1fach", "einfach")
-                .replaceAll("^2fach", "zweifach")
-                .replaceAll("^3fach", "dreifach")
-                .replaceAll("^4fach", "vierfach");
-    }
-
     public String getNormalizedPruefung() {
-        return normalizeJavaIdentifier(pruefung);
+        return Normalizer.getEnumIdentifier(pruefung);
     }
 
     public boolean isSingle() {
@@ -118,7 +88,7 @@ public class ErlaubterInhalt extends Regel {
                     }
                     string = string.replace("„", "").replace("“", "").replace("”", "");
                     String[] values = string.split(" oder ");
-                    String normalizedValue = normalizeJavaIdentifier(value.toString());
+                    String normalizedValue = Normalizer.getEnumIdentifier(value.toString());
                     String comment = value.toString();
                     for (String v : values) {
                         e = new EnumValue(v, FALLBACK.getOrDefault(regelnummer, Collections.emptyMap()).getOrDefault(v, normalizedValue), comment.equals(normalizedValue) ? null : comment, isDeprecated);
