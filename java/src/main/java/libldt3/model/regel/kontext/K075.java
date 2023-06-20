@@ -33,6 +33,12 @@ import java.util.Set;
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
+/**
+ * Wenn Inhalt von FK 9970 = 999, dann muss FK 6327 vorkommen.
+ *
+ * Wird beim Dokumententyp "sonstige" angegeben, muss das Dokument
+ * mittels der FK 6327 näher beschrieben werden.
+ */
 public class K075 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K075.class);
@@ -54,4 +60,5 @@ public class K075 implements Kontextregel {
 
         return true;
     }
+
 }

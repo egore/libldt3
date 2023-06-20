@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -103,7 +103,7 @@ public class Material implements Kontext {
     @Regelsatz(value = F006.class, laenge = 4)
     public String sammelzeit;
     @Feld(value = "8219", name = "Timestamp_Materialabnahme_entnahme", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 34 /* XXX 33 according to the spec */)
+    @Regelsatz(laenge = 34)
     public Timestamp timestampMaterialabnahmeEntnahme;
     @Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 36)

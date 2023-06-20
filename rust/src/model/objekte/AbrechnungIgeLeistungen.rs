@@ -7,7 +7,7 @@ use crate::model::objekte::Rechnungsempfaenger::Rechnungsempfaenger;
 /// Mit diesem Objekt werden die Informationen für die Abrechnung von
 /// Untersuchungsanforderungen zusammengefasst, welche als IGe-Leistungen
 /// gegenüber gesetzlich versicherten Patienten erbracht werden können.
-pub struct AbrechnungIgel {
+pub struct AbrechnungIgeLeistungen {
     #[feld(Value = "4121", Feldart = libldt3.annotations.Feldart.muss)]
     #[regelsatz(Laenge = 1)]
     gebuehrenordnung: Gebuehrenordnung<'static>,
@@ -19,5 +19,5 @@ pub struct AbrechnungIgel {
     rechnungsempfaenger: Rechnungsempfaenger
 }
 
-impl Kontext for AbrechnungIgel {
+impl Kontext for AbrechnungIgeLeistungen {
 }

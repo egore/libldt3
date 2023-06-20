@@ -2,7 +2,7 @@
 
 use crate::model::Kontext::Kontext;
 use crate::model::objekte::AbrechnungGKV::AbrechnungGKV;
-use crate::model::objekte::AbrechnungIgel::AbrechnungIgel;
+use crate::model::objekte::AbrechnungIgeLeistungen::AbrechnungIgeLeistungen;
 use crate::model::objekte::AbrechnungPKV::AbrechnungPKV;
 use crate::model::objekte::AbrechnungSelektivvertrag::AbrechnungSelektivvertrag;
 use crate::model::objekte::AbrechnungSonstigeKostenuebernahme::AbrechnungSonstigeKostenuebernahme;
@@ -21,7 +21,7 @@ pub struct Abrechnungsinformation {
     #[feld(Value = "8104", Name = "Abrechnung_IGe-Leistungen", Feldart = libldt3.annotations.Feldart.bedingt_muss)]
     #[regelsatz(Laenge = 25/* XXX 15 according to spec 3.0.3 */
 )]
-    abrechnung_igel: AbrechnungIgel,
+    abrechnung_igel: AbrechnungIgeLeistungen,
     #[feld(Value = "8105", Name = "Abrechnung_Sonstige_Kostenuebernahme", Feldart = libldt3.annotations.Feldart.bedingt_muss)]
     #[regelsatz(Laenge = 36)]
     abrechnung_sonstige_kostenuebernahme: AbrechnungSonstigeKostenuebernahme,

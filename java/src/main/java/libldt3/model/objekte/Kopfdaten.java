@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,13 +34,16 @@ import libldt3.model.Kontext;
 @Objekt("0032")
 public class Kopfdaten implements Kontext {
 
-    @Feld(value = "8151", name = "Sendendes_System", feldart = Feldart.muss)
+    @Feld(value = "0001", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 12)
+    public String versionderDatensatzbeschreibung;
+    @Feld(value = "8151", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 16)
     public SendendesSystem sendendesSystem;
-    @Feld(value = "8218", name = "Timestamp_Erstellung_Datensatz", feldart = Feldart.kann)
+    @Feld(value = "8218", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 30)
     public Timestamp timestampErstellungDatensatz;
-    @Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann)
+    @Feld(value = "8212", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 24)
     public Organisation softwareverantwortlicher;
 

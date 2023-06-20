@@ -34,7 +34,7 @@ import libldt3.model.enums.Gebuehrenordnung;
  * gegenüber gesetzlich versicherten Patienten erbracht werden können.
  */
 @Objekt("0004")
-public class AbrechnungIgel implements Kontext {
+public class AbrechnungIgeLeistungen implements Kontext {
 
     @Feld(value = "4121", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)

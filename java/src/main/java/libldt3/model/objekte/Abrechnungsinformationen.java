@@ -39,19 +39,19 @@ import libldt3.model.Kontext;
 @Objekt("0001")
 public class Abrechnungsinformationen implements Kontext {
 
-    @Feld(value = "8102", name = "Abrechnung_GKV", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8102", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public List<AbrechnungGKV> abrechnungGkv;
-    @Feld(value = "8103", name = "Abrechnung_PKV", feldart = Feldart.bedingt_muss)
+    public List<AbrechnungGKV> abrechnungGKV;
+    @Feld(value = "8103", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public List<AbrechnungPKV> abrechnungPkv;
-    @Feld(value = "8104", name = "Abrechnung_IGe-Leistungen", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 25 /* XXX 15 according to spec 3.0.3 */)
-    public AbrechnungIgel abrechnungIgel;
-    @Feld(value = "8105", name = "Abrechnung_Sonstige_Kostenuebernahme", feldart = Feldart.bedingt_muss)
+    public List<AbrechnungPKV> abrechnungPKV;
+    @Feld(value = "8104", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 15)
+    public AbrechnungIgeLeistungen abrechnungIgeLeistungen;
+    @Feld(value = "8105", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 36)
     public AbrechnungSonstigeKostenuebernahme abrechnungSonstigeKostenuebernahme;
-    @Feld(value = "8106", name = "Abrechnung_Selektivvertrag", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8106", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
     public AbrechnungSelektivvertrag abrechnungSelektivvertrag;
 

@@ -32,7 +32,11 @@ import java.util.*;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
- * Wenn Inhalt von FK 8401 = 2, darf der Inhalt von FK 8418 nicht 02, 05 oder 10 sein.
+ * Wenn Inhalt von FK 8401 = 2, darf der Inhalt von FK 8418 nicht 02, 05 oder 10
+ * sein.
+ *
+ * In einem Befund mit dem Status "Auftrag abgeschlossen" werden keine
+ * fehlenden oder vorläufigen Werte übertragen.
  */
 public class K096 implements Kontextregel {
 

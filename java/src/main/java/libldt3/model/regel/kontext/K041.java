@@ -40,7 +40,7 @@ import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
  */
 public class K041 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K076.class);
+    private static final Logger LOG = LoggerFactory.getLogger(K041.class);
 
     private static final Set<String> FIELDTYPES = Set.of("4239", "8240", "4217", "4241", "4225", "4248");
 

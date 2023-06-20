@@ -33,11 +33,14 @@ import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
- * Wenn zu einem Ergebniswert Maßeinheit angegeben wird, muss angegeben werden,
- * ob es sich bei der Maßeinheit um eine konventionelle oder SI-Einheit
- * handelt. Wenn zu einem Ergebniswert keine Maßeinheit angegeben wird, muss
- * angegeben werden, dass es sich bei dem Ergebniswert um eine sogenannte
- * "dimensionslose Größe" handelt.
+ * Wenn Feldinhalt von FK 8419 = 1 oder 2, muss FK 8421 vorkommen. Wenn Feldinhalt
+ * von FK 8419 = 9, darf FK 8421 nicht vorkommen.
+ *
+ * Wenn zu einem Ergebniswert Maßeinheit angegeben wird, muss
+ * angegeben werden, ob es sich bei der Maßeinheit um eine konventionelle
+ * oder SI-Einheit handelt. Wenn zu einem Ergebniswert keine Maßeinheit
+ * angegeben wird, muss angegeben werden, dass es sich bei dem
+ * Ergebniswert um eine sogenannte "dimensionslose Größe" handelt.
  */
 public class K002 implements Kontextregel {
 

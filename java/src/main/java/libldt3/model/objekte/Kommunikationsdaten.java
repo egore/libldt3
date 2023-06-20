@@ -47,19 +47,19 @@ public class Kommunikationsdaten implements Kontext {
 
     @Feld(value = "7330", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public List<String> phone;
+    public List<String> telefonnummer;
     @Feld(value = "7331", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public List<String> mobile;
+    public List<String> mobiltelefonnummer;
     @Feld(value = "7332", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
     public List<ElektronischePostadresse> elektronischePostadresse;
     @Feld(value = "7333", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public List<String> fax;
+    public List<String> faxnummer;
     @Feld(value = "7335", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public List<String> email;
+    public List<String> eMailadresse;
     @Feld(value = "7334", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
     public List<String> webadresse;

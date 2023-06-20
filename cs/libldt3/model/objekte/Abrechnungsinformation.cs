@@ -48,7 +48,7 @@ namespace libldt3
                 [Feld(Value = "8104", Name = "Abrechnung_IGe-Leistungen", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge =     /* XXX 15 according to spec 3.0.3 */
             25)]
-                public AbrechnungIgel AbrechnungIgel;
+                public AbrechnungIgeLeistungen AbrechnungIgeLeistungen;
                 [Feld(Value = "8105", Name = "Abrechnung_Sonstige_Kostenuebernahme", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 36)]
                 public AbrechnungSonstigeKostenuebernahme AbrechnungSonstigeKostenuebernahme;

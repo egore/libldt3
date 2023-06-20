@@ -36,7 +36,7 @@ import libldt3.model.enums.MedikationsStatus;
 @Objekt("0070")
 public class Medikament implements Kontext {
 
-    @Feld(value = "8243", name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", feldart = Feldart.kann)
+    @Feld(value = "8243", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 40)
     public Timestamp timestampZeitpunktMedikamenteneinnahme;
     @Feld(value = "6208", feldart = Feldart.muss)

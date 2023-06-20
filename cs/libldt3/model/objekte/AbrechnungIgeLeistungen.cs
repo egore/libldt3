@@ -35,7 +35,7 @@ namespace libldt3
             /// gegenüber gesetzlich versicherten Patienten erbracht werden können.
             /// </summary>
             [Objekt(Value = "0004")]
-            public class AbrechnungIgel : Kontext
+            public class AbrechnungIgeLeistungen : Kontext
             {
                 [Feld(Value = "4121", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]

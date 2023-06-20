@@ -57,7 +57,7 @@ public class Auftragsinformation implements Kontext {
     public List<String> nachforderungId;
     @Feld(value = "8311", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public String auftragsnummerLabor;
+    public String auftragsnummerLaborId;
     @Feld(value = "7268", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
     public String fachrichtungStationskennung;

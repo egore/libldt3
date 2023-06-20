@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
  * Entweder FK 6305 oder FK 8242 ist vorhanden.
  */
 public class K001 implements Kontextregel {
-    
+
     private static final Logger LOG = LoggerFactory.getLogger(K001.class);
 
     private static final Set<String> FIELDTYPES = Set.of("6305", "8242");
