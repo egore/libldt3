@@ -95,7 +95,6 @@ public class Generator {
                 LOG.warn("Skipping stub {}", objekt.name);
                 continue;
             }
-            LOG.error("{}", objekt);
             try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/objekte/" + objekt.name + ".java"), StandardCharsets.UTF_8)) {
                 objektTemplate.process(Map.of("objekt", objekt), writer);
             }

@@ -22,15 +22,18 @@
  */
 package libldt3.model.objekte;
 
+<#if objekt.usingList>
 import java.util.List;
 
+</#if>
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.enums.*;
-import libldt3.model.regel.kontext.*;
+<#list objekt.imports as import>
+import libldt3.model.regel.${import};
+</#list>
 
 /**
  * <@linewrap text=objekt.beschreibung prefix="* "/>

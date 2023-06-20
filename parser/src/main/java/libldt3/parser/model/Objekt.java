@@ -5,6 +5,7 @@ import libldt3.parser.generation.Normalizer;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Objekt {
@@ -84,4 +85,38 @@ public class Objekt {
     public String toString() {
         return "Obj_" + nummer + " " + name;
     }
+
+    public boolean isUsingList() {
+        for (var feld : felder) {
+            if (feld.vorkommen.wert.equals("n")) {
+                return true;
+            }
+        }
+        for (var child : children) {
+            if (child.isUsingList()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public TreeSet<String> getImports() {
+        TreeSet<String> enums = new TreeSet<>();
+        for (var feld : felder) {
+            for (var regel : feld.regeln) {
+                if (regel instanceof ErlaubterInhalt) {
+                    enums.add("enum." + regel.regelnummer);
+                } else if (regel instanceof Kontextregel) {
+                    enums.add("regel.kontext." + regel.regelnummer);
+                } else if (regel instanceof Formatregel) {
+                    enums.add("regel." + regel.regelnummer);
+                }
+            }
+        }
+        for (var child : children) {
+            enums.addAll(child.getImports());
+        }
+        return enums;
+    }
+
 }

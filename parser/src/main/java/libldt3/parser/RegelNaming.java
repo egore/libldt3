@@ -82,6 +82,25 @@ public class RegelNaming {
         map.put("E146", "Untersuchungsanlass");
         map.put("E147", "SpezifizierungVeranlassungsgrund");
         map.put("E156", "MedikationsStatus");
+        // E157 -> Checksum
+        map.put("E163", "Zeitzone");
+        map.put("E164", "Fachgebiet");
+        map.put("E165", "TierGeschlecht");
+        map.put("E166", "KastriertSterilisiert");
+        map.put("E167", "Alterskategorie");
+        map.put("E168", "HpvImpfung");
+        map.put("E169", "HpvHrTestergebnis");
+        map.put("E171", "Testungen");
+        map.put("E172", "Beauftragungsgrund");
+        map.put("E173", "BetroffeneEinrichtung");
+        map.put("E174", "CovidBeauftragung");
+        map.put("E175", "TestungRechtsgrundlage");
+        map.put("E176", "KlinischerBefund");
+        map.put("E177", "Auftragsart");
+        map.put("E178", "Auftrag");
+        map.put("E179", "HpvTyp1618");
+        map.put("E180", "Bestaetigungsdiagnostik");
+        map.put("E181", "Virusvariantendiagnostik");
         REPLACEMENTS = Collections.unmodifiableMap(map);
     }
 }
