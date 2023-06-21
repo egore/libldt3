@@ -157,7 +157,10 @@ public class Objekt {
                             enums.add("enums." + regel.regelnummer);
                         }
                     } else {
-                        enums.add("enums." + RegelNaming.REPLACEMENTS.get(regel.regelnummer));
+                        String s = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
+                        if (!"Boolean".equals(s)) {
+                            enums.add("enums." + s);
+                        }
                     }
                 } else if (regel instanceof Kontextregel) {
                     enums.add("regel.kontext." + regel.regelnummer);
@@ -172,7 +175,10 @@ public class Objekt {
                             enums.add("enums." + regel.regelnummer);
                         }
                     } else {
-                        enums.add("enums." + RegelNaming.REPLACEMENTS.get(regel.regelnummer));
+                        String s = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
+                        if (!"Boolean".equals(s)) {
+                            enums.add("enums." + s);
+                        }
                     }
                 } else if (regel instanceof Formatregel) {
                     enums.add("regel.format." + regel.regelnummer);
