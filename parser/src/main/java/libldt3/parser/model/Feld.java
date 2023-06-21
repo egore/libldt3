@@ -11,7 +11,8 @@ import java.util.regex.Pattern;
 public class Feld {
 
     private static final Pattern PATTERN_NUMBER = Pattern.compile("^[0-9]+$");
-    private static final Pattern PATTERN_MIN_MAX = Pattern.compile("^([0-9]+) *[,≤–-] *([0-9]+)$");
+    private static final Pattern PATTERN_MIN_MAX = Pattern.compile("^([0-9]+) *[0-9,≤–-]+ *([0-9]+)$");
+    private static final Pattern PATTERN_MIN_MID_MAX = Pattern.compile("^([0-9]+), *[0-9]+, *([0-9]+)$");
     private static final Pattern PATTERN_MAX = Pattern.compile("^ *[,≤] *([0-9]+)$");
 
     public enum Format {
@@ -83,6 +84,10 @@ public class Feld {
         if (matcher.matches()) {
             return Integer.valueOf(matcher.group(1));
         }
+        matcher = PATTERN_MIN_MID_MAX.matcher(laenge);
+        if (matcher.matches()) {
+            return Integer.valueOf(matcher.group(1));
+        }
         return null;
     }
 
@@ -95,6 +100,10 @@ public class Feld {
             return null;
         }
         Matcher matcher = PATTERN_MIN_MAX.matcher(laenge);
+        if (matcher.matches()) {
+            return Integer.valueOf(matcher.group(2));
+        }
+        matcher = PATTERN_MIN_MID_MAX.matcher(laenge);
         if (matcher.matches()) {
             return Integer.valueOf(matcher.group(2));
         }
