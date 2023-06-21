@@ -50,7 +50,7 @@ public class Feld {
                     }
                 }
                 // Number fields with length are not necessary numbers, treat them as Strings
-                if (getMinLaenge() != null || getMaxLaenge() != null) {
+                if (getMinLaenge() != null || getMaxLaenge() != null || getLaenge() != null) {
                     return "String";
                 }
                 return "int";
