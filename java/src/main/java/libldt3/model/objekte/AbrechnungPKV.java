@@ -45,8 +45,8 @@ public class AbrechnungPKV implements Kontext {
     @Regelsatz(laenge = 1)
     public AbrechnungsartPkv abrechnungsartPkv;
     @Feld(value = "4134", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 28)
-    public List<String> kostentraegerName;
+    @Regelsatz(maxLaenge = 45)
+    public List<String> kostentraegername;
     @Feld(value = "4121", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
     public Gebuehrenordnung gebuehrenordnung;

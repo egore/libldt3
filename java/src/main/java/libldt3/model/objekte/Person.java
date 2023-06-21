@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ import libldt3.model.regel.F003;
 /**
  * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
  * Daten für die Abwicklung, Abrechnung oder Dokumentation von Aufträgen und
- * Befun-den notwendig sind.
+ * Befunden notwendig sind.
  */
 @Objekt("0047")
 public class Person implements Kontext {
@@ -71,19 +71,19 @@ public class Person implements Kontext {
     @Feld(value = "8990", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
     public String namenskuerzelNamenszeichen;
-    @Feld(value = "8228", name = "Wohnanschrift", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8228", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 13)
     public Anschrift wohnanschrift;
-    @Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann)
+    @Feld(value = "8229", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 23)
     public Anschrift anschriftArbeitsstelle;
-    @Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
+    @Feld(value = "8230", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 18)
     public Anschrift rechnungsanschrift;
-    @Feld(value = "8232", name = "Private_Kommunikationsdaten", feldart = Feldart.kann)
+    @Feld(value = "8232", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 27)
     public Kommunikationsdaten privateKommunikationsdaten;
-    @Feld(value = "8233", name = "Geschaeftliche_Kommunikationsdaten", feldart = Feldart.kann)
+    @Feld(value = "8233", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 34)
     public Kommunikationsdaten geschaeftlicheKommunikationsdaten;
 

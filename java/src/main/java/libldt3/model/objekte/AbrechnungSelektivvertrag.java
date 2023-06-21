@@ -35,13 +35,11 @@ import libldt3.model.regel.F002;
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
  * Untersuchungsanforderungen zusammengefasst, welche im Rahmen von
- * Selektivverträgen und damit außerhalb der budgetären Leistungen erbracht
- * werden. Die Möglichkeit zum Abschluss von Selektivverträgen besteht im
- * Wesentlichen in der hausarztzentrierten Versorgung (§ 73 b SGB V), in der
- * besonderen ambulanten ärztlichen Versorgung (§ 73 c SGB V), bei
- * strukturierten Behandlungsprogrammen für chronische Erkrankungen
- * (Disease-Management-Programme) (§ 137 f SGB V) und in der Integrierten
- * Versorgung (§§ 140ff SGB V).
+ * Selektivverträgen und damit außerhalb der budgetären Leistungen erbracht werden.
+ * Die Möglichkeit zum Abschluss von Selektivverträgen besteht im Wesentlichen in
+ * der hausarztzentrierten Versorgung (§ 73 b SGB V), bei strukturierten
+ * Behandlungsprogrammen für chronische Erkrankungen (Disease-Management-Programme)
+ * (§ 137 f SGB V) und in der Integrierten Versorgung (§§ 140ff SGB V).
  */
 @Objekt("0006")
 public class AbrechnungSelektivvertrag implements Kontext {
@@ -55,17 +53,17 @@ public class AbrechnungSelektivvertrag implements Kontext {
     @Feld(value = "4134", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 45)
     public String kostentraegername;
-    @Feld(value = "3131", feldart = Feldart.bedingt_muss)
+    @Feld(value = "3131", feldart = Feldart.kann)
     @Regelsatz(value = F002.class, laenge = 8)
     public LocalDate teilnahmeVon;
-    @Feld(value = "3132", feldart = Feldart.bedingt_muss)
+    @Feld(value = "3132", feldart = Feldart.kann)
     @Regelsatz(value = F002.class, laenge = 8)
     public LocalDate teilnahmeBis;
     @Feld(value = "3133", feldart = Feldart.bedingt_kann)
     @Regelsatz(value = F002.class, laenge = 8)
     public LocalDate datumAntragstellung;
     @Feld(value = "7430", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 60)
+    @Regelsatz(maxLaenge = 60)
     public String patientenIdSelektivvertrag;
     @Feld(value = "4121", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)

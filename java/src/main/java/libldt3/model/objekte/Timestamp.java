@@ -47,7 +47,7 @@ public class Timestamp implements Kontext {
     @Feld(value = "7272", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 990)
     public String freitext;
-    @Feld(value = "8235", name = "Person_zum_Timestamp", feldart = Feldart.kann)
+    @Feld(value = "8235", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 20)
     public Person person;
 
