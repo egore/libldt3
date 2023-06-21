@@ -23,8 +23,11 @@ fkInitialized:
 mustExistRule:
     ENTWEDER fk (ODER fk)+ IST_VORHADEN;
 
+exclusionRule:
+  'Beide Feldkennungen dürfen nicht gleichzeitig vorhanden sein.';
+
 canExistRule:
-  'Es kann entweder die' fk (ODER fk)+ 'vorhanden sein' PUNKT;
+  'Es kann entweder die' fk (ODER fk)+ 'vorhanden sein' PUNKT exclusionRule?;
 
 values:
     '=' INTEGER (ODER INTEGER)*;
