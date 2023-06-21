@@ -56,7 +56,7 @@ public class Tumor implements Kontext {
     public String jahrTumordiagnose;
     @Feld(value = "7376", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
-    public String lokalisationTumor;
+    public String lokalisation;
     @Feld(value = "7377", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
     public List<String> masse;
