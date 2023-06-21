@@ -152,9 +152,12 @@ public class Objekt {
         for (var feld : felder) {
             for (var regel : feld.regeln) {
                 if (regel instanceof ErlaubterInhalt) {
-                    if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer) &&
-                            !RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
-                        enums.add("enum." + regel.regelnummer);
+                    if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer)) {
+                        if (!RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
+                            enums.add("enums." + regel.regelnummer);
+                        }
+                    } else {
+                        enums.add("enums." + RegelNaming.REPLACEMENTS.get(regel.regelnummer));
                     }
                 } else if (regel instanceof Kontextregel) {
                     enums.add("regel.kontext." + regel.regelnummer);
@@ -164,9 +167,12 @@ public class Objekt {
             }
             for (var regel : feld.feld.regeln) {
                 if (regel instanceof ErlaubterInhalt) {
-                    if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer) &&
-                            !RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
-                        enums.add("enum." + regel.regelnummer);
+                    if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer)) {
+                        if (!RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
+                            enums.add("enums." + regel.regelnummer);
+                        }
+                    } else {
+                        enums.add("enums." + RegelNaming.REPLACEMENTS.get(regel.regelnummer));
                     }
                 } else if (regel instanceof Formatregel) {
                     enums.add("regel.format." + regel.regelnummer);
