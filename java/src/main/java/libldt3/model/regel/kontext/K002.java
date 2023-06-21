@@ -21,17 +21,17 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import libldt3.model.enums.EinheitMesswert;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import libldt3.model.enums.EinheitMesswert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wenn Feldinhalt von FK 8419 = 1 oder 2, muss FK 8421 vorkommen. Wenn Feldinhalt
@@ -58,18 +58,18 @@ public class K002 implements Kontextregel {
             return false;
         }
 
-        EinheitMesswert einheitMesswert = (EinheitMesswert) fields.get("8419").get(owner);
-        if (einheitMesswert == null) {
+        EinheitMesswert feld8419 = (EinheitMesswert) fields.get("8419").get(owner);
+        if (feld8419 == null) {
             return true;
         }
 
         // Wenn Feldinhalt von FK 8419 = 1 oder 2, muss FK 8421 vorkommen.
-        if (einheitMesswert == EinheitMesswert.SI_Einheit || einheitMesswert == EinheitMesswert.abweichendeEinheit) {
+        if (feld8419 == EinheitMesswert.SI_Einheit || feld8419 == EinheitMesswert.abweichendeEinheit) {
             return containsAnyString(fields.get("8421"), owner);
         }
 
         // Wenn Feldinhalt von FK 8419 = 9, darf FK 8421 nicht vorkommen.
-        if (einheitMesswert == EinheitMesswert.dimensionsloseGroesse) {
+        if (feld8419 == EinheitMesswert.dimensionsloseGroesse) {
             return !containsAnyString(fields.get("8421"), owner);
         }
 

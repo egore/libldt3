@@ -60,8 +60,8 @@ public class K005 implements Kontextregel {
             return false;
         }
 
-        Satzart satzart = (Satzart) fields.get("8000").get(owner);
-        if (satzart == Satzart.Befund) {
+        Satzart feld8000 = (Satzart) fields.get("8000").get(owner);
+        if (feld8000 == Satzart.Befund) {
 
             // Wenn Feldinhalt von FK 8000 = 8205 und der Inhalt FK 8401 = 1, darf FK 4121 nicht vorhanden sein.
             Auftragsstatus auftragsstatus = (Auftragsstatus) fields.get("8401").get(owner);
