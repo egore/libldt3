@@ -26,7 +26,6 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.regel.format.F020;
 
 /**
  * Hier werden Informationen zu Wirkstoffen zusammengefasst.
@@ -34,23 +33,38 @@ import libldt3.model.regel.format.F020;
 @Objekt("0071")
 public class Wirkstoff implements Kontext {
 
+    @Objekt
+    public static class ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "6224", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public WirkstoffCode wirkstoffCode;
+        @Feld(value = "8523", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public WirkstoffmengeMengeBezugsmengeWirkstaerke wirkstoffmengeMengeBezugsmengeWirkstaerke;
+    }
+
+    @Objekt
+    public static class WirkstoffCode implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "6214", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String wirkstoffKlassifikation;
+    }
+
+    @Objekt
+    public static class WirkstoffmengeMengeBezugsmengeWirkstaerke implements Kontext {
+        @SuppressWarnings("unused")
+        public float value;
+        @Feld(value = "8421", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String masseinheitMesswerteWertes;
+    }
+
     @Feld(value = "6212", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
-    public String arzneimittelwirkstoff;
-    @Feld(value = "6206", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = F020.class, laenge = 8)
-    public String pzn;
-    @Feld(value = "6224", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
-    public String wirkstoffCode;
-    @Feld(value = "6214", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public String wirkstoffKlassifikation;
-    @Feld(value = "8523", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
-    public String wirkstoffmenge;
-    @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
-    public String mengeneinheit;
+    public ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung arzneimittelwirkstoffWirkstoffWirkstoffbezeichnung;
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,23 +27,30 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Gebuehrenordnung;
+import libldt3.model.regel.kontext.K019;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
- * Untersuchungsanforderungen zusammengefasst, welche als IGe-Leistungen
- * gegenüber gesetzlich versicherten Patienten erbracht werden können.
+ * Untersuchungsanforderungen zusammengefasst, welche als Ige-Leistungen gegenüber
+ * gesetzlich versicherten Patienten erbracht werden können.
  */
-@Objekt("0004")
+@Objekt(value = "0004", kontextregeln = K019.class)
 public class AbrechnungIgeLeistungen implements Kontext {
+
+    @Objekt
+    public static class KostenuebernahmeerklaerungAuftraggeberLiegtVor implements Kontext {
+        @SuppressWarnings("unused")
+        public Boolean value;
+        @Feld(value = "8148", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 12)
+        public Rechnungsempfaenger rechnungsempfaenger;
+    }
 
     @Feld(value = "4121", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
     public Gebuehrenordnung gebuehrenordnung;
     @Feld(value = "7253", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
-    public Boolean kostenuebernahmeerklaerungAuftraggeberLiegtVor;
-    @Feld(value = "8148", feldart = Feldart.muss)
-    @Regelsatz(laenge = 12)
-    public Rechnungsempfaenger rechnungsempfaenger;
+    public KostenuebernahmeerklaerungAuftraggeberLiegtVor kostenuebernahmeerklaerungAuftraggeberLiegtVor;
 
 }

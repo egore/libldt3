@@ -94,7 +94,8 @@ public class Normalizer {
                 .replace("-/", "_")
                 .replace("-", "")
                 .replace(" ", "")
-                .replace(":", "");
+                .replace(":", "")
+                .replace("/", "");
 
         // Workaround for ugly naming
         if ("RgEmpfaenger".equals(replace)) {

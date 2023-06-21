@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,6 @@
 package libldt3.model.objekte;
 
 import java.time.LocalDate;
-
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
@@ -31,11 +30,15 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.GeschlechtNormalbereich;
 import libldt3.model.regel.format.F002;
 import libldt3.model.regel.format.F013;
+import libldt3.model.regel.kontext.K025;
+import libldt3.model.regel.kontext.K090;
+import libldt3.model.regel.kontext.K091;
+import libldt3.model.regel.kontext.K104;
 
 /**
  * In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
  */
-@Objekt("0045")
+@Objekt(value = "0045", kontextregeln = {K025.class, K090.class, K091.class, K104.class})
 public class Patient implements Kontext {
 
     @Feld(value = "8147", feldart = Feldart.bedingt_muss)

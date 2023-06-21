@@ -31,6 +31,7 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.EinschreibestatusSelektivvertraege;
 import libldt3.model.enums.Gebuehrenordnung;
 import libldt3.model.regel.format.F002;
+import libldt3.model.regel.kontext.K019;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -41,34 +42,46 @@ import libldt3.model.regel.format.F002;
  * Behandlungsprogrammen für chronische Erkrankungen (Disease-Management-Programme)
  * (§ 137 f SGB V) und in der Integrierten Versorgung (§§ 140ff SGB V).
  */
-@Objekt("0006")
+@Objekt(value = "0006", kontextregeln = K019.class)
 public class AbrechnungSelektivvertrag implements Kontext {
+
+    @Objekt
+    public static class AbrechnungSelektivvertrag_EinschreibestatusSelektivvertraege implements Kontext {
+        @SuppressWarnings("unused")
+        public EinschreibestatusSelektivvertraege value;
+        @Feld(value = "3134", feldart = Feldart.muss)
+        @Regelsatz(maxLaenge = 60)
+        public BezeichnungSelektivvertrage bezeichnungSelektivvertrage;
+        @Feld(value = "3131", feldart = Feldart.kann)
+        @Regelsatz(value = F002.class, laenge = 8)
+        public LocalDate teilnahmeVon;
+        @Feld(value = "3132", feldart = Feldart.kann)
+        @Regelsatz(value = F002.class, laenge = 8)
+        public LocalDate teilnahmeBis;
+        @Feld(value = "3133", feldart = Feldart.bedingt_kann)
+        @Regelsatz(value = F002.class, laenge = 8)
+        public LocalDate datumAntragstellung;
+        @Feld(value = "7430", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public String patientenIdSelektivvertrag;
+    }
+
+    @Objekt
+    public static class BezeichnungSelektivvertrage implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "4134", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 45)
+        public String kostentraegername;
+    }
 
     @Feld(value = "3130", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
-    public EinschreibestatusSelektivvertraege einschreibestatusSelektivvertraege;
-    @Feld(value = "3134", feldart = Feldart.muss)
-    @Regelsatz(maxLaenge = 60)
-    public String bezeichnungSelektivvertrag;
-    @Feld(value = "4134", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 45)
-    public String kostentraegername;
-    @Feld(value = "3131", feldart = Feldart.kann)
-    @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate teilnahmeVon;
-    @Feld(value = "3132", feldart = Feldart.kann)
-    @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate teilnahmeBis;
-    @Feld(value = "3133", feldart = Feldart.bedingt_kann)
-    @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate datumAntragstellung;
-    @Feld(value = "7430", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
-    public String patientenIdSelektivvertrag;
+    public AbrechnungSelektivvertrag_EinschreibestatusSelektivvertraege einschreibestatusSelektivvertraege;
     @Feld(value = "4121", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Gebuehrenordnung gebuehrenordnung;
-    @Feld(value = "8148", feldart = Feldart.muss)
+    @Feld(value = "8148", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 12)
     public Rechnungsempfaenger rechnungsempfaenger;
 

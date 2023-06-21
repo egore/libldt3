@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,10 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.AbrechnungsartPkv;
 import libldt3.model.enums.Gebuehrenordnung;
+import libldt3.model.regel.kontext.K019;
+import libldt3.model.regel.kontext.K033;
+import libldt3.model.regel.kontext.K034;
+import libldt3.model.regel.kontext.K093;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
@@ -38,8 +42,20 @@ import libldt3.model.enums.Gebuehrenordnung;
  * versichert sind. Dabei kann der Rechnungsempfänger aber auch ein anderer sein,
  * als der Versicherte.
  */
-@Objekt("0003")
+@Objekt(value = "0003", kontextregeln = {K019.class, K033.class, K034.class, K093.class})
 public class AbrechnungPKV implements Kontext {
+
+    @Objekt(kontextregeln = K093.class)
+    public static class AbrechnungPKV_Gebuehrenordnung implements Kontext {
+        @SuppressWarnings("unused")
+        public Gebuehrenordnung value;
+        @Feld(value = "4202", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 1)
+        public Boolean unfallUnfallfolgen;
+        @Feld(value = "8148", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 12)
+        public Rechnungsempfaenger rechnungsempfaenger;
+    }
 
     @Feld(value = "7362", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
@@ -49,12 +65,6 @@ public class AbrechnungPKV implements Kontext {
     public List<String> kostentraegername;
     @Feld(value = "4121", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
-    public Gebuehrenordnung gebuehrenordnung;
-    @Feld(value = "4202", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 1)
-    public Boolean unfallFolgen;
-    @Feld(value = "8148", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 12)
-    public Rechnungsempfaenger rechnungsempfaenger;
+    public AbrechnungPKV_Gebuehrenordnung gebuehrenordnung;
 
 }

@@ -28,6 +28,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.regel.kontext.K027;
+import libldt3.model.regel.kontext.K070;
 
 /**
  * Dieses Objekt wird als Zusammenfassung aller im Auftrag vorhandenen
@@ -36,15 +38,15 @@ import libldt3.model.Kontext;
  * darunterliegenden Objekte eingeführt werden. Pro Satzart "8215" darf dieses
  * Objekt nur einmal vorhanden sein.
  */
-@Objekt("0001")
+@Objekt(value = "0001", kontextregeln = {K027.class, K070.class})
 public class Abrechnungsinformationen implements Kontext {
 
     @Feld(value = "8102", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public List<AbrechnungGKV> abrechnungGKV;
+    public List<AbrechnungGKV> abrechnungGkv;
     @Feld(value = "8103", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public List<AbrechnungPKV> abrechnungPKV;
+    public List<AbrechnungPKV> abrechnungPkv;
     @Feld(value = "8104", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 15)
     public AbrechnungIgeLeistungen abrechnungIgeLeistungen;
@@ -54,5 +56,8 @@ public class Abrechnungsinformationen implements Kontext {
     @Feld(value = "8106", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
     public AbrechnungSelektivvertrag abrechnungSelektivvertrag;
+    @Feld(value = "8109", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 16)
+    public AbrechnungOEGD abrechnungOegd;
 
 }

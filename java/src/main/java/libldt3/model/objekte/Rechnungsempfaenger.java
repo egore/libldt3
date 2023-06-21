@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,15 @@ import libldt3.model.enums.StatusRechnungsempfaenger;
 @Objekt(value = "0048", name = "RgEmpfaenger")
 public class Rechnungsempfaenger implements Kontext {
 
+    @Objekt
+    public static class NameEinrichtungAuftraggeber implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7328", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 10)
+        public String zusaetzlicheNamenszeile;
+    }
+
     @Feld(value = "8310", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
     public String auftragsnummerEinsender;
@@ -43,11 +52,8 @@ public class Rechnungsempfaenger implements Kontext {
     public StatusRechnungsempfaenger statusRechnungsempfaenger;
     @Feld(value = "0600", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public String nameEinrichtungAuftraggeber;
-    @Feld(value = "7328", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 10)
-    public String zusaetzlicheNamenszeile;
-    @Feld(value = "8108", feldart = Feldart.muss)
+    public NameEinrichtungAuftraggeber nameEinrichtungAuftraggeber;
+    @Feld(value = "8108", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 8)
     public Adressat adressat;
     @Feld(value = "8610", feldart = Feldart.kann)
