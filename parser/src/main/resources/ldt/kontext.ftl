@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.Set;
 
 </#if>
+import libldt3.model.Kontext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +51,7 @@ public class ${kontext.regelnummer} implements Kontextregel {
 </#if>
 
     @Override
-    public boolean isValid(Object owner) throws IllegalAccessException {
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
 <#if kontext.usedFields?has_content>
 
         Map<String, Field> fields = findFields(owner, FIELDTYPES);
@@ -58,10 +59,6 @@ public class ${kontext.regelnummer} implements Kontextregel {
             LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
             return false;
         }
-
-<#list kontext.usedFields as feld>
-        ${feld.typ} feld${feld.fk} = (${feld.typ}) fields.get("${feld.fk}").get(owner);
-</#list>
 
 <#if kontext.mandatoryFields?has_content>
         for (Field f : fields.values()) {
@@ -72,10 +69,14 @@ public class ${kontext.regelnummer} implements Kontextregel {
         return false;
 </#if>
 <#if kontext.mustRules?has_content>
+    <#list kontext.usedFields as feld>
+        ${feld.typ} feld${feld.fk} = (${feld.typ}) fields.get("${feld.fk}").get(owner);
+    </#list>
+
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
-        if (<#list mustRule.felder as feld>feld${feld.feld.fk} <#if mustRule.inverted>!=<#else>==</#if> ${feld.init}<#sep> || </#list>) {
-            return containsAnyString(feld${mustRule.must.fk}, owner);
+        if (<#list mustRule.felder as feld>feld${feld.feld.fk} == ${feld.init}<#sep> || </#list>) {
+            return <#if mustRule.inverted>!</#if>containsAnyString(feld${mustRule.must.fk}, owner);
         }
 
 </#list>
