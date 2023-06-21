@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class Feld {
 
     private static final Pattern PATTERN_NUMBER = Pattern.compile("^[0-9]+$");
-    private static final Pattern PATTERN_MIN_MAX = Pattern.compile("^([0-9]+) *[,≤] *([0-9]+)$");
+    private static final Pattern PATTERN_MIN_MAX = Pattern.compile("^([0-9]+) *[,≤–-] *([0-9]+)$");
     private static final Pattern PATTERN_MAX = Pattern.compile("^ *[,≤] *([0-9]+)$");
 
     public enum Format {
@@ -48,6 +48,10 @@ public class Feld {
                     if (regel.regelnummer.startsWith("E")) {
                         return RegelNaming.REPLACEMENTS.getOrDefault(regel.regelnummer, "String");
                     }
+                }
+                // Number fields with length are not necessary numbers, treat them as Strings
+                if (getMinLaenge() != null || getMaxLaenge() != null) {
+                    return "String";
                 }
                 return "int";
             case f: return "float";
