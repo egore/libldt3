@@ -1,6 +1,6 @@
 package libldt3.parser.model;
 
-public abstract class Regel {
+public abstract class Regel implements Comparable<Regel> {
 
     public enum Kategorie {
         KBV,
@@ -24,6 +24,11 @@ public abstract class Regel {
     @Override
     public String toString() {
         return '\'' + regelnummer + "' '" + pruefung + '\'';
+    }
+
+    @Override
+    public int compareTo(Regel o) {
+        return this.regelnummer.compareTo(o.regelnummer);
     }
 }
 

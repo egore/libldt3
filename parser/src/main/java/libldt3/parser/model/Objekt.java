@@ -3,11 +3,9 @@ package libldt3.parser.model;
 import libldt3.parser.RegelNaming;
 import libldt3.parser.generation.Normalizer;
 
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class Objekt {
 
@@ -102,8 +100,8 @@ public class Objekt {
     public boolean stub;
     public List<Objekt> children = new ArrayList<>();
 
-    public List<Kontextregel> getKontextregeln() {
-        List<Kontextregel> result = new ArrayList<>();
+    public TreeSet<Kontextregel> getKontextregeln() {
+        TreeSet<Kontextregel> result = new TreeSet<>();
         for (FeldExtended feld : felder) {
             for (Regel regel : feld.regeln) {
                 if (regel instanceof Kontextregel) {
