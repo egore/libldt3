@@ -59,6 +59,10 @@ public class ${kontext.regelnummer} implements Kontextregel {
             return false;
         }
 
+<#list kontext.usedFields as feld>
+        ${feld.typ} feld${feld.fk} = (${feld.typ}) fields.get("${feld.fk}").get(owner);
+</#list>
+
 <#if kontext.mandatoryFields?has_content>
         for (Field f : fields.values()) {
             if (containsAnyString(f, owner)) {
@@ -70,8 +74,8 @@ public class ${kontext.regelnummer} implements Kontextregel {
 <#if kontext.mustRules?has_content>
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
-        if (<#list mustRule.felder as feld>${feld.feld} <#if mustRule.inverted>!=<#else>==</#if> ${feld.init}<#sep> || </#list>) {
-            return containsAnyString(fields.get("${mustRule.must.fk}"), owner);
+        if (<#list mustRule.felder as feld>feld${feld.feld.fk} <#if mustRule.inverted>!=<#else>==</#if> ${feld.init}<#sep> || </#list>) {
+            return containsAnyString(feld${mustRule.must.fk}, owner);
         }
 
 </#list>
