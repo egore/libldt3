@@ -1,4 +1,5 @@
 <#-- @ftlvariable name="objekt" type="libldt3.parser.model.Objekt" -->
+<#import "./feld.ftl" as feldFtl/>
 /*
  * Copyright 2016-${year}  Christoph Brill <opensource@christophbrill.de>
  *
@@ -46,8 +47,7 @@ public class ${objekt.name} implements Kontext {
     public static class ${child.name} implements Kontext {
 <#list child.felder as feld>
 <#if feld.name != 'value'>
-        @Feld(value = "${feld.feld.fk}", feldart = Feldart.${feld.feldart.readable()})
-        @Regelsatz(<#if feld.feldregeln?hasContent>value = {<#list feld.feldregeln as regel>${regel.regelnummer}.class<#sep>, </#list>}, </#if><#if feld.feld.laenge?startsWith('≤')>maxLaenge = ${feld.feld.laenge?substring(2)}<#else>laenge = ${feld.feld.laenge}</#if>)
+        <@feldFtl.attributes feld=feld prefix="        "/>
 <#else>
         @SuppressWarnings("unused")
 </#if>
@@ -57,8 +57,7 @@ public class ${objekt.name} implements Kontext {
 </#list>
 
 <#list objekt.felder as feld>
-    @Feld(value = "${feld.feld.fk}", feldart = Feldart.${feld.feldart.readable()})
-    @Regelsatz(<#if feld.feldregeln?hasContent>value = {<#list feld.feldregeln as regel>${regel.regelnummer}.class<#sep>, </#list>}, </#if><#if feld.feld.laenge?startsWith('≤')>maxLaenge = ${feld.feld.laenge?substring(2)}<#else>laenge = ${feld.feld.laenge}</#if>)
+    <@feldFtl.attributes feld=feld prefix="    "/>
     public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> ${feld.name};
 </#list>
 
