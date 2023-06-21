@@ -43,16 +43,16 @@ public class Anhang implements Kontext {
 
     @Feld(value = "9970", feldart = Feldart.muss)
     @Regelsatz(laenge = 3)
-    public Dokumententyp dokumentTyp;
+    public Dokumententyp dokumententyp;
     @Feld(value = "6221", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Boolean kennzeichnungFremdbefund;
     @Feld(value = "6305", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
     public String dateiVerweis;
-    @Feld(value = "8242", name = "base64-kodierte_Anlage", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8242", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 22)
-    public Fliesstext base64Anlage;
+    public Fliesstext base64kodierteAnlage;
     @Feld(value = "6303", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
     public String dateiformat;
@@ -61,13 +61,13 @@ public class Anhang implements Kontext {
     public String dateicodierung;
     @Feld(value = "6327", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public String beschreibung;
+    public String bildinhaltDokumentinhalt;
     @Feld(value = "9908", feldart = Feldart.bedingt_kann)
     @Regelsatz(maxLaenge = 60)
-    public String originaldokumentPfad;
+    public String originaldokumentPfadSpeicherort;
     @Feld(value = "9909", feldart = Feldart.bedingt_kann)
     @Regelsatz(maxLaenge = 60)
-    public String langzeitArchivierungPfad;
+    public String langzeitArchivierungPfadSpeicherort;
     @Feld(value = "9980", feldart = Feldart.bedingt_kann)
     public List<String> externeDokumentIds;
     @Feld(value = "9981", feldart = Feldart.bedingt_kann)

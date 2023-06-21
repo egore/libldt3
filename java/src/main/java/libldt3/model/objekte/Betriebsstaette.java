@@ -31,31 +31,39 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.Betriebsstaettenstatus;
 import libldt3.model.regel.format.F010;
 import libldt3.model.regel.format.F021;
+import libldt3.model.regel.kontext.K043;
+import libldt3.model.regel.kontext.K044;
 
 /**
  * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
  * medizinischen Einrichtungen zusammen.
  */
-@Objekt("0019")
+@Objekt(value = "0019", kontextregeln = {K043.class})
 public class Betriebsstaette implements Kontext {
+
+    @Objekt(kontextregeln = K044.class)
+    public static class BsnrBezeichnung implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "0200", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String betriebsstaettenId;
+        @Feld(value = "0201", feldart = Feldart.bedingt_muss)
+        @Regelsatz(value = {F010.class, F021.class}, laenge = 9)
+        public String betriebsoderNebenbetriebsstaettennummer;
+        @Feld(value = "0213", feldart = Feldart.kann)
+        @Regelsatz(laenge = 9)
+        public String institutskennzeichen;
+        @Feld(value = "8143", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 12)
+        public Organisation organisation;
+    }
 
     @Feld(value = "0204", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
-    public List<Betriebsstaettenstatus> status;
+    public List<Betriebsstaettenstatus> statusBetriebsstaette;
     @Feld(value = "0203", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
-    public String bsnrBezeichnung;
-    @Feld(value = "0200", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public String betriebsstaettenId;
-    @Feld(value = "0201", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = { F010.class, F021.class }, laenge = 9)
-    public String bsnr;
-    @Feld(value = "0213", feldart = Feldart.kann)
-    @Regelsatz(laenge = 9)
-    public String institutskennzeichen;
-    @Feld(value = "8143", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 12)
-    public Organisation organisation;
+    public BsnrBezeichnung bsnrBezeichnung;
 
 }

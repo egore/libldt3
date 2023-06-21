@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -72,25 +72,34 @@ public class Tumor implements Kontext {
     @Feld(value = "3425", feldart = Feldart.kann)
     @Regelsatz(value = F002.class, laenge = 8)
     public LocalDate therapieende;
-    @Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann)
+    @Feld(value = "8220", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 36)
     public Timestamp timestampEingangserfassungMaterial;
-    @Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann)
+    @Feld(value = "8222", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 25)
     public Timestamp timestampBeginnAnalytik;
-    @Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann)
+    @Feld(value = "8223", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 28)
     public Timestamp timestampErgebniserstellung;
-    @Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann)
+    @Feld(value = "8224", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 22)
     public Timestamp timestampQmErfassung;
-    @Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.kann)
+    @Feld(value = "8225", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 17)
     public Timestamp timestampMessung;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Feld(value = "8126", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 28)
+    public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
+    @Feld(value = "8167", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
     public List<Fliesstext> zusaetzlicheInformationen;
-    @Feld(value = "8110", name = "Anhang", feldart = Feldart.kann)
+    @Feld(value = "7429", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 990)
+    public String drgHinweis;
+    @Feld(value = "3473", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public Boolean untersuchungsergebnisDurchAuftragslaboratoriumErstellt;
+    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;
 

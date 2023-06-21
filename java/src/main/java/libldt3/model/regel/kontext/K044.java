@@ -19,34 +19,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
+package libldt3.model.regel.kontext;
 
-import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import libldt3.annotations.Feld;
-import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
-import libldt3.annotations.Regelsatz;
-import libldt3.model.Kontext;
-import libldt3.model.enums.Laborart;
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
- * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
+ * FK 0200 oder FK 0201 müssen vorhanden sein.
  */
-@Objekt("0036")
-public class Laborkennung implements Kontext {
+public class K044 implements Kontextregel {
 
-    @Feld(value = "8239", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 16)
-    public Organisation laborbezeichnung;
-    @Feld(value = "7352", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
-    public List<String> katalogUrl;
-    @Feld(value = "8324", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
-    public String laborStandortId;
-    @Feld(value = "7266", feldart = Feldart.muss)
-    @Regelsatz(laenge = 1)
-    public Laborart laborart;
+    private static final Logger LOG = LoggerFactory.getLogger(K044.class);
+
+    private static final Set<String> FIELDTYPES = Set.of("0200", "0201");
+
+    @Override
+    public boolean isValid(Object owner) throws IllegalAccessException {
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        if (!containsAnyString(fields.get("0200")) && !containsAnyString(fields.get("0201"))) {
+            LOG.error("Either FK 0200 or 0201 must be present");
+            return false;
+        }
+
+        return true;
+
+    }
 
 }

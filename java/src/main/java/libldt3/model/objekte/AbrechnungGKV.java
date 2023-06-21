@@ -80,7 +80,7 @@ public class AbrechnungGKV implements Kontext {
     public Versichertenart versichertenart;
     @Feld(value = "4109", feldart = Feldart.bedingt_muss)
     @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate letzterEinlesetagVersichertenkarteImQuartal;
+    public LocalDate letzterEinlesetagVersichertenkarteQuartal;
     @Feld(value = "4133", feldart = Feldart.bedingt_muss)
     @Regelsatz(value = F002.class, laenge = 8)
     public LocalDate versicherungsschutzBeginn;
@@ -110,27 +110,27 @@ public class AbrechnungGKV implements Kontext {
     public DmpKennzeichnung dmpKennzeichnung;
     @Feld(value = "4202", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public Boolean unfallfolgen;
+    public Boolean unfallUnfallfolgen;
     @Feld(value = "4204", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public Boolean eingeschraenkterLeistungsanspruch;
+    public Boolean eingeschraenkterLeistungsanspruchGemaess16Abs_3aSgbV;
     @Feld(value = "4221", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 1)
-    public Behandlungsanlass kurativPraeventivEss;
+    public Behandlungsanlass kurativPraeventivEssBeiBelegaerztl_Behandlung;
     @Feld(value = "4231", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public Boolean kontrolluntersuchungBekannterInfektion;
+    public Boolean kontrolluntersuchungEinerBekanntenInfektion;
     @Feld(value = "4241", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = { F011.class, F022.class }, laenge = 9)
-    public String lebenslangeArztnummer;
+    @Regelsatz(value = F011.class, laenge = 9)
+    public String lebenslangeArztnummerErstveranlasser;
     @Feld(value = "4248", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 9)
-    public String pseudoLanr;
+    @Regelsatz(value = F022.class, laenge = 9)
+    public String pseudoLanrFuerKrankenhausaerzteRahmenAsvAbrechnungErstveranlasser;
     @Feld(value = "4217", feldart = Feldart.bedingt_muss)
     @Regelsatz(value = F010.class, laenge = 9)
     public String bsnrErstveranlasser;
     @Feld(value = "4225", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 9)
-    public String asvTeamnummer;
+    public String asvTeamnummerErstveranlasser;
 
 }

@@ -30,9 +30,9 @@ import libldt3.model.Kontext;
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von
  * Untersuchungsanforderungen zusammengefasst, welche ein Labor außerhalb der
- * Regelleistungen EBM und GOÄ erbringen kann. Es werden hierüber auch
- * Leistungen abgerechnet, welche nicht durch medizinische Einsender abgefordert
- * werden oder die Materialien betreffen, die nicht humanen Ursprungs sind. Der
+ * Regelleistungen EBM und GOÄ erbringen kann. Es werden hierüber auch Leistungen
+ * abgerechnet, welche nicht durch medizinische Einsender abgefordert werden oder
+ * die Materialien betreffen, die nicht humanen Ursprungs sind. Der
  * Rechnungsempfänger ist frei wählbar.
  */
 @Objekt("0005")
