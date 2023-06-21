@@ -8,6 +8,7 @@ import libldt3.parser.model.Formatregel;
 import libldt3.parser.model.Kontextregel;
 import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -382,17 +384,34 @@ public class Parser {
 
                         LOG.debug("Completed {} with {} fields", objekt.value, objekt.value.felder.size());
 
+                        Stack<Pair<Integer, Objekt>> children = new Stack<>();
                         // Cleanup fields of the object
                         for (int i = 1; i < objekt.value.felder.size(); i++) {
 
                             Objekt.FeldExtended current = objekt.value.felder.get(i);
                             Objekt.FeldExtended previous = objekt.value.felder.get(i - 1);
+                            Objekt parent = null;
                             if (current.vorkommen.position == previous.vorkommen.position + 1) {
+                                parent = objekt.value;
+                            } else {
+                                while (children.size() > 0) {
+                                    if (current.vorkommen.position <= children.peek().getLeft()) {
+                                        children.pop();
+                                    } else {
+                                        break;
+                                    }
+                                }
+                                if (children.size() > 0 && current.vorkommen.position == children.peek().getLeft() + 1) {
+                                    parent = children.peek().getRight();
+                                    previous = children.peek().getRight().felder.get(children.peek().getRight().felder.size() - 1);
+                                }
+                            }
 
+                            if (parent != null) {
                                 // We found a child definition, create it as Objekt below its parent
                                 Objekt child = null;
                                 String name = Normalizer.toUppercaseFirst(previous.getName());
-                                String newObjektName = RegelNaming.REPLACEMENTS.containsValue(name) ? objekt.value.name + "_" + name : name;
+                                String newObjektName = RegelNaming.REPLACEMENTS.containsValue(name) ? parent.name + "_" + name : name;
                                 for (Objekt o : objekt.value.children) {
                                     if (o.name.equals(newObjektName)) {
                                         child = o;
@@ -404,6 +423,7 @@ public class Parser {
                                     child = new Objekt("0", newObjektName, false);
                                     objekt.value.children.add(child);
                                     isNew = true;
+                                    children.push(Pair.of(current.vorkommen.position, child));
                                 }
 
                                 // Detach the current field from its parent
@@ -417,8 +437,9 @@ public class Parser {
                                     value.vorkommen = new Objekt.Vorkommen();
                                     value.vorkommen.wert = "1";
                                     value.feld = new Feld();
-                                    value.feld.format = Feld.Format.alnum;
+                                    value.feld.format = previous.feld.format;
                                     value.feld.regeln = previous.feld.regeln;
+                                    value.feld.laenge = previous.feld.laenge;
                                     child.felder.add(value);
                                 }
 
