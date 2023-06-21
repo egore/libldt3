@@ -19,38 +19,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.enums;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.Regel;
+import libldt3.model.regel.RegularExpressionRegel;
+
+import java.util.regex.Pattern;
 
 /**
- * E058
+ * EBNF*-Format für entweder eine einzelne HPV-Typ-Nummer oder eine
+ * Gruppe von mehreren HPV-Typ-Nummern mit optional vorangestelltem
+ * gerätespezifischen
+ * Gruppennamen.
+ * HPV-Typ-Nummer
+ * und
+ * Gruppenname besitzen ein alphanumerisches Format. (Bsp.: 18,
+ * G1:31/33/52/58)
+ * * Erweiterte Backus-Naur-Form
  */
-public enum DarstellungErgebniswerte {
-    /** numerisch (exponentielle Darstellung möglich) */
-    numerisch("01"),
-    /** numerisch mit Messwertuntergrenze */
-    numerisch_mitMesswertuntergrenze("02"),
-    /** numerisch mit Messwertobergrenze */
-    numerisch_mitMesswertobergrenze("03"),
-    /** alpha-numerisch */
-    alphanumerisch("04"),
-    Titer("05"),
-    /** Titer mit Untergrenze */
-    Titer_mitUntergrenze("06"),
-    /** Titer mit Obergrenze */
-    Titer_mitObergrenze("07"),
-    /** trinäres Testergebnis: 1 | 2 | 3 ** */
-    trinaeresTestergebnis_1_2_3("08"),
-    /** Beispiele
-     * 01: 47.85, 5.00E+07, 1x10^6 02: <100, <1.00E+04 03: >2000, >5.00E+04 04:
-     * positiv, negativ, A positiv * 05: 1:2 06: <1:2 07: >1:2 08: 1, 2, 3 ** *   für
-     * die Übertragung von Blutgruppen ist vorzugsweise das Obj_0055 zu verwenden **
-     * Abbildung der Regel E169 */
-    Sonstige("99");
+public class F024 implements Regel {
 
-    public final String code;
-
-    DarstellungErgebniswerte(String code) {
-        this.code = code;
+    @Override
+    public boolean isValid(String value) {
+        throw new UnsupportedOperationException();
     }
-
 }

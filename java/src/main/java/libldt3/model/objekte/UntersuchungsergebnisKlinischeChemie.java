@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,39 +32,48 @@ import libldt3.model.enums.DarstellungErgebniswerte;
 import libldt3.model.enums.EinheitMesswert;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.enums.TestStatus;
-import libldt3.model.regel.kontext.K072;
+import libldt3.model.regel.kontext.K002;
+import libldt3.model.regel.kontext.K053;
+import libldt3.model.regel.kontext.K054;
 import libldt3.model.regel.kontext.K076;
+import libldt3.model.regel.kontext.K082;
+import libldt3.model.regel.kontext.K096;
+import libldt3.model.regel.kontext.K100;
+import libldt3.model.regel.kontext.K106;
 
 /**
  * In diesem Objekt werden die Ergebnisse aus dem Bereich Klinische Chemie
  * übermittelt.
  */
-@Objekt("0060")
+@Objekt(value = "0060", kontextregeln = {K053.class, K076.class, K082.class, K096.class, K106.class})
 public class UntersuchungsergebnisKlinischeChemie implements Kontext {
 
-    @Objekt(kontextregeln = {K072.class, K076.class})
-    public static class KatalogReferenz implements Kontext {
+    @Objekt(kontextregeln = K053.class)
+    public static class KatalogAnforderbareLeistungenId implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
         @Feld(value = "7352", feldart = Feldart.bedingt_muss)
         @Regelsatz(maxLaenge = 60)
-        public String katalogUrl;
+        public String urlKataloge;
         @Feld(value = "7251", feldart = Feldart.bedingt_kann)
         @Regelsatz(maxLaenge = 60)
-        public String katalogBezeichnung;
+        public String bezeichnungDesVerwendetenKataloges;
         @Feld(value = "7365", feldart = Feldart.bedingt_muss)
         @Regelsatz(maxLaenge = 20)
-        public String analysenId;
-        @Feld(value = "7366", feldart = Feldart.bedingt_kann)
-        @Regelsatz(maxLaenge = 60)
-        public String leistungsbezeichnung;
-        @Feld(value = "8418", feldart = Feldart.bedingt_muss)
-        @Regelsatz(laenge = 1)
-        public TestStatus teststatus;
+        public AnalysenId analysenId;
     }
 
-    @Objekt(kontextregeln = {K072.class, K076.class})
-    public static class Test implements Kontext {
+    @Objekt
+    public static class AnalysenId implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7366", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public String langbezeichnungAngefordertenLeistung;
+    }
+
+    @Objekt
+    public static class TestIdent implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8411", feldart = Feldart.bedingt_muss)
@@ -76,44 +85,54 @@ public class UntersuchungsergebnisKlinischeChemie implements Kontext {
         @Feld(value = "7264", feldart = Feldart.kann)
         @Regelsatz(maxLaenge = 60)
         public String testGeraetUid;
-        @Feld(value = "8418", feldart = Feldart.bedingt_muss)
-        @Regelsatz(laenge = 1)
-        public TestStatus teststatus;
+    }
+
+    @Objekt
+    public static class Ergebnisstatus implements Kontext {
+        @SuppressWarnings("unused")
+        public TestStatus value;
         @Feld(value = "7302", feldart = Feldart.kann)
         @Regelsatz(maxLaenge = 60)
         public List<String> testmethode;
     }
 
-    @Objekt
-    public static class DarstellungErgebniswerteErweitert implements Kontext {
+    @Objekt(kontextregeln = K100.class)
+    public static class UntersuchungsergebnisKlinischeChemie_DarstellungErgebniswerte implements Kontext {
         @SuppressWarnings("unused")
         public DarstellungErgebniswerte value;
-        @Feld(value = "8420", feldart = Feldart.bedingt_kann)
+        @Feld(value = "8420", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
         public List<ErgebnisWert> ergebnisWert;
-        @Feld(value = "8236", name = "Testbezogene_Hinweise", feldart = Feldart.bedingt_kann)
+        @Feld(value = "8236", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 21)
         public Fliesstext testbezogeneHinweise;
     }
 
-    @Objekt
+    @Objekt(kontextregeln = {K002.class, K054.class, K076.class, K100.class})
     public static class ErgebnisWert implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8419", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 1)
-        public EinheitMesswert einheitNorm;
-        @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-        @Regelsatz(maxLaenge = 20)
-        public String einheit;
-        @Feld(value = "8142", feldart = Feldart.kann)
+        public EinheitensystemMesswerteWertes einheitensystemMesswerteWertes;
+        @Feld(value = "8142", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 10)
-        public List<Normalwert> normalValue;
-        @Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
+        public List<Normalwert> normalwert;
+        @Feld(value = "8225", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 17)
-        public Timestamp timestamp;
-        @Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.kann)
+        public Timestamp timestampMessungObjUntersuchungsergebnisKlinischeChemie;
+        @Feld(value = "8237", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 12)
         public Fliesstext ergebnistext;
+    }
+
+    @Objekt(kontextregeln = K002.class)
+    public static class EinheitensystemMesswerteWertes implements Kontext {
+        @SuppressWarnings("unused")
+        public EinheitMesswert value;
+        @Feld(value = "8421", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String masseinheitMesswerteWertes;
     }
 
     @Feld(value = "7304", feldart = Feldart.muss)
@@ -124,35 +143,47 @@ public class UntersuchungsergebnisKlinischeChemie implements Kontext {
     public List<String> probengefaessIdent;
     @Feld(value = "7260", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 1)
-    public KatalogReferenz anforderbareLeistungenKatalogId;
+    public KatalogAnforderbareLeistungenId katalogAnforderbareLeistungenId;
     @Feld(value = "8410", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public Test testIdent;
+    @Regelsatz(maxLaenge = 20)
+    public TestIdent testIdent;
+    @Feld(value = "8418", feldart = Feldart.muss)
+    @Regelsatz(laenge = 2)
+    public Ergebnisstatus ergebnisstatus;
     @Feld(value = "7306", feldart = Feldart.kann)
     @Regelsatz(laenge = 2)
-    public List<DarstellungErgebniswerteErweitert> darstellungErgebniswerte;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    public List<UntersuchungsergebnisKlinischeChemie_DarstellungErgebniswerte> darstellungErgebniswerte;
+    @Feld(value = "8167", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
     public List<Fliesstext> zusaetzlicheInformationen;
-    @Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.kann)
+    @Feld(value = "8220", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 36)
-    public Timestamp materialDeliveryTimestamp;
-    @Feld(value = "8222", name = "Timestamp_Beginn_Analytik", feldart = Feldart.kann)
+    public Timestamp timestampEingangserfassungMaterial;
+    @Feld(value = "8222", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 25)
-    public Timestamp startAnalyticsTimestamp;
-    @Feld(value = "8223", name = "Timestamp_Ergebniserstellung", feldart = Feldart.kann)
+    public Timestamp timestampBeginnAnalytik;
+    @Feld(value = "8223", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 28)
-    public Timestamp resultTimestamp;
-    @Feld(value = "8224", name = "Timestamp_QM_Erfassung", feldart = Feldart.kann)
+    public Timestamp timestampErgebniserstellung;
+    @Feld(value = "8224", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 22)
-    public Timestamp qmTimestamp;
-    @Feld(value = "8141", feldart = Feldart.muss)
+    public Timestamp timestampQmErfassung;
+    @Feld(value = "8126", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 28)
+    public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
+    @Feld(value = "8141", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 13)
     public Namenskennung namenskennung;
     @Feld(value = "8158", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 23)
     public Untersuchungsabrechnung untersuchungsabrechnung;
-    @Feld(value = "8110", feldart = Feldart.kann)
+    @Feld(value = "7429", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 990)
+    public String drgHinweis;
+    @Feld(value = "3473", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public Boolean untersuchungsergebnisDurchAuftragslaboratoriumErstellt;
+    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;
 

@@ -19,45 +19,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
+package libldt3.model.regel.kontext;
 
-import java.time.LocalDate;
-
-import libldt3.annotations.Feld;
-import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
-import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.enums.Zeitzone;
-import libldt3.model.regel.format.F002;
-import libldt3.model.regel.format.F016;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Obj_Timestamp
+ * Wenn in Satzart 8215 die FK 7303 mit den Inhalten 1, 2, 8, 9, 10, 13, 15 oder 16
+ * vorkommt, muss die FK 8102 mindestens einmal vorhanden sein.
+ *
+ * Wenn Untersuchungen im kassenärztlichen Kontext abgerechnet wer-
+ * den sollen, muss das Obj_0002 (Abrechnung_GKV) vorhanden sein.
  */
-@Objekt("0054")
-public class Timestamp implements Kontext {
+public class K097 implements Kontextregel {
 
-    @Objekt
-    public static class Uhrzeit implements Kontext {
-        @SuppressWarnings("unused")
-        public String value;
-        @Feld(value = "7273", feldart = Feldart.bedingt_muss)
-        @Regelsatz(minLaenge = 3, maxLaenge = 9)
-        public Zeitzone zeitzone;
+    private static final Logger LOG = LoggerFactory.getLogger(K097.class);
+
+    @Override
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
+        throw new UnsupportedOperationException();
     }
-
-    @Feld(value = "7278", feldart = Feldart.muss)
-    @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate datum;
-    @Feld(value = "7279", feldart = Feldart.kann)
-    @Regelsatz(value = F016.class, minLaenge = 6, maxLaenge = 9)
-    public Uhrzeit uhrzeit;
-    @Feld(value = "7272", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 990)
-    public String freitext;
-    @Feld(value = "8235", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 20)
-    public Person person;
 
 }

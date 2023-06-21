@@ -30,10 +30,10 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Gebuehrenordnung;
-import libldt3.model.regel.format.F008;
-import libldt3.model.regel.format.F009;
 import libldt3.model.regel.erlaubt.E003;
+import libldt3.model.regel.format.F009;
 import libldt3.model.regel.kontext.K005;
+import libldt3.model.regel.kontext.K008;
 import libldt3.model.regel.kontext.K019;
 
 /**
@@ -41,15 +41,15 @@ import libldt3.model.regel.kontext.K019;
  * Werte transportiert, die für die ordnungsgemäße Abrechnung des Auftrages
  * notwendig sind.
  */
-@Objekt(value = "0058", kontextregeln = {K005.class, K019.class})
+@Objekt(value = "0058", kontextregeln = {K005.class, K008.class, K019.class})
 public class Untersuchungsabrechnung implements Kontext {
 
-    @Objekt
+    @Objekt(kontextregeln = K019.class)
     public static class Untersuchungsabrechnung_Gebuehrenordnung implements Kontext {
         @SuppressWarnings("unused")
         public Gebuehrenordnung value;
         @Feld(value = "5001", feldart = Feldart.bedingt_muss)
-        @Regelsatz(value = { F008.class, F009.class }, maxLaenge = 9)
+        @Regelsatz(value = F009.class, minLaenge = 5, maxLaenge = 6)
         public List<Gebuehrennummer> gebuehrennummer;
     }
 
@@ -59,17 +59,16 @@ public class Untersuchungsabrechnung implements Kontext {
         public String value;
         @Feld(value = "8406", feldart = Feldart.bedingt_muss)
         @Regelsatz(maxLaenge = 60)
-        public String kosten;
+        public String kostenInEURCent;
         @Feld(value = "5005", feldart = Feldart.bedingt_kann)
         @Regelsatz(value = E003.class, laenge = 3)
-        public Integer multiplikator;
+        public String multiplikator;
         @Feld(value = "5009", feldart = Feldart.bedingt_kann)
         @Regelsatz(maxLaenge = 60)
-        public List<String> begruendungstext;
+        public List<String> freierBegruendungstext;
         @Feld(value = "8614", feldart = Feldart.muss)
         @Regelsatz(laenge = 1)
-        public Boolean abgerechnet;
-        public int asd;
+        public Boolean bereitsAbgerechnet;
     }
 
     @Objekt

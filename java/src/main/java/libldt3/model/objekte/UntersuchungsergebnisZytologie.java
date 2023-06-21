@@ -28,18 +28,36 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.Ergebnis2;
 import libldt3.model.enums.Grenzwertindikator;
+import libldt3.model.enums.HpvHrTestergebnis;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
+import libldt3.model.enums.SpezifizierungVeranlassungsgrund;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.enums.Untersuchungsanlass;
+import libldt3.model.regel.erlaubt.E028;
+import libldt3.model.regel.format.F024;
+import libldt3.model.regel.kontext.K032;
+import libldt3.model.regel.kontext.K034;
+import libldt3.model.regel.kontext.K053;
+import libldt3.model.regel.kontext.K060;
 import libldt3.model.regel.kontext.K076;
+import libldt3.model.regel.kontext.K080;
+import libldt3.model.regel.kontext.K081;
+import libldt3.model.regel.kontext.K082;
+import libldt3.model.regel.kontext.K096;
+import libldt3.model.regel.kontext.K099;
+import libldt3.model.regel.kontext.K100;
+import libldt3.model.regel.kontext.K119;
+import libldt3.model.regel.kontext.K133;
 
 /**
  * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie
  * transportiert werden.
  */
-@Objekt(value = "0063", kontextregeln = K076.class)
+@Objekt(value = "0063", kontextregeln = {K032.class, K034.class, K053.class, K060.class, K076.class, K080.class, K081.class, K082.class, K096.class, K100.class, K119.class})
 public class UntersuchungsergebnisZytologie implements Kontext {
 
     @Objekt
@@ -60,7 +78,7 @@ public class UntersuchungsergebnisZytologie implements Kontext {
         public Timestamp timestamp;
     }
 
-    @Objekt
+    @Objekt(kontextregeln = K053.class)
     public static class KatalogAnforderbareLeistungenId implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
@@ -91,21 +109,108 @@ public class UntersuchungsergebnisZytologie implements Kontext {
         @Feld(value = "8411", feldart = Feldart.bedingt_muss)
         @Regelsatz(maxLaenge = 60)
         public String testbezeichnung;
-        @Feld(value = "8418", feldart = Feldart.bedingt_muss)
-        @Regelsatz(laenge = 1)
-        public TestStatus teststatus;
-        @Feld(value = "8422", feldart = Feldart.bedingt_muss)
-        @Regelsatz(maxLaenge = 2)
-        public List<GrenzwertindikatorLaborwert> grenzwertindikatorLaborwert;
     }
 
     @Objekt
-    public static class GrenzwertindikatorLaborwert implements Kontext {
+    public static class Ergebnisstatus implements Kontext {
+        @SuppressWarnings("unused")
+        public TestStatus value;
+        @Feld(value = "8422", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 2)
+        public List<GrenzwertindikatorLaborwerte> grenzwertindikatorLaborwerte;
+    }
+
+    @Objekt(kontextregeln = K099.class)
+    public static class GrenzwertindikatorLaborwerte implements Kontext {
         @SuppressWarnings("unused")
         public Grenzwertindikator value;
-        @Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.bedingt_muss)
+        @Feld(value = "8126", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 28)
         public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
+    }
+
+    @Objekt
+    public static class HpvBefundObjUntersuchungsergebnisZytologie implements Kontext {
+        @SuppressWarnings("unused")
+        public Boolean value;
+        @Feld(value = "7402", feldart = Feldart.bedingt_kann)
+        @Regelsatz(value = F024.class, maxLaenge = 120)
+        public List<HighRiskTyp> highRiskTyp;
+        @Feld(value = "7404", feldart = Feldart.bedingt_kann)
+        @Regelsatz(value = F024.class, maxLaenge = 120)
+        public List<LowRiskTyp> lowRiskTyp;
+    }
+
+    @Objekt
+    public static class HighRiskTyp implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7401", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public HpvHrTestergebnis highRisk;
+    }
+
+    @Objekt
+    public static class LowRiskTyp implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7403", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public HpvHrTestergebnis lowRisk;
+    }
+
+    @Objekt
+    public static class Gruppe implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7413", feldart = Feldart.bedingt_muss)
+        @Regelsatz(value = E028.class, maxLaenge = 4)
+        public String codierungGruppe;
+    }
+
+    @Objekt(kontextregeln = K133.class)
+    public static class AbrechnungsinfoZurUntersuchung implements Kontext {
+        @SuppressWarnings("unused")
+        public Abrechnungsinfo value;
+        @Feld(value = "8417", feldart = Feldart.kann)
+        @Regelsatz(laenge = 2)
+        public AnlassUntersuchung anlassUntersuchung;
+        @Feld(value = "8200", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 12)
+        public List<Diagnose> akutdiagnose;
+        @Feld(value = "4209", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> zusaetzlicheAngabenZuUntersuchungen;
+        @Feld(value = "4208", feldart = Feldart.kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<VorbefundMedikation> vorbefundMedikation;
+    }
+
+    @Objekt
+    public static class AnlassUntersuchung implements Kontext {
+        @SuppressWarnings("unused")
+        public Untersuchungsanlass value;
+        @Feld(value = "8427", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 2)
+        public SpezifizierungVeranlassungsgrunde spezifizierungVeranlassungsgrunde;
+    }
+
+    @Objekt(kontextregeln = K100.class)
+    public static class SpezifizierungVeranlassungsgrunde implements Kontext {
+        @SuppressWarnings("unused")
+        public SpezifizierungVeranlassungsgrund value;
+        @Feld(value = "8217", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 32)
+        public Fliesstext praezisierungVeranlassungsgrund;
+    }
+
+    @Objekt
+    public static class VorbefundMedikation implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "8170", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 10)
+        public List<Medikament> medikament;
     }
 
     @Feld(value = "7304", feldart = Feldart.muss)
@@ -120,6 +225,9 @@ public class UntersuchungsergebnisZytologie implements Kontext {
     @Feld(value = "8410", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 20)
     public List<TestIdent> testIdent;
+    @Feld(value = "8418", feldart = Feldart.muss)
+    @Regelsatz(laenge = 2)
+    public Ergebnisstatus ergebnisstatus;
     @Feld(value = "8237", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 12)
     public Fliesstext ergebnistext;
@@ -128,19 +236,10 @@ public class UntersuchungsergebnisZytologie implements Kontext {
     public Boolean zellmaterialNichtVerwertbar;
     @Feld(value = "7400", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public Boolean hpvBefund;
-    @Feld(value = "7401", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
-    public Ergebnis highRisk;
-    @Feld(value = "7402", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 2)
-    public List<String> highRiskTyp;
-    @Feld(value = "7403", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
-    public Ergebnis lowRisk;
-    @Feld(value = "7404", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 2)
-    public List<String> lowRiskTyp;
+    public HpvBefundObjUntersuchungsergebnisZytologie hpvBefundObjUntersuchungsergebnisZytologie;
+    @Feld(value = "7414", feldart = Feldart.kann)
+    @Regelsatz(value = E028.class, maxLaenge = 5)
+    public Gruppe gruppe;
     @Feld(value = "7418", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Ergebnis p16Ki67;
@@ -186,5 +285,17 @@ public class UntersuchungsergebnisZytologie implements Kontext {
     @Feld(value = "8158", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 23)
     public Untersuchungsabrechnung untersuchungsabrechnung;
+    @Feld(value = "7429", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 990)
+    public String drgHinweis;
+    @Feld(value = "3473", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public Boolean untersuchungsergebnisDurchAuftragslaboratoriumErstellt;
+    @Feld(value = "7303", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 2)
+    public List<AbrechnungsinfoZurUntersuchung> abrechnungsinfoZurUntersuchung;
+    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 6)
+    public List<Anhang> anhang;
 
 }

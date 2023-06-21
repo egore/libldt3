@@ -19,45 +19,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
+package libldt3.model.regel.kontext;
 
-import java.time.LocalDate;
-
-import libldt3.annotations.Feld;
-import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
-import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.enums.Zeitzone;
-import libldt3.model.regel.format.F002;
-import libldt3.model.regel.format.F016;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * Obj_Timestamp
+ * Wenn FK 8002 = Obj_0059 (Obj_Untersuchungsanforderung) oder FK 8002 = Obj_0061
+ * (Obj_Untersuchungsergebnis Mikrobiologie), dann muss FK 8410 oder FK 7260 oder
+ * FK 8434 vorhanden sein (FK 8410 und FK 7260 dürfen nicht gemeinsam vorhanden
+ * sein).
+ *
+ * Es wird entweder auf Katalog anforderbarer Leistungen oder auf Test-
+ * Ident referenziert. Sind keine dieser Angaben verfügbar, können die
+ * Anforderungen auch als Freitext mit der FK 8434 übertragen werden.
  */
-@Objekt("0054")
-public class Timestamp implements Kontext {
+public class K010 implements Kontextregel {
 
-    @Objekt
-    public static class Uhrzeit implements Kontext {
-        @SuppressWarnings("unused")
-        public String value;
-        @Feld(value = "7273", feldart = Feldart.bedingt_muss)
-        @Regelsatz(minLaenge = 3, maxLaenge = 9)
-        public Zeitzone zeitzone;
+    private static final Logger LOG = LoggerFactory.getLogger(K010.class);
+
+    @Override
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
+        throw new UnsupportedOperationException();
     }
-
-    @Feld(value = "7278", feldart = Feldart.muss)
-    @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate datum;
-    @Feld(value = "7279", feldart = Feldart.kann)
-    @Regelsatz(value = F016.class, minLaenge = 6, maxLaenge = 9)
-    public Uhrzeit uhrzeit;
-    @Feld(value = "7272", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 990)
-    public String freitext;
-    @Feld(value = "8235", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 20)
-    public Person person;
 
 }

@@ -33,15 +33,31 @@ import libldt3.model.enums.Dringlichkeit;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
 import libldt3.model.regel.erlaubt.E012;
 import libldt3.model.regel.kontext.K003;
+import libldt3.model.regel.kontext.K010;
+import libldt3.model.regel.kontext.K011;
+import libldt3.model.regel.kontext.K032;
+import libldt3.model.regel.kontext.K034;
+import libldt3.model.regel.kontext.K037;
+import libldt3.model.regel.kontext.K053;
+import libldt3.model.regel.kontext.K056;
+import libldt3.model.regel.kontext.K057;
+import libldt3.model.regel.kontext.K097;
+import libldt3.model.regel.kontext.K098;
+import libldt3.model.regel.kontext.K100;
+import libldt3.model.regel.kontext.K102;
+import libldt3.model.regel.kontext.K103;
+import libldt3.model.regel.kontext.K105;
+import libldt3.model.regel.kontext.K113;
+import libldt3.model.regel.kontext.K114;
 
 /**
  * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung
  * zusammengefasst.
  */
-@Objekt(value = "0059", kontextregeln = { K003.class })
+@Objekt(value = "0059", kontextregeln = {K003.class, K010.class, K011.class, K032.class, K034.class, K037.class, K053.class, K056.class, K057.class, K097.class, K098.class, K100.class, K102.class, K103.class, K105.class, K113.class, K114.class})
 public class Untersuchungsanforderung implements Kontext {
 
-    @Objekt
+    @Objekt(kontextregeln = K053.class)
     public static class KatalogAnforderbareLeistungenId implements Kontext {
         @SuppressWarnings("unused")
         public KatalogIdAnforderbareLeistungen value;
@@ -53,13 +69,19 @@ public class Untersuchungsanforderung implements Kontext {
         public String bezeichnungDesVerwendetenKataloges;
         @Feld(value = "7365", feldart = Feldart.bedingt_muss)
         @Regelsatz(maxLaenge = 20)
-        public String analysenId;
-        @Feld(value = "7366", feldart = Feldart.bedingt_muss)
-        @Regelsatz(maxLaenge = 60)
-        public String leistungsbezeichnung;
+        public AnalysenId analysenId;
     }
 
     @Objekt
+    public static class AnalysenId implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7366", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String langbezeichnungAngefordertenLeistung;
+    }
+
+    @Objekt(kontextregeln = K003.class)
     public static class TestIdent implements Kontext {
         @SuppressWarnings("unused")
         public String value;

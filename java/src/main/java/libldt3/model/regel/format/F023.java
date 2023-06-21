@@ -19,38 +19,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.enums;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
+
+import java.util.regex.Pattern;
 
 /**
- * E058
+ * Format für Angabe des Zeitraums in Monaten
+ * (Bsp.: 2 Monate, 3-6 Monate, 10-12 Monate)
  */
-public enum DarstellungErgebniswerte {
-    /** numerisch (exponentielle Darstellung möglich) */
-    numerisch("01"),
-    /** numerisch mit Messwertuntergrenze */
-    numerisch_mitMesswertuntergrenze("02"),
-    /** numerisch mit Messwertobergrenze */
-    numerisch_mitMesswertobergrenze("03"),
-    /** alpha-numerisch */
-    alphanumerisch("04"),
-    Titer("05"),
-    /** Titer mit Untergrenze */
-    Titer_mitUntergrenze("06"),
-    /** Titer mit Obergrenze */
-    Titer_mitObergrenze("07"),
-    /** trinäres Testergebnis: 1 | 2 | 3 ** */
-    trinaeresTestergebnis_1_2_3("08"),
-    /** Beispiele
-     * 01: 47.85, 5.00E+07, 1x10^6 02: <100, <1.00E+04 03: >2000, >5.00E+04 04:
-     * positiv, negativ, A positiv * 05: 1:2 06: <1:2 07: >1:2 08: 1, 2, 3 ** *   für
-     * die Übertragung von Blutgruppen ist vorzugsweise das Obj_0055 zu verwenden **
-     * Abbildung der Regel E169 */
-    Sonstige("99");
+public class F023 extends RegularExpressionRegel {
 
-    public final String code;
+    public static final Pattern PATTERN = Pattern.compile("^([0-9]), ([0-9]{2}), ([0-9])-([0-9]), ([0-9])-([0-9]{2}), ([0-9]{2})-([0-9]{2})$");
 
-    DarstellungErgebniswerte(String code) {
-        this.code = code;
+    public F023() {
+        super(PATTERN);
     }
 
 }

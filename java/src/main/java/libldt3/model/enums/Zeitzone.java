@@ -22,34 +22,52 @@
 package libldt3.model.enums;
 
 /**
- * E058
+ * E163
  */
-public enum DarstellungErgebniswerte {
-    /** numerisch (exponentielle Darstellung möglich) */
-    numerisch("01"),
-    /** numerisch mit Messwertuntergrenze */
-    numerisch_mitMesswertuntergrenze("02"),
-    /** numerisch mit Messwertobergrenze */
-    numerisch_mitMesswertobergrenze("03"),
-    /** alpha-numerisch */
-    alphanumerisch("04"),
-    Titer("05"),
-    /** Titer mit Untergrenze */
-    Titer_mitUntergrenze("06"),
-    /** Titer mit Obergrenze */
-    Titer_mitObergrenze("07"),
-    /** trinäres Testergebnis: 1 | 2 | 3 ** */
-    trinaeresTestergebnis_1_2_3("08"),
-    /** Beispiele
-     * 01: 47.85, 5.00E+07, 1x10^6 02: <100, <1.00E+04 03: >2000, >5.00E+04 04:
-     * positiv, negativ, A positiv * 05: 1:2 06: <1:2 07: >1:2 08: 1, 2, 3 ** *   für
-     * die Übertragung von Blutgruppen ist vorzugsweise das Obj_0055 zu verwenden **
-     * Abbildung der Regel E169 */
-    Sonstige("99");
+public enum Zeitzone {
+    UTC_MINUS_12("UTC−12"),
+    UTC_MINUS_11("UTC−11"),
+    UTC_MINUS_10("UTC−10"),
+    UTC_MINUS_9_30("UTC−9:30"),
+    UTC_MINUS_9("UTC−9"),
+    UTC_MINUS_8("UTC−8"),
+    UTC_MINUS_7("UTC−7"),
+    UTC_MINUS_6("UTC−6"),
+    UTC_MINUS_5("UTC−5"),
+    UTC_MINUS_4("UTC−4"),
+    UTC_MINUS_3_30("UTC−3:30"),
+    UTC_MINUS_3("UTC−3"),
+    UTC_MINUS_2("UTC−2"),
+    UTC_MINUS_1("UTC−1"),
+    UTC("UTC"),
+    UTC_PLUS_1("UTC+1"),
+    UTC_PLUS_2("UTC+2"),
+    UTC_PLUS_3("UTC+3"),
+    UTC_PLUS_3_30("UTC+3:30"),
+    UTC_PLUS_4("UTC+4"),
+    UTC_PLUS_4_30("UTC+4:30"),
+    UTC_PLUS_5("UTC+5"),
+    UTC_PLUS_5_30("UTC+5:30"),
+    UTC_PLUS_5_45("UTC+5:45"),
+    UTC_PLUS_6("UTC+6"),
+    UTC_PLUS_6_30("UTC+6:30"),
+    UTC_PLUS_7("UTC+7"),
+    UTC_PLUS_8("UTC+8"),
+    UTC_PLUS_8_30("UTC+8:30"),
+    UTC_PLUS_9("UTC+9"),
+    UTC_PLUS_9_30("UTC+9:30"),
+    UTC_PLUS_10("UTC+10"),
+    UTC_PLUS_10_30("UTC+10:30"),
+    UTC_PLUS_11("UTC+11"),
+    UTC_PLUS_12("UTC+12"),
+    UTC_PLUS_12_45("UTC+12:45"),
+    UTC_PLUS_13("UTC+13"),
+    UTC_PLUS_13_45("UTC+13:45"),
+    UTC_PLUS_14("UTC+14");
 
     public final String code;
 
-    DarstellungErgebniswerte(String code) {
+    Zeitzone(String code) {
         this.code = code;
     }
 
