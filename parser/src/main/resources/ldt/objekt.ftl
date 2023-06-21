@@ -28,6 +28,8 @@ import java.time.LocalDate;
 </#if>
 <#if objekt.usingList>
 import java.util.List;
+</#if>
+<#if objekt.usingLocalDate || objekt.usingList>
 
 </#if>
 import libldt3.annotations.Feld;
