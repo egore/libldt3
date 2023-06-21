@@ -5,9 +5,12 @@ import libldt3.ruleparser.KontextLexer;
 import libldt3.ruleparser.KontextParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.RuleContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Kontextregel extends Regel {
 
@@ -68,10 +71,21 @@ public class Kontextregel extends Regel {
                     super.enterCanExistRule(ctx);
                 }
 
+                private String getSpacedText(RuleContext ctx) {
+                    if (ctx.getChildCount() == 0) {
+                        return "";
+                    }
+
+                    return IntStream
+                            .range(0, ctx.getChildCount())
+                            .mapToObj(i -> ctx.getChild(i).getText())
+                            .collect(Collectors.joining(" "));
+                }
+
                 @Override
                 public void exitIfRuleMust(KontextParser.IfRuleMustContext ctx) {
                     MustRule rule = new MustRule();
-                    rule.comment = ctx.getText();
+                    rule.comment = getSpacedText(ctx);
                     // Workaround for incomplete parsing
                     if (ctx.fkInitialized() != null) {
                         for (var fkInitialized : ctx.fkInitialized()) {
@@ -99,7 +113,7 @@ public class Kontextregel extends Regel {
                 @Override
                 public void exitIfRuleMustNot(KontextParser.IfRuleMustNotContext ctx) {
                     MustRule rule = new MustRule();
-                    rule.comment = ctx.getText();
+                    rule.comment = getSpacedText(ctx);
                     rule.inverted = true;
                     // Workaround for incomplete parsing
                     if (ctx.fkInitialized() != null) {
