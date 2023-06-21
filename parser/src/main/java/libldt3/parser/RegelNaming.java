@@ -51,7 +51,7 @@ public class RegelNaming {
         replacements.put("E037", "Diagnosesicherheit");
         replacements.put("E038", "Lokalisation");
         replacements.put("E039", "Behandlungsanlass");
-        // E040 -> Boolean
+        replacements.put("E040", "Boolean");
         replacements.put("E041", "EinschreibestatusSelektivvertraege");
         replacements.put("E042", "Adresstyp");
         replacements.put("E044", "Dokumentenquelle");
