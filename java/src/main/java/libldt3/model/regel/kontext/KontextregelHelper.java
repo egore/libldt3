@@ -30,6 +30,7 @@ import java.util.Set;
 
 import libldt3.annotations.Feld;
 import libldt3.annotations.Objekt;
+import libldt3.model.Kontext;
 import libldt3.model.objekte.Fliesstext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,13 +43,18 @@ class KontextregelHelper {
      * Check if a given field has any string content (either simply text or multiline Fliesstext)
      */
     public static boolean containsAnyString(Field field, Object owner) throws IllegalAccessException {
+        Object value = getFieldValue(field, owner);
+        if (value == null) return false;
+        return containsAnyString(value);
+    }
+
+    public static Object getFieldValue(Field field, Object owner) throws IllegalAccessException {
         if (field == null) {
             LOG.warn("No field given, cannot check for content");
-            return false;
+            return null;
         }
         field.setAccessible(true);
-        Object value = field.get(owner);
-        return containsAnyString(value);
+        return field.get(owner);
     }
 
     /**
@@ -96,7 +102,7 @@ class KontextregelHelper {
     /**
      * Find fields matching their {@link Feld#value()} with the given fieldtypes. Not recursive, but for multiple field.
      */
-    public static Map<String, Field> findFields(Object owner, Set<String> fieldtypes) {
+    public static Map<String, Field> findFields(Kontext owner, Set<String> fieldtypes) {
         Map<String, Field> result = new HashMap<>(fieldtypes.size());
         for (Field f : owner.getClass().getDeclaredFields()) {
             Feld annotation = f.getAnnotation(Feld.class);
@@ -111,23 +117,23 @@ class KontextregelHelper {
     /**
      * Find fields matching their {@link Feld#value()} with the given fieldtypes. Recursive and for multiple field.
      */
-    public static Map<Object, List<Field>> findFieldsRecursive(Object owner, Set<String> fieldtypes) throws IllegalArgumentException, IllegalAccessException {
-        Map<Object, List<Field>> result = new HashMap<>();
-        List<Field> fields = new ArrayList<>();
+    public static Map<Kontext, Map<String, Field>> findFieldsRecursive(Kontext owner, Set<String> fieldtypes) throws IllegalArgumentException, IllegalAccessException {
+        Map<Kontext, Map<String, Field>> result = new HashMap<>();
+        Map<String, Field> fields = new HashMap<>();
+        result.put(owner, fields);
         for (Field f : owner.getClass().getDeclaredFields()) {
             Feld annotation = f.getAnnotation(Feld.class);
             if (annotation != null && fieldtypes.contains(annotation.value())) {
                 f.setAccessible(true);
-                fields.add(f);
-                result.put(owner, fields);
+                fields.put(annotation.value(), f);
             }
             f.setAccessible(true);
-            Object obj = f.get(owner);
+            Kontext obj = (Kontext) f.get(owner);
             if (obj != null) {
                 if (obj.getClass().getAnnotation(Objekt.class) != null) {
                     result.putAll(findFieldsRecursive(obj, fieldtypes));
                 } else if (obj instanceof Iterable<?>) {
-                    for (Object o : (Iterable<?>) obj) {
+                    for (Kontext o : (Iterable<Kontext>) obj) {
                         result.putAll(findFieldsRecursive(o, fieldtypes));
                     }
                 }
