@@ -215,7 +215,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
                     if (argumentHandler != null) {
                         argument = argumentHandler.fixArguments(argument, i);
                     }
-                    if (!arguments.isEmpty()) {
+                    if (arguments.length() > 0) {
                         arguments.append(", ");
                     }
                     arguments.append(argument);
