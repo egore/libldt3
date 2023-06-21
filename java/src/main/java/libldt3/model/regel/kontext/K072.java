@@ -21,10 +21,12 @@
  */
 package libldt3.model.regel.kontext;
 
+import libldt3.model.Kontext;
+
 public class K072 implements Kontextregel {
 
     @Override
-    public boolean isValid(Object owner) throws IllegalAccessException {
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
         throw new UnsupportedOperationException();
     }
 

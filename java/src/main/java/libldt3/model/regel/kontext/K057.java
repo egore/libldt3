@@ -21,6 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
+import libldt3.model.Kontext;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.objekte.Arztidentifikation;
 import libldt3.model.objekte.Untersuchungsanforderung;
@@ -33,7 +34,7 @@ import libldt3.model.saetze.Auftrag;
 public class K057 implements Kontextregel {
 
     @Override
-    public boolean isValid(Object owner) throws IllegalAccessException {
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
 
         Auftrag auftrag = (Auftrag) owner;
 

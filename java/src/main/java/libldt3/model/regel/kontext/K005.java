@@ -28,6 +28,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
+import libldt3.model.Kontext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +52,7 @@ public class K005 implements Kontextregel {
     private static final Set<String> FIELDTYPES = Set.of("8000", "8401", "4121");
 
     @Override
-    public boolean isValid(Object owner) throws IllegalAccessException {
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
 
         Map<String, Field> fields = findFields(owner, FIELDTYPES);
         if (fields.size() != FIELDTYPES.size()) {

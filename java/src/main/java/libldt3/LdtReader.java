@@ -190,7 +190,7 @@ public class LdtReader {
         case "8001": {
             // End: Satz
             assureLength(line, length, 13);
-            Object o = stack.pop();
+            Kontext o = stack.pop();
             Datenpaket annotation = o.getClass().getAnnotation(Datenpaket.class);
             if (annotation != null) {
                 evaluateContextRules(o, annotation.kontextregeln());
@@ -236,7 +236,7 @@ public class LdtReader {
         case "8003": {
             // End: Objekt
             assureLength(line, length, 17);
-            Object o;
+            Kontext o;
             Objekt annotation;
             do {
                 o = stack.pop();
@@ -330,7 +330,7 @@ public class LdtReader {
         }
     }
 
-    private void evaluateContextRules(Object o, Class<? extends Kontextregel>[] kontextRegeln) {
+    private void evaluateContextRules(Kontext o, Class<? extends Kontextregel>[] kontextRegeln) {
         for (Class<? extends Kontextregel> kontextregel : kontextRegeln) {
             try {
                 if (!kontextregel.getDeclaredConstructor().newInstance().isValid(o)) {

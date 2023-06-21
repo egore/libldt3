@@ -21,6 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
+import libldt3.model.Kontext;
 import libldt3.model.enums.Auftragsstatus;
 import libldt3.model.enums.TestStatus;
 import org.slf4j.Logger;
@@ -45,7 +46,7 @@ public class K096 implements Kontextregel {
     private static final Set<String> FIELDTYPES = Set.of("8401", "8418");
 
     @Override
-    public boolean isValid(Object owner) throws IllegalAccessException {
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
 
         Map<String, Field> fields = findFields(owner, FIELDTYPES);
         if (fields.size() != FIELDTYPES.size()) {

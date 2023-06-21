@@ -21,6 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
+import libldt3.model.Kontext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +42,7 @@ public class K044 implements Kontextregel {
     private static final Set<String> FIELDTYPES = Set.of("0200", "0201");
 
     @Override
-    public boolean isValid(Object owner) throws IllegalAccessException {
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
 
         Map<String, Field> fields = findFields(owner, FIELDTYPES);
         if (fields.size() != FIELDTYPES.size()) {
