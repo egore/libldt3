@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.RuleContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -36,6 +37,12 @@ public class Kontextregel extends Regel {
     public List<Feld> usedFields;
     public List<MustRule> mustRules;
 
+    private final Map<String, Feld> felder;
+
+    public Kontextregel(Map<String, Feld> felder) {
+        this.felder = felder;
+    }
+
     public List<Feld> getUsedFields() {
         if (usedFields == null) {
             usedFields = new ArrayList<>();
@@ -50,7 +57,8 @@ public class Kontextregel extends Regel {
                 @Override
                 public void exitMustExistRule(KontextParser.MustExistRuleContext ctx) {
                     for (var x : ctx.fk()) {
-                        Feld e = new Feld(x.INTEGER().toString());
+                        String fk = x.INTEGER().toString();
+                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                         if (!usedFields.contains(e)) {
                             usedFields.add(e);
                         }
@@ -62,7 +70,8 @@ public class Kontextregel extends Regel {
                 @Override
                 public void enterCanExistRule(KontextParser.CanExistRuleContext ctx) {
                     for (var x : ctx.fk()) {
-                        Feld e = new Feld(x.INTEGER().toString());
+                        String fk = x.INTEGER().toString();
+                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                         if (!usedFields.contains(e)) {
                             usedFields.add(e);
                         }
@@ -89,7 +98,8 @@ public class Kontextregel extends Regel {
                     // Workaround for incomplete parsing
                     if (ctx.fkInitialized() != null) {
                         for (var fkInitialized : ctx.fkInitialized()) {
-                            Feld e = new Feld(fkInitialized.fk().INTEGER().toString());
+                            String fk = fkInitialized.fk().INTEGER().toString();
+                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                             if (!usedFields.contains(e)) {
                                 usedFields.add(e);
                             }
@@ -100,7 +110,8 @@ public class Kontextregel extends Regel {
                     }
                     // Workaround for incomplete parsing
                     if (ctx.fk() != null) {
-                        Feld e = new Feld(ctx.fk().INTEGER().toString());
+                        String fk = ctx.fk().INTEGER().toString();
+                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                         if (!usedFields.contains(e)) {
                             usedFields.add(e);
                         }
@@ -118,7 +129,8 @@ public class Kontextregel extends Regel {
                     // Workaround for incomplete parsing
                     if (ctx.fkInitialized() != null) {
                         for (var fkInitialized : ctx.fkInitialized()) {
-                            Feld e = new Feld(fkInitialized.fk().INTEGER().toString());
+                            String fk = fkInitialized.fk().INTEGER().toString();
+                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                             if (!usedFields.contains(e)) {
                                 usedFields.add(e);
                             }
@@ -129,7 +141,8 @@ public class Kontextregel extends Regel {
                     }
                     // Workaround for incomplete parsing
                     if (ctx.fk() != null) {
-                        Feld e = new Feld(ctx.fk().INTEGER().toString());
+                        String fk = ctx.fk().INTEGER().toString();
+                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                         if (!usedFields.contains(e)) {
                             usedFields.add(e);
                         }

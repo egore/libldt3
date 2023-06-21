@@ -112,7 +112,7 @@ public class Parser {
             {
                 Holder<State> state = new Holder<>(State.HEADER);
                 Holder<String> lastText = new Holder<>(null);
-                Holder<Regel> currentRegel = new Holder<>(new Kontextregel());
+                Holder<Regel> currentRegel = new Holder<>(new Kontextregel(felder));
 
                 List<Column> columns = Arrays.asList(new Column(), new Column(), new Column(), new Column(), new Column());
                 final Holder<Integer> lastColumn = new Holder<>(-1);
@@ -128,7 +128,7 @@ public class Parser {
                             // If too much space is between the words, split them into two text blocks
                             if (p.getX() - lastX > 8.0f) {
                                 if (buffer.length() > 0) {
-                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, Kontextregel::new);
+                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, () -> new Kontextregel(felder));
                                 }
                                 buffer.setLength(0);
                                 firstX = p.getX();
@@ -138,7 +138,7 @@ public class Parser {
                             buffer.append(p.getUnicode());
                         }
                         if (buffer.length() > 0) {
-                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, Kontextregel::new);
+                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, () -> new Kontextregel(felder));
                         }
                         super.writeString(text, textPositions);
                     }
@@ -531,17 +531,12 @@ public class Parser {
 
             switch (column) {
                 case 0:
-                    if (lastColumn.value >= 1 || lastColumn.value == -1) {
-                        feld.value = new Feld();
-                    }
                     if (!text.matches("[0-9]{4}")) {
                         LOG.warn("Invalid field number detected: {}", text);
                     }
-                    if (feld.value.fk != null && !feld.value.fk.equals(text)) {
-                        LOG.error("Replacing field number {} by {}", feld.value.fk, text);
+                    if (lastColumn.value >= 1 || lastColumn.value == -1) {
+                        feld.value = felder.computeIfAbsent(text, (k) -> new Feld(text));
                     }
-                    feld.value.fk = text;
-                    felder.put(feld.value.fk, feld.value);
                     LOG.debug("Adding feld {}", feld.value.fk);
                     break;
                 case 1:
