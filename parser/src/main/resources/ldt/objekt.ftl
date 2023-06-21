@@ -46,7 +46,7 @@ import libldt3.model.${import};
 public class ${objekt.name} implements Kontext {
 <#list objekt.children as child>
 
-    @Objekt
+    @Objekt<#if child.kontextregeln?hasContent>(kontextregeln = <#if child.kontextregeln?size gt 1>{</#if><#list child.kontextregeln as regel>${regel.regelnummer}.class<#sep>, </#list><#if child.kontextregeln?size gt 1>}</#if>)</#if>
     public static class ${child.name} implements Kontext {
 <#list child.felder as feld>
 <#if feld.name != 'value'>
