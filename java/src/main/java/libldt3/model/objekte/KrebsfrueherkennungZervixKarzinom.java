@@ -34,6 +34,7 @@ import libldt3.model.enums.Auftragsart;
 import libldt3.model.enums.HpvHrTestergebnis;
 import libldt3.model.enums.HpvImpfung;
 import libldt3.model.enums.KlinischerBefund;
+import libldt3.model.regel.erlaubt.E028;
 import libldt3.model.regel.format.F018;
 import libldt3.model.regel.kontext.K128;
 
@@ -50,7 +51,7 @@ public class KrebsfrueherkennungZervixKarzinom implements Kontext {
         public Boolean value;
         @Feld(value = "7337", feldart = Feldart.bedingt_kann)
         @Regelsatz(maxLaenge = 60)
-        public List<String> gyn_OpStrahlenOderChemotherapieGenitale;
+        public List<String> gyn_OpStrahlenOderChemotherapieGenitaleWelche;
     }
 
     @Objekt(kontextregeln = K128.class)
@@ -78,7 +79,7 @@ public class KrebsfrueherkennungZervixKarzinom implements Kontext {
     @Regelsatz(value = F018.class, laenge = 8)
     public String datumLetztenUntersuchung;
     @Feld(value = "7414", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 5)
+    @Regelsatz(value = E028.class, maxLaenge = 5)
     public String gruppe;
     @Feld(value = "7336", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)

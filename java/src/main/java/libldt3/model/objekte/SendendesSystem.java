@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,37 +26,39 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.enums.LdtVersion;
-import libldt3.model.regel.format.F007;
 import libldt3.model.regel.format.F012;
+import libldt3.model.regel.kontext.K050;
 
 /**
  * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches den
  * LDT Datensatz erstellt hat.
  */
-@Objekt("0051")
+@Objekt(value = "0051", kontextregeln = K050.class)
 public class SendendesSystem implements Kontext {
 
-    @Feld(value = "0001", feldart = Feldart.muss)
-    @Regelsatz(value = F007.class, maxLaenge = 12)
-    public LdtVersion version;
+    @Objekt
+    public static class SoftwareNameSoftware implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "0132", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String versionReleasestandSoftware;
+    }
+
     @Feld(value = "8315", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public String empfaengerId;
+    public String desEmpfaengersId;
     @Feld(value = "8316", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public String senderId;
+    public String desSendersId;
     @Feld(value = "0105", feldart = Feldart.bedingt_muss)
     @Regelsatz(value = F012.class, laenge = 16)
-    public String kvbPruefnummer;
-    @Feld(value = "8212", name = "Softwareverantwortlicher", feldart = Feldart.kann)
+    public String kbvPruefnummer;
+    @Feld(value = "8212", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 24)
     public Organisation softwareverantwortlicher;
     @Feld(value = "0103", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
-    public String softwareName;
-    @Feld(value = "0132", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public String softwareVersion;
+    public SoftwareNameSoftware softwareNameSoftware;
 
 }

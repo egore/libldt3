@@ -32,13 +32,15 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.Geschlecht;
 import libldt3.model.enums.StatusPerson;
 import libldt3.model.regel.format.F003;
+import libldt3.model.regel.kontext.K094;
+import libldt3.model.regel.kontext.K104;
 
 /**
  * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
  * Daten für die Abwicklung, Abrechnung oder Dokumentation von Aufträgen und
  * Befunden notwendig sind.
  */
-@Objekt("0047")
+@Objekt(value = "0047", kontextregeln = {K094.class, K104.class})
 public class Person implements Kontext {
 
     @Feld(value = "7420", feldart = Feldart.bedingt_muss)

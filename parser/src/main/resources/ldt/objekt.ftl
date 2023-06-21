@@ -44,7 +44,7 @@ import libldt3.model.${import};
 /**
  * <@linewrap text=objekt.beschreibung prefix="* "/>
  */
-@Objekt(<#if objekt.kontextregeln?hasContent>value = "${objekt.nummer}", kontextregeln = <#if objekt.kontextregeln?size gt 1>{</#if><#list objekt.kontextregeln as regel>${regel.regelnummer}.class<#sep>, </#list><#if objekt.kontextregeln?size gt 1>}</#if><#else>"${objekt.nummer}"</#if>)
+@Objekt(<#if objekt.kontextregeln?hasContent>value = "${objekt.nummer}"<#if objekt.nameOverride??>, name = "${objekt.nameOverride}"</#if>, kontextregeln = <#if objekt.kontextregeln?size gt 1>{</#if><#list objekt.kontextregeln as regel>${regel.regelnummer}.class<#sep>, </#list><#if objekt.kontextregeln?size gt 1>}</#if><#else>"${objekt.nummer}"</#if>)
 public class ${objekt.name} implements Kontext {
 <#list objekt.children as child>
 

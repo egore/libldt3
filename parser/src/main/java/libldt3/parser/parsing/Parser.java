@@ -306,6 +306,9 @@ public class Parser {
                 String nummer = matcher.group(2);
                 String name = Normalizer.getObjektName(matcher.group(1));
                 objekt.value = objekte.computeIfAbsent(nummer, (k) -> new Objekt(nummer, name, false));
+                if ("Rechnungsempfaenger".equals(name)) {
+                    objekt.value.nameOverride = "RgEmpfaenger";
+                }
                 objekt.value.stub = false;
                 objekt.value.name = name;
                 state.value = State.DESCRIPTION;

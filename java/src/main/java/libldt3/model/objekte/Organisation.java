@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.regel.kontext.K092;
 
 /**
  * Mit diesem Objekt werden Organisationsstrukturen abgebildet.
@@ -36,7 +37,28 @@ import libldt3.model.Kontext;
 public class Organisation implements Kontext {
 
     @Objekt
-    public static class Funktionsbezeichnung implements Kontext {
+    public static class OrganisationFirma implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "1251", feldart = Feldart.kann)
+        @Regelsatz(maxLaenge = 60)
+        public String rechtsform;
+        @Feld(value = "1252", feldart = Feldart.kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<FunktionsbezeichnungPersonInnerhalbOrganisation> funktionsbezeichnungPersonInnerhalbOrganisation;
+        @Feld(value = "8229", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 23)
+        public List<Anschrift> anschriftArbeitsstelle;
+        @Feld(value = "8230", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 18)
+        public Anschrift rechnungsanschrift;
+        @Feld(value = "8131", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 19)
+        public Kommunikationsdaten kommunikationsdaten;
+    }
+
+    @Objekt(kontextregeln = K092.class)
+    public static class FunktionsbezeichnungPersonInnerhalbOrganisation implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "8147", feldart = Feldart.bedingt_muss)
@@ -46,21 +68,6 @@ public class Organisation implements Kontext {
 
     @Feld(value = "1250", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
-    public String organisationFirma;
-    @Feld(value = "1251", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
-    public String rechtsformOrganisation;
-    @Feld(value = "1252", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
-    public List<Funktionsbezeichnung> funktionsbezeichnung;
-    @Feld(value = "8229", name = "Anschrift_Arbeitsstelle", feldart = Feldart.kann)
-    @Regelsatz(laenge = 23)
-    public List<Anschrift> anschriftArbeitsstelle;
-    @Feld(value = "8230", name = "Rechnungsanschrift", feldart = Feldart.kann)
-    @Regelsatz(laenge = 18)
-    public Anschrift rechnungsanschrift;
-    @Feld(value = "8131", feldart = Feldart.kann)
-    @Regelsatz(laenge = 19)
-    public Kommunikationsdaten kommunikationsdaten;
+    public OrganisationFirma organisationFirma;
 
 }

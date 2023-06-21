@@ -99,6 +99,7 @@ public class Objekt {
     public List<FeldExtended> felder = new ArrayList<>();
     public boolean stub;
     public List<Objekt> children = new ArrayList<>();
+    public String nameOverride;
 
     public TreeSet<Kontextregel> getKontextregeln() {
         TreeSet<Kontextregel> result = new TreeSet<>();
@@ -154,7 +155,7 @@ public class Objekt {
                 if (regel instanceof ErlaubterInhalt) {
                     if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer)) {
                         if (!RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
-                            enums.add("enums." + regel.regelnummer);
+                            enums.add("regel.erlaubt." + regel.regelnummer);
                         }
                     } else {
                         String s = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
@@ -172,7 +173,7 @@ public class Objekt {
                 if (regel instanceof ErlaubterInhalt) {
                     if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer)) {
                         if (!RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
-                            enums.add("enums." + regel.regelnummer);
+                            enums.add("regel.erlaubt." + regel.regelnummer);
                         }
                     } else {
                         String s = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
