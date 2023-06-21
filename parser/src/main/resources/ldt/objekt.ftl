@@ -23,7 +23,7 @@
  */
 package libldt3.model.objekte;
 
-<#if objekt.usingList>
+<#if objekt.usingLocalDate>
 import java.time.LocalDate;
 </#if>
 <#if objekt.usingList>
