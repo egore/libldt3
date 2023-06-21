@@ -135,16 +135,43 @@ public class Objekt {
         return false;
     }
 
+    public boolean isUsingLocalDate() {
+        for (var feld : felder) {
+            if (feld.getTyp().equals("LocalDate")) {
+                return true;
+            }
+        }
+        for (var child : children) {
+            if (child.isUsingLocalDate()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public TreeSet<String> getImports() {
         TreeSet<String> enums = new TreeSet<>();
         for (var feld : felder) {
             for (var regel : feld.regeln) {
                 if (regel instanceof ErlaubterInhalt) {
-                    enums.add("enum." + regel.regelnummer);
+                    if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer) &&
+                            !RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
+                        enums.add("enum." + regel.regelnummer);
+                    }
                 } else if (regel instanceof Kontextregel) {
                     enums.add("regel.kontext." + regel.regelnummer);
                 } else if (regel instanceof Formatregel) {
-                    enums.add("regel." + regel.regelnummer);
+                    enums.add("regel.format." + regel.regelnummer);
+                }
+            }
+            for (var regel : feld.feld.regeln) {
+                if (regel instanceof ErlaubterInhalt) {
+                    if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer) &&
+                            !RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
+                        enums.add("enum." + regel.regelnummer);
+                    }
+                } else if (regel instanceof Formatregel) {
+                    enums.add("regel.format." + regel.regelnummer);
                 }
             }
         }

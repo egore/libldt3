@@ -24,6 +24,9 @@
 package libldt3.model.objekte;
 
 <#if objekt.usingList>
+import java.time.LocalDate;
+</#if>
+<#if objekt.usingList>
 import java.util.List;
 
 </#if>
@@ -33,7 +36,7 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 <#list objekt.imports as import>
-import libldt3.model.regel.${import};
+import libldt3.model.${import};
 </#list>
 
 /**
