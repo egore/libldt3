@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,17 +35,29 @@ import libldt3.model.enums.StatusPerson;
 @Objekt("0041")
 public class Namenskennung implements Kontext {
 
+    @Objekt
+    public static class Namenskennung_StatusPerson implements Kontext {
+        @SuppressWarnings("unused")
+        public StatusPerson value;
+        @Feld(value = "7358", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public NameKlartext nameKlartext;
+    }
+
+    @Objekt
+    public static class NameKlartext implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "8990", feldart = Feldart.kann)
+        @Regelsatz(maxLaenge = 60)
+        public String namenskuerzelNamenszeichen;
+        @Feld(value = "8110", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 6)
+        public Anhang anhang;
+    }
+
     @Feld(value = "7420", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)
-    public StatusPerson status;
-    @Feld(value = "7358", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public String name;
-    @Feld(value = "8990", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public String shorthand;
-    @Feld(value = "8110", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 6)
-    public Anhang anhang;
+    public Namenskennung_StatusPerson statusPerson;
 
 }

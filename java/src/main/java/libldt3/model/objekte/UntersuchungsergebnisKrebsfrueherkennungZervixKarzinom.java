@@ -40,7 +40,7 @@ import libldt3.model.regel.kontext.K099;
  * Krebsvorsorge transportiert. Die Inhalte richten sich nach dem Muster 39b.
  */
 @Objekt(value = "0062", kontextregeln = K076.class)
-public class UntersuchungsergebnisZytologieKrebsvorsorge implements Kontext {
+public class UntersuchungsergebnisKrebsfrueherkennungZervixKarzinom implements Kontext {
 
     @Objekt(kontextregeln = K099.class)
     public static class TestIdent implements Kontext {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,20 +35,32 @@ import libldt3.model.Kontext;
 public class Koerperkenngroessen implements Kontext {
 
     @Objekt
-    public static class Messwert implements Kontext {
+    public static class GroesseDesPatienten implements Kontext {
         @SuppressWarnings("unused")
-        public Float value;
+        public float value;
         @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-        @Regelsatz(maxLaenge = 20)
-        public String einheit;
-        @Feld(value = "8225", name = "Timestamp_Messung", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String masseinheitMesswerteWertes;
+        @Feld(value = "8225", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 17)
-        public Timestamp timestamp;
+        public Timestamp timestampMessung;
+    }
+
+    @Objekt
+    public static class GewichtDesPatienten implements Kontext {
+        @SuppressWarnings("unused")
+        public float value;
+        @Feld(value = "8421", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String masseinheitMesswerteWertes;
+        @Feld(value = "8225", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 17)
+        public Timestamp timestampMessung;
     }
 
     @Feld(value = "3622", feldart = Feldart.kann)
-    public Messwert groesse;
+    public GroesseDesPatienten groesseDesPatienten;
     @Feld(value = "3623", feldart = Feldart.kann)
-    public Messwert gewicht;
+    public GewichtDesPatienten gewichtDesPatienten;
 
 }

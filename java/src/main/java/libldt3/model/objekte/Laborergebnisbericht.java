@@ -38,34 +38,37 @@ import libldt3.model.Kontext;
 @Objekt("0035")
 public class Laborergebnisbericht implements Kontext {
 
-    @Feld(value = "8160", name = "UE_Klinische_Chemie", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8160", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 19)
-    public List<UntersuchungsergebnisKlinischeChemie> klinischeChemie;
-    @Feld(value = "8161", name = "UE_Mikrobiologie", feldart = Feldart.bedingt_muss)
+    public List<UntersuchungsergebnisKlinischeChemie> ueKlinischeChemie;
+    @Feld(value = "8161", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 16)
-    public List<UntersuchungsergebnisMikrobiologie> mikrobiologie;
-    @Feld(value = "8162", name = "UE_Zytologie_Krebsvorsorge", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 26)
-    public List<UntersuchungsergebnisZytologieKrebsvorsorge> zytologieKrebsvorsorge;
-    @Feld(value = "8163", name = "UE_Zytologie", feldart = Feldart.bedingt_muss)
+    public List<UntersuchungsergebnisMikrobiologie> ueMikrobiologie;
+    @Feld(value = "8162", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 38)
+    public List<UntersuchungsergebnisKrebsfrueherkennungZervixKarzinom> ueKrebsfrueherkennungZervixKarzinom;
+    @Feld(value = "8163", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 12)
-    public List<UntersuchungsergebnisZytologie> zytologie;
-    @Feld(value = "8155", name = "Transfusionsmedizin_Mutterschaftsvorsorge", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 41)
-    public List<TransfusionsmedizinMutterschaftsvorsorge> transfusionsmedizinMutterschaftsvorsorge;
-    @Feld(value = "8156", feldart = Feldart.kann)
+    public List<UntersuchungsergebnisZytologie> ueZytologie;
+    @Feld(value = "8155", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 25)
+    public List<Blutgruppenzugehoerigkeit> blutgruppenzugehoerigkeit;
+    @Feld(value = "8248", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 35)
+    public List<SonstigeUntersuchungsergebnisse> ueSonstigeUntersuchungsergebnisse;
+    @Feld(value = "8156", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 5)
     public List<Tumor> tumor;
-    @Feld(value = "8221", name = "Timestamp_Erstellung_Laborergebnisbericht", feldart = Feldart.muss)
+    @Feld(value = "8221", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 41)
-    public Timestamp timestampErstellungLaborergebnisbericht;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    public Timestamp timestampErstellung;
+    @Feld(value = "8167", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
-    public List<Fliesstext> text;
-    @Feld(value = "8110", feldart = Feldart.kann)
+    public List<Fliesstext> zusaetzlicheInformationen;
+    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;
-    @Feld(value = "8141", feldart = Feldart.kann)
+    @Feld(value = "8141", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 13)
     public Namenskennung namenskennung;
 
