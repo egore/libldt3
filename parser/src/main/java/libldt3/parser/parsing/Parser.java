@@ -1,5 +1,6 @@
 package libldt3.parser.parsing;
 
+import libldt3.parser.RegelNaming;
 import libldt3.parser.generation.Normalizer;
 import libldt3.parser.model.ErlaubterInhalt;
 import libldt3.parser.model.Feld;
@@ -390,15 +391,17 @@ public class Parser {
 
                                 // We found a child definition, create it as Objekt below its parent
                                 Objekt child = null;
+                                String name = Normalizer.toUppercaseFirst(previous.getName());
+                                String newObjektName = RegelNaming.REPLACEMENTS.containsValue(name) ? objekt.value.name + "_" + name : name;
                                 for (Objekt o : objekt.value.children) {
-                                    if (o.name.equals(objekt.value.name + "_" + previous.getName())) {
+                                    if (o.name.equals(newObjektName)) {
                                         child = o;
                                         break;
                                     }
                                 }
                                 boolean isNew = false;
                                 if (child == null) {
-                                    child = new Objekt("0", objekt.value.name + "_" + previous.getName(), false);
+                                    child = new Objekt("0", newObjektName, false);
                                     objekt.value.children.add(child);
                                     isNew = true;
                                 }
@@ -468,6 +471,8 @@ public class Parser {
                                 text.endsWith("zum " + objekt.value.name) ||
                                 text.endsWith("des " + objekt.value.name)) {
                             text = text.substring(0, text.length() - objekt.value.name.length() - 4);
+                        } else if (text.length() > objekt.value.name.length() && text.endsWith(objekt.value.name)) {
+                            text = text.substring(0, text.length() - objekt.value.name.length());
                         }
                         if (currentFeld.value.bezeichnung != null) {
                             currentFeld.value.bezeichnung += " " + text;
