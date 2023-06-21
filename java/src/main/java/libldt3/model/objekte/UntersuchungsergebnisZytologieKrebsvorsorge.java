@@ -116,7 +116,7 @@ public class UntersuchungsergebnisZytologieKrebsvorsorge implements Kontext {
     public Fliesstext ergebnistext;
     @Feld(value = "8134", name = "Krebsfrueherkennung_Frauen", feldart = Feldart.kann)
     @Regelsatz(laenge = 26)
-    public KrebsfrueherkennungFrauen krebsfrueherkennungFrauen;
+    public KrebsfrueherkennungZervixKarzinom krebsfrueherkennungFrauen;
     @Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.kann)
     @Regelsatz(laenge = 28)
     public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;

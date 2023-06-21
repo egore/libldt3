@@ -18,7 +18,7 @@ import libldt3.model.regel.format.F018;
  * Krebsfrüherkennungsuntersuchung für Frauen, abgebildet.
  */
 @Objekt("0034")
-public class KrebsfrueherkennungFrauen implements Kontext {
+public class KrebsfrueherkennungZervixKarzinom implements Kontext {
 
     @Feld(value = "7295", feldart = Feldart.muss)
     @Regelsatz(value = F002.class, laenge = 8)

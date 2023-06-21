@@ -44,7 +44,7 @@ public class K057 implements Kontextregel {
         }
 
         for (Untersuchungsanforderung untersuchungsanforderung : auftrag.untersuchungsanforderung) {
-            if (untersuchungsanforderung.abrechnungsinfo == Abrechnungsinfo.ASV) {
+            if (untersuchungsanforderung.abrechnungsinfoZurUntersuchung == Abrechnungsinfo.ASV) {
 
                 // No identification at all, not valid
                 if (auftrag.einsenderidentifikation == null) {
