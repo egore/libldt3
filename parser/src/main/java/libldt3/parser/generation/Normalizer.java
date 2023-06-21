@@ -18,6 +18,9 @@ public class Normalizer {
                 .replace("Ü", "Ue")
                 .replace("ß", "ss")
 
+                // replace cash symbol
+                .replace("€", "EUR")
+
                 // remove special chars
                 .replace("“", "")
                 .replace("„", "")
