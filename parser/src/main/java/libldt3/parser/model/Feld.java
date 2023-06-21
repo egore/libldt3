@@ -41,13 +41,31 @@ public class Feld {
         switch (format) {
             case num:
                 for (Regel regel : regeln) {
+                    // Workaround field 3103
+                    if (regel.regelnummer.equals("F003")) {
+                        return "LocalDate";
+                    }
+                    // Number fields with format rules are not actually numbers, but strings consisting of numbers only
+                    if (regel.regelnummer.startsWith("F")) {
+                        return "String";
+                    }
                     if (regel.regelnummer.startsWith("E")) {
                         return RegelNaming.REPLACEMENTS.getOrDefault(regel.regelnummer, "String");
                     }
                 }
                 return "int";
             case f: return "float";
-            case alnum: return "String";
+            case alnum:
+                for (Regel regel : regeln) {
+                    // Number fields with format rules are not actually numbers, but strings consisting of numbers only
+                    if (regel.regelnummer.startsWith("F")) {
+                        return "String";
+                    }
+                    if (regel.regelnummer.startsWith("E")) {
+                        return RegelNaming.REPLACEMENTS.getOrDefault(regel.regelnummer, "String");
+                    }
+                }
+                return "String";
             case date: return "LocalDate";
             default: return "?";
         }
