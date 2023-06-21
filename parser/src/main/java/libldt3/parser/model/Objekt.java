@@ -1,5 +1,6 @@
 package libldt3.parser.model;
 
+import libldt3.parser.RegelNaming;
 import libldt3.parser.generation.Normalizer;
 
 import java.time.format.DateTimeFormatterBuilder;
@@ -23,10 +24,36 @@ public class Objekt {
         }
 
         public List<Regel> getFeldregeln() {
-            return regeln
-                    .stream()
-                    .filter(regel -> !(regel instanceof Kontextregel))
-                    .collect(Collectors.toList());
+            List<Regel> result = new ArrayList<>();
+            for (var regel : feld.regeln) {
+                if (!(regel instanceof Kontextregel)) {
+                    // Skip actual enums which enforce naming themselves
+                    if (regel instanceof ErlaubterInhalt) {
+                        if (RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer) ||
+                                RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
+                            continue;
+                        }
+                    }
+                    if (!result.contains(regel)) {
+                        result.add(regel);
+                    }
+                }
+            }
+            for (var regel : regeln) {
+                if (!(regel instanceof Kontextregel)) {
+                    // Skip actual enums which enforce naming themselves
+                    if (regel instanceof ErlaubterInhalt) {
+                        if (RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer) ||
+                                RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
+                            continue;
+                        }
+                    }
+                    if (!result.contains(regel)) {
+                        result.add(regel);
+                    }
+                }
+            }
+            return result;
         }
 
         @Override
