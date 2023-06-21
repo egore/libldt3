@@ -26,11 +26,13 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.regel.kontext.K029;
+import libldt3.model.regel.kontext.K030;
 
 /**
  * Obj_Adressat
  */
-@Objekt("0008")
+@Objekt(value = "0008", kontextregeln = {K029.class, K030.class})
 public class Adressat implements Kontext {
 
     @Feld(value = "8147", feldart = Feldart.bedingt_muss)
