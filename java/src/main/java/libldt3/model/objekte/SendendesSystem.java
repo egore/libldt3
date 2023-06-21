@@ -27,8 +27,8 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.LdtVersion;
-import libldt3.model.regel.F007;
-import libldt3.model.regel.F012;
+import libldt3.model.regel.format.F007;
+import libldt3.model.regel.format.F012;
 
 /**
  * Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches den

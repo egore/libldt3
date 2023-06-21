@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,21 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
 
-import java.util.regex.Pattern;
+class RegelConstants {
 
-/**
- * Format Datum
- * TT = Tag, MM = Monat, JJJJ = Jahr
- * zusätzlich erlaubter Wertebereich: JJJJMM00, JJJJ0000
- */
-public class F018 extends RegularExpressionRegel {
-
-    public static final Pattern PATTERN = Pattern.compile("^([0-9]{4})(0[0-9]|1[012])([0-2][0-9]|3[01])$");
-
-    public F018() {
-        super(PATTERN);
-    }
+    public static final String E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
 
 }

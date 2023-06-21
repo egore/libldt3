@@ -7,6 +7,7 @@ open module libldt {
     exports libldt3.model.objekte;
     exports libldt3.model.regel;
     exports libldt3.model.regel.erlaubt;
+    exports libldt3.model.regel.format;
     exports libldt3.model.regel.kontext;
     exports libldt3.model.saetze;
 }

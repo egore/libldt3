@@ -30,8 +30,8 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.GeschlechtNormalbereich;
-import libldt3.model.regel.F002;
-import libldt3.model.regel.F013;
+import libldt3.model.regel.format.F002;
+import libldt3.model.regel.format.F013;
 
 /**
  * In diesem Objekt werden die Informationen über einen Patienten aufgeführt.

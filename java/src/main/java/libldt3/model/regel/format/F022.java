@@ -19,18 +19,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Jahreszahl
+ * Pseudo-LANR für Krankenhausärzte im Rahmen der ASV-Abrechnung
+ * (ASV-AV Anlage 3 Fachgruppencodierungen)
+ * 555555 = Pseudo-Arztnummer für Krankenhausärzte im Rahmen der
+ * ASV-Abrechnung
+ * n = Ordnungsnummer (zulässige Werte 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+ * ff = Fachgruppencode gemäß der jeweils gültigen Anlage 2 der Richtlinie
  */
-public class F017 extends RegularExpressionRegel {
+public class F022 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{4}$");
+    public static final Pattern PATTERN = Pattern.compile("^555555([0-9])[0-9]{2}$");
 
-    public F017() {
+    public F022() {
         super(PATTERN);
     }
 

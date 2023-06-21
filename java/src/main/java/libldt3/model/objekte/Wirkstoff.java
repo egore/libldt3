@@ -26,7 +26,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.regel.F020;
+import libldt3.model.regel.format.F020;
 
 /**
  * Hier werden Informationen zu Wirkstoffen zusammengefasst.

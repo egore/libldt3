@@ -30,7 +30,7 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Diagnosesicherheit;
 import libldt3.model.enums.Lokalisation;
-import libldt3.model.regel.F004;
+import libldt3.model.regel.format.F004;
 
 /**
  * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen

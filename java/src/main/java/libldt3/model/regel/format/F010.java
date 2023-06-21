@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,23 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Pseudo-LANR für Krankenhausärzte im Rahmen der ASV-Abrechnung
- * (ASV-AV Anlage 3 Fachgruppencodierungen)
- * 555555 = Pseudo-Arztnummer für Krankenhausärzte im Rahmen der
- * ASV-Abrechnung
- * n = Ordnungsnummer (zulässige Werte 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
- * ff = Fachgruppencode gemäß der jeweils gültigen Anlage 2 der Richtlinie
+ * Format BSNR
+ * kk = erlaubter Inhalt gemäß Regel  E014
+ * nnnnn = Seriennummer
+ * mm = [undefiniert]
  */
-public class F022 extends RegularExpressionRegel {
+public class F010 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^555555([0-9])[0-9]{2}$");
+    public static final Pattern PATTERN = Pattern.compile("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
 
-    public F022() {
+    public F010() {
         super(PATTERN);
     }
 

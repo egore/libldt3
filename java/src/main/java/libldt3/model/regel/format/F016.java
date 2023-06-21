@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,10 +19,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
 
-class RegelConstants {
+import libldt3.model.regel.RegularExpressionRegel;
 
-    public static final String E014 = "(0[1236789]|[1456][0-9]|2[014578]|3[1789]|7[012389]|8[0135678]|9[345689])";
+import java.util.regex.Pattern;
+
+/**
+ * Format Uhrzeit
+ * hh = Stunden (00 – 23)
+ * mm = Minuten (00 – 59)
+ * ss = Sekunden (00 – 59)
+ * ms = Millisekunden (000 – 999)
+ */
+public class F016 extends RegularExpressionRegel {
+
+    public static final Pattern PATTERN = Pattern.compile("^([0-1][0-9]|2[0-3])([0-5][0-9])([0-5][0-9])([0-9]{3})?$");
+
+    public F016() {
+        super(PATTERN);
+    }
 
 }

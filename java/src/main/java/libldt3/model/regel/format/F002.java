@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,18 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Gebührennummer
+ * Format Datum
+ * TT = Tag, MM = Monat, JJJJ = Jahr
  */
-public class F008 extends RegularExpressionRegel {
+public class F002 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^([A-Z][0-9]{0,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?|[A-Z]?[0-9]{1,4}([A-Za-d][A-Z1-4]?)?(/[A-Z0-9#$*<>])?)$");
+    public static final Pattern PATTERN = Pattern.compile("^[0-9]{4}(0[1-9]|1[012])(0[1-9]|[1-2][0-9]|3[01])$");
 
-    public F008() {
+    public F002() {
         super(PATTERN);
     }
 

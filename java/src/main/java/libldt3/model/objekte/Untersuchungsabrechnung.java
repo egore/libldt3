@@ -30,8 +30,8 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Gebuehrenordnung;
-import libldt3.model.regel.F008;
-import libldt3.model.regel.F009;
+import libldt3.model.regel.format.F008;
+import libldt3.model.regel.format.F009;
 import libldt3.model.regel.erlaubt.E003;
 import libldt3.model.regel.kontext.K005;
 

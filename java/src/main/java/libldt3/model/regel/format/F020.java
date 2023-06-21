@@ -19,19 +19,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Woche/Tag
- * WW =  Wochen, T = Tag (Wertebereich 0 – 6)
+ * Format der Pharmazentralnummer (PZN)
+ * nnnnnnn = Nummer
+ * P = Prüfziffer
  */
-public class F005 extends RegularExpressionRegel {
+public class F020 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{2}[0-6]$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-9]{7})([0-9])$");
 
-    public F005() {
+    public F020() {
         super(PATTERN);
     }
 

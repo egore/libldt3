@@ -29,8 +29,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.regel.F002;
-import libldt3.model.regel.F016;
+import libldt3.model.regel.format.F002;
+import libldt3.model.regel.format.F016;
 
 /**
  * Ein Zeitstempel

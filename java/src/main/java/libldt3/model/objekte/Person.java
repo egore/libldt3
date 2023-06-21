@@ -31,7 +31,7 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Geschlecht;
 import libldt3.model.enums.StatusPerson;
-import libldt3.model.regel.F003;
+import libldt3.model.regel.format.F003;
 
 /**
  * Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren

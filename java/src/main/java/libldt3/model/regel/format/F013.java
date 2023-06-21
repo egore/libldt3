@@ -19,18 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Blutdruck
+ * Format Versicherten-ID
+ * a = A-Z (ohne Umlaute)
+ * n = numerisch
+ * P = Prüfziffer, numerisch (Verfahren zur Bestimmung der Prüfziffer vgl.
+ * Erläuterung der FK 3119 in Feldtabelle)
  */
-public class F015 extends RegularExpressionRegel {
+public class F013 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^([0-9]{3})/([0-9]{3})$");
+    public static final Pattern PATTERN = Pattern.compile("^([A-Z])([0-9]{8})([0-9])$");
 
-    public F015() {
+    public F013() {
         super(PATTERN);
     }
 

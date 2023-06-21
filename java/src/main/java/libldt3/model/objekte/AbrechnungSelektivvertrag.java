@@ -30,7 +30,7 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.EinschreibestatusSelektivvertraege;
 import libldt3.model.enums.Gebuehrenordnung;
-import libldt3.model.regel.F002;
+import libldt3.model.regel.format.F002;
 
 /**
  * Mit diesem Objekt werden die Informationen für die Abrechnung von

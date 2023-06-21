@@ -30,7 +30,7 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Zeiteinheit;
-import libldt3.model.regel.F002;
+import libldt3.model.regel.format.F002;
 
 /**
  * Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden

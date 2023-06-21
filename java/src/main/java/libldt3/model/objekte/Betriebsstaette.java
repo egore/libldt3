@@ -29,8 +29,8 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Betriebsstaettenstatus;
-import libldt3.model.regel.F010;
-import libldt3.model.regel.F021;
+import libldt3.model.regel.format.F010;
+import libldt3.model.regel.format.F021;
 
 /**
  * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von

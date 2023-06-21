@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,21 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Zeitdauer
- * hh = Stunde, mm = Minute
- * hh = 00 – 99
- * mm = 00 – 59
+ * Format ICD-Code
+ * Hinweis:
+ * ICD-Codes im Format "ann.-" dürfen nicht in Abrechnungsdateien
+ * verwendet werden.
  */
-public class F006 extends RegularExpressionRegel {
+public class F004 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{2}[0-5][0-9]$");
+    public static final Pattern PATTERN = Pattern.compile("^[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?$");
 
-    public F006() {
+    public F004() {
         super(PATTERN);
     }
 

@@ -29,9 +29,9 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.ArztTypId;
-import libldt3.model.regel.F011;
-import libldt3.model.regel.F014;
-import libldt3.model.regel.F022;
+import libldt3.model.regel.format.F011;
+import libldt3.model.regel.format.F014;
+import libldt3.model.regel.format.F022;
 
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.

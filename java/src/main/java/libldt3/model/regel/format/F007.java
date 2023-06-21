@@ -19,19 +19,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * G-alpha ::= A|B|...|Z
- * n ::= 0|1|...|9
+ * Format Versionsnummer der Datensatzbeschreibung
  */
-public class F009 extends RegularExpressionRegel {
+public class F007 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{5}[A-Z]?$");
+    public static final Pattern PATTERN = Pattern.compile("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
 
-    public F009() {
+    public F007() {
         super(PATTERN);
     }
 

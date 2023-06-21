@@ -19,23 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format KBV-Prüfnummer
- * A = [V, X, Y, Z]
- * nn = [00-99]
- * JJMM = Jahr/Monat
- * MM = Dauer in Monaten
- * aaa = Systemident (alphanumerisch)
+ * Format BSNR Terminservicestelle (Anlage 28 BMV-Ä)
+ * 35 = Kennzeichnung ambulante Behandlung im Krankenhaus
+ * kk = erlaubter Inhalt gemäß Regel  E014
+ * nnnnn = Seriennummer
  */
-public class F012 extends RegularExpressionRegel {
+public class F021 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[VXYZ]/[0-9]{2}/[0-9]{2}(0?[1-9]|1[012])/[0-9]{2}/.{3}$");
+    public static final Pattern PATTERN = Pattern.compile("^35" + RegelConstants.E014 + "[0-9]{5}$");
 
-    public F012() {
+    public F021() {
         super(PATTERN);
     }
 

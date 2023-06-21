@@ -9,9 +9,9 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.regel.F002;
-import libldt3.model.regel.F015;
-import libldt3.model.regel.F018;
+import libldt3.model.regel.format.F002;
+import libldt3.model.regel.format.F015;
+import libldt3.model.regel.format.F018;
 
 /**
  * In diesem Objekt wird das Muster 39, Grundlage für die

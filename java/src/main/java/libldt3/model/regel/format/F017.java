@@ -19,19 +19,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Datum
- * TT = Tag, MM = Monat, JJJJ = Jahr
+ * Format Jahreszahl
  */
-public class F002 extends RegularExpressionRegel {
+public class F017 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{4}(0[1-9]|1[012])(0[1-9]|[1-2][0-9]|3[01])$");
+    public static final Pattern PATTERN = Pattern.compile("^[0-9]{4}$");
 
-    public F002() {
+    public F017() {
         super(PATTERN);
     }
 

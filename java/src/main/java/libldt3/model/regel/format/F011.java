@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,21 +19,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format BSNR
- * kk = erlaubter Inhalt gemäß Regel  E014
- * nnnnn = Seriennummer
- * mm = [undefiniert]
+ * Format LANR
+ * m = Prüfziffer *
+ * ff = erlaubter Inhalt gemäß Anlage 35 des BAR-Schlüsselverzeichnisses,
+ * tolerierter Ersatzwert für die Ziffern 8 – 9: 00
+ * 999999900 = Ärzte ohne LANR
+ * * Die Prüfziffer wird dazu verwendet um zu prüfen, ob die eingetragene Ziffer
+ * formal korrekt ist.
+ * Diese Prüfziffer wird mittels des Modulo 10 – Verfahrens der Stellen 1 bis 6 der
+ * Arztnummer ermittelt. Bei diesem Verfahren werden die Ziffern 1 bis 6 von links
+ * nach rechts abwechselnd mit 4 und 9 multipliziert. Die Summe dieser Produkte
+ * wird Modulo 10 berechnet. Die Prüfziffer ergibt sich aus der Differenz dieser
+ * Zahl
+ * zu 10 (ist die Differenz 10, so ist die Prüfziffer 0).
  */
-public class F010 extends RegularExpressionRegel {
+public class F011 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^" + RegelConstants.E014 + "[0-9]{5}.{2}$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-9]{6})([0-9])([0-9]{2})$");
 
-    public F010() {
+    public F011() {
         super(PATTERN);
     }
 

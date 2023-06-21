@@ -19,30 +19,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format LANR
- * m = Prüfziffer *
- * ff = erlaubter Inhalt gemäß Anlage 35 des BAR-Schlüsselverzeichnisses,
- * tolerierter Ersatzwert für die Ziffern 8 – 9: 00
- * 999999900 = Ärzte ohne LANR
- * * Die Prüfziffer wird dazu verwendet um zu prüfen, ob die eingetragene Ziffer
- * formal korrekt ist.
- * Diese Prüfziffer wird mittels des Modulo 10 – Verfahrens der Stellen 1 bis 6 der
- * Arztnummer ermittelt. Bei diesem Verfahren werden die Ziffern 1 bis 6 von links
- * nach rechts abwechselnd mit 4 und 9 multipliziert. Die Summe dieser Produkte
- * wird Modulo 10 berechnet. Die Prüfziffer ergibt sich aus der Differenz dieser
- * Zahl
- * zu 10 (ist die Differenz 10, so ist die Prüfziffer 0).
+ * Format Geburtsdatum eines Patienten
+ * TT = Tag, MM = Monat, JJJJ = Jahr
+ * zusätzlich erlaubter Wertebereich: JJJJMM00, JJJJ0000, 00000000
  */
-public class F011 extends RegularExpressionRegel {
+public class F003 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^([0-9]{6})([0-9])([0-9]{2})$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-9]{4})(0[0-9]|1[012])([0-2][0-9]|3[01])$");
 
-    public F011() {
+    public F003() {
         super(PATTERN);
     }
 

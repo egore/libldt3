@@ -1,6 +1,6 @@
 package libldt3.model.regel.test;
 
-import libldt3.model.regel.F002;
+import libldt3.model.regel.format.F002;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

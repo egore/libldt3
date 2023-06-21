@@ -19,22 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Versicherten-ID
- * a = A-Z (ohne Umlaute)
- * n = numerisch
- * P = Prüfziffer, numerisch (Verfahren zur Bestimmung der Prüfziffer vgl.
- * Erläuterung der FK 3119 in Feldtabelle)
+ * Format Zeitdauer
+ * hh = Stunde, mm = Minute
+ * hh = 00 – 99
+ * mm = 00 – 59
  */
-public class F013 extends RegularExpressionRegel {
+public class F006 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^([A-Z])([0-9]{8})([0-9])$");
+    public static final Pattern PATTERN = Pattern.compile("^[0-9]{2}[0-5][0-9]$");
 
-    public F013() {
+    public F006() {
         super(PATTERN);
     }
 

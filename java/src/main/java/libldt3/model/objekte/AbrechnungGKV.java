@@ -36,11 +36,11 @@ import libldt3.model.enums.KostentraegerAbrechnungsbereich;
 import libldt3.model.enums.Scheinuntergruppe;
 import libldt3.model.enums.Versichertenart;
 import libldt3.model.enums.WOP;
-import libldt3.model.regel.F001;
-import libldt3.model.regel.F002;
-import libldt3.model.regel.F010;
-import libldt3.model.regel.F011;
-import libldt3.model.regel.F022;
+import libldt3.model.regel.format.F001;
+import libldt3.model.regel.format.F002;
+import libldt3.model.regel.format.F010;
+import libldt3.model.regel.format.F011;
+import libldt3.model.regel.format.F022;
 import libldt3.model.regel.erlaubt.E010;
 import libldt3.model.regel.kontext.K041;
 

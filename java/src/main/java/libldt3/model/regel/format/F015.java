@@ -19,18 +19,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format der Abrechnungs-VKNR
+ * Format Blutdruck
  */
-public class F001 extends RegularExpressionRegel {
+public class F015 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{5}$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-9]{3})/([0-9]{3})$");
 
-    public F001() {
+    public F015() {
         super(PATTERN);
     }
 

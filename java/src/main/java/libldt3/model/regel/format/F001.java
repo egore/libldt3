@@ -19,20 +19,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format der Pharmazentralnummer (PZN)
- * nnnnnnn = Nummer
- * P = Prüfziffer
+ * Format der Abrechnungs-VKNR
  */
-public class F020 extends RegularExpressionRegel {
+public class F001 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^([0-9]{7})([0-9])$");
+    public static final Pattern PATTERN = Pattern.compile("^[0-9]{5}$");
 
-    public F020() {
+    public F001() {
         super(PATTERN);
     }
 

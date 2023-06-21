@@ -19,20 +19,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.regel;
+package libldt3.model.regel.format;
+
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
 /**
- * Format Geburtsdatum eines Patienten
- * TT = Tag, MM = Monat, JJJJ = Jahr
- * zusätzlich erlaubter Wertebereich: JJJJMM00, JJJJ0000, 00000000
+ * Format ASV-Teamnummer
+ * ASV-ID-Kürzel
+ * nnnnnn = eindeutige Nummer
+ * P = Prüfziffer *
+ * * Die Prüfziffer wird mittels des Modulo 10 – Verfahrens der Stellen 3 bis 8 der
+ * ASV-Teamnummer ermittelt. Bei diesem Verfahren werden die Ziffern 3 bis 8 von
+ * links nach rechts abwechselnd mit 4 und 9 multipliziert. Die Summe dieser
+ * Produkte wird Modulo 10 berechnet. Die Prüfziffer ergibt sich aus der Differenz
+ * dieser Zahl zu 10.
  */
-public class F003 extends RegularExpressionRegel {
+public class F014 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^([0-9]{4})(0[0-9]|1[012])([0-2][0-9]|3[01])$");
+    public static final Pattern PATTERN = Pattern.compile("^00([0-9]{6})([0-9])$");
 
-    public F003() {
+    public F014() {
         super(PATTERN);
     }
 

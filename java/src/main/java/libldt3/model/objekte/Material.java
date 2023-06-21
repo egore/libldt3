@@ -31,7 +31,7 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.AnorganischesMaterial;
 import libldt3.model.enums.Materialart;
 import libldt3.model.enums.OrganischesMaterial;
-import libldt3.model.regel.F006;
+import libldt3.model.regel.format.F006;
 import libldt3.model.regel.erlaubt.E012;
 import libldt3.model.regel.kontext.K006;
 
