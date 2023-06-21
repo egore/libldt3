@@ -59,7 +59,7 @@ public class RegelNaming {
         replacements.put("E045", "StatusDringlichkeit");
         replacements.put("E046", "Betriebsstaettenstatus");
         replacements.put("E047", "ArztTypId");
-        // E048 -> Boolean?
+        replacements.put("E048", "Boolean");
         replacements.put("E049", "Benachrichtigungsgrund");
         replacements.put("E050", "Abrechnungsinfo");
         replacements.put("E051", "Laborart");
