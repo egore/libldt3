@@ -31,6 +31,7 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.Betriebsstaettenstatus;
 import libldt3.model.regel.format.F010;
 import libldt3.model.regel.format.F021;
+import libldt3.model.regel.kontext.K020;
 import libldt3.model.regel.kontext.K043;
 import libldt3.model.regel.kontext.K044;
 
@@ -38,10 +39,10 @@ import libldt3.model.regel.kontext.K044;
  * Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
  * medizinischen Einrichtungen zusammen.
  */
-@Objekt(value = "0019", kontextregeln = {K043.class})
+@Objekt(value = "0019", kontextregeln = K043.class)
 public class Betriebsstaette implements Kontext {
 
-    @Objekt(kontextregeln = K044.class)
+    @Objekt(kontextregeln = {K020.class, K044.class})
     public static class BsnrBezeichnung implements Kontext {
         @SuppressWarnings("unused")
         public String value;

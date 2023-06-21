@@ -28,11 +28,14 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Privattarif;
 import libldt3.model.enums.StatusRechnungsempfaenger;
+import libldt3.model.regel.kontext.K029;
+import libldt3.model.regel.kontext.K030;
+import libldt3.model.regel.kontext.K093;
 
 /**
  * Hier sind alle Angaben zum Rechnungsempfänger enthalten.
  */
-@Objekt(value = "0048", name = "RgEmpfaenger")
+@Objekt(value = "0048", name = "RgEmpfaenger", kontextregeln = {K029.class, K030.class, K093.class})
 public class Rechnungsempfaenger implements Kontext {
 
     @Objekt

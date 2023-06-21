@@ -30,16 +30,53 @@ import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Dokumentenquelle;
 import libldt3.model.enums.Dokumententyp;
+import libldt3.model.enums.ResistenzInterpretation;
+import libldt3.model.enums.ResistenzNach;
+import libldt3.model.enums.Sensitivitaet;
 import libldt3.model.regel.kontext.K001;
 import libldt3.model.regel.kontext.K075;
+import libldt3.model.regel.kontext.K100;
 
 /**
  * Im Objekt Anhang können Informationen wie Befunde, Fotos oder sonstige
  * Dokumentationen, die in einem digitalen Standardformat vorliegen, transportiert
  * werden.
  */
-@Objekt(value = "0010", kontextregeln = { K001.class, K075.class })
+@Objekt(value = "0010", kontextregeln = {K001.class, K075.class, K100.class})
 public class Anhang implements Kontext {
+
+    @Objekt
+    public static class WirkstoffIdent implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7288", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> wirkstoffGenericNummer;
+        @Feld(value = "7359", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> oidWirkstoff;
+        @Feld(value = "7370", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> wirkstoffoderHandelsname;
+        @Feld(value = "7354", feldart = Feldart.kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<KeimIdentifizierung> keimIdentifizierung;
+    }
+
+    @Objekt
+    public static class KeimIdentifizierung implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7367", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public Sensitivitaet sensitivitaet;
+        @Feld(value = "7289", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public String mhkBreakpointWert;
+        @Feld(value = "7290", feldart = Feldart.kann)
+        @Regelsatz(laenge = 1)
+        public List<ResistenzInterpretation> resistenzInterpretation;
+    }
 
     @Feld(value = "9970", feldart = Feldart.muss)
     @Regelsatz(laenge = 3)
@@ -69,9 +106,21 @@ public class Anhang implements Kontext {
     @Regelsatz(maxLaenge = 60)
     public String langzeitArchivierungPfadSpeicherort;
     @Feld(value = "9980", feldart = Feldart.bedingt_kann)
-    public List<String> externeDokumentIds;
+    public List<String> externeDokumentenIdZurArchivierung;
     @Feld(value = "9981", feldart = Feldart.bedingt_kann)
     @Regelsatz(laenge = 1)
     public Dokumentenquelle dokumentenquelle;
+    @Feld(value = "7287", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 60)
+    public List<WirkstoffIdent> wirkstoffIdent;
+    @Feld(value = "7369", feldart = Feldart.bedingt_kann)
+    @Regelsatz(maxLaenge = 60)
+    public String mhkEinheit;
+    @Feld(value = "7424", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public ResistenzNach resistenzErstelltNach;
+    @Feld(value = "8237", feldart = Feldart.bedingt_muss)
+    @Regelsatz(laenge = 12)
+    public Fliesstext ergebnistext;
 
 }

@@ -28,6 +28,7 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.regel.kontext.K009;
 
 /**
  * Im Objekt werden die Untersuchungsergebnisse zusammengefasst. Hinweis: Die
@@ -35,7 +36,7 @@ import libldt3.model.Kontext;
  * beliebiger Reihenfolge angeordnet und übertragen werden. Damit wird es möglich,
  * im Obj_0035 die Struktur eines schriftlichen Befundes nachzubilden.
  */
-@Objekt("0035")
+@Objekt(value = "0035", kontextregeln = K009.class)
 public class Laborergebnisbericht implements Kontext {
 
     @Feld(value = "8160", feldart = Feldart.bedingt_muss)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,29 +33,34 @@ import libldt3.model.enums.Lokalisation;
 import libldt3.model.regel.format.F004;
 
 /**
- * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen
- * werden.
+ * Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
  */
 @Objekt("0100")
 public class Diagnose implements Kontext {
 
+    @Objekt
+    public static class IcdCode implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "6003", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 1)
+        public Diagnosesicherheit diagnosesicherheit;
+        @Feld(value = "6004", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 1)
+        public Lokalisation lokalisation;
+        @Feld(value = "6006", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> diagnoseerlaeuterung;
+        @Feld(value = "6008", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> diagnoseausnahmetatbestand;
+    }
+
     @Feld(value = "4207", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
     public List<String> diagnoseVerdachtsdiagnose;
-    @Feld(value = "6001", feldart = Feldart.bedingt_muss)
-    @Regelsatz(F004.class)
-    public String icdCode;
-    @Feld(value = "6003", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 1)
-    public Diagnosesicherheit diagnosesicherheit;
-    @Feld(value = "6004", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 1)
-    public Lokalisation lokalisation;
-    @Feld(value = "6006", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
-    public List<String> erlaeuterung;
-    @Feld(value = "6008", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
-    public List<String> ausnahmetatbestand;
+    @Feld(value = "6001", feldart = Feldart.kann)
+    @Regelsatz(value = F004.class, minLaenge = 3, maxLaenge = 6)
+    public IcdCode icdCode;
 
 }

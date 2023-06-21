@@ -32,13 +32,15 @@ import libldt3.model.enums.AnforderungNothilfepass;
 import libldt3.model.enums.Antikoerpersuchtest;
 import libldt3.model.enums.DirekterCoombstest;
 import libldt3.model.enums.TestStatus;
+import libldt3.model.regel.kontext.K071;
 import libldt3.model.regel.kontext.K076;
+import libldt3.model.regel.kontext.K078;
 import libldt3.model.regel.kontext.K096;
 
 /**
  * Dieses Objekt transportiert die Informationen zur Blutgruppenzugehörigkeit.
  */
-@Objekt(value = "0055", kontextregeln = {K076.class, K096.class})
+@Objekt(value = "0055", kontextregeln = {K071.class, K076.class, K078.class, K096.class})
 public class Blutgruppenzugehoerigkeit implements Kontext {
 
     @Objekt

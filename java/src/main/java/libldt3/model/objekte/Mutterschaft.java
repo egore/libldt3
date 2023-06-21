@@ -33,14 +33,20 @@ import libldt3.model.Kontext;
 @Objekt("0040")
 public class Mutterschaft implements Kontext {
 
+    @Objekt
+    public static class AnzahlSchwangerschaften implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "3664", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 2)
+        public String anzahlGeburten;
+        @Feld(value = "3666", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 2)
+        public String anzahlKinder;
+    }
+
     @Feld(value = "3668", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)
-    public Integer anzahlSchwangerschaften;
-    @Feld(value = "3664", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 2)
-    public Integer anzahlGeburten;
-    @Feld(value = "3666", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 2)
-    public Integer anzahlKinder;
+    public AnzahlSchwangerschaften anzahlSchwangerschaften;
 
 }

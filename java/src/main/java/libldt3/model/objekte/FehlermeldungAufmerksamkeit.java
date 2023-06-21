@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,28 +32,40 @@ import libldt3.model.enums.Benachrichtigungsgrund;
 
 /**
  * Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
- * Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung
- * des Einsenders erfordern.
+ * Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung des
+ * Einsenders erfordern.
  */
 @Objekt("0026")
 public class FehlermeldungAufmerksamkeit implements Kontext {
 
+    @Objekt
+    public static class GrundBenachrichtigung implements Kontext {
+        @SuppressWarnings("unused")
+        public Benachrichtigungsgrund value;
+        @Feld(value = "7320", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 1)
+        public RecallEmpfohlen recallEmpfohlen;
+    }
+
+    @Objekt
+    public static class RecallEmpfohlen implements Kontext {
+        @SuppressWarnings("unused")
+        public Boolean value;
+        @Feld(value = "8154", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 9)
+        public Timestamp timestamp;
+    }
+
     @Feld(value = "7280", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
-    public Benachrichtigungsgrund benachrichtigungsgrund;
-    @Feld(value = "7320", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 1)
-    public Boolean recallEmpfohlen;
-    @Feld(value = "8154", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 9)
-    public Timestamp timestamp;
-    @Feld(value = "8147", feldart = Feldart.muss)
+    public List<GrundBenachrichtigung> grundBenachrichtigung;
+    @Feld(value = "8147", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public Person person;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Feld(value = "8167", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
-    public List<Fliesstext> text;
-    @Feld(value = "8110", feldart = Feldart.kann)
+    public List<Fliesstext> zusaetzlicheInformationen;
+    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;
 

@@ -1,7 +1,26 @@
-
+/*
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package libldt3.model.objekte;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import libldt3.annotations.Feld;
@@ -9,115 +28,93 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.regel.format.F002;
-import libldt3.model.regel.format.F015;
+import libldt3.model.enums.Alterskategorie;
+import libldt3.model.enums.Auftrag;
+import libldt3.model.enums.Auftragsart;
+import libldt3.model.enums.HpvHrTestergebnis;
+import libldt3.model.enums.HpvImpfung;
+import libldt3.model.enums.KlinischerBefund;
 import libldt3.model.regel.format.F018;
+import libldt3.model.regel.kontext.K128;
 
 /**
  * In diesem Objekt wird das Muster 39, Grundlage für die
- * Krebsfrüherkennungsuntersuchung für Frauen, abgebildet.
+ * Krebsfrüherkennungsuntersuchung Zervix-Karzinom, abgebildet.
  */
-@Objekt("0034")
+@Objekt(value = "0034", kontextregeln = K128.class)
 public class KrebsfrueherkennungZervixKarzinom implements Kontext {
 
-    @Feld(value = "7295", feldart = Feldart.muss)
-    @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate untersuchungsTag;
+    @Objekt
+    public static class Gyn_OpStrahlenOderChemotherapieGenitale implements Kontext {
+        @SuppressWarnings("unused")
+        public Boolean value;
+        @Feld(value = "7337", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> gyn_OpStrahlenOderChemotherapieGenitale;
+    }
+
+    @Objekt(kontextregeln = K128.class)
+    public static class HpvHrTest implements Kontext {
+        @SuppressWarnings("unused")
+        public Boolean value;
+        @Feld(value = "3316", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public HpvHrTestergebnis hpvHrTestergebnis;
+    }
+
+    @Feld(value = "3322", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Alterskategorie alterskategorie;
+    @Feld(value = "8630", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public Auftragsart auftragsart;
+    @Feld(value = "8629", feldart = Feldart.muss)
+    @Regelsatz(maxLaenge = 6)
+    public Auftrag auftrag;
     @Feld(value = "7296", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Boolean wiederholungsuntersuchung;
     @Feld(value = "7297", feldart = Feldart.kann)
     @Regelsatz(value = F018.class, laenge = 8)
-    public LocalDate letzteUntersuchung;
-    @Feld(value = "7298", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
-    public String nrLetzterZytologischerBefund;
-    @Feld(value = "7299", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 6)
-    public String gruppeLetzterBefund;
+    public String datumLetztenUntersuchung;
+    @Feld(value = "7414", feldart = Feldart.kann)
+    @Regelsatz(maxLaenge = 5)
+    public String gruppe;
     @Feld(value = "7336", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public String gynaekologischeOpStrahlenOderChemotherapie;
-    @Feld(value = "7337", feldart = Feldart.bedingt_kann)
-    @Regelsatz(maxLaenge = 60)
-    public List<String> artGynaekologischeOpStrahlenOderChemotherapie;
+    public Gyn_OpStrahlenOderChemotherapieGenitale gyn_OpStrahlenOderChemotherapieGenitale;
     @Feld(value = "7338", feldart = Feldart.kann)
     @Regelsatz(value = F018.class, laenge = 8)
-    public LocalDate datumGynaekologischeOp;
-    @Feld(value = "3668", feldart = Feldart.kann)
-    @Regelsatz(laenge = 2)
-    public Integer anzahlSchwangerschaften;
+    public String gyn_OpStrahlenOderChemotherapieGenitaleWann;
     @Feld(value = "8512", feldart = Feldart.kann)
     @Regelsatz(value = F018.class, laenge = 8)
-    public LocalDate ersterTagLetzterZyklus;
+    public String letztePeriode;
     @Feld(value = "7339", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Boolean graviditaet;
     @Feld(value = "7380", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public Boolean pathologischeGynaekologischeBlutungen;
-    @Feld(value = "7381", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean sonstigerAusfluss;
+    public Boolean ausflussPath_Blutung;
     @Feld(value = "7382", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Boolean iup;
     @Feld(value = "7383", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public Boolean ovulationshemmer;
+    public Boolean einnahmeVonOvulationshemmerSonstigeHormonAnwendung;
     @Feld(value = "7384", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public Boolean sonstigeHormonanwendung;
-    @Feld(value = "7385", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean vulvaInspektionAuffaellig;
-    @Feld(value = "7386", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean portioUndVaginaAuffaellig;
-    @Feld(value = "7387", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean innereGenitaleAuffaellig;
-    @Feld(value = "7388", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean inguinaleLymphknotenAuffaellig;
-    @Feld(value = "7389", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean behandlungsbeduerftigeNebenbefunde;
-    @Feld(value = "7390", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean haut;
-    @Feld(value = "7391", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean mammaAuffaellig;
-    @Feld(value = "7392", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean axillaereLymphknotenAuffaellig;
-    @Feld(value = "7393", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean rektumKolonBlutOderSchleim;
-    @Feld(value = "7394", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean neuAufgetreteneUnregelmaessigkeiten;
-    @Feld(value = "7395", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean rektumKolonTastbefundAuffaellig;
-    @Feld(value = "7396", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean stuhltestZurueckgegeben;
-    @Feld(value = "7397", feldart = Feldart.kann)
-    @Regelsatz(laenge = 1)
-    public Boolean stuhltestPositiv;
+    public KlinischerBefund klinischerBefund;
     @Feld(value = "7423", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 990)
-    public Boolean gynaekologischeDiagnose;
-    @Feld(value = "7398", feldart = Feldart.kann)
-    @Regelsatz(value = F015.class, laenge = 7)
-    public String rrBlutdruck;
-    @Feld(value = "7399", feldart = Feldart.kann)
-    @Regelsatz(value = F015.class, laenge = 7)
-    public String rrZweiteMessung;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    public String erlaeuterungen;
+    @Feld(value = "3313", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public HpvImpfung hpvImpfung;
+    @Feld(value = "3314", feldart = Feldart.muss)
+    @Regelsatz(laenge = 1)
+    public HpvHrTest hpvHrTest;
+    @Feld(value = "8167", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
-    public List<Fliesstext> zusaetzlicheInformationen;
+    public List<Fliesstext> zusaetzlicheInformationenObjKrebsfrueherkennungZervixKarzinom;
 
 }

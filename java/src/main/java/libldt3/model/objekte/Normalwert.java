@@ -29,58 +29,114 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.EinheitMesswert;
-import libldt3.model.enums.GrenzwertindikatorErweitert;
+import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.Normwertspezifikation;
 import libldt3.model.regel.kontext.K002;
+import libldt3.model.regel.kontext.K054;
+import libldt3.model.regel.kontext.K055;
 import libldt3.model.regel.kontext.K099;
 
 /**
  * Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
  */
-@Objekt(value = "0042", kontextregeln = K099.class)
+@Objekt(value = "0042", kontextregeln = {K054.class, K055.class})
 public class Normalwert implements Kontext {
 
-    @Objekt(kontextregeln = K002.class)
-    public static class NormalwertGrenze implements Kontext {
+    @Objekt
+    public static class Normalwertspezifikation implements Kontext {
         @SuppressWarnings("unused")
-        public Float value;
-        @Feld(value = "8419", feldart = Feldart.kann)
+        public Normwertspezifikation value;
+        @Feld(value = "8167", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 26)
+        public Fliesstext zusaetzlicheInformationen;
+    }
+
+    @Objekt(kontextregeln = K002.class)
+    public static class NormalwertUntereGrenze implements Kontext {
+        @SuppressWarnings("unused")
+        public float value;
+        @Feld(value = "8419", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 1)
-        public EinheitMesswert einheitDesWertes;
+        public EinheitensystemMesswerteWertes einheitensystemMesswerteWertes;
+    }
+
+    @Objekt(kontextregeln = K002.class)
+    public static class EinheitensystemMesswerteWertes implements Kontext {
+        @SuppressWarnings("unused")
+        public EinheitMesswert value;
         @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-        @Regelsatz(maxLaenge = 20)
-        public String sizeUnit;
+        @Regelsatz(maxLaenge = 60)
+        public String masseinheitMesswerteWertes;
+    }
+
+    @Objekt(kontextregeln = K002.class)
+    public static class NormalwertObereGrenze implements Kontext {
+        @SuppressWarnings("unused")
+        public float value;
+        @Feld(value = "8419", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public EinheitMesswert einheitensystemMesswerteWertes;
+    }
+
+    @Objekt
+    public static class NormalwertListenbezeichnung implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7317", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public List<String> normalwertListenzeile;
+    }
+
+    @Objekt(kontextregeln = K002.class)
+    public static class AlarmwertUntereGrenze implements Kontext {
+        @SuppressWarnings("unused")
+        public float value;
+        @Feld(value = "8419", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public EinheitMesswert einheitensystemMesswerteWertes;
+    }
+
+    @Objekt(kontextregeln = K002.class)
+    public static class AlarmwertObereGrenze implements Kontext {
+        @SuppressWarnings("unused")
+        public float value;
+        @Feld(value = "8419", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public EinheitMesswert einheitensystemMesswerteWertes;
+    }
+
+    @Objekt(kontextregeln = K099.class)
+    public static class GrenzwertindikatorLaborwerte implements Kontext {
+        @SuppressWarnings("unused")
+        public Grenzwertindikator value;
+        @Feld(value = "8126", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 28)
+        public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
     }
 
     @Feld(value = "8424", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)
-    public Normwertspezifikation normwertspezifikation;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 26)
-    public Fliesstext zusaetzlicheInformationen;
+    public Normalwertspezifikation normalwertspezifikation;
     @Feld(value = "8460", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 990)
     public List<String> normalwertText;
     @Feld(value = "8461", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public NormalwertGrenze normalwertUntereGrenze;
+    public NormalwertUntereGrenze normalwertUntereGrenze;
     @Feld(value = "8462", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public NormalwertGrenze normalwertObereGrenze;
+    public NormalwertObereGrenze normalwertObereGrenze;
     @Feld(value = "7316", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public String normalwertListenbezeichnung;
-    @Feld(value = "7317", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public List<String> normalwertListenzeile;
+    public NormalwertListenbezeichnung normalwertListenbezeichnung;
     @Feld(value = "7363", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public NormalwertGrenze alarmwertUntereGrenze;
+    public AlarmwertUntereGrenze alarmwertUntereGrenze;
     @Feld(value = "7371", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public NormalwertGrenze alarmwertObereGrenze;
+    public AlarmwertObereGrenze alarmwertObereGrenze;
     @Feld(value = "8422", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 2)
-    public GrenzwertindikatorErweitert grenzwertindikator;
+    public GrenzwertindikatorLaborwerte grenzwertindikatorLaborwerte;
 
 }

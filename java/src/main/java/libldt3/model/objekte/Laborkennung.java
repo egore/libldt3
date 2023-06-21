@@ -29,11 +29,13 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Laborart;
+import libldt3.model.regel.kontext.K083;
+import libldt3.model.regel.kontext.K084;
 
 /**
  * Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
  */
-@Objekt("0036")
+@Objekt(value = "0036", kontextregeln = {K083.class, K084.class})
 public class Laborkennung implements Kontext {
 
     @Feld(value = "8239", feldart = Feldart.bedingt_muss)
@@ -41,10 +43,10 @@ public class Laborkennung implements Kontext {
     public Organisation laborbezeichnung;
     @Feld(value = "7352", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public List<String> katalogUrl;
+    public List<String> urlKataloge;
     @Feld(value = "8324", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public String laborStandortId;
+    public String einesLaborstandortesId;
     @Feld(value = "7266", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
     public Laborart laborart;

@@ -19,30 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
+package libldt3.model.regel.kontext;
 
-import java.util.List;
-
-import libldt3.annotations.Feld;
-import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
-import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.regel.erlaubt.E036;
-import libldt3.model.regel.kontext.K100;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * In diesem Objekt können semantisch zusammenhängende Texte oder Dateien
- * (Base64-kodiert) übertragen werden.
+ * In Satzart 8215 darf im Obj_0037 (Obj_Material) nur FK 8219 vorkommen, in
+ * Satzart 8205 darf auch die FK 8220 verwendet werden.
  */
-@Objekt(value = "0068", kontextregeln = K100.class)
-public class Fliesstext implements Kontext {
+public class K063 implements Kontextregel {
 
-    @Feld(value = "3564", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = E036.class, maxLaenge = 990)
-    public List<String> text;
-    @Feld(value = "6329", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 60)
-    public List<String> base64kodierteAnlage;
+    private static final Logger LOG = LoggerFactory.getLogger(K063.class);
+
+    @Override
+    public boolean isValid(Kontext owner) throws IllegalAccessException {
+        throw new UnsupportedOperationException();
+    }
 
 }

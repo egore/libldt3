@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,21 +31,28 @@ import libldt3.model.Kontext;
 import libldt3.model.regel.format.F002;
 import libldt3.model.regel.format.F005;
 import libldt3.model.regel.format.F018;
+import libldt3.model.regel.kontext.K118;
 
 /**
  * Dieses Objekt enthält schwangerschaftsspezifische Informationen.
  */
-@Objekt("0050")
+@Objekt(value = "0050", kontextregeln = K118.class)
 public class Schwangerschaft implements Kontext {
+
+    @Objekt
+    public static class LetztePeriode implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "3471", feldart = Feldart.bedingt_kann)
+        @Regelsatz(value = F002.class, laenge = 8)
+        public LocalDate errechneterEntbindungstermin;
+    }
 
     @Feld(value = "8511", feldart = Feldart.kann)
     @Regelsatz(value = F005.class, laenge = 3)
     public String schwangerschaftsdauer;
-    @Feld(value = "8512", feldart = Feldart.muss)
+    @Feld(value = "8512", feldart = Feldart.bedingt_muss)
     @Regelsatz(value = F018.class, laenge = 8)
-    public LocalDate ersterTagLetzterZyklus;
-    @Feld(value = "3471", feldart = Feldart.bedingt_kann)
-    @Regelsatz(value = F002.class, laenge = 8)
-    public LocalDate entbindungstermin;
+    public LetztePeriode letztePeriode;
 
 }

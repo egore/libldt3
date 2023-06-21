@@ -34,7 +34,7 @@ import libldt3.model.regel.kontext.K059;
  * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw. Mit
  * einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
  */
-@Objekt(value = "0031", kontextregeln = {K059.class})
+@Objekt(value = "0031", kontextregeln = K059.class)
 public class Kommunikationsdaten implements Kontext {
 
     @Objekt

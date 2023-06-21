@@ -74,8 +74,8 @@ class KontextregelHelper {
                     }
                 }
             }
-            if (fliesstext.base64text != null) {
-                for (String s : fliesstext.base64text) {
+            if (fliesstext.base64kodierteAnlage != null) {
+                for (String s : fliesstext.base64kodierteAnlage) {
                     if (s != null && !s.isEmpty()) {
                         return true;
                     }

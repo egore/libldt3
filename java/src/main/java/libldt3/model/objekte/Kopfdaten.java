@@ -26,6 +26,8 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.enums.LdtVersion;
+import libldt3.model.regel.format.F007;
 
 /**
  * Hier werden alle Informationen zusammengefasst, die im Kontext mit der
@@ -35,8 +37,8 @@ import libldt3.model.Kontext;
 public class Kopfdaten implements Kontext {
 
     @Feld(value = "0001", feldart = Feldart.muss)
-    @Regelsatz(maxLaenge = 12)
-    public String versionderDatensatzbeschreibung;
+    @Regelsatz(value = F007.class, maxLaenge = 12)
+    public String versionDatensatzbeschreibung;
     @Feld(value = "8151", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 16)
     public SendendesSystem sendendesSystem;

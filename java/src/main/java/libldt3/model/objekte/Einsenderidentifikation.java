@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,40 +29,53 @@ import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Einsenderstatus;
+import libldt3.model.regel.kontext.K016;
+import libldt3.model.regel.kontext.K041;
+import libldt3.model.regel.kontext.K045;
+import libldt3.model.regel.kontext.K046;
+import libldt3.model.regel.kontext.K047;
+import libldt3.model.regel.kontext.K048;
+import libldt3.model.regel.kontext.K107;
 
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
-@Objekt("0022")
+@Objekt(value = "0022", kontextregeln = {K016.class, K041.class, K045.class, K046.class, K047.class, K048.class, K107.class})
 public class Einsenderidentifikation implements Kontext {
+
+    @Objekt
+    public static class KundenNummer implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7267", feldart = Feldart.kann)
+        @Regelsatz(maxLaenge = 60)
+        public String desAuftraggebersId;
+    }
 
     @Feld(value = "7321", feldart = Feldart.muss)
     @Regelsatz(laenge = 2)
-    public List<Einsenderstatus> status;
+    public List<Einsenderstatus> statusEinsender;
     @Feld(value = "8312", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 20)
-    public String kundenNummer;
-    @Feld(value = "7267", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
-    public String auftraggeberId;
+    public KundenNummer kundenNummer;
     @Feld(value = "8114", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 18)
     public Arztidentifikation arztidentifikation;
-    @Feld(value = "8240", name = "Ueberweisung_von_anderen_Aerzten", feldart = Feldart.kann)
+    @Feld(value = "8240", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 32)
-    public Arztidentifikation ueberweisungVon;
-    @Feld(value = "8241", name = "Ueberweisung_an", feldart = Feldart.bedingt_muss)
+    public Arztidentifikation ueberweisungVonAnderenAerzten;
+    @Feld(value = "8241", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 15)
-    public Arztidentifikation ueberweisungAn;
+    public Fliesstext ueberweisungAn;
     @Feld(value = "8147", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public Person person;
     @Feld(value = "7268", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public String fachrichtung;
+    public String fachrichtungOderStationskennung;
     @Feld(value = "8119", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 15)
-    public Betriebsstaette permanentEstablishment;
+    public Betriebsstaette betriebsstaette;
     @Feld(value = "8143", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 12)
     public Organisation organisation;

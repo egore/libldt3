@@ -24,6 +24,7 @@ package libldt3.model.regel.kontext;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.objekte.Arztidentifikation;
+import libldt3.model.objekte.Fliesstext;
 import libldt3.model.objekte.Untersuchungsanforderung;
 import libldt3.model.saetze.Auftrag;
 
@@ -54,7 +55,7 @@ public class K057 implements Kontextregel {
                 // If any FK 0222 is present, it's valid
                 return isNotEmpty(auftrag.einsenderidentifikation.arztidentifikation) ||
                         isNotEmpty(auftrag.einsenderidentifikation.ueberweisungAn) ||
-                        isNotEmpty(auftrag.einsenderidentifikation.ueberweisungVon);
+                        isNotEmpty(auftrag.einsenderidentifikation.ueberweisungVonAnderenAerzten);
             }
         }
 
@@ -64,6 +65,11 @@ public class K057 implements Kontextregel {
     public boolean isNotEmpty(Arztidentifikation arztidentifikation) {
         return arztidentifikation.asvTeamnummer != null &&
                 !arztidentifikation.asvTeamnummer.isEmpty();
+    }
+
+    public boolean isNotEmpty(Fliesstext fliesstext) {
+        return fliesstext.text != null &&
+                !fliesstext.text.isEmpty();
     }
 
 }

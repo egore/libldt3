@@ -32,6 +32,7 @@ import libldt3.model.enums.ArztTypId;
 import libldt3.model.regel.format.F011;
 import libldt3.model.regel.format.F014;
 import libldt3.model.regel.format.F022;
+import libldt3.model.regel.kontext.K020;
 import libldt3.model.regel.kontext.K057;
 import libldt3.model.regel.kontext.K115;
 import libldt3.model.regel.kontext.K116;
@@ -39,7 +40,7 @@ import libldt3.model.regel.kontext.K116;
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
-@Objekt(value = "0014", kontextregeln = {K057.class, K115.class, K116.class})
+@Objekt(value = "0014", kontextregeln = {K020.class, K057.class, K115.class, K116.class})
 public class Arztidentifikation implements Kontext {
 
     @Objekt

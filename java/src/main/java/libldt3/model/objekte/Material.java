@@ -31,33 +31,61 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.AnorganischesMaterial;
 import libldt3.model.enums.Materialart;
 import libldt3.model.enums.OrganischesMaterial;
-import libldt3.model.regel.format.F006;
 import libldt3.model.regel.erlaubt.E012;
+import libldt3.model.regel.format.F006;
 import libldt3.model.regel.kontext.K006;
+import libldt3.model.regel.kontext.K038;
+import libldt3.model.regel.kontext.K039;
+import libldt3.model.regel.kontext.K063;
+import libldt3.model.regel.kontext.K082;
 
 /**
  * Im Objekt werden die Informationen zur Identifikation des zu untersuchenden
  * Materials übermittelt sowie Angaben zum Material selbst.
  */
-@Objekt(value = "0037", kontextregeln = K006.class)
+@Objekt(value = "0037", kontextregeln = {K006.class, K038.class, K039.class, K063.class, K082.class})
 public class Material implements Kontext {
 
-    @Objekt
-    public static class AnorganischesMaterialErweitert implements Kontext {
+    @Objekt(kontextregeln = K038.class)
+    public static class ArtMaterial implements Kontext {
         @SuppressWarnings("unused")
-        public AnorganischesMaterial value;
-        @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.bedingt_kann)
-        @Regelsatz(laenge = 26)
-        public Fliesstext zusaetzlicheInformatioen;
+        public Materialart value;
+        @Feld(value = "7311", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 1)
+        public OrganischesMaterial organisches;
+        @Feld(value = "7312", feldart = Feldart.bedingt_kann)
+        @Regelsatz(laenge = 1)
+        public Anorganisches anorganisches;
     }
 
     @Objekt
-    public static class Medikamenteneinnahme implements Kontext {
+    public static class Anorganisches implements Kontext {
+        @SuppressWarnings("unused")
+        public AnorganischesMaterial value;
+        @Feld(value = "8167", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 26)
+        public Fliesstext zusaetzlicheInformationen;
+    }
+
+    @Objekt
+    public static class MedikamenteneinnahmeZumZeitpunktMaterialentnahme implements Kontext {
         @SuppressWarnings("unused")
         public Boolean value;
-        @Feld(value = "8170", feldart = Feldart.bedingt_kann)
+        @Feld(value = "8170", feldart = Feldart.bedingt_muss)
         @Regelsatz(laenge = 10)
-        public Medikament medication;
+        public Medikament medikament;
+    }
+
+    @Objekt
+    public static class MengeProbenmaterial implements Kontext {
+        @SuppressWarnings("unused")
+        public float value;
+        @Feld(value = "8421", feldart = Feldart.bedingt_muss)
+        @Regelsatz(maxLaenge = 60)
+        public String masseinheitMesswerteWertes;
+        @Feld(value = "8522", feldart = Feldart.bedingt_kann)
+        @Regelsatz(value = F006.class, laenge = 4)
+        public String sammelzeitProbenmaterial;
     }
 
     @Feld(value = "7364", feldart = Feldart.muss)
@@ -80,41 +108,29 @@ public class Material implements Kontext {
     public String lokalisationProbenmaterial;
     @Feld(value = "7310", feldart = Feldart.bedingt_kann)
     @Regelsatz(laenge = 1)
-    public Materialart materialart;
-    @Feld(value = "7311", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 1)
-    public OrganischesMaterial organischesMaterial;
-    @Feld(value = "7312", feldart = Feldart.bedingt_kann)
-    @Regelsatz(laenge = 1)
-    public AnorganischesMaterialErweitert anorganischesMaterial;
+    public ArtMaterial artMaterial;
     @Feld(value = "8504", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
-    public List<Medikamenteneinnahme> medikamenteneinnahme;
+    public List<MedikamenteneinnahmeZumZeitpunktMaterialentnahme> medikamenteneinnahmeZumZeitpunktMaterialentnahme;
     @Feld(value = "7318", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public List<String> nahrungsaufnahmeZeitpunktMaterialentnahme;
+    public List<String> nahrungsaufnahmeZumZeitpunktMaterialentnahme;
     @Feld(value = "8520", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public String menge;
-    @Feld(value = "8421", feldart = Feldart.bedingt_muss)
-    @Regelsatz(maxLaenge = 20)
-    public String einheit;
-    @Feld(value = "8522", feldart = Feldart.bedingt_kann)
-    @Regelsatz(value = F006.class, laenge = 4)
-    public String sammelzeit;
-    @Feld(value = "8219", name = "Timestamp_Materialabnahme_entnahme", feldart = Feldart.bedingt_muss)
+    public MengeProbenmaterial mengeProbenmaterial;
+    @Feld(value = "8219", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 34)
     public Timestamp timestampMaterialabnahmeEntnahme;
-    @Feld(value = "8220", name = "Timestamp_Eingangserfassung_Material", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8220", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 36)
-    public Timestamp timestampEingangserfassungMaterial;
-    @Feld(value = "8126", name = "Fehlermeldung_Aufmerksamkeit", feldart = Feldart.kann)
+    public Timestamp timestampEingangserfassung;
+    @Feld(value = "8126", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 28)
     public FehlermeldungAufmerksamkeit fehlermeldungAufmerksamkeit;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Feld(value = "8167", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 26)
     public List<Fliesstext> zusaetzlicheInformationen;
-    @Feld(value = "8110", feldart = Feldart.kann)
+    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;
 
