@@ -28,21 +28,22 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.regel.kontext.K059;
 
 /**
  * Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw. Mit
  * einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
  */
-@Objekt("0031")
+@Objekt(value = "0031", kontextregeln = {K059.class})
 public class Kommunikationsdaten implements Kontext {
 
     @Objekt
-    public static class ElektronischePostadresse implements Kontext {
+    public static class AlternativeElektronischePostadresse implements Kontext {
         @SuppressWarnings("unused")
         public String value;
         @Feld(value = "7340", feldart = Feldart.bedingt_muss)
         @Regelsatz(maxLaenge = 60)
-        public String spezifizierung;
+        public String spezifizierungAlternativenElektronischenPostadresse;
     }
 
     @Feld(value = "7330", feldart = Feldart.bedingt_muss)
@@ -53,7 +54,7 @@ public class Kommunikationsdaten implements Kontext {
     public List<String> mobiltelefonnummer;
     @Feld(value = "7332", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
-    public List<ElektronischePostadresse> elektronischePostadresse;
+    public List<AlternativeElektronischePostadresse> alternativeElektronischePostadresse;
     @Feld(value = "7333", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
     public List<String> faxnummer;
