@@ -51,6 +51,10 @@ public class Normalizer {
                 // underscores
                 .replaceAll("([A-Z])[ -]([A-Z])", "$1_$2")
 
+                // Workaround for E167
+                .replace("20-29", "ZwanzigBisNeunundzwanzig")
+                .replace("30-34", "DreissigBisVierunddreissig")
+
                 .replace("-", "")
                 .replace(" + ", "_und_")
                 .replace(" ", "")
@@ -59,7 +63,11 @@ public class Normalizer {
                 .replaceAll("^1fach", "einfach")
                 .replaceAll("^2fach", "zweifach")
                 .replaceAll("^3fach", "dreifach")
-                .replaceAll("^4fach", "vierfach");
+                .replaceAll("^4fach", "vierfach")
+                .replaceAll("^1$", "Eins")
+                .replaceAll("^2$", "Zwei")
+                .replaceAll("^3$", "Drei")
+                .replaceAll("^4$", "Vier");
     }
 
     public static String getObjektName(String value) {
@@ -101,7 +109,7 @@ public class Normalizer {
         value = value.replaceAll("^ID (.*)$", "$1Id");
 
         // Rule: Words in uppercase only will be converted to camel case
-        value = PATTERN_UPPER.matcher(value).replaceAll(match -> toUppercaseFirst(match.group(1)));
+        value = PATTERN_UPPER.matcher(value).replaceAll(match -> toUppercaseFirstOnly(match.group(1)));
 
         value = value.replaceAll(" des ([A-Za-z]+)s", "$1");
 
@@ -118,6 +126,10 @@ public class Normalizer {
     }
 
     public static String toUppercaseFirst(String value) {
+        return value.substring(0, 1).toUpperCase() + value.substring(1);
+    }
+
+    public static String toUppercaseFirstOnly(String value) {
         return value.substring(0, 1).toUpperCase() + value.substring(1).toLowerCase();
     }
 
