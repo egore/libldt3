@@ -36,7 +36,7 @@ public class Feld {
             case num:
                 for (Regel regel : regeln) {
                     if (regel.regelnummer.startsWith("E")) {
-                        return RegelNaming.REPLACEMENTS.getOrDefault(regel.regelnummer, "UNKNOWN");
+                        return RegelNaming.REPLACEMENTS.getOrDefault(regel.regelnummer, "String");
                     }
                 }
                 return "int";
