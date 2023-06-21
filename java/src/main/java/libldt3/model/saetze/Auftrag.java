@@ -19,7 +19,7 @@ import libldt3.model.objekte.Material;
 import libldt3.model.objekte.Mutterschaft;
 import libldt3.model.objekte.Patient;
 import libldt3.model.objekte.Schwangerschaft;
-import libldt3.model.objekte.Tier;
+import libldt3.model.objekte.TierSonstiges;
 import libldt3.model.objekte.Untersuchungsanforderung;
 import libldt3.model.objekte.Veranlassungsgrund;
 
@@ -46,7 +46,7 @@ public class Auftrag implements Satz, Kontext {
     public Mutterschaft mutterschaft;
     @Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public Tier tier;
+    public TierSonstiges tier;
     @Feld(value = "8113", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 19)
     public Auftragsinformation auftragsinformation;

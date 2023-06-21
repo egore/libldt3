@@ -40,7 +40,7 @@ import libldt3.model.objekte.Material;
 import libldt3.model.objekte.Mutterschaft;
 import libldt3.model.objekte.Patient;
 import libldt3.model.objekte.Schwangerschaft;
-import libldt3.model.objekte.Tier;
+import libldt3.model.objekte.TierSonstiges;
 import libldt3.model.objekte.Veranlassungsgrund;
 import libldt3.model.regel.kontext.K005;
 
@@ -70,7 +70,7 @@ public class Befund implements Satz, Kontext {
     public Mutterschaft mutterschaft;
     @Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public Tier tier;
+    public TierSonstiges tier;
     @Feld(value = "8117", feldart = Feldart.muss)
     @Regelsatz(laenge = 19)
     public Befundinformationen befundinformationen;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,16 +29,28 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
+import libldt3.model.enums.KastriertSterilisiert;
+import libldt3.model.enums.TierGeschlecht;
 import libldt3.model.enums.Zeiteinheit;
 import libldt3.model.regel.format.F002;
+import libldt3.model.regel.kontext.K089;
+import libldt3.model.regel.kontext.K117;
 
 /**
- * Enthält ein Auftrag Materialien die nicht Humanen Ursprungs sind, so werden
- * die entsprechenden Informationen zur Materialquelle in diesem Objekt
- * beschrieben.
+ * Enthält ein Auftrag Materialien, die nicht humanen Ursprungs sind, so werden die
+ * entsprechenden Informationen zur Materialquelle in diesem Objekt beschrieben.
  */
-@Objekt("0053")
-public class Tier implements Kontext {
+@Objekt(value = "0053", kontextregeln = {K089.class, K117.class})
+public class TierSonstiges implements Kontext {
+
+    @Objekt
+    public static class Alter implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7326", feldart = Feldart.bedingt_muss)
+        @Regelsatz(laenge = 1)
+        public Zeiteinheit alterIn;
+    }
 
     @Feld(value = "7319", feldart = Feldart.bedingt_muss)
     @Regelsatz(maxLaenge = 60)
@@ -51,20 +63,23 @@ public class Tier implements Kontext {
     public String nameKennung;
     @Feld(value = "7315", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 10)
-    public String alter;
-    @Feld(value = "7326", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 1)
-    public Zeiteinheit alterIn;
+    public Alter alter;
     @Feld(value = "7351", feldart = Feldart.kann)
     @Regelsatz(value = F002.class, laenge = 8)
     public LocalDate geburtsdatum;
-    @Feld(value = "8107", feldart = Feldart.kann)
+    @Feld(value = "7428", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public TierGeschlecht geschlechtTiere;
+    @Feld(value = "7432", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public KastriertSterilisiert kastriertSterilisiert;
+    @Feld(value = "8107", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 9)
     public Anschrift anschrift;
-    @Feld(value = "8147", feldart = Feldart.kann)
+    @Feld(value = "8147", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public Person person;
-    @Feld(value = "8110", feldart = Feldart.kann)
+    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;
 
