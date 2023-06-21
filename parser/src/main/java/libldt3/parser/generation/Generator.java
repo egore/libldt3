@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
@@ -24,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Map;
 
 public class Generator {
@@ -48,26 +50,39 @@ public class Generator {
 
     public void generateErlaubteInhalte(Collection<Regel> regeln) throws IOException, TemplateException {
         Template enumTemplate = config.getTemplate("enum.ftl");
-        Files.createDirectories(Path.of("./generated/libldt3/model/enums"));
+        Path dir = Path.of("./generated/libldt3/model/enums");
+        initDir(dir);
         for (Regel regel : regeln) {
             if (regel instanceof ErlaubterInhalt) {
                 String name = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
                 if (name == null || "Boolean".equals(name)) {
                     continue;
                 }
-                try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/enums/" + name + ".java"), StandardCharsets.UTF_8)) {
+                try (Writer writer = Files.newBufferedWriter(dir.resolve(name + ".java"), StandardCharsets.UTF_8)) {
                     enumTemplate.process(Map.of("enum", regel), writer);
                 }
             }
         }
     }
 
+    private static void initDir(Path dir) throws IOException {
+        if (Files.exists(dir)) {
+            Files.walk(dir)
+                    .sorted(Comparator.reverseOrder())
+                    .map(Path::toFile)
+                    .forEach(File::delete);
+        }
+        Files.createDirectories(dir);
+    }
+
     public void generateKontextregeln(Collection<Regel> regeln) throws IOException, TemplateException {
         Template kontextTemplate = config.getTemplate("kontext.ftl");
-        Files.createDirectories(Path.of("./generated/libldt3/model/regel/kontext"));
+        Path dir = Path.of("./generated/libldt3/model/regel/kontext");
+        initDir(dir);
         for (Regel regel : regeln) {
             if (regel instanceof Kontextregel) {
-                try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/regel/kontext/" + regel.regelnummer + ".java"), StandardCharsets.UTF_8)) {
+                LOG.info("Generating kontext {}", regel.regelnummer);
+                try (Writer writer = Files.newBufferedWriter(dir.resolve(regel.regelnummer + ".java"), StandardCharsets.UTF_8)) {
                     kontextTemplate.process(Map.of("kontext", regel), writer);
                 }
             }
@@ -76,10 +91,11 @@ public class Generator {
 
     public void generateFormatregeln(Collection<Regel> regeln) throws IOException, TemplateException {
         Template formatTemplate = config.getTemplate("format.ftl");
-        Files.createDirectories(Path.of("./generated/libldt3/model/regel"));
+        Path dir = Path.of("./generated/libldt3/model/regel/format");
+        initDir(dir);
         for (Regel regel : regeln) {
             if (regel instanceof Formatregel) {
-                try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/regel/" + regel.regelnummer + ".java"), StandardCharsets.UTF_8)) {
+                try (Writer writer = Files.newBufferedWriter(dir.resolve(regel.regelnummer + ".java"), StandardCharsets.UTF_8)) {
                     formatTemplate.process(Map.of("format", regel), writer);
                 }
             }
@@ -89,13 +105,14 @@ public class Generator {
 
     public void generateObjekte(Collection<Objekt> objekte) throws IOException, TemplateException {
         Template objektTemplate = config.getTemplate("objekt.ftl");
-        Files.createDirectories(Path.of("./generated/libldt3/model/objekte"));
+        Path dir = Path.of("./generated/libldt3/model/objekte");
+        initDir(dir);
         for (Objekt objekt : objekte) {
             if (objekt.stub) {
                 LOG.warn("Skipping stub {}", objekt.name);
                 continue;
             }
-            try (Writer writer = Files.newBufferedWriter(Path.of("./generated/libldt3/model/objekte/" + objekt.name + ".java"), StandardCharsets.UTF_8)) {
+            try (Writer writer = Files.newBufferedWriter(dir.resolve(objekt.name + ".java"), StandardCharsets.UTF_8)) {
                 objektTemplate.process(Map.of("objekt", objekt), writer);
             }
         }
