@@ -418,6 +418,7 @@ public class Parser {
                                     value.vorkommen.wert = "1";
                                     value.feld = new Feld();
                                     value.feld.format = Feld.Format.alnum;
+                                    value.feld.regeln = previous.feld.regeln;
                                     child.felder.add(value);
                                 }
 
