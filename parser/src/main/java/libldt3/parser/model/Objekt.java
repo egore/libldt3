@@ -18,6 +18,7 @@ public class Objekt {
         public Feldart feldart;
         public List<Regel> regeln = new ArrayList<>();
         public String erlaeuterung;
+        public Objekt forcedTyp;
 
         public String getName() {
             return Normalizer.getFieldName(bezeichnung);
@@ -59,6 +60,13 @@ public class Objekt {
         @Override
         public String toString() {
             return feld.toString() + ": " + bezeichnung;
+        }
+
+        public String getTyp() {
+            if (forcedTyp != null) {
+                return forcedTyp.name;
+            }
+            return feld.getTyp();
         }
     }
 

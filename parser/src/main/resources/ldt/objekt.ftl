@@ -51,14 +51,14 @@ public class ${objekt.name} implements Kontext {
 <#else>
         @SuppressWarnings("unused")
 </#if>
-        public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> ${feld.name};
+        public <#if feld.vorkommen.wert == 'n'>List<${feld.typ}><#else>${feld.typ}</#if> ${feld.name};
 </#list>
     }
 </#list>
 
 <#list objekt.felder as feld>
     <@feldFtl.attributes feld=feld prefix="    "/>
-    public <#if feld.vorkommen.wert == 'n'>List<${feld.feld.typ}><#else>${feld.feld.typ}</#if> ${feld.name};
+    public <#if feld.vorkommen.wert == 'n'>List<${feld.typ}><#else>${feld.typ}</#if> ${feld.name};
 </#list>
 
 }

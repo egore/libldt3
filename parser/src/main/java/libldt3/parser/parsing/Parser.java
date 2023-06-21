@@ -423,7 +423,7 @@ public class Parser {
 
                                 if (isNew) {
                                     // Force type
-                                    previous.feld.forcedTyp = child;
+                                    previous.forcedTyp = child;
                                 }
                             }
                         }
@@ -461,7 +461,7 @@ public class Parser {
                     Matcher matcher = OBJEKT_PATTERN.matcher(text);
                     if (matcher.matches()) {
                         String childnummer = matcher.group(1);
-                        currentFeld.value.feld.forcedTyp = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_Parent" + objekt.value.nummer, true));
+                        currentFeld.value.forcedTyp = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_Parent" + objekt.value.nummer, true));
                     } else {
                         // Workaround page 160: Members are postfixed with the name of the object
                         if (text.endsWith("zum_" + objekt.value.name) ||

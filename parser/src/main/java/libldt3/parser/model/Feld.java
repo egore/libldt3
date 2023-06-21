@@ -25,7 +25,6 @@ public class Feld {
     public Format format;
     public List<Regel> regeln = new ArrayList<>();
     public String inhalte;
-    public Objekt forcedTyp;
 
     public Feld() {
     }
@@ -35,9 +34,6 @@ public class Feld {
     }
 
     public String getTyp() {
-        if (forcedTyp != null) {
-            return forcedTyp.name;
-        }
         switch (format) {
             case num:
                 for (Regel regel : regeln) {
