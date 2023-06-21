@@ -33,9 +33,8 @@ import libldt3.model.enums.StatusDringlichkeit;
 import libldt3.model.enums.ZusaetzlicherBefundweg;
 
 /**
- * In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
- * zum Auftrag zusammengefasst sowie zusätzliche Befundwege und die
- * Dringlichkeit des Auftrags definiert.
+ * In diesem Objekt werden übergeordnete Informationen zum Auftrag zusammengefasst
+ * sowie zusätzliche Befundwege definiert.
  */
 @Objekt(value = "0013")
 public class Auftragsinformation implements Kontext {
