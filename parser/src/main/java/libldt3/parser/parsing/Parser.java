@@ -463,7 +463,17 @@ public class Parser {
                         String childnummer = matcher.group(1);
                         currentFeld.value.feld.forcedTyp = objekte.computeIfAbsent(childnummer, (k) -> new Objekt(childnummer, "Child" + childnummer + "_Parent" + objekt.value.nummer, true));
                     } else {
-                        currentFeld.value.bezeichnung = text;
+                        // Workaround page 160: Members are postfixed with the name of the object
+                        if (text.endsWith("zum_" + objekt.value.name) ||
+                                text.endsWith("zum " + objekt.value.name) ||
+                                text.endsWith("des " + objekt.value.name)) {
+                            text = text.substring(0, text.length() - objekt.value.name.length() - 4);
+                        }
+                        if (currentFeld.value.bezeichnung != null) {
+                            currentFeld.value.bezeichnung += " " + text;
+                        } else {
+                            currentFeld.value.bezeichnung = text;
+                        }
                     }
                     break;
                 case 3:
