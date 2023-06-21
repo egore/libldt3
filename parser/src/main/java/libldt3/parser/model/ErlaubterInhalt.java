@@ -48,9 +48,9 @@ public class ErlaubterInhalt extends Regel {
 
     public List<EnumValue> getMultiple() {
         List<EnumValue> result = new ArrayList<>();
-        if (erlaeuterung.length() == 0) {
+        if (erlaeuterung.length() == 0 || "E163".equals(regelnummer)) {
             for (String s : pruefung.split(", ")) {
-                result.add(new EnumValue(s, FALLBACK.getOrDefault(regelnummer, Collections.emptyMap()).getOrDefault(s, "?"), null, false));
+                result.add(new EnumValue(s, FALLBACK.getOrDefault(regelnummer, Collections.emptyMap()).getOrDefault(s, Normalizer.getEnumIdentifier(s)), null, false));
             }
         } else {
             String[] lines = erlaeuterung.toString().split("\n");

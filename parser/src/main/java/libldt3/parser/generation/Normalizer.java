@@ -47,9 +47,6 @@ public class Normalizer {
                 // Rule: everything in parentheses is removed
                 .replaceAll("\\([^)]+\\)", "")
 
-                // Rule: everything after a colon is removed
-                .replaceAll(":.*$", "")
-
                 // Rule: Words ending in uppercase are assumed to be uppercase only and will be combined using
                 // underscores
                 .replaceAll("([A-Z])[ -]([A-Z])", "$1_$2")
@@ -61,6 +58,12 @@ public class Normalizer {
                 .replace("-", "")
                 .replace(" + ", "_und_")
                 .replace(" ", "")
+                .replace("−", "_MINUS_")
+                .replace("+", "_PLUS_")
+                .replace("|", "_")
+
+                // Rule: everything after a colon is removed
+                .replaceAll(":(.*)$", "_$1")
 
                 .replaceAll("[0-9]+\\)", "")
                 .replaceAll("^1fach", "einfach")
