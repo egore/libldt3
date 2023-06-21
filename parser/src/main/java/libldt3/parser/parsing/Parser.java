@@ -499,10 +499,13 @@ public class Parser {
                         } else if (text.length() > objekt.value.name.length() && text.endsWith(objekt.value.name)) {
                             text = text.substring(0, text.length() - objekt.value.name.length());
                         }
-                        if (currentFeld.value.bezeichnung != null) {
-                            currentFeld.value.bezeichnung += " " + text;
-                        } else {
-                            currentFeld.value.bezeichnung = text;
+                        // Workaround for page 145
+                        if (!"Obj_".equals(text)) {
+                            if (currentFeld.value.bezeichnung != null) {
+                                currentFeld.value.bezeichnung += " " + text;
+                            } else {
+                                currentFeld.value.bezeichnung = text;
+                            }
                         }
                     }
                     break;
