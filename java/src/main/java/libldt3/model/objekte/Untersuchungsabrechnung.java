@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,14 +34,24 @@ import libldt3.model.regel.format.F008;
 import libldt3.model.regel.format.F009;
 import libldt3.model.regel.erlaubt.E003;
 import libldt3.model.regel.kontext.K005;
+import libldt3.model.regel.kontext.K019;
 
 /**
  * Jeder Untersuchung wird direkt eine Abrechnung zugeordnet. Hier werden alle
  * Werte transportiert, die für die ordnungsgemäße Abrechnung des Auftrages
  * notwendig sind.
  */
-@Objekt(value = "0058", kontextregeln = { K005.class })
+@Objekt(value = "0058", kontextregeln = {K005.class, K019.class})
 public class Untersuchungsabrechnung implements Kontext {
+
+    @Objekt
+    public static class Untersuchungsabrechnung_Gebuehrenordnung implements Kontext {
+        @SuppressWarnings("unused")
+        public Gebuehrenordnung value;
+        @Feld(value = "5001", feldart = Feldart.bedingt_muss)
+        @Regelsatz(value = { F008.class, F009.class }, maxLaenge = 9)
+        public List<Gebuehrennummer> gebuehrennummer;
+    }
 
     @Objekt
     public static class Gebuehrennummer implements Kontext {
@@ -62,20 +72,23 @@ public class Untersuchungsabrechnung implements Kontext {
         public int asd;
     }
 
+    @Objekt
+    public static class KatalogAbrechenbareLeistungenId implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7251", feldart = Feldart.kann)
+        @Regelsatz(maxLaenge = 60)
+        public String bezeichnungDesVerwendetenKataloges;
+    }
+
     @Feld(value = "7303", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 2)
-    public Abrechnungsinfo abrechnungsinfo;
+    public Abrechnungsinfo abrechnungsinfoZurUntersuchung;
     @Feld(value = "4121", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 1)
-    public Gebuehrenordnung gebuehrenordnung;
-    @Feld(value = "5001", feldart = Feldart.bedingt_muss)
-    @Regelsatz(value = { F008.class, F009.class }, maxLaenge = 9)
-    public List<Gebuehrennummer> gebuehrennummer;
+    public Untersuchungsabrechnung_Gebuehrenordnung gebuehrenordnung;
     @Feld(value = "7259", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 60)
-    public String abrechenbareLeistungenKatalogId;
-    @Feld(value = "7251", feldart = Feldart.kann)
-    @Regelsatz(maxLaenge = 60)
-    public String katalog;
+    public KatalogAbrechenbareLeistungenId katalogAbrechenbareLeistungenId;
 
 }
