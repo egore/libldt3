@@ -44,6 +44,9 @@ public class Normalizer {
                 // Rule: everything in parentheses is removed
                 .replaceAll("\\([^)]+\\)", "")
 
+                // Rule: everything after a colon is removed
+                .replaceAll(":.*$", "")
+
                 // Rule: Words ending in uppercase are assumed to be uppercase only and will be combined using
                 // underscores
                 .replaceAll("([A-Z])[ -]([A-Z])", "$1_$2")
@@ -82,7 +85,8 @@ public class Normalizer {
                 .replace(".", "_")
                 .replace("-/", "_")
                 .replace("-", "")
-                .replace(" ", "");
+                .replace(" ", "")
+                .replace(":", "");
 
         // Workaround for ugly naming
         if ("RgEmpfaenger".equals(replace)) {
@@ -100,6 +104,8 @@ public class Normalizer {
         value = PATTERN_UPPER.matcher(value).replaceAll(match -> toUppercaseFirst(match.group(1)));
 
         value = value.replaceAll(" des ([A-Za-z]+)s", "$1");
+
+        value = value.replaceAll("([A-Za-z]+) auf die ([A-Za-z]+)$", "$2$1");
 
         value = value.replace(" der ", " ");
         value = value.replace(" im ", " ");

@@ -68,6 +68,9 @@ public class Feld {
     }
 
     public Integer getMinLaenge() {
+        if ("var".equals(laenge)) {
+            return null;
+        }
         // Just length, no boundaries
         if (PATTERN_NUMBER.matcher(laenge).matches()) {
             return null;
@@ -80,6 +83,9 @@ public class Feld {
     }
 
     public Integer getMaxLaenge() {
+        if ("var".equals(laenge)) {
+            return null;
+        }
         // Just length, no boundaries
         if (PATTERN_NUMBER.matcher(laenge).matches()) {
             return null;
@@ -93,6 +99,13 @@ public class Feld {
             return Integer.valueOf(matcher.group(1));
         }
         return null;
+    }
+
+    public String getLaenge() {
+        if ("var".equals(laenge)) {
+            return null;
+        }
+        return laenge;
     }
 
     @Override
