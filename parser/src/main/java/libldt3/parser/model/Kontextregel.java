@@ -85,7 +85,7 @@ public class Kontextregel extends Regel {
                     MustRule rule = new MustRule();
                     rule.comment = getSpacedText(ctx);
                     // Workaround for incomplete parsing
-                    extracted(ctx.inhaltExists().inhalt(), rule);
+                    extracted(ctx.ifContent().inhaltExists().inhalt(), rule);
                     // Workaround for incomplete parsing
                     if (ctx.fk() != null) {
                         String fk = ctx.fk().INTEGER().toString();
@@ -104,7 +104,7 @@ public class Kontextregel extends Regel {
                     MustRule rule = new MustRule();
                     rule.comment = getSpacedText(ctx);
                     // Workaround for incomplete parsing
-                    extracted(ctx.inhaltExists().inhalt(), rule);
+                    extracted(ctx.ifContent().inhaltExists().inhalt(), rule);
                     // Workaround for incomplete parsing
                     if (ctx.fk() != null) {
                         String fk = ctx.fk().INTEGER().toString();
@@ -153,7 +153,7 @@ public class Kontextregel extends Regel {
                     rule.comment = getSpacedText(ctx);
                     rule.inverted = true;
                     // Workaround for incomplete parsing
-                    extracted(ctx.inhaltExists().inhalt(), rule);
+                    extracted(ctx.ifContent().inhaltExists().inhalt(), rule);
                     // Workaround for incomplete parsing
                     if (ctx.fk() != null) {
                         String fk = ctx.fk().INTEGER().toString();

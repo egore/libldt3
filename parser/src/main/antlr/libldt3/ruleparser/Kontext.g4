@@ -2,46 +2,58 @@ grammar Kontext;
 
 fragment DIGIT: '0'..'9';
 INTEGER: DIGIT+;
-WS : (' '|'\t')+ -> skip;
+WS : (' '|'\t'|'„'|'”'|'“')+ -> skip;
 
+DARF: 'darf';
 ENTWEDER: 'Entweder';
 ES_KANN_ENTWEDER : 'Es kann entweder' ;
 FK: 'FK';
 FELDINHALT_VON: 'Feldinhalt von';
 INHALT_VON: 'Inhalt von';
 IST_VORHADEN: 'ist vorhanden';
+KANN: 'kann';
 KOMMA: ',';
+MUSS: 'muss';
 ODER: 'oder';
 PUNKT: '.';
 UND: 'und';
 WENN: 'Wenn';
 
+objekt:
+    'Obj_' INTEGER ('(Obj_' ('Untersuchungsabrechnung'|'Laborergebnisbericht'|'Untersuchungsanforderung'|'Untersuchungsergebnis Mikrobiologie'|'Einsenderidentifikation'|'Betriebsstätte'|'Abrechnung GKV'|'Obj_Tier/Sonstiges') ')')?;
+
+imObjekt:
+    ('im'|'in') objekt;
+
 // Field identifier
 fk:
     FK INTEGER;
+
+undOder:
+    (UND|ODER|'und/oder'|',');
 
 fkInitialized:
     fk values?;
 
 // Field with one or multiple values
 fkAssignment:
-    fk '=' values?;
+    fk ('='|'≠'|'ungleich') values?;
 
 // Fragement: one and/or multiple values
 values:
-    INTEGER (KOMMA INTEGER)* ((UND|ODER) INTEGER)*;
+    (objekt|INTEGER) (KOMMA INTEGER)* (undOder INTEGER)*;
 
 // Fragment: one and/or multiple fields exist
 exists:
-    'die'? fk ((UND|ODER) fk)+ existsAlternatives;
+    'die'? fk (undOder fk)+ existsAlternatives;
 
 // Fragment: one and/or multiple fields have a given content
 inhalt:
-    (FELDINHALT_VON|INHALT_VON|'der Inhalt') fkAssignment 'ist'?;
+    (FELDINHALT_VON|INHALT_VON|'der Inhalt')? fkAssignment 'ist'?;
 
 // Fragment: Alternative was of specifying a field exists
 existsAlternatives:
-    (IST_VORHADEN|'vorkommen'|'vorhanden'|'vorhanden sein'|'vorhanden ist') ;
+    (IST_VORHADEN|'vorkommen'|'vorhanden'|'vorhanden sein'|'vorhanden ist'|'mindestens einmal vorkommen'|'vorhanden sind') ;
 
 // Rule: Either one of the 'fields' exists
 eitherExists:
@@ -53,18 +65,30 @@ exclusion:
 
 // Fragment: Either fields exist or have a specific content
 inhaltExists:
-    (inhalt|exists) ((UND|ODER) (inhalt|exists))*;
+    (inhalt|exists) (undOder (inhalt|exists))*;
+
+ifContent:
+    (WENN|'Nur wenn'|'wenn') imObjekt? inhaltExists;
 
 ifRuleMust:
-    WENN inhaltExists KOMMA? 'dann'? 'muss' fk 'auch'? existsAlternatives PUNKT?;
+    ifContent KOMMA? 'dann'? MUSS fk 'mindestens einmal'? imObjekt? 'auch'? existsAlternatives PUNKT?;
 
 ifRuleMay:
-    WENN inhaltExists KOMMA? 'dann'? 'kann' fk 'auch'? existsAlternatives PUNKT?;
+    ifContent KOMMA? 'dann'? KANN fk imObjekt? 'auch'? existsAlternatives PUNKT?;
 
 ifRuleMustNot:
-    WENN inhaltExists KOMMA? 'dann'? 'darf' fk ('nicht vorkommen'|'nicht vorhanden'|'nicht vorhanden sein') PUNKT?;
+    ifContent KOMMA? 'dann'? DARF fk imObjekt? ('nicht vorkommen'|'nicht vorhanden'|'nicht vorhanden sein'|'nicht vorhanden ist') PUNKT?;
+
+ifRuleMayInverted:
+    fk DARF imObjekt? ('nur vorhanden sein'|'nur vorkommen') KOMMA? 'wenn' inhalt imObjekt existsAlternatives PUNKT?;
+
+ifRuleCanInverted:
+    fk imObjekt? KANN imObjekt? ('nur vorhanden sein'|'nur vorkommen') KOMMA? ifContent PUNKT?;
+
+ifRuleCanNotInverted:
+    fk imObjekt? KANN imObjekt? ('nur vorhanden sein'|'nur vorkommen') KOMMA? fk imObjekt? ('nicht vorkommen'|'nicht vorhanden'|'nicht vorhanden sein'|'nicht vorhanden ist') PUNKT?;
 
 // Top level rule
 regel:
-    (eitherExists | ifRuleMust | ifRuleMay | ifRuleMustNot)+;
+    (eitherExists | ifRuleMust | ifRuleMay | ifRuleMustNot | ifRuleMayInverted | ifRuleCanInverted | ifRuleCanNotInverted)+;
 
