@@ -103,7 +103,10 @@ public class Normalizer {
                 .replace("?", "")
                 .replace(" ", "")
                 .replace(":", "")
-                .replace("/", "");
+                .replace("/", "")
+
+                // Workaround for parentheses in parentheses (page 167)
+                .replace(")", "");
 
         // Workaround for ugly naming
         if ("RgEmpfaenger".equals(replace)) {
