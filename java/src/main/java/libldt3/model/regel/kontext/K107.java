@@ -21,7 +21,15 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
+import libldt3.model.enums.Einsenderstatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,9 +43,26 @@ public class K107 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K107.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("7321", "8114");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        Einsenderstatus feld7321 = (Einsenderstatus) fields.get("7321").get(owner);
+
+        // Wenn Inhalt von FK 7321 = 01, 02 oder 07 ist, dann muss FK 8114 vorhanden sein.
+        if (feld7321 == Einsenderstatus.Erstveranlasser || feld7321 == Einsenderstatus.EinsenderArzt ||
+                feld7321 == Einsenderstatus.Laborarzt_Befundersteller) {
+            return containsAnyString(fields.get("8114"), owner);
+        }
+
+        return true;
     }
 
 }
