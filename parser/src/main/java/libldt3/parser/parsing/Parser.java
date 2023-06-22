@@ -268,10 +268,6 @@ public class Parser {
                     }
                 };
                 stripper.setStartPage(117);
-                stripper.setEndPage(127);
-                stripper.getText(document);
-                // Skip 128
-                stripper.setStartPage(129);
                 stripper.setEndPage(169);
                 stripper.getText(document);
                 // Skip 170
