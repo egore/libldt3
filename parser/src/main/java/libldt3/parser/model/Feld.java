@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Feld {
+public class Feld implements Comparable<Feld> {
 
     private static final Pattern PATTERN_NUMBER = Pattern.compile("^[0-9]+$");
     private static final Pattern PATTERN_MIN_MAX = Pattern.compile("^([0-9]+) *[0-9,≤–-]+ *([0-9]+)$");
@@ -137,5 +137,10 @@ public class Feld {
     @Override
     public int hashCode() {
         return Objects.hash(fk);
+    }
+
+    @Override
+    public int compareTo(Feld o) {
+        return this.fk.compareTo(o.fk);
     }
 }
