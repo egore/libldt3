@@ -115,7 +115,7 @@ public class Parser {
             {
                 Holder<State> state = new Holder<>(State.HEADER);
                 Holder<String> lastText = new Holder<>(null);
-                Holder<Regel> currentRegel = new Holder<>(new Kontextregel(felder));
+                Holder<Regel> currentRegel = new Holder<>(new Kontextregel(felder, regeln));
 
                 List<Column> columns = Arrays.asList(new Column(), new Column(), new Column(), new Column(), new Column());
                 final Holder<Integer> lastColumn = new Holder<>(-1);
@@ -131,7 +131,7 @@ public class Parser {
                             // If too much space is between the words, split them into two text blocks
                             if (p.getX() - lastX > 8.0f) {
                                 if (buffer.length() > 0) {
-                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, () -> new Kontextregel(felder));
+                                    handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, () -> new Kontextregel(felder, regeln));
                                 }
                                 buffer.setLength(0);
                                 firstX = p.getX();
@@ -141,7 +141,7 @@ public class Parser {
                             buffer.append(p.getUnicode());
                         }
                         if (buffer.length() > 0) {
-                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, () -> new Kontextregel(felder));
+                            handleRegel(firstX, firstY, buffer.toString().trim(), columns, currentRegel, lastColumn, regeln, state, lastText, () -> new Kontextregel(felder, regeln));
                         }
                         super.writeString(text, textPositions);
                     }

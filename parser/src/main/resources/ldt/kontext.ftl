@@ -69,14 +69,15 @@ public class ${kontext.regelnummer} implements Kontextregel {
         return false;
 </#if>
 <#if kontext.mustRules?has_content>
-    <#list kontext.usedFields as feld>
+    <#list kontext.mustRuleFields as feld>
         ${feld.typ} feld${feld.fk} = (${feld.typ}) fields.get("${feld.fk}").get(owner);
     </#list>
+
 
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
         if (<#list mustRule.felder as feld>feld${feld.feld.fk} == ${feld.init}<#sep> || </#list>) {
-            return <#if mustRule.inverted>!</#if>containsAnyString(feld${mustRule.must.fk}, owner);
+            return <#if mustRule.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner);
         }
 
 </#list>
