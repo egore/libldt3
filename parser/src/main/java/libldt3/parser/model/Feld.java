@@ -12,7 +12,7 @@ public class Feld {
 
     private static final Pattern PATTERN_NUMBER = Pattern.compile("^[0-9]+$");
     private static final Pattern PATTERN_MIN_MAX = Pattern.compile("^([0-9]+) *[0-9,≤–-]+ *([0-9]+)$");
-    private static final Pattern PATTERN_MIN_MID_MAX = Pattern.compile("^([0-9]+), *[0-9]+, *([0-9]+)$");
+    private static final Pattern PATTERN_MIN_MID_MAX = Pattern.compile("^([0-9]+),( *[0-9]+,)+ *([0-9]+)$");
     private static final Pattern PATTERN_MAX = Pattern.compile("^ *[,≤] *([0-9]+)$");
 
     public enum Format {
@@ -105,7 +105,7 @@ public class Feld {
         }
         matcher = PATTERN_MIN_MID_MAX.matcher(laenge);
         if (matcher.matches()) {
-            return Integer.valueOf(matcher.group(2));
+            return Integer.valueOf(matcher.group(3));
         }
         matcher = PATTERN_MAX.matcher(laenge);
         if (matcher.matches()) {
