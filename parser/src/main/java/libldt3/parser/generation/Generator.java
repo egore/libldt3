@@ -24,8 +24,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 public class Generator {
@@ -115,6 +118,22 @@ public class Generator {
             try (Writer writer = Files.newBufferedWriter(dir.resolve(objekt.name + ".java"), StandardCharsets.UTF_8)) {
                 objektTemplate.process(Map.of("objekt", objekt), writer);
             }
+        }
+    }
+
+    public void generateKontextParserTest(Collection<Regel> regeln) throws IOException, TemplateException {
+        Template kontextTemplate = config.getTemplate("unit.ftl");
+        Path dir = Path.of("./generated/test/libldt3/ruleparser");
+        initDir(dir);
+        List<Kontextregel> kontextregeln = new ArrayList<>();
+        for (Regel regel : regeln) {
+            if (regel instanceof Kontextregel) {
+                kontextregeln.add((Kontextregel) regel);
+            }
+        }
+        Collections.sort(kontextregeln);
+        try (Writer writer = Files.newBufferedWriter(dir.resolve("KontextParserTest.java"), StandardCharsets.UTF_8)) {
+            kontextTemplate.process(Map.of("regeln", kontextregeln), writer);
         }
     }
 }

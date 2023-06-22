@@ -56,6 +56,7 @@ public class Main {
         generator.generateKontextregeln(regeln.getLeft().values());
         generator.generateFormatregeln(regeln.getLeft().values());
         generator.generateObjekte(regeln.getRight().values());
+        generator.generateKontextParserTest(regeln.getLeft().values());
     }
 
 
