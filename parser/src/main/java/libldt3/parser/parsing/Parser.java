@@ -436,7 +436,7 @@ public class Parser {
                                 }
 
                                 // Move the current field below the new object
-                                child.felder.add(current);
+                                addNonDuplicateField(current, child);
 
                                 if (isNew) {
                                     // Force type
@@ -447,7 +447,7 @@ public class Parser {
                                 if (parent != objekt.value) {
                                     objekt.value.felder.remove(current);
                                     i--;
-                                    parent.felder.add(current);
+                                    addNonDuplicateField(current, parent);
                                 }
                             }
                             previous = current;
@@ -523,6 +523,17 @@ public class Parser {
             }
             lastColumn.value = column;
         }
+    }
+
+    private static void addNonDuplicateField(Objekt.FeldExtended current, Objekt parent) {
+        // Workaround: Obj_0042 has multiple children with same semantics. This allows reusage (which is nice),
+        // but at the cost of actually invalid usage (types are different). This only works coincidentally
+        for (var existing : parent.felder) {
+            if (existing.feld.equals(current.feld)) {
+                return;
+            }
+        }
+        parent.felder.add(current);
     }
 
     private static void handleFeld(float x, float y, String text, List<Column> columns, Holder<Feld> feld,
