@@ -383,30 +383,23 @@ public class Parser {
 
                         LOG.debug("Completed {} with {} fields", objekt.value, objekt.value.felder.size());
 
-                        Stack<Pair<Integer, Objekt>> children = new Stack<>();
                         // Cleanup fields of the object
+                        Stack<Pair<Integer, Objekt>> children = new Stack<>();
+                        children.push(Pair.of(1, objekt.value));
+                        Objekt.FeldExtended previous = objekt.value.felder.get(0);
                         for (int i = 1; i < objekt.value.felder.size(); i++) {
 
                             Objekt.FeldExtended current = objekt.value.felder.get(i);
-                            Objekt.FeldExtended previous = objekt.value.felder.get(i - 1);
-                            Objekt parent = null;
-                            if (current.vorkommen.position == previous.vorkommen.position + 1) {
-                                parent = objekt.value;
-                            } else {
-                                while (children.size() > 0) {
-                                    if (current.vorkommen.position <= children.peek().getLeft()) {
-                                        children.pop();
-                                    } else {
-                                        break;
-                                    }
-                                }
-                                if (children.size() > 0 && current.vorkommen.position == children.peek().getLeft() + 1) {
-                                    parent = children.peek().getRight();
-                                    previous = children.peek().getRight().felder.get(children.peek().getRight().felder.size() - 1);
+                            while (children.size() > 0) {
+                                if (current.vorkommen.position < children.peek().getLeft()) {
+                                    children.pop();
+                                } else {
+                                    break;
                                 }
                             }
+                            Objekt parent = children.peek().getRight();
 
-                            if (parent != null) {
+                            if (current.vorkommen.position > previous.vorkommen.position) {
                                 // We found a child definition, create it as Objekt below its parent
                                 Objekt child = null;
                                 String name = Normalizer.toUppercaseFirst(previous.getName());
@@ -419,7 +412,7 @@ public class Parser {
                                 }
                                 boolean isNew = false;
                                 if (child == null) {
-                                    child = new Objekt("0", newObjektName, false);
+                                    child = new Objekt(objekt.value.nummer, newObjektName, false);
                                     objekt.value.children.add(child);
                                     isNew = true;
                                     children.push(Pair.of(current.vorkommen.position, child));
@@ -449,7 +442,15 @@ public class Parser {
                                     // Force type
                                     previous.forcedTyp = child;
                                 }
+
+                            } else {
+                                if (parent != objekt.value) {
+                                    objekt.value.felder.remove(current);
+                                    i--;
+                                    parent.felder.add(current);
+                                }
                             }
+                            previous = current;
                         }
                         state.value = State.NAME;
                         break;
