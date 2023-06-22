@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2023  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,32 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.ResistenzInterpretation;
 import libldt3.model.enums.ResistenzNach;
 import libldt3.model.enums.Sensitivitaet;
+import libldt3.model.regel.kontext.K100;
 
 /**
  * In diesem Objekt wird ein Antibiogramm (Matrix) aus dem Bereich Mikrobiologie
- * transportiert. Die Darstellung des Antibiogramms erfolgt als mehrdimensionale
- * Matrix.
+ * transportiert. Die Darstellung des Antibiogramms erfolgt als dreidimensionale
+ * Matrix. Um den redundanten Informationsgehalt so gering wie möglich zu halten
+ * wird folgende Matrix- Struktur zugrunde gelegt: Matrix K1 K2 K3 … Kx W1
+ * Sensitivität MHK Breakpoint MHK Einheit Resistenz Interpretation Sensitivität
+ * MHK Breakpoint MHK Einheit Resistenz Interpretation Sensitivität MHK Breakpoint
+ * MHK Einheit Resistenz Interpretation Sensitivität MHK Breakpoint MHK Einheit
+ * Resistenz Interpretation W2 Sensitivität MHK Breakpoint MHK Einheit Resistenz
+ * Interpretation Sensitivität MHK Breakpoint MHK Einheit Resistenz Interpretation
+ * Sensitivität MHK Breakpoint MHK Einheit Resistenz Interpretation Sensitivität
+ * MHK Breakpoint MHK Einheit Resistenz Interpretation W3 Sensitivität MHK
+ * Breakpoint MHK Einheit Resistenz Interpretation Sensitivität MHK Breakpoint MHK
+ * Einheit Resistenz Interpretation Sensitivität MHK Breakpoint MHK Einheit
+ * Resistenz Interpretation Sensitivität MHK Breakpoint MHK Einheit Resistenz
+ * Interpretation …… Wy Sensitivität MHK Breakpoint MHK Einheit Resistenz
+ * Interpretation Sensitivität MHK Breakpoint MHK Einheit Resistenz Interpretation
+ * Sensitivität MHK Breakpoint MHK Einheit Resistenz Interpretation Sensitivität
+ * MHK Breakpoint MHK Einheit Resistenz Interpretation Kx = Keim-Identifizierung (x
+ * = max. Anzahl der Keime) Wy = Wertepaar aus Wirkstoffident und Ableitungen (y =
+ * max. Anzahl der getesteten Wirkstoffe) IT in der Arztpraxis LDT 3.0 LDT 3
+ * Satzbeschreibung, Version 3.2.15
  */
-@Objekt("0011")
+@Objekt(value = "0011", kontextregeln = K100.class)
 public class Antibiogramm implements Kontext {
 
     @Objekt
@@ -49,10 +68,10 @@ public class Antibiogramm implements Kontext {
         public List<String> wirkstoffGenericNummer;
         @Feld(value = "7359", feldart = Feldart.bedingt_kann)
         @Regelsatz(maxLaenge = 60)
-        public List<String> wirkstoffOid;
+        public List<String> oidWirkstoff;
         @Feld(value = "7370", feldart = Feldart.bedingt_kann)
         @Regelsatz(maxLaenge = 60)
-        public List<String> wirkstoffname;
+        public List<String> wirkstoffoderHandelsname;
         @Feld(value = "7354", feldart = Feldart.kann)
         @Regelsatz(maxLaenge = 60)
         public List<KeimIdentifizierung> keimIdentifizierung;
@@ -67,28 +86,34 @@ public class Antibiogramm implements Kontext {
         public Sensitivitaet sensitivitaet;
         @Feld(value = "7289", feldart = Feldart.bedingt_kann)
         @Regelsatz(maxLaenge = 60)
-        public String mhk;
-        @Feld(value = "7369", feldart = Feldart.bedingt_kann)
-        @Regelsatz(maxLaenge = 60)
-        public String mhkEinheit;
+        public MhkBreakpointWert mhkBreakpointWert;
         @Feld(value = "7290", feldart = Feldart.kann)
         @Regelsatz(laenge = 1)
-        public List<ResistenzInterpretationErweitert> resistenzInterpretation;
+        public List<KeimIdentifizierung_ResistenzInterpretation> resistenzInterpretation;
     }
 
     @Objekt
-    public static class ResistenzInterpretationErweitert implements Kontext {
+    public static class MhkBreakpointWert implements Kontext {
+        @SuppressWarnings("unused")
+        public String value;
+        @Feld(value = "7369", feldart = Feldart.bedingt_kann)
+        @Regelsatz(maxLaenge = 60)
+        public String mhkEinheit;
+    }
+
+    @Objekt
+    public static class KeimIdentifizierung_ResistenzInterpretation implements Kontext {
         @SuppressWarnings("unused")
         public ResistenzInterpretation value;
         @Feld(value = "7424", feldart = Feldart.kann)
         @Regelsatz(laenge = 1)
-        public ResistenzNach resistenzNach;
+        public ResistenzNach resistenzErstelltNach;
     }
 
     @Feld(value = "7287", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
     public List<WirkstoffIdent> wirkstoffIdent;
-    @Feld(value = "8237", name = "Ergebnistext", feldart = Feldart.bedingt_kann)
+    @Feld(value = "8237", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 12)
     public Fliesstext ergebnistext;
 

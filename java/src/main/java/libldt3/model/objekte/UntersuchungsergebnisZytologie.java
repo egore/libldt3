@@ -28,21 +28,15 @@ import libldt3.annotations.Feldart;
 import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.enums.Abrechnungsinfo;
 import libldt3.model.enums.Ergebnis;
 import libldt3.model.enums.Ergebnis2;
 import libldt3.model.enums.Grenzwertindikator;
 import libldt3.model.enums.HpvHrTestergebnis;
 import libldt3.model.enums.KatalogIdAnforderbareLeistungen;
-import libldt3.model.enums.SpezifizierungVeranlassungsgrund;
 import libldt3.model.enums.TestStatus;
-import libldt3.model.enums.Untersuchungsanlass;
 import libldt3.model.regel.erlaubt.E028;
 import libldt3.model.regel.format.F024;
-import libldt3.model.regel.kontext.K032;
-import libldt3.model.regel.kontext.K034;
 import libldt3.model.regel.kontext.K053;
-import libldt3.model.regel.kontext.K060;
 import libldt3.model.regel.kontext.K076;
 import libldt3.model.regel.kontext.K080;
 import libldt3.model.regel.kontext.K081;
@@ -51,13 +45,12 @@ import libldt3.model.regel.kontext.K096;
 import libldt3.model.regel.kontext.K099;
 import libldt3.model.regel.kontext.K100;
 import libldt3.model.regel.kontext.K119;
-import libldt3.model.regel.kontext.K133;
 
 /**
  * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie
  * transportiert werden.
  */
-@Objekt(value = "0063", kontextregeln = {K032.class, K034.class, K053.class, K060.class, K076.class, K080.class, K081.class, K082.class, K096.class, K100.class, K119.class})
+@Objekt(value = "0063", kontextregeln = {K053.class, K076.class, K080.class, K081.class, K082.class, K096.class, K100.class, K119.class})
 public class UntersuchungsergebnisZytologie implements Kontext {
 
     @Objekt
@@ -168,51 +161,6 @@ public class UntersuchungsergebnisZytologie implements Kontext {
         public String codierungGruppe;
     }
 
-    @Objekt(kontextregeln = K133.class)
-    public static class AbrechnungsinfoZurUntersuchung implements Kontext {
-        @SuppressWarnings("unused")
-        public Abrechnungsinfo value;
-        @Feld(value = "8417", feldart = Feldart.kann)
-        @Regelsatz(laenge = 2)
-        public AnlassUntersuchung anlassUntersuchung;
-        @Feld(value = "8200", feldart = Feldart.bedingt_muss)
-        @Regelsatz(laenge = 12)
-        public List<Diagnose> akutdiagnose;
-        @Feld(value = "4209", feldart = Feldart.bedingt_kann)
-        @Regelsatz(maxLaenge = 60)
-        public List<String> zusaetzlicheAngabenZuUntersuchungen;
-        @Feld(value = "4208", feldart = Feldart.kann)
-        @Regelsatz(maxLaenge = 60)
-        public List<VorbefundMedikation> vorbefundMedikation;
-    }
-
-    @Objekt
-    public static class AnlassUntersuchung implements Kontext {
-        @SuppressWarnings("unused")
-        public Untersuchungsanlass value;
-        @Feld(value = "8427", feldart = Feldart.bedingt_kann)
-        @Regelsatz(laenge = 2)
-        public SpezifizierungVeranlassungsgrunde spezifizierungVeranlassungsgrunde;
-    }
-
-    @Objekt(kontextregeln = K100.class)
-    public static class SpezifizierungVeranlassungsgrunde implements Kontext {
-        @SuppressWarnings("unused")
-        public SpezifizierungVeranlassungsgrund value;
-        @Feld(value = "8217", feldart = Feldart.bedingt_muss)
-        @Regelsatz(laenge = 32)
-        public Fliesstext praezisierungVeranlassungsgrund;
-    }
-
-    @Objekt
-    public static class VorbefundMedikation implements Kontext {
-        @SuppressWarnings("unused")
-        public String value;
-        @Feld(value = "8170", feldart = Feldart.bedingt_muss)
-        @Regelsatz(laenge = 10)
-        public List<Medikament> medikament;
-    }
-
     @Feld(value = "7304", feldart = Feldart.muss)
     @Regelsatz(maxLaenge = 60)
     public ErgebnisId ergebnisId;
@@ -291,11 +239,5 @@ public class UntersuchungsergebnisZytologie implements Kontext {
     @Feld(value = "3473", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Boolean untersuchungsergebnisDurchAuftragslaboratoriumErstellt;
-    @Feld(value = "7303", feldart = Feldart.muss)
-    @Regelsatz(maxLaenge = 2)
-    public List<AbrechnungsinfoZurUntersuchung> abrechnungsinfoZurUntersuchung;
-    @Feld(value = "8110", feldart = Feldart.bedingt_muss)
-    @Regelsatz(laenge = 6)
-    public List<Anhang> anhang;
 
 }
