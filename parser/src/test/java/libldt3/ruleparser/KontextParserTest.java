@@ -25,7 +25,7 @@ public class KontextParserTest {
         KontextBaseListener kontextBaseListener = new KontextBaseListener() {
             @Override
             public void exitEitherExists(KontextParser.EitherExistsContext ctx) {
-                Assertions.assertEquals(2, ctx.exists().fk().size());
+                Assertions.assertEquals(2, ctx.fieldExists().fk().size());
                 super.exitEitherExists(ctx);
             }
         };
@@ -41,7 +41,7 @@ public class KontextParserTest {
         KontextBaseListener kontextBaseListener = new KontextBaseListener() {
             @Override
             public void exitEitherExists(KontextParser.EitherExistsContext ctx) {
-                Assertions.assertEquals(3, ctx.exists().fk().size());
+                Assertions.assertEquals(3, ctx.fieldExists().fk().size());
                 super.exitEitherExists(ctx);
             }
         };

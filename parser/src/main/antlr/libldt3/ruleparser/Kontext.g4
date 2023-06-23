@@ -2,93 +2,109 @@ grammar Kontext;
 
 fragment DIGIT: '0'..'9';
 INTEGER: DIGIT+;
-WS : (' '|'\t'|'„'|'”'|'“')+ -> skip;
+WS: (' '|'\t'|'„'|'”'|'“')+ -> skip;
+FILLWORDS: ('der'|'die'|'das'|'Der'|'Die'|'Das'|'ist'|'sind'|'sein') -> skip;
 
 DARF: 'darf';
-ENTWEDER: 'Entweder';
-ES_KANN_ENTWEDER : 'Es kann entweder' ;
-FK: 'FK';
-FELDINHALT_VON: 'Feldinhalt von';
-INHALT_VON: 'Inhalt von';
-IST_VORHADEN: 'ist vorhanden';
 KANN: 'kann';
-KOMMA: ',';
 MUSS: 'muss';
-ODER: 'oder';
+KOMMA: ',';
 PUNKT: '.';
-UND: 'und';
-WENN: 'Wenn';
 
+// ----------------------------------------------------------------------------
+// Identifiers
+// ----------------------------------------------------------------------------
+
+// Fragment: Object identifier
 objekt:
-    'Obj_' INTEGER ('(Obj_' ('Untersuchungsabrechnung'|'Laborergebnisbericht'|'Untersuchungsanforderung'|'Untersuchungsergebnis Mikrobiologie'|'Einsenderidentifikation'|'Betriebsstätte'|'Abrechnung GKV'|'Obj_Tier/Sonstiges') ')')?;
+    'Obj_' INTEGER ('(' ('Obj_Untersuchungsabrechnung'|'Obj_Laborergebnisbericht'|'Obj_Untersuchungsanforderung'|'Obj_Untersuchungsergebnis Mikrobiologie'|'Obj_Einsenderidentifikation'|'Obj_Betriebsstätte'|'Obj_Abrechnung GKV'|'Obj_Tier/Sonstiges'|'Obj_Veranlassungsgrund'|'Patient'|'Obj_Untersuchungsergebnis Klinische Chemie'|'Obj_Material') ')')?;
+// Fragment: Field identifier
+fk:
+    'FK' INTEGER;
 
+// ----------------------------------------------------------------------------
+// Checks for existence
+// ----------------------------------------------------------------------------
+
+// Fragment: Alternative spellings of a field exists
+existsAlternatives:
+    ('vorhanden'|'mindestens einmal vorkommen'|'vorkommt'|'vorkommen'|'im Auftrag übermittelt wurde');
+// Fragment: Alternative spellings of a field does not exist
+notExistsAlternatives:
+    'nicht' existsAlternatives;
+// Fragment: Alternative spellings of a field does only exist
+onlyExists:
+    'nur' 'dann'? existsAlternatives;
+
+// ----------------------------------------------------------------------------
+// Programming logic
+// ----------------------------------------------------------------------------
+
+// Logical: Boolean operators
+undOder:
+    'und'|'oder'|'und/oder'|KOMMA;
+
+wenn:
+    'Wenn'|'Nur wenn'|'wenn'|'Falls';
+
+// Fragment: "if" condition
+ifCondition:
+    (imObjekt|inSatzart)? fieldExistsOrHasSpecificValue imObjekt?;
+
+// ----------------------------------------------------------------------------
+// Containers
+// ----------------------------------------------------------------------------
+
+// Fragment: Container for Objekt
 imObjekt:
     ('im'|'in') objekt;
+// Fragment: Container for Satzart
+inSatzart:
+    'in' 'jeweiliger'? 'Satzart' INTEGER ('oder' INTEGER)?;
 
-// Field identifier
-fk:
-    FK INTEGER;
+// ----------------------------------------------------------------------------
+// Field content rules
+// ----------------------------------------------------------------------------
 
-undOder:
-    (UND|ODER|'und/oder'|',');
+// Logical: Field with one or multiple values
+fieldAssignment:
+    fk imObjekt? (('='|'≠'|'ungleich'|'nur Wert'|'mit den Werten'|'Wert') (objekt|INTEGER) (undOder INTEGER)* inSatzart?|('mit den Inhalten'|'mit dem Inhalt') (objekt|INTEGER) (undOder INTEGER)*? 'vorkommt');
+// Logical: one and/or multiple fields have a given content
+fieldContent:
+    ('Feldinhalt von'|'Inhalt von'|'Inhalt')? fieldAssignment;
 
-fkInitialized:
-    fk values?;
+// Logical: one and/or multiple fields exist
+fieldExists:
+    fk (undOder fk)+ imObjekt? 'muss jeweils'? existsAlternatives;
+fieldNotExists:
+    fk (undOder fk)+ imObjekt? notExistsAlternatives;
+fieldOnlyExists:
+    fk (undOder fk)+ imObjekt? onlyExists;
 
-// Field with one or multiple values
-fkAssignment:
-    fk ('='|'≠'|'ungleich') values?;
-
-// Fragement: one and/or multiple values
-values:
-    (objekt|INTEGER) (KOMMA INTEGER)* (undOder INTEGER)*;
-
-// Fragment: one and/or multiple fields exist
-exists:
-    'die'? fk (undOder fk)+ existsAlternatives;
-
-// Fragment: one and/or multiple fields have a given content
-inhalt:
-    (FELDINHALT_VON|INHALT_VON|'der Inhalt')? fkAssignment 'ist'?;
-
-// Fragment: Alternative was of specifying a field exists
-existsAlternatives:
-    (IST_VORHADEN|'vorkommen'|'vorhanden'|'vorhanden sein'|'vorhanden ist'|'mindestens einmal vorkommen'|'vorhanden sind') ;
-
-// Rule: Either one of the 'fields' exists
-eitherExists:
-    (ENTWEDER|ES_KANN_ENTWEDER) exists PUNKT exclusion?;
-
-// Rule: Fields exclude each other
-exclusion:
-    'Beide Feldkennungen dürfen nicht gleichzeitig vorhanden sein' PUNKT;
+fieldRule:
+    'Regel' 'F' INTEGER;
 
 // Fragment: Either fields exist or have a specific content
-inhaltExists:
-    (inhalt|exists) (undOder (inhalt|exists))*;
+fieldExistsOrHasSpecificValue:
+    (fieldContent|fieldExists|fieldNotExists|fieldOnlyExists|fieldRule) (undOder (fieldContent|fieldExists|fieldNotExists|fieldOnlyExists|fieldRule))*;
 
-ifContent:
-    (WENN|'Nur wenn'|'wenn') imObjekt? inhaltExists;
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
 
-ifRuleMust:
-    ifContent KOMMA? 'dann'? MUSS fk 'mindestens einmal'? imObjekt? 'auch'? existsAlternatives PUNKT?;
+// Rule: Either one of the 'fields' exists, and might exclude each other
+eitherExists:
+    ('Entweder'|'Es kann entweder') fieldExists PUNKT ('Beide Feldkennungen dürfen nicht gleichzeitig' existsAlternatives PUNKT)?;
 
-ifRuleMay:
-    ifContent KOMMA? 'dann'? KANN fk imObjekt? 'auch'? existsAlternatives PUNKT?;
+ifThenExists:
+    wenn ifCondition (undOder ifCondition)* KOMMA? 'dann'? (MUSS|KANN|DARF|'müssen') 'entweder'? fk 'mindestens einmal'? imObjekt? 'auch'? (onlyExists|existsAlternatives|notExistsAlternatives) PUNKT?;
 
-ifRuleMustNot:
-    ifContent KOMMA? 'dann'? DARF fk imObjekt? ('nicht vorkommen'|'nicht vorhanden'|'nicht vorhanden sein'|'nicht vorhanden ist') PUNKT?;
+ifThenValue:
+    wenn ifCondition (undOder ifCondition)* KOMMA? 'dann'? (MUSS|KANN|DARF|'müssen'|'gilt für den') 'auch'? fieldExistsOrHasSpecificValue PUNKT?;
 
-ifRuleMayInverted:
-    fk DARF imObjekt? ('nur vorhanden sein'|'nur vorkommen') KOMMA? 'wenn' inhalt imObjekt existsAlternatives PUNKT?;
-
-ifRuleCanInverted:
-    fk imObjekt? KANN imObjekt? ('nur vorhanden sein'|'nur vorkommen') KOMMA? ifContent PUNKT?;
-
-ifRuleCanNotInverted:
-    fk imObjekt? KANN imObjekt? ('nur vorhanden sein'|'nur vorkommen') KOMMA? fk imObjekt? ('nicht vorkommen'|'nicht vorhanden'|'nicht vorhanden sein'|'nicht vorhanden ist') PUNKT?;
+ifThenExistsInverted:
+    fk (undOder fk)* imObjekt? (MUSS|KANN|DARF) imObjekt? 'mindestens einmal'? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT?;
 
 // Top level rule
 regel:
-    (eitherExists | ifRuleMust | ifRuleMay | ifRuleMustNot | ifRuleMayInverted | ifRuleCanInverted | ifRuleCanNotInverted)+;
-
+    (eitherExists | ifThenExists | ifThenValue | ifThenExistsInverted)+;

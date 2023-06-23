@@ -58,7 +58,7 @@ public class Kontextregel extends Regel {
 
                 @Override
                 public void exitEitherExists(KontextParser.EitherExistsContext ctx) {
-                    for (var x : ctx.exists().fk()) {
+                    for (var x : ctx.fieldExists().fk()) {
                         String fk = x.INTEGER().toString();
                         Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                         if (!usedFields.contains(e)) {
@@ -81,53 +81,34 @@ public class Kontextregel extends Regel {
                 }
 
                 @Override
-                public void exitIfRuleMust(KontextParser.IfRuleMustContext ctx) {
+                public void exitIfThenExists(KontextParser.IfThenExistsContext ctx) {
                     MustRule rule = new MustRule();
                     rule.comment = getSpacedText(ctx);
-                    // Workaround for incomplete parsing
-                    extracted(ctx.ifContent().inhaltExists().inhalt(), rule);
-                    // Workaround for incomplete parsing
-                    if (ctx.fk() != null) {
-                        String fk = ctx.fk().INTEGER().toString();
-                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                        if (!usedFields.contains(e)) {
-                            usedFields.add(e);
-                        }
-                        rule.must = e;
+                    rule.inverted = ctx.notExistsAlternatives() != null && !ctx.notExistsAlternatives().isEmpty();
+                    for (var ifBody : ctx.ifCondition()) {
+                        extracted(ifBody.fieldExistsOrHasSpecificValue().fieldContent(), rule);
                     }
+                    // Workaround for incomplete parsing
+                    String fk = ctx.fk().INTEGER().toString();
+                    Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                    if (!usedFields.contains(e)) {
+                        usedFields.add(e);
+                    }
+                    rule.must = e;
                     mustRules.add(rule);
-                    super.exitIfRuleMust(ctx);
+                    super.exitIfThenExists(ctx);
                 }
 
-                @Override
-                public void exitIfRuleMay(KontextParser.IfRuleMayContext ctx) {
-                    MustRule rule = new MustRule();
-                    rule.comment = getSpacedText(ctx);
-                    // Workaround for incomplete parsing
-                    extracted(ctx.ifContent().inhaltExists().inhalt(), rule);
-                    // Workaround for incomplete parsing
-                    if (ctx.fk() != null) {
-                        String fk = ctx.fk().INTEGER().toString();
-                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                        if (!usedFields.contains(e)) {
-                            usedFields.add(e);
-                        }
-                        rule.must = e;
-                    }
-                    mustRules.add(rule);
-                    super.exitIfRuleMay(ctx);
-                }
-
-                private void extracted(List<KontextParser.InhaltContext> ctx, MustRule rule) {
+                private void extracted(List<KontextParser.FieldContentContext> ctx, MustRule rule) {
                     if (ctx != null) {
                         for (var inhalt : ctx) {
-                            var fkAssignment = inhalt.fkAssignment();
+                            var fkAssignment = inhalt.fieldAssignment();
                             String fk = fkAssignment.fk().INTEGER().toString();
                             Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                             if (!usedFields.contains(e)) {
                                 usedFields.add(e);
                             }
-                            for (var i : fkAssignment.values().INTEGER()) {
+                            for (var i : fkAssignment.INTEGER()) {
                                 String value = i.toString();
                                 outer:
                                 for (Regel r : e.regeln) {
@@ -147,25 +128,6 @@ public class Kontextregel extends Regel {
                     }
                 }
 
-                @Override
-                public void exitIfRuleMustNot(KontextParser.IfRuleMustNotContext ctx) {
-                    MustRule rule = new MustRule();
-                    rule.comment = getSpacedText(ctx);
-                    rule.inverted = true;
-                    // Workaround for incomplete parsing
-                    extracted(ctx.ifContent().inhaltExists().inhalt(), rule);
-                    // Workaround for incomplete parsing
-                    if (ctx.fk() != null) {
-                        String fk = ctx.fk().INTEGER().toString();
-                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                        if (!usedFields.contains(e)) {
-                            usedFields.add(e);
-                        }
-                        rule.must = e;
-                    }
-                    mustRules.add(rule);
-                    super.exitIfRuleMustNot(ctx);
-                }
             };
             parser.addParseListener(kontextBaseListener);
             parser.regel();
