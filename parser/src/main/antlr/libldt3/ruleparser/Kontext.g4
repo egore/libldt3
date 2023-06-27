@@ -75,11 +75,11 @@ fieldContent:
 
 // Logical: one and/or multiple fields exist
 fieldExists:
-    fk (undOder fk)+ imObjekt? 'muss jeweils'? existsAlternatives;
+    fk (undOder fk)* imObjekt? 'muss jeweils'? existsAlternatives;
 fieldNotExists:
-    fk (undOder fk)+ imObjekt? notExistsAlternatives;
+    fk (undOder fk)* imObjekt? notExistsAlternatives;
 fieldOnlyExists:
-    fk (undOder fk)+ imObjekt? onlyExists;
+    fk (undOder fk)* imObjekt? onlyExists;
 
 fieldRule:
     'Regel' 'F' INTEGER;
