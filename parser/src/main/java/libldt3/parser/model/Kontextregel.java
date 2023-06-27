@@ -57,7 +57,7 @@ public class Kontextregel extends Regel {
             KontextParser parser = new KontextParser(tokens);
             KontextBaseListener kontextBaseListener = new KontextBaseListener() {
 
-                @Override
+                /*@Override
                 public void exitEitherExists(KontextParser.EitherExistsContext ctx) {
                     for (var x : ctx.fieldExists().fk()) {
                         String fk = x.INTEGER().toString();
@@ -81,7 +81,7 @@ public class Kontextregel extends Regel {
                             .range(0, ctx.getChildCount())
                             .mapToObj(i -> ctx.getChild(i).getText())
                             .collect(Collectors.joining(" "));*/
-                }
+                /*}
 
                 @Override
                 public void exitIfThenValue(KontextParser.IfThenValueContext ctx) {
@@ -133,7 +133,7 @@ public class Kontextregel extends Regel {
                             }
                         }
                     }
-                }
+                }*/
 
             };
             parser.addParseListener(kontextBaseListener);

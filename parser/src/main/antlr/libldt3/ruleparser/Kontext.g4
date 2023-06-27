@@ -17,7 +17,7 @@ PUNKT: '.';
 
 // Fragment: Object identifier
 objekt:
-    ('Obj_Tier/Sonstiges'|'Obj_' INTEGER ('(' ('Obj_Untersuchungsabrechnung'|'Obj_Laborergebnisbericht'|'Obj_Untersuchungsanforderung'|'Obj_Untersuchungsergebnis Mikrobiologie'|'Obj_Einsenderidentifikation'|'Obj_Betriebsstätte'|'Obj_Abrechnung GKV'|'Obj_Tier/Sonstiges'|'Obj_Veranlassungsgrund'|'Patient'|'Obj_Untersuchungsergebnis Klinische Chemie'|'Obj_Material') ')')?);
+    ('Obj_Tier/Sonstiges'|'Obj_' INTEGER ('(' ('Obj_Untersuchungsabrechnung'|'Obj_Laborergebnisbericht'|'Obj_Untersuchungsanforderung'|'Obj_Untersuchungsergebnis Mikrobiologie'|'Obj_Einsenderidentifikation'|'Obj_Betriebsstätte'|'Obj_Abrechnung GKV'|'Obj_Tier/Sonstiges'|'Obj_Veranlassungsgrund'|'Patient'|'Obj_Untersuchungsergebnis Klinische Chemie'|'Obj_Material'|'Obj_Abrechnungsinformationen'|'Obj_RgEmpfaenger') ')')?);
 // Fragment: Field identifier
 fk:
     'FK' INTEGER;
@@ -83,31 +83,34 @@ fieldAssignmentOperatorNotEquals:
 // Logical: one and/or multiple fields exist
 fieldExists:
     fk 'mindestens einmal'? (undOder fk)* imObjekt? 'auch'? 'muss jeweils'? (onlyExists|existsAlternatives|notExistsAlternatives);
+fieldExistsAlternative:
+    imObjekt? 'mindestens einmal'? 'eine Feldkennung aus nachfolgender Liste vorhanden sein:' INTEGER (undOder INTEGER)*;
 
 fieldRule:
     'Regel' 'F' INTEGER;
 
+objektExists:
+    objekt (onlyExists|existsAlternatives|notExistsAlternatives);
+
 // Fragment: Either fields exist or have a specific content
 fieldExistsOrHasSpecificValue:
-    (fieldContent|fieldExists|fieldRule) (undOder (fieldContent|fieldExists|fieldRule))*;
+    (fieldContent|fieldExists|fieldExistsAlternative|fieldRule|objektExists) (undOder (fieldContent|fieldExists|fieldExistsAlternative|fieldRule|objektExists))*;
 
 // ----------------------------------------------------------------------------
 // Rules
 // ----------------------------------------------------------------------------
 
 // Rule: Either one of the 'fields' exists, and might exclude each other
-eitherExists:
+eitherFieldExists:
     ('Entweder'|'Es kann entweder') fieldExists PUNKT ('Beide Feldkennungen dürfen nicht gleichzeitig' existsAlternatives PUNKT)?;
-
-ifThenValue:
-    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann'? (MUSS|KANN|DARF|'müssen'|'gilt für den') ('entweder'|'auch')? fieldExistsOrHasSpecificValue PUNKT?;
-
-ifThenExistsInverted:
-    fk (undOder fk)* imObjekt? (MUSS|KANN|DARF) imObjekt? 'mindestens einmal'? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT?;
-
-eitherExistsInverted:
+eitherFieldExistsInverted:
     imObjekt (MUSS|KANN|DARF) 'entweder'? fieldExists;
+
+ifThenFieldExistsOrValue:
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann'? (MUSS|KANN|DARF|'müssen'|'gilt für den') ('entweder'|'auch')? fieldExistsOrHasSpecificValue PUNKT?;
+ifThenFieldExistsOrValueInverted:
+    fk (undOder fk)* imObjekt? (MUSS|KANN|DARF) imObjekt? 'mindestens einmal'? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT?;
 
 // Top level rule
 regel:
-    (eitherExists | ifThenValue | ifThenExistsInverted | eitherExistsInverted)+;
+    (eitherFieldExists | eitherFieldExistsInverted | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted)+;

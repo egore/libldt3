@@ -77,7 +77,7 @@ public class ${kontext.regelnummer} implements Kontextregel {
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
         if (<#list mustRule.felder as feld>feld${feld.feld.fk} == ${feld.init}<#sep> || </#list>) {
-            return <#if mustRule.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner);
+            return <#if feld.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner);
         }
 
 </#list>
