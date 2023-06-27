@@ -20,10 +20,12 @@ public class Kontextregel extends Regel {
     public static class FeldInitialized {
         public Feld feld;
         public String init;
+        public boolean inverted;
 
-        public FeldInitialized(Feld feld, String init) {
+        public FeldInitialized(Feld feld, String init, boolean inverted) {
             this.feld = feld;
             this.init = init;
+            this.inverted = inverted;
         }
     }
 
@@ -31,7 +33,6 @@ public class Kontextregel extends Regel {
         public String comment;
         public List<FeldInitialized> felder = new ArrayList<>();
         public Feld must;
-        public boolean inverted;
     }
 
     public List<Feld> mandatoryFields;
@@ -74,42 +75,48 @@ public class Kontextregel extends Regel {
                         return "";
                     }
 
-                    return IntStream
+                    return ctx.getPayload().getText();
+
+                    /*return IntStream
                             .range(0, ctx.getChildCount())
                             .mapToObj(i -> ctx.getChild(i).getText())
-                            .collect(Collectors.joining(" "));
+                            .collect(Collectors.joining(" "));*/
                 }
 
                 @Override
-                public void exitIfThenExists(KontextParser.IfThenExistsContext ctx) {
+                public void exitIfThenValue(KontextParser.IfThenValueContext ctx) {
                     MustRule rule = new MustRule();
                     rule.comment = getSpacedText(ctx);
-                    rule.inverted = ctx.notExistsAlternatives() != null && !ctx.notExistsAlternatives().isEmpty();
                     for (var ifBody : ctx.ifCondition()) {
                         extracted(ifBody.fieldExistsOrHasSpecificValue().fieldContent(), rule);
                     }
-                    // Workaround for incomplete parsing
-                    String fk = ctx.fk().INTEGER().toString();
-                    Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                    if (!usedFields.contains(e)) {
-                        usedFields.add(e);
+                    for (var x : ctx.fieldExistsOrHasSpecificValue().fieldExists()) {
+                        for (var y : x.fk()) {
+                            String fk = y.INTEGER().toString();
+                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                            if (!usedFields.contains(e)) {
+                                usedFields.add(e);
+                            }
+                            // FIXME: Needs to be a list and adhere to boolean combinations of the list
+                            rule.must = e;
+                        }
                     }
-                    rule.must = e;
                     mustRules.add(rule);
-                    super.exitIfThenExists(ctx);
+                    super.exitIfThenValue(ctx);
                 }
 
                 private void extracted(List<KontextParser.FieldContentContext> ctx, MustRule rule) {
                     if (ctx != null) {
                         for (var inhalt : ctx) {
-                            var fkAssignment = inhalt.fieldAssignment();
-                            String fk = fkAssignment.fk().INTEGER().toString();
+                            var fieldAssignment = inhalt.fieldAssignment();
+                            String fk = fieldAssignment.fk().INTEGER().toString();
                             Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
                             if (!usedFields.contains(e)) {
                                 usedFields.add(e);
                             }
-                            for (var i : fkAssignment.INTEGER()) {
+                            for (var i : fieldAssignment.INTEGER()) {
                                 String value = i.toString();
+                                boolean inverted = fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals() == null || fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals().isEmpty();
                                 outer:
                                 for (Regel r : e.regeln) {
                                     if (r.regelnummer.startsWith("E")) {
@@ -122,7 +129,7 @@ public class Kontextregel extends Regel {
                                         }
                                     }
                                 }
-                                rule.felder.add(new FeldInitialized(e, value));
+                                rule.felder.add(new FeldInitialized(e, value, inverted));
                             }
                         }
                     }

@@ -17,7 +17,7 @@ PUNKT: '.';
 
 // Fragment: Object identifier
 objekt:
-    'Obj_' INTEGER ('(' ('Obj_Untersuchungsabrechnung'|'Obj_Laborergebnisbericht'|'Obj_Untersuchungsanforderung'|'Obj_Untersuchungsergebnis Mikrobiologie'|'Obj_Einsenderidentifikation'|'Obj_Betriebsstätte'|'Obj_Abrechnung GKV'|'Obj_Tier/Sonstiges'|'Obj_Veranlassungsgrund'|'Patient'|'Obj_Untersuchungsergebnis Klinische Chemie'|'Obj_Material') ')')?;
+    ('Obj_Tier/Sonstiges'|'Obj_' INTEGER ('(' ('Obj_Untersuchungsabrechnung'|'Obj_Laborergebnisbericht'|'Obj_Untersuchungsanforderung'|'Obj_Untersuchungsergebnis Mikrobiologie'|'Obj_Einsenderidentifikation'|'Obj_Betriebsstätte'|'Obj_Abrechnung GKV'|'Obj_Tier/Sonstiges'|'Obj_Veranlassungsgrund'|'Patient'|'Obj_Untersuchungsergebnis Klinische Chemie'|'Obj_Material') ')')?);
 // Fragment: Field identifier
 fk:
     'FK' INTEGER;
@@ -57,7 +57,7 @@ ifCondition:
 
 // Fragment: Container for Objekt
 imObjekt:
-    ('im'|'in') objekt;
+    ('Im'|'im'|'in') objekt;
 // Fragment: Container for Satzart
 inSatzart:
     'in' 'jeweiliger'? 'Satzart' INTEGER ('oder' INTEGER)?;
@@ -68,25 +68,28 @@ inSatzart:
 
 // Logical: Field with one or multiple values
 fieldAssignment:
-    fk imObjekt? (('='|'≠'|'ungleich'|'nur Wert'|'mit den Werten'|'Wert') (objekt|INTEGER) (undOder INTEGER)* inSatzart?|('mit den Inhalten'|'mit dem Inhalt') (objekt|INTEGER) (undOder INTEGER)*? 'vorkommt');
+    fk imObjekt? (fieldAssignmentOperator (objekt|INTEGER) (undOder INTEGER)* inSatzart?|('mit den Inhalten'|'mit dem Inhalt') (objekt|INTEGER) (undOder INTEGER)*? 'vorkommt');
 // Logical: one and/or multiple fields have a given content
 fieldContent:
     ('Feldinhalt von'|'Inhalt von'|'Inhalt')? fieldAssignment;
+fieldAssignmentOperator:
+    (fieldAssignmentOperatorEquals|fieldAssignmentOperatorNotEquals);
+fieldAssignmentOperatorEquals:
+    '='|'gleich'|'nur Wert'|'mit den Werten'|'Wert';
+fieldAssignmentOperatorNotEquals:
+    '≠'|'ungleich';
+
 
 // Logical: one and/or multiple fields exist
 fieldExists:
-    fk (undOder fk)* imObjekt? 'muss jeweils'? existsAlternatives;
-fieldNotExists:
-    fk (undOder fk)* imObjekt? notExistsAlternatives;
-fieldOnlyExists:
-    fk (undOder fk)* imObjekt? onlyExists;
+    fk 'mindestens einmal'? (undOder fk)* imObjekt? 'auch'? 'muss jeweils'? (onlyExists|existsAlternatives|notExistsAlternatives);
 
 fieldRule:
     'Regel' 'F' INTEGER;
 
 // Fragment: Either fields exist or have a specific content
 fieldExistsOrHasSpecificValue:
-    (fieldContent|fieldExists|fieldNotExists|fieldOnlyExists|fieldRule) (undOder (fieldContent|fieldExists|fieldNotExists|fieldOnlyExists|fieldRule))*;
+    (fieldContent|fieldExists|fieldRule) (undOder (fieldContent|fieldExists|fieldRule))*;
 
 // ----------------------------------------------------------------------------
 // Rules
@@ -96,15 +99,15 @@ fieldExistsOrHasSpecificValue:
 eitherExists:
     ('Entweder'|'Es kann entweder') fieldExists PUNKT ('Beide Feldkennungen dürfen nicht gleichzeitig' existsAlternatives PUNKT)?;
 
-ifThenExists:
-    wenn ifCondition (undOder ifCondition)* KOMMA? 'dann'? (MUSS|KANN|DARF|'müssen') 'entweder'? fk 'mindestens einmal'? imObjekt? 'auch'? (onlyExists|existsAlternatives|notExistsAlternatives) PUNKT?;
-
 ifThenValue:
-    wenn ifCondition (undOder ifCondition)* KOMMA? 'dann'? (MUSS|KANN|DARF|'müssen'|'gilt für den') 'auch'? fieldExistsOrHasSpecificValue PUNKT?;
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann'? (MUSS|KANN|DARF|'müssen'|'gilt für den') ('entweder'|'auch')? fieldExistsOrHasSpecificValue PUNKT?;
 
 ifThenExistsInverted:
     fk (undOder fk)* imObjekt? (MUSS|KANN|DARF) imObjekt? 'mindestens einmal'? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT?;
 
+eitherExistsInverted:
+    imObjekt (MUSS|KANN|DARF) 'entweder'? fieldExists;
+
 // Top level rule
 regel:
-    (eitherExists | ifThenExists | ifThenValue | ifThenExistsInverted)+;
+    (eitherExists | ifThenValue | ifThenExistsInverted | eitherExistsInverted)+;
