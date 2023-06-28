@@ -58,7 +58,7 @@ ifCondition:
 
 // Fragment: Container for Objekt
 imObjekt:
-    ('Im'|'im'|'In'|'in') objekt;
+    (('Im'|'im'|'In'|'in') objekt|'innerhalb des entsprechenden Objektes');
 // Fragment: Container for Satzart
 inSatzart:
     'in' 'jeweiliger'? 'Satzart' INTEGER ('oder' INTEGER)?;
@@ -91,6 +91,8 @@ fieldExistsAlternative1:
     imObjekt? 'mindestens einmal'? 'eine Feldkennung aus nachfolgender Liste vorhanden sein:' INTEGER (undOder INTEGER)*;
 fieldExistsAlternative2:
     'Werte' 'Feldkennungen' fk (undOder fk)* 'bekannt';
+fieldExistsAlternative3:
+    imObjekt 'min.' fk (undOder fk)* existsAlternatives;
 
 fieldRule:
     'Regel' 'F' INTEGER;
@@ -100,7 +102,7 @@ objektExists:
 
 // Fragment: Either fields exist or have a specific content
 fieldExistsOrHasSpecificValue:
-    (fieldContent|fieldExists|fieldExistsAlternative1|fieldExistsAlternative2|fieldRule|objektExists) (undOder (fieldContent|fieldExists|fieldExistsAlternative1|fieldExistsAlternative2|fieldRule|objektExists))*;
+    (fieldContent|fieldExists|fieldExistsAlternative1|fieldExistsAlternative2|fieldExistsAlternative3|fieldRule|objektExists) (undOder (fieldContent|fieldExists|fieldExistsAlternative1|fieldExistsAlternative2|fieldExistsAlternative3|fieldRule|objektExists))*;
 
 // ----------------------------------------------------------------------------
 // Rules
@@ -120,6 +122,9 @@ ifThenFieldExistsOrValueInverted:
 ifThenIfThen:
     wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann gilt:' ifThenFieldExistsOrValue;
 
+anyCombinationAllowed:
+    'Es kann eine beliebige Kombination der zwei Feldkennungen vorhanden' PUNKT?;
+
 // Top level rule
 regel:
-    (eitherFieldExists | eitherFieldExistsInverted | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted | ifThenIfThen)+;
+    (eitherFieldExists | eitherFieldExistsInverted | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted | ifThenIfThen | anyCombinationAllowed)+;
