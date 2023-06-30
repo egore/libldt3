@@ -3,7 +3,7 @@ grammar Kontext;
 fragment DIGIT: '0'..'9';
 INTEGER: DIGIT+;
 WS: (' '|'\t'|'„'|'”'|'“')+ -> skip;
-FILLWORDS: ('der'|'die'|'das'|'Der'|'Die'|'Das'|'ist'|'sind'|'sein') -> skip;
+FILLWORDS: ('der'|'die'|'das'|'Der'|'Die'|'Das'|'ist'|'sind'|'sein'|'werden'|'wurde'|'diesem') -> skip;
 DATE: DIGIT DIGIT PUNKT DIGIT DIGIT PUNKT DIGIT DIGIT DIGIT DIGIT;
 THRESHOLD_SPECIALS: '!L'|'!-'|'!H'|'!+';
 
@@ -16,10 +16,13 @@ PUNKT: '.';
 
 // Fragment: Object identifier
 objekt:
-    ('Obj_Tier/Sonstiges'|'Obj_' INTEGER ('(' ('Obj_Untersuchungsabrechnung'|'Obj_Laborergebnisbericht'|'Obj_Untersuchungsanforderung'|'Obj_Untersuchungsergebnis Mikrobiologie'|'Obj_Einsenderidentifikation'|'Obj_Betriebsstätte'|'Obj_Abrechnung GKV'|'Obj_Tier/Sonstiges'|'Obj_Veranlassungsgrund'|'Patient'|'Obj_Untersuchungsergebnis Klinische Chemie'|'Obj_Material'|'Obj_Abrechnungsinformationen'|'Obj_RgEmpfaenger'|'Obj_Normalwert'|'Obj_Adressat') ')')?);
+    ('Obj_Tier/Sonstiges'|'Obj_' INTEGER ('(' ('Obj_Untersuchungsabrechnung'|'Obj_Laborergebnisbericht'|'Obj_Untersuchungsanforderung'|'Obj_Untersuchungsergebnis Mikrobiologie'|'Obj_Einsenderidentifikation'|'Obj_Betriebsstätte'|'Obj_Abrechnung GKV'|'Obj_Abrechnung PKV'|'Obj_Tier/Sonstiges'|'Obj_Veranlassungsgrund'|'Patient'|'Obj_Untersuchungsergebnis Klinische Chemie'|'Obj_Material'|'Obj_Abrechnungsinformationen'|'Obj_RgEmpfaenger'|'Obj_Normalwert'|'Obj_Adressat') ')')?);
 // Fragment: Field identifier
 fk:
     'FK' INTEGER;
+// Fragment: Format rule identifier
+format:
+    'F' INTEGER;
 
 // ----------------------------------------------------------------------------
 // Checks for existence
@@ -27,7 +30,9 @@ fk:
 
 // Fragment: Alternative spellings of a field exists
 existsAlternatives:
-    occurrence? ('vorhanden'|'vorkommen'|'vorkommt'|'vorkommen'|'im Auftrag übermittelt wurde'|'bekannt');
+    occurrence? existWords;
+existWords:
+    'vorhanden'|'vorkommen'|'vorkommt'|'im Auftrag übermittelt'|'bekannt'|'verwendet'|'erlaubt'|'gefüllt'|'folgt';
 // Fragment: Alternative spellings of a field does not exist
 notExistsAlternatives:
     'nicht' existsAlternatives;
@@ -41,7 +46,7 @@ onlyExists:
 
 // Logical: Boolean operators
 undOder:
-    'und'|'oder'|'und/oder'|KOMMA|'sowie';
+    'und'|'oder'|'und/oder'|KOMMA|'sowie'|'bzw.'|'/'|'in Kombination mit';
 
 wenn:
     'Wenn'|'Nur wenn'|'wenn'|'Falls';
@@ -53,13 +58,16 @@ occurrence:
     ('Mindestens'|'mindestens'|'maximal') occurrenceCount?;
 
 occurrenceCount:
-    'einmal'|'zweimal'|'eine'|'zwei';
+    'einmal'|'zweimal'|'eine'|'einem'|'zwei'|'mehr- fach'|'mehrfach'|'mehrere';
 
 requirement:
     'muss'|'kann'|'darf'|'müssen'|'können'|'dürfen';
 
 either:
     'Entweder'|'Es kann entweder'|'entweder';
+
+substring:
+    'Stellen' INTEGER '–' INTEGER;
 
 // Fragment: "if" condition
 ifCondition:
@@ -71,31 +79,38 @@ ifCondition:
 
 // Fragment: Container for Objekt
 imObjekt:
-    (('Im'|'im'|'In'|'in') objekt|'innerhalb des entsprechenden Objektes');
+    (('Im'|'im'|'In'|'in') 'folgenden'? occurrence? objekt (undOder objekt)*|'innerhalb des entsprechenden Objektes');
 // Fragment: Container for Satzart
 inSatzart:
-    'in' 'jeweiliger'? 'Satzart' INTEGER ('oder' INTEGER)?;
+    ('in'|'In') 'jeweiliger'? 'Satzart' INTEGER ('oder' INTEGER)?;
+
+fuerSatzart:
+    'Für Satzart' INTEGER ('oder' INTEGER)? 'gilt';
 
 // ----------------------------------------------------------------------------
 // Field content rules
 // ----------------------------------------------------------------------------
 
 // Logical: Field with one or multiple values
+fieldAssignmentValue:
+    objekt|INTEGER|'D'|DATE|THRESHOLD_SPECIALS;
 fieldAssignment:
-    'Feldkennung'? fk? imObjekt? (fieldAssignmentOperator (objekt|INTEGER|'D'|DATE|THRESHOLD_SPECIALS) (undOder INTEGER|THRESHOLD_SPECIALS)* inSatzart?|fieldAssignmentVerbal);
+    'Feldkennung'? fk? imObjekt? (fieldAssignmentOperator fieldAssignmentValue (undOder fieldAssignmentValue)* inSatzart?|fieldAssignmentVerbal);
 fieldAssignmentVerbal:
-    ('mit den Inhalten'|'mit dem Inhalt'|'nur'|'einmal mit') (objekt|INTEGER) (undOder 'einmal mit'? INTEGER)* ('vorkommt'|'erlaubt'|'gefüllt');
+    ('mit den Inhalten'|'mit dem Inhalt'|'nur'|'einmal mit'|'Wert') fieldAssignmentValue (undOder 'einmal mit'? fieldAssignmentValue)* ('in' fk occurrenceCount)? existWords;
 // Logical: one and/or multiple fields have a given content
 fieldContent:
-    ('Feldinhalt von'|'Feldinhalt'|'Inhalt von'|'Inhalt')? fieldAssignment;
+    imObjekt? ('Feldinhalt von'|'Feldinhalt'|'Inhalt von'|'Inhalt'|'Inhalte')? substring? ('des' objekt 'von denen' inSatzart|fieldAssignment) ('vorhanden'|'abweichen'|'vorkommen')?;
 fieldAssignmentOperator:
-    (fieldAssignmentOperatorEquals|fieldAssignmentOperatorNotEquals|fieldAssignmentOperatorGreaterThanOrEqualTo);
+    (fieldAssignmentOperatorEquals|fieldAssignmentOperatorNotEquals|fieldAssignmentOperatorGreaterThanOrEqualTo|fieldAssignmentOperatorLessThan);
 fieldAssignmentOperatorEquals:
-    '='|'gleich'|'nur Wert'|'mit den Werten'|'Wert'|'Werte';
+    '='|'gleich'|'mit den Werten'|'mit dem Wert'|('nur'? 'Wert')|'Werte';
 fieldAssignmentOperatorNotEquals:
     '≠'|'ungleich'|'nicht';
 fieldAssignmentOperatorGreaterThanOrEqualTo:
     '>=';
+fieldAssignmentOperatorLessThan:
+    '<';
 
 // Logical: one and/or multiple fields exist
 fieldExists:
@@ -105,7 +120,9 @@ fieldExistsAlternative1:
 fieldExistsAlternative2:
     'Werte' 'Feldkennungen' fk (undOder fk)* 'bekannt';
 fieldExistsAlternative3:
-    imObjekt 'min.' fk (undOder fk)* existsAlternatives;
+    (imObjekt|inSatzart) ('min.'|'nur')? fk (undOder fk)* existsAlternatives;
+fieldExistsAlternative4:
+    'Inhalt' fk 'im Auftrag übermittelt';
 
 fieldRule:
     'Regel' 'F' INTEGER;
@@ -113,9 +130,20 @@ fieldRule:
 objektExists:
     objekt (onlyExists|existsAlternatives|notExistsAlternatives);
 
+fieldFollows:
+    fk fk 'folgen';
+
+fieldTransmitted:
+    'Felder übertragen';
+
+fieldDiffers:
+    'Inhalt von' fk 'jeweils einen anderen Wert aufweisen';
+
 // Fragment: Either fields exist or have a specific content
+fieldExistsOrHasSpecificValueElement:
+    fieldContent|fieldExists|fieldExistsAlternative1|fieldExistsAlternative2|fieldExistsAlternative3|fieldExistsAlternative4|fieldRule|objektExists|fieldFollows|fieldTransmitted|fieldDiffers;
 fieldExistsOrHasSpecificValue:
-    (fieldContent|fieldExists|fieldExistsAlternative1|fieldExistsAlternative2|fieldExistsAlternative3|fieldRule|objektExists) (undOder (fieldContent|fieldExists|fieldExistsAlternative1|fieldExistsAlternative2|fieldExistsAlternative3|fieldRule|objektExists))*;
+    fieldExistsOrHasSpecificValueElement (undOder fieldExistsOrHasSpecificValueElement)*;
 
 // ----------------------------------------------------------------------------
 // Rules
@@ -125,25 +153,42 @@ fieldExistsOrHasSpecificValue:
 eitherFieldExists:
     either fieldExists PUNKT ('Beide Feldkennungen dürfen nicht gleichzeitig' existsAlternatives PUNKT)?;
 eitherFieldExistsInverted:
-    imObjekt requirement either? fieldExists;
+    (imObjekt|inSatzart) requirement (either|occurrenceCount|'auch')? fieldExistsOrHasSpecificValue (KOMMA eitherFieldExistsInverted)?;
 anyFieldExists:
     occurrence fk (undOder fk)* requirement existsAlternatives PUNKT?;
+fieldOnlyIn:
+    fieldExistsOrHasSpecificValue requirement 'nur' imObjekt existsAlternatives PUNKT?;
 
 ifThenFieldExistsOrValue:
-    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann? (requirement|'gilt für den'|'als Inhalte'|'Ist') (either|'auch'|occurrence)? fieldExistsOrHasSpecificValue PUNKT?;
+    (fuerSatzart ':')? wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann? (requirement|'gilt für den'|'als Inhalte'|'Ist') (either|'auch'|occurrence)? fieldExistsOrHasSpecificValue PUNKT?;
 ifThenFieldExistsOrValueInverted:
-    fk (undOder fk)* imObjekt? requirement imObjekt? occurrence? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT? ('Ausnahmen:' (eitherFieldExists | eitherFieldExistsInverted | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted))?;
+    fk (undOder fk)* imObjekt? requirement (imObjekt (undOder objekt)*)? occurrence? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT? ('Ausnahmen:' (eitherFieldExists|eitherFieldExistsInverted|ifThenFieldExistsOrValue|ifThenFieldExistsOrValueInverted))?;
 
 ifThenCombinations:
-    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'können die folgenden Kombinationen' existsAlternatives ':' ('-' fk (undOder fk)+ undOder?)+ PUNKT;
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann'? requirement occurrenceCount? 'folgenden Kombinationen' existsAlternatives ':' ('-' fk (undOder fk)+ undOder?)+ PUNKT;
 
 ifThenIfThen:
     wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann ifThenFieldExistsOrValue;
 
+ifThenRule:
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann 'gilt für den Inhalt' fk 'Regel' format PUNKT?;
 
 anyCombinationAllowed:
     'Es kann eine beliebige Kombination der zwei Feldkennungen vorhanden' PUNKT?;
 
+objektExistsRule:
+    objekt inSatzart? requirement 'nur'? 'dann'? existsAlternatives KOMMA? wenn ifCondition PUNKT?;
+
+insuranceCard:
+    wenn 'eine Versichertenkarte eingelesen' KOMMA? 'dann'? requirement fieldExistsOrHasSpecificValue PUNKT?;
+
+satzartOccurrence:
+    wenn inSatzart occurrenceCount 'Objekte mit' fieldAssignment existsAlternatives KOMMA? dann? (requirement 'sich diese in der Kombination der Inhalte' fk (undOder fk)* 'unterscheiden'|requirement fieldExistsOrHasSpecificValue) PUNKT?;
+
+objektOccurrence:
+    wenn objekt occurrenceCount imObjekt (undOder imObjekt)* existsAlternatives KOMMA requirement fieldAssignment KOMMA 'alle anderen Werte dürfen nur jeweils einmal vorkommen' PUNKT?;
+
+
 // Top level rule
 regel:
-    (eitherFieldExists | eitherFieldExistsInverted | anyFieldExists | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted | ifThenIfThen | anyCombinationAllowed | ifThenCombinations)+;
+    (eitherFieldExists|eitherFieldExistsInverted|anyFieldExists|fieldOnlyIn|ifThenFieldExistsOrValue|ifThenFieldExistsOrValueInverted|ifThenIfThen|ifThenRule|anyCombinationAllowed|ifThenCombinations|objektExistsRule|insuranceCard|satzartOccurrence|objektOccurrence)+;
