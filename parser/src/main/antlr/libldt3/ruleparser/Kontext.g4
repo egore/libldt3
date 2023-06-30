@@ -5,10 +5,8 @@ INTEGER: DIGIT+;
 WS: (' '|'\t'|'„'|'”'|'“')+ -> skip;
 FILLWORDS: ('der'|'die'|'das'|'Der'|'Die'|'Das'|'ist'|'sind'|'sein') -> skip;
 DATE: DIGIT DIGIT PUNKT DIGIT DIGIT PUNKT DIGIT DIGIT DIGIT DIGIT;
+THRESHOLD_SPECIALS: '!L'|'!-'|'!H'|'!+';
 
-DARF: 'darf';
-KANN: 'kann';
-MUSS: 'muss';
 KOMMA: ',';
 PUNKT: '.';
 
@@ -29,13 +27,13 @@ fk:
 
 // Fragment: Alternative spellings of a field exists
 existsAlternatives:
-    ('vorhanden'|'mindestens einmal vorkommen'|'vorkommt'|'vorkommen'|'im Auftrag übermittelt wurde'|'bekannt');
+    occurrence? ('vorhanden'|'vorkommen'|'vorkommt'|'vorkommen'|'im Auftrag übermittelt wurde'|'bekannt');
 // Fragment: Alternative spellings of a field does not exist
 notExistsAlternatives:
     'nicht' existsAlternatives;
 // Fragment: Alternative spellings of a field does only exist
 onlyExists:
-    'nur' 'dann'? existsAlternatives;
+    'nur' dann? existsAlternatives;
 
 // ----------------------------------------------------------------------------
 // Programming logic
@@ -47,6 +45,21 @@ undOder:
 
 wenn:
     'Wenn'|'Nur wenn'|'wenn'|'Falls';
+
+dann:
+    'dann' 'gilt'? ':'?;
+
+occurrence:
+    ('Mindestens'|'mindestens'|'maximal') occurrenceCount?;
+
+occurrenceCount:
+    'einmal'|'zweimal'|'eine'|'zwei';
+
+requirement:
+    'muss'|'kann'|'darf'|'müssen'|'können'|'dürfen';
+
+either:
+    'Entweder'|'Es kann entweder'|'entweder';
 
 // Fragment: "if" condition
 ifCondition:
@@ -69,9 +82,9 @@ inSatzart:
 
 // Logical: Field with one or multiple values
 fieldAssignment:
-    'Feldkennung'? fk? imObjekt? (fieldAssignmentOperator (objekt|INTEGER|'D'|DATE) (undOder INTEGER)* inSatzart?|fieldAssignmentVerbal);
+    'Feldkennung'? fk? imObjekt? (fieldAssignmentOperator (objekt|INTEGER|'D'|DATE|THRESHOLD_SPECIALS) (undOder INTEGER|THRESHOLD_SPECIALS)* inSatzart?|fieldAssignmentVerbal);
 fieldAssignmentVerbal:
-    ('mit den Inhalten'|'mit dem Inhalt'|'nur'|'einmal mit') (objekt|INTEGER) (undOder 'einmal mit'? INTEGER)*? ('vorkommt'|'erlaubt'|'gefüllt');
+    ('mit den Inhalten'|'mit dem Inhalt'|'nur'|'einmal mit') (objekt|INTEGER) (undOder 'einmal mit'? INTEGER)* ('vorkommt'|'erlaubt'|'gefüllt');
 // Logical: one and/or multiple fields have a given content
 fieldContent:
     ('Feldinhalt von'|'Feldinhalt'|'Inhalt von'|'Inhalt')? fieldAssignment;
@@ -80,15 +93,15 @@ fieldAssignmentOperator:
 fieldAssignmentOperatorEquals:
     '='|'gleich'|'nur Wert'|'mit den Werten'|'Wert'|'Werte';
 fieldAssignmentOperatorNotEquals:
-    '≠'|'ungleich';
+    '≠'|'ungleich'|'nicht';
 fieldAssignmentOperatorGreaterThanOrEqualTo:
     '>=';
 
 // Logical: one and/or multiple fields exist
 fieldExists:
-    fk ('maximal zweimal'|'mindestens einmal')? (undOder fk)* (imObjekt|inSatzart)? 'auch'? 'muss jeweils'? ('nur einmal'|'zweimal')? (onlyExists|existsAlternatives|notExistsAlternatives);
+    fk occurrence? (undOder fk)* (imObjekt|inSatzart)? 'auch'? 'muss jeweils'? ('nur'? occurrenceCount)? (onlyExists|existsAlternatives|notExistsAlternatives);
 fieldExistsAlternative1:
-    imObjekt? 'mindestens einmal'? 'eine Feldkennung aus nachfolgender Liste vorhanden sein:' INTEGER (undOder INTEGER)*;
+    imObjekt? occurrence? 'eine Feldkennung aus nachfolgender Liste vorhanden sein:' INTEGER (undOder INTEGER)*;
 fieldExistsAlternative2:
     'Werte' 'Feldkennungen' fk (undOder fk)* 'bekannt';
 fieldExistsAlternative3:
@@ -110,21 +123,27 @@ fieldExistsOrHasSpecificValue:
 
 // Rule: Either one of the 'fields' exists, and might exclude each other
 eitherFieldExists:
-    ('Entweder'|'Es kann entweder') fieldExists PUNKT ('Beide Feldkennungen dürfen nicht gleichzeitig' existsAlternatives PUNKT)?;
+    either fieldExists PUNKT ('Beide Feldkennungen dürfen nicht gleichzeitig' existsAlternatives PUNKT)?;
 eitherFieldExistsInverted:
-    imObjekt (MUSS|KANN|DARF) 'entweder'? fieldExists;
+    imObjekt requirement either? fieldExists;
+anyFieldExists:
+    occurrence fk (undOder fk)* requirement existsAlternatives PUNKT?;
 
 ifThenFieldExistsOrValue:
-    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann'? 'gilt:'? (MUSS|KANN|DARF|'müssen'|'gilt für den'|'als Inhalte'|'Ist'|'können') ('entweder'|'auch')? fieldExistsOrHasSpecificValue PUNKT?;
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann? (requirement|'gilt für den'|'als Inhalte'|'Ist') (either|'auch'|occurrence)? fieldExistsOrHasSpecificValue PUNKT?;
 ifThenFieldExistsOrValueInverted:
-    fk (undOder fk)* imObjekt? (MUSS|KANN|DARF|'müssen') imObjekt? 'mindestens einmal'? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT? ('Ausnahmen:' (eitherFieldExists | eitherFieldExistsInverted | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted))?;
+    fk (undOder fk)* imObjekt? requirement imObjekt? occurrence? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT? ('Ausnahmen:' (eitherFieldExists | eitherFieldExistsInverted | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted))?;
+
+ifThenCombinations:
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'können die folgenden Kombinationen' existsAlternatives ':' ('-' fk (undOder fk)+ undOder?)+ PUNKT;
 
 ifThenIfThen:
-    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann gilt:' ifThenFieldExistsOrValue;
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann ifThenFieldExistsOrValue;
+
 
 anyCombinationAllowed:
     'Es kann eine beliebige Kombination der zwei Feldkennungen vorhanden' PUNKT?;
 
 // Top level rule
 regel:
-    (eitherFieldExists | eitherFieldExistsInverted | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted | ifThenIfThen | anyCombinationAllowed)+;
+    (eitherFieldExists | eitherFieldExistsInverted | anyFieldExists | ifThenFieldExistsOrValue | ifThenFieldExistsOrValueInverted | ifThenIfThen | anyCombinationAllowed | ifThenCombinations)+;
