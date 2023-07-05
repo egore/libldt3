@@ -3,8 +3,11 @@ package libldt3.ruleparser;
 import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.atn.ATNConfigSet;
+import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.gui.TreeViewer;
 import org.junit.jupiter.api.Assertions;
@@ -18,6 +21,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
@@ -31,6 +35,21 @@ public class KontextParserTest {
         @Override
         public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
             failures.add("line " + line + ":" + charPositionInLine + " " + msg);
+        }
+
+        @Override
+        public void reportAmbiguity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, boolean exact, BitSet ambigAlts, ATNConfigSet configs) {
+            super.reportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs);
+        }
+
+        @Override
+        public void reportAttemptingFullContext(Parser recognizer, DFA dfa, int startIndex, int stopIndex, BitSet conflictingAlts, ATNConfigSet configs) {
+            super.reportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs);
+        }
+
+        @Override
+        public void reportContextSensitivity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, int prediction, ATNConfigSet configs) {
+            super.reportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs);
         }
 
         public boolean hasFailed() {
@@ -181,12 +200,18 @@ public class KontextParserTest {
     @ParameterizedTest
     @MethodSource("allKontextRules")
     public void testKontextRules(String rule, String text) throws InterruptedException, ExecutionException {
+        FailErrorListener listener = new FailErrorListener();
+
         KontextLexer lexer = new KontextLexer(CharStreams.fromString(text));
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(listener);
+
         CommonTokenStream tokens = new CommonTokenStream(lexer);
+
         KontextParser parser = new KontextParser(tokens);
         parser.removeErrorListeners();
-        FailErrorListener listener = new FailErrorListener();
         parser.addErrorListener(listener);
+
         ParseTree tree = parser.regel();
         if (listener.hasFailed()) {
             String showTreeUi = System.getenv("SHOW_TREE_UI");
@@ -197,7 +222,7 @@ public class KontextParserTest {
         }
     }
 
-    private static void openTreeUi(KontextParser parser, ParseTree tree) throws InterruptedException, ExecutionException {
+    static void openTreeUi(KontextParser parser, ParseTree tree) throws InterruptedException, ExecutionException {
         JFrame dialog = new TreeViewer(Arrays.asList(parser.getRuleNames()), tree).open().get();
         // From https://stackoverflow.com/questions/1341699/how-do-i-make-a-thread-wait-for-jframe-to-close-in-java
         Object lock = new Object();

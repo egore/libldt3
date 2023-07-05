@@ -80,11 +80,14 @@ public class GrammarTest {
         Assertions.assertEquals(2, ctx.fieldExistsOrHasSpecificValueElement().size());
 
         // FK 8000 = 8215
-        Assertions.assertEquals("8000", ctx.fieldExistsOrHasSpecificValueElement().get(0).fieldContent().fieldAssignment().fk().INTEGER().getText());
+        Assertions.assertEquals(1, ctx.fieldExistsOrHasSpecificValueElement().get(0).fieldContent().fieldAssignment().fk().INTEGER().size());
+        Assertions.assertEquals("8000", ctx.fieldExistsOrHasSpecificValueElement().get(0).fieldContent().fieldAssignment().fk().INTEGER().get(0).getText());
         Assertions.assertEquals(1, ctx.fieldExistsOrHasSpecificValueElement().get(0).fieldContent().fieldAssignment().fieldAssignmentValue().size());
 
         // Inhalt von FK 7303 in mindestens einem Obj_0059 mit dem Wert 99
-        Assertions.assertEquals("7303", ctx.fieldExistsOrHasSpecificValueElement().get(1).fieldContent().fieldAssignment().fk().INTEGER().getText());
+        System.err.println(ctx.fieldExistsOrHasSpecificValueElement().get(1));
+        Assertions.assertEquals(1, ctx.fieldExistsOrHasSpecificValueElement().get(1).fieldContent().fieldAssignment().fk().INTEGER().size());
+        Assertions.assertEquals("7303", ctx.fieldExistsOrHasSpecificValueElement().get(1).fieldContent().fieldAssignment().fk().INTEGER().get(0).getText());
         Assertions.assertEquals(1, ctx.fieldExistsOrHasSpecificValueElement().get(1).fieldContent().fieldAssignment().fieldAssignmentValue().size());
         Assertions.assertEquals("99", ctx.fieldExistsOrHasSpecificValueElement().get(1).fieldContent().fieldAssignment().fieldAssignmentValue().get(0).getText());
     }
