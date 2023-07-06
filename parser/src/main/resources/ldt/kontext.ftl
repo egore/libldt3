@@ -32,6 +32,8 @@ import java.util.Set;
 
 </#if>
 import libldt3.model.Kontext;
+<#list kontext.enumImports as name>import libldt3.model.enums.${name};
+</#list>
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -76,8 +78,8 @@ public class ${kontext.regelnummer} implements Kontextregel {
 
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
-        if (<#list mustRule.felder as feld>feld${feld.feld.fk} == ${feld.init}<#sep> || </#list>) {
-            return <#if feld.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner);
+        if (<#list mustRule.conditions as condition>feld${condition.feld.fk} == ${condition.init}<#sep> || </#list>) {
+            return <#if mustRule.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner);
         }
 
 </#list>

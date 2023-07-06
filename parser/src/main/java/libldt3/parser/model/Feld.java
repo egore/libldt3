@@ -34,6 +34,17 @@ public class Feld implements Comparable<Feld> {
         this.fk = fk;
     }
 
+    public List<String> getEnumImports() {
+        List<String> result = new ArrayList<>();
+        for (Regel regel : regeln) {
+            String replacement = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
+            if (replacement != null) {
+                result.add(replacement);
+            }
+        }
+        return result;
+    }
+
     public String getTyp() {
         switch (format) {
             case num:

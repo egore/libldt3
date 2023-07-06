@@ -7,32 +7,33 @@ import libldt3.ruleparser.KontextParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.RuleContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Kontextregel extends Regel {
 
-    public static class FeldInitialized {
+    private static final Logger LOG = LoggerFactory.getLogger(Kontextregel.class);
+
+    public static class RuleCondition {
         public Feld feld;
         public String init;
-        public boolean inverted;
 
-        public FeldInitialized(Feld feld, String init, boolean inverted) {
+        public RuleCondition(Feld feld, String init) {
             this.feld = feld;
             this.init = init;
-            this.inverted = inverted;
         }
     }
 
     public static class MustRule {
         public String comment;
-        public List<FeldInitialized> felder = new ArrayList<>();
+        public List<RuleCondition> conditions = new ArrayList<>();
         public Feld must;
+        public boolean inverted;
     }
 
     public List<Feld> mandatoryFields;
@@ -57,17 +58,55 @@ public class Kontextregel extends Regel {
             KontextParser parser = new KontextParser(tokens);
             KontextBaseListener kontextBaseListener = new KontextBaseListener() {
 
-                /*@Override
-                public void exitEitherExists(KontextParser.EitherExistsContext ctx) {
+                @Override
+                public void exitEitherFieldExists(KontextParser.EitherFieldExistsContext ctx) {
                     for (var x : ctx.fieldExists().fk()) {
-                        String fk = x.INTEGER().toString();
-                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                        if (!usedFields.contains(e)) {
-                            usedFields.add(e);
+                        for (var fki : x.INTEGER()) {
+                            String fk = fki.toString();
+                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                            if (!usedFields.contains(e)) {
+                                usedFields.add(e);
+                            }
+                            mandatoryFields.add(e);
                         }
-                        mandatoryFields.add(e);
                     }
-                    super.exitEitherExists(ctx);
+                    super.exitEitherFieldExists(ctx);
+                }
+
+                @Override
+                public void exitEitherFieldExistsInverted(KontextParser.EitherFieldExistsInvertedContext ctx) {
+                    for (var y : ctx.fieldExistsOrHasSpecificValue().fieldExistsOrHasSpecificValueElement()) {
+                        if (y.fieldExists() != null) {
+                            for (var x : y.fieldExists().fk()) {
+                                for (var fki : x.INTEGER()) {
+                                    String fk = fki.toString();
+                                    Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                                    if (!usedFields.contains(e)) {
+                                        usedFields.add(e);
+                                    }
+                                    mandatoryFields.add(e);
+                                }
+                            }
+                        }
+                    }
+                    super.exitEitherFieldExistsInverted(ctx);
+                }
+
+                // TODO honor eitherFieldExistsExclusion
+
+                @Override
+                public void exitAnyFieldExists(KontextParser.AnyFieldExistsContext ctx) {
+                    for (var x : ctx.fk()) {
+                        for (var fki : x.INTEGER()) {
+                            String fk = fki.toString();
+                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                            if (!usedFields.contains(e)) {
+                                usedFields.add(e);
+                            }
+                            mandatoryFields.add(e);
+                        }
+                    }
+                    super.exitAnyFieldExists(ctx);
                 }
 
                 private String getSpacedText(RuleContext ctx) {
@@ -81,59 +120,86 @@ public class Kontextregel extends Regel {
                             .range(0, ctx.getChildCount())
                             .mapToObj(i -> ctx.getChild(i).getText())
                             .collect(Collectors.joining(" "));*/
-                /*}
+                }
 
                 @Override
-                public void exitIfThenValue(KontextParser.IfThenValueContext ctx) {
+                public void exitIfThenFieldExistsOrValue(KontextParser.IfThenFieldExistsOrValueContext ctx) {
                     MustRule rule = new MustRule();
                     rule.comment = getSpacedText(ctx);
                     for (var ifBody : ctx.ifCondition()) {
-                        extracted(ifBody.fieldExistsOrHasSpecificValue().fieldContent(), rule);
-                    }
-                    for (var x : ctx.fieldExistsOrHasSpecificValue().fieldExists()) {
-                        for (var y : x.fk()) {
-                            String fk = y.INTEGER().toString();
-                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                            if (!usedFields.contains(e)) {
-                                usedFields.add(e);
-                            }
-                            // FIXME: Needs to be a list and adhere to boolean combinations of the list
-                            rule.must = e;
+                        for (var fieldExistsOrHasSpecificValue : ifBody.fieldExistsOrHasSpecificValue().fieldExistsOrHasSpecificValueElement()) {
+                            extracted(fieldExistsOrHasSpecificValue.fieldContent(), rule);
                         }
                     }
-                    mustRules.add(rule);
-                    super.exitIfThenValue(ctx);
+                    for (var z : ctx.fieldExistsOrHasSpecificValue().fieldExistsOrHasSpecificValueElement()) {
+                        if (z.fieldExists() == null) {
+                            LOG.warn("Cannot handle {} yet", z);
+                            continue;
+                        }
+                        var x = z.fieldExists();
+                        for (var y : x.fk()) {
+                            for (var fki : y.INTEGER()) {
+                                String fk = fki.toString();
+                                Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                                if (!usedFields.contains(e)) {
+                                    usedFields.add(e);
+                                }
+                                // FIXME: Needs to be a list and adhere to boolean combinations of the list
+                                rule.must = e;
+                            }
+                        }
+                    }
+                    if (!rule.conditions.isEmpty()) {
+                        if (rule.must != null && rule.must.fk != null) {
+                            mustRules.add(rule);
+                        } else {
+                            LOG.warn("Got rule {} without field", rule);
+                        }
+                    } else {
+                        LOG.warn("Got rule {} without any fields", rule);
+                    }
+                    super.exitIfThenFieldExistsOrValue(ctx);
                 }
 
-                private void extracted(List<KontextParser.FieldContentContext> ctx, MustRule rule) {
+                private void extracted(KontextParser.FieldContentContext ctx, MustRule rule) {
                     if (ctx != null) {
-                        for (var inhalt : ctx) {
-                            var fieldAssignment = inhalt.fieldAssignment();
-                            String fk = fieldAssignment.fk().INTEGER().toString();
-                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                            if (!usedFields.contains(e)) {
-                                usedFields.add(e);
+                            var fieldAssignment = ctx.fieldAssignment();
+                            if (fieldAssignment.fk() == null) {
+                                LOG.warn("Got assignment without any fields");
+                                return;
                             }
-                            for (var i : fieldAssignment.INTEGER()) {
-                                String value = i.toString();
-                                boolean inverted = fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals() == null || fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals().isEmpty();
-                                outer:
-                                for (Regel r : e.regeln) {
-                                    if (r.regelnummer.startsWith("E")) {
-                                        ErlaubterInhalt regel = (ErlaubterInhalt) regeln.get(r.regelnummer);
-                                        for (var x : regel.getMultiple()) {
-                                            if (x.code.equals(value)) {
-                                                value = RegelNaming.REPLACEMENTS.get(r.regelnummer) + "." + x.value;
-                                                break outer;
+                            for (var fki : fieldAssignment.fk().INTEGER()) {
+                                String fk = fki.toString();
+                                Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                                if (!usedFields.contains(e)) {
+                                    usedFields.add(e);
+                                }
+                                for (var fav : fieldAssignment.fieldAssignmentValue()) {
+                                    if (fav.INTEGER() == null) {
+                                        LOG.warn("Cannot handle {} yet", fav);
+                                        continue;
+                                    }
+                                    String value = fav.INTEGER().toString();
+                                    boolean inverted = fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals() == null || fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals().isEmpty();
+                                    outer:
+                                    for (Regel r : e.regeln) {
+                                        if (r.regelnummer.startsWith("E")) {
+                                            ErlaubterInhalt regel = (ErlaubterInhalt) regeln.get(r.regelnummer);
+                                            for (var x : regel.getMultiple()) {
+                                                if (x.code.equals(value)) {
+                                                    value = RegelNaming.REPLACEMENTS.get(r.regelnummer) + "." + x.value;
+                                                    break outer;
+                                                }
                                             }
                                         }
                                     }
+                                    rule.conditions.add(new RuleCondition(e, value));
+                                    // FIXME: wrong, as this needs to be done per condition
+                                    rule.inverted = inverted;
                                 }
-                                rule.felder.add(new FeldInitialized(e, value, inverted));
                             }
                         }
-                    }
-                }*/
+                }
 
             };
             parser.addParseListener(kontextBaseListener);
@@ -145,8 +211,18 @@ public class Kontextregel extends Regel {
     public TreeSet<Feld> getMustRuleFields() {
         TreeSet<Feld> result = new TreeSet<>();
         for (var rule : mustRules) {
-            for (var feld : rule.felder) {
+            for (var feld : rule.conditions) {
                 result.add(feld.feld);
+            }
+        }
+        return result;
+    }
+
+    public TreeSet<String> getEnumImports() {
+        TreeSet<String> result = new TreeSet<>();
+        for (var rule : mustRules) {
+            for (var feld : rule.conditions) {
+                result.addAll(feld.feld.getEnumImports());
             }
         }
         return result;
