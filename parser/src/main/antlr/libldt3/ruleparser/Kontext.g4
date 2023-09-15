@@ -170,7 +170,7 @@ ifThenFieldExistsOrValueInverted:
     'Eine'? fk (undOder fk)* imObjekt? requirement (imObjekt (undOder objekt)*)? occurrence? (onlyExists|existsAlternatives|notExistsAlternatives) (KOMMA? wenn ifCondition)? PUNKT? ('Ausnahmen:' (eitherFieldExists|eitherFieldExistsInverted|ifThenFieldExistsOrValue|ifThenFieldExistsOrValueInverted))?;
 
 ifThenCombinations:
-    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? 'dann'? requirement occurrenceCount? 'folgenden Kombinationen' existsAlternatives ':' ('-' fk (undOder fk)+ undOder?)+ PUNKT;
+    wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann? requirement occurrenceCount? 'folgenden Kombinationen' existsAlternatives ':' ('-' fk (undOder fk)+ undOder?)+ PUNKT;
 
 ifThenIfThen:
     wenn ifCondition (undOder wenn? ifCondition)* KOMMA? dann ifThenFieldExistsOrValue;

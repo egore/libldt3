@@ -62,6 +62,13 @@ public class ${kontext.regelnummer} implements Kontextregel {
             return false;
         }
 
+<#if kontext.excludingFields?has_content>
+        if (<#list kontext.excludingFields as field>containsAnyString(fields.get("${field.fk}"))<#sep> && </#list>) {
+            LOG.warn("<#list kontext.excludingFields as field>${field.fk}<#sep> and </#list> may not occur an the same time");
+            return false;
+        }
+        return true;
+</#if>
 <#if kontext.mandatoryFields?has_content>
         for (Field f : fields.values()) {
             if (containsAnyString(f, owner)) {
@@ -79,7 +86,9 @@ public class ${kontext.regelnummer} implements Kontextregel {
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
         if (<#list mustRule.conditions as condition>feld${condition.feld.fk} == ${condition.init}<#sep> || </#list>) {
-            return <#if mustRule.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner);
+            if (<#if mustRule.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner)) {
+                return false;
+            }
         }
 
 </#list>

@@ -6,7 +6,7 @@ import libldt3.ruleparser.KontextLexer;
 import libldt3.ruleparser.KontextParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.RuleContext;
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,6 +36,7 @@ public class Kontextregel extends Regel {
         public boolean inverted;
     }
 
+    public List<Feld> excludingFields;
     public List<Feld> mandatoryFields;
     public List<Feld> usedFields;
     public List<MustRule> mustRules;
@@ -51,6 +52,7 @@ public class Kontextregel extends Regel {
     public List<Feld> getUsedFields() {
         if (usedFields == null) {
             usedFields = new ArrayList<>();
+            excludingFields = new ArrayList<>();
             mandatoryFields = new ArrayList<>();
             mustRules = new ArrayList<>();
             KontextLexer lexer = new KontextLexer(CharStreams.fromString(pruefung));
@@ -92,6 +94,13 @@ public class Kontextregel extends Regel {
                     super.exitEitherFieldExistsInverted(ctx);
                 }
 
+                @Override
+                public void exitEitherFieldExistsExclusion(KontextParser.EitherFieldExistsExclusionContext ctx) {
+                    excludingFields.addAll(mandatoryFields);
+                    mandatoryFields.clear();
+                    super.exitEitherFieldExistsExclusion(ctx);
+                }
+
                 // TODO honor eitherFieldExistsExclusion
 
                 @Override
@@ -109,23 +118,14 @@ public class Kontextregel extends Regel {
                     super.exitAnyFieldExists(ctx);
                 }
 
-                private String getSpacedText(RuleContext ctx) {
-                    if (ctx.getChildCount() == 0) {
-                        return "";
-                    }
-
-                    return ctx.getPayload().getText();
-
-                    /*return IntStream
-                            .range(0, ctx.getChildCount())
-                            .mapToObj(i -> ctx.getChild(i).getText())
-                            .collect(Collectors.joining(" "));*/
+                private String getOriginalText(ParserRuleContext ctx) {
+                   return pruefung.substring(ctx.getStart().getCharPositionInLine(), ctx.getStop().getStopIndex());
                 }
 
                 @Override
                 public void exitIfThenFieldExistsOrValue(KontextParser.IfThenFieldExistsOrValueContext ctx) {
                     MustRule rule = new MustRule();
-                    rule.comment = getSpacedText(ctx);
+                    rule.comment = getOriginalText(ctx);
                     for (var ifBody : ctx.ifCondition()) {
                         for (var fieldExistsOrHasSpecificValue : ifBody.fieldExistsOrHasSpecificValue().fieldExistsOrHasSpecificValueElement()) {
                             extracted(fieldExistsOrHasSpecificValue.fieldContent(), rule);
