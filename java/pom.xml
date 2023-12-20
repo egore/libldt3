@@ -13,14 +13,7 @@
 
 	<name>${project.artifactId}</name>
 	<description>Java reader and writer for LDT 3.0</description>
-	<url>https://github.com/egore/libldt3</url>
-
-	<distributionManagement>
-		<repository>
-			<id>repo.christophbrill.de</id>
-			<url>ftp://www.christophbrill.de/repository</url>
-		</repository>
-	</distributionManagement>
+	<url>https://gitlab.com/egore/libldt3</url>
 
 	<licenses>
 		<license>
@@ -31,20 +24,12 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/egore/libldt3</url>
-		<connection>scm:git:git://github.com/egore/libldt3.git</connection>
-		<developerConnection>scm:git:git@github.com:egore/libldt3.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<url>https://gitlab.com/egore/libldt3</url>
+		<connection>scm:git:git://gitlab.com/egore/libldt3.git</connection>
+		<developerConnection>scm:git:git@gitlab.com:egore/libldt3.git</developerConnection>
+    </scm>
 
 	<build>
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ftp</artifactId>
-				<version>3.5.3</version>
-			</extension>
-		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
