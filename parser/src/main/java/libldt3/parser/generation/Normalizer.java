@@ -118,6 +118,10 @@ public class Normalizer {
 
     public static String getFieldName(String value) {
 
+        if (value.isEmpty()) {
+            return value;
+        }
+
         value = value.replaceAll("^ID (.*)$", "$1Id");
 
         // Rule: Words in uppercase only will be converted to camel case
@@ -145,4 +149,10 @@ public class Normalizer {
         return value.substring(0, 1).toUpperCase() + value.substring(1).toLowerCase();
     }
 
+    public static String getSatzName(String name) {
+        return name
+                .replace("L (Labor)-", "Labor")
+                .replace("P (Praxis)-", "Praxis")
+                .replace("-", "");
+    }
 }

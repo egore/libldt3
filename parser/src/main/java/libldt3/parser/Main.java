@@ -18,14 +18,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException, TemplateException {
 
-        Triple<Map<String, Regel>, Map<String, Feld>, Map<String, Objekt>> regeln = Parser.parse("./EXT_ITA_VGEX_LDT 3_2_15_Gesamtdokument.pdf");
+        Parser.ParseResult regeln = Parser.parse("./doc/3.2.15/EXT_ITA_VGEX_LDT 3_2_15_Gesamtdokument.pdf");
 
         var generator = new Generator();
-        generator.generateErlaubteInhalte(regeln.getLeft().values());
-        generator.generateKontextregeln(regeln.getLeft().values());
-        generator.generateFormatregeln(regeln.getLeft().values());
-        generator.generateObjekte(regeln.getRight().values());
-        generator.generateKontextParserTest(regeln.getLeft().values());
+        generator.generateSaetze(regeln.saetze.values());
+        generator.generateErlaubteInhalte(regeln.regeln.values());
+        generator.generateKontextregeln(regeln.regeln.values());
+        generator.generateFormatregeln(regeln.regeln.values());
+        generator.generateObjekte(regeln.objekte.values());
+        generator.generateKontextParserTest(regeln.regeln.values());
     }
 
 

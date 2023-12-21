@@ -1,6 +1,6 @@
 <#-- @ftlvariable name="enum" type="libldt3.parser.model.Regel" -->
 /*
- * Copyright 2016-${year}  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-${year}  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal

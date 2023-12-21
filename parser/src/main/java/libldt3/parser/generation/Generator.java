@@ -13,6 +13,7 @@ import libldt3.parser.model.Formatregel;
 import libldt3.parser.model.Kontextregel;
 import libldt3.parser.model.Objekt;
 import libldt3.parser.model.Regel;
+import libldt3.parser.model.Satz;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
@@ -134,6 +135,17 @@ public class Generator {
         Collections.sort(kontextregeln);
         try (Writer writer = Files.newBufferedWriter(dir.resolve("KontextParserTest.java"), StandardCharsets.UTF_8)) {
             kontextTemplate.process(Map.of("regeln", kontextregeln), writer);
+        }
+    }
+
+    public void generateSaetze(Collection<Satz> saetze)  throws IOException, TemplateException {
+        Template objektTemplate = config.getTemplate("satz.ftl");
+        Path dir = Path.of("./generated/libldt3/model/saetze");
+        initDir(dir);
+        for (var satz : saetze) {
+            try (Writer writer = Files.newBufferedWriter(dir.resolve(satz.name + ".java"), StandardCharsets.UTF_8)) {
+                objektTemplate.process(Map.of("satz", satz), writer);
+            }
         }
     }
 }

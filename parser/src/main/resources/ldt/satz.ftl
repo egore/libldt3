@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="objekt" type="libldt3.parser.model.Objekt" -->
+<#-- @ftlvariable name="satz" type="libldt3.parser.model.Satz" -->
 <#import "./feld.ftl" as feldFtl/>
 /*
  * Copyright 2016-${year}  Christoph Brill &lt;opensource@christophbrill.de&gt;
@@ -21,47 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package libldt3.model.objekte;
+package libldt3.model.saetze;
 
-<#if objekt.usingLocalDate>
-import java.time.LocalDate;
-</#if>
-<#if objekt.usingList>
+<#if satz.usingList>
 import java.util.List;
-</#if>
-<#if objekt.usingLocalDate || objekt.usingList>
 
 </#if>
+import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
-import libldt3.annotations.Objekt;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-<#list objekt.imports as import>
+import libldt3.model.enums.Satzart;
+<#list satz.imports as import>
 import libldt3.model.${import};
 </#list>
 
 /**
- * <@linewrap text=objekt.beschreibung prefix="* "/>
+ * Satzart: ${satz.fullname} "${satz.nummer}"
  */
-@Objekt(<#if objekt.kontextregeln?hasContent>value = "${objekt.nummer}"<#if objekt.nameOverride??>, name = "${objekt.nameOverride}"</#if>, kontextregeln = <#if objekt.kontextregeln?size gt 1>{</#if><#list objekt.kontextregeln as regel>${regel.regelnummer}.class<#sep>, </#list><#if objekt.kontextregeln?size gt 1>}</#if><#else>"${objekt.nummer}"</#if>)
-public class ${objekt.name} implements Kontext {
-<#list objekt.children as child>
+@Datenpaket(Satzart.${satz.name})
+public class ${satz.name} implements Satz, Kontext {
 
-    @Objekt<#if child.kontextregeln?hasContent>(kontextregeln = <#if child.kontextregeln?size gt 1>{</#if><#list child.kontextregeln as regel>${regel.regelnummer}.class<#sep>, </#list><#if child.kontextregeln?size gt 1>}</#if>)</#if>
-    public static class ${child.name} implements Kontext {
-<#list child.felder as feld>
-<#if feld.name != 'value'>
-        <@feldFtl.attributes feld=feld prefix="        "/>
-<#else>
-        @SuppressWarnings("unused")
-</#if>
-        public <#if feld.vorkommen.wert == 'n'>List<${feld.typ}><#else>${feld.typ}</#if> ${feld.name};
-</#list>
-    }
-</#list>
-
-<#list objekt.felder as feld>
+<#list satz.felder as feld>
     <@feldFtl.attributes feld=feld prefix="    "/>
     public <#if feld.vorkommen.wert == 'n'>List<${feld.typ}><#else>${feld.typ}</#if> ${feld.name};
 </#list>

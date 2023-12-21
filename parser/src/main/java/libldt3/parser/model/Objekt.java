@@ -149,47 +149,52 @@ public class Objekt {
     }
 
     public TreeSet<String> getImports() {
-        TreeSet<String> enums = new TreeSet<>();
+        TreeSet<String> imports = getImports(felder);
+        for (var child : children) {
+            imports.addAll(child.getImports());
+        }
+        return imports;
+    }
+
+    static TreeSet<String> getImports(List<FeldExtended> felder) {
+        TreeSet<String> imports = new TreeSet<>();
         for (var feld : felder) {
             for (var regel : feld.regeln) {
                 if (regel instanceof ErlaubterInhalt) {
                     if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer)) {
                         if (!RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
-                            enums.add("regel.erlaubt." + regel.regelnummer);
+                            imports.add("regel.erlaubt." + regel.regelnummer);
                         }
                     } else {
                         String s = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
                         if (!"Boolean".equals(s)) {
-                            enums.add("enums." + s);
+                            imports.add("enums." + s);
                         }
                     }
                 } else if (regel instanceof Kontextregel) {
-                    enums.add("regel.kontext." + regel.regelnummer);
+                    imports.add("regel.kontext." + regel.regelnummer);
                 } else if (regel instanceof Formatregel) {
-                    enums.add("regel.format." + regel.regelnummer);
+                    imports.add("regel.format." + regel.regelnummer);
                 }
             }
             for (var regel : feld.feld.regeln) {
                 if (regel instanceof ErlaubterInhalt) {
                     if (!RegelNaming.REPLACEMENTS.containsKey(regel.regelnummer)) {
                         if (!RegelNaming.SKIPPERS.contains(regel.regelnummer)) {
-                            enums.add("regel.erlaubt." + regel.regelnummer);
+                            imports.add("regel.erlaubt." + regel.regelnummer);
                         }
                     } else {
                         String s = RegelNaming.REPLACEMENTS.get(regel.regelnummer);
                         if (!"Boolean".equals(s)) {
-                            enums.add("enums." + s);
+                            imports.add("enums." + s);
                         }
                     }
                 } else if (regel instanceof Formatregel) {
-                    enums.add("regel.format." + regel.regelnummer);
+                    imports.add("regel.format." + regel.regelnummer);
                 }
             }
         }
-        for (var child : children) {
-            enums.addAll(child.getImports());
-        }
-        return enums;
+        return imports;
     }
 
 }
