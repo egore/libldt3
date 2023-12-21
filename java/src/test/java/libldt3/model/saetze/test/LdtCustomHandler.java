@@ -4,6 +4,7 @@ import de.egore911.fuzz.Fuzzer;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.enums.LdtVersion;
+import libldt3.model.objekte.Diagnose;
 import libldt3.model.objekte.Untersuchungsabrechnung;
 import libldt3.model.regel.format.F001;
 import libldt3.model.regel.format.F004;
@@ -71,7 +72,9 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                         return "0123";
                     }
                     if (klass == F004.class) {
-                        return "C12";
+                        Diagnose.IcdCode icdCode = new Diagnose.IcdCode();
+                        icdCode.value = "C12";
+                        return icdCode;
                     }
                     if (klass == F007.class) {
                         return LdtVersion.LDT3_2_15;

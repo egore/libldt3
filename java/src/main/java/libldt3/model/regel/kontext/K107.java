@@ -25,6 +25,7 @@ import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -54,11 +55,12 @@ public class K107 implements Kontextregel {
             return false;
         }
 
-        Einsenderstatus feld7321 = (Einsenderstatus) fields.get("7321").get(owner);
+        List<Einsenderstatus> feld7321 = (List<Einsenderstatus>) fields.get("7321").get(owner);
 
         // Wenn Inhalt von FK 7321 = 01, 02 oder 07 ist, dann muss FK 8114 vorhanden sein.
-        if (feld7321 == Einsenderstatus.Erstveranlasser || feld7321 == Einsenderstatus.EinsenderArzt ||
-                feld7321 == Einsenderstatus.Laborarzt_Befundersteller) {
+        if (feld7321.contains(Einsenderstatus.Erstveranlasser) ||
+                feld7321.contains(Einsenderstatus.EinsenderArzt) ||
+                feld7321.contains(Einsenderstatus.Laborarzt_Befundersteller)) {
             return containsAnyString(fields.get("8114"), owner);
         }
 

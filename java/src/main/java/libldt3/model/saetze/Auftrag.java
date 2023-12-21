@@ -42,11 +42,12 @@ import libldt3.model.objekte.Schwangerschaft;
 import libldt3.model.objekte.TierSonstiges;
 import libldt3.model.objekte.Untersuchungsanforderung;
 import libldt3.model.objekte.Veranlassungsgrund;
+import libldt3.model.regel.kontext.K057;
 
 /**
  * Satzart: Auftrag "8215"
  */
-@Datenpaket(Satzart.Auftrag)
+@Datenpaket(value = Satzart.Auftrag, kontextregeln = K057.class)
 public class Auftrag implements Satz, Kontext {
 
     @Feld(value = "8122", feldart = Feldart.bedingt_muss)

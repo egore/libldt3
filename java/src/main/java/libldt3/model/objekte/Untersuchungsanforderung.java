@@ -54,7 +54,7 @@ import libldt3.model.regel.kontext.K114;
  * In diesem Objekt werden alle Informationen zur Untersuchungsanforderung
  * zusammengefasst.
  */
-@Objekt(value = "0059", kontextregeln = {K003.class, K010.class, K011.class, K032.class, K034.class, K037.class, K053.class, K056.class, K057.class, K097.class, K098.class, K100.class, K102.class, K103.class, K105.class, K113.class, K114.class})
+@Objekt(value = "0059", kontextregeln = {K003.class, K010.class, K011.class, K032.class, K034.class, K037.class, K053.class, K056.class, K097.class, K098.class, K100.class, K102.class, K103.class, K105.class, K113.class, K114.class})
 public class Untersuchungsanforderung implements Kontext {
 
     @Objekt(kontextregeln = K053.class)

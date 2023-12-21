@@ -128,13 +128,15 @@ class KontextregelHelper {
                 fields.put(annotation.value(), f);
             }
             f.setAccessible(true);
-            Kontext obj = (Kontext) f.get(owner);
+            Object obj = f.get(owner);
             if (obj != null) {
                 if (obj.getClass().getAnnotation(Objekt.class) != null) {
-                    result.putAll(findFieldsRecursive(obj, fieldtypes));
+                    result.putAll(findFieldsRecursive((Kontext) obj, fieldtypes));
                 } else if (obj instanceof Iterable<?>) {
-                    for (Kontext o : (Iterable<Kontext>) obj) {
-                        result.putAll(findFieldsRecursive(o, fieldtypes));
+                    for (Object o : (Iterable<Kontext>) obj) {
+                        if (o.getClass().getAnnotation(Objekt.class) != null) {
+                            result.putAll(findFieldsRecursive((Kontext) o, fieldtypes));
+                        }
                     }
                 }
             }

@@ -37,7 +37,8 @@ public class K122 implements Kontextregel {
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+        return true;
     }
 
 }

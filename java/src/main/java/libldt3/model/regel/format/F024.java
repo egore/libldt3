@@ -22,7 +22,8 @@
 package libldt3.model.regel.format;
 
 import libldt3.model.regel.Regel;
-import libldt3.model.regel.RegularExpressionRegel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.regex.Pattern;
 
@@ -39,8 +40,11 @@ import java.util.regex.Pattern;
  */
 public class F024 implements Regel {
 
+    private static final Logger LOG = LoggerFactory.getLogger(F024.class);
+
     @Override
     public boolean isValid(String value) {
-        throw new UnsupportedOperationException();
+        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+        return true;
     }
 }

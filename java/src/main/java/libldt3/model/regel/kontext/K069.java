@@ -21,21 +21,39 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Wenn Inhalt von FK 7303 im Obj_0027 (Obj_Veranlassungsgrund) = 2 oder 10 ist,
- * dann kann die FK 4209 vorhanden sein.
+ * Wenn in Satzart 8215 die FK 8137 vorhanden ist, müssen die FK 8113 und FK 8159
+ * vorhanden sein.
+ *
+ * Use Case: Übergabe eines LDT – Datensatzes ohne Angaben zu Material
+ * und Anforderungen.
  */
-public class K133 implements Kontextregel {
+public class K069 implements Kontextregel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(K133.class);
+    private static final Logger LOG = LoggerFactory.getLogger(K069.class);
+
+    private static final Set<String> FIELDTYPES = Set.of("8113", "8159");
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
         return true;
     }
 

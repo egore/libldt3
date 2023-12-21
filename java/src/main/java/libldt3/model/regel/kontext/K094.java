@@ -22,8 +22,19 @@
 package libldt3.model.regel.kontext;
 
 import libldt3.model.Kontext;
+import libldt3.model.enums.AbrechnungsartPkv;
+import libldt3.model.enums.Abrechnungsinfo;
+import libldt3.model.enums.StatusPerson;
+import libldt3.model.objekte.Veranlassungsgrund;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
  * Wenn Inhalt von FK 7420 = 12 und FK 7303 mit den Werten 1, 2, 3, 8, 9 oder 10 in
@@ -42,9 +53,39 @@ public class K094 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K094.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("7420", "7303", "3103", "3110", "8228");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+
+        var feld7420 = (StatusPerson) fields.get("7420").get(owner);
+        var feld7303 = (Veranlassungsgrund.AbrechnungsinfoZurUntersuchung) fields.get("7303").get(owner);
+
+        // Wenn Inhalt von FK 7420 = 12 und FK 7303 mit den Werten 1, 2, 3, 8, 9 oder 10 in jeweiliger Satzart 8205
+        // oder 8215 vorkommen
+        if (feld7420 == StatusPerson.Patient && (
+                feld7303.value == Abrechnungsinfo.GKV_Laborfacharzt ||
+                feld7303.value == Abrechnungsinfo.GKV_LG ||
+                feld7303.value == Abrechnungsinfo.PKV_Laborfacharzt ||
+                feld7303.value == Abrechnungsinfo.ASV ||
+                feld7303.value == Abrechnungsinfo.GKV_Laborfacharzt_praeventiv ||
+                feld7303.value == Abrechnungsinfo.GKV_LG_praeventiv
+            )) {
+            // dann müssen die FK 3103, FK 3110 und FK 8228 vorhanden sein
+            return containsAnyString(fields.get("3103"), owner) &&
+                    containsAnyString(fields.get("3110"), owner) &&
+                    containsAnyString(fields.get("8228"), owner);
+        }
+
+        return true;
+
     }
 
 }

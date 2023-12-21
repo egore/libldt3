@@ -50,7 +50,8 @@ public class K008 implements Kontextregel {
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+        return true;
     }
 
 }

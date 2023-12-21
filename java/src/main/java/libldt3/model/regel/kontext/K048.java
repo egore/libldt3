@@ -22,8 +22,17 @@
 package libldt3.model.regel.kontext;
 
 import libldt3.model.Kontext;
+import libldt3.model.enums.Einsenderstatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
  * Wenn Inhalt von FK 7321 = 03, 15 oder 16, muss FK 8143 im  Obj_0022
@@ -33,9 +42,25 @@ public class K048 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K048.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("7321", "8143");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        List<Einsenderstatus> feld7321 = (List<Einsenderstatus>) fields.get("7321").get(owner);
+        if (feld7321.contains(Einsenderstatus.Einsender_sonstige) ||
+                feld7321.contains(Einsenderstatus.staatlicheEinrichtung) ||
+                feld7321.contains(Einsenderstatus.sonstige_juristischePerson)) {
+            return containsAnyString(fields.get("8143"), owner);
+        }
+
+        return true;
     }
 
 }

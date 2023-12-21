@@ -22,8 +22,17 @@
 package libldt3.model.regel.kontext;
 
 import libldt3.model.Kontext;
+import libldt3.model.enums.Einsenderstatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
  * Wenn Inhalt von FK 7321 = 01, 02, 07, 08, 14 oder 17, dann muss FK 8119
@@ -33,9 +42,28 @@ public class K046 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K046.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("7321", "8119");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        List<Einsenderstatus> feld7321 = (List<Einsenderstatus>) fields.get("7321").get(owner);
+        if (feld7321.contains(Einsenderstatus.Erstveranlasser) ||
+                feld7321.contains(Einsenderstatus.EinsenderArzt) ||
+                feld7321.contains(Einsenderstatus.Laborarzt_Befundersteller) ||
+                feld7321.contains(Einsenderstatus.Leistungserbringer) ||
+                feld7321.contains(Einsenderstatus.Ueberweiser) ||
+                feld7321.contains(Einsenderstatus.sonstige_medizinischeEinrichtung)) {
+            return containsAnyString(fields.get("8119"), owner);
+        }
+
+        return true;
     }
 
 }

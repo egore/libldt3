@@ -29,8 +29,12 @@ import libldt3.model.objekte.Untersuchungsanforderung;
 import libldt3.model.saetze.Auftrag;
 
 /**
- * FK 0222 muss vorhanden sein, wenn in mindestens einem Obj_0059 (Obj_Untersuchungsanforderung) die FK 7303 mit dem
- * Inhalt 8 vorhanden ist.
+ * FK 0222 muss vorhanden sein, wenn in mindestens einem  Obj_0059
+ * (Obj_Untersuchungsanforderung) die FK 7303 mit dem Inhalt 8 vorhanden ist.
+ *
+ * Die ASV-Teamnummer ist anzugeben, wenn Leistungen im Rahmen der
+ * ASV (Ambulante Spezialfachärztliche Versorgung) entsprechend § 116b
+ * des SGB V beauftragt werden.
  */
 public class K057 implements Kontextregel {
 

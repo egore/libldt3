@@ -22,12 +22,17 @@
 package libldt3.model.regel.kontext;
 
 import libldt3.model.Kontext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class K072 implements Kontextregel {
 
+    private static final Logger LOG = LoggerFactory.getLogger(K072.class);
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+        return true;
     }
 
 }

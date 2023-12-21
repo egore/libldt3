@@ -25,6 +25,8 @@ import libldt3.model.Kontext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Set;
+
 /**
  * Die FK 8512 muss nur dann vorkommen, wenn der Inhalt der FK 8512 im Auftrag
  * übermittelt wurde.
@@ -36,9 +38,11 @@ public class K118 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K118.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("8512");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        throw new UnsupportedOperationException();
+        return true;
     }
 
 }

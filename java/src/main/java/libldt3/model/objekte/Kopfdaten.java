@@ -38,7 +38,7 @@ public class Kopfdaten implements Kontext {
 
     @Feld(value = "0001", feldart = Feldart.muss)
     @Regelsatz(value = F007.class, maxLaenge = 12)
-    public String versionDatensatzbeschreibung;
+    public LdtVersion versionDatensatzbeschreibung;
     @Feld(value = "8151", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 16)
     public SendendesSystem sendendesSystem;
