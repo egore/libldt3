@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ * Copyright 2016-2023  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,10 @@ package libldt3.model.saetze;
 import libldt3.annotations.Datenpaket;
 import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
+import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
 import libldt3.model.enums.Satzart;
+import libldt3.model.regel.erlaubt.E157;
 
 /**
  * Satzart: P (Praxis)-Datenpaket-Abschluss "8231"
@@ -34,6 +36,7 @@ import libldt3.model.enums.Satzart;
 public class PraxisDatenpaketAbschluss implements Satz, Kontext {
 
     @Feld(value = "9300", feldart = Feldart.muss)
+    @Regelsatz(value = E157.class, laenge = 40)
     public String pruefsumme;
 
 }

@@ -1,4 +1,24 @@
-
+/*
+ * Copyright 2016-2023  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package libldt3.model.saetze;
 
 import java.util.List;
@@ -44,9 +64,9 @@ public class Auftrag implements Satz, Kontext {
     @Feld(value = "8140", feldart = Feldart.bedingt_kann)
     @Regelsatz(laenge = 12)
     public Mutterschaft mutterschaft;
-    @Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8153", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public TierSonstiges tier;
+    public TierSonstiges tierSonstiges;
     @Feld(value = "8113", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 19)
     public Auftragsinformation auftragsinformation;
@@ -55,15 +75,16 @@ public class Auftrag implements Satz, Kontext {
     public List<Veranlassungsgrund> veranlassungsgrund;
     @Feld(value = "8101", feldart = Feldart.muss)
     @Regelsatz(laenge = 22)
-    public Abrechnungsinformationen abrechnungsinformationen;
+    public Abrechnungsinformationen abrechnungsinformation;
     @Feld(value = "8137", feldart = Feldart.bedingt_kann)
+    @Regelsatz(laenge = 8)
     public List<Material> material;
-    @Feld(value = "8159", feldart = Feldart.muss)
+    @Feld(value = "8159", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 24)
     public List<Untersuchungsanforderung> untersuchungsanforderung;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Feld(value = "8167", feldart = Feldart.kann)
     @Regelsatz(laenge = 26)
-    public List<Fliesstext> zusaeztlicheInformationen;
+    public List<Fliesstext> zusaetzlicheInformationen;
     @Feld(value = "8110", feldart = Feldart.kann)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;

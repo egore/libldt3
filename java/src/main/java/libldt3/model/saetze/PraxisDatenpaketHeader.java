@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ * Copyright 2016-2023  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,8 @@ import libldt3.annotations.Feld;
 import libldt3.annotations.Feldart;
 import libldt3.annotations.Regelsatz;
 import libldt3.model.Kontext;
-import libldt3.model.enums.DatensatzAbsender;
 import libldt3.model.enums.Satzart;
+import libldt3.model.enums.DatensatzAbsender;
 import libldt3.model.objekte.Einsenderidentifikation;
 import libldt3.model.objekte.Kopfdaten;
 
@@ -44,7 +44,7 @@ public class PraxisDatenpaketHeader implements Satz, Kontext {
     public Kopfdaten kopfdaten;
     @Feld(value = "7265", feldart = Feldart.muss)
     @Regelsatz(laenge = 1)
-    public DatensatzAbsender absender;
+    public DatensatzAbsender absenderDatensatze;
     @Feld(value = "8122", feldart = Feldart.muss)
     @Regelsatz(laenge = 23)
     public List<Einsenderidentifikation> einsenderidentifikation;

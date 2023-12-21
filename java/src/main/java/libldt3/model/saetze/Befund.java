@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ * Copyright 2016-2023  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -55,22 +55,22 @@ public class Befund implements Satz, Kontext {
     public List<Laborkennung> laborkennung;
     @Feld(value = "8122", feldart = Feldart.muss)
     @Regelsatz(laenge = 23)
-    public Einsenderidentifikation senderIdentification;
+    public Einsenderidentifikation einsenderidentifikation;
     @Feld(value = "8145", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 7)
     public Patient patient;
     @Feld(value = "8169", feldart = Feldart.bedingt_kann)
     @Regelsatz(laenge = 19)
-    public Koerperkenngroessen koerperkenngroessen;
+    public Koerperkenngroessen koerperkenngroessenkenngroessen;
     @Feld(value = "8150", feldart = Feldart.bedingt_kann)
     @Regelsatz(laenge = 15)
     public Schwangerschaft schwangerschaft;
     @Feld(value = "8140", feldart = Feldart.bedingt_kann)
     @Regelsatz(laenge = 12)
     public Mutterschaft mutterschaft;
-    @Feld(value = "8153", name = "Tier_Sonstiges", feldart = Feldart.bedingt_muss)
+    @Feld(value = "8153", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 14)
-    public TierSonstiges tier;
+    public TierSonstiges tierSonstiges;
     @Feld(value = "8117", feldart = Feldart.muss)
     @Regelsatz(laenge = 19)
     public Befundinformationen befundinformationen;
@@ -83,9 +83,9 @@ public class Befund implements Satz, Kontext {
     @Feld(value = "8135", feldart = Feldart.muss)
     @Regelsatz(laenge = 20)
     public Laborergebnisbericht laborergebnisbericht;
-    @Feld(value = "8167", name = "Zusaetzliche_Informationen", feldart = Feldart.kann)
+    @Feld(value = "8167", feldart = Feldart.kann)
     @Regelsatz(laenge = 26)
-    public List<Fliesstext> text;
+    public List<Fliesstext> zusaetzlicheInformationen;
     @Feld(value = "8110", feldart = Feldart.kann)
     @Regelsatz(laenge = 6)
     public List<Anhang> anhang;
