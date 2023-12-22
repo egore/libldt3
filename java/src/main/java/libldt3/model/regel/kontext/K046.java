@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -60,7 +60,7 @@ public class K046 implements Kontextregel {
                 feld7321.contains(Einsenderstatus.Leistungserbringer) ||
                 feld7321.contains(Einsenderstatus.Ueberweiser) ||
                 feld7321.contains(Einsenderstatus.sonstige_medizinischeEinrichtung)) {
-            return containsAnyString(fields.get("8119"), owner);
+            return containsAnyValue(fields.get("8119"), owner);
         }
 
         return true;

@@ -21,17 +21,17 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Falls die FK 4109 vorhanden ist und der Feldinhalt >= "01.01.2015" sowie der
@@ -62,7 +62,7 @@ public class K091 implements Kontextregel {
 
         if (feld4109 != null && !feld4109.isBefore(LocalDate.parse("01.01.2015"))) {
             if (Integer.parseInt(feld4104.substring(3, 5)) < 800) {
-                return containsAnyString(fields.get("3119"), owner) && containsAnyString(fields.get("4133"), owner);
+                return containsAnyValue(fields.get("3119"), owner) && containsAnyValue(fields.get("4133"), owner);
             }
         }
 

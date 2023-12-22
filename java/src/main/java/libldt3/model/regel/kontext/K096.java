@@ -21,16 +21,17 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
 import libldt3.model.enums.Auftragsstatus;
 import libldt3.model.enums.TestStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.lang.reflect.Field;
-import java.util.*;
-
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
  * Wenn Inhalt von FK 8401 = 2, darf der Inhalt von FK 8418 nicht 02, 05 oder 10

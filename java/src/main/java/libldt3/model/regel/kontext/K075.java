@@ -31,7 +31,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -56,7 +56,7 @@ public class K075 implements Kontextregel {
         }
 
         if (((Dokumententyp) fields.get("9970").get(owner)) == Dokumententyp.sonstige) {
-            return containsAnyString(fields.get("6327"), owner);
+            return containsAnyValue(fields.get("6327"), owner);
         }
 
         return true;

@@ -29,7 +29,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -51,7 +51,7 @@ public class K089 implements Kontextregel {
         }
 
         for (Field f : fields.values()) {
-            if (containsAnyString(f, owner)) {
+            if (containsAnyValue(f, owner)) {
                 return true;
             }
         }

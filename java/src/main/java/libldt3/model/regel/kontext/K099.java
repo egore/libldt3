@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2021  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ * Copyright 2016-2023  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,25 +21,32 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import libldt3.model.enums.Grenzwertindikator;
-import libldt3.model.enums.GrenzwertindikatorErweitert;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import libldt3.model.enums.Grenzwertindikator;
+import libldt3.model.enums.GrenzwertindikatorErweitert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+/**
+ * Wenn der Inhalt der FK 8422 = !L oder !- oder !H oder !+ ist, muss FK 8126 der
+ * FK 8422 folgen.
+ *
+ * Obj_Fehlermeldung/Aufmerksamkeit muss bei Extremwerten eingesetzt
+ * werden, um den Befundempfänger auf die Werte hinzuweisen.
+ */
 public class K099 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K099.class);
 
-    private static final Set<String> FIELDTYPES = Set.of("8422");
+    private static final Set<String> FIELDTYPES = Set.of("8422", "8126");
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
@@ -58,7 +65,7 @@ public class K099 implements Kontextregel {
                         grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt__ ||
                         grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht ||
                         grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht_) &&
-                        !containsAnyString(fields.get("8126"), grenzwertindikatorErweitert)) {
+                        !containsAnyValue(fields.get("8126"), grenzwertindikatorErweitert)) {
                     return false;
                 }
             }
@@ -70,7 +77,7 @@ public class K099 implements Kontextregel {
                     grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt__ ||
                     grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht ||
                     grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht_) &&
-                    !containsAnyString(fields.get("8126"), o)) {
+                    !containsAnyValue(fields.get("8126"), o)) {
                 return false;
             }
         }

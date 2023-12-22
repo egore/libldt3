@@ -21,19 +21,18 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import libldt3.model.enums.StatusRechnungsempfaenger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFieldsRecursive;
-import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+import libldt3.model.Kontext;
+import libldt3.model.enums.StatusRechnungsempfaenger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wenn Inhalt von FK 7421 = 15, 16 oder 90 dann muss FK 8143 vorhanden sein.
@@ -53,12 +52,13 @@ public class K029 implements Kontextregel {
             return false;
         }
 
-        StatusRechnungsempfaenger status = (StatusRechnungsempfaenger) getFieldValue(fields.get("7421"), owner);
-        if (status == StatusRechnungsempfaenger.staatlicheEinrichtung ||
-                status == StatusRechnungsempfaenger.sonstige_juristischePerson ||
-                status == StatusRechnungsempfaenger.sonstige_medizinischeEinrichtung) {
-            if (!containsAnyString(fields.get("8143"), owner)) {
-                LOG.error("Status {} requires field 8143 to have a value", status);
+        StatusRechnungsempfaenger feld7421 = (StatusRechnungsempfaenger) getFieldValue(fields.get("7421"), owner);
+
+        // Wenn Inhalt von FK 7421 = 15, 16 oder 90 dann muss FK 8143 vorhanden sein
+        if (feld7421 == StatusRechnungsempfaenger.staatlicheEinrichtung ||
+            feld7421 == StatusRechnungsempfaenger.sonstige_juristischePerson ||
+            feld7421 == StatusRechnungsempfaenger.sonstige_medizinischeEinrichtung) {
+            if (!containsAnyValue(fields.get("8143"), owner)) {
                 return false;
             }
         }

@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -59,7 +59,7 @@ public class K093 implements Kontextregel {
 
         // Wenn Inhalt von FK7362=2 , darf <missing 'FK'>7421 0048 02 .
         if (feld7362 == AbrechnungsartPkv.AbrechnungPrivatLG) {
-            return !containsAnyString(fields.get("7421"), owner);
+            return !containsAnyValue(fields.get("7421"), owner);
         }
 
         return true;

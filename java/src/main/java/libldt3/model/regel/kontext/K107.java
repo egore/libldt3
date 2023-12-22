@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -61,7 +61,7 @@ public class K107 implements Kontextregel {
         if (feld7321.contains(Einsenderstatus.Erstveranlasser) ||
                 feld7321.contains(Einsenderstatus.EinsenderArzt) ||
                 feld7321.contains(Einsenderstatus.Laborarzt_Befundersteller)) {
-            return containsAnyString(fields.get("8114"), owner);
+            return containsAnyValue(fields.get("8114"), owner);
         }
 
         return true;

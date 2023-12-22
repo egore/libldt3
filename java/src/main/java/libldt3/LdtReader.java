@@ -483,7 +483,7 @@ public class LdtReader {
         if (type == String.class) {
             return payload;
         }
-        if (type == Float.class) {
+        if (type == Float.class || type == float.class) {
             return Float.valueOf(payload);
         }
         if (type == Integer.class) {

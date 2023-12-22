@@ -21,17 +21,18 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import libldt3.model.enums.Scheinuntergruppe;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import libldt3.model.enums.Scheinuntergruppe;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wenn Inhalt von FK 4239 ≠ 27, 28, dann muss FK 8241 vorhanden sein.
@@ -51,9 +52,13 @@ public class K016 implements Kontextregel {
             return false;
         }
 
-        Scheinuntergruppe feld4239 = (Scheinuntergruppe) fields.get("4239").get(owner);
+        Scheinuntergruppe feld4239 = (Scheinuntergruppe) getFieldValue(fields.get("4239"), owner);
+
+        // Wenn Inhalt von FK 4239 ≠ 27, 28, dann muss FK 8241 vorhanden sein
         if (feld4239 != Scheinuntergruppe.Muster10 && feld4239 != Scheinuntergruppe.Muster10A) {
-            return containsAnyString(fields.get("8241"), owner);
+            if (!containsAnyValue(fields.get("8241"), owner)) {
+                return false;
+            }
         }
 
         return true;

@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -57,7 +57,7 @@ public class K048 implements Kontextregel {
         if (feld7321.contains(Einsenderstatus.Einsender_sonstige) ||
                 feld7321.contains(Einsenderstatus.staatlicheEinrichtung) ||
                 feld7321.contains(Einsenderstatus.sonstige_juristischePerson)) {
-            return containsAnyString(fields.get("8143"), owner);
+            return containsAnyValue(fields.get("8143"), owner);
         }
 
         return true;

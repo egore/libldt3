@@ -21,7 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
+import libldt3.model.enums.Abrechnungsinfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,9 +42,27 @@ public class K133 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K133.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("7303", "4209");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        Abrechnungsinfo feld7303 = (Abrechnungsinfo) getFieldValue(fields.get("7303"), owner);
+
+        // Wenn Inhalt von FK 7303 im Obj_0027 (Obj_Veranlassungsgrund) = 2 oder 10 ist, dann kann die FK 4209 vorhanden sein
+        if (feld7303 == Abrechnungsinfo.GKV_LG ||
+            feld7303 == Abrechnungsinfo.GKV_LG_praeventiv) {
+            if (!containsAnyValue(fields.get("4209"), owner)) {
+                return false;
+            }
+        }
+
         return true;
     }
 

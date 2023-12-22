@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -51,14 +51,14 @@ public class K006 implements Kontextregel {
             return false;
         }
 
-        if (containsAnyString(fields.get("8428"), owner) ||
-            containsAnyString(fields.get("8430"), owner) ||
-            containsAnyString(fields.get("8429"), owner))
+        if (containsAnyValue(fields.get("8428"), owner) ||
+            containsAnyValue(fields.get("8430"), owner) ||
+            containsAnyValue(fields.get("8429"), owner))
         {
             return true;
         }
 
-        return !containsAnyString(fields.get("8431"), owner);
+        return !containsAnyValue(fields.get("8431"), owner);
     }
 
 }

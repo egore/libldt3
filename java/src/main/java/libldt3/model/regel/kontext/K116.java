@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
@@ -62,18 +62,18 @@ public class K116 implements Kontextregel {
 
         // FIXME: This field does not exist here and likely must be inherited from the context
         Scheinuntergruppe scheinuntergruppe = (Scheinuntergruppe) getFieldValue(fields.get("4239"), owner);
-        if (scheinuntergruppe != Scheinuntergruppe.Muster10A && containsAnyString(fields.get("0222"), owner)) {
-            if (!containsAnyString(fields.get("0212"), owner) && !containsAnyString(fields.get("0223"), owner)) {
+        if (scheinuntergruppe != Scheinuntergruppe.Muster10A && containsAnyValue(fields.get("0222"), owner)) {
+            if (!containsAnyValue(fields.get("0212"), owner) && !containsAnyValue(fields.get("0223"), owner)) {
                 LOG.error("For other than Muster 10A either FK 0212 or 0223 must be present");
                 return false;
             }
         }
-        if (scheinuntergruppe == Scheinuntergruppe.Muster10A && containsAnyString(fields.get("0222"), owner)) {
-            if (!containsAnyString(fields.get("0212"), owner)) {
+        if (scheinuntergruppe == Scheinuntergruppe.Muster10A && containsAnyValue(fields.get("0222"), owner)) {
+            if (!containsAnyValue(fields.get("0212"), owner)) {
                 LOG.error("For Muster 10A FK 0212 must be present");
                 return false;
             }
-            if (containsAnyString(fields.get("0223"), owner)) {
+            if (containsAnyValue(fields.get("0223"), owner)) {
                 LOG.error("For Muster 10A FK 0223 must not be present");
                 return false;
             }

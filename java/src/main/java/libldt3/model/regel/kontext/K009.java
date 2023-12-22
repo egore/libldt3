@@ -21,8 +21,9 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -56,11 +57,11 @@ public class K009 implements Kontextregel {
             return false;
         }
 
-        String feld8002 = (String) fields.get("8002").get(owner);
+        String feld8002 = (String) getFieldValue(fields.get("8002"), owner);
 
         // Wenn Inhalt von FK8002=0035 , muss FK8002 0060 , 0061 , 0062 , 0063 , 0073 oder 0055 vorhanden sein .
         if (feld8002.equals("0035")) {
-            return containsAnyString(fields.get("8002"), owner);
+            return containsAnyValue(fields.get("8002"), owner);
         }
 
         return true;

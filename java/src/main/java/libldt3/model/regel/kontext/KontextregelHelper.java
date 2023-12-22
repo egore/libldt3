@@ -42,10 +42,16 @@ class KontextregelHelper {
     /**
      * Check if a given field has any string content (either simply text or multiline Fliesstext)
      */
-    public static boolean containsAnyString(Field field, Object owner) throws IllegalAccessException {
+    public static boolean containsAnyValue(Field field, Object owner) throws IllegalAccessException {
         Object value = getFieldValue(field, owner);
         if (value == null) return false;
-        return containsAnyString(value);
+        if (value instanceof String) {
+            return containsAnyString((String) value);
+        }
+        if (value instanceof Fliesstext) {
+            return containsAnyString((Fliesstext) value);
+        }
+        return true;
     }
 
     public static Object getFieldValue(Field field, Object owner) throws IllegalAccessException {
@@ -57,28 +63,26 @@ class KontextregelHelper {
         return field.get(owner);
     }
 
+    public static boolean containsAnyString(String value) throws IllegalAccessException {
+        return !value.isEmpty();
+    }
+
     /**
      * Check if a given field has any string content (either simply text or multiline Fliesstext)
      */
-    public static boolean containsAnyString(Object value) throws IllegalAccessException {
-        if (value instanceof String) {
-            String o = (String) value;
-            return !o.isEmpty();
-        }
-        if (value instanceof Fliesstext) {
-            Fliesstext fliesstext = ((Fliesstext) value);
-            if (fliesstext.text != null) {
-                for (String s : fliesstext.text) {
-                    if (s != null && !s.isEmpty()) {
-                        return true;
-                    }
+    public static boolean containsAnyString(Fliesstext value) throws IllegalAccessException {
+        Fliesstext fliesstext = ((Fliesstext) value);
+        if (fliesstext.text != null) {
+            for (String s : fliesstext.text) {
+                if (s != null && !s.isEmpty()) {
+                    return true;
                 }
             }
-            if (fliesstext.base64kodierteAnlage != null) {
-                for (String s : fliesstext.base64kodierteAnlage) {
-                    if (s != null && !s.isEmpty()) {
-                        return true;
-                    }
+        }
+        if (fliesstext.base64kodierteAnlage != null) {
+            for (String s : fliesstext.base64kodierteAnlage) {
+                if (s != null && !s.isEmpty()) {
+                    return true;
                 }
             }
         }

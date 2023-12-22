@@ -23,6 +23,7 @@ package libldt3.model.regel.kontext;
 
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -54,6 +55,7 @@ public class K081 implements Kontextregel {
             return false;
         }
 
+        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
         return true;
     }
 

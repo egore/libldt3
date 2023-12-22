@@ -30,7 +30,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
@@ -61,7 +61,7 @@ public class K030 implements Kontextregel {
                 status == StatusRechnungsempfaenger.Bevollmaechtigter ||
                 status == StatusRechnungsempfaenger.Halter ||
                 status == StatusRechnungsempfaenger.Patient) {
-            if (!containsAnyString(fields.get("8147"), owner)) {
+            if (!containsAnyValue(fields.get("8147"), owner)) {
                 LOG.error("Status {} requires field 8147 to have a value", status);
                 return false;
             }

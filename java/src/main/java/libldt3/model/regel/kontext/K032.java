@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -62,22 +62,22 @@ public class K032 implements Kontextregel {
 
         // Wenn Inhalt von FK7303=1 muss FK4239 = 27 vorhanden sein .
         if (feld7303 == Abrechnungsinfo.GKV_Laborfacharzt) {
-            return containsAnyString(fields.get("4239"), owner);
+            return containsAnyValue(fields.get("4239"), owner);
         }
 
         // Wenn Inhalt von FK7303=2 muss FK4239 = 28 vorhanden sein .
         if (feld7303 == Abrechnungsinfo.GKV_LG) {
-            return containsAnyString(fields.get("4239"), owner);
+            return containsAnyValue(fields.get("4239"), owner);
         }
 
         // Wenn Inhalt von FK7303=9 muss FK4239 = 27 FK 4221 = 2 vorhanden sein .
         if (feld7303 == Abrechnungsinfo.GKV_Laborfacharzt_praeventiv) {
-            return containsAnyString(fields.get("4239"), owner);
+            return containsAnyValue(fields.get("4239"), owner);
         }
 
         // Wenn Inhalt von FK7303=10 muss FK4239 = 28 FK 4221 = 2 vorhanden sein .
         if (feld7303 == Abrechnungsinfo.GKV_LG_praeventiv) {
-            return containsAnyString(fields.get("4239"), owner);
+            return containsAnyValue(fields.get("4239"), owner);
         }
 
         return true;

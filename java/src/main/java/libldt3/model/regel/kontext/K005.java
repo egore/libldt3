@@ -21,19 +21,19 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
 import libldt3.model.Kontext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import libldt3.model.enums.Auftragsstatus;
 import libldt3.model.enums.Satzart;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wenn Feldinhalt von FK 8000 = 8205 und der Inhalt FK 8401 = 1, darf FK 4121
@@ -60,13 +60,13 @@ public class K005 implements Kontextregel {
             return false;
         }
 
-        Satzart feld8000 = (Satzart) fields.get("8000").get(owner);
+        Satzart feld8000 = (Satzart) getFieldValue(fields.get("8000"), owner);
         if (feld8000 == Satzart.Befund) {
 
             // Wenn Feldinhalt von FK 8000 = 8205 und der Inhalt FK 8401 = 1, darf FK 4121 nicht vorhanden sein.
             Auftragsstatus auftragsstatus = (Auftragsstatus) fields.get("8401").get(owner);
             if (auftragsstatus == Auftragsstatus.Auftrag_nicht_abgeschlossen) {
-                if (containsAnyString(fields.get("8410"), owner)) {
+                if (containsAnyValue(fields.get("8410"), owner)) {
                     return false;
                 }
             }

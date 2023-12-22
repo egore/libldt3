@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -55,7 +55,7 @@ public class K024 implements Kontextregel {
 
         // Wenn Inhalt von FK4131=04 , muss Inhalt vonFK4106 = 00 .
         if (feld4131 == BesonderePersonengruppe.BSHG264SGB_V) {
-            return containsAnyString(fields.get("4106"), owner);
+            return containsAnyValue(fields.get("4106"), owner);
         }
 
         return true;

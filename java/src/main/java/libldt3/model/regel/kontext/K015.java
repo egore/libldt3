@@ -21,7 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
+import libldt3.model.enums.Scheinuntergruppe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,9 +41,26 @@ public class K015 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K015.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("4239", "4229");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        Scheinuntergruppe feld4239 = (Scheinuntergruppe) getFieldValue(fields.get("4239"), owner);
+
+        // Nur wenn FK 4239 = 27 oder 28, kann FK 4229 vorhanden sein
+        if (containsAnyValue(fields.get("4229"), owner)) {
+            if (feld4239 != Scheinuntergruppe.Muster10 && feld4239 != Scheinuntergruppe.Muster10A) {
+                return false;
+            }
+        }
+
         return true;
     }
 

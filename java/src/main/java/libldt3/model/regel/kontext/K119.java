@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -55,7 +55,7 @@ public class K119 implements Kontextregel {
         }
 
         for (Field f : fields.values()) {
-            if (containsAnyString(f, owner)) {
+            if (containsAnyValue(f, owner)) {
                 return true;
             }
         }

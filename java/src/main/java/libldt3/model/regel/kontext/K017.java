@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2017  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ * Copyright 2016-2023  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,17 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.findField;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import libldt3.model.Kontext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FK 3112 und/oder FK 3121 muss vorhanden sein. Ausnahmen: Nur wenn FK 3114
@@ -61,7 +60,7 @@ public class K017 implements Kontextregel {
 
         return !checkExclusion(owner, fields, "3114", "3112") &&
                 !checkExclusion(owner, fields, "3124", "3121") &&
-                (containsAnyString(fields.get("3112"), owner) || containsAnyString(fields.get("3121"), owner));
+                (containsAnyValue(fields.get("3112"), owner) || containsAnyValue(fields.get("3121"), owner));
 
     }
 
@@ -69,8 +68,8 @@ public class K017 implements Kontextregel {
         String value = (String) fields.get(first).get(owner);
         // XXX 4109 does not exist on the current object, likely we need to traverse the object tree to find it in one
         // of the holding classes
-        if (value != null && !"D".equals(value) && containsAnyString(findField(owner, "4109")) &&
-                containsAnyString(fields.get(second), owner)) {
+        if (value != null && !"D".equals(value) && containsAnyValue(fields.get("4109"), owner) &&
+                containsAnyValue(fields.get(second), owner)) {
             LOG.error("FK {} is present and not 'D'. Also FK 4109 is present. Then {} must not be present", first, second);
             return true;
         }

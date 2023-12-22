@@ -21,8 +21,9 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class K132 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K132.class);
 
-    private static final Set<String> FIELDTYPES = Set.of("8626", "8617");
+    private static final Set<String> FIELDTYPES = Set.of("8626", "8617", "8631");
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
@@ -53,11 +54,14 @@ public class K132 implements Kontextregel {
             return false;
         }
 
-        TestungRechtsgrundlage feld8626 = (TestungRechtsgrundlage) fields.get("8626").get(owner);
+        TestungRechtsgrundlage feld8626 = (TestungRechtsgrundlage) getFieldValue(fields.get("8626"), owner);
 
-        // Wenn Inhalt von FK8626=1 , muss FK8617 oder FK 8631 vorhanden sein . vorhanden sein .
+        // Wenn Inhalt von FK 8626 = 1, muss innerhalb des entsprechenden Objektes min. die FK 8617 oder die FK 8631 vorhanden sein
         if (feld8626 == TestungRechtsgrundlage.TestV) {
-            return containsAnyString(fields.get("8617"), owner);
+            if (!containsAnyValue(fields.get("8617"), owner) &&
+                !containsAnyValue(fields.get("8631"), owner)) {
+                return false;
+            }
         }
 
         return true;

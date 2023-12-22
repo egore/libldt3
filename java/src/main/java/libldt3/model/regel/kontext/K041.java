@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -54,14 +54,14 @@ public class K041 implements Kontextregel {
             return false;
         }
 
-        if (((Scheinuntergruppe) fields.get("4239").get(owner)) == Scheinuntergruppe.Muster10 && containsAnyString(fields.get("8240"), owner)) {
-            if (containsAnyString(fields.get("4217"), owner) && containsAnyString(fields.get("4241"), owner)) {
+        if (((Scheinuntergruppe) fields.get("4239").get(owner)) == Scheinuntergruppe.Muster10 && containsAnyValue(fields.get("8240"), owner)) {
+            if (containsAnyValue(fields.get("4217"), owner) && containsAnyValue(fields.get("4241"), owner)) {
                 return true;
             }
-            if (containsAnyString(fields.get("4225"), owner) && containsAnyString(fields.get("4241"), owner)) {
+            if (containsAnyValue(fields.get("4225"), owner) && containsAnyValue(fields.get("4241"), owner)) {
                 return true;
             }
-            if (containsAnyString(fields.get("4225"), owner) && containsAnyString(fields.get("4248"), owner)) {
+            if (containsAnyValue(fields.get("4225"), owner) && containsAnyValue(fields.get("4248"), owner)) {
                 return true;
             }
             return false;

@@ -21,9 +21,20 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
 import libldt3.model.Kontext;
+import libldt3.model.enums.ResistenzMethode;
+import libldt3.model.objekte.UntersuchungsergebnisMikrobiologie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * FK 8111 kann nur vorkommen, wenn FK 7286 mit Inhalt ≠ 0 vorkommt.
@@ -32,9 +43,29 @@ public class K085 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K085.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("8111", "7286");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        List<UntersuchungsergebnisMikrobiologie.UntersuchungsergebnisMikrobiologie_ResistenzMethode> feld7286 = (List<UntersuchungsergebnisMikrobiologie.UntersuchungsergebnisMikrobiologie_ResistenzMethode>) getFieldValue(fields.get("7286"), owner);
+
+        if (feld7286 != null) {
+            boolean found = feld7286.stream()
+                    .anyMatch(x -> x.value != ResistenzMethode.keinAntibiogramm_erstellt);
+            if (!found) {
+                if (containsAnyValue(fields.get("8111"), owner)) {
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 

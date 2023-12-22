@@ -21,7 +21,18 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
+import libldt3.model.enums.Abrechnungsinfo;
+import libldt3.model.enums.Satzart;
+import libldt3.model.objekte.Untersuchungsanforderung;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,9 +45,29 @@ public class K011 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K011.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("8000", "8002", "7303", "8410");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        Abrechnungsinfo feld7303 = (Abrechnungsinfo) getFieldValue(fields.get("7303"), owner);
+        Satzart feld8000 = (Satzart) getFieldValue(fields.get("8000"), owner);
+        Object feld8002 = getFieldValue(fields.get("8002"), owner);
+
+
+        // Wenn Inhalt von FK 8000 = 8215 und FK 8002 = Obj_0059 (Obj_Untersuchungsanforderung) und FK 7303 = 2 oder 10 dann muss FK 8410 vorhande
+        if (feld8000 == Satzart.Auftrag && feld8002 instanceof Untersuchungsanforderung && (feld7303 == Abrechnungsinfo.GKV_LG || feld7303 == Abrechnungsinfo.GKV_LG_praeventiv)) {
+            if (containsAnyValue(fields.get("8410"), owner)) {
+                return false;
+            }
+        }
+
         return true;
     }
 

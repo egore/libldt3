@@ -26,9 +26,7 @@ import java.util.Map;
 import java.util.Set;
 
 import libldt3.model.Kontext;
-import libldt3.model.enums.ErgebnisStatus;
 import libldt3.model.enums.TestStatus;
-import libldt3.model.objekte.UntersuchungsergebnisZytologie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,14 +55,14 @@ public class K082 implements Kontextregel {
             return false;
         }
 
-        var feld8418 = fields.get("8418").get(owner);
+        var feld8418 = getFieldValue(fields.get("8418"), owner);
         if (!(feld8418 instanceof TestStatus)) {
             feld8418 = findField(feld8418, "8418");
         }
 
         // Wenn Inhalt von FK 8418 = 11 oder FK 7368 vorhanden ist, muss FK 8126 im Obj_0037 vorhanden sein
         if (feld8418 == TestStatus.Material_fehlt) {
-            if (containsAnyString(fields.get("8126"), owner)) {
+            if (!containsAnyValue(fields.get("8126"), owner)) {
                 return false;
             }
         }

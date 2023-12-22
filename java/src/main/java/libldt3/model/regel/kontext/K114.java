@@ -21,7 +21,17 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
+import libldt3.model.enums.Abrechnungsinfo;
+import libldt3.model.enums.Satzart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,9 +45,28 @@ public class K114 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K114.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("8000", "7303", "8313");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        Abrechnungsinfo feld7303 = (Abrechnungsinfo) getFieldValue(fields.get("7303"), owner);
+        Satzart feld8000 = (Satzart) getFieldValue(fields.get("8000"), owner);
+
+        // Wenn der Inhalt von FK 8000 = 8215 und der Inhalt von FK 7303 in mindestens einem Obj_0059 mit dem Wert 99 vorkommt, muss im Obj_0013 die FK 8313 vorkommen
+        if (feld8000 == Satzart.Auftrag &&
+            feld7303 == Abrechnungsinfo.storniert) {
+            if (!containsAnyValue(fields.get("8313"), owner)) {
+                return false;
+            }
+        }
+
         return true;
     }
 

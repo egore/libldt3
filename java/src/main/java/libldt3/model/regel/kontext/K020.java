@@ -21,15 +21,15 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wenn Inhalt FK 8002 = Obj_0002 (Obj_Abrechnung GKV) und FK 0201 in Satzart 8230

@@ -21,14 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
 import libldt3.model.Kontext;
+import libldt3.model.enums.Laborart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +42,7 @@ public class K083 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K083.class);
 
-    private static final Set<String> FIELDTYPES = Set.of("7266");
+    private static final Set<String> FIELDTYPES = Set.of("7266", "8145", "8153");
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
@@ -49,6 +51,16 @@ public class K083 implements Kontextregel {
         if (fields.size() != FIELDTYPES.size()) {
             LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
             return false;
+        }
+
+        Laborart feld7266 = (Laborart) getFieldValue(fields.get("7266"), owner);
+        if (feld7266 == Laborart.Laborgemeinschaft || feld7266 == Laborart.Facharztlabor) {
+            if (!containsAnyValue(fields.get("8145"), owner)) {
+                return false;
+            }
+            if (containsAnyValue(fields.get("8153"), owner)) {
+                return false;
+            }
         }
 
         return true;

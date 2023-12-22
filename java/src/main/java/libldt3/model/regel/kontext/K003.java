@@ -21,18 +21,18 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
 import libldt3.model.Kontext;
+import libldt3.model.enums.Abrechnungsinfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import libldt3.model.enums.Abrechnungsinfo;
 
 /**
  * Wenn Feldinhalt von FK 7303 = 1, 8 oder 9 ist und FK 8410 vorhanden, muss auch
@@ -58,17 +58,20 @@ public class K003 implements Kontextregel {
             return false;
         }
 
-        Abrechnungsinfo abrechnungsinfo = (Abrechnungsinfo) fields.get("7303").get(owner);
-        if (abrechnungsinfo == null) {
+        Abrechnungsinfo feld7303 = (Abrechnungsinfo) getFieldValue(fields.get("7303"), owner);
+        if (feld7303 == null) {
             return true;
         }
 
-        // Wenn Feldinhalt von FK 7303 = 1, 8 oder 9 ist und FK 8410 vorhanden, muss auch FK 8411 vorhanden sein.
-        if (abrechnungsinfo == Abrechnungsinfo.GKV_Laborfacharzt ||
-                abrechnungsinfo == Abrechnungsinfo.ASV ||
-                abrechnungsinfo == Abrechnungsinfo.GKV_Laborfacharzt_praeventiv) {
-            if (containsAnyString(fields.get("8410"), owner)) {
-                return containsAnyString(fields.get("8411"), owner);
+
+        // Wenn Feldinhalt von FK 7303 = 1, 8 oder 9 ist und FK 8410 vorhanden, muss auch FK 8411 vorhanden sein
+        if (feld7303 == Abrechnungsinfo.GKV_Laborfacharzt ||
+            feld7303 == Abrechnungsinfo.ASV ||
+            feld7303 == Abrechnungsinfo.GKV_Laborfacharzt_praeventiv) {
+            if (containsAnyValue(fields.get("8410"), owner)) {
+                if (!containsAnyValue(fields.get("8411"), owner)) {
+                    return false;
+                }
             }
         }
 

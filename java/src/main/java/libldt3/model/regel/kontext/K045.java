@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -64,7 +64,7 @@ public class K045 implements Kontextregel {
                 feld7321.contains(Einsenderstatus.Patient) ||
                 feld7321.contains(Einsenderstatus.Ueberweiser) ||
                 feld7321.contains(Einsenderstatus.sonstige_juristischePerson)) {
-            return containsAnyString(fields.get("8147"), owner);
+            return containsAnyValue(fields.get("8147"), owner);
         }
 
         return true;

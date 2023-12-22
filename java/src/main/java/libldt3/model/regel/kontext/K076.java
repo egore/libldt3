@@ -29,7 +29,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -51,15 +51,15 @@ public class K076 implements Kontextregel {
             return false;
         }
 
-        if (containsAnyString(fields.get("3412"), owner) ||
-                containsAnyString(fields.get("3413"), owner) ||
-                containsAnyString(fields.get("3414"), owner) ||
-                containsAnyString(fields.get("3415"), owner) ||
-                containsAnyString(fields.get("3416"), owner) ||
-                containsAnyString(fields.get("3417"), owner) ||
-                containsAnyString(fields.get("3418"), owner) ||
-                containsAnyString(fields.get("3419"), owner)) {
-            return containsAnyString(fields.get("8225"), owner);
+        if (containsAnyValue(fields.get("3412"), owner) ||
+                containsAnyValue(fields.get("3413"), owner) ||
+                containsAnyValue(fields.get("3414"), owner) ||
+                containsAnyValue(fields.get("3415"), owner) ||
+                containsAnyValue(fields.get("3416"), owner) ||
+                containsAnyValue(fields.get("3417"), owner) ||
+                containsAnyValue(fields.get("3418"), owner) ||
+                containsAnyValue(fields.get("3419"), owner)) {
+            return containsAnyValue(fields.get("8225"), owner);
         }
 
         return true;

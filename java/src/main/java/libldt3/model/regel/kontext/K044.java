@@ -21,16 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FK 0200 oder FK 0201 müssen vorhanden sein.
@@ -50,7 +50,7 @@ public class K044 implements Kontextregel {
             return false;
         }
 
-        if (!containsAnyString(fields.get("0200")) && !containsAnyString(fields.get("0201"))) {
+        if (!containsAnyValue(fields.get("0200"), owner) && !containsAnyValue(fields.get("0201"), owner)) {
             LOG.error("Either FK 0200 or 0201 must be present");
             return false;
         }

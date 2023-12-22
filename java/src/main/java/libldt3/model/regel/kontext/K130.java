@@ -21,16 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Es kann entweder die FK 8618 oder FK 8619 vorhanden sein. Beide Feldkennungen
@@ -51,9 +51,7 @@ public class K130 implements Kontextregel {
             return false;
         }
 
-        boolean feld8618exists = containsAnyString(fields.get("8618"), owner);
-        boolean feld8619exists = containsAnyString(fields.get("8619"), owner);
-        if (feld8618exists && feld8619exists) {
+        if (containsAnyValue(fields.get("8618"), owner) && containsAnyValue(fields.get("8619"), owner)) {
             return false;
         }
 

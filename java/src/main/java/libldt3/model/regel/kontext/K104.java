@@ -21,17 +21,17 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import libldt3.model.enums.StatusPerson;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import libldt3.model.enums.StatusPerson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wenn FK 8147 im Obj_0045 (Patient) vorkommt, dann muss der Inhalt der FK 7420
@@ -55,7 +55,7 @@ public class K104 implements Kontextregel {
             return false;
         }
 
-        if (containsAnyString(fields.get("8147"), owner)) {
+        if (containsAnyValue(fields.get("8147"), owner)) {
             StatusPerson feld7420 = (StatusPerson) fields.get("7420").get(owner);
             return feld7420 == StatusPerson.Patient;
         }

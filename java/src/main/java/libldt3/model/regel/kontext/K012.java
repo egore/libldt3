@@ -21,8 +21,9 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -52,11 +53,14 @@ public class K012 implements Kontextregel {
             return false;
         }
 
-        Scheinuntergruppe feld4239 = (Scheinuntergruppe) fields.get("4239").get(owner);
+        Scheinuntergruppe feld4239 = (Scheinuntergruppe) getFieldValue(fields.get("4239"), owner);
 
-        // Wenn Inhalt von FK4239=27oder28 , muss FK4221 vorhanden sein .
-        if (feld4239 == Scheinuntergruppe.Muster10 || feld4239 == Scheinuntergruppe.Muster10A) {
-            return containsAnyString(fields.get("4221"), owner);
+        // Wenn Inhalt von FK 4239 = 27 oder 28, dann muss das FK 4221 vorhanden sein
+        if (feld4239 == Scheinuntergruppe.Muster10 ||
+            feld4239 == Scheinuntergruppe.Muster10A) {
+            if (!containsAnyValue(fields.get("4221"), owner)) {
+                return false;
+            }
         }
 
         return true;

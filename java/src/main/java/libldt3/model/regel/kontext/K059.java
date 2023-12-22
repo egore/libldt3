@@ -29,7 +29,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
@@ -51,9 +51,12 @@ public class K059 implements Kontextregel {
             return false;
         }
 
-        if (!containsAnyString(fields.get("7330")) && !containsAnyString(fields.get("7331")) &&
-                !containsAnyString(fields.get("7332")) && !containsAnyString(fields.get("7333")) &&
-                !containsAnyString(fields.get("7334")) && !containsAnyString(fields.get("7335"))) {
+        if (!containsAnyValue(fields.get("7330"), owner) &&
+            !containsAnyValue(fields.get("7331"), owner) &&
+            !containsAnyValue(fields.get("7332"), owner) &&
+            !containsAnyValue(fields.get("7333"), owner) &&
+            !containsAnyValue(fields.get("7334"), owner) &&
+            !containsAnyValue(fields.get("7335"), owner)) {
             LOG.error("One of FK 7330, 7331, 7332, 7333, 7334, 7335 must be present");
             return false;
         }

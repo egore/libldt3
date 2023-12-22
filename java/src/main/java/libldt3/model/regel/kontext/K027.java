@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -42,7 +42,7 @@ public class K027 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K027.class);
 
-    private static final Set<String> FIELDTYPES = Set.of("8000", "0001");
+    private static final Set<String> FIELDTYPES = Set.of("8000", "8102", "8103", "8104", "8105", "8106", "8109");
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
@@ -55,9 +55,17 @@ public class K027 implements Kontextregel {
 
         Satzart feld8000 = (Satzart) fields.get("8000").get(owner);
 
-        // Wenn Inhalt von FK8000=8215 , muss <missing 'FK'>0001 vorhanden sein 8102 , 8103 , 8104 , 8105 , 8106 , 8109 .
+
+        // Wenn Inhalt von FK 8000 = 8215, dann muss im Obj_0001(Obj_Abrechnungsinformationen) mindestens einmal eine Feldkennung aus nachfolgender Liste vorhanden sein: 8102, 8103, 8104, 8105, 8106, 8109
         if (feld8000 == Satzart.Auftrag) {
-            return containsAnyString(fields.get("0001"), owner);
+            if (!containsAnyValue(fields.get("8102"), owner) &&
+                !containsAnyValue(fields.get("8103"), owner) &&
+                !containsAnyValue(fields.get("8104"), owner) &&
+                !containsAnyValue(fields.get("8105"), owner) &&
+                !containsAnyValue(fields.get("8106"), owner) &&
+                !containsAnyValue(fields.get("8109"), owner)) {
+                return false;
+            }
         }
 
         return true;

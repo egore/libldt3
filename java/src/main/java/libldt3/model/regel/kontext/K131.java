@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -59,19 +59,29 @@ public class K131 implements Kontextregel {
         String feld8627 = (String) fields.get("8627").get(owner);
         Beauftragungsgrund feld8617 = (Beauftragungsgrund) fields.get("8617").get(owner);
 
-        // Wenn Inhalt von FK8626=2 , muss FK8627 oder FK 4111 vorhanden sein . vorhanden sein .
+        // Wenn Inhalt von FK 8626 = 2, muss entweder FK 8627 oder FK 4111 vorhanden sein
         if (feld8626 == TestungRechtsgrundlage.RegionaleSondervereinbarung) {
-            return containsAnyString(fields.get("8627"), owner);
+            if (!containsAnyValue(fields.get("8627"), owner) && !containsAnyValue(fields.get("4111"), owner)) {
+                return false;
+            }
         }
 
-        // Wenn Inhalt von FK8626=1oder3 , darf FK8627 4111 nicht vorhanden sein .
-        if (feld8626 == TestungRechtsgrundlage.TestV || feld8626 == TestungRechtsgrundlage.Selbstzahler) {
-            return !containsAnyString(fields.get("8627"), owner);
+        // Wenn Inhalt von FK 8626 = 1 oder 3, darf FK 8627 und FK 4111 nicht vorhanden sein
+        if (feld8626 == TestungRechtsgrundlage.TestV ||
+            feld8626 == TestungRechtsgrundlage.Selbstzahler) {
+            if (containsAnyValue(fields.get("8627"), owner) || containsAnyValue(fields.get("4111"), owner)) {
+                return false;
+            }
         }
 
-        // Wenn Inhalt von FK8626=3 , darf FK8617 , 8618 , 8619 620 nicht vorhanden sein .
+        // Wenn Inhalt von FK 8626 = 3, darf FK 8617, 8618, 8619  und 8620 nicht vorhanden sein
         if (feld8626 == TestungRechtsgrundlage.Selbstzahler) {
-            return !containsAnyString(fields.get("8617"), owner);
+            if (containsAnyValue(fields.get("8617"), owner) ||
+                containsAnyValue(fields.get("8618"), owner) ||
+                containsAnyValue(fields.get("8619"), owner) ||
+                containsAnyValue(fields.get("8620"), owner)) {
+                return false;
+            }
         }
 
         return true;

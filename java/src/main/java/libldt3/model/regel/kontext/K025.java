@@ -21,16 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
-import libldt3.model.Kontext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import libldt3.model.Kontext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Wenn Inhalt von FK 8000 = 8215, dann gilt: Falls FK 4109 vorhanden ist, muss
@@ -53,8 +53,8 @@ public class K025 implements Kontextregel {
             return false;
         }
 
-        if (containsAnyString(fields.get("4109"), owner)) {
-            return containsAnyString(fields.get("3105"), owner) || containsAnyString(fields.get("3119"), owner);
+        if (containsAnyValue(fields.get("4109"), owner)) {
+            return containsAnyValue(fields.get("3105"), owner) || containsAnyValue(fields.get("3119"), owner);
         }
 
         return true;

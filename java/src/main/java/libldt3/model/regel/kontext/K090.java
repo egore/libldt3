@@ -21,6 +21,10 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
 import libldt3.model.Kontext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,9 +33,6 @@ import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
-
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
-import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
  * Falls die FK 4109 vorhanden ist und der Feldinhalt >= "01.01.2015" sowie der
@@ -57,12 +58,12 @@ public class K090 implements Kontextregel {
             return false;
         }
 
-        LocalDate feld4109 = (LocalDate) fields.get("4109").get(owner);
-        String feld4104 = (String) fields.get("4109").get(owner);
+        LocalDate feld4109 = (LocalDate) getFieldValue(fields.get("4109"), owner);
+        String feld4104 = (String) getFieldValue(fields.get("4104"), owner);
 
         if (feld4109 != null && !feld4109.isBefore(LocalDate.parse("01.01.2015"))) {
             if (Integer.parseInt(feld4104.substring(3, 5)) >= 800) {
-                return containsAnyString(fields.get("3105"), owner) && containsAnyString(fields.get("4110"), owner);
+                return containsAnyValue(fields.get("3105"), owner) && containsAnyValue(fields.get("4110"), owner);
             }
         }
 

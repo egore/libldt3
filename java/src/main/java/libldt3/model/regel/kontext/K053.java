@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -58,7 +58,7 @@ public class K053 implements Kontextregel {
 
         // Wenn Inhalt von FK7260=4 muss FK7352 vorhanden sein .
         if (feld7260 == KatalogIdAnforderbareLeistungen.sonstige_mitURL) {
-            return containsAnyString(fields.get("7352"), owner);
+            return containsAnyValue(fields.get("7352"), owner);
         }
 
         return true;

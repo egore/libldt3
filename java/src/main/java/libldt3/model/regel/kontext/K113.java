@@ -21,7 +21,7 @@
  */
 package libldt3.model.regel.kontext;
 
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 import java.lang.reflect.Field;
@@ -58,7 +58,7 @@ public class K113 implements Kontextregel {
 
         // Wenn Inhalt von FK7303=99 , muss Inhalt vonFK8000 = 8215 vorkommen .
         if (feld7303 == Abrechnungsinfo.storniert) {
-            return containsAnyString(fields.get("8000"), owner);
+            return containsAnyValue(fields.get("8000"), owner);
         }
 
         return true;
