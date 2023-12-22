@@ -23,8 +23,9 @@
 package libldt3.model.regel.kontext;
 
 <#if kontext.usedFields?has_content>
-import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyString;
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -63,7 +64,7 @@ public class ${kontext.regelnummer} implements Kontextregel {
         }
 
 <#if kontext.excludingFields?has_content>
-        if (<#list kontext.excludingFields as field>containsAnyString(fields.get("${field.fk}"))<#sep> && </#list>) {
+        if (<#list kontext.excludingFields as field>containsAnyValue(fields.get("${field.fk}"), owner)<#sep> && </#list>) {
             LOG.warn("<#list kontext.excludingFields as field>${field.fk}<#sep> and </#list> may not occur an the same time");
             return false;
         }
@@ -71,7 +72,7 @@ public class ${kontext.regelnummer} implements Kontextregel {
 </#if>
 <#if kontext.mandatoryFields?has_content>
         for (Field f : fields.values()) {
-            if (containsAnyString(f, owner)) {
+            if (containsAnyValue(f, owner)) {
                 return true;
             }
         }
@@ -79,14 +80,14 @@ public class ${kontext.regelnummer} implements Kontextregel {
 </#if>
 <#if kontext.mustRules?has_content>
     <#list kontext.mustRuleFields as feld>
-        ${feld.typ} feld${feld.fk} = (${feld.typ}) fields.get("${feld.fk}").get(owner);
+        ${feld.typ} feld${feld.fk} = (${feld.typ}) getFieldValue(fields.get("${feld.fk}"), owner);
     </#list>
-
 
 <#list kontext.mustRules as mustRule>
         // ${mustRule.comment}
-        if (<#list mustRule.conditions as condition>feld${condition.feld.fk} == ${condition.init}<#sep> || </#list>) {
-            if (<#if mustRule.inverted>!</#if>containsAnyString(fields.get("${mustRule.must.fk}"), owner)) {
+        if (<#list mustRule.conditions as condition>feld${condition.feld.fk} == ${condition.init}<#sep> ||
+            </#list>) {
+            if (<#if !mustRule.inverted>!</#if>containsAnyValue(fields.get("${mustRule.must.fk}"), owner)) {
                 return false;
             }
         }

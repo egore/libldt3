@@ -7,6 +7,7 @@ import libldt3.ruleparser.KontextParser;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.TerminalNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -119,7 +120,7 @@ public class Kontextregel extends Regel {
                 }
 
                 private String getOriginalText(ParserRuleContext ctx) {
-                   return pruefung.substring(ctx.getStart().getCharPositionInLine(), ctx.getStop().getStopIndex());
+                    return pruefung.substring(ctx.getStart().getCharPositionInLine(), ctx.getStop().getStopIndex());
                 }
 
                 @Override
@@ -128,25 +129,29 @@ public class Kontextregel extends Regel {
                     rule.comment = getOriginalText(ctx);
                     for (var ifBody : ctx.ifCondition()) {
                         for (var fieldExistsOrHasSpecificValue : ifBody.fieldExistsOrHasSpecificValue().fieldExistsOrHasSpecificValueElement()) {
-                            extracted(fieldExistsOrHasSpecificValue.fieldContent(), rule);
+                            collectFieldAssignments(fieldExistsOrHasSpecificValue.fieldContent(), rule);
                         }
                     }
                     for (var z : ctx.fieldExistsOrHasSpecificValue().fieldExistsOrHasSpecificValueElement()) {
-                        if (z.fieldExists() == null) {
+                        if (z.fieldExistsAlternative3() != null) {
+                            var x = z.fieldExistsAlternative3();
+                            useFieldsByFieldContent(x.fk(), rule);
+                        } else if (z.fieldExistsAlternative2() != null) {
+                            var x = z.fieldExistsAlternative2();
+                            useFieldsByFieldContent(x.fk(), rule);
+                        } else if (z.fieldExistsAlternative1() != null) {
+                            var y = z.fieldExistsAlternative1();
+                            useFieldByFieldContent(y.INTEGER(), rule);
+                        } else if (z.fieldExists() != null) {
+                            var x = z.fieldExists();
+                            useFieldsByFieldContent(x.fk(), rule);
+                        } else if (z.fieldContent() != null) {
+                            collectFieldAssignments(z.fieldContent(), rule);
+                        } else if (z.fieldFollows() != null) {
+                            KontextParser.FieldFollowsContext fieldFollowsContext = z.fieldFollows();
+                            useFieldsByFieldContent(fieldFollowsContext.fk(), rule);
+                        } else {
                             LOG.warn("Cannot handle {} yet", z);
-                            continue;
-                        }
-                        var x = z.fieldExists();
-                        for (var y : x.fk()) {
-                            for (var fki : y.INTEGER()) {
-                                String fk = fki.toString();
-                                Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                                if (!usedFields.contains(e)) {
-                                    usedFields.add(e);
-                                }
-                                // FIXME: Needs to be a list and adhere to boolean combinations of the list
-                                rule.must = e;
-                            }
                         }
                     }
                     if (!rule.conditions.isEmpty()) {
@@ -161,44 +166,62 @@ public class Kontextregel extends Regel {
                     super.exitIfThenFieldExistsOrValue(ctx);
                 }
 
-                private void extracted(KontextParser.FieldContentContext ctx, MustRule rule) {
+                private void useFieldByFieldContent(List<TerminalNode> y, MustRule rule) {
+                    for (var fki : y) {
+                        String fk = fki.toString();
+                        Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                        if (!usedFields.contains(e)) {
+                            usedFields.add(e);
+                        }
+// FIXME: Needs to be a list and adhere to boolean combinations of the list
+                        rule.must = e;
+                    }
+                }
+
+                private void useFieldsByFieldContent(List<KontextParser.FkContext> x, MustRule rule) {
+                    for (var y : x) {
+                        useFieldByFieldContent(y.INTEGER(), rule);
+                    }
+                }
+
+                private void collectFieldAssignments(KontextParser.FieldContentContext ctx, MustRule rule) {
                     if (ctx != null) {
-                            var fieldAssignment = ctx.fieldAssignment();
-                            if (fieldAssignment.fk() == null) {
-                                LOG.warn("Got assignment without any fields");
-                                return;
+                        var fieldAssignment = ctx.fieldAssignment();
+                        if (fieldAssignment.fk() == null) {
+                            LOG.warn("Got assignment without any fields");
+                            return;
+                        }
+                        for (var fki : fieldAssignment.fk().INTEGER()) {
+                            String fk = fki.toString();
+                            Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
+                            if (!usedFields.contains(e)) {
+                                usedFields.add(e);
                             }
-                            for (var fki : fieldAssignment.fk().INTEGER()) {
-                                String fk = fki.toString();
-                                Feld e = felder.computeIfAbsent(fk, (k) -> new Feld(fk));
-                                if (!usedFields.contains(e)) {
-                                    usedFields.add(e);
+                            for (var fav : fieldAssignment.fieldAssignmentValue()) {
+                                if (fav.INTEGER() == null) {
+                                    LOG.warn("Cannot handle fieldAssignmentValue {} yet", fav);
+                                    continue;
                                 }
-                                for (var fav : fieldAssignment.fieldAssignmentValue()) {
-                                    if (fav.INTEGER() == null) {
-                                        LOG.warn("Cannot handle {} yet", fav);
-                                        continue;
-                                    }
-                                    String value = fav.INTEGER().toString();
-                                    boolean inverted = fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals() == null || fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals().isEmpty();
-                                    outer:
-                                    for (Regel r : e.regeln) {
-                                        if (r.regelnummer.startsWith("E")) {
-                                            ErlaubterInhalt regel = (ErlaubterInhalt) regeln.get(r.regelnummer);
-                                            for (var x : regel.getMultiple()) {
-                                                if (x.code.equals(value)) {
-                                                    value = RegelNaming.REPLACEMENTS.get(r.regelnummer) + "." + x.value;
-                                                    break outer;
-                                                }
+                                String value = fav.INTEGER().toString();
+                                boolean inverted = fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals() == null || fieldAssignment.fieldAssignmentOperator().fieldAssignmentOperatorEquals().isEmpty();
+                                outer:
+                                for (Regel r : e.regeln) {
+                                    if (r.regelnummer.startsWith("E")) {
+                                        ErlaubterInhalt regel = (ErlaubterInhalt) regeln.get(r.regelnummer);
+                                        for (var x : regel.getMultiple()) {
+                                            if (x.code.equals(value)) {
+                                                value = RegelNaming.REPLACEMENTS.get(r.regelnummer) + "." + x.value;
+                                                break outer;
                                             }
                                         }
                                     }
-                                    rule.conditions.add(new RuleCondition(e, value));
-                                    // FIXME: wrong, as this needs to be done per condition
-                                    rule.inverted = inverted;
                                 }
+                                rule.conditions.add(new RuleCondition(e, value));
+                                // FIXME: wrong, as this needs to be done per condition
+                                rule.inverted = inverted;
                             }
                         }
+                    }
                 }
 
             };

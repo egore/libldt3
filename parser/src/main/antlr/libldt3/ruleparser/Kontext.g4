@@ -1,5 +1,9 @@
 grammar Kontext;
 
+// Top level rule
+regel:
+    (eitherFieldExists|eitherFieldExistsExclusion|eitherFieldExistsInverted|anyFieldExists|fieldOnlyIn|ifThenFieldExistsOrValue|ifThenFieldExistsOrValueInverted|ifThenIfThen|ifThenRule|anyCombinationAllowed|ifThenCombinations|objektExistsRule|insuranceCard|satzartOccurrence|objektOccurrence)+;
+
 fragment DIGIT: '0'..'9';
 INTEGER: DIGIT+;
 WS: (' '|'\t'|'„'|'”'|'“')+ -> skip;
@@ -156,7 +160,7 @@ fieldExistsOrHasSpecificValue:
 eitherFieldExists:
     either fieldExists PUNKT?;
 eitherFieldExistsExclusion:
-    'Beide Feldkennungen dürfen' 'nicht'? 'gleichzeitig' existsAlternatives PUNKT?;
+    'Beide Feldkennungen dürfen' 'nicht'? ('gleichzeitig'|'gemeinsam') existsAlternatives PUNKT?;
 eitherFieldExistsInverted:
     (imObjekt|inSatzart) requirement (either|occurrenceCount|'auch')? fieldExistsOrHasSpecificValue (KOMMA eitherFieldExistsInverted)?;
 anyFieldExists:
@@ -192,8 +196,3 @@ satzartOccurrence:
 
 objektOccurrence:
     wenn objekt occurrenceCount imObjekt (undOder imObjekt)* existsAlternatives KOMMA requirement fieldAssignment KOMMA 'alle anderen Werte dürfen nur jeweils einmal vorkommen' PUNKT?;
-
-
-// Top level rule
-regel:
-    (eitherFieldExists|eitherFieldExistsExclusion|eitherFieldExistsInverted|anyFieldExists|fieldOnlyIn|ifThenFieldExistsOrValue|ifThenFieldExistsOrValueInverted|ifThenIfThen|ifThenRule|anyCombinationAllowed|ifThenCombinations|objektExistsRule|insuranceCard|satzartOccurrence|objektOccurrence)+;
