@@ -24,6 +24,7 @@ image: maven:3-eclipse-temurin-21
 stages:
   - sast
   - build
+  - transpile
 
 cache:
   paths:
@@ -45,3 +46,7 @@ sonarcloud-check:
   only:
     - merge_requests
     - main
+
+transpile:
+  stage: transpile
+  script: java -jar transpiler/target/libldt3-transpiler-*.jar

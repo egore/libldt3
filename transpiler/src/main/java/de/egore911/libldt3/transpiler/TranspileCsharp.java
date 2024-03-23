@@ -30,15 +30,16 @@ import spoon.reflect.declaration.CtType;
 
 public class TranspileCsharp {
 
-    public static void main(String[] args) throws TemplateNotFoundException, MalformedTemplateNameException,
-            ParseException, IOException, TemplateException {
+    public static void main(String[] args) throws IOException, TemplateException {
 
         // Install java.util.Logging bridge to slf4j
         SLF4JBridgeHandler.removeHandlersForRootLogger();
         SLF4JBridgeHandler.install();
 
         // Read the maven model from the java folder
-        MavenLauncher launcher = new MavenLauncher("../java", MavenLauncher.SOURCE_TYPE.APP_SOURCE);
+        MavenLauncher launcher = new MavenLauncher("./java", MavenLauncher.SOURCE_TYPE.APP_SOURCE);
+        launcher.getEnvironment().setLevel("DEBUG");
+        launcher.getEnvironment().setNoClasspath(true);
         launcher.run();
 
         // Build up the freemarker configuration for C#
@@ -56,7 +57,7 @@ public class TranspileCsharp {
         // Make the current year available as variable
         config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
 
-        Path base = Paths.get("../cs");
+        Path base = Paths.get("./cs");
 
         Path model = base.resolve("libldt3").resolve("model");
         Files.list(model.resolve("saetze")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
