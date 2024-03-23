@@ -77,7 +77,7 @@ class LdtCustomHandler implements Fuzzer.CustomHandler {
                         return icdCode;
                     }
                     if (klass == F007.class) {
-                        return LdtVersion.LDT3_2_15;
+                        return LdtVersion.LDT3_2_16;
                     }
                     if (klass == F012.class) {
                         return "X/31/0101/01/[]}";

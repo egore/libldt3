@@ -32,6 +32,7 @@ import libldt3.model.enums.Satzart;
 import libldt3.model.enums.DatensatzAbsender;
 import libldt3.model.objekte.Einsenderidentifikation;
 import libldt3.model.objekte.Kopfdaten;
+import libldt3.model.regel.kontext.K042;
 
 /**
  * Satzart: P (Praxis)-Datenpaket-Header "8230"

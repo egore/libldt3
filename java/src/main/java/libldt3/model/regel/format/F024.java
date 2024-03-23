@@ -21,9 +21,7 @@
  */
 package libldt3.model.regel.format;
 
-import libldt3.model.regel.Regel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import libldt3.model.regel.RegularExpressionRegel;
 
 import java.util.regex.Pattern;
 
@@ -38,13 +36,12 @@ import java.util.regex.Pattern;
  * G1:31/33/52/58)
  * * Erweiterte Backus-Naur-Form
  */
-public class F024 implements Regel {
+public class F024 extends RegularExpressionRegel {
 
-    private static final Logger LOG = LoggerFactory.getLogger(F024.class);
+    public static final Pattern PATTERN = Pattern.compile("^H([0-9])V-Typ-Nu([0-5][0-9])er | ( [ Gruppe([0-9]{2})([A-Z])me ':' ] H([0-9])V-Typ-Nu([0-5][0-9])er ( ('/' | '_' ) H([0-9])V-Typ- Nu([0-5][0-9])er )+ )$");
 
-    @Override
-    public boolean isValid(String value) {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
-        return true;
+    public F024() {
+        super(PATTERN);
     }
+
 }

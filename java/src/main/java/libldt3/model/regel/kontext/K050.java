@@ -40,7 +40,7 @@ public class K050 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K050.class);
 
-    private static final Set<String> FIELDTYPES = Set.of("8002", "0105");
+    private static final Set<String> FIELDTYPES = Set.of("8002", "0105", "4239");
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
@@ -55,7 +55,8 @@ public class K050 implements Kontextregel {
 
         // Wenn Inhalt von FK8002=0002 muss FK0105 4239 vorhanden sein .
         if (feld8002.equals("0002")) {
-            return containsAnyValue(fields.get("0105"), owner);
+            return containsAnyValue(fields.get("0105"), owner) &&
+                    containsAnyValue(fields.get("4239"), owner);
         }
 
         return true;

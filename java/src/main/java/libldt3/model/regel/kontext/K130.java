@@ -52,9 +52,9 @@ public class K130 implements Kontextregel {
         }
 
         if (containsAnyValue(fields.get("8618"), owner) && containsAnyValue(fields.get("8619"), owner)) {
+            LOG.warn("8618 and 8619 may not occur an the same time");
             return false;
         }
-
         return true;
     }
 

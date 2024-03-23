@@ -50,7 +50,9 @@ public class K070 implements Kontextregel {
             return false;
         }
 
+        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
         return true;
+
     }
 
 }

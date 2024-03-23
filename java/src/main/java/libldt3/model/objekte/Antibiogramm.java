@@ -54,7 +54,7 @@ import libldt3.model.regel.kontext.K100;
  * MHK Breakpoint MHK Einheit Resistenz Interpretation Kx = Keim-Identifizierung (x
  * = max. Anzahl der Keime) Wy = Wertepaar aus Wirkstoffident und Ableitungen (y =
  * max. Anzahl der getesteten Wirkstoffe) IT in der Arztpraxis LDT 3.0 LDT 3
- * Satzbeschreibung, Version 3.2.15
+ * Satzbeschreibung, Version 3.2.16
  */
 @Objekt(value = "0011", kontextregeln = K100.class)
 public class Antibiogramm implements Kontext {

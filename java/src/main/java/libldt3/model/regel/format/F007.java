@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
  */
 public class F007 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^LDT[0-9]\\.[0-9]{1,2}\\.[0-9]{1,4}$");
+    public static final Pattern PATTERN = Pattern.compile("^LDT([0-9]).([0-9]).([0-9]), LDT([0-9]).([0-9]).([0-9]{2}), LDT([0-9]).([0-9]).([0-9]{3}), LDT([0-9]).([0-9]).([0-9]{4}), LDT([0-9]).([0-9]{2}).([0-9]), LDT([0-9]).([0-9]{2}).([0-9]{2}), LDT([0-9]).([0-9]{2}).([0-9]{3}), LDT([0-9]).([0-9]{2}).([0-9]{4})$");
 
     public F007() {
         super(PATTERN);

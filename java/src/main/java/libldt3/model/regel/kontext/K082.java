@@ -21,6 +21,10 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.Set;
@@ -29,8 +33,6 @@ import libldt3.model.Kontext;
 import libldt3.model.enums.TestStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static libldt3.model.regel.kontext.KontextregelHelper.*;
 
 /**
  * Wenn Inhalt von FK 8418 = 11 oder FK 7368 vorhanden ist, muss FK 8126 im

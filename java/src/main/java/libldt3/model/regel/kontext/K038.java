@@ -21,7 +21,16 @@
  */
 package libldt3.model.regel.kontext;
 
+import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
+import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.Set;
+
 import libldt3.model.Kontext;
+import libldt3.model.enums.Materialart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,9 +43,26 @@ public class K038 implements Kontextregel {
 
     private static final Logger LOG = LoggerFactory.getLogger(K038.class);
 
+    private static final Set<String> FIELDTYPES = Set.of("7310", "7311");
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
+
+        Map<String, Field> fields = findFields(owner, FIELDTYPES);
+        if (fields.size() != FIELDTYPES.size()) {
+            LOG.error("Class of {} must have fields {}", owner, FIELDTYPES);
+            return false;
+        }
+
+        Materialart feld7310 = (Materialart) getFieldValue(fields.get("7310"), owner);
+
+        // Wenn Inhalt von FK 7310 = 1, dann kann FK 7311 vorhande
+        if (feld7310 == Materialart.organisch) {
+            if (!containsAnyValue(fields.get("7311"), owner)) {
+                return false;
+            }
+        }
+
         return true;
     }
 

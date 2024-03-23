@@ -1,5 +1,5 @@
 /*
- * Copyright 2017  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ * Copyright 2016-2024  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,8 +33,12 @@ import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
 
 /**
- * Wenn FK 3412, FK 3413, FK 3414, FK 3415, FK 3416, FK 3417, FK 3418 oder FK 3419 vorhanden sind, dann muss FK 8225
- * mindestens einmal im Obj_0055 vorkommen.
+ * Wenn Inhalt von FK 8418 ≠ 01 oder 02 oder 09 oder 11 oder 12 ist, dann muss FK
+ * 8225 mindestens einmal vorkommen.
+ *
+ * Der Zeitpunkt der Messung muss immer angegeben werden, außer bei
+ * fehlendem oder unvollständigem Material, fehlendem Wert oder einer
+ * Stornierung.
  */
 public class K076 implements Kontextregel {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill &lt;opensource@christophbrill.de&gt;
+ * Copyright 2016-2024  Christoph Brill &lt;opensource@christophbrill.de&gt;
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
  */
 public class F004 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[A-Z][0-9]{2}(\\.[0-9][0-9-]?)?$");
+    public static final Pattern PATTERN = Pattern.compile("^([A-Z])([0-9]{2}), ([A-Z])([0-9]{2}).([0-9]), ([A-Z])([0-9]{2}).([0-9]{2}), ([A-Z])([0-9]{2}).([0-9])-, ([A-Z])([0-9]{2}).-$");
 
     public F004() {
         super(PATTERN);

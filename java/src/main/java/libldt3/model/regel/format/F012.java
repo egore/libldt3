@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
  */
 public class F012 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[VXYZ]/[0-9]{2}/[0-9]{2}(0?[1-9]|1[012])/[0-9]{2}/.{3}$");
+    public static final Pattern PATTERN = Pattern.compile("^([A-Z])/([0-9]{2})/JJ(0[0-9]|1[012])/(0[0-9]|1[012])/([A-Z])([A-Z])([A-Z])$");
 
     public F012() {
         super(PATTERN);

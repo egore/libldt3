@@ -55,8 +55,12 @@ public class K106 implements Kontextregel {
             return false;
         }
 
-        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
-        return true;
+        for (Field f : fields.values()) {
+            if (containsAnyValue(f, owner)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

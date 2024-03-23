@@ -137,6 +137,9 @@ public class AbrechnungGKV implements Kontext {
     @Feld(value = "4204", feldart = Feldart.kann)
     @Regelsatz(laenge = 1)
     public Boolean eingeschraenkterLeistungsanspruchGemaess16Abs_3aSgbV;
+    @Feld(value = "4210", feldart = Feldart.kann)
+    @Regelsatz(laenge = 1)
+    public Boolean ser;
     @Feld(value = "4221", feldart = Feldart.bedingt_muss)
     @Regelsatz(laenge = 1)
     public Behandlungsanlass kurativPraeventivEssBeiBelegaerztl_Behandlung;

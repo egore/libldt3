@@ -40,7 +40,7 @@ import libldt3.model.regel.kontext.K116;
 /**
  * Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
  */
-@Objekt(value = "0014", kontextregeln = {K020.class, K115.class, K116.class})
+@Objekt(value = "0014", kontextregeln = {K020.class, K057.class, K115.class, K116.class})
 public class Arztidentifikation implements Kontext {
 
     @Objekt

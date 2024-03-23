@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
  */
 public class F006 extends RegularExpressionRegel {
 
-    public static final Pattern PATTERN = Pattern.compile("^[0-9]{2}[0-5][0-9]$");
+    public static final Pattern PATTERN = Pattern.compile("^([0-1][0-9]|2[0-3])([0-5][0-9])$");
 
     public F006() {
         super(PATTERN);

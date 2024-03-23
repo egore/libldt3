@@ -23,6 +23,7 @@ package libldt3.model.regel.kontext;
 
 import static libldt3.model.regel.kontext.KontextregelHelper.containsAnyValue;
 import static libldt3.model.regel.kontext.KontextregelHelper.findFields;
+import static libldt3.model.regel.kontext.KontextregelHelper.getFieldValue;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -53,8 +54,7 @@ public class K027 implements Kontextregel {
             return false;
         }
 
-        Satzart feld8000 = (Satzart) fields.get("8000").get(owner);
-
+        Satzart feld8000 = (Satzart) getFieldValue(fields.get("8000"), owner);
 
         // Wenn Inhalt von FK 8000 = 8215, dann muss im Obj_0001(Obj_Abrechnungsinformationen) mindestens einmal eine Feldkennung aus nachfolgender Liste vorhanden sein: 8102, 8103, 8104, 8105, 8106, 8109
         if (feld8000 == Satzart.Auftrag) {

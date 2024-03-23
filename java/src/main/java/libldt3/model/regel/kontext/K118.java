@@ -42,6 +42,7 @@ public class K118 implements Kontextregel {
 
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
+        LOG.warn("Ignoring rule {}", this.getClass().getSimpleName());
         return true;
     }
 
