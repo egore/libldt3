@@ -42,7 +42,7 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
-    - mvn sonar:sonar -Dsonar.projectKey=egore_libldt3
+    - mvn sonar:sonar -Dsonar.projectKey=egore_libldt3 -Dsonar.organization=egore
   only:
     - merge_requests
     - main
