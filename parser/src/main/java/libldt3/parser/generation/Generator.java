@@ -6,7 +6,7 @@ import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModelException;
-import libldt3.parser.Main;
+import libldt3.parser.ParsePdf;
 import libldt3.parser.RegelNaming;
 import libldt3.parser.model.ErlaubterInhalt;
 import libldt3.parser.model.Formatregel;
