@@ -30,6 +30,7 @@ import java.util.Set;
 
 import libldt3.model.Kontext;
 import libldt3.model.enums.BesonderePersonengruppe;
+import libldt3.model.enums.KostentraegerAbrechnungsbereich;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,8 +55,9 @@ public class K023 implements Kontextregel {
         BesonderePersonengruppe feld4131 = (BesonderePersonengruppe) fields.get("4131").get(owner);
 
         // Wenn Inhalt von FK4131=06 , muss Inhalt vonFK4106 = 02 .
-        if (feld4131 == BesonderePersonengruppe.BVG) {
-            return containsAnyValue(fields.get("4106"), owner);
+        if (feld4131 == BesonderePersonengruppe.SER) {
+            KostentraegerAbrechnungsbereich feld4106 = (KostentraegerAbrechnungsbereich) fields.get("4106").get(owner);
+            return feld4106 == KostentraegerAbrechnungsbereich.Bundesversorgungsgesetz;
         }
 
         return true;
