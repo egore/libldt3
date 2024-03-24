@@ -57,10 +57,7 @@ public class K082 implements Kontextregel {
             return false;
         }
 
-        var feld8418 = getFieldValue(fields.get("8418"), owner);
-        if (!(feld8418 instanceof TestStatus)) {
-            feld8418 = findField(feld8418, "8418");
-        }
+        TestStatus feld8418 = (TestStatus) getFieldValue(fields.get("8418"), owner);
 
         // Wenn Inhalt von FK 8418 = 11 oder FK 7368 vorhanden ist, muss FK 8126 im Obj_0037 vorhanden sein
         if (feld8418 == TestStatus.Material_fehlt) {
