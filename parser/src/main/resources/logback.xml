@@ -6,6 +6,9 @@
 		</encoder>
 	</appender>
 
+	<logger name="ch.qos" level="WARN" />
+	<logger name="libldt3" level="WARN" />
+
 	<root level="info">
 		<appender-ref ref="STDOUT" />
 	</root>
