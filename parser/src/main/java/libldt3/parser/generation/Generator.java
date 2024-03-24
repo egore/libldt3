@@ -45,7 +45,7 @@ public class Generator {
         wrapper.setExposeFields(true);
 
          config = new Configuration(Configuration.VERSION_2_3_32);
-        config.setTemplateLoader(new ClassTemplateLoader(Main.class, "/ldt/"));
+        config.setTemplateLoader(new ClassTemplateLoader(ParsePdf.class, "/ldt/"));
         config.setObjectWrapper(wrapper);
         config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
         config.setSharedVariable("linewrap", new LineWrapDirective());
