@@ -22,8 +22,8 @@ variables:
 image: maven:3-eclipse-temurin-21
 
 stages:
-  - sast
   - build
+  - sast
   - transpile
 
 cache:
@@ -37,6 +37,8 @@ compile:
 
 sonarcloud-check:
   stage: sast
+  needs:
+    - compile
   cache:
     key: "${CI_JOB_NAME}"
     paths:
@@ -49,4 +51,6 @@ sonarcloud-check:
 
 transpile:
   stage: transpile
+  needs:
+    - compile
   script: java -jar transpiler/target/libldt3-transpiler-*.jar
