@@ -6,7 +6,7 @@ authors = ["Christoph Brill <opensource@christophbrill.de>"]
 
 [dependencies]
 datetime = "0.5.2"
-log = "0.4.20"
-regex = "1.10.2"
+log = "0.4.21"
+regex = "1.10.4"
 substring = "1.4.5"
 libldt3_macros = { path = "attributes" }
