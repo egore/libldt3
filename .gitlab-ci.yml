@@ -50,6 +50,8 @@ sonarcloud-check:
   stage: sast
   needs:
     - compile
+  variables:
+    SONAR_EXTRA_ARGS: "-D sonar.modules=transpiler"
   extends:
     - .step-maven-sonar
 
