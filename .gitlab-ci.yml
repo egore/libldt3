@@ -25,6 +25,9 @@ include:
   - project: "appframework/gitlab-pipelines"
     ref: "main"
     file: "/steps/maven-compile.yml"
+  - project: "appframework/gitlab-pipelines"
+    ref: "main"
+    file: "/steps/maven-sonar.yml"
 
 stages:
   - build
@@ -47,12 +50,8 @@ sonarcloud-check:
   stage: sast
   needs:
     - compile
-  script:
-    - mvn sonar:sonar -Dsonar.projectKey=${CI_PROJECT_ROOT_NAMESPACE}_${CI_PROJECT_NAME} -Dsonar.organization=${CI_PROJECT_ROOT_NAMESPACE}
-  only:
-    - merge_requests
-    - main
-    - master
+  extends:
+    - .step-maven-sonar
 
 transpile:
   stage: transpile
