@@ -21,33 +21,38 @@ variables:
 
 image: maven:3-eclipse-temurin-21
 
+include:
+  - project: "appframework/gitlab-pipelines"
+    ref: "main"
+    file: "/steps/maven-compile.yml"
+
 stages:
   - build
   - sast
   - transpile
 
 cache:
+  key: "${CI_COMMIT_REF_SLUG}"
   paths:
-    - .m2/repository
+    - .m2/repository/
+    - target/
+    - .sonar/cache
 
 compile:
   stage: build
-  script:
-    - 'mvn $MAVEN_CLI_OPTS clean compile'
+  extends:
+    - .step-maven-compile
 
 sonarcloud-check:
   stage: sast
   needs:
     - compile
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .sonar/cache
   script:
-    - mvn sonar:sonar -Dsonar.projectKey=egore_libldt3 -Dsonar.organization=egore
+    - mvn sonar:sonar -Dsonar.projectKey=${CI_PROJECT_ROOT_NAMESPACE}_${CI_PROJECT_NAME} -Dsonar.organization=${CI_PROJECT_ROOT_NAMESPACE}
   only:
     - merge_requests
     - main
+    - master
 
 transpile:
   stage: transpile
