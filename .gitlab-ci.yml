@@ -39,6 +39,9 @@ cache:
   paths:
     - .m2/repository/
     - target/
+    - java/target/
+    - transpiler/target/
+    - parser/target/
     - .sonar/cache
 
 compile:
@@ -50,8 +53,6 @@ sonarcloud-check:
   stage: sast
   needs:
     - compile
-  variables:
-    SONAR_EXTRA_ARGS: "-D sonar.modules=transpiler"
   extends:
     - .step-maven-sonar
 
