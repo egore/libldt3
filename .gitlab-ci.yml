@@ -48,6 +48,9 @@ compile:
   stage: build
   extends:
     - .step-maven-compile
+  artifacts:
+    paths:
+    - transpiler/target/libldt3-transpiler-*-shaded.jar
 
 sonarcloud-check:
   stage: sast
@@ -60,4 +63,4 @@ transpile:
   stage: transpile
   needs:
     - compile
-  script: java -jar transpiler/target/libldt3-transpiler-*.jar
+  script: java -jar transpiler/target/libldt3-transpiler-*-shaded.jar
