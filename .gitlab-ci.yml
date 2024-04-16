@@ -52,7 +52,7 @@ compile:
   - mvn $MAVEN_CLI_OPTS clean package -DskipTests
   artifacts:
     paths:
-    - transpiler/target/libldt3-transpiler-*-shaded.jar
+    - transpiler/target/libldt3-transpiler-*.jar
 
 sonarcloud-check:
   stage: sast
@@ -65,4 +65,4 @@ transpile:
   stage: transpile
   needs:
     - compile
-  script: java -jar transpiler/target/libldt3-transpiler-*-shaded.jar
+  script: java -jar transpiler/target/libldt3-transpiler-*.jar
