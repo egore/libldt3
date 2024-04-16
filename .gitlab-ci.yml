@@ -48,6 +48,8 @@ compile:
   stage: build
   extends:
     - .step-maven-compile
+  script:
+  - mvn $MAVEN_CLI_OPTS clean package -DskipTests
   artifacts:
     paths:
     - transpiler/target/libldt3-transpiler-*-shaded.jar
