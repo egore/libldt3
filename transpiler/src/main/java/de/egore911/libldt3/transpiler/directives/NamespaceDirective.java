@@ -27,22 +27,26 @@ public class NamespaceDirective implements TemplateDirectiveModel {
         String[] parts = namespace.split("\\.");
         int length = parts.length;
         for (int i = 0; i < length; i++) {
-            if (i != 0) {
-                writer.append(" ");
+            for (int j = 0; j < i; j++) {
+                writer.append("    ");
             }
             writer.append("namespace ");
             writer.append(parts[i]);
-            writer.append(" {");
-        }
-        writer.append("\n");
-        body.render(writer);
-        for (int i = 0; i < length; i++) {
-            if (i != 0) {
-                writer.append(" ");
+            writer.append("\n");
+            for (int j = 0; j < i; j++) {
+                writer.append("    ");
             }
-            writer.append("}");
+            writer.append("{\n");
         }
-        writer.append("\n");
+
+        body.render(writer);
+
+        for (int i = 0; i < length; i++) {
+            for (int j = length - 1; j > i; j--) {
+                writer.append("    ");
+            }
+            writer.append("}\n");
+        }
     }
 
 }
