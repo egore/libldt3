@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 
@@ -40,7 +41,8 @@ namespace libldt3
                 /// Status "Patient" verwendet werden.
                 public class K104 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8147", "7420");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K104));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8147", "7420" };
 
                     public bool IsValid(Kontext owner)
                     {

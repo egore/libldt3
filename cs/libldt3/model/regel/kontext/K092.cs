@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -37,7 +38,8 @@ namespace libldt3
                 /// Das Labor muss mindestens einen Ansprechpartner mitteilen.
                 public class K092 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8147");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K092));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8147" };
 
                     public bool IsValid(Kontext owner)
                     {

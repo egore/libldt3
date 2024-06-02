@@ -40,7 +40,7 @@ namespace libldt3
             public class Material : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K038) })]
-                public class ArtMaterial : Kontext
+                public class ArtMaterial_ : Kontext
                 {
                     public Materialart? Value;
                     [Feld(Value = "7311", Feldart = Feldart.bedingt_kann)]
@@ -61,7 +61,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class MedikamenteneinnahmeZumZeitpunktMaterialentnahme : Kontext
+                public class MedikamenteneinnahmeZumZeitpunktMaterialentnahme_ : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8170", Feldart = Feldart.bedingt_muss)]
@@ -70,7 +70,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class MengeProbenmaterial : Kontext
+                public class MengeProbenmaterial_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
@@ -101,16 +101,16 @@ namespace libldt3
                 public string LokalisationProbenmaterial;
                 [Feld(Value = "7310", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
-                public ArtMaterial ArtMaterial;
+                public ArtMaterial_ ArtMaterial;
                 [Feld(Value = "8504", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public IList<MedikamenteneinnahmeZumZeitpunktMaterialentnahme> MedikamenteneinnahmeZumZeitpunktMaterialentnahme;
+                public IList<MedikamenteneinnahmeZumZeitpunktMaterialentnahme_> MedikamenteneinnahmeZumZeitpunktMaterialentnahme;
                 [Feld(Value = "7318", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> NahrungsaufnahmeZumZeitpunktMaterialentnahme;
                 [Feld(Value = "8520", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public MengeProbenmaterial MengeProbenmaterial;
+                public MengeProbenmaterial_ MengeProbenmaterial;
                 [Feld(Value = "8219", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 34)]
                 public Timestamp TimestampMaterialabnahmeEntnahme;

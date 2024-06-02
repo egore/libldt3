@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 
@@ -39,7 +40,8 @@ namespace libldt3
                 /// LVZ mit URL verwiesen wird.
                 public class K053 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("7260", "7352");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K053));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "7260", "7352" };
 
                     public bool IsValid(Kontext owner)
                     {

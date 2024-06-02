@@ -38,7 +38,7 @@ namespace libldt3
             public class Timestamp : Kontext
             {
                 [Objekt]
-                public class Uhrzeit : Kontext
+                public class Uhrzeit_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7273", Feldart = Feldart.bedingt_muss)]
@@ -51,7 +51,7 @@ namespace libldt3
                 public LocalDate? Datum;
                 [Feld(Value = "7279", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F016) }, MinLaenge = 6, MaxLaenge = 9)]
-                public Uhrzeit Uhrzeit;
+                public Uhrzeit_ Uhrzeit;
                 [Feld(Value = "7272", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 990)]
                 public string Freitext;

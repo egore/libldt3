@@ -37,7 +37,7 @@ namespace libldt3
             public class Normalwert : Kontext
             {
                 [Objekt]
-                public class Normalwertspezifikation : Kontext
+                public class Normalwertspezifikation_ : Kontext
                 {
                     public Normwertspezifikation? Value;
                     [Feld(Value = "8167", Feldart = Feldart.bedingt_muss)]
@@ -46,16 +46,16 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K002) })]
-                public class NormalwertUntereGrenze : Kontext
+                public class NormalwertUntereGrenze_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 1)]
-                    public EinheitensystemMesswerteWertes EinheitensystemMesswerteWertes;
+                    public EinheitensystemMesswerteWertes_ EinheitensystemMesswerteWertes;
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K002) })]
-                public class EinheitensystemMesswerteWertes : Kontext
+                public class EinheitensystemMesswerteWertes_ : Kontext
                 {
                     public EinheitMesswert? Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
@@ -64,7 +64,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K002) })]
-                public class NormalwertObereGrenze : Kontext
+                public class NormalwertObereGrenze_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
@@ -73,7 +73,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class NormalwertListenbezeichnung : Kontext
+                public class NormalwertListenbezeichnung_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7317", Feldart = Feldart.bedingt_muss)]
@@ -82,7 +82,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K002) })]
-                public class AlarmwertUntereGrenze : Kontext
+                public class AlarmwertUntereGrenze_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
@@ -91,7 +91,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K002) })]
-                public class AlarmwertObereGrenze : Kontext
+                public class AlarmwertObereGrenze_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
@@ -100,7 +100,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K099) })]
-                public class GrenzwertindikatorLaborwerte : Kontext
+                public class GrenzwertindikatorLaborwerte_ : Kontext
                 {
                     public Grenzwertindikator? Value;
                     [Feld(Value = "8126", Feldart = Feldart.bedingt_muss)]
@@ -110,28 +110,28 @@ namespace libldt3
                 }
                 [Feld(Value = "8424", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public Normalwertspezifikation Normalwertspezifikation;
+                public Normalwertspezifikation_ Normalwertspezifikation;
                 [Feld(Value = "8460", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 990)]
                 public IList<string> NormalwertText;
                 [Feld(Value = "8461", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertUntereGrenze NormalwertUntereGrenze;
+                public NormalwertUntereGrenze_ NormalwertUntereGrenze;
                 [Feld(Value = "8462", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertObereGrenze NormalwertObereGrenze;
+                public NormalwertObereGrenze_ NormalwertObereGrenze;
                 [Feld(Value = "7316", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertListenbezeichnung NormalwertListenbezeichnung;
+                public NormalwertListenbezeichnung_ NormalwertListenbezeichnung;
                 [Feld(Value = "7363", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public AlarmwertUntereGrenze AlarmwertUntereGrenze;
+                public AlarmwertUntereGrenze_ AlarmwertUntereGrenze;
                 [Feld(Value = "7371", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public AlarmwertObereGrenze AlarmwertObereGrenze;
+                public AlarmwertObereGrenze_ AlarmwertObereGrenze;
                 [Feld(Value = "8422", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public GrenzwertindikatorLaborwerte GrenzwertindikatorLaborwerte;
+                public GrenzwertindikatorLaborwerte_ GrenzwertindikatorLaborwerte;
 
             }
         }

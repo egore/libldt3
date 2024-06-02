@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -40,7 +41,8 @@ namespace libldt3
                 /// vorkommen und FK 6329 darf nicht vorkommen.
                 public class K100 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8002", "8242", "6329", "3564", "8167", "8217", "8236", "8237", "8238");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K100));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8002", "8242", "6329", "3564", "8167", "8217", "8236", "8237", "8238" };
 
                     public bool IsValid(Kontext owner)
                     {

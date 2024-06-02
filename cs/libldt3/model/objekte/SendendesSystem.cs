@@ -38,7 +38,7 @@ namespace libldt3
             public class SendendesSystem : Kontext
             {
                 [Objekt]
-                public class SoftwareNameSoftware : Kontext
+                public class SoftwareNameSoftware_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "0132", Feldart = Feldart.bedingt_muss)]
@@ -60,7 +60,7 @@ namespace libldt3
                 public Organisation Softwareverantwortlicher;
                 [Feld(Value = "0103", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public SoftwareNameSoftware SoftwareNameSoftware;
+                public SoftwareNameSoftware_ SoftwareNameSoftware;
 
             }
         }

@@ -38,7 +38,7 @@ namespace libldt3
             public class Arztidentifikation : Kontext
             {
                 [Objekt]
-                public class ArztIdEinesArztes : Kontext
+                public class ArztIdEinesArztes_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "0308", Feldart = Feldart.bedingt_muss)]
@@ -60,7 +60,7 @@ namespace libldt3
                 public string VertragsIdDesBehandelndenArztes;
                 [Feld(Value = "0307", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<ArztIdEinesArztes> ArztIdEinesArztes;
+                public IList<ArztIdEinesArztes_> ArztIdEinesArztes;
                 [Feld(Value = "0222", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F014) }, Laenge = 9)]
                 public string AsvTeamnummer;

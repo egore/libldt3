@@ -36,7 +36,7 @@ namespace libldt3
             public class Organisation : Kontext
             {
                 [Objekt]
-                public class OrganisationFirma : Kontext
+                public class OrganisationFirma_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "1251", Feldart = Feldart.kann)]
@@ -67,7 +67,7 @@ namespace libldt3
                 }
                 [Feld(Value = "1250", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public OrganisationFirma OrganisationFirma;
+                public OrganisationFirma_ OrganisationFirma;
 
             }
         }

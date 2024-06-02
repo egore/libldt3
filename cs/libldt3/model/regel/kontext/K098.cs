@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -39,7 +40,8 @@ namespace libldt3
                 /// sollen, muss das Obj_0003 (Abrechnung_PKV) vorhanden sein.
                 public class K098 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("7303", "8103");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K098));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "7303", "8103" };
 
                     public bool IsValid(Kontext owner)
                     {
@@ -51,7 +53,7 @@ namespace libldt3
                         }
 
 
-                        K098.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        K098.LOG.LogWarn("Ignoring rule {}", this.GetType().GetSimpleName())
                         ;
                         return true;
                     }

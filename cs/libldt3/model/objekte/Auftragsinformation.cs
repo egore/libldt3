@@ -38,7 +38,7 @@ namespace libldt3
             public class Auftragsinformation : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K114) })]
-                public class AuftragsnummerEinsender : Kontext
+                public class AuftragsnummerEinsender_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8313", Feldart = Feldart.bedingt_muss)]
@@ -47,7 +47,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class FallakteOderStudieId : Kontext
+                public class FallakteOderStudieId_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "0081", Feldart = Feldart.bedingt_kann)]
@@ -66,7 +66,7 @@ namespace libldt3
                 }
                 [Feld(Value = "8310", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public AuftragsnummerEinsender AuftragsnummerEinsender;
+                public AuftragsnummerEinsender_ AuftragsnummerEinsender;
                 [Feld(Value = "8311", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string AuftragsnummerLaborId;
@@ -75,7 +75,7 @@ namespace libldt3
                 public string FachrichtungOderStationskennung;
                 [Feld(Value = "0080", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public FallakteOderStudieId FallakteOderStudieId;
+                public FallakteOderStudieId_ FallakteOderStudieId;
                 [Feld(Value = "8118", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 22)]
                 public Kommunikationsdaten AbweichenderBefundweg;

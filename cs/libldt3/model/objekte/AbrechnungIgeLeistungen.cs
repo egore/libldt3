@@ -39,7 +39,7 @@ namespace libldt3
             public class AbrechnungIgeLeistungen : Kontext
             {
                 [Objekt]
-                public class KostenuebernahmeerklaerungAuftraggeberLiegtVor : Kontext
+                public class KostenuebernahmeerklaerungAuftraggeberLiegtVor_ : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8148", Feldart = Feldart.bedingt_muss)]
@@ -52,7 +52,7 @@ namespace libldt3
                 public Gebuehrenordnung? Gebuehrenordnung;
                 [Feld(Value = "7253", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public KostenuebernahmeerklaerungAuftraggeberLiegtVor KostenuebernahmeerklaerungAuftraggeberLiegtVor;
+                public KostenuebernahmeerklaerungAuftraggeberLiegtVor_ KostenuebernahmeerklaerungAuftraggeberLiegtVor;
 
             }
         }

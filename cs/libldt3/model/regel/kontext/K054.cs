@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -50,6 +51,7 @@ namespace libldt3
                 /// die auf "Sonstige Standards" referenzieren.
                 public class K054 : Kontextregel
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K054));
 
                     public bool IsValid(Kontext owner)
                     {

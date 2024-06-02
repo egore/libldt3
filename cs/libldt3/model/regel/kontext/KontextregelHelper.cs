@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.objekte;
@@ -35,6 +36,7 @@ namespace libldt3
             {
                 class KontextregelHelper
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(KontextregelHelper));
 
                     public static bool ContainsAnyString(string value)
                     {

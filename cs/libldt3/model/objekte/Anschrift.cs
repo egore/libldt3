@@ -39,7 +39,7 @@ namespace libldt3
             public class Anschrift : Kontext
             {
                 [Objekt]
-                public class Plz : Kontext
+                public class Plz_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "3113", Feldart = Feldart.bedingt_kann)]
@@ -57,7 +57,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class PostfachPlz : Kontext
+                public class PostfachPlz_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "3122", Feldart = Feldart.bedingt_kann)]
@@ -70,13 +70,13 @@ namespace libldt3
                 }
                 [Feld(Value = "3112", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 10)]
-                public Plz Plz;
+                public Plz_ Plz;
                 [Feld(Value = "3114", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 3)]
                 public string Wohnsitzlaendercode;
                 [Feld(Value = "3121", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 10)]
-                public PostfachPlz PostfachPlz;
+                public PostfachPlz_ PostfachPlz;
                 [Feld(Value = "3124", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 3)]
                 public string PostfachWohnsitzlaendercode;

@@ -40,7 +40,7 @@ namespace libldt3
             public class UntersuchungsergebnisZytologie : Kontext
             {
                 [Objekt]
-                public class ErgebnisId : Kontext
+                public class ErgebnisId_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
@@ -58,7 +58,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K053) })]
-                public class KatalogAnforderbareLeistungenId : Kontext
+                public class KatalogAnforderbareLeistungenId_ : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -82,7 +82,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class TestIdent : Kontext
+                public class TestIdent_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
@@ -91,7 +91,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Ergebnisstatus : Kontext
+                public class Ergebnisstatus_ : Kontext
                 {
                     public TestStatus? Value;
                     [Feld(Value = "8422", Feldart = Feldart.bedingt_muss)]
@@ -109,7 +109,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class HpvBefundObjUntersuchungsergebnisZytologie : Kontext
+                public class HpvBefundObjUntersuchungsergebnisZytologie_ : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "7402", Feldart = Feldart.bedingt_kann)]
@@ -139,7 +139,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Gruppe : Kontext
+                public class Gruppe_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7413", Feldart = Feldart.bedingt_muss)]
@@ -149,19 +149,19 @@ namespace libldt3
                 }
                 [Feld(Value = "7304", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public ErgebnisId ErgebnisId;
+                public ErgebnisId_ ErgebnisId;
                 [Feld(Value = "7364", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> ProbengefaessIdent;
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public IList<KatalogAnforderbareLeistungenId> KatalogAnforderbareLeistungenId;
+                public IList<KatalogAnforderbareLeistungenId_> KatalogAnforderbareLeistungenId;
                 [Feld(Value = "8410", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 20)]
-                public IList<TestIdent> TestIdent;
+                public IList<TestIdent_> TestIdent;
                 [Feld(Value = "8418", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public Ergebnisstatus Ergebnisstatus;
+                public Ergebnisstatus_ Ergebnisstatus;
                 [Feld(Value = "8237", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
                 public Fliesstext Ergebnistext;
@@ -170,10 +170,10 @@ namespace libldt3
                 public bool? ZellmaterialNichtVerwertbar;
                 [Feld(Value = "7400", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public HpvBefundObjUntersuchungsergebnisZytologie HpvBefundObjUntersuchungsergebnisZytologie;
+                public HpvBefundObjUntersuchungsergebnisZytologie_ HpvBefundObjUntersuchungsergebnisZytologie;
                 [Feld(Value = "7414", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(E028) }, MaxLaenge = 5)]
-                public Gruppe Gruppe;
+                public Gruppe_ Gruppe;
                 [Feld(Value = "7418", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public Ergebnis? P16Ki67;

@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 
@@ -40,7 +41,8 @@ namespace libldt3
                 /// zwei Feldkennungen vorhanden sein.
                 public class K132 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8626", "8617", "8631");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K132));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8626", "8617", "8631" };
 
                     public bool IsValid(Kontext owner)
                     {

@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -37,6 +38,7 @@ namespace libldt3
                 /// Ergebnis des "HPV-HR-Tests" positiv ist.
                 public class K122 : Kontextregel
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K122));
 
                     public bool IsValid(Kontext owner)
                     {

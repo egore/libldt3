@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -47,7 +48,8 @@ namespace libldt3
                 /// Patienten nicht oder nicht komplett vorhanden sind.
                 public class K094 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("7420", "7303", "3103", "3110", "8228");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K094));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "7420", "7303", "3103", "3110", "8228" };
 
                     public bool IsValid(Kontext owner)
                     {

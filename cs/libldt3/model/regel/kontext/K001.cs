@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -36,7 +37,8 @@ namespace libldt3
                 /// </summary>
                 public class K001 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("6305", "8242");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K001));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "6305", "8242" };
 
                     public bool IsValid(Kontext owner)
                     {

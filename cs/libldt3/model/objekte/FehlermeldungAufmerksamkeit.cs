@@ -38,16 +38,16 @@ namespace libldt3
             public class FehlermeldungAufmerksamkeit : Kontext
             {
                 [Objekt]
-                public class GrundBenachrichtigung : Kontext
+                public class GrundBenachrichtigung_ : Kontext
                 {
                     public Benachrichtigungsgrund? Value;
                     [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(Laenge = 1)]
-                    public RecallEmpfohlen RecallEmpfohlen;
+                    public RecallEmpfohlen_ RecallEmpfohlen;
 
                 }
                 [Objekt]
-                public class RecallEmpfohlen : Kontext
+                public class RecallEmpfohlen_ : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8154", Feldart = Feldart.bedingt_muss)]
@@ -57,7 +57,7 @@ namespace libldt3
                 }
                 [Feld(Value = "7280", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public IList<GrundBenachrichtigung> GrundBenachrichtigung;
+                public IList<GrundBenachrichtigung_> GrundBenachrichtigung;
                 [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public Person Person;

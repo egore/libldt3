@@ -33,7 +33,7 @@ namespace libldt3
                 {
                     public bool IsValid(string value)
                     {
-                        return int?.ParseInt(value) > 0;
+                        return Int32.Parse(value) > 0;
                     }
                 }
             }

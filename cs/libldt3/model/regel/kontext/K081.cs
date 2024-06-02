@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -39,7 +40,8 @@ namespace libldt3
                 /// der Timestamp der Messung angegeben werden.
                 public class K081 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8225");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K081));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8225" };
 
                     public bool IsValid(Kontext owner)
                     {

@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -41,7 +42,8 @@ namespace libldt3
                 /// nicht vorkommen.
                 public class K134 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("7414", "7405", "7406", "7407", "7408", "7409", "7410", "7411", "7412");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K134));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "7414", "7405", "7406", "7407", "7408", "7409", "7410", "7411", "7412" };
 
                     public bool IsValid(Kontext owner)
                     {

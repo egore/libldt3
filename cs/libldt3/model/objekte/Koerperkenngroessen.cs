@@ -36,7 +36,7 @@ namespace libldt3
             public class Koerperkenngroessen : Kontext
             {
                 [Objekt]
-                public class GroesseDesPatienten : Kontext
+                public class GroesseDesPatienten_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
@@ -48,7 +48,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class GewichtDesPatienten : Kontext
+                public class GewichtDesPatienten_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
@@ -60,9 +60,9 @@ namespace libldt3
 
                 }
                 [Feld(Value = "3622", Feldart = Feldart.kann)]
-                public GroesseDesPatienten GroesseDesPatienten;
+                public GroesseDesPatienten_ GroesseDesPatienten;
                 [Feld(Value = "3623", Feldart = Feldart.kann)]
-                public GewichtDesPatienten GewichtDesPatienten;
+                public GewichtDesPatienten_ GewichtDesPatienten;
 
             }
         }

@@ -37,7 +37,7 @@ namespace libldt3
             public class Rechnungsempfaenger : Kontext
             {
                 [Objekt]
-                public class NameEinrichtungAuftraggeber : Kontext
+                public class NameEinrichtungAuftraggeber_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7328", Feldart = Feldart.bedingt_kann)]
@@ -53,7 +53,7 @@ namespace libldt3
                 public StatusRechnungsempfaenger? StatusRechnungsempfaenger;
                 [Feld(Value = "0600", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NameEinrichtungAuftraggeber NameEinrichtungAuftraggeber;
+                public NameEinrichtungAuftraggeber_ NameEinrichtungAuftraggeber;
                 [Feld(Value = "8108", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 8)]
                 public Adressat Adressat;

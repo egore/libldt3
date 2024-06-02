@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -38,6 +39,7 @@ namespace libldt3
                 /// Abbildung von Unterüberweisungen im LDT-Datensatz
                 public class K042 : Kontextregel
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K042));
 
                     public bool IsValid(Kontext owner)
                     {

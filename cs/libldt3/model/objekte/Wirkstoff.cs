@@ -35,7 +35,7 @@ namespace libldt3
             public class Wirkstoff : Kontext
             {
                 [Objekt]
-                public class ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung : Kontext
+                public class ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "6224", Feldart = Feldart.bedingt_kann)]
@@ -43,7 +43,7 @@ namespace libldt3
                     public WirkstoffCode WirkstoffCode;
                     [Feld(Value = "8523", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public WirkstoffmengeMengeBezugsmengeWirkstaerke WirkstoffmengeMengeBezugsmengeWirkstaerke;
+                    public WirkstoffmengeMengeBezugsmengeWirkstaerke_ WirkstoffmengeMengeBezugsmengeWirkstaerke;
 
                 }
                 [Objekt]
@@ -56,7 +56,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class WirkstoffmengeMengeBezugsmengeWirkstaerke : Kontext
+                public class WirkstoffmengeMengeBezugsmengeWirkstaerke_ : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
@@ -66,7 +66,7 @@ namespace libldt3
                 }
                 [Feld(Value = "6212", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung;
+                public ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung_ ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung;
 
             }
         }

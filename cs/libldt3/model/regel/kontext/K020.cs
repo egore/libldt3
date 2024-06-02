@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -40,7 +41,8 @@ namespace libldt3
                 /// Kontext der kassenärztlichen Versorgung beauftragt werden, obligat.
                 public class K020 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8002", "0201", "0212", "0223");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K020));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8002", "0201", "0212", "0223" };
 
                     public bool IsValid(Kontext owner)
                     {

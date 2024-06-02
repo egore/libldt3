@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 
@@ -40,7 +41,8 @@ namespace libldt3
                 /// 8626 = 3, darf FK 8617, 8618, 8619  und 8620 nicht vorhanden sein.
                 public class K131 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8626", "8627", "8617");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K131));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8626", "8627", "8617" };
 
                     public bool IsValid(Kontext owner)
                     {

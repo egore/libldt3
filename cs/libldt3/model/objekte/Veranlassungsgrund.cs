@@ -38,7 +38,7 @@ namespace libldt3
             public class Veranlassungsgrund : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K133) })]
-                public class AbrechnungsinfoZurUntersuchung : Kontext
+                public class AbrechnungsinfoZurUntersuchung_ : Kontext
                 {
                     public Abrechnungsinfo? Value;
                     [Feld(Value = "8417", Feldart = Feldart.kann)]
@@ -84,7 +84,7 @@ namespace libldt3
                 }
                 [Feld(Value = "7303", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public IList<AbrechnungsinfoZurUntersuchung> AbrechnungsinfoZurUntersuchung;
+                public IList<AbrechnungsinfoZurUntersuchung_> AbrechnungsinfoZurUntersuchung;
                 [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public IList<Anhang> Anhang;

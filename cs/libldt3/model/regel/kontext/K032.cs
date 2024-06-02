@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 
@@ -45,7 +46,8 @@ namespace libldt3
                 /// und deren Inhalten
                 public class K032 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("7303", "4239");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K032));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "7303", "4239" };
 
                     public bool IsValid(Kontext owner)
                     {

@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -42,6 +43,7 @@ namespace libldt3
                 /// FK 4239 = 28/FK 4221 = 2
                 public class K031 : Kontextregel
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K031));
 
                     public bool IsValid(Kontext owner)
                     {

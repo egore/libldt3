@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 
@@ -39,7 +40,8 @@ namespace libldt3
                 /// 4221 darf nicht vorhanden sein, wenn Inhalt von FK 4239 ≠ 27 oder 28 ist.
                 public class K012 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("4239", "4221");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K012));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "4239", "4221" };
 
                     public bool IsValid(Kontext owner)
                     {

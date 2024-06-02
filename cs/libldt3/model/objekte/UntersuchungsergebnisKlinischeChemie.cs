@@ -38,7 +38,7 @@ namespace libldt3
             public class UntersuchungsergebnisKlinischeChemie : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K053) })]
-                public class KatalogAnforderbareLeistungenId : Kontext
+                public class KatalogAnforderbareLeistungenId_ : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -62,7 +62,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class TestIdent : Kontext
+                public class TestIdent_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
@@ -77,7 +77,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Ergebnisstatus : Kontext
+                public class Ergebnisstatus_ : Kontext
                 {
                     public TestStatus? Value;
                     [Feld(Value = "7302", Feldart = Feldart.kann)]
@@ -132,13 +132,13 @@ namespace libldt3
                 public IList<string> ProbengefaessIdent;
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public KatalogAnforderbareLeistungenId KatalogAnforderbareLeistungenId;
+                public KatalogAnforderbareLeistungenId_ KatalogAnforderbareLeistungenId;
                 [Feld(Value = "8410", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 20)]
-                public TestIdent TestIdent;
+                public TestIdent_ TestIdent;
                 [Feld(Value = "8418", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public Ergebnisstatus Ergebnisstatus;
+                public Ergebnisstatus_ Ergebnisstatus;
                 [Feld(Value = "7306", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 2)]
                 public IList<UntersuchungsergebnisKlinischeChemie_DarstellungErgebniswerte> DarstellungErgebniswerte;

@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using libldt3.model.regel;
 
 namespace libldt3
@@ -32,6 +33,7 @@ namespace libldt3
             {
                 public class E028 : Regel
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(E028));
 
                     public bool IsValid(string value)
                     {

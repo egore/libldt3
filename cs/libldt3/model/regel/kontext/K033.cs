@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -37,6 +38,7 @@ namespace libldt3
                 /// </summary>
                 public class K033 : Kontextregel
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K033));
 
                     public bool IsValid(Kontext owner)
                     {

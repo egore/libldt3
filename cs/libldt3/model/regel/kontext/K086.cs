@@ -21,8 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
-using java.util.function;
-using java.util.stream;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -40,7 +39,8 @@ namespace libldt3
                 /// </summary>
                 public class K086 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("7293", "7286");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K086));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "7293", "7286" };
 
                     public bool IsValid(Kontext owner)
                     {
@@ -52,7 +52,7 @@ namespace libldt3
                         }
 
                         IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode> feld7286 = (IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode>)KontextregelHelper.GetFieldValue(fields["7286"], owner);
-                        bool found = feld7286 != null && feld7286.Stream().AnyMatch(// XXX renderExpression CtLambdaImpl is unknown);
+                        bool found = feld7286 != null && feld7286.Stream().AnyMatch();
     if (!found)
                         {
                             if (KontextregelHelper.ContainsAnyValue(fields["7293"], owner))

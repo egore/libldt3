@@ -20,6 +20,7 @@
  * SOFTWARE.
  */
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 
 namespace libldt3
@@ -38,7 +39,8 @@ namespace libldt3
                 /// der 1. Tag des letzten Zyklus übermittelt wurde.
                 public class K118 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8512");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K118));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8512" };
 
                     public bool IsValid(Kontext owner)
                     {

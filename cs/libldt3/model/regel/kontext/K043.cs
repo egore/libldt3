@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 
@@ -53,7 +54,8 @@ namespace libldt3
                 /// zweimal im Obj_Betriebsstätte vorkommen.
                 public class K043 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = ISet.Of("0204");
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K043));
+                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "0204" };
 
                     public bool IsValid(Kontext owner)
                     {

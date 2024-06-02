@@ -45,7 +45,7 @@ namespace libldt3
             public class UntersuchungsergebnisMikrobiologie : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K053) })]
-                public class KatalogAnforderbareLeistungenId : Kontext
+                public class KatalogAnforderbareLeistungenId_ : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -69,7 +69,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class TestIdent : Kontext
+                public class TestIdent_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
@@ -87,7 +87,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K100) })]
-                public class KeimPilzIdentifizierung : Kontext
+                public class KeimPilzIdentifizierung_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7355", Feldart = Feldart.bedingt_muss)]
@@ -157,10 +157,10 @@ namespace libldt3
                 public IList<string> ProbengefaessIdent;
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public IList<KatalogAnforderbareLeistungenId> KatalogAnforderbareLeistungenId;
+                public IList<KatalogAnforderbareLeistungenId_> KatalogAnforderbareLeistungenId;
                 [Feld(Value = "8410", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 20)]
-                public IList<TestIdent> TestIdent;
+                public IList<TestIdent_> TestIdent;
                 [Feld(Value = "8434", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> Anforderung;
@@ -175,7 +175,7 @@ namespace libldt3
                 public IList<BAK> Bak;
                 [Feld(Value = "7354", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<KeimPilzIdentifizierung> KeimPilzIdentifizierung;
+                public IList<KeimPilzIdentifizierung_> KeimPilzIdentifizierung;
                 [Feld(Value = "7286", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
                 public IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode> ResistenzMethode;
