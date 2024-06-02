@@ -8,13 +8,12 @@ import freemarker.core.Environment;
 import freemarker.ext.beans.BeanModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
-import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 import spoon.reflect.declaration.CtClass;
 
 public class ConvertClassDirective implements TemplateDirectiveModel {
 
-    public static Map<String, String> CLASS_REPLACEMENTS = Map.of(
+    public static final Map<String, String> CLASS_REPLACEMENTS = Map.of(
             "libldt3.model.objekte.UntersuchungsergebnisZytologie$RecallEmpfohlen", "RecallEmpfohlen_",
             "libldt3.model.objekte.UntersuchungsergebnisZytologieKrebsvorsorge$TestIdent", "TestIdent_",
             "libldt3.model.objekte.Antibiogramm$WirkstoffIdent", "WirkstoffIdent_",
@@ -26,18 +25,18 @@ public class ConvertClassDirective implements TemplateDirectiveModel {
             "libldt3.model.objekte.Untersuchungsanforderung$ProbengefaessIdent", "ProbengefaessIdent_");
 
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
-            throws TemplateException, IOException {
+            throws IOException {
 
-        CtClass<?> class_ = (CtClass<?>) (((BeanModel) params.get("class")).getWrappedObject());
+        CtClass<?> ctClass = (CtClass<?>) (((BeanModel) params.get("class")).getWrappedObject());
 
         Writer out = env.getOut();
-        String qualifiedName = convertClass(class_);
+        String qualifiedName = convertClass(ctClass);
         out.append(qualifiedName);
     }
 
-    private static String convertClass(CtClass<?> class_) {
-        String name = CLASS_REPLACEMENTS.getOrDefault(class_.getQualifiedName(), class_.getSimpleName());
-        if (class_.isGenerics()) {
+    private static String convertClass(CtClass<?> ctClass) {
+        String name = CLASS_REPLACEMENTS.getOrDefault(ctClass.getQualifiedName(), ctClass.getSimpleName());
+        if (ctClass.isGenerics()) {
             throw new UnsupportedOperationException();
         }
         return name;

@@ -32,7 +32,7 @@ public class ConstructorFixupDirective implements TemplateDirectiveModel {
         try {
             map.put(HashSet.class.getConstructor(Collection.class), "new ${type} { ${arguments} }");
         } catch (NoSuchMethodException | SecurityException e) {
-            throw new Error(e);
+            throw new UnsupportedOperationException(e);
         }
         CONSTRUCTOR_TEMPLATE = Collections.unmodifiableMap(map);
     }
@@ -49,7 +49,7 @@ public class ConstructorFixupDirective implements TemplateDirectiveModel {
                 return argument;
             });
         } catch (NoSuchMethodException | SecurityException e) {
-            throw new Error(e);
+            throw new UnsupportedOperationException(e);
         }
         CONSTRUCTOR_TEMPLATE_ARGUMENT_HANDLERS = Collections.unmodifiableMap(map);
     }
