@@ -62,6 +62,15 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
             map.put(Map.class.getMethod("putAll", Map.class), "foreach (var x in ${arguments}) { ${target}[x.Key] = x.Value; }");
 
             map.put(Set.class.getMethod("size"), "${target}.Count");
+            map.put(Set.class.getMethod("of", Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class, Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class, Object.class, Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class, Object.class, Object.class, Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class, Object.class, Object.class, Object.class, Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class), "new HashSet{ ${arguments} }");
+            map.put(Set.class.getMethod("of", Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class), "new HashSet{ ${arguments} }");
 
             map.put(List.class.getMethod("add", Object.class), "${target}.Add(${arguments})");
             map.put(List.class.getMethod("isEmpty"), "${target}.Count == 0");

@@ -176,7 +176,7 @@ public class GenUsingDirective implements TemplateDirectiveModel {
             return null;
         }
         if (package_.equals("org.slf4j")) {
-            return "System.Diagnostics";
+            return "Microsoft.Extensions.Logging";
         }
         if (package_.equals("java.time")) {
             return "NodaTime";

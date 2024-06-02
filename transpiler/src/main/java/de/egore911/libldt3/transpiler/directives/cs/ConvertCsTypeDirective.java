@@ -53,6 +53,7 @@ public class ConvertCsTypeDirective implements TemplateDirectiveModel {
         case "java.lang.Iterable": name = "IEnumerable"; break;
         case "java.util.Collection": name = "IEnumerable"; break;
         case "java.lang.UnsupportedOperationException": name = "NotImplementedException"; break;
+        case "org.slf4j.Logger": name = "ILogger"; break;
         default: name = ConvertClassDirective.CLASS_REPLACEMENTS.getOrDefault(type.getQualifiedName(), type.getSimpleName()); break;
         }
         if (withNullability && (type.isEnum() || type.isAnnotationType() ||type.getQualifiedName().startsWith("java.time."))) {

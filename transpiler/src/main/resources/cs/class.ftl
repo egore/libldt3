@@ -20,10 +20,8 @@
     </#list>
     <#if klass.fields?size gt 0>
     <#list klass.fields as field>
-    <#if field.simpleName != "LOG">
         <@attributes.fieldattributes field/>
         ${field.visibility!}<#if field.static> static</#if><#if field.final> readonly</#if> <@converttype type=field.type/> ${field.simpleName?cap_first}<#if field.assignment??> = <@expressions.renderExpression expression=field.assignment/></#if>;
-    </#if>
     </#list>
 
     </#if>
