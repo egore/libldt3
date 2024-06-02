@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,13 +26,13 @@ namespace libldt3
         namespace enums
         {
 
+            /// <summary>
+            /// E038
+            /// </summary>
             public enum Lokalisation
             {
-                /// rechts
                 rechts,
-                /// links
                 links,
-                /// beiderseits
                 beiderseits
             }
 

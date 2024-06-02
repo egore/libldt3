@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,29 +31,20 @@ namespace libldt3
             /// </summary>
             public enum SpezifizierungVeranlassungsgrund
             {
-                /// Eingriff
                 Eingriff,
-                /// Medikamentengabe
                 Medikamentengabe,
                 /// unklares Fieber
-                UnklaresFieber,
-                /// Infektion
+                unklaresFieber,
                 Infektion,
-                /// Rheuma
                 Rheuma,
-                /// Allergie
                 Allergie,
                 /// Herz/Kreislauf
-                HerzKreislauf,
-                /// Tumor
+                Herz_Kreislauf,
                 Tumor,
-                /// Impfungen
                 Impfungen,
-                /// Reisen
                 Reisen,
                 /// Immunität nach Infektion
-                ImmunitaetNachInfektion,
-                /// Sonstiges
+                Immunitaet_nachInfektion,
                 Sonstiges
             }
 
@@ -65,15 +56,15 @@ namespace libldt3
                     {
                         case SpezifizierungVeranlassungsgrund.Eingriff: return "01";
                         case SpezifizierungVeranlassungsgrund.Medikamentengabe: return "02";
-                        case SpezifizierungVeranlassungsgrund.UnklaresFieber: return "03";
+                        case SpezifizierungVeranlassungsgrund.unklaresFieber: return "03";
                         case SpezifizierungVeranlassungsgrund.Infektion: return "04";
                         case SpezifizierungVeranlassungsgrund.Rheuma: return "05";
                         case SpezifizierungVeranlassungsgrund.Allergie: return "06";
-                        case SpezifizierungVeranlassungsgrund.HerzKreislauf: return "07";
+                        case SpezifizierungVeranlassungsgrund.Herz_Kreislauf: return "07";
                         case SpezifizierungVeranlassungsgrund.Tumor: return "08";
                         case SpezifizierungVeranlassungsgrund.Impfungen: return "09";
                         case SpezifizierungVeranlassungsgrund.Reisen: return "10";
-                        case SpezifizierungVeranlassungsgrund.ImmunitaetNachInfektion: return "11";
+                        case SpezifizierungVeranlassungsgrund.Immunitaet_nachInfektion: return "11";
                         case SpezifizierungVeranlassungsgrund.Sonstiges: return "12";
                         default: throw new Exception();
                     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,38 +33,50 @@ namespace libldt3
             /// <summary>
             /// Das Objekt Anschrift definiert die Adresse.
             /// </summary>
-            /// Dabei kann es sich entweder um
-            /// ein Postfach oder um eine physische Adresse handeln.
+            /// Dabei kann es sich entweder um ein
+            /// Postfach oder um eine physische Adresse handeln.
             [Objekt(Value = "0007", Kontextregeln = new[] { typeof(K017) })]
             public class Anschrift : Kontext
             {
+                [Objekt]
+                public class Plz : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "3113", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 40)]
+                    public string Ort;
+                    [Feld(Value = "3107", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 46)]
+                    public string Strasse;
+                    [Feld(Value = "3109", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 9)]
+                    public string Hausnummer;
+                    [Feld(Value = "3115", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 40)]
+                    public string Anschriftenzusatz;
+
+                }
+                [Objekt]
+                public class PostfachPlz : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "3122", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 40)]
+                    public string PostfachOrt;
+                    [Feld(Value = "3123", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 8)]
+                    public string Postfach;
+
+                }
                 [Feld(Value = "3112", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 10)]
-                public string Plz;
-                [Feld(Value = "3113", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 40)]
-                public string Ort;
-                [Feld(Value = "3107", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 46)]
-                public string Strasse;
-                [Feld(Value = "3109", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 9)]
-                public string Hausnummer;
-                [Feld(Value = "3115", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 40)]
-                public string Anschriftenzusatz;
+                public Plz Plz;
                 [Feld(Value = "3114", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 3)]
                 public string Wohnsitzlaendercode;
                 [Feld(Value = "3121", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 10)]
-                public string PostfachPlz;
-                [Feld(Value = "3122", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 40)]
-                public string PostfachOrt;
-                [Feld(Value = "3123", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 8)]
-                public string Postfach;
+                public PostfachPlz PostfachPlz;
                 [Feld(Value = "3124", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 3)]
                 public string PostfachWohnsitzlaendercode;

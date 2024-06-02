@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using libldt3.attributes;
 using libldt3.model;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -31,37 +32,38 @@ namespace libldt3
             /// <summary>
             /// Hier werden alle Informationen zusammengefasst, die eine Kommunikation bspw.
             /// </summary>
-            /// mit einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
-            [Objekt(Value = "0031")]
+            /// Mit
+            /// einer Einrichtung, Firma, Arzt, einem Patienten ermöglichen.
+            [Objekt(Value = "0031", Kontextregeln = new[] { typeof(K059) })]
             public class Kommunikationsdaten : Kontext
             {
                 [Objekt]
-                public class ElektronischePostadresse_ : Kontext
+                public class AlternativeElektronischePostadresse : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7340", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public string Spezifizierung;
+                    public string SpezifizierungAlternativenElektronischenPostadresse;
 
                 }
                 [Feld(Value = "7330", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Phone;
+                public IList<string> Telefonnummer;
                 [Feld(Value = "7331", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Mobile;
+                public IList<string> Mobiltelefonnummer;
                 [Feld(Value = "7332", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<ElektronischePostadresse_> ElektronischePostadresse;
+                public IList<AlternativeElektronischePostadresse> AlternativeElektronischePostadresse;
                 [Feld(Value = "7333", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Fax;
+                public IList<string> Faxnummer;
                 [Feld(Value = "7335", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Email;
+                public IList<string> EMailadresse;
                 [Feld(Value = "7334", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Website;
+                public IList<string> Webadresse;
 
             }
         }

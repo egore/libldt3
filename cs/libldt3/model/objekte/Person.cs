@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@ using NodaTime;
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -34,9 +35,9 @@ namespace libldt3
             /// <summary>
             /// Mit dem Objekt Person werden alle die natürlichen Personen dargestellt, deren
             /// Daten für die Abwicklung, Abrechnung oder Dokumentation von Aufträgen und
-            /// Befun-den notwendig sind.
+            /// Befunden notwendig sind.
             /// </summary>
-            [Objekt(Value = "0047")]
+            [Objekt(Value = "0047", Kontextregeln = new[] { typeof(K094), typeof(K104) })]
             public class Person : Kontext
             {
                 [Feld(Value = "7420", Feldart = Feldart.bedingt_muss)]
@@ -69,19 +70,19 @@ namespace libldt3
                 [Feld(Value = "8990", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string NamenskuerzelNamenszeichen;
-                [Feld(Value = "8228", Name = "Wohnanschrift", Feldart = Feldart.bedingt_muss)]
+                [Feld(Value = "8228", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 13)]
                 public Anschrift Wohnanschrift;
-                [Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
+                [Feld(Value = "8229", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 23)]
                 public Anschrift AnschriftArbeitsstelle;
-                [Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
+                [Feld(Value = "8230", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 18)]
                 public Anschrift Rechnungsanschrift;
-                [Feld(Value = "8232", Name = "Private_Kommunikationsdaten", Feldart = Feldart.kann)]
+                [Feld(Value = "8232", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 27)]
                 public Kommunikationsdaten PrivateKommunikationsdaten;
-                [Feld(Value = "8233", Name = "Geschaeftliche_Kommunikationsdaten", Feldart = Feldart.kann)]
+                [Feld(Value = "8233", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 34)]
                 public Kommunikationsdaten GeschaeftlicheKommunikationsdaten;
 

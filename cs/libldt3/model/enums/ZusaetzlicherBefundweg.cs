@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,20 +31,16 @@ namespace libldt3
             /// </summary>
             public enum ZusaetzlicherBefundweg
             {
-                /// Papier
                 Papier,
-                /// Telefon
                 Telefon,
-                /// Fax
                 Fax,
                 /// E-Mail
-                EMail,
+                E_Mail,
                 /// DFÜ
-                DFUE,
-                /// Tourpost
+                DFUe,
                 Tourpost,
                 /// KV-Connect
-                kvConnect
+                KV_Connect
             }
 
             public static class ZusaetzlicherBefundwegExtensions
@@ -56,10 +52,10 @@ namespace libldt3
                         case ZusaetzlicherBefundweg.Papier: return "0";
                         case ZusaetzlicherBefundweg.Telefon: return "1";
                         case ZusaetzlicherBefundweg.Fax: return "2";
-                        case ZusaetzlicherBefundweg.EMail: return "3";
-                        case ZusaetzlicherBefundweg.DFUE: return "4";
+                        case ZusaetzlicherBefundweg.E_Mail: return "3";
+                        case ZusaetzlicherBefundweg.DFUe: return "4";
                         case ZusaetzlicherBefundweg.Tourpost: return "5";
-                        case ZusaetzlicherBefundweg.kvConnect: return "6";
+                        case ZusaetzlicherBefundweg.KV_Connect: return "6";
                         default: throw new Exception();
                     }
                 }

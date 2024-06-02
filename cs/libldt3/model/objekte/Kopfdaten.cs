@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,8 @@
  */
 using libldt3.attributes;
 using libldt3.model;
+using libldt3.model.enums;
+using libldt3.model.regel.format;
 
 namespace libldt3
 {
@@ -35,13 +37,16 @@ namespace libldt3
             [Objekt(Value = "0032")]
             public class Kopfdaten : Kontext
             {
-                [Feld(Value = "8151", Name = "Sendendes_System", Feldart = Feldart.muss)]
+                [Feld(Value = "0001", Feldart = Feldart.muss)]
+                [Regelsatz(Value = new[] { typeof(F007) }, MaxLaenge = 12)]
+                public LdtVersion? VersionDatensatzbeschreibung;
+                [Feld(Value = "8151", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 16)]
                 public SendendesSystem SendendesSystem;
-                [Feld(Value = "8218", Name = "Timestamp_Erstellung_Datensatz", Feldart = Feldart.kann)]
+                [Feld(Value = "8218", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 30)]
                 public Timestamp TimestampErstellungDatensatz;
-                [Feld(Value = "8212", Name = "Softwareverantwortlicher", Feldart = Feldart.kann)]
+                [Feld(Value = "8212", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 24)]
                 public Organisation Softwareverantwortlicher;
 

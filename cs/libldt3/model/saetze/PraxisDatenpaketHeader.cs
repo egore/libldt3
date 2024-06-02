@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ namespace libldt3
                 public Kopfdaten Kopfdaten;
                 [Feld(Value = "7265", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public DatensatzAbsender? Absender;
+                public DatensatzAbsender? AbsenderDatensatze;
                 [Feld(Value = "8122", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 23)]
                 public IList<Einsenderidentifikation> Einsenderidentifikation;

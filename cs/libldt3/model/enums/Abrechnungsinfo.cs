@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,28 +32,37 @@ namespace libldt3
             public enum Abrechnungsinfo
             {
                 /// GKV Laborfacharzt
-                GkvLaborfacharzt,
+                GKV_Laborfacharzt,
                 /// GKV LG
-                GkvLg,
+                GKV_LG,
                 /// PKV Laborfacharzt
-                PkvLaborfacharzt,
-                /// PKG LG
-                PkvLg,
-                /// Selektivvertrag
+                PKV_Laborfacharzt,
+                /// PKV LG
+                PKV_LG,
                 Selektivvertrag,
-                /// IGeL
-                IGeL,
+                IgeL,
                 /// Sonstige Kostenübernahme
-                Sonstige_Kostenuebernahme,
-                /// ASV
-                Asv,
+                SonstigeKostenuebernahme,
+                ASV,
                 /// GKV Laborfacharzt präventiv
-                GkvLaborfacharztPraeventiv,
+                GKV_Laborfacharzt_praeventiv,
                 /// GKV LG präventiv
-                GkgLgPraeventiv,
-                /// keine Zuordnung
-                keine_Zuordnung,
-                /// storniert
+                GKV_LG_praeventiv,
+                /// keine Zuordnung (nur zulässig im Obj_0027)
+                keineZuordnung,
+                /// PräOP (Präoperative Laborleistungen**)
+                PraeOP,
+                /// GKV Krankenhaus
+                GKV_Krankenhaus,
+                /// PKV Krankenhaus
+                PKV_Krankenhaus,
+                /// GKV Muster 6 / 39
+                GKV_Muster6_39,
+                /// GKV Muster 10C
+                GKV_Muster10C,
+                /// ÖGD
+                OeGD,
+                /// Abschnitt 31.1 des EBM)
                 storniert
             }
 
@@ -63,17 +72,23 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Abrechnungsinfo.GkvLaborfacharzt: return "1";
-                        case Abrechnungsinfo.GkvLg: return "2";
-                        case Abrechnungsinfo.PkvLaborfacharzt: return "3";
-                        case Abrechnungsinfo.PkvLg: return "4";
+                        case Abrechnungsinfo.GKV_Laborfacharzt: return "1";
+                        case Abrechnungsinfo.GKV_LG: return "2";
+                        case Abrechnungsinfo.PKV_Laborfacharzt: return "3";
+                        case Abrechnungsinfo.PKV_LG: return "4";
                         case Abrechnungsinfo.Selektivvertrag: return "5";
-                        case Abrechnungsinfo.IGeL: return "6";
-                        case Abrechnungsinfo.Sonstige_Kostenuebernahme: return "7";
-                        case Abrechnungsinfo.Asv: return "8";
-                        case Abrechnungsinfo.GkvLaborfacharztPraeventiv: return "9";
-                        case Abrechnungsinfo.GkgLgPraeventiv: return "10";
-                        case Abrechnungsinfo.keine_Zuordnung: return "11";
+                        case Abrechnungsinfo.IgeL: return "6";
+                        case Abrechnungsinfo.SonstigeKostenuebernahme: return "7";
+                        case Abrechnungsinfo.ASV: return "8";
+                        case Abrechnungsinfo.GKV_Laborfacharzt_praeventiv: return "9";
+                        case Abrechnungsinfo.GKV_LG_praeventiv: return "10";
+                        case Abrechnungsinfo.keineZuordnung: return "11";
+                        case Abrechnungsinfo.PraeOP: return "12";
+                        case Abrechnungsinfo.GKV_Krankenhaus: return "13";
+                        case Abrechnungsinfo.PKV_Krankenhaus: return "14";
+                        case Abrechnungsinfo.GKV_Muster6_39: return "15";
+                        case Abrechnungsinfo.GKV_Muster10C: return "16";
+                        case Abrechnungsinfo.OeGD: return "17";
                         case Abrechnungsinfo.storniert: return "99";
                         default: throw new Exception();
                     }

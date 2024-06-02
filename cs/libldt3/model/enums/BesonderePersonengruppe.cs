@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,17 +32,18 @@ namespace libldt3
             public enum BesonderePersonengruppe
             {
                 /// keine Angabe
-                keine_Angabe,
+                keineAngabe,
                 /// BSHG (Bundessozialhilfegesetz) § 264 SGB V
-                Bundessozialhilfegesetz,
+                BSHG264SGB_V,
                 /// BVG (Gesetz über die Versorgung der Opfer des Krieges)
-                BVG,
-                /// Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand
-                SVAAufwand,
+                SER,
+                /// Krankenversicherungsrecht: Personen mit Wohnsitz im Inland,  Abrechnung nach
+                /// Aufwand
+                SVA_Kennzeichnung_fuer_zwischenstaatliches,
                 /// SVA-Kennzeichnung, pauschal
-                SVAPauschal,
+                SVA_Kennzeichnung_pauschal,
                 /// Empfänger von Gesundheitsleistungen nach den §§ 4, 6 AsylbLG
-                AsylbLG
+                Empfaenger_vonGesundheitsleistungen_nach_den46AsylbLG
             }
 
             public static class BesonderePersonengruppeExtensions
@@ -51,12 +52,12 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case BesonderePersonengruppe.keine_Angabe: return "00";
-                        case BesonderePersonengruppe.Bundessozialhilfegesetz: return "04";
-                        case BesonderePersonengruppe.BVG: return "06";
-                        case BesonderePersonengruppe.SVAAufwand: return "07";
-                        case BesonderePersonengruppe.SVAPauschal: return "08";
-                        case BesonderePersonengruppe.AsylbLG: return "09";
+                        case BesonderePersonengruppe.keineAngabe: return "00";
+                        case BesonderePersonengruppe.BSHG264SGB_V: return "04";
+                        case BesonderePersonengruppe.SER: return "06";
+                        case BesonderePersonengruppe.SVA_Kennzeichnung_fuer_zwischenstaatliches: return "07";
+                        case BesonderePersonengruppe.SVA_Kennzeichnung_pauschal: return "08";
+                        case BesonderePersonengruppe.Empfaenger_vonGesundheitsleistungen_nach_den46AsylbLG: return "09";
                         default: throw new Exception();
                     }
                 }

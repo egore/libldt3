@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,17 +26,29 @@ namespace libldt3
         namespace enums
         {
 
+            /// <summary>
+            /// E053
+            /// </summary>
             public enum Dokumententyp
             {
+                /// Muster 6
                 Muster6,
+                /// Muster 10
                 Muster10,
+                /// Muster 10A
                 Muster10A,
+                /// Muster 39
                 Muster39,
+                /// Auftragsdokument PKV-FA
                 AuftragsdokumentPKV_FA,
+                /// Auftragsdokument PKV-LG
                 AuftragsdokumentPKV_LG,
-                Auftragsdokument_IGeL,
-                Auftragsdokument_Sonstige_Kostenuebernahme,
-                Auftragsdokument_Selektivvertrag,
+                /// Auftragsdokument IGeL
+                AuftragsdokumentIGeL,
+                /// Auftragsdokument Sonstige Kostenübernahme
+                AuftragsdokumentSonstigeKostenuebernahme,
+                /// Auftragsdokument Selektivvertrag
+                AuftragsdokumentSelektivvertrag,
                 Laborbefund,
                 Mutterpass,
                 Impfpass,
@@ -45,8 +57,11 @@ namespace libldt3
                 Medikationsplan,
                 Verlaufsbericht,
                 Behandlungsbericht,
-                Einverstaendniserklärung_lt_GenDG_Gen_Diagnostik_Gesetz,
-                weitere_laborspezifische_Dokumente,
+                /// GenDG (Gen-Diagnostik-Gesetz)
+                Einverstaendniserklaerung_lt_GenDG,
+                /// weitere laborspezifische Dokumente
+                weitere_laborspezifischeDokumente,
+                /// Allergie/RAST
                 Allergie_RAST,
                 Molekulardiagnostik,
                 Endokrinologie,
@@ -55,11 +70,15 @@ namespace libldt3
                 Funktionsdiagnostik,
                 Infektionsserologie,
                 Kinderwunsch,
-                Meldung_gemaess_IfSG_Infektionsschutz_Gesetz,
-                Meldung_Krebsregister,
+                /// Meldung gemäß IfSG (Infektionsschutz-Gesetz)
+                Meldung_gemaessIfSG,
+                /// Meldung Krebsregister
+                MeldungKrebsregister,
                 Normbereichsgrafik,
                 Rechnung,
-                LDT_Daten,
+                /// LDT-Datensatz
+                LDT_Datensatz,
+                /// Versorgung
                 sonstige
             }
 
@@ -75,9 +94,9 @@ namespace libldt3
                         case Dokumententyp.Muster39: return "039";
                         case Dokumententyp.AuftragsdokumentPKV_FA: return "090";
                         case Dokumententyp.AuftragsdokumentPKV_LG: return "091";
-                        case Dokumententyp.Auftragsdokument_IGeL: return "092";
-                        case Dokumententyp.Auftragsdokument_Sonstige_Kostenuebernahme: return "093";
-                        case Dokumententyp.Auftragsdokument_Selektivvertrag: return "094";
+                        case Dokumententyp.AuftragsdokumentIGeL: return "092";
+                        case Dokumententyp.AuftragsdokumentSonstigeKostenuebernahme: return "093";
+                        case Dokumententyp.AuftragsdokumentSelektivvertrag: return "094";
                         case Dokumententyp.Laborbefund: return "100";
                         case Dokumententyp.Mutterpass: return "101";
                         case Dokumententyp.Impfpass: return "102";
@@ -86,8 +105,8 @@ namespace libldt3
                         case Dokumententyp.Medikationsplan: return "120";
                         case Dokumententyp.Verlaufsbericht: return "150";
                         case Dokumententyp.Behandlungsbericht: return "160";
-                        case Dokumententyp.Einverstaendniserklärung_lt_GenDG_Gen_Diagnostik_Gesetz: return "200";
-                        case Dokumententyp.weitere_laborspezifische_Dokumente: return "250";
+                        case Dokumententyp.Einverstaendniserklaerung_lt_GenDG: return "200";
+                        case Dokumententyp.weitere_laborspezifischeDokumente: return "250";
                         case Dokumententyp.Allergie_RAST: return "251";
                         case Dokumententyp.Molekulardiagnostik: return "252";
                         case Dokumententyp.Endokrinologie: return "253";
@@ -96,11 +115,11 @@ namespace libldt3
                         case Dokumententyp.Funktionsdiagnostik: return "256";
                         case Dokumententyp.Infektionsserologie: return "257";
                         case Dokumententyp.Kinderwunsch: return "258";
-                        case Dokumententyp.Meldung_gemaess_IfSG_Infektionsschutz_Gesetz: return "300";
-                        case Dokumententyp.Meldung_Krebsregister: return "301";
+                        case Dokumententyp.Meldung_gemaessIfSG: return "300";
+                        case Dokumententyp.MeldungKrebsregister: return "301";
                         case Dokumententyp.Normbereichsgrafik: return "400";
                         case Dokumententyp.Rechnung: return "500";
-                        case Dokumententyp.LDT_Daten: return "900";
+                        case Dokumententyp.LDT_Datensatz: return "900";
                         case Dokumententyp.sonstige: return "999";
                         default: throw new Exception();
                     }

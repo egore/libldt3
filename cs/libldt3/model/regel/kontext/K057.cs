@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,6 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
 using libldt3.model.saetze;
@@ -32,16 +33,23 @@ namespace libldt3
             namespace kontext
             {
                 /// <summary>
-                /// FK 0222 muss vorhanden sein, wenn in mindestens einem Obj_0059 (Obj_Untersuchungsanforderung) die FK 7303 mit dem
-                /// Inhalt 8 vorhanden ist.
+                /// FK 0222 muss vorhanden sein, wenn in mindestens einem  Obj_0059
+                /// (Obj_Untersuchungsanforderung) die FK 7303 mit dem Inhalt 8 vorhanden ist.
                 /// </summary>
+                /// Die ASV-Teamnummer ist anzugeben, wenn Leistungen im Rahmen der
+                /// ASV (Ambulante Spezialfachärztliche Versorgung) entsprechend § 116b
+                /// des SGB V beauftragt werden.
                 public class K057 : Kontextregel
                 {
                     public bool IsNotEmpty(Arztidentifikation arztidentifikation)
                     {
                         return arztidentifikation.AsvTeamnummer != null && !string.IsNullOrEmpty(arztidentifikation.AsvTeamnummer);
                     }
-                    public bool IsValid(object owner)
+                    public bool IsNotEmpty(Fliesstext fliesstext)
+                    {
+                        return fliesstext.Text != null && !fliesstext.Text.Count == 0;
+                    }
+                    public bool IsValid(Kontext owner)
                     {
                         Auftrag auftrag = (Auftrag)owner;
                         // Valid, as no Obj_0059 present
@@ -52,7 +60,7 @@ namespace libldt3
 
                         foreach (Untersuchungsanforderung untersuchungsanforderung in auftrag.Untersuchungsanforderung)
                         {
-                            if (untersuchungsanforderung.Abrechnungsinfo == Abrechnungsinfo.Asv)
+                            if (untersuchungsanforderung.AbrechnungsinfoZurUntersuchung == Abrechnungsinfo.ASV)
                             {
                                 // No identification at all, not valid
                                 if (auftrag.Einsenderidentifikation == null)
@@ -61,7 +69,7 @@ namespace libldt3
                                 }
 
                                 // If any FK 0222 is present, it's valid
-                                return this.IsNotEmpty(auftrag.Einsenderidentifikation.Arztidentifikation) || this.IsNotEmpty(auftrag.Einsenderidentifikation.UeberweisungAn) || this.IsNotEmpty(auftrag.Einsenderidentifikation.UeberweisungVon);
+                                return this.IsNotEmpty(auftrag.Einsenderidentifikation.Arztidentifikation) || this.IsNotEmpty(auftrag.Einsenderidentifikation.UeberweisungAn) || this.IsNotEmpty(auftrag.Einsenderidentifikation.UeberweisungVonAnderenAerzten);
                             }
 
                         }

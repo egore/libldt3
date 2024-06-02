@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -32,9 +33,18 @@ namespace libldt3
             /// <summary>
             /// Hier sind alle Angaben zum Rechnungsempfänger enthalten.
             /// </summary>
-            [Objekt(Value = "0048", Name = "RgEmpfaenger")]
+            [Objekt(Value = "0048", Name = "RgEmpfaenger", Kontextregeln = new[] { typeof(K029), typeof(K030), typeof(K093) })]
             public class Rechnungsempfaenger : Kontext
             {
+                [Objekt]
+                public class NameEinrichtungAuftraggeber : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "7328", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 10)]
+                    public string ZusaetzlicheNamenszeile;
+
+                }
                 [Feld(Value = "8310", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string AuftragsnummerEinsender;
@@ -43,11 +53,8 @@ namespace libldt3
                 public StatusRechnungsempfaenger? StatusRechnungsempfaenger;
                 [Feld(Value = "0600", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string NameEinrichtungAuftraggeber;
-                [Feld(Value = "7328", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 10)]
-                public string ZusaetzlicheNamenszeile;
-                [Feld(Value = "8108", Feldart = Feldart.muss)]
+                public NameEinrichtungAuftraggeber NameEinrichtungAuftraggeber;
+                [Feld(Value = "8108", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 8)]
                 public Adressat Adressat;
                 [Feld(Value = "8610", Feldart = Feldart.kann)]

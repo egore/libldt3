@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -35,9 +36,9 @@ namespace libldt3
                 /// </summary>
                 public class K001 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "6305", "8242" };
+                    private static readonly ISet<string> FIELDTYPES = ISet.Of("6305", "8242");
 
-                    public bool IsValid(object owner)
+                    public bool IsValid(Kontext owner)
                     {
                         IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K001.FIELDTYPES);
                         if (fields.Count != K001.FIELDTYPES.Count)
@@ -48,7 +49,7 @@ namespace libldt3
 
                         foreach (FieldInfo f in fields.Values)
                         {
-                            if (KontextregelHelper.ContainsAnyString(f, owner))
+                            if (KontextregelHelper.ContainsAnyValue(f, owner))
                             {
                                 return true;
                             }

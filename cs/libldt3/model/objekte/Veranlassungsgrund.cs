@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -33,52 +34,58 @@ namespace libldt3
             /// Mit diesem Objekt können Angaben zum Grund der Veranlassung der
             /// laboratoriumsmedizinischen Untersuchung übertragen werden.
             /// </summary>
-            [Objekt(Value = "0027")]
+            [Objekt(Value = "0027", Kontextregeln = new[] { typeof(K032), typeof(K034), typeof(K060) })]
             public class Veranlassungsgrund : Kontext
             {
-                [Objekt]
-                public class AbrechnungsinfoErweitert : Kontext
+                [Objekt(Kontextregeln = new[] { typeof(K133) })]
+                public class AbrechnungsinfoZurUntersuchung : Kontext
                 {
                     public Abrechnungsinfo? Value;
                     [Feld(Value = "8417", Feldart = Feldart.kann)]
                     [Regelsatz(Laenge = 2)]
-                    public Untersuchungsanlass? Anlass;
-                    [Feld(Value = "8427", Feldart = Feldart.bedingt_kann)]
-                    [Regelsatz(Laenge = 2)]
-                    public SpezifizierungVeranlassungsgrund? Spezifizierung;
-                    [Feld(Value = "8217", Name = "Praezisierung_Veranlassungsgrund", Feldart = Feldart.bedingt_kann)]
-                    [Regelsatz(Laenge = 32)]
-                    public Fliesstext Praezisierung;
-                    [Feld(Value = "8200", Name = "Akutdiagnose", Feldart = Feldart.bedingt_kann)]
+                    public AnlassUntersuchung AnlassUntersuchung;
+                    [Feld(Value = "8200", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 12)]
-                    public IList<Diagnose> AkutDiagnose;
+                    public IList<Diagnose> Akutdiagnose;
+                    [Feld(Value = "4209", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public IList<string> ZusaetzlicheAngabenZuUntersuchungen;
                     [Feld(Value = "4208", Feldart = Feldart.kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public IList<Medikation> VorbefundMedikation;
+                    public IList<VorbefundMedikation> VorbefundMedikation;
 
                 }
                 [Objekt]
-                public class Medikation : Kontext
+                public class AnlassUntersuchung : Kontext
                 {
-                    public string Value;
-                    [Feld(Value = "6212", Feldart = Feldart.bedingt_kann)]
-                    [Regelsatz(MaxLaenge = 60)]
-                    public IList<Arzneimittelwirkstoff> Arzneimittelwirkstoff;
+                    public Untersuchungsanlass? Value;
+                    [Feld(Value = "8427", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Laenge = 2)]
+                    public SpezifizierungVeranlassungsgrunde SpezifizierungVeranlassungsgrunde;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K100) })]
+                public class SpezifizierungVeranlassungsgrunde : Kontext
+                {
+                    public SpezifizierungVeranlassungsgrund? Value;
+                    [Feld(Value = "8217", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 32)]
+                    public Fliesstext Praezisierung;
 
                 }
                 [Objekt]
-                public class Arzneimittelwirkstoff : Kontext
+                public class VorbefundMedikation : Kontext
                 {
                     public string Value;
-                    [Feld(Value = "6214", Feldart = Feldart.bedingt_muss)]
-                    [Regelsatz(MaxLaenge = 60)]
-                    public string WirkstoffKlassifikation;
+                    [Feld(Value = "8170", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 10)]
+                    public IList<Medikament> Medikament;
 
                 }
-                [Feld(Value = "7303", Feldart = Feldart.bedingt_kann)]
+                [Feld(Value = "7303", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public IList<AbrechnungsinfoErweitert> Abrechnungsinfo;
-                [Feld(Value = "8110", Feldart = Feldart.kann)]
+                public IList<AbrechnungsinfoZurUntersuchung> AbrechnungsinfoZurUntersuchung;
+                [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public IList<Anhang> Anhang;
 

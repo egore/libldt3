@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,15 +34,21 @@ namespace libldt3
             [Objekt(Value = "0040")]
             public class Mutterschaft : Kontext
             {
+                [Objekt]
+                public class AnzahlSchwangerschaften : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "3664", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Laenge = 2)]
+                    public string AnzahlGeburten;
+                    [Feld(Value = "3666", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Laenge = 2)]
+                    public string AnzahlKinder;
+
+                }
                 [Feld(Value = "3668", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public int? AnzahlSchwangerschaften;
-                [Feld(Value = "3664", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 2)]
-                public int? AnzahlGeburten;
-                [Feld(Value = "3666", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 2)]
-                public int? AnzahlKinder;
+                public AnzahlSchwangerschaften AnzahlSchwangerschaften;
 
             }
         }

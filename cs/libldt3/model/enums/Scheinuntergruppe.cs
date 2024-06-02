@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,10 +33,11 @@ namespace libldt3
             {
                 Auftragsleistungen,
                 Konsiliaruntersuchung,
-                MitWeiterbehandlung,
-                /// Überweisungsschein für Laboratoriumsuntersuchungen als Auftragsleistung
+                /// Mit-/Weiterbehandlung
+                Mit_Weiterbehandlung,
+                /// Auftragsleistung (Muster 10)
                 Muster10,
-                /// Laborgemeinschaften
+                /// Laborgemeinschaften (Muster 10A)
                 Muster10A
             }
 
@@ -48,7 +49,7 @@ namespace libldt3
                     {
                         case Scheinuntergruppe.Auftragsleistungen: return "21";
                         case Scheinuntergruppe.Konsiliaruntersuchung: return "23";
-                        case Scheinuntergruppe.MitWeiterbehandlung: return "24";
+                        case Scheinuntergruppe.Mit_Weiterbehandlung: return "24";
                         case Scheinuntergruppe.Muster10: return "27";
                         case Scheinuntergruppe.Muster10A: return "28";
                         default: throw new Exception();

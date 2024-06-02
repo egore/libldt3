@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
+using libldt3.model.regel.erlaubt;
 using libldt3.model.regel.kontext;
 
 namespace libldt3
@@ -34,32 +35,38 @@ namespace libldt3
             /// In diesem Objekt werden alle Informationen zur Untersuchungsanforderung
             /// zusammengefasst.
             /// </summary>
-            [Objekt(Value = "0059", Kontextregeln = new[] { typeof(K003) })]
+            [Objekt(Value = "0059", Kontextregeln = new[] { typeof(K003), typeof(K010), typeof(K011), typeof(K032), typeof(K034), typeof(K037), typeof(K053), typeof(K056), typeof(K057), typeof(K097), typeof(K098), typeof(K100), typeof(K102), typeof(K103), typeof(K105), typeof(K113), typeof(K114) })]
             public class Untersuchungsanforderung : Kontext
             {
-                [Objekt]
-                public class KatalogReferenz : Kontext
+                [Objekt(Kontextregeln = new[] { typeof(K053) })]
+                public class KatalogAnforderbareLeistungenId : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public string KatalogUrl;
+                    public string UrlKataloge;
                     [Feld(Value = "7251", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public string KatalogBezeichnung;
+                    public string BezeichnungDesVerwendetenKataloges;
                     [Feld(Value = "7365", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 20)]
-                    public string AnalysenId;
-                    [Feld(Value = "7366", Feldart = Feldart.bedingt_muss)]
-                    [Regelsatz(MaxLaenge = 60)]
-                    public string Leistungsbezeichnung;
+                    public AnalysenId AnalysenId;
 
                 }
                 [Objekt]
-                public class Test : Kontext
+                public class AnalysenId : Kontext
                 {
                     public string Value;
-                    [Feld(Value = "8411", Feldart = Feldart.bedingt_kann)]
+                    [Feld(Value = "7366", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string LangbezeichnungAngefordertenLeistung;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K003) })]
+                public class TestIdent : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(MaxLaenge = 60)]
                     public string Testbezeichnung;
 
@@ -72,68 +79,65 @@ namespace libldt3
                     [Regelsatz(MaxLaenge = 60)]
                     public string ProbenmaterialIdent;
                     [Feld(Value = "8429", Feldart = Feldart.kann)]
-                    [Regelsatz(MaxLaenge = 4)]
+                    [Regelsatz(Value = new[] { typeof(E012) }, MaxLaenge = 4)]
                     public string ProbenmaterialIndex;
 
                 }
                 [Objekt]
-                public class Einwilligungserklaerung : Kontext
+                public class EinwilligungserklaerungDesPatientenLiegtVor : Kontext
                 {
                     public bool? Value;
-                    [Feld(Value = "8110", Feldart = Feldart.bedingt_kann)]
+                    [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 6)]
                     public Anhang Anhang;
 
                 }
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public KatalogReferenz AnforderbareLeistungenKatalogId;
+                public KatalogAnforderbareLeistungenId KatalogAnforderbareLeistungenId;
                 [Feld(Value = "7276", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string NummernpoolId;
+                public string VerwendeterNummernpoolId;
                 [Feld(Value = "8410", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public Test TestIdent;
+                [Regelsatz(MaxLaenge = 20)]
+                public TestIdent TestIdent;
                 [Feld(Value = "7303", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public Abrechnungsinfo? Abrechnungsinfo;
+                public Abrechnungsinfo? AbrechnungsinfoZurUntersuchung;
                 [Feld(Value = "8501", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public Dringlichkeit? Dringlichkeit;
-                [Feld(Value = "7262", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 1)]
-                public StatusDringlichkeit? StatusDringlichkeit;
                 [Feld(Value = "8423", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public bool? PathologischBekannt;
                 [Feld(Value = "7364", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<ProbengefaessIdent_> ProbengefaessIdent;
-                [Feld(Value = "8434", Feldart = Feldart.bedingt_muss)]
+                [Feld(Value = "8434", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string Anforderungen;
-                [Feld(Value = "8134", Name = "Krebsfrueherkennung_Frauen", Feldart = Feldart.kann)]
-                [Regelsatz(Laenge = 26)]
-                public KrebsfrueherkennungFrauen KrebsfrueherkennungFrauen;
-                [Feld(Value = "8156", Feldart = Feldart.kann)]
+                [Feld(Value = "8134", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 35)]
+                public KrebsfrueherkennungZervixKarzinom KrebsfrueherkennungZervixKarzinom;
+                [Feld(Value = "8156", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 5)]
                 public Tumor Tumor;
-                [Feld(Value = "8110", Feldart = Feldart.kann)]
+                [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public IList<Anhang> Anhang;
-                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
+                [Feld(Value = "8167", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 26)]
                 public IList<Fliesstext> ZusaetzlicheInformationen;
-                [Feld(Value = "8238", Name = "Auftragsbezogene_Hinweise", Feldart = Feldart.kann)]
+                [Feld(Value = "8238", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 25)]
                 public Fliesstext AuftragsbezogeneHinweise;
                 [Feld(Value = "8491", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Einwilligungserklaerung EinwilligungserklaerungLiegtVor;
-                [Feld(Value = "8213", Name = "Timestamp_Erstellung_Untersuchungsanforderung", Feldart = Feldart.muss)]
+                public EinwilligungserklaerungDesPatientenLiegtVor EinwilligungserklaerungDesPatientenLiegtVor;
+                [Feld(Value = "8213", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 45)]
-                public Timestamp TimestampErstellungUntersuchungsanforderung;
-                [Feld(Value = "8141", Feldart = Feldart.kann)]
+                public Timestamp TimestampErstellung;
+                [Feld(Value = "8141", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 13)]
                 public Namenskennung Namenskennung;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,32 +32,33 @@ namespace libldt3
             public enum Normwertspezifikation
             {
                 /// Methodenspezifische Standards nach WHO
-                MethodenspezifischeStandardsWHO,
+                MethodenspezifischeStandards_nachWHO,
                 /// serologische Verfahren)
-                MethodenspezifischeStandardsIFCC,
+                MethodenspezifischeStandards_nachIFCC,
                 /// Methodenspezifische Standards nach DGKL
-                MethodenspezifischeStandardsDGKL,
-                /// Sonstige Standards
+                MethodenspezifischeStandards_nachDGKL,
+                /// Sonstige Standards 1)
                 SonstigeStandards,
-                /// Patientenspezifische Einflussgröße Alter betreffend
-                PatientenspezifischeEinflussgroesseAlter,
-                /// Patientenspezifische Einflussgröße Geschlecht betreffend
-                PatientenspezifischeEinflussgroesseGeschlecht,
-                /// Patientenspezifische Einflussgröße Alter und Geschlecht betreffend
-                PatientenspezifischeEinflussgroesseAlterGeschlecht,
-                /// Patientenspezifische Einflussgröße SSW betreffend
-                PatientenspezifischeEinflussgroesseSSW,
-                /// Patientenspezifische Einflussgröße Alter und SSW betreffend
-                PatientenspezifischeEinflussgroesseAlterSSW,
-                /// Mediaktion)
-                WeiterePatientenspezifischeEinflussgroessen,
-                /// Information zu Patientenspezifischer Einflussgröße Alter fehlte
-                InformationPatientenspezifischerEinflussgroesseAlterFehlte,
-                /// Information zu Patientenspezifischer Einflussgröße Geschlecht fehlte
-                InformationPatientenspezifischerEinflussgroesseGeschlechtFehlte,
+                /// Patientenspezifische Einflussgröße "Alter" betreffend
+                PatientenspezifischeEinflussgroesseAlter_betreffend,
+                /// Patientenspezifische Einflussgröße "Geschlecht" betreffend
+                PatientenspezifischeEinflussgroesseGeschlecht_betreffend,
+                /// Patientenspezifische Einflussgröße "Alter + Geschlecht" betreffend
+                PatientenspezifischeEinflussgroesseAlter_und_Geschlecht_betreffend,
+                /// Patientenspezifische Einflussgröße "SSW" betreffend
+                PatientenspezifischeEinflussgroesseSSW_betreffend,
+                /// Patientenspezifische Einflussgröße "Alter + SSW" betreffend
+                PatientenspezifischeEinflussgroesseAlter_und_SSW_betreffend,
+                /// Medikation) 1)
+                weitere_patientenspezifischeEinflussgroessen,
+                /// Information zu Patientenspezifischer Einflussgröße "Alter" fehlte
+                Information_zuPatientenspezifischerEinflussgroesseAlter_fehlte,
+                /// Information zu Patientenspezifischer Einflussgröße "Geschlecht" fehlte
+                Information_zuPatientenspezifischerEinflussgroesseGeschlecht_fehlte,
                 /// Information zu Patientenspezifischer Einflussgröße Alter und Geschlecht fehlte
                 InformationPatientenspezifischerEinflussgroesseAlterGeschlechtFehlte,
-                /// Funktionsprofile
+                /// Funktionsprofile 1)
+                /// 1) Zur weiteren Spezifikation FK 8167 verwenden.
                 Funktionsprofile
             }
 
@@ -67,18 +68,18 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Normwertspezifikation.MethodenspezifischeStandardsWHO: return "10";
-                        case Normwertspezifikation.MethodenspezifischeStandardsIFCC: return "11";
-                        case Normwertspezifikation.MethodenspezifischeStandardsDGKL: return "12";
+                        case Normwertspezifikation.MethodenspezifischeStandards_nachWHO: return "10";
+                        case Normwertspezifikation.MethodenspezifischeStandards_nachIFCC: return "11";
+                        case Normwertspezifikation.MethodenspezifischeStandards_nachDGKL: return "12";
                         case Normwertspezifikation.SonstigeStandards: return "13";
-                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseAlter: return "20";
-                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseGeschlecht: return "21";
-                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseAlterGeschlecht: return "22";
-                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseSSW: return "23";
-                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseAlterSSW: return "24";
-                        case Normwertspezifikation.WeiterePatientenspezifischeEinflussgroessen: return "25";
-                        case Normwertspezifikation.InformationPatientenspezifischerEinflussgroesseAlterFehlte: return "26";
-                        case Normwertspezifikation.InformationPatientenspezifischerEinflussgroesseGeschlechtFehlte: return "27";
+                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseAlter_betreffend: return "20";
+                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseGeschlecht_betreffend: return "21";
+                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseAlter_und_Geschlecht_betreffend: return "22";
+                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseSSW_betreffend: return "23";
+                        case Normwertspezifikation.PatientenspezifischeEinflussgroesseAlter_und_SSW_betreffend: return "24";
+                        case Normwertspezifikation.weitere_patientenspezifischeEinflussgroessen: return "25";
+                        case Normwertspezifikation.Information_zuPatientenspezifischerEinflussgroesseAlter_fehlte: return "26";
+                        case Normwertspezifikation.Information_zuPatientenspezifischerEinflussgroesseGeschlecht_fehlte: return "27";
                         case Normwertspezifikation.InformationPatientenspezifischerEinflussgroesseAlterGeschlechtFehlte: return "28";
                         case Normwertspezifikation.Funktionsprofile: return "30";
                         default: throw new Exception();

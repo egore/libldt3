@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,11 +32,10 @@ namespace libldt3
             public enum EinschreibestatusSelektivvertraege
             {
                 /// Nicht eingeschrieben
-                NichtEingeschrieben,
-                /// Eingeschrieben
+                Nicht_eingeschrieben,
                 Eingeschrieben,
                 /// Einschreibung beantragt
-                EinschreibungBeantragt
+                Einschreibung_beantragt
             }
 
             public static class EinschreibestatusSelektivvertraegeExtensions
@@ -45,9 +44,9 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case EinschreibestatusSelektivvertraege.NichtEingeschrieben: return "0";
+                        case EinschreibestatusSelektivvertraege.Nicht_eingeschrieben: return "0";
                         case EinschreibestatusSelektivvertraege.Eingeschrieben: return "1";
-                        case EinschreibestatusSelektivvertraege.EinschreibungBeantragt: return "2";
+                        case EinschreibestatusSelektivvertraege.Einschreibung_beantragt: return "2";
                         default: throw new Exception();
                     }
                 }

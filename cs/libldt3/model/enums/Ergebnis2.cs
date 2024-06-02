@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,13 @@ namespace libldt3
         {
 
             /// <summary>
-            /// E062
+            /// E063
             /// </summary>
             public enum Ergebnis2
             {
                 positiv,
                 negativ,
+                /// nicht auswertbar
                 nicht_auswertbar,
                 suspekt
             }

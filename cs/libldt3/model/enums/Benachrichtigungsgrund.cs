@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,15 +32,21 @@ namespace libldt3
             public enum Benachrichtigungsgrund
             {
                 /// Pathologisch auffälliger Befund
-                PathologischAuffaelligerBefund,
+                Pathologisch_auffaelligerBefund,
                 /// Lebensbedrohlicher Zustand
                 LebensbedrohlicherZustand,
                 /// Wiedervorstellung empfohlen
-                WiedervorstellungEmpfohlen,
+                Wiedervorstellung_empfohlen,
                 /// Probenmaterial nicht verwendbar
-                ProbenmaterialNichtVerwendbar,
+                Probenmaterial_nicht_verwendbar,
                 /// Probenmaterial unvollständig
-                ProbenmaterialUnvollstaendig
+                Probenmaterial_unvollstaendig,
+                /// Meldung nach KFRG* erfolgt
+                Meldung_nachKFRG_erfolgt,
+                /// IfSG erfolgt immer im
+                /// Obj_0026, welches sich in dem Untersuchungsergebnis befindet, dass die
+                /// Meldepflicht begründet.
+                Meldung_nachIfSG_erfolgt
             }
 
             public static class BenachrichtigungsgrundExtensions
@@ -49,11 +55,13 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Benachrichtigungsgrund.PathologischAuffaelligerBefund: return "1";
+                        case Benachrichtigungsgrund.Pathologisch_auffaelligerBefund: return "1";
                         case Benachrichtigungsgrund.LebensbedrohlicherZustand: return "2";
-                        case Benachrichtigungsgrund.WiedervorstellungEmpfohlen: return "3";
-                        case Benachrichtigungsgrund.ProbenmaterialNichtVerwendbar: return "4";
-                        case Benachrichtigungsgrund.ProbenmaterialUnvollstaendig: return "5";
+                        case Benachrichtigungsgrund.Wiedervorstellung_empfohlen: return "3";
+                        case Benachrichtigungsgrund.Probenmaterial_nicht_verwendbar: return "4";
+                        case Benachrichtigungsgrund.Probenmaterial_unvollstaendig: return "5";
+                        case Benachrichtigungsgrund.Meldung_nachKFRG_erfolgt: return "6";
+                        case Benachrichtigungsgrund.Meldung_nachIfSG_erfolgt: return "7";
                         default: throw new Exception();
                     }
                 }

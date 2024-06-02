@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,28 +31,40 @@ namespace libldt3
         {
             /// <summary>
             /// Dieses Objekt soll genutzt werden, wenn es aus Sicht des Auftragsnehmers
-            /// Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung
-            /// des Einsenders erfordern.
+            /// Vorkommnisse im Prozess gegeben hat, die eine zusätzliche Benachrichtigung des
+            /// Einsenders erfordern.
             /// </summary>
             [Objekt(Value = "0026")]
             public class FehlermeldungAufmerksamkeit : Kontext
             {
+                [Objekt]
+                public class GrundBenachrichtigung : Kontext
+                {
+                    public Benachrichtigungsgrund? Value;
+                    [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Laenge = 1)]
+                    public RecallEmpfohlen RecallEmpfohlen;
+
+                }
+                [Objekt]
+                public class RecallEmpfohlen : Kontext
+                {
+                    public bool? Value;
+                    [Feld(Value = "8154", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 9)]
+                    public Timestamp Timestamp;
+
+                }
                 [Feld(Value = "7280", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public Benachrichtigungsgrund? Benachrichtigungsgrund;
-                [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 1)]
-                public bool? RecallEmpfohlen;
-                [Feld(Value = "8154", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 9)]
-                public Timestamp Timestamp;
-                [Feld(Value = "8147", Feldart = Feldart.muss)]
+                public IList<GrundBenachrichtigung> GrundBenachrichtigung;
+                [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public Person Person;
-                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
+                [Feld(Value = "8167", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 26)]
-                public IList<Fliesstext> Text;
-                [Feld(Value = "8110", Feldart = Feldart.kann)]
+                public IList<Fliesstext> ZusaetzlicheInformationen;
+                [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public IList<Anhang> Anhang;
 

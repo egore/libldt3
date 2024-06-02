@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@ using NodaTime;
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -34,43 +35,52 @@ namespace libldt3
             /// <summary>
             /// Mit diesem Objekt werden die Informationen für die Abrechnung von
             /// Untersuchungsanforderungen zusammengefasst, welche im Rahmen von
-            /// Selektivverträgen und damit außerhalb der budgetären Leistungen erbracht
-            /// werden.
+            /// Selektivverträgen und damit außerhalb der budgetären Leistungen erbracht werden.
             /// </summary>
-            /// Die Möglichkeit zum Abschluss von Selektivverträgen besteht im
-            /// Wesentlichen in der hausarztzentrierten Versorgung (§ 73 b SGB V), in der
-            /// besonderen ambulanten ärztlichen Versorgung (§ 73 c SGB V), bei
-            /// strukturierten Behandlungsprogrammen für chronische Erkrankungen
-            /// (Disease-Management-Programme) (§ 137 f SGB V) und in der Integrierten
-            /// Versorgung (§§ 140ff SGB V).
-            [Objekt(Value = "0006")]
+            /// Die Möglichkeit zum Abschluss von Selektivverträgen besteht im Wesentlichen in
+            /// der hausarztzentrierten Versorgung (§ 73 b SGB V), bei strukturierten
+            /// Behandlungsprogrammen für chronische Erkrankungen (Disease-Management-Programme)
+            /// (§ 137 f SGB V) und in der Integrierten Versorgung (§§ 140ff SGB V).
+            [Objekt(Value = "0006", Kontextregeln = new[] { typeof(K019) })]
             public class AbrechnungSelektivvertrag : Kontext
             {
+                [Objekt]
+                public class AbrechnungSelektivvertrag_EinschreibestatusSelektivvertraege : Kontext
+                {
+                    public EinschreibestatusSelektivvertraege? Value;
+                    [Feld(Value = "3134", Feldart = Feldart.muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public BezeichnungSelektivvertrage BezeichnungSelektivvertrage;
+                    [Feld(Value = "3131", Feldart = Feldart.kann)]
+                    [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
+                    public LocalDate? TeilnahmeVon;
+                    [Feld(Value = "3132", Feldart = Feldart.kann)]
+                    [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
+                    public LocalDate? TeilnahmeBis;
+                    [Feld(Value = "3133", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
+                    public LocalDate? DatumAntragstellung;
+                    [Feld(Value = "7430", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string PatientenIdSelektivvertrag;
+
+                }
+                [Objekt]
+                public class BezeichnungSelektivvertrage : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "4134", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 45)]
+                    public string Kostentraegername;
+
+                }
                 [Feld(Value = "3130", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public EinschreibestatusSelektivvertraege? EinschreibestatusSelektivvertraege;
-                [Feld(Value = "3134", Feldart = Feldart.muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string BezeichnungSelektivvertrag;
-                [Feld(Value = "4134", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 28)]
-                public string Kostentraegername;
-                [Feld(Value = "3131", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? TeilnahmeVon;
-                [Feld(Value = "3132", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? TeilnahmeBis;
-                [Feld(Value = "3133", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? DatumAntragstellung;
-                [Feld(Value = "7430", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 60)]
-                public string PatientenIdSelektivvertrag;
+                public AbrechnungSelektivvertrag_EinschreibestatusSelektivvertraege EinschreibestatusSelektivvertraege;
                 [Feld(Value = "4121", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public Gebuehrenordnung? Gebuehrenordnung;
-                [Feld(Value = "8148", Feldart = Feldart.muss)]
+                [Feld(Value = "8148", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
                 public Rechnungsempfaenger Rechnungsempfaenger;
 

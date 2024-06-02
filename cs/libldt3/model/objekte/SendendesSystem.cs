@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,8 +21,8 @@
  */
 using libldt3.attributes;
 using libldt3.model;
-using libldt3.model.enums;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -31,33 +31,36 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches
-            /// den LDT Datensatz erstellt hat.
+            /// Dieses Objekt enthält die Information zum sendenden Softwaresystem, welches den
+            /// LDT Datensatz erstellt hat.
             /// </summary>
-            [Objekt(Value = "0051")]
+            [Objekt(Value = "0051", Kontextregeln = new[] { typeof(K050) })]
             public class SendendesSystem : Kontext
             {
-                [Feld(Value = "0001", Feldart = Feldart.muss)]
-                [Regelsatz(Value = new[] { typeof(F007) }, MaxLaenge = 12)]
-                public LdtVersion? Version;
+                [Objekt]
+                public class SoftwareNameSoftware : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "0132", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string VersionReleasestandSoftware;
+
+                }
                 [Feld(Value = "8315", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string EmpfaengerId;
+                public string DesEmpfaengersId;
                 [Feld(Value = "8316", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string SenderId;
+                public string DesSendersId;
                 [Feld(Value = "0105", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F012) }, Laenge = 16)]
-                public string KvbPruefnummer;
-                [Feld(Value = "8212", Name = "Softwareverantwortlicher", Feldart = Feldart.kann)]
+                public string KbvPruefnummer;
+                [Feld(Value = "8212", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 24)]
                 public Organisation Softwareverantwortlicher;
                 [Feld(Value = "0103", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string SoftwareName;
-                [Feld(Value = "0132", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string SoftwareVersion;
+                public SoftwareNameSoftware SoftwareNameSoftware;
 
             }
         }

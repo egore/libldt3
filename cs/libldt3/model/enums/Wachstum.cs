@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,14 +32,13 @@ namespace libldt3
             public enum Wachstum
             {
                 /// nicht nachweisbar / kein Wachstum
-                nicht_nachweisbar_kein_Wachstum,
-                /// spärlich
+                nicht_nachweisbar_keinWachstum,
+                /// spärlich,
                 spaerlich,
-                /// mäßig/vereinzelt
+                /// mäßig/vereinzelt,
                 maessig_vereinzelt,
-                /// reichlich
+                /// reichlich,
                 reichlich,
-                /// massenhaft
                 massenhaft
             }
 
@@ -49,7 +48,7 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Wachstum.nicht_nachweisbar_kein_Wachstum: return "0";
+                        case Wachstum.nicht_nachweisbar_keinWachstum: return "0";
                         case Wachstum.spaerlich: return "1";
                         case Wachstum.maessig_vereinzelt: return "2";
                         case Wachstum.reichlich: return "3";

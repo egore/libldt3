@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,17 @@ namespace libldt3
             /// </summary>
             public enum Dringlichkeit
             {
-                Notfall,
-                eilig
+                /// der Patient ist vital bedroht oder der Befund ist
+                /// für das weitere operative Vorgehen maßgeblich. Für die Differentialdiagnostik
+                /// ist die unverzügliche Erbringung und Übermittlung der Laborbefunde unabdingbar
+                /// (z.B. Troponin zum Ausschluss akuter Myokardinfarkt, PTH bei Nebenschilddrüsen-
+                /// OP, histologische Schnellschnitte bei Ablation mammae).
+                Notfall_intraoperativ,
+                /// Quick bei Marcumar-
+                /// Einstellung). Die Ergebnisse werden schnellstmöglich nach Probeneingang im Labor
+                /// an den Einsender übermittelt. Einsender und Labor sollten sich über die Frist
+                /// einigen.
+                Eilig
             }
 
             public static class DringlichkeitExtensions
@@ -41,8 +50,8 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Dringlichkeit.Notfall: return "1";
-                        case Dringlichkeit.eilig: return "2";
+                        case Dringlichkeit.Notfall_intraoperativ: return "1";
+                        case Dringlichkeit.Eilig: return "2";
                         default: throw new Exception();
                     }
                 }

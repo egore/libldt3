@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,10 @@ namespace libldt3
             /// </summary>
             public enum Geschlecht
             {
+                /// männlich
                 maennlich,
                 weiblich,
+                divers,
                 unbestimmt,
                 unbekannt
             }
@@ -45,6 +47,7 @@ namespace libldt3
                     {
                         case Geschlecht.maennlich: return "M";
                         case Geschlecht.weiblich: return "W";
+                        case Geschlecht.divers: return "D";
                         case Geschlecht.unbestimmt: return "X";
                         case Geschlecht.unbekannt: return "U";
                         default: throw new Exception();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -30,15 +31,32 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// In diesem Objekt werden die Informationen zur Zuordnung im sendenden System
-            /// zum Auftrag zusammengefasst sowie zusätzliche Befundwege und die
-            /// Dringlichkeit des Auftrags definiert.
+            /// In diesem Objekt werden übergeordnete Informationen zum Auftrag zusammengefasst
+            /// sowie zusätzliche Befundwege definiert.
             /// </summary>
-            [Objekt(Value = "0013")]
+            [Objekt(Value = "0013", Kontextregeln = new[] { typeof(K100) })]
             public class Auftragsinformation : Kontext
             {
+                [Objekt(Kontextregeln = new[] { typeof(K114) })]
+                public class AuftragsnummerEinsender : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "8313", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public IList<string> NachforderungId;
+
+                }
                 [Objekt]
-                public class Befundweg : Kontext
+                public class FallakteOderStudieId : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "0081", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public IList<string> BezeichnungFallakteOderStudie;
+
+                }
+                [Objekt]
+                public class Auftragsinformation_ZusaetzlicherBefundweg : Kontext
                 {
                     public ZusaetzlicherBefundweg? Value;
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
@@ -48,41 +66,29 @@ namespace libldt3
                 }
                 [Feld(Value = "8310", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string AuftragsnummerEinsender;
-                [Feld(Value = "8313", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<string> NachforderungId;
+                public AuftragsnummerEinsender AuftragsnummerEinsender;
                 [Feld(Value = "8311", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string AuftragsnummerLabor;
+                public string AuftragsnummerLaborId;
                 [Feld(Value = "7268", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string FachrichtungStationskennung;
+                public string FachrichtungOderStationskennung;
                 [Feld(Value = "0080", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string FallakteId;
-                [Feld(Value = "0081", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<string> FallakteBezeichnung;
-                [Feld(Value = "8501", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 1)]
-                public Dringlichkeit? Dringlichkeit;
-                [Feld(Value = "7262", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 1)]
-                public StatusDringlichkeit? StatusDringlichkeit;
-                [Feld(Value = "8118", Name = "Abweichender_Befundweg", Feldart = Feldart.kann)]
+                public FallakteOderStudieId FallakteOderStudieId;
+                [Feld(Value = "8118", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 22)]
                 public Kommunikationsdaten AbweichenderBefundweg;
-                [Feld(Value = "8611", Feldart = Feldart.bedingt_kann)]
+                [Feld(Value = "8611", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public IList<Befundweg> ZusaetzlicherBefundweg;
-                [Feld(Value = "8213", Name = "Timestamp_Erstellung_Untersuchungsanforderung", Feldart = Feldart.muss)]
+                public IList<Auftragsinformation_ZusaetzlicherBefundweg> ZusaetzlicherBefundweg;
+                [Feld(Value = "8213", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 45)]
                 public Timestamp TimestampErstellungUntersuchungsanforderung;
-                [Feld(Value = "8238", Name = "Auftragsbezogene_Hinweise", Feldart = Feldart.kann)]
+                [Feld(Value = "8238", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 25)]
                 public Fliesstext AuftragsbezogeneHinweise;
-                [Feld(Value = "8141", Feldart = Feldart.kann)]
+                [Feld(Value = "8141", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 13)]
                 public Namenskennung Namenskennung;
 

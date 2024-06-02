@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -33,16 +34,25 @@ namespace libldt3
                 /// <summary>
                 /// FK 3112 und/oder FK 3121 muss vorhanden sein.
                 /// </summary>
+                /// Ausnahmen: Nur wenn FK 3114
+                /// vorhanden und der Feldinhalt ungleich "D" ist, dann gilt: Ist die FK 4109
+                /// vorhanden, dann muss die FK 3112 nicht vorhanden sein. Nur wenn FK 3124
+                /// vorhanden und der Feldinhalt ungleich "D" ist, dann gilt: Ist die FK 4109
+                /// vorhanden, dann muss die FK 3121 nicht vorhanden sein.
+                /// 
+                /// Diese Regel beschreibt die mindestens erforderlichen Angaben im
+                /// Obj_0007 (Anschrift). Grundlage für diese Regel bilden die Vorgaben des
+                /// KVDT.
                 public class K017 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "3112", "3121", "3114", "3124" };
+                    private static readonly ISet<string> FIELDTYPES = ISet.Of("3112", "3121", "3114", "3124");
 
                     public bool CheckExclusion(object owner, IDictionary<string, FieldInfo> fields, string first, string second)
                     {
                         string value = (string)fields[first].GetValue(owner);
                         // XXX 4109 does not exist on the current object, likely we need to traverse the object tree to find it in one
                         // of the holding classes
-                        if (value != null && !"D".Equals(value) && KontextregelHelper.ContainsAnyString(KontextregelHelper.FindField(owner, "4109")) && KontextregelHelper.ContainsAnyString(fields[second], owner))
+                        if (value != null && !"D".Equals(value) && KontextregelHelper.ContainsAnyValue(fields["4109"], owner) && KontextregelHelper.ContainsAnyValue(fields[second], owner))
                         {
                             Trace.TraceError("FK {0} is present and not 'D'. Also FK 4109 is present. Then {1} must not be present", first, second);
                             return true;
@@ -50,7 +60,7 @@ namespace libldt3
 
                         return false;
                     }
-                    public bool IsValid(object owner)
+                    public bool IsValid(Kontext owner)
                     {
                         IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K017.FIELDTYPES);
                         if (fields.Count != K017.FIELDTYPES.Count)
@@ -59,7 +69,7 @@ namespace libldt3
                             return false;
                         }
 
-                        return !this.CheckExclusion(owner, fields, "3114", "3112") && !this.CheckExclusion(owner, fields, "3124", "3121") && KontextregelHelper.ContainsAnyString(fields["3112"], owner) || KontextregelHelper.ContainsAnyString(fields["3121"], owner);
+                        return !this.CheckExclusion(owner, fields, "3114", "3112") && !this.CheckExclusion(owner, fields, "3124", "3121") && KontextregelHelper.ContainsAnyValue(fields["3112"], owner) || KontextregelHelper.ContainsAnyValue(fields["3121"], owner);
                     }
                 }
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
+using libldt3.model.regel.format;
 
 namespace libldt3
 {
@@ -35,34 +36,49 @@ namespace libldt3
             [Objekt(Value = "0070")]
             public class Medikament : Kontext
             {
-                [Feld(Value = "8243", Name = "Timestamp_Zeitpunkt_Medikamenteneinnahme", Feldart = Feldart.kann)]
+                [Objekt]
+                public class Rezeptur : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "8171", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 9)]
+                    public IList<Wirkstoff> Wirkstoff;
+                    [Feld(Value = "6206", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Value = new[] { typeof(F020) }, Laenge = 8)]
+                    public string Pharmazentralnummer;
+
+                }
+                [Objekt]
+                public class WirkstoffmengeMengeBezugsmengeWirkstaerke : Kontext
+                {
+                    public float Value;
+                    [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string MasseinheitMesswerteWertes;
+
+                }
+                [Feld(Value = "8243", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 40)]
                 public Timestamp TimestampZeitpunktMedikamenteneinnahme;
                 [Feld(Value = "6208", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string Handelsname;
+                public string HandelsnameArzneimittel;
                 [Feld(Value = "6207", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 990)]
-                public string Rezeptur;
-                [Feld(Value = "8171", Feldart = Feldart.kann)]
-                [Regelsatz(Laenge = 9)]
-                public IList<Wirkstoff> Wirkstoff;
+                public Rezeptur Rezeptur;
                 [Feld(Value = "8523", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string Wirkstoffmenge;
-                [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 20)]
-                public string Einheit;
+                public WirkstoffmengeMengeBezugsmengeWirkstaerke WirkstoffmengeMengeBezugsmengeWirkstaerke;
                 [Feld(Value = "3689", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public IList<MedikationsStatus?> Status;
-                [Feld(Value = "8226", Name = "Timestamp_Gueltig_ab", Feldart = Feldart.kann)]
+                public IList<MedikationsStatus?> StatusMedikation;
+                [Feld(Value = "8226", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 20)]
                 public Timestamp TimestampGueltigAb;
-                [Feld(Value = "8227", Name = "Timestamp_Gueltig_bis", Feldart = Feldart.kann)]
+                [Feld(Value = "8227", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 21)]
                 public Timestamp TimestampGueltigBis;
-                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
+                [Feld(Value = "8167", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 26)]
                 public Fliesstext ZusaetzlicheInformationen;
 

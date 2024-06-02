@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,30 +28,29 @@ namespace libldt3
 
             /// <summary>
             /// E020
-            /// 
-            /// Disease Management Program (DMP) bezeichnet die Behandlung von Patienten
-            /// anhand standardisierter Vorgaben.
             /// </summary>
-            /// Diese richten sich an einzelnen
-            /// Krankheitsbildern aus. Wird beispielsweise festgestellt, dass ein Patient an
-            /// Diabetes leidet, ergeben sich aus der Diagnose vorgegebene
-            /// Behandlungsschritte.
             public enum DmpKennzeichnung
             {
                 /// keine Angabe
-                keine_Angabe,
+                keineAngabe,
                 /// Diabetes mellitus Typ 2
-                DiabetesMellitusTyp2,
-                /// Brustkrebs
+                Diabetes_mellitusTyp2,
                 Brustkrebs,
                 /// Koronare Herzkrankheit
                 KoronareHerzkrankheit,
                 /// Diabetes mellitus Typ 1
-                DiabetesMellitusTyp1,
+                Diabetes_mellitusTyp1,
                 /// Asthma bronchiale
-                AsthmaBronchiale,
+                Asthma_bronchiale,
                 /// COPD (chronic obstructive pulmo-nary disease)
-                ChronicObstructivePulmonaryDisease
+                COPD,
+                /// Chronische Herzinsuffizienz
+                ChronischeHerzinsuffizienz,
+                Depression,
+                /// Rückenschmerz
+                Rueckenschmerz,
+                Rheuma,
+                Osteoporose
             }
 
             public static class DmpKennzeichnungExtensions
@@ -60,13 +59,18 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case DmpKennzeichnung.keine_Angabe: return "00";
-                        case DmpKennzeichnung.DiabetesMellitusTyp2: return "01";
+                        case DmpKennzeichnung.keineAngabe: return "00";
+                        case DmpKennzeichnung.Diabetes_mellitusTyp2: return "01";
                         case DmpKennzeichnung.Brustkrebs: return "02";
                         case DmpKennzeichnung.KoronareHerzkrankheit: return "03";
-                        case DmpKennzeichnung.DiabetesMellitusTyp1: return "04";
-                        case DmpKennzeichnung.AsthmaBronchiale: return "05";
-                        case DmpKennzeichnung.ChronicObstructivePulmonaryDisease: return "06";
+                        case DmpKennzeichnung.Diabetes_mellitusTyp1: return "04";
+                        case DmpKennzeichnung.Asthma_bronchiale: return "05";
+                        case DmpKennzeichnung.COPD: return "06";
+                        case DmpKennzeichnung.ChronischeHerzinsuffizienz: return "07";
+                        case DmpKennzeichnung.Depression: return "08";
+                        case DmpKennzeichnung.Rueckenschmerz: return "09";
+                        case DmpKennzeichnung.Rheuma: return "10";
+                        case DmpKennzeichnung.Osteoporose: return "11";
                         default: throw new Exception();
                     }
                 }

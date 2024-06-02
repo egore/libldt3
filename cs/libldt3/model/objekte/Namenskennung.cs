@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,18 +36,30 @@ namespace libldt3
             [Objekt(Value = "0041")]
             public class Namenskennung : Kontext
             {
+                [Objekt]
+                public class Namenskennung_StatusPerson : Kontext
+                {
+                    public StatusPerson? Value;
+                    [Feld(Value = "7358", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public NameKlartext NameKlartext;
+
+                }
+                [Objekt]
+                public class NameKlartext : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "8990", Feldart = Feldart.kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string NamenskuerzelNamenszeichen;
+                    [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 6)]
+                    public Anhang Anhang;
+
+                }
                 [Feld(Value = "7420", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public StatusPerson? Status;
-                [Feld(Value = "7358", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string Name;
-                [Feld(Value = "8990", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string Shorthand;
-                [Feld(Value = "8110", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 6)]
-                public Anhang Anhang;
+                public Namenskennung_StatusPerson StatusPerson;
 
             }
         }

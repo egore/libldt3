@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using libldt3.model;
 
 namespace libldt3
 {
@@ -31,13 +32,14 @@ namespace libldt3
             namespace kontext
             {
                 /// <summary>
-                /// Wenn FK 8428 oder FK 8430 oder FK 8429 vorhanden ist, darf FK 8431 vorhanden sein.
+                /// Wenn FK 8428 oder FK 8430 oder FK 8429 vorhanden ist, kann FK 8431 vorhanden
+                /// sein.
                 /// </summary>
                 public class K006 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8428", "8430", "8429", "8431" };
+                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8428", "8430", "8429", "8431");
 
-                    public bool IsValid(object owner)
+                    public bool IsValid(Kontext owner)
                     {
                         IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K006.FIELDTYPES);
                         if (fields.Count != K006.FIELDTYPES.Count)
@@ -46,12 +48,12 @@ namespace libldt3
                             return false;
                         }
 
-                        if (KontextregelHelper.ContainsAnyString(fields["8428"], owner) || KontextregelHelper.ContainsAnyString(fields["8430"], owner) || KontextregelHelper.ContainsAnyString(fields["8429"], owner))
+                        if (KontextregelHelper.ContainsAnyValue(fields["8428"], owner) || KontextregelHelper.ContainsAnyValue(fields["8430"], owner) || KontextregelHelper.ContainsAnyValue(fields["8429"], owner))
                         {
                             return true;
                         }
 
-                        return !KontextregelHelper.ContainsAnyString(fields["8431"], owner);
+                        return !KontextregelHelper.ContainsAnyValue(fields["8431"], owner);
                     }
                 }
             }

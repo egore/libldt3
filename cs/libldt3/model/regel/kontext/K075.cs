@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -31,11 +32,16 @@ namespace libldt3
         {
             namespace kontext
             {
+                /// <summary>
+                /// Wenn Inhalt von FK 9970 = 999, dann muss FK 6327 vorkommen.
+                /// </summary>
+                /// Wird beim Dokumententyp "sonstige" angegeben, muss das Dokument
+                /// mittels der FK 6327 näher beschrieben werden.
                 public class K075 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "9970", "6327" };
+                    private static readonly ISet<string> FIELDTYPES = ISet.Of("9970", "6327");
 
-                    public bool IsValid(object owner)
+                    public bool IsValid(Kontext owner)
                     {
                         IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K075.FIELDTYPES);
                         if (fields.Count != K075.FIELDTYPES.Count)
@@ -46,7 +52,7 @@ namespace libldt3
 
                         if ((Dokumententyp?)fields["9970"].GetValue(owner) == Dokumententyp.sonstige)
                         {
-                            return KontextregelHelper.ContainsAnyString(fields["6327"], owner);
+                            return KontextregelHelper.ContainsAnyValue(fields["6327"], owner);
                         }
 
                         return true;

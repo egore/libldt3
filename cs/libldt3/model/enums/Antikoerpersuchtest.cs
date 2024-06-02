@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,16 +29,15 @@ namespace libldt3
             /// <summary>
             /// E054
             /// </summary>
-            /// Antikörpersuchtest (gegen Erythrozytenantigene)
             public enum Antikoerpersuchtest
             {
                 positiv,
                 negativ,
                 unspezifisch,
                 /// in Abklärung
-                InAbklaerung,
+                inAbklaerung,
                 /// Abklärung empfohlen
-                AbklaerungEmpfohlen
+                Abklaerung_empfohlen
             }
 
             public static class AntikoerpersuchtestExtensions
@@ -50,8 +49,8 @@ namespace libldt3
                         case Antikoerpersuchtest.positiv: return "1";
                         case Antikoerpersuchtest.negativ: return "2";
                         case Antikoerpersuchtest.unspezifisch: return "3";
-                        case Antikoerpersuchtest.InAbklaerung: return "4";
-                        case Antikoerpersuchtest.AbklaerungEmpfohlen: return "5";
+                        case Antikoerpersuchtest.inAbklaerung: return "4";
+                        case Antikoerpersuchtest.Abklaerung_empfohlen: return "5";
                         default: throw new Exception();
                     }
                 }

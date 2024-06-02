@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,21 +32,17 @@ namespace libldt3
             public enum Nachweisverfahren
             {
                 /// sonstige, wenn Erreger + Resistenz angefordert
-                sonstige_wenn_Erreger_und_Resistenz_angefordert,
+                sonstige_wennErreger_und_Resistenz_angefordert,
                 /// Antigen-Nachweis
-                Antigen_Nachweis,
-                /// PCR
+                AntigenNachweis,
                 PCR,
-                /// Mikroskopie
                 Mikroskopie,
-                /// Aglutination
                 Aglutination,
-                /// Kultur
                 Kultur,
                 /// Vitek)
-                Biochemische_Identifikation,
+                BiochemischeIdentifikation,
                 /// Maldi-Tof
-                Maldi_Tof
+                MaldiTof
             }
 
             public static class NachweisverfahrenExtensions
@@ -55,14 +51,14 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Nachweisverfahren.sonstige_wenn_Erreger_und_Resistenz_angefordert: return "0";
-                        case Nachweisverfahren.Antigen_Nachweis: return "1";
+                        case Nachweisverfahren.sonstige_wennErreger_und_Resistenz_angefordert: return "0";
+                        case Nachweisverfahren.AntigenNachweis: return "1";
                         case Nachweisverfahren.PCR: return "2";
                         case Nachweisverfahren.Mikroskopie: return "3";
                         case Nachweisverfahren.Aglutination: return "4";
                         case Nachweisverfahren.Kultur: return "5";
-                        case Nachweisverfahren.Biochemische_Identifikation: return "6";
-                        case Nachweisverfahren.Maldi_Tof: return "7";
+                        case Nachweisverfahren.BiochemischeIdentifikation: return "6";
+                        case Nachweisverfahren.MaldiTof: return "7";
                         default: throw new Exception();
                     }
                 }

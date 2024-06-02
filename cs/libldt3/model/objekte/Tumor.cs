@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 using NodaTime;
 using libldt3.attributes;
 using libldt3.model;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
 
 namespace libldt3
 {
@@ -31,8 +31,8 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// In diesem Objekt können Information zu einem Tumor sowohl für die
-            /// Beauftragung und für den Befund transportiert werden.
+            /// In diesem Objekt können Information zu einem Tumor sowohl für die Beauftragung
+            /// und für den Befund transportiert werden.
             /// </summary>
             [Objekt(Value = "0056")]
             public class Tumor : Kontext
@@ -47,14 +47,14 @@ namespace libldt3
                 [Regelsatz(MaxLaenge = 5)]
                 public string Grading;
                 [Feld(Value = "7374", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 4)]
+                [Regelsatz(MaxLaenge = 5)]
                 public string Stadium;
                 [Feld(Value = "7375", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F017) }, Laenge = 4)]
                 public string JahrTumordiagnose;
                 [Feld(Value = "7376", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string LokalisationTumor;
+                public string Lokalisation;
                 [Feld(Value = "7377", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> Masse;
@@ -70,25 +70,34 @@ namespace libldt3
                 [Feld(Value = "3425", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
                 public LocalDate? Therapieende;
-                [Feld(Value = "8220", Name = "Timestamp_Eingangserfassung_Material", Feldart = Feldart.kann)]
+                [Feld(Value = "8220", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 36)]
                 public Timestamp TimestampEingangserfassungMaterial;
-                [Feld(Value = "8222", Name = "Timestamp_Beginn_Analytik", Feldart = Feldart.kann)]
+                [Feld(Value = "8222", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 25)]
                 public Timestamp TimestampBeginnAnalytik;
-                [Feld(Value = "8223", Name = "Timestamp_Ergebniserstellung", Feldart = Feldart.kann)]
+                [Feld(Value = "8223", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 28)]
                 public Timestamp TimestampErgebniserstellung;
-                [Feld(Value = "8224", Name = "Timestamp_QM_Erfassung", Feldart = Feldart.kann)]
+                [Feld(Value = "8224", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 22)]
                 public Timestamp TimestampQmErfassung;
-                [Feld(Value = "8225", Name = "Timestamp_Messung", Feldart = Feldart.kann)]
+                [Feld(Value = "8225", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 17)]
                 public Timestamp TimestampMessung;
-                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.kann)]
+                [Feld(Value = "8126", Feldart = Feldart.bedingt_muss)]
+                [Regelsatz(Laenge = 28)]
+                public FehlermeldungAufmerksamkeit FehlermeldungAufmerksamkeit;
+                [Feld(Value = "8167", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 26)]
                 public IList<Fliesstext> ZusaetzlicheInformationen;
-                [Feld(Value = "8110", Name = "Anhang", Feldart = Feldart.kann)]
+                [Feld(Value = "7429", Feldart = Feldart.kann)]
+                [Regelsatz(MaxLaenge = 990)]
+                public string DrgHinweis;
+                [Feld(Value = "3473", Feldart = Feldart.kann)]
+                [Regelsatz(Laenge = 1)]
+                public bool? UntersuchungsergebnisDurchAuftragslaboratoriumErstellt;
+                [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public IList<Anhang> Anhang;
 

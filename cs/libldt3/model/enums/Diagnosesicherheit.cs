@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,13 +32,12 @@ namespace libldt3
             public enum Diagnosesicherheit
             {
                 /// gesicherte Diagnose
-                GesicherteDiagnose,
-                /// Ausschluss
+                gesicherteDiagnose,
                 Ausschluss,
                 /// Verdacht auf
-                VerdachtAuf,
+                Verdacht_auf,
                 /// Zustand nach
-                ZustandNach
+                Zustand_nach
             }
 
             public static class DiagnosesicherheitExtensions
@@ -47,10 +46,10 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Diagnosesicherheit.GesicherteDiagnose: return "G";
+                        case Diagnosesicherheit.gesicherteDiagnose: return "G";
                         case Diagnosesicherheit.Ausschluss: return "A";
-                        case Diagnosesicherheit.VerdachtAuf: return "V";
-                        case Diagnosesicherheit.ZustandNach: return "Z";
+                        case Diagnosesicherheit.Verdacht_auf: return "V";
+                        case Diagnosesicherheit.Zustand_nach: return "Z";
                         default: throw new Exception();
                     }
                 }

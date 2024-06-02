@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,11 @@ namespace libldt3
             /// </summary>
             public enum StatusPerson
             {
-                /// Erstveranlasser
                 Erstveranlasser,
                 /// Einsender Arzt
                 EinsenderArzt,
-                /// Einsender Sonstige
-                EinsenderSonstige,
-                /// Versicherter
+                /// Einsender sonstige
+                Einsender_sonstige,
                 Versicherter,
                 /// Rechnungsempfänger
                 Rechnungsempfaenger,
@@ -45,24 +43,21 @@ namespace libldt3
                 Bevollmaechtigter,
                 /// Laborarzt/Befundersteller
                 Laborarzt_Befundersteller,
-                /// Leistungserbringer
                 Leistungserbringer,
-                /// Softwareverantwortlicher
                 Softwareverantwortlicher,
                 /// Zusätzlicher Befundempfänger
                 ZusaetzlicherBefundempfaenger,
                 /// Halter (eines Tieres)
-                Tierhalter,
-                /// Patient
+                Halter,
                 Patient,
                 /// Überweiser
                 Ueberweiser,
                 /// sonstige juristische Person
-                sonstigeJuristischePerson,
+                sonstige_juristischePerson,
                 /// Medizinisch-technische/r Assistent/in (MTA)
-                MTA,
+                Medizinischtechnische_rAssistent_in,
                 /// Medizinische/r Fachangestellte/r (MFA)
-                MFA
+                Medizinische_rFachangestellte_r
             }
 
             public static class StatusPersonExtensions
@@ -73,7 +68,7 @@ namespace libldt3
                     {
                         case StatusPerson.Erstveranlasser: return "01";
                         case StatusPerson.EinsenderArzt: return "02";
-                        case StatusPerson.EinsenderSonstige: return "03";
+                        case StatusPerson.Einsender_sonstige: return "03";
                         case StatusPerson.Versicherter: return "04";
                         case StatusPerson.Rechnungsempfaenger: return "05";
                         case StatusPerson.Bevollmaechtigter: return "06";
@@ -81,12 +76,12 @@ namespace libldt3
                         case StatusPerson.Leistungserbringer: return "08";
                         case StatusPerson.Softwareverantwortlicher: return "09";
                         case StatusPerson.ZusaetzlicherBefundempfaenger: return "10";
-                        case StatusPerson.Tierhalter: return "11";
+                        case StatusPerson.Halter: return "11";
                         case StatusPerson.Patient: return "12";
                         case StatusPerson.Ueberweiser: return "14";
-                        case StatusPerson.sonstigeJuristischePerson: return "16";
-                        case StatusPerson.MTA: return "17";
-                        case StatusPerson.MFA: return "18";
+                        case StatusPerson.sonstige_juristischePerson: return "16";
+                        case StatusPerson.Medizinischtechnische_rAssistent_in: return "17";
+                        case StatusPerson.Medizinische_rFachangestellte_r: return "18";
                         default: throw new Exception();
                     }
                 }

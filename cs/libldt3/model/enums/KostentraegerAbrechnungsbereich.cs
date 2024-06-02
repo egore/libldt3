@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@ namespace libldt3
                 /// Rheinschiffer (RHS)
                 Rheinschiffer,
                 /// Sozialhilfeträger, ohne Asylstellen (SHT)
-                Sozialhilfetraeger,
+                Sozialhilfetraeger_ohneAsylstellen,
                 /// Bundesvertriebenengesetz (BVFG)
                 Bundesvertriebenengesetz,
                 /// Asylstellen (AS)
@@ -65,7 +65,7 @@ namespace libldt3
                         case KostentraegerAbrechnungsbereich.Bundesentschaedigungsgesetz: return "03";
                         case KostentraegerAbrechnungsbereich.Grenzgaenger: return "04";
                         case KostentraegerAbrechnungsbereich.Rheinschiffer: return "05";
-                        case KostentraegerAbrechnungsbereich.Sozialhilfetraeger: return "06";
+                        case KostentraegerAbrechnungsbereich.Sozialhilfetraeger_ohneAsylstellen: return "06";
                         case KostentraegerAbrechnungsbereich.Bundesvertriebenengesetz: return "07";
                         case KostentraegerAbrechnungsbereich.Asylstellen: return "08";
                         case KostentraegerAbrechnungsbereich.Schwangerschaftsabbrueche: return "09";

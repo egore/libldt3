@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -30,21 +31,20 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt
-            /// hat.
+            /// Das Objekt enthält die Angaben zu dem Labor, welches den Auftrag ausgeführt hat.
             /// </summary>
-            [Objekt(Value = "0036")]
+            [Objekt(Value = "0036", Kontextregeln = new[] { typeof(K083), typeof(K084) })]
             public class Laborkennung : Kontext
             {
-                [Feld(Value = "8239", Name = "Laborbezeichnung", Feldart = Feldart.bedingt_muss)]
+                [Feld(Value = "8239", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 16)]
                 public Organisation Laborbezeichnung;
                 [Feld(Value = "7352", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> KatalogUrl;
+                public IList<string> UrlKataloge;
                 [Feld(Value = "8324", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string LaborStandortId;
+                public string EinesLaborstandortesId;
                 [Feld(Value = "7266", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
                 public Laborart? Laborart;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,21 +36,33 @@ namespace libldt3
             public class Koerperkenngroessen : Kontext
             {
                 [Objekt]
-                public class Messwert : Kontext
+                public class GroesseDesPatienten : Kontext
                 {
-                    public float? Value;
+                    public float Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
-                    [Regelsatz(MaxLaenge = 20)]
-                    public string Einheit;
-                    [Feld(Value = "8225", Name = "Timestamp_Messung", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string MasseinheitMesswerteWertes;
+                    [Feld(Value = "8225", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 17)]
-                    public Timestamp Timestamp;
+                    public Timestamp TimestampMessung;
+
+                }
+                [Objekt]
+                public class GewichtDesPatienten : Kontext
+                {
+                    public float Value;
+                    [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string MasseinheitMesswerteWertes;
+                    [Feld(Value = "8225", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 17)]
+                    public Timestamp TimestampMessung;
 
                 }
                 [Feld(Value = "3622", Feldart = Feldart.kann)]
-                public Messwert Groesse;
+                public GroesseDesPatienten GroesseDesPatienten;
                 [Feld(Value = "3623", Feldart = Feldart.kann)]
-                public Messwert Gewicht;
+                public GewichtDesPatienten GewichtDesPatienten;
 
             }
         }

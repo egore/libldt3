@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,14 +31,13 @@ namespace libldt3
             /// </summary>
             public enum Behandlungsanlass
             {
-                /// kurativ
-                Kurativ,
+                kurativ,
                 /// präventiv
-                Praeventiv,
+                praeventiv,
                 /// Empfängnisregelung, Sterilisation, Schwangerschaftsabbruch
                 EmpfaengnisregelungSterilisationSchwangerschaftsabbruch,
                 /// belegärztliche Behandlung
-                BelegaerztlicheBehandlung
+                belegaerztlicheBehandlung
             }
 
             public static class BehandlungsanlassExtensions
@@ -47,10 +46,10 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Behandlungsanlass.Kurativ: return "1";
-                        case Behandlungsanlass.Praeventiv: return "2";
+                        case Behandlungsanlass.kurativ: return "1";
+                        case Behandlungsanlass.praeventiv: return "2";
                         case Behandlungsanlass.EmpfaengnisregelungSterilisationSchwangerschaftsabbruch: return "3";
-                        case Behandlungsanlass.BelegaerztlicheBehandlung: return "4";
+                        case Behandlungsanlass.belegaerztlicheBehandlung: return "4";
                         default: throw new Exception();
                     }
                 }

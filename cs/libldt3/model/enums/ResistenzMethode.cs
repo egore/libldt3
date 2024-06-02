@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,15 +32,14 @@ namespace libldt3
             public enum ResistenzMethode
             {
                 /// kein Antibiogramm erstellt
-                KeinAntibiogrammErstellt,
-                /// Agardiffusion
+                keinAntibiogramm_erstellt,
                 Agardiffusion,
-                /// Agardilution
                 Agardilution,
                 /// PCR + Hybridisierung
-                PcrUndHybridisierung,
-                /// sonstige
-                sonstige
+                PCR_und_Hybridisierung,
+                sonstige,
+                /// Breakpoint-Methode
+                BreakpointMethode
             }
 
             public static class ResistenzMethodeExtensions
@@ -49,11 +48,12 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case ResistenzMethode.KeinAntibiogrammErstellt: return "0";
+                        case ResistenzMethode.keinAntibiogramm_erstellt: return "0";
                         case ResistenzMethode.Agardiffusion: return "1";
                         case ResistenzMethode.Agardilution: return "2";
-                        case ResistenzMethode.PcrUndHybridisierung: return "3";
+                        case ResistenzMethode.PCR_und_Hybridisierung: return "3";
                         case ResistenzMethode.sonstige: return "4";
+                        case ResistenzMethode.BreakpointMethode: return "5";
                         default: throw new Exception();
                     }
                 }

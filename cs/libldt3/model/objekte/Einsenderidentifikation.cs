@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,6 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -32,36 +33,42 @@ namespace libldt3
             /// <summary>
             /// Hier werden alle notwendigen Informationen zum Einsender zusammengefasst.
             /// </summary>
-            [Objekt(Value = "0022")]
+            [Objekt(Value = "0022", Kontextregeln = new[] { typeof(K016), typeof(K041), typeof(K045), typeof(K046), typeof(K047), typeof(K048), typeof(K107) })]
             public class Einsenderidentifikation : Kontext
             {
+                [Objekt]
+                public class KundenNummer : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "7267", Feldart = Feldart.kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string DesAuftraggebersId;
+
+                }
                 [Feld(Value = "7321", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public IList<Einsenderstatus?> Status;
+                public IList<Einsenderstatus?> StatusEinsender;
                 [Feld(Value = "8312", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 20)]
-                public string KundenNummer;
-                [Feld(Value = "7267", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string AuftraggeberId;
+                public KundenNummer KundenNummer;
                 [Feld(Value = "8114", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 18)]
                 public Arztidentifikation Arztidentifikation;
-                [Feld(Value = "8240", Name = "Ueberweisung_von_anderen_Aerzten", Feldart = Feldart.kann)]
+                [Feld(Value = "8240", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 32)]
-                public Arztidentifikation UeberweisungVon;
-                [Feld(Value = "8241", Name = "Ueberweisung_an", Feldart = Feldart.bedingt_muss)]
+                public Arztidentifikation UeberweisungVonAnderenAerzten;
+                [Feld(Value = "8241", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 15)]
-                public Arztidentifikation UeberweisungAn;
+                public Fliesstext UeberweisungAn;
                 [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public Person Person;
                 [Feld(Value = "7268", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string Fachrichtung;
+                public string FachrichtungOderStationskennung;
                 [Feld(Value = "8119", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 15)]
-                public Betriebsstaette PermanentEstablishment;
+                public Betriebsstaette Betriebsstaette;
                 [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
                 public Organisation Organisation;

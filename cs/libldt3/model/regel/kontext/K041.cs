@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -40,9 +41,9 @@ namespace libldt3
                 /// </summary>
                 public class K041 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "4239", "8240", "4217", "4241", "4225", "4248" };
+                    private static readonly ISet<string> FIELDTYPES = ISet.Of("4239", "8240", "4217", "4241", "4225", "4248");
 
-                    public bool IsValid(object owner)
+                    public bool IsValid(Kontext owner)
                     {
                         IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K041.FIELDTYPES);
                         if (fields.Count != K041.FIELDTYPES.Count)
@@ -51,19 +52,19 @@ namespace libldt3
                             return false;
                         }
 
-                        if ((Scheinuntergruppe?)fields["4239"].GetValue(owner) == Scheinuntergruppe.Muster10 && KontextregelHelper.ContainsAnyString(fields["8240"], owner))
+                        if ((Scheinuntergruppe?)fields["4239"].GetValue(owner) == Scheinuntergruppe.Muster10 && KontextregelHelper.ContainsAnyValue(fields["8240"], owner))
                         {
-                            if (KontextregelHelper.ContainsAnyString(fields["4217"], owner) && KontextregelHelper.ContainsAnyString(fields["4241"], owner))
+                            if (KontextregelHelper.ContainsAnyValue(fields["4217"], owner) && KontextregelHelper.ContainsAnyValue(fields["4241"], owner))
                             {
                                 return true;
                             }
 
-                            if (KontextregelHelper.ContainsAnyString(fields["4225"], owner) && KontextregelHelper.ContainsAnyString(fields["4241"], owner))
+                            if (KontextregelHelper.ContainsAnyValue(fields["4225"], owner) && KontextregelHelper.ContainsAnyValue(fields["4241"], owner))
                             {
                                 return true;
                             }
 
-                            if (KontextregelHelper.ContainsAnyString(fields["4225"], owner) && KontextregelHelper.ContainsAnyString(fields["4248"], owner))
+                            if (KontextregelHelper.ContainsAnyValue(fields["4225"], owner) && KontextregelHelper.ContainsAnyValue(fields["4248"], owner))
                             {
                                 return true;
                             }

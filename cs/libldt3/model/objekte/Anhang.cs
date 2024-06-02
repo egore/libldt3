@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,24 +32,24 @@ namespace libldt3
         {
             /// <summary>
             /// Im Objekt Anhang können Informationen wie Befunde, Fotos oder sonstige
-            /// Dokumentationen, die in einem digitalen Standardformat vorliegen,
-            /// transportiert werden.
+            /// Dokumentationen, die in einem digitalen Standardformat vorliegen, transportiert
+            /// werden.
             /// </summary>
-            [Objekt(Value = "0010", Kontextregeln = new[] { typeof(K001), typeof(K075) })]
+            [Objekt(Value = "0010", Kontextregeln = new[] { typeof(K001), typeof(K075), typeof(K100) })]
             public class Anhang : Kontext
             {
                 [Feld(Value = "9970", Feldart = Feldart.muss)]
-                [Regelsatz(MaxLaenge = 3)]
-                public Dokumententyp? DokumentTyp;
+                [Regelsatz(Laenge = 3)]
+                public Dokumententyp? Dokumententyp;
                 [Feld(Value = "6221", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public bool? KennzeichnungFremdbefund;
                 [Feld(Value = "6305", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string DateiVerweis;
-                [Feld(Value = "8242", Name = "base64-kodierte_Anlage", Feldart = Feldart.bedingt_muss)]
+                [Feld(Value = "8242", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 22)]
-                public Fliesstext Base64Anlage;
+                public Fliesstext Base64kodierteAnlage;
                 [Feld(Value = "6303", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string Dateiformat;
@@ -58,15 +58,15 @@ namespace libldt3
                 public string Dateicodierung;
                 [Feld(Value = "6327", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string Beschreibung;
+                public string BildinhaltDokumentinhalt;
                 [Feld(Value = "9908", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string OriginaldokumentPfad;
+                public string OriginaldokumentPfadSpeicherort;
                 [Feld(Value = "9909", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string LangzeitArchivierungPfad;
+                public string LangzeitArchivierungPfadSpeicherort;
                 [Feld(Value = "9980", Feldart = Feldart.bedingt_kann)]
-                public IList<string> ExterneDokumentIds;
+                public IList<string> ExterneDokumentenIdZurArchivierung;
                 [Feld(Value = "9981", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(Laenge = 1)]
                 public Dokumentenquelle? Dokumentenquelle;

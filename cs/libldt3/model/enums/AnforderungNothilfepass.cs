@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,9 +32,9 @@ namespace libldt3
             public enum AnforderungNothilfepass
             {
                 /// Nothilfepass nur bei Nachweis Erythrozytenantikörper ausfüllen
-                NurBeiErythrozytenantikoerperNachweis,
+                Nothilfepass_nur_beiNachweisErythrozytenantikoerper_ausfuellen,
                 /// Nothilfepass ausstellen
-                Ausstellen
+                Nothilfepass_ausstellen
             }
 
             public static class AnforderungNothilfepassExtensions
@@ -43,8 +43,8 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case AnforderungNothilfepass.NurBeiErythrozytenantikoerperNachweis: return "0";
-                        case AnforderungNothilfepass.Ausstellen: return "1";
+                        case AnforderungNothilfepass.Nothilfepass_nur_beiNachweisErythrozytenantikoerper_ausfuellen: return "0";
+                        case AnforderungNothilfepass.Nothilfepass_ausstellen: return "1";
                         default: throw new Exception();
                     }
                 }

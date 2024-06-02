@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,8 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -34,27 +35,33 @@ namespace libldt3
             /// Dieses Objekt fasst die notwendigen Informationen zur Betriebsstätte von
             /// medizinischen Einrichtungen zusammen.
             /// </summary>
-            [Objekt(Value = "0019")]
+            [Objekt(Value = "0019", Kontextregeln = new[] { typeof(K043) })]
             public class Betriebsstaette : Kontext
             {
+                [Objekt(Kontextregeln = new[] { typeof(K020), typeof(K044) })]
+                public class BsnrBezeichnung : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "0200", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string BetriebsstaettenId;
+                    [Feld(Value = "0201", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Value = new[] { typeof(F010), typeof(F021) }, Laenge = 9)]
+                    public string BetriebsoderNebenbetriebsstaettennummer;
+                    [Feld(Value = "0213", Feldart = Feldart.kann)]
+                    [Regelsatz(Laenge = 9)]
+                    public string Institutskennzeichen;
+                    [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 12)]
+                    public Organisation Organisation;
+
+                }
                 [Feld(Value = "0204", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public IList<Betriebsstaettenstatus?> Status;
+                public IList<Betriebsstaettenstatus?> StatusBetriebsstaette;
                 [Feld(Value = "0203", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string BsnrBezeichnung;
-                [Feld(Value = "0200", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string BetriebsstaettenId;
-                [Feld(Value = "0201", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Value = new[] { typeof(F010), typeof(F021) }, Laenge = 9)]
-                public string Bsnr;
-                [Feld(Value = "0213", Feldart = Feldart.kann)]
-                [Regelsatz(Laenge = 9)]
-                public string Institutskennzeichen;
-                [Feld(Value = "8143", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Laenge = 12)]
-                public Organisation Organisation;
+                public BsnrBezeichnung BsnrBezeichnung;
 
             }
         }

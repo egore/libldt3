@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,11 @@ namespace libldt3
             /// </summary>
             public enum Einsenderstatus
             {
-                /// Erstveranlasser
                 Erstveranlasser,
                 /// Einsender Arzt
                 EinsenderArzt,
                 /// Einsender sonstige
-                EinsenderSonstige,
-                /// Versicherter
+                Einsender_sonstige,
                 Versicherter,
                 /// Rechnungsempfänger
                 Rechnungsempfaenger,
@@ -45,20 +43,18 @@ namespace libldt3
                 Bevollmaechtigter,
                 /// Laborarzt/Befundersteller
                 Laborarzt_Befundersteller,
-                /// Leistungserbringer
                 Leistungserbringer,
                 /// Halter (eines Tieres)
-                Tierhalter,
-                /// Patient
+                Halter,
                 Patient,
                 /// Überweiser
                 Ueberweiser,
                 /// staatliche Einrichtung
-                staatliche_Einrichtung,
+                staatlicheEinrichtung,
                 /// sonstige juristische Person
-                sonstige_juristische_Person,
+                sonstige_juristischePerson,
                 /// sonstige medizinische Einrichtung
-                sonstige_medizinische_Einrichtung
+                sonstige_medizinischeEinrichtung
             }
 
             public static class EinsenderstatusExtensions
@@ -69,18 +65,18 @@ namespace libldt3
                     {
                         case Einsenderstatus.Erstveranlasser: return "01";
                         case Einsenderstatus.EinsenderArzt: return "02";
-                        case Einsenderstatus.EinsenderSonstige: return "03";
+                        case Einsenderstatus.Einsender_sonstige: return "03";
                         case Einsenderstatus.Versicherter: return "04";
                         case Einsenderstatus.Rechnungsempfaenger: return "05";
                         case Einsenderstatus.Bevollmaechtigter: return "06";
                         case Einsenderstatus.Laborarzt_Befundersteller: return "07";
                         case Einsenderstatus.Leistungserbringer: return "08";
-                        case Einsenderstatus.Tierhalter: return "11";
+                        case Einsenderstatus.Halter: return "11";
                         case Einsenderstatus.Patient: return "12";
                         case Einsenderstatus.Ueberweiser: return "14";
-                        case Einsenderstatus.staatliche_Einrichtung: return "15";
-                        case Einsenderstatus.sonstige_juristische_Person: return "16";
-                        case Einsenderstatus.sonstige_medizinische_Einrichtung: return "17";
+                        case Einsenderstatus.staatlicheEinrichtung: return "15";
+                        case Einsenderstatus.sonstige_juristischePerson: return "16";
+                        case Einsenderstatus.sonstige_medizinischeEinrichtung: return "17";
                         default: throw new Exception();
                     }
                 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -31,11 +32,17 @@ namespace libldt3
         {
             namespace kontext
             {
+                /// <summary>
+                /// Wenn der Inhalt der FK 8422 = !L oder !- oder !H oder !+ ist, muss FK 8126 der
+                /// FK 8422 folgen.
+                /// </summary>
+                /// Obj_Fehlermeldung/Aufmerksamkeit muss bei Extremwerten eingesetzt
+                /// werden, um den Befundempfänger auf die Werte hinzuweisen.
                 public class K099 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8422" };
+                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8422", "8126");
 
-                    public bool IsValid(object owner)
+                    public bool IsValid(Kontext owner)
                     {
                         IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K099.FIELDTYPES);
                         if (fields.Count != K099.FIELDTYPES.Count)
@@ -50,7 +57,7 @@ namespace libldt3
                             foreach (GrenzwertindikatorErweitert grenzwertindikatorErweitert in (IEnumerable<GrenzwertindikatorErweitert>)o)
                             {
                                 Grenzwertindikator? grenzwertindikator = grenzwertindikatorErweitert.Value;
-                                if (grenzwertindikator == Grenzwertindikator.EXTREM_L || grenzwertindikator == Grenzwertindikator.EXTREM_MINUS || grenzwertindikator == Grenzwertindikator.EXTREM_H || grenzwertindikator == Grenzwertindikator.EXTREM_PLUS && !KontextregelHelper.ContainsAnyString(fields["8126"], grenzwertindikatorErweitert))
+                                if (grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt_ || grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt__ || grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht || grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht_ && !KontextregelHelper.ContainsAnyValue(fields["8126"], grenzwertindikatorErweitert))
                                 {
                                     return false;
                                 }
@@ -62,7 +69,7 @@ namespace libldt3
                         {
                             GrenzwertindikatorErweitert indikatorErweitert = (GrenzwertindikatorErweitert)o;
                             Grenzwertindikator? grenzwertindikator = indikatorErweitert.Value;
-                            if (grenzwertindikator == Grenzwertindikator.EXTREM_L || grenzwertindikator == Grenzwertindikator.EXTREM_MINUS || grenzwertindikator == Grenzwertindikator.EXTREM_H || grenzwertindikator == Grenzwertindikator.EXTREM_PLUS && !KontextregelHelper.ContainsAnyString(fields["8126"], o))
+                            if (grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt_ || grenzwertindikator == Grenzwertindikator.Wert_extrem_erniedrigt__ || grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht || grenzwertindikator == Grenzwertindikator.Wert_extrem_erhoeht_ && !KontextregelHelper.ContainsAnyValue(fields["8126"], o))
                             {
                                 return false;
                             }

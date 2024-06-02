@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,13 @@ namespace libldt3
             /// </summary>
             public enum Gebuehrenordnung
             {
+                EBM,
                 /// BMÄ
-                BMAE,
-                /// EGO
+                BMAe,
                 EGO,
                 /// GOÄ
-                GOAE,
+                GOAe,
+                /// BG Tarif
                 BG_Tarif
             }
 
@@ -46,9 +47,10 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Gebuehrenordnung.BMAE: return "1";
+                        case Gebuehrenordnung.EBM: return "0";
+                        case Gebuehrenordnung.BMAe: return "1";
                         case Gebuehrenordnung.EGO: return "2";
-                        case Gebuehrenordnung.GOAE: return "3";
+                        case Gebuehrenordnung.GOAe: return "3";
                         case Gebuehrenordnung.BG_Tarif: return "4";
                         default: throw new Exception();
                     }

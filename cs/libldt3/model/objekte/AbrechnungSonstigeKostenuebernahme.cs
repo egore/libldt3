@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,22 +33,28 @@ namespace libldt3
             /// Untersuchungsanforderungen zusammengefasst, welche ein Labor außerhalb der
             /// Regelleistungen EBM und GOÄ erbringen kann.
             /// </summary>
-            /// Es werden hierüber auch
-            /// Leistungen abgerechnet, welche nicht durch medizinische Einsender abgefordert
-            /// werden oder die Materialien betreffen, die nicht humanen Ursprungs sind. Der
+            /// Es werden hierüber auch Leistungen
+            /// abgerechnet, welche nicht durch medizinische Einsender abgefordert werden oder
+            /// die Materialien betreffen, die nicht humanen Ursprungs sind. Der
             /// Rechnungsempfänger ist frei wählbar.
             [Objekt(Value = "0005")]
             public class AbrechnungSonstigeKostenuebernahme : Kontext
             {
+                [Objekt]
+                public class KostenuebernahmeerklaerungAuftraggeberLiegtVor : Kontext
+                {
+                    public bool? Value;
+                    [Feld(Value = "8148", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 12)]
+                    public Rechnungsempfaenger Rechnungsempfaenger;
+
+                }
                 [Feld(Value = "7261", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string SonstigeVersichertennummer;
                 [Feld(Value = "7253", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public bool? KostenuebernahmeerklaerungAuftraggeber;
-                [Feld(Value = "8148", Feldart = Feldart.muss)]
-                [Regelsatz(Laenge = 12)]
-                public Rechnungsempfaenger Rechnungsempfaenger;
+                public KostenuebernahmeerklaerungAuftraggeberLiegtVor KostenuebernahmeerklaerungAuftraggeberLiegtVor;
 
             }
         }

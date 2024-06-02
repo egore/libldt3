@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,14 @@ namespace libldt3
             /// </summary>
             public enum Sensitivitaet
             {
-                /// sensibel
-                sensibel,
-                /// intermediär
-                intermediaer,
-                /// resistent
-                resistent
+                /// Sensibel bei Standardexposition
+                Sensibel_beiStandardexposition,
+                /// Sensibel bei erhöhter Exposition
+                Sensibel_bei_erhoehterExposition,
+                Resistent,
+                /// siehe http://www.eucast.org/clinical_breakpoints/ und http://www.nak-
+                /// deutschland.org/
+                IE
             }
 
             public static class SensitivitaetExtensions
@@ -45,9 +47,10 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Sensitivitaet.sensibel: return "S";
-                        case Sensitivitaet.intermediaer: return "I";
-                        case Sensitivitaet.resistent: return "R";
+                        case Sensitivitaet.Sensibel_beiStandardexposition: return "S";
+                        case Sensitivitaet.Sensibel_bei_erhoehterExposition: return "I";
+                        case Sensitivitaet.Resistent: return "R";
+                        case Sensitivitaet.IE: return "N";
                         default: throw new Exception();
                     }
                 }

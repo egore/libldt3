@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,18 +32,16 @@ namespace libldt3
             public enum ArztTypId
             {
                 /// IK des Arztes
-                IK,
+                IK_desArztes,
                 /// Telematik-ID
-                TelematikId,
+                TelematikID,
                 /// ID für GEVK-Verträge
-                GevkId,
+                ID_fuerGEVK_Vertraege,
                 /// ID für HÄVG-Verträge
-                HaevgId,
+                ID_fuerHAeVG_Vertraege,
                 /// ID für MEDI-Verträge
-                MediId,
-                /// Selektivvertrag
+                ID_fuerMEDI_Vertraege,
                 Selektivvertrag,
-                /// Sonstige
                 Sonstige
             }
 
@@ -53,11 +51,11 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case ArztTypId.IK: return "2";
-                        case ArztTypId.TelematikId: return "3";
-                        case ArztTypId.GevkId: return "4";
-                        case ArztTypId.HaevgId: return "5";
-                        case ArztTypId.MediId: return "6";
+                        case ArztTypId.IK_desArztes: return "2";
+                        case ArztTypId.TelematikID: return "3";
+                        case ArztTypId.ID_fuerGEVK_Vertraege: return "4";
+                        case ArztTypId.ID_fuerHAeVG_Vertraege: return "5";
+                        case ArztTypId.ID_fuerMEDI_Vertraege: return "6";
                         case ArztTypId.Selektivvertrag: return "7";
                         case ArztTypId.Sonstige: return "9";
                         default: throw new Exception();

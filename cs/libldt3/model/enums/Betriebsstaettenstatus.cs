@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,14 +31,11 @@ namespace libldt3
             /// </summary>
             public enum Betriebsstaettenstatus
             {
-                /// Arztpraxis
                 Arztpraxis,
-                /// Laborarztpraxis
                 Laborarztpraxis,
-                /// Laborgemeinschaft
                 Laborgemeinschaft,
                 /// sonstige medizinische Einrichtung
-                sonstigeMedizinischeEinrichtung,
+                sonstige_medizinischeEinrichtung,
                 /// Hauptbetriebsstätte
                 Hauptbetriebsstaette,
                 /// Nebenbetriebsstätte
@@ -54,7 +51,7 @@ namespace libldt3
                         case Betriebsstaettenstatus.Arztpraxis: return "1";
                         case Betriebsstaettenstatus.Laborarztpraxis: return "2";
                         case Betriebsstaettenstatus.Laborgemeinschaft: return "3";
-                        case Betriebsstaettenstatus.sonstigeMedizinischeEinrichtung: return "4";
+                        case Betriebsstaettenstatus.sonstige_medizinischeEinrichtung: return "4";
                         case Betriebsstaettenstatus.Hauptbetriebsstaette: return "5";
                         case Betriebsstaettenstatus.Nebenbetriebsstaette: return "6";
                         default: throw new Exception();

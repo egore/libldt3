@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,23 +34,21 @@ namespace libldt3
                 /// Einsender Arzt
                 EinsenderArzt,
                 /// Einsender sonstige
-                EinsenderSonstige,
-                /// Versicherter
+                Einsender_sonstige,
                 Versicherter,
                 /// Rechnungsempfänger
                 Rechnungsempfaenger,
                 /// Bevollmächtigter
                 Bevollmaechtigter,
                 /// Halter (eines Tieres)
-                Tierhalter,
-                /// Patient
+                Halter,
                 Patient,
                 /// staatliche Einrichtung
-                StaatlicheEinrichtung,
+                staatlicheEinrichtung,
                 /// sonstige juristische Person
-                SonstigeJuristischePerson,
+                sonstige_juristischePerson,
                 /// sonstige medizinische Einrichtung
-                SonstigeMedizinischeEinrichtung
+                sonstige_medizinischeEinrichtung
             }
 
             public static class StatusRechnungsempfaengerExtensions
@@ -60,15 +58,15 @@ namespace libldt3
                     switch (self)
                     {
                         case StatusRechnungsempfaenger.EinsenderArzt: return "02";
-                        case StatusRechnungsempfaenger.EinsenderSonstige: return "03";
+                        case StatusRechnungsempfaenger.Einsender_sonstige: return "03";
                         case StatusRechnungsempfaenger.Versicherter: return "04";
                         case StatusRechnungsempfaenger.Rechnungsempfaenger: return "05";
                         case StatusRechnungsempfaenger.Bevollmaechtigter: return "06";
-                        case StatusRechnungsempfaenger.Tierhalter: return "11";
+                        case StatusRechnungsempfaenger.Halter: return "11";
                         case StatusRechnungsempfaenger.Patient: return "12";
-                        case StatusRechnungsempfaenger.StaatlicheEinrichtung: return "15";
-                        case StatusRechnungsempfaenger.SonstigeJuristischePerson: return "16";
-                        case StatusRechnungsempfaenger.SonstigeMedizinischeEinrichtung: return "17";
+                        case StatusRechnungsempfaenger.staatlicheEinrichtung: return "15";
+                        case StatusRechnungsempfaenger.sonstige_juristischePerson: return "16";
+                        case StatusRechnungsempfaenger.sonstige_medizinischeEinrichtung: return "90";
                         default: throw new Exception();
                     }
                 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,8 @@
 using NodaTime;
 using libldt3.attributes;
 using libldt3.model;
-using libldt3.model.regel;
+using libldt3.model.enums;
+using libldt3.model.regel.format;
 
 namespace libldt3
 {
@@ -31,21 +32,30 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// Ein Zeitstempel
+            /// Obj_Timestamp
             /// </summary>
             [Objekt(Value = "0054")]
             public class Timestamp : Kontext
             {
+                [Objekt]
+                public class Uhrzeit : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "7273", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MinLaenge = 3, MaxLaenge = 9)]
+                    public Zeitzone? Zeitzone;
+
+                }
                 [Feld(Value = "7278", Feldart = Feldart.muss)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
                 public LocalDate? Datum;
                 [Feld(Value = "7279", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F016) }, MinLaenge = 6, MaxLaenge = 9)]
-                public LocalTime? Uhrzeit;
+                public Uhrzeit Uhrzeit;
                 [Feld(Value = "7272", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 990)]
                 public string Freitext;
-                [Feld(Value = "8235", Name = "Person_zum_Timestamp", Feldart = Feldart.kann)]
+                [Feld(Value = "8235", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 20)]
                 public Person Person;
 

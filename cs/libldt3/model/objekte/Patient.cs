@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@ using NodaTime;
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -34,10 +35,10 @@ namespace libldt3
             /// <summary>
             /// In diesem Objekt werden die Informationen über einen Patienten aufgeführt.
             /// </summary>
-            [Objekt(Value = "0045")]
+            [Objekt(Value = "0045", Kontextregeln = new[] { typeof(K025), typeof(K090), typeof(K091), typeof(K104) })]
             public class Patient : Kontext
             {
-                [Feld(Value = "8147", Feldart = Feldart.muss)]
+                [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 6)]
                 public Person Person;
                 [Feld(Value = "3119", Feldart = Feldart.bedingt_muss)]
@@ -48,19 +49,13 @@ namespace libldt3
                 public string Versichertennummer;
                 [Feld(Value = "7329", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public GeschlechtNormalbereich? Geschlecht;
+                public GeschlechtNormalbereich? NormalbereichsrelevantesGeschlecht;
                 [Feld(Value = "7922", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? Sterbedatum;
+                public LocalDate? SterbedatumDesPatienten;
                 [Feld(Value = "3000", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string PatientNumber;
-                [Feld(Value = "3620", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Profession;
-                [Feld(Value = "3621", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string CurrentProfession;
+                public string Patientennummer;
 
             }
         }

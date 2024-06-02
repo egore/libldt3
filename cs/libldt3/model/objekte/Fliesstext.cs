@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,8 @@
  */
 using libldt3.attributes;
 using libldt3.model;
+using libldt3.model.regel.erlaubt;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -32,15 +34,15 @@ namespace libldt3
             /// In diesem Objekt können semantisch zusammenhängende Texte oder Dateien
             /// (Base64-kodiert) übertragen werden.
             /// </summary>
-            [Objekt(Value = "0068")]
+            [Objekt(Value = "0068", Kontextregeln = new[] { typeof(K100) })]
             public class Fliesstext : Kontext
             {
                 [Feld(Value = "3564", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 990)]
+                [Regelsatz(Value = new[] { typeof(E036) }, MaxLaenge = 990)]
                 public IList<string> Text;
                 [Feld(Value = "6329", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Base64text;
+                public IList<string> Base64kodierteAnlage;
 
             }
         }

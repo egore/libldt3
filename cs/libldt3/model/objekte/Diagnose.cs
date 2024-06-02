@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
 
 namespace libldt3
 {
@@ -31,30 +31,35 @@ namespace libldt3
         namespace objekte
         {
             /// <summary>
-            /// Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen
-            /// werden.
+            /// Mit diesem Objekt können Angaben zu Diagnosen des Patienten übertragen werden.
             /// </summary>
             [Objekt(Value = "0100")]
             public class Diagnose : Kontext
             {
+                [Objekt]
+                public class IcdCode : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "6003", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Laenge = 1)]
+                    public Diagnosesicherheit? Diagnosesicherheit;
+                    [Feld(Value = "6004", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Laenge = 1)]
+                    public Lokalisation? Lokalisation;
+                    [Feld(Value = "6006", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public IList<string> Diagnoseerlaeuterung;
+                    [Feld(Value = "6008", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public IList<string> Diagnoseausnahmetatbestand;
+
+                }
                 [Feld(Value = "4207", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> DiagnoseVerdachtsdiagnose;
-                [Feld(Value = "6001", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Value = new[] { typeof(F004) })]
-                public string IcdCode;
-                [Feld(Value = "6003", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 1)]
-                public Diagnosesicherheit? Diagnosesicherheit;
-                [Feld(Value = "6004", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 1)]
-                public Lokalisation? Lokalisation;
-                [Feld(Value = "6006", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Erlaeuterung;
-                [Feld(Value = "6008", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<string> Ausnahmetatbestand;
+                [Feld(Value = "6001", Feldart = Feldart.kann)]
+                [Regelsatz(Value = new[] { typeof(F004) }, MinLaenge = 3, MaxLaenge = 6)]
+                public IcdCode IcdCode;
 
             }
         }

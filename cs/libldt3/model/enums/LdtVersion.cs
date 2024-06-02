@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,8 @@ namespace libldt3
             /// </summary>
             public enum LdtVersion
             {
-                /// LDT3.1.0
-                LDT3_1_0
+                /// LDT3.2.16
+                LDT3_2_16
             }
 
             public static class LdtVersionExtensions
@@ -41,7 +41,7 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case LdtVersion.LDT3_1_0: return "LDT3.1.0";
+                        case LdtVersion.LDT3_2_16: return "LDT3.2.16";
                         default: throw new Exception();
                     }
                 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using libldt3.attributes;
 using libldt3.model;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -35,7 +36,28 @@ namespace libldt3
             public class Organisation : Kontext
             {
                 [Objekt]
-                public class Funktionsbezeichnung_ : Kontext
+                public class OrganisationFirma : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "1251", Feldart = Feldart.kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string Rechtsform;
+                    [Feld(Value = "1252", Feldart = Feldart.kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public IList<FunktionsbezeichnungPersonInnerhalbOrganisation> FunktionsbezeichnungPersonInnerhalbOrganisation;
+                    [Feld(Value = "8229", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 23)]
+                    public IList<Anschrift> AnschriftArbeitsstelle;
+                    [Feld(Value = "8230", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 18)]
+                    public Anschrift Rechnungsanschrift;
+                    [Feld(Value = "8131", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 19)]
+                    public Kommunikationsdaten Kommunikationsdaten;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K092) })]
+                public class FunktionsbezeichnungPersonInnerhalbOrganisation : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8147", Feldart = Feldart.bedingt_muss)]
@@ -45,22 +67,7 @@ namespace libldt3
                 }
                 [Feld(Value = "1250", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string OrganisationFirma;
-                [Feld(Value = "1251", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string RechtsformOrganisation;
-                [Feld(Value = "1252", Feldart = Feldart.kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<Funktionsbezeichnung_> Funktionsbezeichnung;
-                [Feld(Value = "8229", Name = "Anschrift_Arbeitsstelle", Feldart = Feldart.kann)]
-                [Regelsatz(Laenge = 23)]
-                public IList<Anschrift> AnschriftArbeitsstelle;
-                [Feld(Value = "8230", Name = "Rechnungsanschrift", Feldart = Feldart.kann)]
-                [Regelsatz(Laenge = 18)]
-                public Anschrift Rechnungsanschrift;
-                [Feld(Value = "8131", Feldart = Feldart.kann)]
-                [Regelsatz(Laenge = 19)]
-                public Kommunikationsdaten Kommunikationsdaten;
+                public OrganisationFirma OrganisationFirma;
 
             }
         }

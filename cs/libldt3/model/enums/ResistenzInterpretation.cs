@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,15 +32,17 @@ namespace libldt3
             public enum ResistenzInterpretation
             {
                 /// nicht getestet
-                nichtGetestet,
+                nicht_getestet,
                 /// sensibel/wirksam
-                sensibelWirksam,
+                sensibel_wirksam,
                 /// mäßig sensibel/schwach wirksam
-                maessigSensibelSchwachWirksam,
+                maessig_sensibel_schwach_wirksam,
                 /// resistent/unwirksam
-                resistentUnwirksam,
+                resistent_unwirksam,
                 /// wirksam in hohen Konzentrationen
-                wirksamInHohenKonzentrationen
+                wirksam_in_hohenKonzentrationen,
+                /// natürliche Resistenz
+                natuerlicheResistenz
             }
 
             public static class ResistenzInterpretationExtensions
@@ -49,11 +51,12 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case ResistenzInterpretation.nichtGetestet: return "0";
-                        case ResistenzInterpretation.sensibelWirksam: return "1";
-                        case ResistenzInterpretation.maessigSensibelSchwachWirksam: return "2";
-                        case ResistenzInterpretation.resistentUnwirksam: return "3";
-                        case ResistenzInterpretation.wirksamInHohenKonzentrationen: return "4";
+                        case ResistenzInterpretation.nicht_getestet: return "0";
+                        case ResistenzInterpretation.sensibel_wirksam: return "1";
+                        case ResistenzInterpretation.maessig_sensibel_schwach_wirksam: return "2";
+                        case ResistenzInterpretation.resistent_unwirksam: return "3";
+                        case ResistenzInterpretation.wirksam_in_hohenKonzentrationen: return "4";
+                        case ResistenzInterpretation.natuerlicheResistenz: return "5";
                         default: throw new Exception();
                     }
                 }

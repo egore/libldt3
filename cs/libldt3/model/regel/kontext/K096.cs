@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  */
 using System.Diagnostics;
 using System.Reflection;
+using libldt3.model;
 using libldt3.model.enums;
 
 namespace libldt3
@@ -32,13 +33,16 @@ namespace libldt3
             namespace kontext
             {
                 /// <summary>
-                /// Wenn Inhalt von FK 8401 = 2, darf der Inhalt von FK 8418 nicht 02, 05 oder 10 sein.
+                /// Wenn Inhalt von FK 8401 = 2, darf der Inhalt von FK 8418 nicht 02, 05 oder 10
+                /// sein.
                 /// </summary>
+                /// In einem Befund mit dem Status "Auftrag abgeschlossen" werden keine
+                /// fehlenden oder vorläufigen Werte übertragen.
                 public class K096 : Kontextregel
                 {
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8401", "8418" };
+                    private static readonly ISet<string> FIELDTYPES = ISet.Of("8401", "8418");
 
-                    public bool IsValid(object owner)
+                    public bool IsValid(Kontext owner)
                     {
                         IDictionary<string, FieldInfo> fields = KontextregelHelper.FindFields(owner, K096.FIELDTYPES);
                         if (fields.Count != K096.FIELDTYPES.Count)
@@ -51,7 +55,7 @@ namespace libldt3
                         if (status == Auftragsstatus.Auftrag_abgeschlossen)
                         {
                             TestStatus? testStatus = (TestStatus?)fields["8418"].GetValue(owner);
-                            return testStatus != TestStatus.Ergebnis_folgt && testStatus != TestStatus.Ergebnis_ermittelt && testStatus != TestStatus.Erweiterte_Analytik_erforderlich;
+                            return testStatus != TestStatus.Ergebnis_folgt && testStatus != TestStatus.Ergebnis_ermittelt && testStatus != TestStatus.ErweiterteAnalytik_erforderlich;
                         }
 
                         return true;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  */
 using libldt3.attributes;
 using libldt3.model;
-using libldt3.model.regel;
 
 namespace libldt3
 {
@@ -35,24 +34,39 @@ namespace libldt3
             [Objekt(Value = "0071")]
             public class Wirkstoff : Kontext
             {
+                [Objekt]
+                public class ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "6224", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public WirkstoffCode WirkstoffCode;
+                    [Feld(Value = "8523", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public WirkstoffmengeMengeBezugsmengeWirkstaerke WirkstoffmengeMengeBezugsmengeWirkstaerke;
+
+                }
+                [Objekt]
+                public class WirkstoffCode : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "6214", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string WirkstoffKlassifikation;
+
+                }
+                [Objekt]
+                public class WirkstoffmengeMengeBezugsmengeWirkstaerke : Kontext
+                {
+                    public float Value;
+                    [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string MasseinheitMesswerteWertes;
+
+                }
                 [Feld(Value = "6212", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string Arzneimittelwirkstoff;
-                [Feld(Value = "6206", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(Value = new[] { typeof(F020) }, Laenge = 8)]
-                public string Pzn;
-                [Feld(Value = "6224", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string WirkstoffCode;
-                [Feld(Value = "6214", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string WirkstoffKlassifikation;
-                [Feld(Value = "8523", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(MaxLaenge = 60)]
-                public string Wirkstoffmenge;
-                [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 20)]
-                public string Mengeneinheit;
+                public ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung ArzneimittelwirkstoffWirkstoffWirkstoffbezeichnung;
 
             }
         }

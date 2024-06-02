@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,8 @@
 using NodaTime;
 using libldt3.attributes;
 using libldt3.model;
-using libldt3.model.regel;
+using libldt3.model.regel.format;
+using libldt3.model.regel.kontext;
 
 namespace libldt3
 {
@@ -33,18 +34,24 @@ namespace libldt3
             /// <summary>
             /// Dieses Objekt enthält schwangerschaftsspezifische Informationen.
             /// </summary>
-            [Objekt(Value = "0050")]
+            [Objekt(Value = "0050", Kontextregeln = new[] { typeof(K118) })]
             public class Schwangerschaft : Kontext
             {
+                [Objekt]
+                public class LetztePeriode : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "3471", Feldart = Feldart.bedingt_kann)]
+                    [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
+                    public LocalDate? ErrechneterEntbindungstermin;
+
+                }
                 [Feld(Value = "8511", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F005) }, Laenge = 3)]
                 public string Schwangerschaftsdauer;
-                [Feld(Value = "8512", Feldart = Feldart.muss)]
+                [Feld(Value = "8512", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F018) }, Laenge = 8)]
-                public LocalDate? ErsterTagLetzterZyklus;
-                [Feld(Value = "3471", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
-                public LocalDate? Entbindungstermin;
+                public LetztePeriode LetztePeriode;
 
             }
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,33 +32,24 @@ namespace libldt3
             public enum WOP
             {
                 /// Dummy bei eGK
-                Dummy,
+                Dummy_bei_eGK,
                 /// Schleswig-Holstein
                 SchleswigHolstein,
-                /// Hamburg
                 Hamburg,
-                /// Bremen
                 Bremen,
-                /// Niedersachsen
                 Niedersachsen,
                 /// Westfalen-Lippe
                 WestfalenLippe,
-                /// Nordrhein
                 Nordrhein,
-                /// Hessen
                 Hessen,
                 Koblenz,
-                /// Rheinhessen
                 Rheinhessen,
-                /// Pfalz
                 Pfalz,
-                /// Trier
                 Trier,
                 /// Rheinland-Pfalz
                 RheinlandPfalz,
                 /// Baden-Württemberg
                 BadenWuerttemberg,
-                /// Nordbaden
                 Nordbaden,
                 /// Südbaden
                 Suedbaden,
@@ -66,23 +57,18 @@ namespace libldt3
                 Nordwuerttemberg,
                 /// Südwürttemberg
                 Suedwuerttemberg,
-                /// Bayern
                 Bayern,
-                /// Berlin
                 Berlin,
-                /// Saarland
                 Saarland,
-                /// KBV
                 KBV,
                 /// Mecklenburg-Vorpommern
                 MecklenburgVorpommern,
-                /// Brandenburg
                 Brandenburg,
                 /// Sachsen-Anhalt
                 SachsenAnhalt,
                 /// Thüringen
                 Thueringen,
-                /// Sachsen
+                /// ( ) fusioniert, teilweise aber noch in Gebrauch
                 Sachsen
             }
 
@@ -92,7 +78,7 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case WOP.Dummy: return "00";
+                        case WOP.Dummy_bei_eGK: return "00";
                         case WOP.SchleswigHolstein: return "01";
                         case WOP.Hamburg: return "02";
                         case WOP.Bremen: return "03";
@@ -103,7 +89,7 @@ namespace libldt3
                         case WOP.Koblenz: return "47";
                         case WOP.Rheinhessen: return "48";
                         case WOP.Pfalz: return "49";
-                        case WOP.Trier: return "51";
+                        case WOP.Trier: return "50";
                         case WOP.RheinlandPfalz: return "51";
                         case WOP.BadenWuerttemberg: return "52";
                         case WOP.Nordbaden: return "55";

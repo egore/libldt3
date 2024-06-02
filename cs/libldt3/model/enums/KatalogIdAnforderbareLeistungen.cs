@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,14 +31,13 @@ namespace libldt3
             /// </summary>
             public enum KatalogIdAnforderbareLeistungen
             {
-                /// LOINC
                 LOINC,
                 /// LDT ELV
                 LDT_ELV,
                 /// LVZ sonstige
                 LVZ_sonstige,
                 /// sonstige mit URL
-                sonstigeMitURL
+                sonstige_mitURL
             }
 
             public static class KatalogIdAnforderbareLeistungenExtensions
@@ -50,7 +49,7 @@ namespace libldt3
                         case KatalogIdAnforderbareLeistungen.LOINC: return "1";
                         case KatalogIdAnforderbareLeistungen.LDT_ELV: return "2";
                         case KatalogIdAnforderbareLeistungen.LVZ_sonstige: return "3";
-                        case KatalogIdAnforderbareLeistungen.sonstigeMitURL: return "4";
+                        case KatalogIdAnforderbareLeistungen.sonstige_mitURL: return "4";
                         default: throw new Exception();
                     }
                 }

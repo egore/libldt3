@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,35 +32,37 @@ namespace libldt3
             public enum Grenzwertindikator
             {
                 /// im Normalbereich
-                N,
-                /// schwach erhöht
-                H,
-                /// schwach erhöht
-                PLUS,
-                /// stark erhöht
-                HH,
-                /// stark erhöht
-                PLUS_PLUS,
-                /// schwach erniedrigt
-                L,
-                /// schwach erniedrigt
-                MINUS,
-                /// stark erniedrigt
-                LL,
-                /// stark erniedrigt
-                MINUS_MINUS,
-                /// Wert extrem erhöht
-                EXTREM_H,
-                /// Wert extrem erhöht
-                EXTREM_PLUS,
-                /// Wert extrem erniedrigt
-                EXTREM_L,
-                /// Wert extrem erniedrigt
-                EXTREM_MINUS,
-                /// auffällig
-                A,
-                /// sehr auffällig
-                AA
+                imNormalbereich,
+                /// schwach erhöht,
+                schwach_erhoeht,
+                /// schwach erhöht,
+                schwach_erhoeht_,
+                /// stark erhöht,
+                stark_erhoeht,
+                /// stark erhöht,
+                stark_erhoeht_,
+                /// schwach erniedrigt,
+                schwach_erniedrigt,
+                /// schwach erniedrigt,
+                schwach_erniedrigt_,
+                /// stark erniedrigt,
+                stark_erniedrigt,
+                /// stark erniedrigt,
+                stark_erniedrigt_,
+                /// Wert extrem erhöht,
+                Wert_extrem_erhoeht,
+                /// Wert extrem erhöht,
+                Wert_extrem_erhoeht_,
+                /// Wert extrem erniedrigt.
+                Wert_extrem_erniedrigt_,
+                /// Bei nicht numerischen Werten:
+                Wert_extrem_erniedrigt__,
+                /// normal (anzuwenden bei nicht numerischen Werten),
+                normal,
+                /// auffällig (anzuwenden bei nicht numerischen Werten),
+                auffaellig,
+                /// sehr auffällig (anzuwenden bei nicht numerischen Werten).
+                sehr_auffaellig_
             }
 
             public static class GrenzwertindikatorExtensions
@@ -69,21 +71,22 @@ namespace libldt3
                 {
                     switch (self)
                     {
-                        case Grenzwertindikator.N: return "N";
-                        case Grenzwertindikator.H: return "H";
-                        case Grenzwertindikator.PLUS: return "+";
-                        case Grenzwertindikator.HH: return "HH";
-                        case Grenzwertindikator.PLUS_PLUS: return "++";
-                        case Grenzwertindikator.L: return "L";
-                        case Grenzwertindikator.MINUS: return "-";
-                        case Grenzwertindikator.LL: return "LL";
-                        case Grenzwertindikator.MINUS_MINUS: return "--";
-                        case Grenzwertindikator.EXTREM_H: return "!H";
-                        case Grenzwertindikator.EXTREM_PLUS: return "!+";
-                        case Grenzwertindikator.EXTREM_L: return "!L";
-                        case Grenzwertindikator.EXTREM_MINUS: return "!-";
-                        case Grenzwertindikator.A: return "A";
-                        case Grenzwertindikator.AA: return "AA";
+                        case Grenzwertindikator.imNormalbereich: return "N";
+                        case Grenzwertindikator.schwach_erhoeht: return "H";
+                        case Grenzwertindikator.schwach_erhoeht_: return "+";
+                        case Grenzwertindikator.stark_erhoeht: return "HH";
+                        case Grenzwertindikator.stark_erhoeht_: return "++";
+                        case Grenzwertindikator.schwach_erniedrigt: return "L";
+                        case Grenzwertindikator.schwach_erniedrigt_: return "-";
+                        case Grenzwertindikator.stark_erniedrigt: return "LL";
+                        case Grenzwertindikator.stark_erniedrigt_: return "–";
+                        case Grenzwertindikator.Wert_extrem_erhoeht: return "!H";
+                        case Grenzwertindikator.Wert_extrem_erhoeht_: return "!+";
+                        case Grenzwertindikator.Wert_extrem_erniedrigt_: return "!L";
+                        case Grenzwertindikator.Wert_extrem_erniedrigt__: return "!-";
+                        case Grenzwertindikator.normal: return "N";
+                        case Grenzwertindikator.auffaellig: return "A";
+                        case Grenzwertindikator.sehr_auffaellig_: return "AA";
                         default: throw new Exception();
                     }
                 }

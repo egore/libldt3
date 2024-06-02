@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,14 +29,17 @@ namespace libldt3
             /// <summary>
             /// E055
             /// </summary>
-            /// Direkter Coombstest (DCT)
             public enum DirekterCoombstest
             {
                 negativ,
-                einfachPositiv,
-                zweifachPositiv,
-                dreifachPositiv,
-                viewfachPositiv
+                /// 1-fach positiv
+                einfach_positiv,
+                /// 2-fach positiv
+                zweifach_positiv,
+                /// 3-fach positiv
+                dreifach_positiv,
+                /// 4-fach positiv
+                vierfach_positiv
             }
 
             public static class DirekterCoombstestExtensions
@@ -46,10 +49,10 @@ namespace libldt3
                     switch (self)
                     {
                         case DirekterCoombstest.negativ: return "0";
-                        case DirekterCoombstest.einfachPositiv: return "1";
-                        case DirekterCoombstest.zweifachPositiv: return "2";
-                        case DirekterCoombstest.dreifachPositiv: return "3";
-                        case DirekterCoombstest.viewfachPositiv: return "4";
+                        case DirekterCoombstest.einfach_positiv: return "1";
+                        case DirekterCoombstest.zweifach_positiv: return "2";
+                        case DirekterCoombstest.dreifach_positiv: return "3";
+                        case DirekterCoombstest.vierfach_positiv: return "4";
                         default: throw new Exception();
                     }
                 }

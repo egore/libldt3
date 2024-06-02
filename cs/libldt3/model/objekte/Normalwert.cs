@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2022  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,51 +33,105 @@ namespace libldt3
             /// <summary>
             /// Mit diesem Objekt werden Norm- und Referenzbereiche strukturiert dargestellt.
             /// </summary>
-            [Objekt(Value = "0042", Kontextregeln = new[] { typeof(K099) })]
+            [Objekt(Value = "0042", Kontextregeln = new[] { typeof(K054), typeof(K055) })]
             public class Normalwert : Kontext
             {
-                [Objekt(Kontextregeln = new[] { typeof(K002) })]
-                public class NormalwertGrenze : Kontext
+                [Objekt]
+                public class Normalwertspezifikation : Kontext
                 {
-                    public float? Value;
-                    [Feld(Value = "8419", Feldart = Feldart.kann)]
+                    public Normwertspezifikation? Value;
+                    [Feld(Value = "8167", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 26)]
+                    public Fliesstext ZusaetzlicheInformationen;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K002) })]
+                public class NormalwertUntereGrenze : Kontext
+                {
+                    public float Value;
+                    [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
                     [Regelsatz(Laenge = 1)]
-                    public EinheitMesswert? EinheitDesWertes;
+                    public EinheitensystemMesswerteWertes EinheitensystemMesswerteWertes;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K002) })]
+                public class EinheitensystemMesswerteWertes : Kontext
+                {
+                    public EinheitMesswert? Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
-                    [Regelsatz(MaxLaenge = 20)]
-                    public string SizeUnit;
+                    [Regelsatz(MaxLaenge = 60)]
+                    public string MasseinheitMesswerteWertes;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K002) })]
+                public class NormalwertObereGrenze : Kontext
+                {
+                    public float Value;
+                    [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 1)]
+                    public EinheitMesswert? EinheitensystemMesswerteWertes;
+
+                }
+                [Objekt]
+                public class NormalwertListenbezeichnung : Kontext
+                {
+                    public string Value;
+                    [Feld(Value = "7317", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(MaxLaenge = 60)]
+                    public IList<string> NormalwertListenzeile;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K002) })]
+                public class AlarmwertUntereGrenze : Kontext
+                {
+                    public float Value;
+                    [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 1)]
+                    public EinheitMesswert? EinheitensystemMesswerteWertes;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K002) })]
+                public class AlarmwertObereGrenze : Kontext
+                {
+                    public float Value;
+                    [Feld(Value = "8419", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 1)]
+                    public EinheitMesswert? EinheitensystemMesswerteWertes;
+
+                }
+                [Objekt(Kontextregeln = new[] { typeof(K099) })]
+                public class GrenzwertindikatorLaborwerte : Kontext
+                {
+                    public Grenzwertindikator? Value;
+                    [Feld(Value = "8126", Feldart = Feldart.bedingt_muss)]
+                    [Regelsatz(Laenge = 28)]
+                    public FehlermeldungAufmerksamkeit FehlermeldungAufmerksamkeit;
 
                 }
                 [Feld(Value = "8424", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public Normwertspezifikation? Normwertspezifikation;
-                [Feld(Value = "8167", Name = "Zusaetzliche_Informationen", Feldart = Feldart.bedingt_kann)]
-                [Regelsatz(Laenge = 26)]
-                public Fliesstext ZusaetzlicheInformationen;
+                public Normalwertspezifikation Normalwertspezifikation;
                 [Feld(Value = "8460", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 990)]
                 public IList<string> NormalwertText;
                 [Feld(Value = "8461", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze NormalwertUntereGrenze;
+                public NormalwertUntereGrenze NormalwertUntereGrenze;
                 [Feld(Value = "8462", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze NormalwertObereGrenze;
+                public NormalwertObereGrenze NormalwertObereGrenze;
                 [Feld(Value = "7316", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public string NormalwertListenbezeichnung;
-                [Feld(Value = "7317", Feldart = Feldart.bedingt_muss)]
-                [Regelsatz(MaxLaenge = 60)]
-                public IList<string> NormalwertListenzeile;
+                public NormalwertListenbezeichnung NormalwertListenbezeichnung;
                 [Feld(Value = "7363", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze AlarmwertUntereGrenze;
+                public AlarmwertUntereGrenze AlarmwertUntereGrenze;
                 [Feld(Value = "7371", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public NormalwertGrenze AlarmwertObereGrenze;
+                public AlarmwertObereGrenze AlarmwertObereGrenze;
                 [Feld(Value = "8422", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
-                public GrenzwertindikatorErweitert Grenzwertindikator;
+                public GrenzwertindikatorLaborwerte GrenzwertindikatorLaborwerte;
 
             }
         }
