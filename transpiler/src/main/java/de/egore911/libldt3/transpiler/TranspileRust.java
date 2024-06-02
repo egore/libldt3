@@ -61,6 +61,8 @@ public class TranspileRust {
                     || type.getPackage().getQualifiedName().equals("libldt3.model.objekte")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.enums")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.regel")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.regel.erlaubt")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.regel.format")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.regel.kontext")) {
                 Set<String> mod = mods.computeIfAbsent(type.getPackage().getQualifiedName().substring("libldt3.model.".length()), x -> new TreeSet<>());
                 mod.add(type.getSimpleName());

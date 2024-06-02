@@ -64,6 +64,8 @@ public class TranspileCsharp {
         Files.list(model.resolve("objekte")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
         Files.list(model.resolve("enums")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
         Files.list(model.resolve("regel")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
+        Files.list(model.resolve("regel").resolve("erlaubt")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
+        Files.list(model.resolve("regel").resolve("format")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
         Files.list(model.resolve("regel").resolve("kontext")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
 
         for (CtType<?> type : launcher.getModel().getAllTypes()) {
@@ -71,6 +73,8 @@ public class TranspileCsharp {
                     || type.getPackage().getQualifiedName().equals("libldt3.model.objekte")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.enums")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.regel")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.regel.erlaubt")
+                    || type.getPackage().getQualifiedName().equals("libldt3.model.regel.format")
                     || type.getPackage().getQualifiedName().equals("libldt3.model.regel.kontext")) {
                 Path file = getOutputFile(base, type);
                 Template template;
