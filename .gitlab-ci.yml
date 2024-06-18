@@ -28,6 +28,9 @@ include:
   - project: "appframework/gitlab-pipelines"
     ref: "main"
     file: "/steps/maven-sonar.yml"
+  - project: "appframework/gitlab-pipelines"
+    ref: "main"
+    file: "/steps/git-commit.yml"
 
 stages:
   - build
@@ -66,3 +69,10 @@ transpile:
   needs:
     - compile
   script: java -jar transpiler/target/libldt3-transpiler-*.jar
+
+commit:
+  stage: transpile
+  needs:
+    - transpile
+  extends:
+    - .step-git-commit
