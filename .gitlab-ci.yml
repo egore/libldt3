@@ -69,10 +69,16 @@ transpile:
   needs:
     - compile
   script: java -jar transpiler/target/libldt3-transpiler-*.jar
+  artifacts:
+    paths:
+    - rust/src
+    - cs
 
 commit:
   stage: transpile
   needs:
     - transpile
+  variables:
+    GIT_ADD_FILES: cs rust/src
   extends:
     - .step-git-commit
