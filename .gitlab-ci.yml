@@ -19,7 +19,7 @@ variables:
   GIT_SUBMODULE_STRATEGY: recursive
   GIT_SUBMODULE_FORCE_HTTPS: "true"
 
-image: maven:3-eclipse-temurin-21
+image: $DOCKER_MIRROR_URL/library/maven:3-eclipse-temurin-21
 
 include:
   - project: "appframework/gitlab-pipelines"
