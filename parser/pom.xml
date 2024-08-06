@@ -9,7 +9,7 @@
 		<version.java>17</version.java>
 		<maven.compiler.target>${version.java}</maven.compiler.target>
 		<maven.compiler.source>${version.java}</maven.compiler.source>
-		<version.antlr>4.13.1</version.antlr>
+		<version.antlr>4.13.2</version.antlr>
 	</properties>
 
 	<dependencies>
