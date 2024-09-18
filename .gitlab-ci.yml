@@ -1,7 +1,7 @@
 variables:
   MAVEN_OPTS: >-
     -Dhttps.protocols=TLSv1.2
-    -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository
+    -Dmaven.repo.local=$CI_BUILDS_DIR/.m2/repository
     -Dorg.slf4j.simpleLogger.showDateTime=true
     -Djava.awt.headless=true
 
@@ -40,7 +40,7 @@ stages:
 cache:
   key: "${CI_COMMIT_REF_SLUG}"
   paths:
-    - .m2/repository/
+    - ${CI_BUILDS_DIR}/.m2/repository/
     - target/
     - java/target/
     - transpiler/target/
