@@ -14,36 +14,38 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import de.egore911.libldt3.transpiler.directives.rust.ConvertRustTypeDirective;
 import de.egore911.libldt3.transpiler.directives.rust.GenUseDirective;
 import de.egore911.libldt3.transpiler.directives.rust.SnakeCaseDirective;
 import freemarker.cache.ClassTemplateLoader;
-import freemarker.core.ParseException;
 import freemarker.template.Configuration;
-import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import freemarker.template.TemplateNotFoundException;
 import spoon.MavenLauncher;
 import spoon.reflect.declaration.CtType;
 
 public class TranspileRust {
 
-    public static void main(String[] args) throws TemplateNotFoundException, MalformedTemplateNameException,
-            ParseException, IOException, TemplateException {
+    private static final Logger LOG = LoggerFactory.getLogger(TranspileRust.class);
+
+    public static void main(String[] args) throws IOException, TemplateException {
 
         // Install java.util.Logging bridge to slf4j
         SLF4JBridgeHandler.removeHandlersForRootLogger();
         SLF4JBridgeHandler.install();
 
         // Read the maven model from the java folder
-        MavenLauncher launcher = new MavenLauncher("../java", MavenLauncher.SOURCE_TYPE.APP_SOURCE);
+        MavenLauncher launcher = new MavenLauncher("./java", MavenLauncher.SOURCE_TYPE.APP_SOURCE);
+        launcher.getEnvironment().setLevel("DEBUG");
+        launcher.getEnvironment().setNoClasspath(true);
         launcher.run();
 
         // Build up the freemarker configuration for C#
-        Configuration config = new Configuration(Configuration.VERSION_2_3_31);
+        Configuration config = new Configuration(Configuration.VERSION_2_3_32);
         config.setTemplateLoader(new ClassTemplateLoader(TranspileCsharp.class, "/rust/"));
 
         // Add several directives which were simpler to implement in Java than in .ftl files
@@ -51,7 +53,7 @@ public class TranspileRust {
         config.setSharedVariable("converttype", new ConvertRustTypeDirective());
         config.setSharedVariable("snakecase", new SnakeCaseDirective());
 
-        Path base = Paths.get("../rust");
+        Path base = Paths.get("./rust");
 
         // TODO mod.rs
         Map<String, Set<String>> mods = new HashMap<>();
@@ -69,7 +71,7 @@ public class TranspileRust {
 
                 Path file = getOutputFile(base, type);
                 Template template;
-                if (type.isClass() ) {
+                if (type.isClass()) {
                     template = config.getTemplate("struct.ftl");
                 } else if (type.isInterface()) {
                     template = config.getTemplate("trait.ftl");
@@ -113,7 +115,7 @@ public class TranspileRust {
             }
         }
 
-        System.err.println("DONE");
+        LOG.info("DONE");
     }
 
     private static Path getOutputFile(Path base, CtType<?> type) throws IOException {
@@ -123,7 +125,7 @@ public class TranspileRust {
         }
         Files.createDirectories(dir);
 
-        Path file = dir.resolve(type.getSimpleName() + ".rs");
-        return file;
+        return dir.resolve(type.getSimpleName() + ".rs");
     }
+
 }

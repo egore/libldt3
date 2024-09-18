@@ -1,6 +1,5 @@
 package de.egore911.libldt3.transpiler;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
@@ -10,6 +9,8 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Collections;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import de.egore911.libldt3.transpiler.directives.ConstructorFixupDirective;
@@ -19,16 +20,15 @@ import de.egore911.libldt3.transpiler.directives.NamespaceDirective;
 import de.egore911.libldt3.transpiler.directives.cs.ConvertCsTypeDirective;
 import de.egore911.libldt3.transpiler.directives.cs.GenUsingDirective;
 import freemarker.cache.ClassTemplateLoader;
-import freemarker.core.ParseException;
 import freemarker.template.Configuration;
-import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import freemarker.template.TemplateNotFoundException;
 import spoon.MavenLauncher;
 import spoon.reflect.declaration.CtType;
 
 public class TranspileCsharp {
+
+    private static final Logger LOG = LoggerFactory.getLogger(TranspileCsharp.class);
 
     public static void main(String[] args) throws IOException, TemplateException {
 
@@ -60,13 +60,14 @@ public class TranspileCsharp {
         Path base = Paths.get("./cs");
 
         Path model = base.resolve("libldt3").resolve("model");
-        Files.list(model.resolve("saetze")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
-        Files.list(model.resolve("objekte")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
-        Files.list(model.resolve("enums")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
-        Files.list(model.resolve("regel")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
-        Files.list(model.resolve("regel").resolve("erlaubt")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
-        Files.list(model.resolve("regel").resolve("format")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
-        Files.list(model.resolve("regel").resolve("kontext")).map(Path::toFile).filter(File::isFile).forEach(File::delete);
+        deleteFiles(model.resolve("saetze"));
+        deleteFiles(model.resolve("saetze"));
+        deleteFiles(model.resolve("objekte"));
+        deleteFiles(model.resolve("enums"));
+        deleteFiles(model.resolve("regel"));
+        deleteFiles(model.resolve("regel").resolve("erlaubt"));
+        deleteFiles(model.resolve("regel").resolve("format"));
+        deleteFiles(model.resolve("regel").resolve("kontext"));
 
         for (CtType<?> type : launcher.getModel().getAllTypes()) {
             if (type.getPackage().getQualifiedName().equals("libldt3.model.saetze")
@@ -94,8 +95,22 @@ public class TranspileCsharp {
             }
         }
 
-        System.err.println("DONE");
+        LOG.info("DONE");
 
+    }
+
+    private static void deleteFiles(Path path) throws IOException {
+        try (var files = Files.list(path)) {
+            files
+                    .filter(Files::isRegularFile)
+                    .forEach(file -> {
+                        try {
+                            Files.delete(file);
+                        } catch (IOException e) {
+                            LOG.warn("Failed to delete file {}: {}", file, e.getMessage());
+                        }
+                    });
+        }
     }
 
     private static Path getOutputFile(Path base, CtType<?> type) throws IOException {
@@ -105,8 +120,7 @@ public class TranspileCsharp {
         }
         Files.createDirectories(dir);
 
-        Path file = dir.resolve(type.getSimpleName() + ".cs");
-        return file;
+        return dir.resolve(type.getSimpleName() + ".cs");
     }
 
 }
