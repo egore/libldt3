@@ -37,7 +37,7 @@ namespace libldt3
             public class Diagnose : Kontext
             {
                 [Objekt]
-                public class IcdCode_ : Kontext
+                public class IcdCode : Kontext
                 {
                     public string Value;
                     [Feld(Value = "6003", Feldart = Feldart.bedingt_kann)]
@@ -59,7 +59,7 @@ namespace libldt3
                 public IList<string> DiagnoseVerdachtsdiagnose;
                 [Feld(Value = "6001", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F004) }, MinLaenge = 3, MaxLaenge = 6)]
-                public IcdCode_ IcdCode;
+                public IcdCode IcdCode;
 
             }
         }

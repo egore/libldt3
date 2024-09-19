@@ -39,7 +39,7 @@ namespace libldt3
             public class Betriebsstaette : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K020), typeof(K044) })]
-                public class BsnrBezeichnung_ : Kontext
+                public class BsnrBezeichnung : Kontext
                 {
                     public string Value;
                     [Feld(Value = "0200", Feldart = Feldart.bedingt_muss)]
@@ -61,7 +61,7 @@ namespace libldt3
                 public IList<Betriebsstaettenstatus?> StatusBetriebsstaette;
                 [Feld(Value = "0203", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public BsnrBezeichnung_ BsnrBezeichnung;
+                public BsnrBezeichnung BsnrBezeichnung;
 
             }
         }

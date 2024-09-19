@@ -43,7 +43,7 @@ namespace libldt3
                     public WirkstoffCode WirkstoffCode;
                     [Feld(Value = "8523", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(MaxLaenge = 60)]
-                    public WirkstoffmengeMengeBezugsmengeWirkstaerke_ WirkstoffmengeMengeBezugsmengeWirkstaerke;
+                    public WirkstoffmengeMengeBezugsmengeWirkstaerke WirkstoffmengeMengeBezugsmengeWirkstaerke;
 
                 }
                 [Objekt]
@@ -56,7 +56,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class WirkstoffmengeMengeBezugsmengeWirkstaerke_ : Kontext
+                public class WirkstoffmengeMengeBezugsmengeWirkstaerke : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]

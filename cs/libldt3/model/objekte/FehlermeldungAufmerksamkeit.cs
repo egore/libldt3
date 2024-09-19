@@ -43,11 +43,11 @@ namespace libldt3
                     public Benachrichtigungsgrund? Value;
                     [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
                     [Regelsatz(Laenge = 1)]
-                    public RecallEmpfohlen_ RecallEmpfohlen;
+                    public RecallEmpfohlen RecallEmpfohlen;
 
                 }
                 [Objekt]
-                public class RecallEmpfohlen_ : Kontext
+                public class RecallEmpfohlen : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8154", Feldart = Feldart.bedingt_muss)]

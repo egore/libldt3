@@ -40,7 +40,7 @@ namespace libldt3
             public class KrebsfrueherkennungZervixKarzinom : Kontext
             {
                 [Objekt]
-                public class Gyn_OpStrahlenOderChemotherapieGenitale_ : Kontext
+                public class Gyn_OpStrahlenOderChemotherapieGenitale : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "7337", Feldart = Feldart.bedingt_kann)]
@@ -49,7 +49,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K128) })]
-                public class HpvHrTest_ : Kontext
+                public class HpvHrTest : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "3316", Feldart = Feldart.bedingt_muss)]
@@ -77,7 +77,7 @@ namespace libldt3
                 public string Gruppe;
                 [Feld(Value = "7336", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public Gyn_OpStrahlenOderChemotherapieGenitale_ Gyn_OpStrahlenOderChemotherapieGenitale;
+                public Gyn_OpStrahlenOderChemotherapieGenitale Gyn_OpStrahlenOderChemotherapieGenitale;
                 [Feld(Value = "7338", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F018) }, Laenge = 8)]
                 public string Gyn_OpStrahlenOderChemotherapieGenitaleWann;
@@ -107,7 +107,7 @@ namespace libldt3
                 public HpvImpfung? HpvImpfung;
                 [Feld(Value = "3314", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 1)]
-                public HpvHrTest_ HpvHrTest;
+                public HpvHrTest HpvHrTest;
                 [Feld(Value = "8167", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 26)]
                 public IList<Fliesstext> ZusaetzlicheInformationenObjKrebsfrueherkennungZervixKarzinom;

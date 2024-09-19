@@ -19,10 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using NodaTime;
-using System.Diagnostics;
-using System.Reflection;
 using Microsoft.Extensions.Logging;
+using NodaTime;
+using System.Reflection;
+using java.time.chrono;
 using libldt3.model;
 
 namespace libldt3
@@ -44,7 +44,7 @@ namespace libldt3
                 public class K090 : Kontextregel
                 {
                     private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K090));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "4109", "4104", "3105", "4110" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet { "4109", "4104", "3105", "4110" };
 
                     public bool IsValid(Kontext owner)
                     {
@@ -59,7 +59,7 @@ namespace libldt3
                         string feld4104 = (string)KontextregelHelper.GetFieldValue(fields["4104"], owner);
                         if (feld4109 != null && !feld4109.IsBefore(LocalDate.Parse("01.01.2015")))
                         {
-                            if (Int32.Parse(feld4104.Substring(3, 5)) >= 800)
+                            if (int?.ParseInt(feld4104.Substring(3, 5)) >= 800)
                             {
                                 return KontextregelHelper.ContainsAnyValue(fields["3105"], owner) && KontextregelHelper.ContainsAnyValue(fields["4110"], owner);
                             }

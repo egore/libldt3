@@ -44,7 +44,7 @@ namespace libldt3
             public class SonstigeUntersuchungsergebnisse : Kontext
             {
                 [Objekt]
-                public class ErgebnisId_ : Kontext
+                public class ErgebnisId : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7320", Feldart = Feldart.bedingt_kann)]
@@ -62,7 +62,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K053) })]
-                public class KatalogAnforderbareLeistungenId_ : Kontext
+                public class KatalogAnforderbareLeistungenId : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -86,7 +86,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class TestIdent_ : Kontext
+                public class TestIdent : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
@@ -95,7 +95,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Ergebnisstatus_ : Kontext
+                public class Ergebnisstatus : Kontext
                 {
                     public TestStatus? Value;
                     [Feld(Value = "8422", Feldart = Feldart.bedingt_kann)]
@@ -117,19 +117,19 @@ namespace libldt3
                 public Fachgebiet? Fachgebiet;
                 [Feld(Value = "7304", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public ErgebnisId_ ErgebnisId;
+                public ErgebnisId ErgebnisId;
                 [Feld(Value = "7364", Feldart = Feldart.bedingt_kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> ProbengefaessIdent;
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public IList<KatalogAnforderbareLeistungenId_> KatalogAnforderbareLeistungenId;
+                public IList<KatalogAnforderbareLeistungenId> KatalogAnforderbareLeistungenId;
                 [Feld(Value = "8410", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 20)]
-                public IList<TestIdent_> TestIdent;
+                public IList<TestIdent> TestIdent;
                 [Feld(Value = "8418", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public Ergebnisstatus_ Ergebnisstatus;
+                public Ergebnisstatus Ergebnisstatus;
                 [Feld(Value = "8237", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 12)]
                 public Fliesstext Ergebnistext;

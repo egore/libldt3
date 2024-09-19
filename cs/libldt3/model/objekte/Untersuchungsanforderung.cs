@@ -39,7 +39,7 @@ namespace libldt3
             public class Untersuchungsanforderung : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K053) })]
-                public class KatalogAnforderbareLeistungenId_ : Kontext
+                public class KatalogAnforderbareLeistungenId : Kontext
                 {
                     public KatalogIdAnforderbareLeistungen? Value;
                     [Feld(Value = "7352", Feldart = Feldart.bedingt_muss)]
@@ -63,7 +63,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K003) })]
-                public class TestIdent_ : Kontext
+                public class TestIdent : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
@@ -84,7 +84,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class EinwilligungserklaerungDesPatientenLiegtVor_ : Kontext
+                public class EinwilligungserklaerungDesPatientenLiegtVor : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8110", Feldart = Feldart.bedingt_muss)]
@@ -94,13 +94,13 @@ namespace libldt3
                 }
                 [Feld(Value = "7260", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 1)]
-                public KatalogAnforderbareLeistungenId_ KatalogAnforderbareLeistungenId;
+                public KatalogAnforderbareLeistungenId KatalogAnforderbareLeistungenId;
                 [Feld(Value = "7276", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
                 public string VerwendeterNummernpoolId;
                 [Feld(Value = "8410", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 20)]
-                public TestIdent_ TestIdent;
+                public TestIdent TestIdent;
                 [Feld(Value = "7303", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 2)]
                 public Abrechnungsinfo? AbrechnungsinfoZurUntersuchung;
@@ -133,7 +133,7 @@ namespace libldt3
                 public Fliesstext AuftragsbezogeneHinweise;
                 [Feld(Value = "8491", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public EinwilligungserklaerungDesPatientenLiegtVor_ EinwilligungserklaerungDesPatientenLiegtVor;
+                public EinwilligungserklaerungDesPatientenLiegtVor EinwilligungserklaerungDesPatientenLiegtVor;
                 [Feld(Value = "8213", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 45)]
                 public Timestamp TimestampErstellung;

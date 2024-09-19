@@ -35,7 +35,7 @@ namespace libldt3
             public class Mutterschaft : Kontext
             {
                 [Objekt]
-                public class AnzahlSchwangerschaften_ : Kontext
+                public class AnzahlSchwangerschaften : Kontext
                 {
                     public string Value;
                     [Feld(Value = "3664", Feldart = Feldart.bedingt_kann)]
@@ -48,7 +48,7 @@ namespace libldt3
                 }
                 [Feld(Value = "3668", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
-                public AnzahlSchwangerschaften_ AnzahlSchwangerschaften;
+                public AnzahlSchwangerschaften AnzahlSchwangerschaften;
 
             }
         }

@@ -19,9 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Diagnostics;
-using System.Reflection;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 using libldt3.model;
 
 namespace libldt3
@@ -39,7 +38,7 @@ namespace libldt3
                 public class K078 : Kontextregel
                 {
                     private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K078));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8225" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8225" };
 
                     public bool IsValid(Kontext owner)
                     {
@@ -51,7 +50,7 @@ namespace libldt3
                         }
 
 
-                        K078.LOG.LogWarning("Ignoring rule {}", this.GetType().GetSimpleName())
+                        K078.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
                         ;
                         return true;
                     }

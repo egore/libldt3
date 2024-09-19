@@ -19,9 +19,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Diagnostics;
-using System.Reflection;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -45,7 +44,7 @@ namespace libldt3
                 public class K117 : Kontextregel
                 {
                     private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K117));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8147" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8147" };
 
                     public bool IsValid(Kontext owner)
                     {
@@ -65,7 +64,7 @@ namespace libldt3
                         if (person.Status != StatusPerson.Halter && person.Status != StatusPerson.sonstige_juristischePerson)
                         {
 
-                            K117.LOG.LogError("Person had invalid status {}", person.Status)
+                            K117.LOG.Error("Person had invalid status {}", person.Status)
                             ;
                             return false;
                         }

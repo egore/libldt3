@@ -69,7 +69,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class KatalogAbrechenbareLeistungenId_ : Kontext
+                public class KatalogAbrechenbareLeistungenId : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7251", Feldart = Feldart.kann)]
@@ -85,7 +85,7 @@ namespace libldt3
                 public Untersuchungsabrechnung_Gebuehrenordnung Gebuehrenordnung;
                 [Feld(Value = "7259", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public KatalogAbrechenbareLeistungenId_ KatalogAbrechenbareLeistungenId;
+                public KatalogAbrechenbareLeistungenId KatalogAbrechenbareLeistungenId;
 
             }
         }

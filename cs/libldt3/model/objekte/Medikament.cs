@@ -37,7 +37,7 @@ namespace libldt3
             public class Medikament : Kontext
             {
                 [Objekt]
-                public class Rezeptur_ : Kontext
+                public class Rezeptur : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8171", Feldart = Feldart.bedingt_muss)]
@@ -49,7 +49,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class WirkstoffmengeMengeBezugsmengeWirkstaerke_ : Kontext
+                public class WirkstoffmengeMengeBezugsmengeWirkstaerke : Kontext
                 {
                     public float Value;
                     [Feld(Value = "8421", Feldart = Feldart.bedingt_muss)]
@@ -65,10 +65,10 @@ namespace libldt3
                 public string HandelsnameArzneimittel;
                 [Feld(Value = "6207", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 990)]
-                public Rezeptur_ Rezeptur;
+                public Rezeptur Rezeptur;
                 [Feld(Value = "8523", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public WirkstoffmengeMengeBezugsmengeWirkstaerke_ WirkstoffmengeMengeBezugsmengeWirkstaerke;
+                public WirkstoffmengeMengeBezugsmengeWirkstaerke WirkstoffmengeMengeBezugsmengeWirkstaerke;
                 [Feld(Value = "3689", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public IList<MedikationsStatus?> StatusMedikation;

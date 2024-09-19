@@ -38,7 +38,7 @@ namespace libldt3
             public class Schwangerschaft : Kontext
             {
                 [Objekt]
-                public class LetztePeriode_ : Kontext
+                public class LetztePeriode : Kontext
                 {
                     public string Value;
                     [Feld(Value = "3471", Feldart = Feldart.bedingt_kann)]
@@ -51,7 +51,7 @@ namespace libldt3
                 public string Schwangerschaftsdauer;
                 [Feld(Value = "8512", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F018) }, Laenge = 8)]
-                public LetztePeriode_ LetztePeriode;
+                public LetztePeriode LetztePeriode;
 
             }
         }

@@ -19,9 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using System.Diagnostics;
-using System.Reflection;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
+using java.util.function;
+using java.util.stream;
 using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -40,7 +41,7 @@ namespace libldt3
                 public class K085 : Kontextregel
                 {
                     private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K085));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet<string> { "8111", "7286" };
+                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8111", "7286" };
 
                     public bool IsValid(Kontext owner)
                     {
@@ -54,7 +55,7 @@ namespace libldt3
                         IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode> feld7286 = (IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode>)KontextregelHelper.GetFieldValue(fields["7286"], owner);
                         if (feld7286 != null)
                         {
-                            bool found = feld7286.Stream().AnyMatch();
+                            bool found = feld7286.Stream().AnyMatch(// XXX renderExpression CtLambdaImpl is unknown);
     if (!found)
                             {
                                 if (KontextregelHelper.ContainsAnyValue(fields["8111"], owner))

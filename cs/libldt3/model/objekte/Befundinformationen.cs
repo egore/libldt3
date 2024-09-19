@@ -62,7 +62,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K005), typeof(K096) })]
-                public class AuftragsnummerLaborId_ : Kontext
+                public class AuftragsnummerLaborId : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7305", Feldart = Feldart.bedingt_muss)]
@@ -74,7 +74,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class DerFallakteOderStudieId_ : Kontext
+                public class DerFallakteOderStudieId : Kontext
                 {
                     public string Value;
                     [Feld(Value = "0081", Feldart = Feldart.bedingt_kann)]
@@ -83,7 +83,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class KatalogDurchgefuehrteLeistungenId_ : Kontext
+                public class KatalogDurchgefuehrteLeistungenId : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7251", Feldart = Feldart.bedingt_kann)]
@@ -101,7 +101,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class RecallEmpfohlen_ : Kontext
+                public class RecallEmpfohlen : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "8154", Feldart = Feldart.bedingt_muss)]
@@ -150,13 +150,13 @@ namespace libldt3
                 public string IdentifikationAktenzeichenOeGd;
                 [Feld(Value = "8311", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public AuftragsnummerLaborId_ AuftragsnummerLaborId;
+                public AuftragsnummerLaborId AuftragsnummerLaborId;
                 [Feld(Value = "0080", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public DerFallakteOderStudieId_ DerFallakteOderStudieId;
+                public DerFallakteOderStudieId DerFallakteOderStudieId;
                 [Feld(Value = "7258", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public KatalogDurchgefuehrteLeistungenId_ KatalogDurchgefuehrteLeistungenId;
+                public KatalogDurchgefuehrteLeistungenId KatalogDurchgefuehrteLeistungenId;
                 [Feld(Value = "4229", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 5)]
                 public IList<string> Knappschaftskennziffer;
@@ -168,7 +168,7 @@ namespace libldt3
                 public IList<Befundinformationen_ZusaetzlicherBefundweg> ZusaetzlicherBefundweg;
                 [Feld(Value = "7320", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public RecallEmpfohlen_ RecallEmpfohlen;
+                public RecallEmpfohlen RecallEmpfohlen;
                 [Feld(Value = "8247", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 34)]
                 public IList<Fliesstext> DiagnostischeBewertungEmpfehlung;
