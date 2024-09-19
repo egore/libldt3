@@ -74,10 +74,20 @@ transpile:
     - rust/src
     - cs
 
-commit:
+transpile:cs:
   stage: transpile
   needs:
     - transpile
+  image:
+    $DOCKER_MIRROR_URL/bitnami/dotnet:latest
+  script:
+    - cd cs
+    - dotnet format
+
+commit:
+  stage: transpile
+  needs:
+    - transpile:cs
   variables:
     GIT_ADD_FILES: cs rust/src
   extends:
