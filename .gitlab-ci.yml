@@ -79,7 +79,7 @@ transpile:cs:
   needs:
     - transpile
   image:
-    $DOCKER_MIRROR_URL/bitnami/dotnet:latest
+    mcr.microsoft.com/dotnet/sdk:latest
   script:
     - cd cs
     - dotnet format
