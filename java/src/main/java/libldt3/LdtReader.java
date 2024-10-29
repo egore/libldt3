@@ -33,11 +33,12 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
@@ -109,21 +110,21 @@ public class LdtReader {
      * @return the list of Satz elements found in the LDT file
      */
     public List<Satz> read(Stream<String> stream) {
-        Stack<Kontext> stack = new Stack<>();
+        Deque<Kontext> stack = new LinkedList<>();
         List<Satz> data = new ArrayList<>();
         AtomicInteger integer = new AtomicInteger();
         stream.forEach(line -> handleInput(line, stack, data, integer.incrementAndGet()));
         return data;
     }
 
-    private void handleInput(String line, Stack<Kontext> stack, List<Satz> data, int lineNo) {
+    private void handleInput(String line, Deque<Kontext> stack, List<Satz> data, int lineNo) {
         LOG.trace("Reading line {}", line);
 
         // Check if the line meets the minimum requirements (3 digits for
         // length, 4 digits for the identifier)
         if (line.length() < 7) {
             if (mode == Mode.STRICT) {
-                throw new IllegalArgumentException("Line '" + line + "' was less than 7 characters, aborting");
+                throw new IllegalArgumentException(String.format("Line '%s' was less than 7 characters, aborting", line));
             } else {
                 LOG.error("Line '{}' was less than 7 characters, continuing anyway", line);
             }
@@ -134,7 +135,7 @@ public class LdtReader {
         if (length != line.length() + 2) {
             if (mode == Mode.STRICT) {
                 throw new IllegalArgumentException(
-                        "Line '" + line + "' should have length " + (line.length() + 2) + ", but was " + length);
+                        String.format("Line '%s' should have length %d, but was %d", line, line.length() + 2, length));
             } else {
                 LOG.warn("Line '{}' should have length {}, but was {}. Ignoring specified length", line,
                         (line.length() + 2), length);
@@ -227,7 +228,7 @@ public class LdtReader {
                 }
             }
             if (mode == Mode.STRICT) {
-                throw new IllegalArgumentException("Line '" + line + "' started an unexpeted object");
+                throw new IllegalArgumentException(String.format("Line '%s' started an unexpeted object", line));
             } else {
                 LOG.warn("Line '{}' started an unexpeted object, stack was {}", line, stack);
             }
@@ -354,30 +355,24 @@ public class LdtReader {
 
     private void validateFieldPayload(Field field, String payload)
             throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
-        outer: for (Regelsatz regelsatz : field.getAnnotationsByType(Regelsatz.class)) {
+        for (Regelsatz regelsatz : field.getAnnotationsByType(Regelsatz.class)) {
 
-            if (regelsatz.laenge() >= 0) {
-                if (payload.length() != regelsatz.laenge()) {
-                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value "
-                            + payload + " did not match expected length " + regelsatz.laenge() + ", was "
-                            + payload.length());
-                }
+            if (regelsatz.laenge() >= 0 && payload.length() != regelsatz.laenge()) {
+                validationFailed(String.format("%s.%s: Value %s did not match expected length %d, was %d",
+                        field.getDeclaringClass().getSimpleName(), field.getName(), payload, regelsatz.laenge(),
+                        payload.length()));
             }
 
-            if (regelsatz.minLaenge() >= 0) {
-                if (payload.length() < regelsatz.minLaenge()) {
-                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value "
-                            + payload + " did not match expected minimum length " + regelsatz.minLaenge() + ", was "
-                            + payload.length());
-                }
+            if (regelsatz.minLaenge() >= 0 && payload.length() < regelsatz.minLaenge()) {
+                validationFailed(String.format("%s.%s: Value %s did not match expected minimum length %d, was %d",
+                        field.getDeclaringClass().getSimpleName(), field.getName(), payload, regelsatz.minLaenge(),
+                        payload.length()));
             }
 
-            if (regelsatz.maxLaenge() >= 0) {
-                if (payload.length() > regelsatz.maxLaenge()) {
-                    validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value "
-                            + payload + " did not match expected maximum length " + regelsatz.maxLaenge() + ", was "
-                            + payload.length());
-                }
+            if (regelsatz.maxLaenge() >= 0 && payload.length() > regelsatz.maxLaenge()) {
+                validationFailed(String.format("%s.%s: Value %s did not match expected maximum length %d, was %d",
+                        field.getDeclaringClass().getSimpleName(), field.getName(), payload, regelsatz.maxLaenge(),
+                        payload.length()));
             }
 
             // No specific rules given, likely only length checks
@@ -385,13 +380,17 @@ public class LdtReader {
                 continue;
             }
 
+            boolean ok = false;
             for (Class<? extends Regel> regel : regelsatz.value()) {
                 if (getRegel(regel).isValid(payload)) {
-                    continue outer;
+                    ok = true;
+                    break;
                 }
             }
-            validationFailed(field.getDeclaringClass().getSimpleName() + "." + field.getName() + ": Value " + payload
-                    + " did not confirm to any rule of " + toString(regelsatz.value()));
+            if (!ok) {
+                validationFailed(String.format("%s.%s: Value %s did not confirm to any rule of %s",
+                        field.getDeclaringClass().getSimpleName(), field.getName(), payload, toString(regelsatz.value())));
+            }
         }
     }
 
@@ -447,7 +446,7 @@ public class LdtReader {
      * @param stack the stack to peek the object from
      * @return the current top level element of the stack or {@code null}
      */
-    private static Kontext peekCurrentObject(Stack<Kontext> stack) {
+    private static Kontext peekCurrentObject(Deque<Kontext> stack) {
         if (stack.isEmpty()) {
             return null;
         }
@@ -477,7 +476,7 @@ public class LdtReader {
      * better options out there but this one is simple enough for our needs.)
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private static Object convertType(Field field, Type type, String payload, Stack<Kontext> stack)
+    private static Object convertType(Field field, Type type, String payload, Deque<Kontext> stack)
             throws NoSuchFieldException, SecurityException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException, InstantiationException, NoSuchMethodException {
         if (type == String.class) {

@@ -168,8 +168,8 @@ public class LdtWriter {
                 if (regelsatz.maxLaenge() >= 0) {
                     if (value.length() > regelsatz.maxLaenge()) {
                         if (mode == Mode.STRICT) {
-                            throw new IllegalArgumentException("Value " + value + " must have maximum length of "
-                                    + regelsatz.maxLaenge() + ", but was " + value.length());
+                            throw new IllegalArgumentException(String.format("Value %s must have maximum length of %d, but was %d",
+                                    value, regelsatz.maxLaenge(), value.length()));
                         } else {
                             LOG.warn("{}.{}: Value {} must have maximum length of {}, but was {}, trimming",
                                     field.getDeclaringClass().getSimpleName(), field.getName(), value,
@@ -180,9 +180,9 @@ public class LdtWriter {
                 } else if (regelsatz.laenge() >= 0) {
                     if (value.length() > regelsatz.laenge()) {
                         if (mode == Mode.STRICT) {
-                            throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "."
-                                    + field.getName() + ": Value " + value + " must have exact length of "
-                                    + regelsatz.laenge() + ", but was " + value.length());
+                            throw new IllegalArgumentException(String.format("%s.%s: Value %s must have exact length of %d, but was %d",
+                                    field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.laenge(),
+                                    value.length()));
                         } else {
                             LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, trimming",
                                     field.getDeclaringClass().getSimpleName(), field.getName(), value,
@@ -191,9 +191,9 @@ public class LdtWriter {
                         }
                     } else if (value.length() < regelsatz.laenge()) {
                         if (mode == Mode.STRICT) {
-                            throw new IllegalArgumentException(field.getDeclaringClass().getSimpleName() + "."
-                                    + field.getName() + ": Value " + value + " must have exact length of "
-                                    + regelsatz.laenge() + ", but was " + value.length());
+                            throw new IllegalArgumentException(String.format("%s.%s: Value %s must have exact length of %d, but was %d",
+                                    field.getDeclaringClass().getSimpleName(), field.getName(), value, regelsatz.laenge(),
+                                    value.length()));
                         } else {
                             LOG.warn("{}.{}: Value {} must have exact length of {}, but was {}, ignoring",
                                     field.getDeclaringClass().getSimpleName(), field.getName(), value,
