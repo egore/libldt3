@@ -44,7 +44,66 @@ public enum DmpKennzeichnung {
     /** Rückenschmerz */
     Rueckenschmerz("09"),
     Rheuma("10"),
-    Osteoporose("11");
+    Osteoporose("11"),
+    Adipositas("12"),
+    /** Diabetes Typ 2 und KHK */
+    DiabetesTyp2_undKHK("30"),
+    /** Asthma und Diabetes Typ 2 */
+    Asthma_undDiabetesTyp2("31"),
+    /** COPD und Diabetes Typ 2 */
+    COPD_undDiabetesTyp2("32"),
+    /** COPD und KHK */
+    COPD_undKHK("33"),
+    /** COPD, Diabetes Typ 2 und KHK */
+    COPD_DiabetesTyp2_undKHK("34"),
+    /** Asthma und KHK */
+    Asthma_undKHK("35"),
+    /** Asthma, Diabetes Typ 2 und KHK */
+    AsthmaDiabetesTyp2_undKHK("36"),
+    /** Brustkrebs und Diabetes Typ 2 */
+    Brustkrebs_undDiabetesTyp2("37"),
+    /** Diabetes Typ 1 und KHK */
+    DiabetesTyp1_undKHK("38"),
+    /** Asthma und Diabetes Typ 1 */
+    Asthma_undDiabetesTyp1("39"),
+    /** Asthma und Brustkrebs */
+    Asthma_undBrustkrebs("40"),
+    /** Brustkrebs und KHK */
+    Brustkrebs_undKHK("41"),
+    /** Brustkrebs und COPD */
+    Brustkrebs_undCOPD("42"),
+    /** COPD und Diabetes Typ 1 */
+    COPD_undDiabetesTyp1("43"),
+    /** Brustkrebs, Diabetes Typ 2 und KHK */
+    BrustkrebsDiabetesTyp2_undKHK("44"),
+    /** Asthma, Brustkrebs und Diabetes Typ 2 */
+    AsthmaBrustkrebs_undDiabetesTyp2("45"),
+    /** Brustkrebs und Diabetes Typ 1 */
+    Brustkrebs_undDiabetesTyp1("46"),
+    /** COPD, Diabetes Typ 1 und KHK */
+    COPD_DiabetesTyp1_undKHK("47"),
+    /** Brustkrebs, COPD und Diabetes Typ 2 */
+    BrustkrebsCOPD_undDiabetesTyp2("48"),
+    /** Asthma, Diabetes Typ 1 und KHK */
+    AsthmaDiabetesTyp1_undKHK("49"),
+    /** Asthma, Brustkrebs und KHK */
+    AsthmaBrustkrebs_undKHK("50"),
+    /** Brustkrebs, COPD und KHK */
+    BrustkrebsCOPD_undKHK("51"),
+    /** Brustkrebs, COPD, Diabetes Typ 2 und KHK */
+    BrustkrebsCOPD_DiabetesTyp2_undKHK("52"),
+    /** Asthma, Brustkrebs, Diabetes Typ 2 und KHK */
+    AsthmaBrustkrebsDiabetesTyp2_undKHK("53"),
+    /** Brustkrebs, Diabetes Typ 1 und KHK */
+    BrustkrebsDiabetesTyp1_undKHK("54"),
+    /** Asthma, Brustkrebs und Diabetes Typ 1 */
+    AsthmaBrustkrebs_undDiabetesTyp1("55"),
+    /** Asthma, Brustkrebs, Diabetes Typ 1 und KHK */
+    AsthmaBrustkrebsDiabetesTyp1_undKHK("56"),
+    /** Brustkrebs, COPD und Diabetes Typ 1 */
+    BrustkrebsCOPD_undDiabetesTyp1("57"),
+    /** Brustkrebs, COPD, Diabetes Typ 1 und KHK */
+    BrustkrebsCOPD_DiabetesTyp1_undKHK("58");
 
     public final String code;
 

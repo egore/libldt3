@@ -15,7 +15,7 @@ public class ParsePdf {
 
     public static void main(String[] args) throws IOException, TemplateException {
 
-        Parser.ParseResult regeln = Parser.parse("./doc/3.2.16/EXT_ITA_VGEX_LDT 3_2_16_Gesamtdokument.pdf");
+        Parser.ParseResult regeln = Parser.parse("./doc/3.2.17/EXT_ITA_VGEX_LDT 3_2_17_Gesamtdokument.pdf");
 
         var generator = new Generator();
         generator.generateSaetze(regeln.saetze.values());

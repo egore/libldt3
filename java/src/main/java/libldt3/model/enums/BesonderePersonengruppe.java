@@ -29,8 +29,7 @@ public enum BesonderePersonengruppe {
     keineAngabe("00"),
     /** BSHG (Bundessozialhilfegesetz) § 264 SGB V */
     BSHG264SGB_V("04"),
-    /** SER (Soziales Entschädigungsrecht)
-     * BVG (Gesetz über die Versorgung der Opfer des Krieges) */
+    /** SER (Soziales Entschädigungsrecht) */
     SER("06"),
     /** SVA-Kennzeichnung für zwischenstaatliches
      * Krankenversicherungsrecht: Personen mit Wohnsitz im Inland,  Abrechnung nach
