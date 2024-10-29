@@ -18,6 +18,7 @@ variables:
   GIT_DEPTH: "0"
   GIT_SUBMODULE_STRATEGY: recursive
   GIT_SUBMODULE_FORCE_HTTPS: "true"
+  FF_SCRIPT_SECTIONS: "true"
 
 image: $DOCKER_MIRROR_URL/library/maven:3-eclipse-temurin-21
 
