@@ -41,10 +41,10 @@ public class Generator {
     public Generator() throws TemplateModelException {
         SLF4JBridgeHandler.removeHandlersForRootLogger();
         SLF4JBridgeHandler.install();
-        DefaultObjectWrapper wrapper = new DefaultObjectWrapper(Configuration.VERSION_2_3_32);
+        DefaultObjectWrapper wrapper = new DefaultObjectWrapper(Configuration.VERSION_2_3_33);
         wrapper.setExposeFields(true);
 
-         config = new Configuration(Configuration.VERSION_2_3_32);
+        config = new Configuration(Configuration.VERSION_2_3_33);
         config.setTemplateLoader(new ClassTemplateLoader(ParsePdf.class, "/ldt/"));
         config.setObjectWrapper(wrapper);
         config.setSharedVariable("year", Integer.toString(LocalDate.now().getYear()));
@@ -138,7 +138,7 @@ public class Generator {
         }
     }
 
-    public void generateSaetze(Collection<Satz> saetze)  throws IOException, TemplateException {
+    public void generateSaetze(Collection<Satz> saetze) throws IOException, TemplateException {
         Template objektTemplate = config.getTemplate("satz.ftl");
         Path dir = Path.of("./generated/libldt3/model/saetze");
         initDir(dir);
