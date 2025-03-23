@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Falls die FK 4109 vorhanden ist und der Feldinhalt >= "01.01.2015" sowie der
- * Inhalt der Stellen 3 – 5 der FK 4104 < 800, dann müssen die FK 3119 und FK 4133
+ * Inhalt der Stellen 3 – 5 der FK 4104 &lt; 800, dann müssen die FK 3119 und FK 4133
  * vorhanden sein.
  *
  * Da seit dem  01.01.2015 im Bereich der GKV-Kostenträgern KVKs nicht

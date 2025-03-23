@@ -41,8 +41,8 @@ public enum DarstellungErgebniswerte {
     /** trinäres Testergebnis: 1 | 2 | 3 ** */
     trinaeresTestergebnis_1_2_3("08"),
     /** Beispiele
-     * 01: 47.85, 5.00E+07, 1x10^6 02: <100, <1.00E+04 03: >2000, >5.00E+04 04:
-     * positiv, negativ, A positiv * 05: 1:2 06: <1:2 07: >1:2 08: 1, 2, 3 ** *   für
+     * 01: 47.85, 5.00E+07, 1x10^6 02: &lt;100, &lt;1.00E+04 03: &gt;2000, &gt;5.00E+04 04:
+     * positiv, negativ, A positiv * 05: 1:2 06: &lt;1:2 07: &gt;1:2 08: 1, 2, 3 ** *   für
      * die Übertragung von Blutgruppen ist vorzugsweise das Obj_0055 zu verwenden **
      * Abbildung der Regel E169 */
     Sonstige("99");
