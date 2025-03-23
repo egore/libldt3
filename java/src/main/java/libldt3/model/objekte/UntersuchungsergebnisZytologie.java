@@ -50,7 +50,7 @@ import libldt3.model.regel.kontext.K119;
  * In diesem Objekt können weitere Ergebnisse aus dem Bereich Zytologie
  * transportiert werden.
  */
-@Objekt(value = "0063", kontextregeln = {K053.class, K076.class, K080.class, K081.class, K082.class, K096.class, K100.class, K119.class})
+@Objekt(value = "0063", kontextregeln = {K053.class, K076.class, K080.class, K081.class, K096.class, K100.class, K119.class})
 public class UntersuchungsergebnisZytologie implements Kontext {
 
     @Objekt

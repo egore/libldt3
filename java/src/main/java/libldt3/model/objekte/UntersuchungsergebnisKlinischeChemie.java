@@ -45,7 +45,7 @@ import libldt3.model.regel.kontext.K106;
  * In diesem Objekt werden die Ergebnisse aus dem Bereich Klinische Chemie
  * übermittelt.
  */
-@Objekt(value = "0060", kontextregeln = {K053.class, K076.class, K082.class, K096.class, K106.class})
+@Objekt(value = "0060", kontextregeln = {K053.class, K076.class, K096.class, K106.class})
 public class UntersuchungsergebnisKlinischeChemie implements Kontext {
 
     @Objekt(kontextregeln = K053.class)

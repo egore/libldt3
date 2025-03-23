@@ -51,7 +51,7 @@ import libldt3.model.regel.kontext.K121;
  * 0056 (Obj_Tumor) beschriebenen Fachgebiete liegen. Das jeweilige Fachgebiet wird
  * über die FK 7431 definiert.
  */
-@Objekt(value = "0073", kontextregeln = {K053.class, K076.class, K082.class, K095.class, K096.class, K100.class, K120.class, K121.class})
+@Objekt(value = "0073", kontextregeln = {K053.class, K076.class, K095.class, K096.class, K100.class, K120.class, K121.class})
 public class SonstigeUntersuchungsergebnisse implements Kontext {
 
     @Objekt

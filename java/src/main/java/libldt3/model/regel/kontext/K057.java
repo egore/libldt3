@@ -27,6 +27,8 @@ import libldt3.model.objekte.Arztidentifikation;
 import libldt3.model.objekte.Fliesstext;
 import libldt3.model.objekte.Untersuchungsanforderung;
 import libldt3.model.saetze.Auftrag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * FK 0222 muss vorhanden sein, wenn in mindestens einem  Obj_0059
@@ -38,8 +40,15 @@ import libldt3.model.saetze.Auftrag;
  */
 public class K057 implements Kontextregel {
 
+    private static final Logger LOG = LoggerFactory.getLogger(K057.class);
+
     @Override
     public boolean isValid(Kontext owner) throws IllegalAccessException {
+
+        if (!(owner instanceof Auftrag)) {
+            LOG.warn("K057 expected Auftrag as context, but got {}. Invalidly returning true", owner.getClass());
+            return true;
+        }
 
         Auftrag auftrag = (Auftrag) owner;
 
