@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.egore911</groupId>
 	<artifactId>libldt3</artifactId>
-	<version>3.2.17.0-SNAPSHOT</version>
+	<version>3.2.17.1</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,7 +27,8 @@
 		<url>https://gitlab.com/appframework/egore-personal/libldt3</url>
 		<connection>scm:git:git://gitlab.com/appframework/egore-personal/libldt3.git</connection>
 		<developerConnection>scm:git:git@gitlab.com:appframework/egore-personal/libldt3.git</developerConnection>
-    </scm>
+      <tag>3.2.17.1</tag>
+  </scm>
 
 	<distributionManagement>
 		<snapshotRepository>
