@@ -32,6 +32,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Year;
+import java.time.YearMonth;
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.EnumSet;
@@ -491,7 +494,14 @@ public class LdtReader {
         if (type == Boolean.class) {
             return "1".equals(payload);
         }
-        if (type == LocalDate.class) {
+        if (type == Temporal.class) {
+            if (payload.endsWith("00000000")) {
+                return null;
+            } else if (payload.endsWith("0000")) {
+                return Year.parse(payload.substring(0, payload.length() - 4));
+            } else if (payload.endsWith("00")) {
+                return YearMonth.parse(payload.substring(0, payload.length() - 2), LdtConstants.FORMAT_DATE_YEAR_MONTH);
+            }
             return LocalDate.parse(payload, LdtConstants.FORMAT_DATE);
         }
         if (type == LocalTime.class) {

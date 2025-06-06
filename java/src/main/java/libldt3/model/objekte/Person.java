@@ -21,7 +21,7 @@
  */
 package libldt3.model.objekte;
 
-import java.time.LocalDate;
+import java.time.temporal.Temporal;
 import java.util.List;
 
 import libldt3.annotations.Feld;
@@ -60,7 +60,7 @@ public class Person implements Kontext {
     public List<String> vorname;
     @Feld(value = "3103", feldart = Feldart.bedingt_muss)
     @Regelsatz(value = F003.class, laenge = 8)
-    public LocalDate geburtsdatum;
+    public Temporal geburtsdatum;
     @Feld(value = "3104", feldart = Feldart.kann)
     @Regelsatz(maxLaenge = 20)
     public String titel;

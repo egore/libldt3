@@ -29,6 +29,7 @@ import java.time.format.DateTimeFormatter;
 public class LdtConstants {
 
     public static final DateTimeFormatter FORMAT_DATE = DateTimeFormatter.ofPattern("yyyyMMdd");
+    public static final DateTimeFormatter FORMAT_DATE_YEAR_MONTH = DateTimeFormatter.ofPattern("yyyyMM");
     public static final DateTimeFormatter FORMAT_TIME = DateTimeFormatter.ofPattern("HHmmss");
 
     /** Determines how the reader deals with invalid LDT */

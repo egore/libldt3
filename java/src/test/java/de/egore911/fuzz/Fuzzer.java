@@ -32,6 +32,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -164,6 +165,8 @@ public class Fuzzer {
         } else if (type.equals(LocalDateTime.class)) {
             return randomDateTime();
         } else if (type.equals(LocalDate.class)) {
+            return randomLocalDate();
+        } else if (type.equals(Temporal.class)) {
             return randomLocalDate();
         } else if (type.equals(LocalTime.class)) {
             return randomLocalTime();
