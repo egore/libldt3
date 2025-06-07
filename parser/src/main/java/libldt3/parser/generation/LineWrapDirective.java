@@ -1,7 +1,7 @@
 package libldt3.parser.generation;
 
 import freemarker.core.Environment;
-import freemarker.ext.beans.StringModel;
+import freemarker.ext.beans.GenericObjectModel;
 import freemarker.template.SimpleScalar;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
@@ -21,8 +21,8 @@ public class LineWrapDirective implements TemplateDirectiveModel {
             return;
         }
         String text;
-        if (textModel instanceof StringModel) {
-            text = ((StringModel) textModel).getAsString();
+        if (textModel instanceof GenericObjectModel) {
+            text = ((GenericObjectModel) textModel).getAsString();
         } else if (textModel instanceof SimpleScalar) {
             text = ((SimpleScalar) textModel).getAsString();
         } else {
@@ -31,8 +31,8 @@ public class LineWrapDirective implements TemplateDirectiveModel {
 
         TemplateModel prefixModel = (TemplateModel) params.get("prefix");
         String prefix;
-        if (prefixModel instanceof StringModel) {
-            prefix = ((StringModel) prefixModel).getAsString();
+        if (prefixModel instanceof GenericObjectModel) {
+            prefix = ((GenericObjectModel) prefixModel).getAsString();
         } else if (prefixModel instanceof SimpleScalar) {
             prefix = ((SimpleScalar) prefixModel).getAsString();
         } else {
