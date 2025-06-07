@@ -39,15 +39,8 @@ namespace libldt3
      * 
      * @author Christoph Brill &lt;opensource@christophbrill.de&gt;
      */
-    public class LdtWriter
+    public class LdtWriter(LdtConstants.Mode mode)
     {
-
-        private readonly LdtConstants.Mode mode;
-
-        public LdtWriter(LdtConstants.Mode mode)
-        {
-            this.mode = mode;
-        }
 
         /**
          * Write a given set of Satz elements to a given path
@@ -59,10 +52,8 @@ namespace libldt3
          */
         public void Write(IList<Satz> data, string path)
         {
-            using (var f = File.OpenWrite(path))
-            {
-                Write(data, f);
-            }
+            using var f = File.OpenWrite(path);
+            Write(data, f);
         }
 
         /**
@@ -75,10 +66,8 @@ namespace libldt3
          */
         public void Write(IList<Satz> data, FileStream path)
         {
-            using (var w = new StreamWriter(path, Encoding.GetEncoding("ISO-8859-1")))
-            {
-                Write(data, w);
-            }
+            using var w = new StreamWriter(path, Encoding.GetEncoding("ISO-8859-1"));
+            Write(data, w);
         }
 
         /**
@@ -99,7 +88,7 @@ namespace libldt3
 
         void HandleOutput(object o, StreamWriter writer)
         {
-            Datenpaket datenpaket = o.GetType().GetCustomAttribute<Datenpaket>();
+            Datenpaket? datenpaket = o.GetType().GetCustomAttribute<Datenpaket>();
             if (datenpaket != null)
             {
                 writer.Write(string.Format("0138000{0}\r\n", datenpaket.Value.GetCode()));
@@ -113,17 +102,17 @@ namespace libldt3
 
         void WriteObjekt(object o, StreamWriter writer)
         {
-            Objekt objekt = o.GetType().GetCustomAttribute<Objekt>();
+            Objekt? objekt = o.GetType().GetCustomAttribute<Objekt>();
             if (objekt != null && objekt.Value.Length > 0)
             {
                 writer.Write(string.Format("0178002Obj_{0}\r\n", objekt.Value));
             }
             foreach (FieldInfo field in o.GetType().GetFields(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
             {
-                Feld feld = field.GetCustomAttribute<Feld>();
+                Feld? feld = field.GetCustomAttribute<Feld>();
                 if (feld != null)
                 {
-                    object o2 = field.GetValue(o);
+                    object? o2 = field.GetValue(o);
                     if (o2 == null)
                     {
                         continue;
@@ -149,7 +138,7 @@ namespace libldt3
             }
         }
 
-        void WriteLdtLine(StreamWriter writer, Feld feld, string text)
+        static void WriteLdtLine(StreamWriter writer, Feld feld, string text)
         {
             writer.Write(string.Format("{0}{1}{2}\r\n", (text.Length + 9).ToString("000"), feld.Value, text));
         }
@@ -173,9 +162,8 @@ namespace libldt3
                     return;
                 }
             }
-            if (o is string)
+            if (o is string value)
             {
-                string value = (string)o;
                 foreach (Regelsatz regelsatz in field.GetCustomAttributes<Regelsatz>())
                 {
                     if (regelsatz.MaxLaenge >= 0)
@@ -188,8 +176,8 @@ namespace libldt3
                             }
                             else
                             {
-                                Trace.TraceWarning("{0}.{1}: Value {1} must have maximum length of {3}, but was {4}, trimming", field.DeclaringType.Name, field.Name, value, regelsatz.MaxLaenge, value.Length);
-                                value = value.Substring(0, Math.Min(value.Length, regelsatz.MaxLaenge));
+                                Trace.TraceWarning("{0}.{1}: Value {1} must have maximum length of {3}, but was {4}, trimming", field.DeclaringType?.Name, field.Name, value, regelsatz.MaxLaenge, value.Length);
+                                value = value[..Math.Min(value.Length, regelsatz.MaxLaenge)];
                             }
                         }
                     }
@@ -199,23 +187,23 @@ namespace libldt3
                         {
                             if (mode == LdtConstants.Mode.STRICT)
                             {
-                                throw new ArgumentException(field.DeclaringType.Name + "." + field.Name + ": Value " + value + " must have exact length of " + regelsatz.Laenge + ", but was " + value.Length);
+                                throw new ArgumentException(field.DeclaringType?.Name + "." + field.Name + ": Value " + value + " must have exact length of " + regelsatz.Laenge + ", but was " + value.Length);
                             }
                             else
                             {
-                                Trace.TraceWarning("{0}.{1}: Value {2} must have exact length of {3}, but was {4}, trimming", field.DeclaringType.Name, field.Name, value, regelsatz.Laenge, value.Length);
-                                value = value.Substring(0, regelsatz.Laenge);
+                                Trace.TraceWarning("{0}.{1}: Value {2} must have exact length of {3}, but was {4}, trimming", field.DeclaringType?.Name, field.Name, value, regelsatz.Laenge, value.Length);
+                                value = value[..regelsatz.Laenge];
                             }
                         }
                         else if (value.Length < regelsatz.Laenge)
                         {
                             if (mode == LdtConstants.Mode.STRICT)
                             {
-                                throw new ArgumentException(field.DeclaringType.Name + "." + field.Name + ": Value " + value + " must have exact length of " + regelsatz.Laenge + ", but was " + value.Length);
+                                throw new ArgumentException(field.DeclaringType?.Name + "." + field.Name + ": Value " + value + " must have exact length of " + regelsatz.Laenge + ", but was " + value.Length);
                             }
                             else
                             {
-                                Trace.TraceWarning("{0}.{1}: Value {2} must have exact length of {3}, but was {4}, ignoring", field.DeclaringType.Name, field.Name, value, regelsatz.Laenge, value.Length);
+                                Trace.TraceWarning("{0}.{1}: Value {2} must have exact length of {3}, but was {4}, ignoring", field.DeclaringType?.Name, field.Name, value, regelsatz.Laenge, value.Length);
                             }
                         }
                     }
@@ -233,44 +221,44 @@ namespace libldt3
                 WriteLdtLine(writer, feld, o.ToString());
                 return;
             }
-            if (o is bool)
+            if (o is bool v)
             {
-                WriteLdtLine(writer, feld, ((bool)o) ? "1" : "0");
+                WriteLdtLine(writer, feld, v ? "1" : "0");
                 return;
             }
-            if (o is PartialYearOnly)
+            if (o is PartialYearOnly pyo)
             {
-                WriteLdtLine(writer, feld, ((PartialYearOnly)o).Date.Year.ToString() + "0000");
+                WriteLdtLine(writer, feld, pyo.Date.Year.ToString() + "0000");
                 return;
             }
-            if (o is YearOnly)
+            if (o is YearOnly yo)
             {
-                WriteLdtLine(writer, feld, ((YearOnly)o).Year.ToString() + "0000");
+                WriteLdtLine(writer, feld, yo.Year.ToString() + "0000");
                 return;
             }
-            if (o is PartialYearMonth)
+            if (o is PartialYearMonth pym)
             {
-                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format(((PartialYearMonth)o).Date) + "00");
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format(pym.Date) + "00");
                 return;
             }
-            if (o is YearMonth)
+            if (o is YearMonth ym)
             {
-                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format((YearMonth)o) + "00");
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format(ym) + "00");
                 return;
             }
-            if (o is PartialLocalDate)
+            if (o is PartialLocalDate pld)
             {
-                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE.Format(((PartialLocalDate)o).Date));
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE.Format(pld.Date));
                 return;
             }
-            if (o is LocalDate)
+            if (o is LocalDate ld)
             {
-                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE.Format((LocalDate)o));
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE.Format(ld));
                 return;
             }
-            if (o is LocalTime)
+            if (o is LocalTime lt)
             {
-                WriteLdtLine(writer, feld, LdtConstants.FORMAT_TIME.Format((LocalTime)o));
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_TIME.Format(lt));
                 return;
             }
             if (o is Enum)
@@ -336,7 +324,7 @@ namespace libldt3
 
         static bool IsNullableEnum(Type t)
         {
-            Type u = Nullable.GetUnderlyingType(t);
+            Type? u = Nullable.GetUnderlyingType(t);
             return (u != null) && u.IsEnum;
         }
 

@@ -42,17 +42,10 @@ namespace libldt3
      * 
      * @author Christoph Brill &lt;opensource@christophbrill.de&gt;
      */
-    public class LdtReader
+    public class LdtReader(LdtConstants.Mode mode)
     {
 
-        readonly IDictionary<Type, Regel> regelCache = new Dictionary<Type, Regel>();
-
-        readonly LdtConstants.Mode mode;
-
-        public LdtReader(LdtConstants.Mode mode)
-        {
-            this.mode = mode;
-        }
+        readonly Dictionary<Type, Regel> regelCache = new Dictionary<Type, Regel>();
 
         /**
          * Read the LDT found on a given path.
@@ -66,10 +59,8 @@ namespace libldt3
          */
         public IList<Satz> Read(string path)
         {
-            using (var f = File.Open(path, FileMode.Open))
-            {
-                return Read(f);
-            }
+            using var f = File.Open(path, FileMode.Open);
+            return Read(f);
         }
 
         /**
@@ -98,7 +89,7 @@ namespace libldt3
         {
             Stack<Kontext> stack = new();
             IList<Satz> data = [];
-            string line;
+            string? line;
             int integer = 0;
             while ((line = stream.ReadLine()) != null)
             {
@@ -126,7 +117,7 @@ namespace libldt3
             }
 
             // Read the length and check whether it had the correct length
-            int length = int.Parse(line.Substring(0, 3));
+            int length = int.Parse(line[..3]);
             if (length != line.Length + 2)
             {
                 if (mode == LdtConstants.Mode.STRICT)
@@ -143,8 +134,8 @@ namespace libldt3
             }
 
             // Read identifier and payload
-            string identifier = line.Substring(3, 7 - 3);
-            string payload = line.Substring(7, length - 2 - 7);
+            string identifier = line[3..7];
+            string payload = line[7..(length - 2)];
 
             switch (identifier)
             {
@@ -199,7 +190,7 @@ namespace libldt3
                         // End: Satz
                         AssureLength(line, length, 13);
                         Kontext o = stack.Pop();
-                        Datenpaket datenpaket = o.GetType().GetCustomAttribute<Datenpaket>();
+                        Datenpaket? datenpaket = o.GetType().GetCustomAttribute<Datenpaket>();
                         if (datenpaket != null)
                         {
                             EvaluateContextRules(o, datenpaket.Kontextregeln);
@@ -214,8 +205,8 @@ namespace libldt3
                     {
                         // Start: Objekt
                         AssureLength(line, length, 17);
-                        object currentObject1 = PeekCurrentObject(stack);
-                        Objekt annotation1 = currentObject1.GetType().GetCustomAttribute<Objekt>();
+                        object currentObject1 = PeekCurrentObject(stack) ?? throw new InvalidOperationException("No object when appplying line " + line + " (" + lineNo + ")");
+                        Objekt? annotation1 = currentObject1.GetType().GetCustomAttribute<Objekt>();
                         if (annotation1 != null)
                         {
                             if (annotation1.Value.Length == 0)
@@ -259,7 +250,7 @@ namespace libldt3
                         // End: Objekt
                         AssureLength(line, length, 17);
                         Kontext o;
-                        Objekt annotation1;
+                        Objekt? annotation1;
                         do
                         {
                             o = stack.Pop();
@@ -281,11 +272,7 @@ namespace libldt3
                     }
                 default:
                     // Any line not starting or completing a Satz or Objekt
-                    object currentObject = PeekCurrentObject(stack);
-                    if (currentObject == null)
-                    {
-                        throw new InvalidOperationException("No object when appplying line " + line + " (" + lineNo + ")");
-                    }
+                    object currentObject = PeekCurrentObject(stack) ?? throw new InvalidOperationException("No object when appplying line " + line + " (" + lineNo + ")");
                     // XXX iterating the fields could be replaced by a map to be a bit
                     // faster when dealing with the same class
                     foreach (FieldInfo info in currentObject.GetType().GetFields())
@@ -293,7 +280,7 @@ namespace libldt3
 
                         // Check if we found a Feld annotation, if not this is not our
                         // field
-                        Feld annotation2 = info.GetCustomAttribute<Feld>();
+                        Feld? annotation2 = info.GetCustomAttribute<Feld>();
                         if (annotation2 == null)
                         {
                             continue;
@@ -309,7 +296,7 @@ namespace libldt3
                         try
                         {
                             // Check if there is currently a value set
-                            object o = info.GetValue(currentObject);
+                            object? o = info.GetValue(currentObject);
                             if (o != null && GetGenericList(info.FieldType) == null)
                             {
                                 if (mode == LdtConstants.Mode.STRICT)
@@ -349,7 +336,7 @@ namespace libldt3
                     // No field with a matching Feld annotation found, check if we are
                     // an Objekt with an empty value (anonymous object), if so try our
                     // parent
-                    Objekt annotation = currentObject.GetType().GetCustomAttribute<Objekt>();
+                    Objekt? annotation = currentObject.GetType().GetCustomAttribute<Objekt>();
                     if (annotation != null && annotation.Value.Length == 0)
                     {
                         stack.Pop();
@@ -411,7 +398,7 @@ namespace libldt3
                 {
                     if (payload.Length != regelsatz.Laenge)
                     {
-                        ValidationFailed(field.DeclaringType.Name + "." + field.Name + ": Value " + payload + " did not match expected length "
+                        ValidationFailed(field.DeclaringType?.Name + "." + field.Name + ": Value " + payload + " did not match expected length "
                                 + regelsatz.Laenge + ", was " + payload.Length);
                     }
                 }
@@ -420,7 +407,7 @@ namespace libldt3
                 {
                     if (payload.Length < regelsatz.MinLaenge)
                     {
-                        ValidationFailed(field.DeclaringType.Name + "." + field.Name + ": Value " + payload + " did not match expected minimum length "
+                        ValidationFailed(field.DeclaringType?.Name + "." + field.Name + ": Value " + payload + " did not match expected minimum length "
                                 + regelsatz.MinLaenge + ", was " + payload.Length);
                     }
                 }
@@ -429,7 +416,7 @@ namespace libldt3
                 {
                     if (payload.Length > regelsatz.MaxLaenge)
                     {
-                        ValidationFailed(field.DeclaringType.Name + "." + field.Name + ": Value " + payload + " did not match expected maximum length "
+                        ValidationFailed(field.DeclaringType?.Name + "." + field.Name + ": Value " + payload + " did not match expected maximum length "
                                  + regelsatz.MaxLaenge + ", was " + payload.Length);
                     }
                 }
@@ -452,7 +439,7 @@ namespace libldt3
                 if (!found)
                 {
 
-                    ValidationFailed(field.DeclaringType.Name + "." + field.Name + ": Value " + payload + " did not confirm to any rule of "
+                    ValidationFailed(field.DeclaringType?.Name + "." + field.Name + ": Value " + payload + " did not confirm to any rule of "
                                        + ToString(regelsatz.Value));
                 }
             }
@@ -502,9 +489,9 @@ namespace libldt3
          *            the payload of the line
          * @return the Satzart or {@code null}
          */
-        Satzart GetSatzart(string payload)
+        static Satzart GetSatzart(string payload)
         {
-            foreach (Satzart sa in Enum.GetValues(typeof(Satzart)).Cast<Satzart>())
+            foreach (Satzart sa in Enum.GetValues<Satzart>().Cast<Satzart>())
             {
                 if (sa.GetCode().Equals(payload))
                 {
@@ -618,7 +605,7 @@ namespace libldt3
             if (IsNullableEnum(type))
             {
                 Type enumType = Nullable.GetUnderlyingType(type);
-                MethodInfo method = Type.GetType(enumType.FullName + "Extensions").GetMethod("GetCode");
+                MethodInfo? method = Type.GetType(enumType.FullName + "Extensions").GetMethod("GetCode");
                 if (method != null)
                 {
                     foreach (object e in Enum.GetValues(enumType))
@@ -648,7 +635,7 @@ namespace libldt3
                     return null;
                 }
             }
-            Type genericType = GetGenericList(type);
+            Type? genericType = GetGenericList(type);
             if (genericType != null)
             {
                 object currentObject = PeekCurrentObject(stack);
@@ -666,10 +653,7 @@ namespace libldt3
                 Kontext instance = (Kontext)Activator.CreateInstance(type);
                 stack.Push(instance);
                 FieldInfo declaredField = type.GetField("Value");
-                if (declaredField != null)
-                {
-                    declaredField.SetValue(instance, ConvertType(declaredField, declaredField.FieldType, payload, stack));
-                }
+                declaredField?.SetValue(instance, ConvertType(declaredField, declaredField.FieldType, payload, stack));
                 return instance;
             }
             throw new ArgumentException("Don't know how to handle type " + type);
@@ -677,7 +661,7 @@ namespace libldt3
 
         static bool IsNullableEnum(Type t)
         {
-            Type u = Nullable.GetUnderlyingType(t);
+            Type? u = Nullable.GetUnderlyingType(t);
             return (u != null) && u.IsEnum;
         }
 
