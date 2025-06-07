@@ -584,13 +584,29 @@ namespace libldt3
             {
                 return "1".Equals(payload);
             }
+            if (type == typeof(PartialDate))
+            {
+                if (payload.EndsWith("00000000"))
+                {
+                    return null;
+                }
+                else if (payload.EndsWith("0000"))
+                {
+                    return new YearOnly(int.Parse(payload[..^4]));
+                }
+                else if (payload.EndsWith("00"))
+                {
+                    return LdtConstants.FORMAT_DATE_YEAR_MONTH.Parse(payload[..^2]).Value;
+                }
+                return LdtConstants.FORMAT_DATE.Parse(payload).Value;
+            }
             if (type == typeof(YearOnly))
             {
-                return new YearOnly(int.Parse(payload));
+                return new YearOnly(int.Parse(payload.EndsWith("0000") && payload.Length == 8 ? payload[..^4] : payload));
             }
             if (type == typeof(YearMonth))
             {
-                return LdtConstants.FORMAT_DATE_YEAR_MONTH.Parse(payload).Value;
+                return LdtConstants.FORMAT_DATE_YEAR_MONTH.Parse(payload.EndsWith("00") && payload.Length == 8 ? payload[..^2] : payload).Value;
             }
             if (type == typeof(LocalDate?))
             {
