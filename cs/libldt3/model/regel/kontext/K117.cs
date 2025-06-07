@@ -62,7 +62,6 @@ namespace libldt3
 
                         if (person.Status != StatusPerson.Halter && person.Status != StatusPerson.sonstige_juristischePerson)
                         {
-
                             Trace.TraceError("Person had invalid status {0}", person.Status);
                             return false;
                         }

@@ -51,9 +51,7 @@ namespace libldt3
                             return false;
                         }
 
-
-                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
-                        ;
+                        Trace.TraceWarning("Ignoring rule {0}", this.GetType().Name);
                         return true;
                     }
                 }

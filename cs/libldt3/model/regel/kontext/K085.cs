@@ -52,7 +52,7 @@ namespace libldt3
                         IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode> feld7286 = (IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode>)KontextregelHelper.GetFieldValue(fields["7286"], owner);
                         if (feld7286 != null)
                         {
-                            bool found = feld7286.Any(x => x.Value == ResistenzMethode.Agardiffusion || x.Value == ResistenzMethode.Agardilution);
+                            bool found = feld7286.Any(x => x.Value != ResistenzMethode.keinAntibiogramm_erstellt);
                             if (!found)
                             {
                                 if (KontextregelHelper.ContainsAnyValue(fields["8111"], owner))

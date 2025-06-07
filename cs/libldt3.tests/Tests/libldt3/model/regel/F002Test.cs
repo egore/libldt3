@@ -7,7 +7,8 @@ namespace libldt3
     {
         namespace regel
         {
-            namespace format {
+            namespace format
+            {
                 [TestFixture]
                 public class F002Test
                 {

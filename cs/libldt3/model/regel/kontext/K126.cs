@@ -40,8 +40,7 @@ namespace libldt3
 
                     public bool IsValid(Kontext owner)
                     {
-
-                        Trace.TraceWarning("Ignoring rule {0}", "K126");
+                        Trace.TraceWarning("Ignoring rule {0}", this.GetType().Name);
                         return true;
                     }
                 }

@@ -55,9 +55,7 @@ namespace libldt3
                     {
                         if (owner is not saetze.Auftrag)
                         {
-
-                            Trace.TraceWarning("K057 expected Auftrag as context, but got {0}. Invalidly returning true", owner.GetType().Name)
-                            ;
+                            Trace.TraceWarning("K057 expected Auftrag as context, but got {0}. Invalidly returning true", owner.GetType().Name);
                             return true;
                         }
 

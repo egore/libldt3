@@ -30,7 +30,7 @@ namespace libldt3
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person, Is.Not.Null);
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum, Is.Not.Null);
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum, Is.InstanceOf<PartialYearOnly>());
-                Assert.That(((PartialYearOnly) ((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum).Date, Is.EqualTo(new YearOnly(1990)));
+                Assert.That(((PartialYearOnly)((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum).Date, Is.EqualTo(new YearOnly(1990)));
 
                 var writer = new LdtWriter(LdtConstants.Mode.RELAXED);
                 string tempFile = Path.GetTempFileName();
@@ -55,7 +55,7 @@ namespace libldt3
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person, Is.Not.Null);
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum, Is.Not.Null);
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum, Is.InstanceOf<PartialYearMonth>());
-                Assert.That(((PartialYearMonth) ((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum).Date, Is.EqualTo(new YearMonth(1990, 2)));
+                Assert.That(((PartialYearMonth)((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum).Date, Is.EqualTo(new YearMonth(1990, 2)));
 
                 var writer = new LdtWriter(LdtConstants.Mode.RELAXED);
                 string tempFile = Path.GetTempFileName();
@@ -80,7 +80,7 @@ namespace libldt3
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person, Is.Not.Null);
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum, Is.Not.Null);
                 Assert.That(((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum, Is.InstanceOf<PartialLocalDate>());
-                Assert.That(((PartialLocalDate) ((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum).Date, Is.EqualTo(new LocalDate(1990, 2, 4)));
+                Assert.That(((PartialLocalDate)((libldt3.model.saetze.Auftrag)read[0]).Patient.Person.Geburtsdatum).Date, Is.EqualTo(new LocalDate(1990, 2, 4)));
 
                 var writer = new LdtWriter(LdtConstants.Mode.RELAXED);
                 string tempFile = Path.GetTempFileName();

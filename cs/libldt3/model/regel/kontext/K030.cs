@@ -54,9 +54,7 @@ namespace libldt3
                         {
                             if (!KontextregelHelper.ContainsAnyValue(fields["8147"], owner))
                             {
-
-                                Trace.TraceError("Status {0} requires field 8147 to have a value", status)
-                                ;
+                                Trace.TraceError("Status {0} requires field 8147 to have a value", status);
                                 return false;
                             }
 
