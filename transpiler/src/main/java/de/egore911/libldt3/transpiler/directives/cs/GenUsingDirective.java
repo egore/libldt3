@@ -119,11 +119,7 @@ public class GenUsingDirective implements TemplateDirectiveModel {
 
         // 5.) Child classes
         for (CtType<?> member : class_.getNestedTypes()) {
-            if (member instanceof CtType<?>) {
-                addForClass((CtType<?>) member, usings);
-            } else {
-                throw new UnsupportedOperationException(member.getClass().getSimpleName());
-            }
+            addForClass(member, usings);
         }
     }
 
