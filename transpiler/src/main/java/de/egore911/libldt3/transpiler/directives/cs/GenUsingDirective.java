@@ -172,23 +172,22 @@ public class GenUsingDirective implements TemplateDirectiveModel {
     }
 
     private static String convertPackageToUsing(String package_) {
-        if (package_.equals("java.lang") || package_.equals("java.util")) {
-            return null;
-        }
-        if (package_.equals("org.slf4j")) {
-            return "Microsoft.Extensions.Logging";
-        }
-        if (package_.equals("java.time")) {
-            return "NodaTime";
-        }
-        if (package_.equals("libldt3.annotations")) {
-            return "libldt3.attributes";
-        }
-        if (package_.equals("java.util.regex")) {
-            return "System.Text.RegularExpressions";
-        }
-        if (package_.equals("java.lang.reflect")) {
-            return "System.Reflection";
+        switch (package_) {
+            case "java.lang":
+            case "java.util":
+                return null;
+            case "org.slf4j":
+                return "Microsoft.Extensions.Logging";
+            case "java.time.temporal":
+                return "libldt3.model";
+            case "java.time":
+                return "NodaTime";
+            case "libldt3.annotations":
+                return "libldt3.attributes";
+            case "java.util.regex":
+                return "System.Text.RegularExpressions";
+            case "java.lang.reflect":
+                return "System.Reflection";
         }
         return package_;
     }

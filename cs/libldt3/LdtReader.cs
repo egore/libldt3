@@ -27,6 +27,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.regel;
 using libldt3.model.regel.kontext;
@@ -582,6 +583,14 @@ namespace libldt3
             if (type == typeof(bool) || type == typeof(bool?))
             {
                 return "1".Equals(payload);
+            }
+            if (type == typeof(YearOnly))
+            {
+                return new YearOnly(int.Parse(payload));
+            }
+            if (type == typeof(YearMonth))
+            {
+                return LdtConstants.FORMAT_DATE_YEAR_MONTH.Parse(payload).Value;
             }
             if (type == typeof(LocalDate?))
             {

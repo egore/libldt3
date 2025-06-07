@@ -32,6 +32,7 @@ namespace libldt3
     {
 
         public static readonly LocalDatePattern FORMAT_DATE = LocalDatePattern.Create("yyyyMMdd", CultureInfo.InvariantCulture);
+        public static readonly YearMonthPattern FORMAT_DATE_YEAR_MONTH = YearMonthPattern.Create("yyyyMM", CultureInfo.InvariantCulture);
         public static readonly LocalTimePattern FORMAT_TIME = LocalTimePattern.Create("HHmmss", CultureInfo.InvariantCulture);
 
         /** Determines how the reader deals with invalid LDT */

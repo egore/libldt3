@@ -19,7 +19,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using NodaTime;
 using libldt3.attributes;
 using libldt3.model;
 using libldt3.model.enums;
@@ -57,7 +56,7 @@ namespace libldt3
                 public IList<string> Vorname;
                 [Feld(Value = "3103", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Value = new[] { typeof(F003) }, Laenge = 8)]
-                public LocalDate? Geburtsdatum;
+                public PartialDate? Geburtsdatum;
                 [Feld(Value = "3104", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 20)]
                 public string Titel;

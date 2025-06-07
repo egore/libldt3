@@ -26,6 +26,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using libldt3.attributes;
+using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.saetze;
 using NodaTime;
@@ -235,6 +236,16 @@ namespace libldt3
             if (o is bool)
             {
                 WriteLdtLine(writer, feld, ((bool)o) ? "1" : "0");
+                return;
+            }
+            if (o is YearOnly)
+            {
+                WriteLdtLine(writer, feld, ((YearOnly)o).Year.ToString());
+                return;
+            }
+            if (o is YearMonth)
+            {
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format((YearMonth)o));
                 return;
             }
             if (o is LocalDate)
