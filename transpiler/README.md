@@ -13,5 +13,3 @@ library. It offers a Java model, which is transpiled using
 To create the C# code run the TranspileCsharp#main() method. This will read
 produce updated code in the *cs* directory. Please note that the previous code
 will be deleted.
-
-It is strongly recommend to run "dotnet format" before making use of the code.

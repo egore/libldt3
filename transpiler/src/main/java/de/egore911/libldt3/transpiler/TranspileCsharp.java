@@ -1,5 +1,6 @@
 package de.egore911.libldt3.transpiler;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
@@ -93,6 +94,19 @@ public class TranspileCsharp {
                 }
 
             }
+        }
+
+        LOG.info("Running 'dotnet format'");
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder("dotnet", "format");
+            processBuilder.directory(base.toFile());
+            Process process = processBuilder.start();
+            int exitCode = process.waitFor();
+            if (exitCode != 0) {
+                LOG.warn("dotnet format exited with code {}", exitCode);
+            }
+        } catch (IOException | InterruptedException e) {
+            LOG.warn("Failed to run dotnet format: {}", e.getMessage());
         }
 
         LOG.info("DONE");
