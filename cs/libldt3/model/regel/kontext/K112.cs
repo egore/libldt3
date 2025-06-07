@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using libldt3.model;
 
 namespace libldt3
@@ -39,13 +39,12 @@ namespace libldt3
                 /// Beauftragung übermittelt hat.
                 public class K112 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K112));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8310" };
+                    private static readonly HashSet<string> FIELDTYPES = ["8310"];
 
                     public bool IsValid(Kontext owner)
                     {
 
-                        K112.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
                         ;
                         return true;
                     }

@@ -19,9 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
+using System.Diagnostics;
 
 namespace libldt3
 {
@@ -39,8 +40,7 @@ namespace libldt3
                 /// und Anforderungen.
                 public class K069 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K069));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8113", "8159" };
+                    private static readonly HashSet<string> FIELDTYPES = ["8113", "8159"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -52,7 +52,7 @@ namespace libldt3
                         }
 
 
-                        K069.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
                         ;
                         return true;
                     }

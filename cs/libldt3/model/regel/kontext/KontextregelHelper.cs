@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.attributes;
 using libldt3.model;
@@ -35,8 +35,6 @@ namespace libldt3
             {
                 class KontextregelHelper
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(KontextregelHelper));
-
                     public static bool ContainsAnyString(string value)
                     {
                         return !string.IsNullOrEmpty(value);
@@ -111,7 +109,7 @@ namespace libldt3
                     public static IDictionary<string, FieldInfo> FindFields(Kontext owner, ISet<string> fieldtypes)
                     {
                         IDictionary<string, FieldInfo> result = new Dictionary<string, FieldInfo>(fieldtypes.Count);
-                        foreach (FieldInfo f in owner.GetClass().GetFields())
+                        foreach (FieldInfo f in owner.GetType().GetFields())
                         {
                             Feld? annotation = f.GetCustomAttribute<Feld>();
                             if (annotation != null && fieldtypes.Contains(annotation.Value))
@@ -129,7 +127,7 @@ namespace libldt3
                         IDictionary<Kontext, IDictionary<string, FieldInfo>> result = new Dictionary<Kontext, IDictionary<string, FieldInfo>>();
                         IDictionary<string, FieldInfo> fields = new Dictionary<string, FieldInfo>();
                         result[owner] = fields;
-                        foreach (FieldInfo f in owner.GetClass().GetFields())
+                        foreach (FieldInfo f in owner.GetType().GetFields())
                         {
                             Feld? annotation = f.GetCustomAttribute<Feld>();
                             if (annotation != null && fieldtypes.Contains(annotation.Value))

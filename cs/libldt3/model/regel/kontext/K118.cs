@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using libldt3.model;
 
 namespace libldt3
@@ -38,13 +38,12 @@ namespace libldt3
                 /// der 1. Tag des letzten Zyklus übermittelt wurde.
                 public class K118 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K118));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8512" };
+                    private static readonly HashSet<string> FIELDTYPES = ["8512"];
 
                     public bool IsValid(Kontext owner)
                     {
 
-                        K118.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
                         ;
                         return true;
                     }

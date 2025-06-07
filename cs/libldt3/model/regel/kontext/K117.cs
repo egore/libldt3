@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
@@ -43,8 +43,7 @@ namespace libldt3
                 /// Tierhalter, Eigentümer des eingesandten Materials).
                 public class K117 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K117));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8147" };
+                    private static readonly HashSet<string> FIELDTYPES = ["8147"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -64,8 +63,7 @@ namespace libldt3
                         if (person.Status != StatusPerson.Halter && person.Status != StatusPerson.sonstige_juristischePerson)
                         {
 
-                            K117.LOG.Error("Person had invalid status {}", person.Status)
-                            ;
+                            Trace.TraceError("Person had invalid status {0}", person.Status);
                             return false;
                         }
 

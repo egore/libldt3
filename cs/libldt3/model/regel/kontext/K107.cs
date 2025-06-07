@@ -19,10 +19,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
+using System.Diagnostics;
 
 namespace libldt3
 {
@@ -39,8 +40,7 @@ namespace libldt3
                 /// sein.
                 public class K107 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K107));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "7321", "8114" };
+                    private static readonly HashSet<string> FIELDTYPES = ["7321", "8114"];
 
                     public bool IsValid(Kontext owner)
                     {

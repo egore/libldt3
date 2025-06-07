@@ -25,6 +25,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using NodaTime;
+using libldt3.model;
 
 namespace de
 {
@@ -173,6 +174,10 @@ namespace de
                     else if (type.Equals(typeof(DateTime)))
                     {
                         return randomDate();
+                    }
+                    else if (type == typeof(PartialDate) || type == typeof(PartialLocalDate) || type == typeof(PartialYearMonth) || type == typeof(PartialYearOnly))
+                    {
+                        return new PartialLocalDate(randomLocalDate());
                     }
                     else if (type == typeof(LocalDateTime) || type.IsGenericType && Nullable.GetUnderlyingType(type) != null && type.GetGenericArguments()[0].Equals(typeof(LocalDateTime)))
                     {

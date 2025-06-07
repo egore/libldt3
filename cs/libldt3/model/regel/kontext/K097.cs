@@ -19,9 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
+using System.Diagnostics;
 
 namespace libldt3
 {
@@ -39,8 +40,7 @@ namespace libldt3
                 /// den sollen, muss das Obj_0002 (Abrechnung_GKV) vorhanden sein.
                 public class K097 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K097));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "7303", "8102" };
+                    private static readonly HashSet<string> FIELDTYPES = ["7303", "8102"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -52,7 +52,7 @@ namespace libldt3
                         }
 
 
-                        K097.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
                         ;
                         return true;
                     }

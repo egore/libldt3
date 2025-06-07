@@ -41,7 +41,7 @@ namespace libldt3
             public class UntersuchungsergebnisKrebsfrueherkennungZervixKarzinom : Kontext
             {
                 [Objekt(Kontextregeln = new[] { typeof(K100) })]
-                public class TestIdent : Kontext
+                public class TestIdent_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "8411", Feldart = Feldart.bedingt_muss)]
@@ -65,7 +65,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class Gruppe : Kontext
+                public class Gruppe_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7413", Feldart = Feldart.bedingt_muss)]
@@ -74,7 +74,7 @@ namespace libldt3
 
                 }
                 [Objekt(Kontextregeln = new[] { typeof(K122) })]
-                public class HpvHrTestergebnisObjUntersuchungsergebnisKrebsfrueherkennungZervixKarzinom : Kontext
+                public class HpvHrTestergebnisObjUntersuchungsergebnisKrebsfrueherkennungZervixKarzinom_ : Kontext
                 {
                     public HpvHrTestergebnis? Value;
                     [Feld(Value = "3317", Feldart = Feldart.bedingt_kann)]
@@ -83,7 +83,7 @@ namespace libldt3
 
                 }
                 [Objekt]
-                public class ZytologischeKontrolle : Kontext
+                public class ZytologischeKontrolle_ : Kontext
                 {
                     public bool? Value;
                     [Feld(Value = "7416", Feldart = Feldart.bedingt_kann)]
@@ -99,7 +99,7 @@ namespace libldt3
                 public IList<string> ProbengefaessIdent;
                 [Feld(Value = "8410", Feldart = Feldart.muss)]
                 [Regelsatz(MaxLaenge = 20)]
-                public TestIdent TestIdent;
+                public TestIdent_ TestIdent;
                 [Feld(Value = "8418", Feldart = Feldart.muss)]
                 [Regelsatz(Laenge = 2)]
                 public TestStatus? Ergebnisstatus;
@@ -129,13 +129,13 @@ namespace libldt3
                 public bool? Gardnerella;
                 [Feld(Value = "7414", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(E028) }, MaxLaenge = 5)]
-                public Gruppe Gruppe;
+                public Gruppe_ Gruppe;
                 [Feld(Value = "3316", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public HpvHrTestergebnisObjUntersuchungsergebnisKrebsfrueherkennungZervixKarzinom HpvHrTestergebnisObjUntersuchungsergebnisKrebsfrueherkennungZervixKarzinom;
+                public HpvHrTestergebnisObjUntersuchungsergebnisKrebsfrueherkennungZervixKarzinom_ HpvHrTestergebnisObjUntersuchungsergebnisKrebsfrueherkennungZervixKarzinom;
                 [Feld(Value = "7415", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
-                public ZytologischeKontrolle ZytologischeKontrolle;
+                public ZytologischeKontrolle_ ZytologischeKontrolle;
                 [Feld(Value = "7417", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public bool? Abklaerungskolposkopie;

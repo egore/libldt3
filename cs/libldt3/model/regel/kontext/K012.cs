@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
@@ -39,8 +39,7 @@ namespace libldt3
                 /// 4221 darf nicht vorhanden sein, wenn Inhalt von FK 4239 ≠ 27 oder 28 ist.
                 public class K012 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K012));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "4239", "4221" };
+                    private static readonly HashSet<string> FIELDTYPES = ["4239", "4221"];
 
                     public bool IsValid(Kontext owner)
                     {

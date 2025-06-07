@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using libldt3.model.regel;
 
 namespace libldt3
@@ -32,8 +32,6 @@ namespace libldt3
             {
                 public class E028 : Regel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(E028));
-
                     public bool IsValid(string value)
                     {
                         Trace.TraceWarning("Ignoring rule E028");

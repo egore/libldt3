@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using libldt3.model;
 
 namespace libldt3
@@ -38,12 +38,11 @@ namespace libldt3
                 /// Abbildung von Unterüberweisungen im LDT-Datensatz
                 public class K042 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K042));
 
                     public bool IsValid(Kontext owner)
                     {
 
-                        K042.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
                         ;
                         return true;
                     }

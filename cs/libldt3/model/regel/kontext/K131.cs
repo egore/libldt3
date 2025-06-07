@@ -19,10 +19,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
+using System.Diagnostics;
 
 namespace libldt3
 {
@@ -40,8 +41,7 @@ namespace libldt3
                 /// 8626 = 3, darf FK 8617, 8618, 8619  und 8620 nicht vorhanden sein.
                 public class K131 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K131));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8626", "8627", "8617" };
+                    private static readonly HashSet<string> FIELDTYPES = ["8626", "8627", "8617"];
 
                     public bool IsValid(Kontext owner)
                     {

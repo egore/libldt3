@@ -37,7 +37,7 @@ namespace libldt3
             public class Blutgruppenzugehoerigkeit : Kontext
             {
                 [Objekt]
-                public class ErgebnisKreuzprobe : Kontext
+                public class ErgebnisKreuzprobe_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7275", Feldart = Feldart.kann)]
@@ -80,7 +80,7 @@ namespace libldt3
                 public DirekterCoombstest? DirekterCoombstest;
                 [Feld(Value = "3419", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<ErgebnisKreuzprobe> ErgebnisKreuzprobe;
+                public IList<ErgebnisKreuzprobe_> ErgebnisKreuzprobe;
                 [Feld(Value = "3420", Feldart = Feldart.kann)]
                 [Regelsatz(Laenge = 1)]
                 public AnforderungNothilfepass? AnforderungNhp;

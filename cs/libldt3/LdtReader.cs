@@ -96,8 +96,8 @@ namespace libldt3
          */
         public IList<Satz> Read(StreamReader stream)
         {
-            Stack<object> stack = new Stack<object>();
-            IList<Satz> data = new List<Satz>();
+            Stack<Kontext> stack = new();
+            IList<Satz> data = [];
             string line;
             int integer = 0;
             while ((line = stream.ReadLine()) != null)
@@ -107,7 +107,7 @@ namespace libldt3
             return data;
         }
 
-        void HandleInput(string line, Stack<object> stack, IList<Satz> data, int lineNo)
+        void HandleInput(string line, Stack<Kontext> stack, IList<Satz> data, int lineNo)
         {
             Trace.TraceInformation("Reading line {0}", line);
 
@@ -175,7 +175,7 @@ namespace libldt3
                                 stack.Push(new Befund());
                                 break;
                             case Satzart.Auftrag:
-                                stack.Push(new Auftrag());
+                                stack.Push(new model.saetze.Auftrag());
                                 break;
                             case Satzart.LaborDatenpaketHeader:
                                 stack.Push(new LaborDatenpaketHeader());
@@ -198,7 +198,7 @@ namespace libldt3
                     {
                         // End: Satz
                         AssureLength(line, length, 13);
-                        object o = stack.Pop();
+                        Kontext o = stack.Pop();
                         Datenpaket datenpaket = o.GetType().GetCustomAttribute<Datenpaket>();
                         if (datenpaket != null)
                         {
@@ -258,7 +258,7 @@ namespace libldt3
                     {
                         // End: Objekt
                         AssureLength(line, length, 17);
-                        object o;
+                        Kontext o;
                         Objekt annotation1;
                         do
                         {
@@ -360,17 +360,17 @@ namespace libldt3
                     // Neither we nor our parent could deal with this line
                     if (mode == LdtConstants.Mode.STRICT)
                     {
-                        throw new ArgumentException("Failed reading line " + line + " (" + lineNo + "), current stack: " + string.Join(" ", stack.ToArray()));
+                        throw new ArgumentException("Failed reading line " + line + " (" + lineNo + "), current stack: " + string.Join(" ", (IEnumerable<Kontext>)[.. stack]));
                     }
                     else
                     {
-                        Trace.TraceWarning("Failed reading line {0} ({1}), current stack: {2}, skipping line", line, lineNo, string.Join(" ", stack.ToArray()));
+                        Trace.TraceWarning("Failed reading line {0} ({1}), current stack: {2}, skipping line", line, lineNo, string.Join(" ", (IEnumerable<Kontext>)[.. stack]));
                     }
                     break;
             }
         }
 
-        private void EvaluateContextRules(object o, Type[] kontextRegeln)
+        private void EvaluateContextRules(Kontext o, Type[] kontextRegeln)
         {
             foreach (Type kontextregel in kontextRegeln)
             {
@@ -384,7 +384,7 @@ namespace libldt3
                         }
                         else
                         {
-                            Trace.TraceWarning("Context rule {} failed on object {}", kontextregel.Name, o);
+                            Trace.TraceWarning("Context rule {0} failed on object {1}", kontextregel.Name, o);
                         }
                     }
                 }
@@ -396,7 +396,7 @@ namespace libldt3
                     }
                     else
                     {
-                        Trace.TraceWarning("Context rule {} failed on object {}", kontextregel.Name, o, e);
+                        Trace.TraceWarning("Context rule {0} failed on object {1}: {2}", kontextregel.Name, o, e);
                     }
                 }
             }
@@ -470,9 +470,9 @@ namespace libldt3
             }
         }
 
-        string ToString(Type[] regeln)
+        static string ToString(Type[] regeln)
         {
-            StringBuilder buffer = new StringBuilder();
+            StringBuilder buffer = new();
             foreach (Type regel in regeln)
             {
                 if (buffer.Length > 0)
@@ -486,8 +486,7 @@ namespace libldt3
 
         Regel GetRegel(Type regel)
         {
-            Regel instance;
-            regelCache.TryGetValue(regel, out instance);
+            regelCache.TryGetValue(regel, out Regel instance);
             if (instance == null)
             {
                 instance = (Regel)Activator.CreateInstance(regel);
@@ -522,7 +521,7 @@ namespace libldt3
          *            the stack to peek the object from
          * @return the current top level element of the stack or {@code null}
          */
-        static object? PeekCurrentObject(Stack<object> stack)
+        static Kontext? PeekCurrentObject(Stack<Kontext> stack)
         {
             if (stack.Count == 0)
             {
@@ -562,7 +561,7 @@ namespace libldt3
          * certainly better options out there but this one is simple enough for our
          * needs.)
          */
-        static object? ConvertType(FieldInfo field, Type type, string payload, Stack<object> stack)
+        static object? ConvertType(FieldInfo field, Type type, string payload, Stack<Kontext> stack)
         {
             if (type == typeof(string))
             {
@@ -592,13 +591,13 @@ namespace libldt3
                 }
                 else if (payload.EndsWith("0000"))
                 {
-                    return new YearOnly(int.Parse(payload[..^4]));
+                    return new PartialYearOnly(new YearOnly(int.Parse(payload[..^4])));
                 }
                 else if (payload.EndsWith("00"))
                 {
-                    return LdtConstants.FORMAT_DATE_YEAR_MONTH.Parse(payload[..^2]).Value;
+                    return new PartialYearMonth(LdtConstants.FORMAT_DATE_YEAR_MONTH.Parse(payload[..^2]).Value);
                 }
-                return LdtConstants.FORMAT_DATE.Parse(payload).Value;
+                return new PartialLocalDate(LdtConstants.FORMAT_DATE.Parse(payload).Value);
             }
             if (type == typeof(YearOnly))
             {
@@ -664,7 +663,7 @@ namespace libldt3
             }
             if (type.GetCustomAttribute<Objekt>() != null)
             {
-                object instance = Activator.CreateInstance(type);
+                Kontext instance = (Kontext)Activator.CreateInstance(type);
                 stack.Push(instance);
                 FieldInfo declaredField = type.GetField("Value");
                 if (declaredField != null)

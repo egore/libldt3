@@ -173,7 +173,7 @@ public class GenUsingDirective implements TemplateDirectiveModel {
             case "java.util":
                 return null;
             case "org.slf4j":
-                return "Microsoft.Extensions.Logging";
+                return "System.Diagnostics";
             case "java.time.temporal":
                 return "libldt3.model";
             case "java.time":

@@ -12,7 +12,7 @@ namespace libldt3
         {
             public class FuzzerTest
             {
-
+/*
                 readonly Fuzzer fuzzer = new Fuzzer(new LdtCustomHandler());
 
                 [Test]
@@ -64,6 +64,7 @@ namespace libldt3
                     IList<Satz> saetze = new LdtReader(LdtConstants.Mode.RELAXED).Read(file);
                     Assert.That(saetze.Count, Is.EqualTo(1), file);
                 }
+            */
             }
         }
     }

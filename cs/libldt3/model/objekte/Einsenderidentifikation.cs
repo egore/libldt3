@@ -37,7 +37,7 @@ namespace libldt3
             public class Einsenderidentifikation : Kontext
             {
                 [Objekt]
-                public class KundenNummer : Kontext
+                public class KundenNummer_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7267", Feldart = Feldart.kann)]
@@ -50,7 +50,7 @@ namespace libldt3
                 public IList<Einsenderstatus?> StatusEinsender;
                 [Feld(Value = "8312", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 20)]
-                public KundenNummer KundenNummer;
+                public KundenNummer_ KundenNummer;
                 [Feld(Value = "8114", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(Laenge = 18)]
                 public Arztidentifikation Arztidentifikation;

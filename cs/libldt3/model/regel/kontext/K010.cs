@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 
@@ -42,8 +42,7 @@ namespace libldt3
                 /// Anforderungen auch als Freitext mit der FK 8434 übertragen werden.
                 public class K010 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K010));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8002", "8410", "7260", "8434" };
+                    private static readonly HashSet<string> FIELDTYPES = ["8002", "8410", "7260", "8434"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -55,7 +54,7 @@ namespace libldt3
                         }
 
 
-                        K010.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
                         ;
                         return true;
                     }

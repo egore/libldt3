@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 
@@ -40,8 +40,7 @@ namespace libldt3
                 /// Kontext der kassenärztlichen Versorgung beauftragt werden, obligat.
                 public class K020 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K020));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "8002", "0201", "0212", "0223" };
+                    private static readonly HashSet<string> FIELDTYPES = ["8002", "0201", "0212", "0223"];
 
                     public bool IsValid(Kontext owner)
                     {

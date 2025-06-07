@@ -52,6 +52,7 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
             map.put(Logger.class.getMethod("error", String.class, Object.class, Object.class), "Trace.TraceError(${arguments})");
             map.put(Logger.class.getMethod("warn", String.class), "Trace.TraceWarning(${arguments})");
             map.put(Logger.class.getMethod("warn", String.class, Object.class, Object.class), "Trace.TraceWarning(${arguments})");
+            map.put(Logger.class.getMethod("warn", String.class, Object.class), "Trace.TraceWarning(${arguments})");
 
             map.put(Collections.class.getMethod("unmodifiableSet", Set.class), "${arguments}");
 

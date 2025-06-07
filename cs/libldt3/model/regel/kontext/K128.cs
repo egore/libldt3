@@ -19,8 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using libldt3.model;
+using System.Diagnostics;
 
 namespace libldt3
 {
@@ -38,12 +39,11 @@ namespace libldt3
                 /// "HPV-HR-Test" vorliegt.
                 public class K128 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K128));
 
                     public bool IsValid(Kontext owner)
                     {
 
-                        K128.LOG.Warn("Ignoring rule {}", this.GetType().GetSimpleName())
+                        Trace.TraceWarning("Ignoring rule {}", this.GetType().Name)
                         ;
                         return true;
                     }

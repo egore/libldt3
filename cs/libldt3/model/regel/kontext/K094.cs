@@ -19,11 +19,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
+using System.Diagnostics;
+using static libldt3.model.objekte.Veranlassungsgrund;
 
 namespace libldt3
 {
@@ -47,8 +49,7 @@ namespace libldt3
                 /// Patienten nicht oder nicht komplett vorhanden sind.
                 public class K094 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K094));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "7420", "7303", "3103", "3110", "8228" };
+                    private static readonly HashSet<string> FIELDTYPES = ["7420", "7303", "3103", "3110", "8228"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -60,7 +61,7 @@ namespace libldt3
                         }
 
                         StatusPerson? feld7420 = (StatusPerson?)fields["7420"].GetValue(owner);
-                        AbrechnungsinfoZurUntersuchung feld7303 = (AbrechnungsinfoZurUntersuchung)fields["7303"].GetValue(owner);
+                        AbrechnungsinfoZurUntersuchung_ feld7303 = (AbrechnungsinfoZurUntersuchung_)fields["7303"].GetValue(owner);
                         // Wenn Inhalt von FK 7420 = 12 und FK 7303 mit den Werten 1, 2, 3, 8, 9 oder 10 in jeweiliger Satzart 8205
                         // oder 8215 vorkommen
                         if (feld7420 == StatusPerson.Patient && feld7303.Value == Abrechnungsinfo.GKV_Laborfacharzt || feld7303.Value == Abrechnungsinfo.GKV_LG || feld7303.Value == Abrechnungsinfo.PKV_Laborfacharzt || feld7303.Value == Abrechnungsinfo.ASV || feld7303.Value == Abrechnungsinfo.GKV_Laborfacharzt_praeventiv || feld7303.Value == Abrechnungsinfo.GKV_LG_praeventiv)

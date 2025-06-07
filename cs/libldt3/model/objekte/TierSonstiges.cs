@@ -40,7 +40,7 @@ namespace libldt3
             public class TierSonstiges : Kontext
             {
                 [Objekt]
-                public class Alter : Kontext
+                public class Alter_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7326", Feldart = Feldart.bedingt_muss)]
@@ -59,7 +59,7 @@ namespace libldt3
                 public string NameKennung;
                 [Feld(Value = "7315", Feldart = Feldart.kann)]
                 [Regelsatz(MaxLaenge = 10)]
-                public Alter Alter;
+                public Alter_ Alter;
                 [Feld(Value = "7351", Feldart = Feldart.kann)]
                 [Regelsatz(Value = new[] { typeof(F002) }, Laenge = 8)]
                 public LocalDate? Geburtsdatum;

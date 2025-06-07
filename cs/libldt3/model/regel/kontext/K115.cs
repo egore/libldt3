@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 
@@ -36,8 +36,7 @@ namespace libldt3
                 /// </summary>
                 public class K115 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K115));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "0212", "0223" };
+                    private static readonly HashSet<string> FIELDTYPES = ["0212", "0223"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -50,7 +49,7 @@ namespace libldt3
 
                         IList<string> lebenslangeArztnummer = (IList<string>)KontextregelHelper.GetFieldValue(fields["0212"], owner);
                         IList<string> pseudoLanrFuerKrankenhausaerzteRahmenAsvAbrechnung = (IList<string>)KontextregelHelper.GetFieldValue(fields["0223"], owner);
-                        if (lebenslangeArztnummer != null && !lebenslangeArztnummer.Count == 0 || pseudoLanrFuerKrankenhausaerzteRahmenAsvAbrechnung != null && !pseudoLanrFuerKrankenhausaerzteRahmenAsvAbrechnung.Count == 0)
+                        if (lebenslangeArztnummer != null && lebenslangeArztnummer.Count != 0 || pseudoLanrFuerKrankenhausaerzteRahmenAsvAbrechnung != null && pseudoLanrFuerKrankenhausaerzteRahmenAsvAbrechnung.Count != 0)
                         {
                             return true;
                         }

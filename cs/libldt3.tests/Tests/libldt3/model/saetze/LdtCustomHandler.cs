@@ -7,6 +7,7 @@ using libldt3.attributes;
 using libldt3.model.enums;
 using libldt3.model.objekte;
 using libldt3.model.regel;
+using libldt3.model.regel.format;
 
 namespace libldt3
 {
@@ -76,7 +77,7 @@ namespace libldt3
                                 }
                                 if (klass == typeof(F007))
                                 {
-                                    return LdtVersion.LDT3_1_0;
+                                    return LdtVersion.LDT3_2_17;
                                 }
                                 if (klass == typeof(F012))
                                 {

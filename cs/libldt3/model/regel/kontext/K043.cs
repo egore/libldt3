@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
@@ -53,8 +53,7 @@ namespace libldt3
                 /// zweimal im Obj_Betriebsstätte vorkommen.
                 public class K043 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K043));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "0204" };
+                    private static readonly HashSet<string> FIELDTYPES = ["0204"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -74,7 +73,7 @@ namespace libldt3
 
                         // Wenn FK 0204 im Obj_0019 (Obj_Betriebsstätte) nur einmal vorkommt, muss der Inhalt der FK 0204 = 1, 2, 3 oder
                         // 4 sein.
-                        if (stati.Size() == 1)
+                        if (stati.Count == 1)
                         {
                             foreach (Betriebsstaettenstatus? status in stati)
                             {
@@ -90,7 +89,7 @@ namespace libldt3
 
                         // Wenn FK 0204 im Obj_0019 (Obj_Betriebsstätte) zweimal vorkommt, muss der Inhalt der FK 0204 einmal mit 1, 2,
                         // 3 oder 4 und einmal mit 5 oder 6 gefüllt sein.
-                        if (stati.Size() == 2)
+                        if (stati.Count == 2)
                         {
                             bool oneToFour = false;
                             bool fiveOrSix = false;
@@ -120,7 +119,7 @@ namespace libldt3
                         }
 
 
-                        K043.LOG.Error("Requires one or two states, got {}", stati.Size())
+                        Trace.TraceError("Requires one or two states, got {0}", stati.Count)
                         ;
                         return false;
                     }

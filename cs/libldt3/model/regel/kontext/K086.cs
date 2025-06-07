@@ -19,13 +19,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
-using java.util.function;
-using java.util.stream;
-using libldt3.model;
 using libldt3.model.enums;
-using libldt3.model.objekte;
+using static libldt3.model.objekte.UntersuchungsergebnisMikrobiologie;
+using System.Diagnostics;
 
 namespace libldt3
 {
@@ -40,8 +38,7 @@ namespace libldt3
                 /// </summary>
                 public class K086 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K086));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "7293", "7286" };
+                    private static readonly HashSet<string> FIELDTYPES = ["7293", "7286"];
 
                     public bool IsValid(Kontext owner)
                     {
@@ -53,8 +50,8 @@ namespace libldt3
                         }
 
                         IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode> feld7286 = (IList<UntersuchungsergebnisMikrobiologie_ResistenzMethode>)KontextregelHelper.GetFieldValue(fields["7286"], owner);
-                        bool found = feld7286 != null && feld7286.Stream().AnyMatch(// XXX renderExpression CtLambdaImpl is unknown);
-    if (!found)
+                        bool found = feld7286 != null && feld7286.Any(x => x.Value != ResistenzMethode.keinAntibiogramm_erstellt);
+                        if (!found)
                         {
                             if (KontextregelHelper.ContainsAnyValue(fields["7293"], owner))
                             {

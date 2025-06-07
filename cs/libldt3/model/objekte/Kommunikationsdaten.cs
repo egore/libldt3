@@ -38,7 +38,7 @@ namespace libldt3
             public class Kommunikationsdaten : Kontext
             {
                 [Objekt]
-                public class AlternativeElektronischePostadresse : Kontext
+                public class AlternativeElektronischePostadresse_ : Kontext
                 {
                     public string Value;
                     [Feld(Value = "7340", Feldart = Feldart.bedingt_muss)]
@@ -54,7 +54,7 @@ namespace libldt3
                 public IList<string> Mobiltelefonnummer;
                 [Feld(Value = "7332", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
-                public IList<AlternativeElektronischePostadresse> AlternativeElektronischePostadresse;
+                public IList<AlternativeElektronischePostadresse_> AlternativeElektronischePostadresse;
                 [Feld(Value = "7333", Feldart = Feldart.bedingt_muss)]
                 [Regelsatz(MaxLaenge = 60)]
                 public IList<string> Faxnummer;

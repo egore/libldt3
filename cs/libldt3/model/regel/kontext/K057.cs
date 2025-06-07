@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -42,7 +42,6 @@ namespace libldt3
                 /// des SGB V beauftragt werden.
                 public class K057 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K057));
 
                     public bool IsNotEmpty(Arztidentifikation arztidentifikation)
                     {
@@ -50,19 +49,19 @@ namespace libldt3
                     }
                     public bool IsNotEmpty(Fliesstext fliesstext)
                     {
-                        return fliesstext.Text != null && !fliesstext.Text.Count == 0;
+                        return fliesstext.Text != null && !(fliesstext.Text.Count == 0);
                     }
                     public bool IsValid(Kontext owner)
                     {
-                        if (!owner is Auftrag)
+                        if (owner is not saetze.Auftrag)
                         {
 
-                            K057.LOG.Warn("K057 expected Auftrag as context, but got {}. Invalidly returning true", owner.GetClass())
+                            Trace.TraceWarning("K057 expected Auftrag as context, but got {0}. Invalidly returning true", owner.GetType().Name)
                             ;
                             return true;
                         }
 
-                        Auftrag auftrag = (Auftrag)owner;
+                        saetze.Auftrag auftrag = (saetze.Auftrag)owner;
                         // Valid, as no Obj_0059 present
                         if (auftrag.Untersuchungsanforderung == null || auftrag.Untersuchungsanforderung.Count == 0)
                         {

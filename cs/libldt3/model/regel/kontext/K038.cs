@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using libldt3.model;
 using libldt3.model.enums;
@@ -40,8 +40,7 @@ namespace libldt3
                 /// sein und FK 7311 darf nicht vorhanden sein.
                 public class K038 : Kontextregel
                 {
-                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K038));
-                    private static readonly ISet<string> FIELDTYPES = new HashSet { "7310", "7311" };
+                    private static readonly HashSet<string> FIELDTYPES = ["7310", "7311"];
 
                     public bool IsValid(Kontext owner)
                     {

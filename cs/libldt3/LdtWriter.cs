@@ -238,14 +238,29 @@ namespace libldt3
                 WriteLdtLine(writer, feld, ((bool)o) ? "1" : "0");
                 return;
             }
+            if (o is PartialYearOnly)
+            {
+                WriteLdtLine(writer, feld, ((PartialYearOnly)o).Date.Year.ToString() + "0000");
+                return;
+            }
             if (o is YearOnly)
             {
-                WriteLdtLine(writer, feld, ((YearOnly)o).Year.ToString());
+                WriteLdtLine(writer, feld, ((YearOnly)o).Year.ToString() + "0000");
+                return;
+            }
+            if (o is PartialYearMonth)
+            {
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format(((PartialYearMonth)o).Date) + "00");
                 return;
             }
             if (o is YearMonth)
             {
-                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format((YearMonth)o));
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE_YEAR_MONTH.Format((YearMonth)o) + "00");
+                return;
+            }
+            if (o is PartialLocalDate)
+            {
+                WriteLdtLine(writer, feld, LdtConstants.FORMAT_DATE.Format(((PartialLocalDate)o).Date));
                 return;
             }
             if (o is LocalDate)
