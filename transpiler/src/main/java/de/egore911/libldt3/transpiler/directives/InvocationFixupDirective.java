@@ -49,10 +49,11 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
             map.put(Matcher.class.getMethod("matches"), "${target}");
 
             map.put(Logger.class.getMethod("error", String.class), "Trace.TraceError(${arguments})");
+            map.put(Logger.class.getMethod("error", String.class, Object.class), "Trace.TraceError(${arguments})");
             map.put(Logger.class.getMethod("error", String.class, Object.class, Object.class), "Trace.TraceError(${arguments})");
             map.put(Logger.class.getMethod("warn", String.class), "Trace.TraceWarning(${arguments})");
-            map.put(Logger.class.getMethod("warn", String.class, Object.class, Object.class), "Trace.TraceWarning(${arguments})");
             map.put(Logger.class.getMethod("warn", String.class, Object.class), "Trace.TraceWarning(${arguments})");
+            map.put(Logger.class.getMethod("warn", String.class, Object.class, Object.class), "Trace.TraceWarning(${arguments})");
 
             map.put(Collections.class.getMethod("unmodifiableSet", Set.class), "${arguments}");
 
@@ -85,6 +86,10 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
 
             map.put(Feld.class.getMethod("value"), "${target}.Value");
 
+            map.put(Integer.class.getMethod("parseInt", String.class), "int.Parse(${arguments})");
+
+            map.put(Class.class.getMethod("getSimpleName"), "${target}.Name");
+
         } catch (NoSuchMethodException | SecurityException e) {
             throw new Error(e);
         }
@@ -99,7 +104,49 @@ public class InvocationFixupDirective implements TemplateDirectiveModel {
     static {
         Map<Method, ArgumentHandler> map = new HashMap<>();
         try {
+            map.put(Logger.class.getMethod("error", String.class, Object.class), (argument, index) -> {
+                if (index == 0) {
+                    int counter = 0;
+                    Matcher m = Pattern.compile("\\{\\}").matcher(argument);
+                    StringBuilder sb = new StringBuilder();
+                    while (m.find()) {
+                        m.appendReplacement(sb, "{" + counter + "}");
+                        counter++;
+                    }
+                    m.appendTail(sb);
+                    return sb.toString();
+                }
+                return argument;
+            });
             map.put(Logger.class.getMethod("error", String.class, Object.class, Object.class), (argument, index) -> {
+                if (index == 0) {
+                    int counter = 0;
+                    Matcher m = Pattern.compile("\\{\\}").matcher(argument);
+                    StringBuilder sb = new StringBuilder();
+                    while (m.find()) {
+                        m.appendReplacement(sb, "{" + counter + "}");
+                        counter++;
+                    }
+                    m.appendTail(sb);
+                    return sb.toString();
+                }
+                return argument;
+            });
+            map.put(Logger.class.getMethod("warn", String.class, Object.class), (argument, index) -> {
+                if (index == 0) {
+                    int counter = 0;
+                    Matcher m = Pattern.compile("\\{\\}").matcher(argument);
+                    StringBuilder sb = new StringBuilder();
+                    while (m.find()) {
+                        m.appendReplacement(sb, "{" + counter + "}");
+                        counter++;
+                    }
+                    m.appendTail(sb);
+                    return sb.toString();
+                }
+                return argument;
+            });
+            map.put(Logger.class.getMethod("warn", String.class, Object.class, Object.class), (argument, index) -> {
                 if (index == 0) {
                     int counter = 0;
                     Matcher m = Pattern.compile("\\{\\}").matcher(argument);

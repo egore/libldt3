@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import freemarker.core.Environment;
-import freemarker.ext.beans.StringModel;
+import freemarker.ext.beans.GenericObjectModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateModel;
@@ -34,7 +34,7 @@ public class GenUsingDirective implements TemplateDirectiveModel {
 
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
             throws IOException {
-        CtType<?> class_ = (CtType<?>) (((StringModel) params.get("class")).getWrappedObject());
+        CtType<?> class_ = (CtType<?>) (((GenericObjectModel) params.get("class")).getWrappedObject());
 
         // Collect all things for "using ..." statements
         Set<String> usings = new TreeSet<>();

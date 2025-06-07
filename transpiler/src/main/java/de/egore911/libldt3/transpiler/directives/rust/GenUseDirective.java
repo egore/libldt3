@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import freemarker.core.Environment;
-import freemarker.ext.beans.StringModel;
+import freemarker.ext.beans.GenericObjectModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateModel;
@@ -20,7 +20,7 @@ public class GenUseDirective implements TemplateDirectiveModel {
 
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body)
             throws IOException {
-        CtType<?> struct = (CtType<?>) (((StringModel) params.get("struct")).getWrappedObject());
+        CtType<?> struct = (CtType<?>) (((GenericObjectModel) params.get("struct")).getWrappedObject());
         String structQualifiedName = struct.getQualifiedName();
 
         Set<String> uses = new TreeSet<>();

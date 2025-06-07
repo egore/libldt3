@@ -5,7 +5,7 @@ import java.io.Writer;
 import java.util.Map;
 
 import freemarker.core.Environment;
-import freemarker.ext.beans.StringModel;
+import freemarker.ext.beans.GenericObjectModel;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
@@ -17,13 +17,13 @@ public class NamespaceDirective implements TemplateDirectiveModel {
             throws TemplateException, IOException {
 
         TemplateModel p = (TemplateModel) params.get("package");
-        if (!(p instanceof StringModel)) {
+        if (!(p instanceof GenericObjectModel)) {
             throw new UnsupportedOperationException("Cannot handle class template model " + p.getClass().getSimpleName());
         }
 
         Writer writer = env.getOut();
 
-        String namespace = ((StringModel) p).getAsString();
+        String namespace = ((GenericObjectModel) p).getAsString();
         String[] parts = namespace.split("\\.");
         int length = parts.length;
         for (int i = 0; i < length; i++) {
