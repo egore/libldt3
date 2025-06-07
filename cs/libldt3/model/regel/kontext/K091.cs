@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2025  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ namespace libldt3
             {
                 /// <summary>
                 /// Falls die FK 4109 vorhanden ist und der Feldinhalt >= "01.01.2015" sowie der
-                /// Inhalt der Stellen 3 – 5 der FK 4104 < 800, dann müssen die FK 3119 und FK 4133
+                /// Inhalt der Stellen 3 – 5 der FK 4104 &lt; 800, dann müssen die FK 3119 und FK 4133
                 /// vorhanden sein.
                 /// </summary>
                 /// Da seit dem  01.01.2015 im Bereich der GKV-Kostenträgern KVKs nicht

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2025  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace libldt3
                 /// TT = Tag, MM = Monat, JJJJ = Jahr
                 public class F002 : RegularExpressionRegel
                 {
-                    public static readonly Regex PATTERN = new Regex("^([0-9]{4})(0[0-9]|1[012])([0-2][0-9]|3[01])$");
+                    public static readonly Regex PATTERN = new Regex("^([0-9]{4})(0[1-9]|1[012])(0[1-9]|[1-2][0-9]|3[01])$");
 
                     public F002() : base(F002.PATTERN)
                     {

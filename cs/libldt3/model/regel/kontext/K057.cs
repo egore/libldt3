@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2025  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,6 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+using Microsoft.Extensions.Logging;
 using libldt3.model;
 using libldt3.model.enums;
 using libldt3.model.objekte;
@@ -41,6 +42,8 @@ namespace libldt3
                 /// des SGB V beauftragt werden.
                 public class K057 : Kontextregel
                 {
+                    private static readonly ILogger LOG = LoggerFactory.GetLogger(typeof(K057));
+
                     public bool IsNotEmpty(Arztidentifikation arztidentifikation)
                     {
                         return arztidentifikation.AsvTeamnummer != null && !string.IsNullOrEmpty(arztidentifikation.AsvTeamnummer);
@@ -51,6 +54,14 @@ namespace libldt3
                     }
                     public bool IsValid(Kontext owner)
                     {
+                        if (!owner is Auftrag)
+                        {
+
+                            K057.LOG.Warn("K057 expected Auftrag as context, but got {}. Invalidly returning true", owner.GetClass())
+                            ;
+                            return true;
+                        }
+
                         Auftrag auftrag = (Auftrag)owner;
                         // Valid, as no Obj_0059 present
                         if (auftrag.Untersuchungsanforderung == null || auftrag.Untersuchungsanforderung.Count == 0)

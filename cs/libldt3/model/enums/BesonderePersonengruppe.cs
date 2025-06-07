@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2024  Christoph Brill <opensource@christophbrill.de>
+ * Copyright 2016-2025  Christoph Brill <opensource@christophbrill.de>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ namespace libldt3
                 keineAngabe,
                 /// BSHG (Bundessozialhilfegesetz) § 264 SGB V
                 BSHG264SGB_V,
-                /// BVG (Gesetz über die Versorgung der Opfer des Krieges)
+                /// SER (Soziales Entschädigungsrecht)
                 SER,
                 /// Krankenversicherungsrecht: Personen mit Wohnsitz im Inland,  Abrechnung nach
                 /// Aufwand
