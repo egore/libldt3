@@ -504,6 +504,12 @@ public class LdtReader {
             }
             return LocalDate.parse(payload, LdtConstants.FORMAT_DATE);
         }
+        if (type == Year.class) {
+            return Year.parse(payload.endsWith("0000") && payload.length() == 8 ? payload.substring(0, payload.length() - 4) : payload);
+        }
+        if (type == YearMonth.class) {
+            return YearMonth.parse(payload.endsWith("00") && payload.length() == 8 ? payload.substring(0, payload.length() - 2) : payload, LdtConstants.FORMAT_DATE_YEAR_MONTH);
+        }
         if (type == LocalTime.class) {
             return LocalTime.parse(payload, LdtConstants.FORMAT_TIME);
         }
