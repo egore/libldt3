@@ -35,6 +35,9 @@
         <#case "CtVariableAccessImpl">
             <@renderVariableAccessExpression expression/>
             <#break>
+        <#case "CtLambdaImpl">
+            <@renderLambdaExpression expression/>
+            <#break>
         <#default>
             // XXX renderExpression ${expression.class.simpleName} is unknown
             <#break>
@@ -159,4 +162,9 @@
 
 <#macro renderVariableAccessExpression expression>
     <#if expression.typeCasts?size gt 0><#list expression.typeCasts as typeCast>(<@converttype type=typeCast/>) </#list></#if>${expression.variable.simpleName}
+</#macro>
+
+<#macro renderLambdaExpression expression>
+<#-- @ftlvariable name="expression" type="spoon.support.reflect.code.CtLambdaImpl" -->
+    ${expression.parameters?join(", ")} => <@renderExpression expression=expression.expression/>
 </#macro>
