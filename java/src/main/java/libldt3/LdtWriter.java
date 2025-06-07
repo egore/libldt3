@@ -29,6 +29,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Year;
+import java.time.YearMonth;
 import java.util.List;
 
 import libldt3.annotations.Feldart;
@@ -215,6 +217,14 @@ public class LdtWriter {
         }
         if (object instanceof Boolean) {
             writeLdtLine(writer, feld, object.equals(Boolean.TRUE) ? "1" : "0");
+            return;
+        }
+        if (object instanceof Year) {
+            writeLdtLine(writer, feld, ((Year) object).toString() + "0000");
+            return;
+        }
+        if (object instanceof YearMonth) {
+            writeLdtLine(writer, feld, ((YearMonth) object).format(LdtConstants.FORMAT_DATE_YEAR_MONTH) + "00");
             return;
         }
         if (object instanceof LocalDate) {
