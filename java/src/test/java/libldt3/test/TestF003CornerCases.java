@@ -2,22 +2,33 @@ package libldt3.test;
 
 import libldt3.LdtConstants;
 import libldt3.LdtReader;
+import libldt3.LdtWriter;
 import libldt3.model.saetze.Auftrag;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
 
 public class TestF003CornerCases {
 
+    private static Path getTempFile(String prefix) throws IOException {
+        File test = File.createTempFile(prefix, ".ldt");
+        test.deleteOnExit();
+        return test.toPath();
+    }
+
     @Test
     public void testWithYearOnly() throws IOException {
         var reader = new LdtReader(LdtConstants.Mode.RELAXED);
-
-        var read = reader.read(getClass().getResource("/person-19900000.ldt").getPath());
+        Path inFile = Paths.get(getClass().getResource("/person-19900000.ldt").getPath());
+        var read = reader.read(inFile);
 
         Assertions.assertNotNull(read);
         Assertions.assertEquals(1, read.size());
@@ -27,16 +38,20 @@ public class TestF003CornerCases {
         Assertions.assertNotNull(((Auftrag)read.get(0)).patient.person);
         Assertions.assertNotNull(((Auftrag)read.get(0)).patient.person.geburtsdatum);
         Assertions.assertInstanceOf(Year.class, ((Auftrag)read.get(0)).patient.person.geburtsdatum);
-        Assertions.assertEquals(Year.of(1900), ((Auftrag)read.get(0)).patient.person.geburtsdatum);
+        Assertions.assertEquals(Year.of(1990), ((Auftrag)read.get(0)).patient.person.geburtsdatum);
 
+        var writer = new LdtWriter(LdtConstants.Mode.RELAXED);
+        Path tempFile = getTempFile("testWithYearOnly");
+        writer.write(read, tempFile);
 
+        Assertions.assertEquals(Files.readString(inFile).trim(), Files.readString(tempFile).trim());
     }
 
     @Test
     public void testWithYearAnyMonth() throws IOException {
         var reader = new LdtReader(LdtConstants.Mode.RELAXED);
-
-        var read = reader.read(getClass().getResource("/person-19900200.ldt").getPath());
+        Path inFile = Paths.get(getClass().getResource("/person-19900200.ldt").getPath());
+        var read = reader.read(inFile);
 
         Assertions.assertNotNull(read);
         Assertions.assertEquals(1, read.size());
@@ -46,14 +61,20 @@ public class TestF003CornerCases {
         Assertions.assertNotNull(((Auftrag) read.get(0)).patient.person);
         Assertions.assertNotNull(((Auftrag) read.get(0)).patient.person.geburtsdatum);
         Assertions.assertInstanceOf(YearMonth.class, ((Auftrag) read.get(0)).patient.person.geburtsdatum);
-        Assertions.assertEquals(YearMonth.of(1900, 2), ((Auftrag) read.get(0)).patient.person.geburtsdatum);
+        Assertions.assertEquals(YearMonth.of(1990, 2), ((Auftrag) read.get(0)).patient.person.geburtsdatum);
+
+        var writer = new LdtWriter(LdtConstants.Mode.RELAXED);
+        Path tempFile = getTempFile("testWithYearAnyMonth");
+        writer.write(read, tempFile);
+
+        Assertions.assertEquals(Files.readString(inFile).trim(), Files.readString(tempFile).trim());
     }
 
     @Test
     public void testWithFullDate() throws IOException {
         var reader = new LdtReader(LdtConstants.Mode.RELAXED);
-
-        var read = reader.read(getClass().getResource("/person-19900204.ldt").getPath());
+        Path inFile = Paths.get(getClass().getResource("/person-19900204.ldt").getPath());
+        var read = reader.read(inFile);
 
         Assertions.assertNotNull(read);
         Assertions.assertEquals(1, read.size());
@@ -63,6 +84,12 @@ public class TestF003CornerCases {
         Assertions.assertNotNull(((Auftrag) read.get(0)).patient.person);
         Assertions.assertNotNull(((Auftrag) read.get(0)).patient.person.geburtsdatum);
         Assertions.assertInstanceOf(LocalDate.class, ((Auftrag) read.get(0)).patient.person.geburtsdatum);
-        Assertions.assertEquals(LocalDate.of(1900, 2, 4), ((Auftrag) read.get(0)).patient.person.geburtsdatum);
+        Assertions.assertEquals(LocalDate.of(1990, 2, 4), ((Auftrag) read.get(0)).patient.person.geburtsdatum);
+
+        var writer = new LdtWriter(LdtConstants.Mode.RELAXED);
+        Path tempFile = getTempFile("testWithYearAnyMonth");
+        writer.write(read, tempFile);
+
+        Assertions.assertEquals(Files.readString(inFile).trim(), Files.readString(tempFile).trim());
     }
 }
