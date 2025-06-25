@@ -494,6 +494,9 @@ public class LdtReader {
         if (type == Boolean.class) {
             return "1".equals(payload);
         }
+        if (type == LocalDate.class) {
+            return LocalDate.parse(payload, LdtConstants.FORMAT_DATE);
+        }
         if (type == Temporal.class) {
             if (payload.endsWith("00000000")) {
                 return null;

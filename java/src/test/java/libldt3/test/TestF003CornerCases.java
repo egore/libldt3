@@ -16,13 +16,9 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.time.YearMonth;
 
-public class TestF003CornerCases {
+import static libldt3.test.TempFileUtil.getTempFile;
 
-    private static Path getTempFile(String prefix) throws IOException {
-        File test = File.createTempFile(prefix, ".ldt");
-        test.deleteOnExit();
-        return test.toPath();
-    }
+public class TestF003CornerCases {
 
     @Test
     public void testWithYearOnly() throws IOException {
