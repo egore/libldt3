@@ -1,23 +1,13 @@
-# libldt3
+# Replaced by individual repositories
 
-LDT is short for "Labor Daten Transfer", a data format to exchange data with
-laboratories in Germany. As this is a format only used in Germany, the rest
-of this file will be in German.
+This repository is only kept for historical purposes. The actual code is at
 
-# Unterstützte Programmiersprachen
+https://gitlab.com/libldt/libldt3-csharp
 
-## Java
+https://gitlab.com/libldt/libldt3-java
 
-Details unter [java/README.md](java/README.md)
+https://gitlab.com/libldt/libldt3-parser
 
-## C#
+https://gitlab.com/libldt/libldt3-rust
 
-Details unter [cs/README.md](cs/README.md)
-
-## Weitere
-
-Es können mittels eines Transpilers weitere Programmiersprachen angebunden
-werden. Quellsprache ist dabei Java, die z.B. bereits automatisiert in C#
-übersetzt wird.
-
-Details unter [transpiler/README.md](transpiler/README.md)
+https://gitlab.com/libldt/libldt3-transpiler

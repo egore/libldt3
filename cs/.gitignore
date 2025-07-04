@@ -1,9 +1,0 @@
-*.userprefs
-/packages
-*.exe
-*.pdb
-bin
-obj
-/testrunner
-/TestResult.xml
-.vscode
